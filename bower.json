@@ -1,0 +1,21 @@
+{
+  "name": "laravelcms",
+  "authors": [
+    "q1082121 <rubbish.boy@163.com>"
+  ],
+  "description": "0.0.1",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Public/module",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "admin-lte#^2.3.6"
+  }
+}

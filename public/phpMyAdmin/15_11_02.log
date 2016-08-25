@@ -1,0 +1,102 @@
+[ 2015-11-02T16:08:25+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead H:\website\cx_dysjj\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `thinkphp_hooks` [ RunTime:0.008000s ]
+SQL: SELECT `name`,`addons` FROM `thinkphp_hooks`  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `thinkphp_addons` [ RunTime:0.009001s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('ShareBaidu','ShareBshare') )  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DiscussUyan','DiscussDuoshuo') )  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('TongjiBaidu') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WeatherTsff','WeatherTqw') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WechatJSDK') )  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DituBaidu','DituBaiduDaohang') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('OpenloginQQ') )  [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:1.045060s ]
+INFO: [ app_init ] --END-- [ RunTime:1.045060s ]
+
+[ 2015-11-02T16:08:26+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead H:\website\cx_dysjj\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `thinkphp_hooks` [ RunTime:0.003000s ]
+SQL: SELECT `name`,`addons` FROM `thinkphp_hooks`  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `thinkphp_addons` [ RunTime:0.003000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('ShareBaidu','ShareBshare') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DiscussUyan','DiscussDuoshuo') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('TongjiBaidu') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WeatherTsff','WeatherTqw') )  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WechatJSDK') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DituBaidu','DituBaiduDaohang') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('OpenloginQQ') )  [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:1.018059s ]
+INFO: [ app_init ] --END-- [ RunTime:1.018059s ]
+
+[ 2015-11-02T16:48:05+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead H:\website\cx_dysjj\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `thinkphp_hooks` [ RunTime:0.003000s ]
+SQL: SELECT `name`,`addons` FROM `thinkphp_hooks`  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `thinkphp_addons` [ RunTime:0.003001s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('ShareBaidu','ShareBshare') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DiscussUyan','DiscussDuoshuo') )  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('TongjiBaidu') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WeatherTsff','WeatherTqw') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WechatJSDK') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DituBaidu','DituBaiduDaohang') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('OpenloginQQ') )  [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:1.028059s ]
+INFO: [ app_init ] --END-- [ RunTime:1.029059s ]
+
+[ 2015-11-02T16:48:06+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead H:\website\cx_dysjj\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `thinkphp_hooks` [ RunTime:0.002000s ]
+SQL: SELECT `name`,`addons` FROM `thinkphp_hooks`  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `thinkphp_addons` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('ShareBaidu','ShareBshare') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DiscussUyan','DiscussDuoshuo') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('TongjiBaidu') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WeatherTsff','WeatherTqw') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WechatJSDK') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DituBaidu','DituBaiduDaohang') )  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('OpenloginQQ') )  [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:1.025059s ]
+INFO: [ app_init ] --END-- [ RunTime:1.026059s ]
+
+[ 2015-11-02T16:53:40+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead H:\website\cx_dysjj\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `thinkphp_hooks` [ RunTime:0.006000s ]
+SQL: SELECT `name`,`addons` FROM `thinkphp_hooks`  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `thinkphp_addons` [ RunTime:0.007001s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('ShareBaidu','ShareBshare') )  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DiscussUyan','DiscussDuoshuo') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('TongjiBaidu') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WeatherTsff','WeatherTqw') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WechatJSDK') )  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DituBaidu','DituBaiduDaohang') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('OpenloginQQ') )  [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:1.047060s ]
+INFO: [ app_init ] --END-- [ RunTime:1.047060s ]
+
+[ 2015-11-02T16:53:41+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead H:\website\cx_dysjj\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `thinkphp_hooks` [ RunTime:0.004001s ]
+SQL: SELECT `name`,`addons` FROM `thinkphp_hooks`  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `thinkphp_addons` [ RunTime:0.005000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('ShareBaidu','ShareBshare') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DiscussUyan','DiscussDuoshuo') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('TongjiBaidu') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WeatherTsff','WeatherTqw') )  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('WechatJSDK') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('DituBaidu','DituBaiduDaohang') )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name` FROM `thinkphp_addons` WHERE ( `status` = 1 ) AND ( `name` IN ('OpenloginQQ') )  [ RunTime:0.001000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:1.038059s ]
+INFO: [ app_init ] --END-- [ RunTime:1.038059s ]
+

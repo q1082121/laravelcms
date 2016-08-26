@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f28e88339191f5028840228979e10e4c",
-    "content-hash": "01baaf1c2add36c1e88308d20e14fb7f",
+    "hash": "e58e7d18b6f809c4371e5bfa0dd169f6",
+    "content-hash": "7da4b141bbe54ccaf7489912392e3106",
     "packages": [
         {
             "name": "caouecs/laravel4-lang",
@@ -203,6 +203,54 @@
             "time": "2015-11-06 14:35:42"
         },
         {
+            "name": "gregwar/captcha",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gregwar/Captcha.git",
+                "reference": "1240ab993ca713680573b2d4166900da5f758623"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/Gregwar/Captcha/1240ab993ca713680573b2d4166900da5f758623.zip",
+                "reference": "1240ab993ca713680573b2d4166900da5f758623",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "captcha",
+            "autoload": {
+                "psr-4": {
+                    "Gregwar\\Captcha\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Passault",
+                    "email": "g.passault@gmail.com",
+                    "homepage": "http://www.gregwar.com/"
+                },
+                {
+                    "name": "Jeremy Livingston",
+                    "email": "jeremy.j.livingston@gmail.com"
+                }
+            ],
+            "description": "Captcha generator",
+            "homepage": "https://github.com/Gregwar/Captcha",
+            "keywords": [
+                "bot",
+                "captcha",
+                "spam"
+            ],
+            "time": "2015-09-11 15:23:20"
+        },
+        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -349,16 +397,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.43",
+            "version": "v5.2.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "5490b8f00564bb60839002f86828e27edd1e5610"
+                "reference": "f24b7acfb494437ef00bdd062bed61eb21535546"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/laravel/framework/5490b8f00564bb60839002f86828e27edd1e5610.zip",
-                "reference": "5490b8f00564bb60839002f86828e27edd1e5610",
+                "url": "https://packagist.phpcomposer.com/files/laravel/framework/f24b7acfb494437ef00bdd062bed61eb21535546.zip",
+                "reference": "f24b7acfb494437ef00bdd062bed61eb21535546",
                 "shasum": ""
             },
             "require": {
@@ -439,7 +487,7 @@
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~2.0).",
                 "symfony/css-selector": "Required to use some of the crawler integration testing tools (2.8.*|3.0.*).",
                 "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (2.8.*|3.0.*).",
-                "symfony/psr-http-message-bridge": "Required to psr7 bridging features (0.2.*)."
+                "symfony/psr-http-message-bridge": "Required to use psr7 bridging features (0.2.*)."
             },
             "type": "library",
             "extra": {
@@ -475,7 +523,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-10 12:23:59"
+            "time": "2016-08-23 13:03:29"
         },
         {
             "name": "league/flysystem",

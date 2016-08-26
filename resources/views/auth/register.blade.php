@@ -103,6 +103,15 @@
 				<input type="text" class="text" name="name" value="" placeholder="：" style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/name.png') no-repeat left center;">
 				<input id="password" type="password"  name="userpwd" placeholder="："  style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/pwd.png') no-repeat left center;">
 				<input id="password" type="password"  name="reuserpwd" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/repwd.png') no-repeat left center;">
+				<input type="text" name="captcha" class="form-control" style="width: 300px;">
+          		<a onclick="javascript:re_captcha();" ><img src="{{ URL('/user/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0"></a>
+				<script>  
+				  function re_captcha() {
+				    $url = "{{ URL('/user/captcha') }}";
+				        $url = $url + "/" + Math.random();
+				        document.getElementById('c2c98f0de5a04167a9e427d883690ff6').src=$url;
+				  }
+				</script>
 				<div class="signin">
 					<input type="button" id="do_action" value="注册/Register" >
 				</div>

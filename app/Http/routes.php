@@ -17,7 +17,17 @@ Route::get('/', function () {
 });
 */
 
-Route::auth();
+//Route::auth();
+/******************************************
+****@AuThor:rubbish@163.com
+****@Title :会员中心
+*******************************************/
+Route::group(['namespace' => 'User', 'prefix' => 'user'], function() {  
+    Route::get('/', 'HomeController@index');
+	Route::get('register', 'RegisterController@register');
+	Route::get('register/captcha/{tmp}', 'RegisterController@captcha');
+});
+
 /******************************************
 ****@AuThor:rubbish@163.com
 ****@Title :前台访问控制

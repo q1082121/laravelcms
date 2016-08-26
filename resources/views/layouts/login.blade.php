@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>	
 <head>
-<title>管理中心登录界面</title>
+<title>{{ $website['title'] }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
@@ -13,6 +13,10 @@
 <script src="{{asset('/module/jquery')}}/dist/jquery.min.js"></script>
 <!--layer-->
 <script src="{{asset('/module/layer')}}/layer.js"></script>
+<!--vue-->
+<script src="{{asset('/module/vue')}}/dist/vue.min.js"></script>
+<!--common-->
+<script src="{{asset('/js')}}/common.js"></script>
 </head>
 <body>
 	<script>$(document).ready(function(c) {
@@ -25,7 +29,7 @@
 	</script>
 	@yield('content')
 	<div class="copy-rights">
-			<p>版权信息</p>
+			<p>{{ $website['copyrights'] }}</p>
 	</div>
 </body>
 </html>

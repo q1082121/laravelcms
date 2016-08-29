@@ -1,7 +1,7 @@
 @extends('layouts.login')
 @section('content')
 	<!--SIGN UP-->
-	<h1>账号注册中心界面</h1>
+	<h1 style="padding-top:3em;">账号注册中心界面</h1>
 	<div class="login-form">
 		<!--<div class="close"> </div>-->
 			<div class="head-info">
@@ -18,20 +18,48 @@
 			{
 				frm = document.do_form;
 			    
-			    var email = frm.email;
-			    var name = frm.name;
+			    
+			    var nick = frm.nick;
 			    var userpwd = frm.userpwd;
 			    var reuserpwd = frm.reuserpwd;
 			    var code = frm.code;
 			    
-			    if(email.value=="")
+			    @if ($website['type'] == 1)
+			    var email = frm.email;
+			    if(email.value=="" || isEmail(email.value)==false)
 			    {
-			        layer.alert("请输入注册邮箱!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("请输入有效的注册邮箱!",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
-			    if(name.value=="")
+			    @elseif ($website['type'] == 2)
+			    var username = frm.username;
+			    if(username.value=="" )
 			    {
-			        layer.alert("请输入用户名称!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("请输入用户名!",{icon: 7,skin: 'layer-ext-moon'});
+			        return false;
+			    }
+			    if(username.value.length <4 )
+			    {
+			        layer.alert("用户名需4位长度以上!",{icon: 7,skin: 'layer-ext-moon'});
+			        return false;
+			    }
+			    @elseif ($website['type'] == 3)
+			    var mobile = frm.mobile;
+			    if(mobile.value=="" || validatemobile(mobile.value)==false)
+			    {
+			        layer.alert("请输入有效的手机号码!",{icon: 7,skin: 'layer-ext-moon'});
+			        return false;
+			    }
+			    @endif
+
+			    if(nick.value=="")
+			    {
+			        layer.alert("请输入用户昵称!",{icon: 7,skin: 'layer-ext-moon'});
+			        return false;
+			    }
+			    if(nick.value.length>8)
+			    {
+			        layer.alert("用户昵称超出限制长度!",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    if(userpwd.value=="")
@@ -72,7 +100,7 @@
                         var loadi;
                         $.ajax({
                             type:"POST",
-                            url:"{{ url('/register') }}",
+                            url:"{{ url('/user/register') }}",
                             data:$('#do_form').serialize(),
                             dataType:'json',
                             beforeSend: function (){
@@ -85,10 +113,11 @@
                                 {
                                     var msg_data=msg.data;
                                     var curl=msg_data.curl;
-                                    layermsg_s(msg.info,curl);
+                                    layermsg_success(msg.info);
                                 }
                                 else
                                 {
+                                	re_captcha();
                                     layermsg_error(msg.info);
                                 }
                             },
@@ -103,16 +132,25 @@
 		      });
 			 });
 			</script>
-			<form class="form-horizontal" role="form" id="do_form" name="do_form" method="POST" action="{{ url('/register') }}">
-			<input type="hidden" name="type" value="2">
-			{{ csrf_field() }}
+			<form class="form-horizontal" role="form" id="do_form" name="do_form" method="POST" >
+				{{ csrf_field() }}
+				@if ($website['type'] == 1)
+				<input type="hidden" name="type" value="1">
 				<input type="text" class="text" id="email" name="email" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/email.png') no-repeat left center;">
-				<input type="text" class="text" name="name" value="" placeholder="：" style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/name.png') no-repeat left center;">
+				@elseif ($website['type'] == 2)
+				<input type="hidden" name="type" value="2">
+				<input type="text" class="text" id="username" name="username" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/username.png') no-repeat left center;">
+				@elseif ($website['type'] == 3)
+				<input type="hidden" name="type" value="3">
+				<input type="text" class="text" id="mobile" name="mobile" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/mobile.png') no-repeat left center;">
+				@endif
+
+				<input type="text" class="text" name="nick" value="" placeholder="：" style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/nick.png') no-repeat left center;">
 				<input id="password" type="password"  name="userpwd" placeholder="："  style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/pwd.png') no-repeat left center;">
 				<input id="password" type="password"  name="reuserpwd" placeholder="：" style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/repwd.png') no-repeat left center;">
-				<input type="text" name="captcha" placeholder="验证码"  style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/code.png') no-repeat left center;">
+				<input type="text" name="code" maxlength="5" placeholder="验证码"  style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/code.png') no-repeat left center;">
           		<a onclick="javascript:re_captcha();" >
-          		<img src="{{ URL('user/register/captcha/1') }}" style="width:30%;margin-top:1em;margin-bottom:1em;"  alt="验证码" title="刷新图片"  height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0">
+          			<img src="{{ URL('user/register/captcha/1') }}" style="width:30%;margin-top:1em;margin-bottom:1em;"  alt="验证码" title="刷新图片"  height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0">
           		</a>
 				<script>  
 				  function re_captcha() {

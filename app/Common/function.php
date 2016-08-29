@@ -125,7 +125,7 @@ function getip()
  * 作者： Tommy（rubbish.boy@163.com）
  * 时间：2015年6月10日
  ***********************************/
-function message($act=0,$data=null,$info=null)
+function json_message($act=0,$data=null,$info=null)
 {
 	switch($act)
 	{
@@ -139,12 +139,6 @@ function message($act=0,$data=null,$info=null)
 				$message['data']=$data;
 				$message['code']=110;
 				$message['info']=$info!=null?$info:'无效的参数';
-				$message['success']=0;
-				break;
-		case 3:
-				$message['data']=$data;
-				$message['code']=333;
-				$message['info']=$info!=null?$info:'查询为空';
 				$message['success']=0;
 				break;
 		default:

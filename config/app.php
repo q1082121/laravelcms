@@ -150,7 +150,6 @@ return [
 		//
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-		
         /*
          * Application Service Providers...
          */
@@ -158,6 +157,9 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+		
+		//edit by rubbish.boy@163.com 2016-08-29
+		Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 

@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "overtrue/laravel-lang": "1.0.*",
-		"gregwar/captcha": "1.*"
+		"gregwar/captcha": "1.*",
+        "barryvdh/laravel-debugbar": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -24,8 +24,9 @@ Route::get('/', function () {
 *******************************************/
 Route::group(['namespace' => 'User', 'prefix' => 'user'], function() {  
     Route::get('/', 'HomeController@index');
-	Route::get('register', 'RegisterController@register');
+	Route::get('register/{type?}','RegisterController@register');
 	Route::get('register/captcha/{tmp}', 'RegisterController@captcha');
+	Route::post('register', 'RegisterController@store');
 });
 
 /******************************************

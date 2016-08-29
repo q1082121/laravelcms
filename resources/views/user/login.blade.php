@@ -1,7 +1,7 @@
 @extends('layouts.login')
 @section('content')
 	<!--SIGN UP-->
-	<h1 style="padding-top:3em;">用户注册中心界面</h1>
+	<h1 style="padding-top:3em;">用户登录中心界面</h1>
 	<div class="login-form">
 		<!--<div class="close"> </div>-->
 			<div class="head-info">
@@ -18,10 +18,7 @@
 			{
 				frm = document.do_form;
 			    
-			    
-			    var nick = frm.nick;
 			    var userpwd = frm.userpwd;
-			    var reuserpwd = frm.reuserpwd;
 			    var code = frm.code;
 			    
 			    @if ($website['type'] == 1)
@@ -38,11 +35,6 @@
 			        layer.alert("请输入用户名!",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
-			    if(username.value.length <4 )
-			    {
-			        layer.alert("用户名需4位长度以上!",{icon: 7,skin: 'layer-ext-moon'});
-			        return false;
-			    }
 			    @elseif ($website['type'] == 3)
 			    var mobile = frm.mobile;
 			    if(mobile.value=="" || validatemobile(mobile.value)==false)
@@ -52,34 +44,9 @@
 			    }
 			    @endif
 
-			    if(nick.value=="")
-			    {
-			        layer.alert("请输入用户昵称!",{icon: 7,skin: 'layer-ext-moon'});
-			        return false;
-			    }
-			    if(nick.value.length>8)
-			    {
-			        layer.alert("用户昵称超出限制长度!",{icon: 7,skin: 'layer-ext-moon'});
-			        return false;
-			    }
 			    if(userpwd.value=="")
 			    {
-			        layer.alert("请您填写注册密码!",{icon: 7,skin: 'layer-ext-moon'});
-			        return false;
-			    }
-			    if(userpwd.value.length<6)
-			    {
-			        layer.alert("密码长度需6位以上!",{icon: 7,skin: 'layer-ext-moon'});
-			        return false;
-			    }
-			    if(reuserpwd.value=="")
-			    {
-			        layer.alert("请您填写确认密码!",{icon: 7,skin: 'layer-ext-moon'});
-			        return false;
-			    }
-			    if(userpwd.value && reuserpwd.value && userpwd.value!=reuserpwd.value)
-			    {
-			        layer.alert("您填写注册密码与确认密码不一致!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("请您填写登录密码!",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    if(code.value=="")
@@ -100,7 +67,7 @@
                         var loadi;
                         $.ajax({
                             type:"POST",
-                            url:"{{ url('/user/register') }}",
+                            url:"{{ url('/user/login') }}",
                             data:$('#do_form').serialize(),
                             dataType:'json',
                             beforeSend: function (){
@@ -144,23 +111,20 @@
 				<input type="hidden" name="type" value="3">
 				<input type="text" class="text" id="mobile" name="mobile" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/mobile.png') no-repeat left center;">
 				@endif
-
-				<input type="text" class="text" name="nick" value="" placeholder="：" style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/nick.png') no-repeat left center;">
-				<input id="password" type="password"  name="userpwd" placeholder="："  style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/pwd.png') no-repeat left center;">
-				<input id="password" type="password"  name="reuserpwd" placeholder="：" style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/repwd.png') no-repeat left center;">
+				<input id="password" type="password"  name="userpwd" placeholder="："  style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/login_pwd.png') no-repeat left center;">
 				<input type="text" name="code" maxlength="5" placeholder="验证码"  style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/code.png') no-repeat left center;">
           		<a onclick="javascript:re_captcha();" >
-          			<img src="{{ URL('user/register/captcha/1') }}" style="width:30%;margin-top:1em;margin-bottom:1em;"  alt="验证码" title="刷新图片"  height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0">
+          			<img src="{{ URL('user/login/captcha/1') }}" style="width:30%;margin-top:1em;margin-bottom:1em;"  alt="验证码" title="刷新图片"  height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0">
           		</a>
 				<script>  
 				  function re_captcha() {
-				    $url = "{{ URL('user/register/captcha') }}";
+				    $url = "{{ URL('user/login/captcha') }}";
 				        $url = $url + "/" + Math.random();
 				        document.getElementById('c2c98f0de5a04167a9e427d883690ff6').src=$url;
 				  }
 				</script>
 				<div class="signin">
-					<input type="button" id="do_action" value="注册/Register" >
+					<input type="button" id="do_action" value="登录/Login" >
 				</div>
 			</form>
 	</div>

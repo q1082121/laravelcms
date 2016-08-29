@@ -23,11 +23,22 @@ Route::get('/', function () {
 ****@Title :会员中心
 *******************************************/
 Route::group(['namespace' => 'User', 'prefix' => 'user'], function() {  
-    Route::get('/', 'HomeController@index');
+    /******************************************
+	****@AuThor:rubbish@163.com
+	****@Title :会员注册
+	*******************************************/
 	Route::get('register/{type?}','RegisterController@register');
 	Route::get('register/captcha/{tmp}', 'RegisterController@captcha');
 	Route::post('register', 'RegisterController@store');
+	/******************************************
+	****@AuThor:rubbish@163.com
+	****@Title :会员登录
+	*******************************************/
+	Route::get('login/{type?}','LoginController@login');
+	Route::get('login/captcha/{tmp}', 'LoginController@captcha');
+	Route::post('login', 'LoginController@login_action');
 });
+
 
 /******************************************
 ****@AuThor:rubbish@163.com

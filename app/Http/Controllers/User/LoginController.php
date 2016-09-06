@@ -79,13 +79,46 @@ class LoginController extends Controller
             }
             if($rule<10)
             {
-                // 登录验证处理
+                switch ($request->get('type')) 
+                {
+                    case 1:
+                        // 尝试登录
+                        if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('userpwd') ,'is_lock' => 0])) 
+                        {
+                            // 认证通过...
+                            $rule=1;
+                            //return redirect()->intended('/admin');
+                        }
+                        break;
+                    case 2:
+                        // 尝试登录
+                        if (Auth::attempt(['username' => $request->get('username'), 'password' => $request->get('userpwd') ,'is_lock' => 0])) 
+                        {
+                            // 认证通过...
+                            $rule=1;
+                            //return redirect()->intended('/admin');
+                        }
+                        break;
+                    case 3:
+                        // 尝试登录
+                        if (Auth::attempt(['mobile' => $request->get('mobile'), 'password' => $request->get('userpwd') ,'is_lock' => 0])) 
+                        {
+                            // 认证通过...
+                            $rule=1;
+                            return redirect()->intended('/admin');
+                        }
+                        break;    
+                    default:
+                            
+                        break;
+                }
+
             }
 
             if($rule == 1)
             {
                 $msg_array['data']['is_reload']=0;
-                $msg_array['data']['curl']="";
+                $msg_array['data']['curl']="/admin";
                 $msg_array['info']=$success_msg;
                 $json_message=json_message(1,$msg_array['data'],$msg_array['info']);
                 return $json_message;

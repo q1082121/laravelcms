@@ -51,7 +51,7 @@ Route::post('comment', 'CommentController@store');
 ****@AuThor:rubbish@163.com
 ****@Title :后台访问需登录控制
 *******************************************/
-Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {  
+Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {  
     Route::get('/', 'HomeController@index');
 	Route::resource('article', 'ArticleController');
 });

@@ -10,7 +10,9 @@ class HomeController extends PublicController
 	*******************************************/
 	public function index()  
 	{
+		//dump($this->website);
+		$website=$this->website;
 		//dump($this->userinfo);
-		return view('admin/home');
+		return view('admin/home')->with('website',$website);
 	}
 }

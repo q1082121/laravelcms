@@ -1,7 +1,7 @@
 @extends('layouts.login')
 @section('content')
 	<!--SIGN UP-->
-	<h1 style="padding-top:3em;">用户注册中心界面</h1>
+	<h1 style="padding-top:3em;">{{$website['register_name']}}{{$website['website_center_tip']}}</h1>
 	<div class="login-form">
 		<!--<div class="close"> </div>-->
 			<div class="head-info">
@@ -28,63 +28,63 @@
 			    var email = frm.email;
 			    if(email.value=="" || isEmail(email.value)==false)
 			    {
-			        layer.alert("请输入有效的注册邮箱!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip1')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    @elseif ($website['type'] == 2)
 			    var username = frm.username;
 			    if(username.value=="" )
 			    {
-			        layer.alert("请输入用户名!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip2')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    if(username.value.length <4 )
 			    {
-			        layer.alert("用户名需4位长度以上!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip3')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    @elseif ($website['type'] == 3)
 			    var mobile = frm.mobile;
 			    if(mobile.value=="" || validatemobile(mobile.value)==false)
 			    {
-			        layer.alert("请输入有效的手机号码!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip4')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    @endif
 
 			    if(nick.value=="")
 			    {
-			        layer.alert("请输入用户昵称!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip5')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    if(nick.value.length>8)
 			    {
-			        layer.alert("用户昵称超出限制长度!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip6')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    if(userpwd.value=="")
 			    {
-			        layer.alert("请您填写注册密码!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip7')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    if(userpwd.value.length<6)
 			    {
-			        layer.alert("密码长度需6位以上!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip8')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    if(reuserpwd.value=="")
 			    {
-			        layer.alert("请您填写确认密码!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip9')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    if(userpwd.value && reuserpwd.value && userpwd.value!=reuserpwd.value)
 			    {
-			        layer.alert("您填写注册密码与确认密码不一致!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip10')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    if(code.value=="")
 			    {
-			        layer.alert("请您填写验证码!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('register.failure_tip11')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    
@@ -104,7 +104,7 @@
                             data:$('#do_form').serialize(),
                             dataType:'json',
                             beforeSend: function (){
-                                loadi=layer.load("检测中...");
+                                loadi=layer.load("{{trans('default.doing')}}");
                             },
                             success:function(msg)
                             {
@@ -124,7 +124,7 @@
                             error:function()
                             {
                                 layer.close(loadi);
-                                var msgs="响应请求失败！";
+                                var msgs="{{trans('default.doing_failure')}}";
                                 layer.msg(msgs);
                             }     
                         }) 

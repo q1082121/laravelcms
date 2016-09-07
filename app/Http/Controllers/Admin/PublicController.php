@@ -16,24 +16,53 @@ use Validator;
 use Gregwar\Captcha\CaptchaBuilder;
 use Session;
 
+//使用内存缓存
+use Redis;
+use Cache;
+use Carbon;
+
+//使用User模型
+use App\Http\Model\User;
 
 class PublicController extends Controller
 {
 	protected $userinfo;
-
+	protected $website;
 	/******************************************
 	****AuThor:rubbish@163.com
 	****Title :后台首页
 	*******************************************/
 	public function __construct()
 	{
+		/*
+	    |--------------------------------------------------------------------------
+	    | 默认消息 - 验证信息
+	    |--------------------------------------------------------------------------
+	    |
+	    */
 	    //是否验证通过
 	    if (Auth::check()) 
         {
         	//获取用户信息
-            $this->userinfo=$user=Auth::user();
-            
-        }
+            $user=Auth::user();
+            $cache_userinfo='userinfo_'.$user['id'];
 
+            if (Cache::has($cache_userinfo)) 
+            {
+			    
+			}
+			else
+			{
+				$userinfo=User::find($user['id'])->hasOneUserinfo;
+				$minutes=1800;
+				Cache::put($cache_userinfo, $userinfo, $minutes);
+			}
+			$this->userinfo=Cache::get($cache_userinfo);
+			$this->user=$user;
+        }
+        //用户信息
+		$this->website['website_userinfo']=$this->userinfo;
+		//用户
+		$this->website['website_user']=$this->user;
 	}
 }

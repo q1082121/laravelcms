@@ -29,9 +29,10 @@ class RegisterController extends Controller
     *******************************************/
      public function register(Request $request)
     {
-    	$website['title']="用户注册-网站内容管理系统";
-    	$website['copyrights']="XX版权信息";
-
+    	$website['title']=trans('register.name').'-'.trans('admin.website_type');
+        $website['register_name']=trans('register.name');
+        $website['website_center_tip']=trans('admin.website_center_tip');
+        $website['copyrights']=trans('admin.website_name').trans('admin.website_rightinfo');
         $website['type']=$request->route('type')?$request->route('type'):2;
         return view('user/register')->with('website',$website);
     }

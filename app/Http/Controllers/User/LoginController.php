@@ -27,8 +27,10 @@ class LoginController extends Controller
     *******************************************/
      public function login(Request $request)
     {
-    	$website['title']="用户登录-网站内容管理系统";
-    	$website['copyrights']="XX版权信息";
+    	$website['title']=trans('login.name').'-'.trans('admin.website_type');
+        $website['login_name']=trans('login.name');
+        $website['website_center_tip']=trans('admin.website_center_tip');
+    	$website['copyrights']=trans('admin.website_name').trans('admin.website_rightinfo');
         $website['type']=$request->route('type')?$request->route('type'):2;
         return view('user/login')->with('website',$website);
     }
@@ -179,4 +181,15 @@ class LoginController extends Controller
         $builder->output();
 
     }
+    /******************************************
+    ****@AuThor : rubbish@163.com
+    ****@Title  : 退出登录
+    ****@param  : 
+    ****@return : Response
+    *******************************************/
+     public function logout()
+    {
+       
+    }
+
 }

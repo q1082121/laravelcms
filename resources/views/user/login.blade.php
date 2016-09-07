@@ -9,7 +9,7 @@ function placeFocus() { document.forms[0].elements[0].focus();
 } 
 </script>
 	<!--SIGN UP-->
-	<h1 style="padding-top:3em;">用户登录中心界面</h1>
+	<h1 style="padding-top:3em;">{{$website['login_name']}}{{$website['website_center_tip']}}</h1>
 	<div class="login-form">
 		<!--<div class="close"> </div>-->
 			<div class="head-info">
@@ -33,33 +33,33 @@ function placeFocus() { document.forms[0].elements[0].focus();
 			    var email = frm.email;
 			    if(email.value=="" || isEmail(email.value)==false)
 			    {
-			        layer.alert("请输入有效的注册邮箱!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('login.failure_tip1')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    @elseif ($website['type'] == 2)
 			    var username = frm.username;
 			    if(username.value=="" )
 			    {
-			        layer.alert("请输入用户名!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('login.failure_tip2')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    @elseif ($website['type'] == 3)
 			    var mobile = frm.mobile;
 			    if(mobile.value=="" || validatemobile(mobile.value)==false)
 			    {
-			        layer.alert("请输入有效的手机号码!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('login.failure_tip3')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    @endif
 
 			    if(userpwd.value=="")
 			    {
-			        layer.alert("请您填写登录密码!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('login.failure_tip4')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    if(code.value=="")
 			    {
-			        layer.alert("请您填写验证码!",{icon: 7,skin: 'layer-ext-moon'});
+			        layer.alert("{{trans('login.failure_tip5')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
 			    
@@ -79,7 +79,7 @@ function placeFocus() { document.forms[0].elements[0].focus();
                             data:$('#do_form').serialize(),
                             dataType:'json',
                             beforeSend: function (){
-                                loadi=layer.load("检测中...");
+                                loadi=layer.load("{{trans('default.doing')}}");
                             },
                             success:function(msg)
                             {
@@ -99,7 +99,7 @@ function placeFocus() { document.forms[0].elements[0].focus();
                             error:function()
                             {
                                 layer.close(loadi);
-                                var msgs="响应请求失败！";
+                                var msgs="{{trans('default.doing_failure')}}";
                                 layer.msg(msgs);
                             }     
                         }) 
@@ -120,9 +120,9 @@ function placeFocus() { document.forms[0].elements[0].focus();
 				<input type="text" class="text" id="mobile" name="mobile" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/mobile.png') no-repeat left center;">
 				@endif
 				<input id="password" type="password"  name="userpwd" placeholder="："  style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/login_pwd.png') no-repeat left center;">
-				<input type="text" name="code" maxlength="5" placeholder="验证码"  style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/code.png') no-repeat left center;">
+				<input type="text" name="code" maxlength="5" placeholder="{{trans('login.code')}}"  style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/code.png') no-repeat left center;">
           		<a onclick="javascript:re_captcha();" >
-          			<img src="{{ URL('user/login/captcha/1') }}" style="width:30%;margin-top:1em;margin-bottom:1em;"  alt="验证码" title="刷新图片"  height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0">
+          			<img src="{{ URL('user/login/captcha/1') }}" style="width:30%;margin-top:1em;margin-bottom:1em;"  alt="{{trans('login.code')}}" title="刷新图片"  height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0">
           		</a>
 				<script>  
 				  function re_captcha() {

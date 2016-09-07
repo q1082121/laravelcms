@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "overtrue/laravel-lang": "1.0.*",
 		"gregwar/captcha": "1.*",
-        "barryvdh/laravel-debugbar": "^2.2"
+        "barryvdh/laravel-debugbar": "^2.2",
+        "predis/predis": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

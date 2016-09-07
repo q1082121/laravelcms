@@ -37,6 +37,11 @@ Route::group(['namespace' => 'User', 'prefix' => 'user'], function() {
 	Route::get('login/{type?}','LoginController@login');
 	Route::get('login/captcha/{tmp}', 'LoginController@captcha');
 	Route::post('login', 'LoginController@login_action');
+	/******************************************
+	****@AuThor:rubbish@163.com
+	****@Title :退出登录
+	*******************************************/
+	Route::get('login/logout','LoginController@logout');
 });
 
 
@@ -55,9 +60,5 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
     Route::get('/', 'HomeController@index');
 	Route::resource('article', 'ArticleController');
 });
-
-
-
-Route::auth();
 
 Route::get('/home', 'HomeController@index');

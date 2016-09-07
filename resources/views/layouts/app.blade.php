@@ -7,9 +7,23 @@
 
     <title>Laravel</title>
 
-    <link href="//cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+
+    <style>
+        body {
+            font-family: 'Lato';
+        }
+
+        .fa-btn {
+            margin-right: 6px;
+        }
+    </style>
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -40,8 +54,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/user/login') }}">Login</a></li>
-                        <li><a href="{{ url('/user/register') }}">Register</a></li>
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

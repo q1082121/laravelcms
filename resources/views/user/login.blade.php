@@ -1,5 +1,13 @@
 @extends('layouts.login')
 @section('content')
+<script language="javascript"> 
+window.onload=function() { document.forms[0].reset();
+placeFocus(); 
+} 
+function placeFocus() { document.forms[0].elements[0].focus();
+ // assuming the first element 
+} 
+</script>
 	<!--SIGN UP-->
 	<h1 style="padding-top:3em;">用户登录中心界面</h1>
 	<div class="login-form">
@@ -80,7 +88,7 @@
                                 {
                                     var msg_data=msg.data;
                                     var curl=msg_data.curl;
-                                    layermsg_success(msg.info);
+                                    layermsg_s(msg.info,curl);
                                 }
                                 else
                                 {

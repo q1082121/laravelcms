@@ -14,8 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-		//登录验证中间件
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -25,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-		//throw new \Exception("我故意的", 1);
         return view('home');
     }
 }

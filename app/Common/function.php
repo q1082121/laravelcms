@@ -70,57 +70,6 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0)
 
 }
 /***********************************
- * 方法名：获取IP
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月10日
- ***********************************/
-function getip()
-{
-   //php获取ip的算法
-	if ($HTTP_SERVER_VARS["HTTP_X_FORWARDED_FOR"]) 
-	{ 
-		$ip = $HTTP_SERVER_VARS["HTTP_X_FORWARDED_FOR"]; 
-	} 
-	elseif ($HTTP_SERVER_VARS["HTTP_CLIENT_IP"]) 
-	{ 
-		$ip = $HTTP_SERVER_VARS["HTTP_CLIENT_IP"]; 
-	}
-	elseif ($_SERVER["HTTP_CLIENT_IP"]) 
-	{ 
-		$ip = $_SERVER["HTTP_CLIENT_IP"]; 
-	}
-	elseif ($HTTP_SERVER_VARS["REMOTE_ADDR"]) 
-	{ 
-		$ip = $HTTP_SERVER_VARS["REMOTE_ADDR"]; 
-	} 
-	elseif ($_SERVER["REMOTE_ADDR"]) 
-	{ 
-		$ip = $_SERVER["REMOTE_ADDR"]; 
-	} 
-	elseif ($_SERVER['REMOTE_host']) 
-	{
-		$ip = $_SERVER['REMOTE_host'];
-	}
-	elseif (getenv("HTTP_X_FORWARDED_FOR")) 
-	{ 
-		$ip = getenv("HTTP_X_FORWARDED_FOR"); 
-	} 
-	elseif (getenv("HTTP_CLIENT_IP")) 
-	{ 
-		$ip = getenv("HTTP_CLIENT_IP"); 
-	} 
-	elseif (getenv("REMOTE_ADDR"))
-	{ 
-		$ip = getenv("REMOTE_ADDR"); 
-	} 
-	else 
-	{ 
-		$ip = "Unknown"; 
-	} 
-
-	return $ip;
-}
-/***********************************
  * 方法名：Json消息返回封装函数
  * 作者： Tommy（rubbish.boy@163.com）
  * 时间：2015年6月10日
@@ -204,70 +153,6 @@ function get_authid()
 	return $order_id;
 }
 /***********************************
- * 方法名：查找字符串中是否存在某字符
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月11日
- ***********************************/
-function check_string_sub($string,$sub,$type=1)
-{
-	$rule=0;
-	$returntext="";
-	if(!empty($sub))
-	{
-		$strarray=explode(',',$string);
-		if(is_array($strarray))
-		{
-			foreach($strarray as $key=>$val)
-			{
-				if($val==$sub)
-				{
-					$rule=1;
-				}
-			}
-		} 
-		if($rule==1)
-		{
-			switch($type)
-			{
-				case 1:
-						$returntext="checked";
-						break;	
-				case 2:
-						$returntext=true;
-						break;			
-			}
-		}
-	}	
-	return $returntext;
-}
-/***********************************
- * 方法名：判断字符串（或值）是不是相同
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月11日
- ***********************************/
-function check_true($value1,$value2,$type=1)
-{
-	$rule=0;
-	$returntext="";
-	if($value1 && $value2)
-	{
-		if($value1==$value2)
-		{
-			$rule=1;
-		}
-		if($rule==1)
-		{
-			switch($type)
-			{
-				case 1:
-						$returntext="checked";
-						break;	
-			}
-		}
-	}
-	return $returntext;
-}
-/***********************************
  * 方法名：unicode转utf8
  * 作者： Tommy（rubbish.boy@163.com）
  * 时间：2015年6月17日
@@ -302,90 +187,6 @@ function is_mobile_request()
 	    		                            else   return false;
 }
 /***********************************
- * 方法名：限制查询出显示的的文字数 超出则用...表示！
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月17日
- ***********************************/ 
-function cut_str($string, $length, $dot = '...')   
-{
-	$charset='utf-8';
-	if(strlen($string) <= $length)
-	{
-		return $string;
-	}
-	$strcut = '';
-	if(strtolower($charset) == 'utf-8')
-	{
-		$n = $tn = $noc = 0;
-		while ($n < strlen($string))
-		{
-			$t = ord($string[$n]);
-			if($t == 9 || $t == 10 || (32 <= $t && $t <= 126))
-			{
-				$tn = 1; $n++; $noc++;
-			} elseif(194 <= $t && $t <= 223) {
-				$tn = 2; $n += 2; $noc += 2;
-			} elseif(224 <= $t && $t < 239) {
-				$tn = 3; $n += 3; $noc += 2;
-			} elseif(240 <= $t && $t <= 247) {
-				$tn = 4; $n += 4; $noc += 2;
-			} elseif(248 <= $t && $t <= 251) {
-				$tn = 5; $n += 5; $noc += 2;
-			} elseif($t == 252 || $t == 253) {
-				$tn = 6; $n += 6; $noc += 2;
-			} else {
-				$n++;
-			}
-			if ($noc >= $length)
-			{
-				break;
-			}
-		}
-		if ($noc > $length)
-		{
-			$n -= $tn;
-		}
-		$strcut = substr($string, 0, $n);
-	}
-	else
-	{
-		for($i = 0; $i < $length - 3; $i++)
-		{
-			$strcut .= ord($string[$i]) > 127 ? $string[$i].$string[++$i] : $string[$i];
-		}
-	}
-	return $strcut.$dot;
-}
-/**
- * 字符串截取，支持中文和其他编码
- * @static
- * @access public
- * @param string $str 需要转换的字符串
- * @param string $start 开始位置
- * @param string $length 截取长度
- * @param string $charset 编码格式
- * @param string $suffix 截断显示字符
- * @return string
- */
-function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
-    if(function_exists("mb_substr"))
-        $slice = mb_substr($str, $start, $length, $charset);
-    elseif(function_exists('iconv_substr')) {
-        $slice = iconv_substr($str,$start,$length,$charset);
-        if(false === $slice) {
-            $slice = '';
-        }
-    }else{
-        $re['utf-8']   = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
-        $re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
-        $re['gbk']    = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
-        $re['big5']   = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
-        preg_match_all($re[$charset], $str, $match);
-        $slice = join("",array_slice($match[0], $start, $length));
-    }
-    return $suffix ? $slice.'...' : $slice;
-}
-/***********************************
  * 方法名：字符串省略处理！
  * 作者： Tommy（rubbish.boy@163.com）
  * 时间：2015年6月17日
@@ -414,107 +215,6 @@ function htmlcontent($content)
 	return $tmp_content;	
 }
 /***********************************
- * 方法名：查找函数【判断是否存在】
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月23日
- ***********************************/
-function detectpromotion2($string,$promotion){ 
-$promotionfound=false;
-  foreach(explode(",",$string) as $promotiontocheck){    
-    if($promotiontocheck==$promotion){ 
-      $promotionfound = true; 
-    } 
-  } 
-  return $promotionfound; 
-} 
-/***********************************
- * 方法名：数据查找函数 【根据键名查找键值】
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月23日
- ***********************************/
-function findstrtext($datalist,$promotion)
-{ 
-  foreach($datalist as $key=>$promotiontocheck)
-  {       
-    if($key==$promotion){ 
-      $text=$promotiontocheck;
-	  break;
-    }
-  } 
-  return $text; 
-}
-/***********************************
- * 方法名：数据查找函数 id=》name 【根据键名查找键值】
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月23日
- ***********************************/
-function findstrtext_name($datalist,$promotion)
-{ 
-  foreach($datalist as $key=>$promotiontocheck)
-  {       
-    if($promotiontocheck['id']==$promotion){ 
-      $text=$promotiontocheck['name'];
-	  break;
-    }
-  } 
-  return $text; 
-}
-/***********************************
- * 方法名：字符串查找函数 【根据键名查找键值】
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月23日
- ***********************************/
-function findstrtext2($string,$promotion){ 
-$i=1;
-  foreach(explode(",",$string) as $promotiontocheck)
-  {        
-    if($i==$promotion){ 
-      $text=$promotiontocheck;
-    }
-	$i++;
-  } 
-  return $text; 
-}
-/**
- * 字符串转换为数组，主要用于把分隔符调整到第二个参数
- * @param  string $str  要分割的字符串
- * @param  string $glue 分割符
- * @return array
- * @author 麦当苗儿 <zuojiazi@vip.qq.com>
- */
-function str2arr($str, $glue = ','){
-    return explode($glue, $str);
-}
-
-/**
- * 数组转换为字符串，主要用于把分隔符调整到第二个参数
- * @param  array  $arr  要连接的数组
- * @param  string $glue 分割符
- * @return string
- * @author 麦当苗儿 <zuojiazi@vip.qq.com>
- */
-function arr2str($arr, $glue = ','){
-    return implode($glue, $arr);
-}
-/***********************************
- * 方法名：获取数组对应名称
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年10月20日
- ***********************************/
-function listname($dblist,$tdblist)
-{
-	$typelist="";
-	$arrylist=explode(',',$dblist);
-	$typea=1;
-	foreach($arrylist as $value)
-	{
-		$strtype=$typea==1?'':'/';
-		$typelist.=$strtype.$tdblist[$value]['title'];
-		$typea++;
-	}
-	return $typelist;
-}
-/***********************************
  * 方法名：返回当前的毫秒时间戳
  * 作者： Tommy（rubbish.boy@163.com）
  * 时间：2015年9月6日
@@ -538,48 +238,6 @@ function isMobile($mobile)
         return false;
     }
     return preg_match('#^13[\d]{9}$|^14[5,7]{1}\d{8}$|^15[^4]{1}\d{8}$|^17[0,6,7,8]{1}\d{8}$|^18[\d]{9}$#', $mobile) ? true : false;
-}
-
-/**
- * 请求接口返回内容
- * @param  string $url [请求的URL地址]
- * @param  string $params [请求的参数]
- * @param  int $ipost [是否采用POST形式]
- * @return  string
- */
-function juhecurl($url,$params=false,$ispost=0)
-{
-    $httpInfo = array();
-    $ch = curl_init();
- 
-    curl_setopt( $ch, CURLOPT_HTTP_VERSION , CURL_HTTP_VERSION_1_1 );
-    curl_setopt( $ch, CURLOPT_USERAGENT , 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22' );
-    curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT , 30 );
-    curl_setopt( $ch, CURLOPT_TIMEOUT , 30);
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER , true );
-    if( $ispost )
-    {
-        curl_setopt( $ch , CURLOPT_POST , true );
-        curl_setopt( $ch , CURLOPT_POSTFIELDS , $params );
-        curl_setopt( $ch , CURLOPT_URL , $url );
-    }
-    else
-    {
-        if($params){
-            curl_setopt( $ch , CURLOPT_URL , $url.'?'.$params );
-        }else{
-            curl_setopt( $ch , CURLOPT_URL , $url);
-        }
-    }
-    $response = curl_exec( $ch );
-    if ($response === FALSE) {
-        echo "cURL Error: " . curl_error($ch);
-        return false;
-    }
-    $httpCode = curl_getinfo( $ch , CURLINFO_HTTP_CODE );
-    $httpInfo = array_merge( $httpInfo , curl_getinfo( $ch ) );
-    curl_close( $ch );
-    return $response;
 }
 /***********************************
  * 方法名：二维数组 按照某一键值排序
@@ -610,47 +268,6 @@ function auto_array_sort($multi_array,$sort_key,$sort=SORT_ASC)
 	}
 } 
 /***********************************
- * 方法名：推送消息方法
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2016年2月24日
- ***********************************/ 
-function push_msg($authid,$subroleid,$info)
-{
-	// 指明给谁推送，为空表示向所有在线用户推送
-	if($subroleid>0)
-	{
-		$to_uid = $authid.$subroleid;
-	}
-	else
-	{
-		//获取接受用户类型
-		$to_user_type=query_fieldone($authid,'User','authid','role_group');
-		switch ($to_user_type) 
-		{
-			case '3':
-				$main_role=query_fieldone($authid,'Userinfo','authid','main_role');
-				$to_uid = $authid.$main_role;
-				break;
-			
-			default:
-				$to_uid = $authid;
-				break;
-		}
-		
-	}
-	//dump($to_uid);
-	//debug_info($subroleid);
-	//debug_info($to_uid);
-	// 推送的url地址，上线时改成自己的服务器地址
-	$push_api_url = "http://".$_SERVER['SERVER_NAME'].":2121/";
-	$post_data = array(
-	   'type' => 'publish',
-	   'content' => $info,
-	   'to' => $to_uid, 
-	);
-	http_curl_request($push_api_url,$post_data);
-}
-/***********************************
  * 方法名：根据生日计算年龄
  * 作者： Tommy（rubbish.boy@163.com）
  * 时间：2016年2月24日
@@ -668,4 +285,20 @@ function birthday($birthday){
   $age -= 1; 
  return $age; 
 } 
+/***********************************
+ * 方法名：日志记录
+ * 作者： Tommy（rubbish.boy@163.com）
+ + type 1 => 登录日志
+ ***********************************/ 
+function in_log($data)
+{
+
+    $log = new App\Http\Model\Log;
+    $log->type = $data['type'];
+    $log->user_id = $data['user_id'];
+    $log->name = $data['name'];
+    $log->info = $data['info'];
+    $log->ip = $data['ip'];
+    $log->save();
+}
 ?>

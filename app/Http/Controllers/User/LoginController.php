@@ -14,6 +14,8 @@ use Session;
 
 //使用数据库操作DB
 use DB;
+//引入验证控制
+use Auth;
 
 class LoginController extends Controller
 {
@@ -27,7 +29,6 @@ class LoginController extends Controller
     {
     	$website['title']="用户登录-网站内容管理系统";
     	$website['copyrights']="XX版权信息";
-
         $website['type']=$request->route('type')?$request->route('type'):2;
         return view('user/login')->with('website',$website);
     }
@@ -83,7 +84,7 @@ class LoginController extends Controller
                 {
                     case 1:
                         // 尝试登录
-                        if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('userpwd') ,'is_lock' => 0])) 
+                        if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
                         {
                             // 认证通过...
                             $rule=1;
@@ -92,7 +93,7 @@ class LoginController extends Controller
                         break;
                     case 2:
                         // 尝试登录
-                        if (Auth::attempt(['username' => $request->get('username'), 'password' => $request->get('userpwd') ,'is_lock' => 0])) 
+                        if (Auth::attempt(['username' => $request->get('username'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
                         {
                             // 认证通过...
                             $rule=1;
@@ -101,11 +102,11 @@ class LoginController extends Controller
                         break;
                     case 3:
                         // 尝试登录
-                        if (Auth::attempt(['mobile' => $request->get('mobile'), 'password' => $request->get('userpwd') ,'is_lock' => 0])) 
+                        if (Auth::attempt(['mobile' => $request->get('mobile'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
                         {
                             // 认证通过...
                             $rule=1;
-                            return redirect()->intended('/admin');
+                            //return redirect()->intended('/admin');
                         }
                         break;    
                     default:
@@ -117,6 +118,19 @@ class LoginController extends Controller
 
             if($rule == 1)
             {
+                $user =Auth::user();
+                /*******************
+                 +记录日志 【      
+                ********************/
+                $log_data['type']=1;
+                $log_data['user_id']=$user->id;
+                $log_data['name']=$user->username;
+                $log_data['info']=trans('login.action');
+                $log_data['ip']=$request->getClientIp();
+                in_log($log_data);
+                /*******************
+                 +          】      
+                ********************/
                 $msg_array['data']['is_reload']=0;
                 $msg_array['data']['curl']="/admin";
                 $msg_array['info']=$success_msg;

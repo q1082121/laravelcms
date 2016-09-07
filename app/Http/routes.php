@@ -57,3 +57,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 });
 
 
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

@@ -16,8 +16,8 @@ class AuthAdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        //检测用户是否登录
-        $guard="admin";
+        //检测用户是否登录 自定义验证登录方法
+        /*$guard="admin";
         if (Auth::guard($guard)->check()) 
         {
             
@@ -25,6 +25,17 @@ class AuthAdminMiddleware
         else
         {
             return redirect()->guest('/user/login');
+        }
+        */
+        
+        $guard="admin";
+        if (Auth::guard($guard)->guest()) 
+        {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest('/user/login');
+            }
         }
         
         return $next($request);

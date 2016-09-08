@@ -16,22 +16,15 @@ class AuthAdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        
         //检测用户是否登录
-        if (Auth::check()) 
+        $guard="admin";
+        if (Auth::guard($guard)->check()) 
         {
-            $user =Auth::user();
+            
         }
         else
         {
-            $guard="web";
-            if (Auth::guard($guard)->guest()) {
-                if ($request->ajax() || $request->wantsJson()) {
-                    return response('Unauthorized.', 401);
-                } else {
-                    return redirect()->guest('/user/login');
-                }
-            }
+            return redirect()->guest('/user/login');
         }
         
         return $next($request);

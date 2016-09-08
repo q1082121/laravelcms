@@ -41,10 +41,11 @@ class PublicController extends Controller
 	    |
 	    */
 	    //是否验证通过
-	    if (Auth::check()) 
+		$guard="admin";
+	    if (Auth::guard($guard)->check()) 
         {
         	//获取用户信息
-            $user=Auth::user();
+            $user=Auth::guard($guard)->user();
             $cache_userinfo='userinfo_'.$user['id'];
 
             if (Cache::has($cache_userinfo)) 

@@ -98,6 +98,7 @@ function placeFocus() { document.forms[0].elements[0].focus();
                             },
                             error:function()
                             {
+								re_captcha();
                                 layer.close(loadi);
                                 var msgs="{{trans('default.doing_failure')}}";
                                 layer.msg(msgs);

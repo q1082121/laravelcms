@@ -41,7 +41,7 @@ Route::group(['namespace' => 'User', 'prefix' => 'user'], function() {
 	****@AuThor:rubbish@163.com
 	****@Title :退出登录
 	*******************************************/
-	Route::get('login/logout','LoginController@logout');
+	Route::get('logout','LoginController@logout');
 });
 
 

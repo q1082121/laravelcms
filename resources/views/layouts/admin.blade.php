@@ -287,7 +287,7 @@
                   <a href="#" class="btn btn-default btn-flat">{{trans('admin.website_user_profile')}}</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">{{trans('admin.website_user_signout')}}</a>
+                  <a href="/user/logout" class="btn btn-default btn-flat">{{trans('admin.website_user_signout')}}</a>
                 </div>
               </li>
             </ul>

@@ -46,7 +46,7 @@ class LoginController extends Controller
         if (Session::get('admincaptcha') == $code) 
         {
             $rule=0;
-            
+            $guard="admin";
             $success_msg=trans('login.success');
             $errory_msg=trans('login.failure');
 
@@ -86,7 +86,7 @@ class LoginController extends Controller
                 {
                     case 1:
                         // 尝试登录
-                        if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
+                        if (Auth::guard($guard)->attempt(['email' => $request->get('email'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
                         {
                             // 认证通过...
                             $rule=1;
@@ -95,7 +95,7 @@ class LoginController extends Controller
                         break;
                     case 2:
                         // 尝试登录
-                        if (Auth::attempt(['username' => $request->get('username'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
+                        if (Auth::guard($guard)->attempt(['username' => $request->get('username'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
                         {
                             // 认证通过...
                             $rule=1;
@@ -104,7 +104,7 @@ class LoginController extends Controller
                         break;
                     case 3:
                         // 尝试登录
-                        if (Auth::attempt(['mobile' => $request->get('mobile'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
+                        if (Auth::guard($guard)->attempt(['mobile' => $request->get('mobile'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
                         {
                             // 认证通过...
                             $rule=1;
@@ -120,7 +120,7 @@ class LoginController extends Controller
 
             if($rule == 1)
             {
-                $user =Auth::user();
+                $user =Auth::guard($guard)->user();
                 /*******************
                  +记录日志 【      
                 ********************/
@@ -189,7 +189,9 @@ class LoginController extends Controller
     *******************************************/
      public function logout()
     {
-       
+       $guard="admin";
+       Auth::guard($guard)->logout();
+       return redirect('/user/login');
     }
 
 }

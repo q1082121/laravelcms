@@ -1,0 +1,36 @@
+/**
+ * input[type=number] 
+ */
+input.number{
+	margin-right:0;
+	padding-right: 22px;
+}
+span.number{
+	margin-right: 32px;
+	margin-left: -20px;
+	display:inline-block;
+	vertical-align:middle;
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   user-select: none;
+	}
+	span.number span{
+		border:10px solid transparent;
+		border-width:10px 5px;
+		display:block;
+		width:0;
+		height:0;
+		margin:2px;
+		border-bottom-width:0;
+		border-bottom-color:#555555;
+		border-top-color:#555555;
+	}
+	span.number span:hover{
+		border-bottom-color:black;
+		border-top-color:black;
+	}
+	span.number :first-child{
+		border-bottom-width:10px;
+		border-top-width:0;
+	}

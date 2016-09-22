@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{trans('admin.website_name')}}-{{trans('admin.website_type')}}</title>
+  <meta name="_token" content="{{ csrf_token() }}" />
+  <title>{{$website['website_seo_title']}}-{{trans('admin.website_type')}}</title>
+  <meta name="keywords" content="{{$website['website_seo_keyword']}}" >
+  <meta name="description" content="{{$website['website_seo_description']}}" >
   <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="{{asset('/module/AdminLTE')}}/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -36,6 +39,17 @@
   <script src="{{asset('/module/AdminLTE')}}/dist/js/html5shiv/3.7.3/dist/html5shiv.min.js"></script>
   <script src="{{asset('/module/AdminLTE')}}/dist/js/respond/1.4.2/dest/respond.min.js"></script>
   <![endif]-->
+  <!--vue-->
+  <script src="{{asset('/module/vue')}}/dist/vue.min.js"></script>
+  <!--vue-resource-->
+  <script src="{{asset('/module/vue-resource')}}/dist/vue-resource.min.js"></script>
+  <!-- jQuery 2.2.3 -->
+  <script src="{{asset('/module/AdminLTE')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <!--layer-->
+  <script src="{{asset('/module/layer')}}/layer.js"></script>
+  <!--common-->
+  <script src="{{asset('/js')}}/common.js"></script>
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -326,70 +340,24 @@
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less 左侧导航菜单区域-->
-      <ul class="sidebar-menu">
-        <li class="header">{{trans('admin.website_main_navigation')}}</li>
-        <li>
-          <a href="javascript:void(0);">
-            <i class="fa fa-home"></i> <span>{{trans('admin.website_navigation_one')}}</span>
-          </a>
-        </li>
-        <li class="header">{{trans('admin.website_main_navigation_one')}}</li>
-        <li>
-          <a href="javascript:void(0);">
-            <i class="fa fa-cogs"></i> <span>{{trans('admin.website_navigation_two')}}</span>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0);">
-            <i class="fa fa-bookmark-o"></i> <span>{{trans('admin.website_navigation_three')}}</span>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0);">
-            <i class="fa fa-bell-o"></i> <span>{{trans('admin.website_navigation_four')}}</span>
-          </a>
-        </li>
-        <li class="header">{{trans('admin.website_main_navigation_two')}}</li>
-        <li>
-          <a href="javascript:void(0);">
-            <i class="fa fa-users"></i> <span>{{trans('admin.website_navigation_five')}}</span>
-          </a>
-        </li>
-        <li class="header">{{trans('admin.website_main_navigation_three')}}</li>
-        <li>
-          <a href="javascript:void(0);">
-            <i class="fa fa-newspaper-o"></i> <span>{{trans('admin.website_navigation_six')}}</span>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0);">
-            <i class="fa fa-photo"></i> <span>{{trans('admin.website_navigation_seven')}}</span>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0);">
-            <i class="fa fa-external-link"></i> <span>{{trans('admin.website_navigation_eight')}}</span>
-          </a>
-        </li>
-        <li class="header">{{trans('admin.website_main_navigation_four')}}</li>
-        <li>
-          <a href="javascript:void(0);">
-            <i class="fa fa-wechat"></i> <span>{{trans('admin.website_navigation_nine')}}</span>
-          </a>
-        </li>
-        <li class="header">{{trans('admin.website_main_navigation_fiver')}}</li>
-        <li>
-          <a href="javascript:void(0);">
-            <i class="fa fa-area-chart"></i> <span>{{trans('admin.website_navigation_ten')}}</span>
-          </a>
-        </li>
-      </ul>
+      @include('admin.nav')
     </section>
     <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+      <!-- Content Header (Page header) 头部路径信息 -->
+      <section class="content-header">
+          <h1>
+          {{$website['cursitename']}}
+          <small>{{trans('admin.website_site')}}</small>
+          </h1>
+          <ol class="breadcrumb">
+          <li><a href="/admin"><i class="fa fa-dashboard"></i> {{trans('admin.website_navigation_one')}}</a></li>
+          <li class="active">{{$website['cursitename']}}</li>
+          </ol>
+      </section>
       <!--模板主内容区 -->
           @yield('content')
       <!--/.模板主内容区 --> 
@@ -598,8 +566,6 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 2.2.3 -->
-<script src="{{asset('/module/AdminLTE')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('/module/AdminLTE')}}/dist/js/jquery-ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -608,9 +574,10 @@
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{asset('/module/AdminLTE')}}/bootstrap/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
+<!-- Morris.js charts 
 <script src="{{asset('/module/AdminLTE')}}/dist/js/raphael/2.1.0/raphael-min.js"></script>
 <script src="{{asset('/module/AdminLTE')}}/plugins/morris/morris.min.js"></script>
+-->
 <!-- Sparkline -->
 <script src="{{asset('/module/AdminLTE')}}/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
@@ -631,9 +598,14 @@
 <script src="{{asset('/module/AdminLTE')}}/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('/module/AdminLTE')}}/dist/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) 
 <script src="{{asset('/module/AdminLTE')}}/dist/js/pages/dashboard.js"></script>
+-->
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('/module/AdminLTE')}}/dist/js/demo.js"></script>
+<!--jquery-form
+<script src="{{asset('/module/jquery-form')}}/dist/jquery.form.min.js"></script>
+-->
+
 </body>
 </html>

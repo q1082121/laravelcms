@@ -12,6 +12,7 @@ class HomeController extends PublicController
 	{
 		//dump($this->website);
 		$website=$this->website;
+		$website['cursitename']=trans('admin.website_navigation_one');
 		//dump($this->userinfo);
 		return view('admin/home')->with('website',$website);
 	}

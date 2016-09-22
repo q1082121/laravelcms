@@ -1,0 +1,62 @@
+/*************************
+ * Calendar
+ *************************/
+div.date{
+	display:inline-block;
+	color:white;
+}
+	div.date div{
+		background:blue;
+		position:absolute;
+		width:auto;
+		box-shadow:0 0 10px black;
+		border-radius:5px;
+	}
+		div.date table{
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin-bottom: 20px;
+			width:100%;
+			width:auto;
+			margin:10px;
+		}
+			div.date table caption{
+				background:inherit;
+				width:inherit;
+				text-align:center;
+				margin-bottom:10px;
+			}
+				div.date table caption .current{
+					margin:0;
+					text-align:center;
+					display:inline-block;
+					box-sizing:border-box;
+					-moz-box-sizing:border-box;
+					font-weight:bold;
+				}
+				div.date table caption a{
+					float:left;
+					text-align:left;
+				}
+				div.date table caption span + a{
+					float:right;
+					text-align:right;
+				}
+			div.date table th,
+			div.date table td{
+				text-align:center;
+				border: 1px solid #99CCFF;
+				border: 1px solid rgba(255,255,255,0.3);
+				padding:0;
+			}
+			div.date table td{
+				padding:0 6px;
+			}
+			div.date td.selected{
+				background:#99CCFF;
+			}
+
+				div.date a{
+					color:inherit;
+					text-decoration:none;
+				}

@@ -1,0 +1,120 @@
+@font-face {
+	font-family: 'IcoMoon';
+	src: url('IcoMoon.eot');
+	src: url('IcoMoon.eot?#iefix') format('embedded-opentype'),
+		url('IcoMoon.svg#IcoMoon') format('svg'),
+		url('IcoMoon.woff') format('woff'),
+		url('IcoMoon.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'IcoMoon';
+	content: attr(data-icon);
+	speak: none;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: 'IcoMoon';
+	font-style: normal;
+	speak: none;
+}
+.icon-share:before {
+	content: "\2764";
+}
+.icon-cog:before {
+	content: "\2699";
+}
+.icon-link:before {
+	content: "\26ad";
+}
+.icon-out:before {
+	content: "\238b";
+}
+.icon-remove:before {
+	content: "\2716";
+}
+.icon-export:before {
+	content: "\21f2";
+}
+.icon-email:before {
+	content: "\2709";
+}
+.icon-add:before {
+	content: "\2631";
+}
+.icon-grid:before {
+	content: "\2317";
+}
+.icon-list:before {
+	content: "\2630";
+}
+.icon-retweet:before {
+	content: "\21bb";
+}
+.icon-record:before {
+	content: "\25cf";
+}
+.icon-pen-alt-fill:before {
+	content: "\270e";
+}
+.icon-list-2:before {
+	content: "\25a4";
+}
+.icon-grid-view:before {
+	content: "\25a6";
+}
+.icon-paragraph-center:before {
+	content: "\2637";
+}
+.icon-left-to-right:before {
+	content: "\25bb";
+}
+.icon-right-to-left:before {
+	content: "\25c5";
+}
+.icon-paragraph-right:before {
+	content: "\25f3";
+}
+.icon-paragraph-left:before {
+	content: "\25f0";
+}
+.icon-share-2:before {
+	content: "\2661";
+}
+.icon-link-2:before {
+	content: "\26ae";
+}
+.icon-menu:before {
+	content: "\2195";
+}
+.icon-pin:before {
+	content: "\25c9";
+}
+.icon-folder-fill:before {
+	content: "\2750";
+}
+.icon-play:before {
+	content: "\25b6";
+}
+.icon-pause:before {
+	content: "\e002";
+}
+.icon-fast-backward:before {
+	content: "\25c0";
+}
+.icon-fast-forward:before {
+	content: "\25ba";
+}
+.icon-stop:before {
+	content: "\25fc";
+}
+.icon-picture:before {
+	content: "\2b15";
+}
+.icon-code:before {
+	content: "\25c7";
+}

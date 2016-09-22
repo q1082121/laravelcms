@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 //验证
@@ -36,6 +34,17 @@ class PublicController extends Controller
 	{
 		/*
 	    |--------------------------------------------------------------------------
+	    | 默认消息 - 后台全局设置
+	    |--------------------------------------------------------------------------
+	    |
+	    */
+		//后台通用参数设置
+		$root=Cache::get('root');
+		$this->website['website_seo_title']=($root['systitle']?$root['systitle']:trans('admin.website_name'));
+		$this->website['website_seo_keyword']=$root['syskeyword'];
+		$this->website['website_seo_description']=$root['sysdescription'];
+		/*
+	    |--------------------------------------------------------------------------
 	    | 默认消息 - 验证信息
 	    |--------------------------------------------------------------------------
 	    |
@@ -48,18 +57,40 @@ class PublicController extends Controller
             $user=Auth::guard($guard)->user();
             $cache_userinfo='userinfo_'.$user['id'];
 
-            if (Cache::has($cache_userinfo)) 
-            {
-			    
-			}
-			else
+			$default_data_cache_type="redis";
+			switch($default_data_cache_type)
 			{
-				$userinfo=User::find($user['id'])->hasOneUserinfo;
-				$minutes=1800;
-				Cache::put($cache_userinfo, $userinfo, $minutes);
+				case 'file':
+							//file 版缓存
+							if (Cache::has($cache_userinfo)) 
+							{
+								
+							}
+							else
+							{
+								$userinfo=User::find($user['id'])->hasOneUserinfo;
+								$minutes=1800;
+								Cache::put($cache_userinfo, $userinfo, $minutes);
+							}
+							$this->userinfo=Cache::get($cache_userinfo);
+							break;
+				case 'redis':
+							//Redis 版缓存
+							if (Redis::get($cache_userinfo)) 
+							{
+							
+							}
+							else
+							{
+								$userinfo=User::find($user['id'])->hasOneUserinfo;
+								Redis::set($cache_userinfo,$userinfo);
+							}
+							$this->userinfo=json_decode(Redis::get($cache_userinfo),true);
+							break;
 			}
-			$this->userinfo=Cache::get($cache_userinfo);
 			$this->user=$user;
+			//dump($this->userinfo);
+			//dump($this->user);
         }
         //用户信息
 		$this->website['website_userinfo']=$this->userinfo;

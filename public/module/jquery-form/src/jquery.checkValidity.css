@@ -1,0 +1,43 @@
+/**
+ * error message
+ */
+input.invalid{
+	outline:1px solid gold;
+}
+
+div.errormsg{
+    padding:5px;
+    position:absolute;
+    display:inline-block;
+    color:black;
+    font-size:14px;
+    margin:0;
+    margin-left:10px;
+    font-weight:normal;
+    background-color:white;
+    border:1px solid black;
+    border-radius:5px;
+    box-shadow:5px 5px 5px rgba(0,0,0,0.5);
+    z-index:1;
+}
+	div.errormsg:before,div.errormsg:after{
+		position:absolute;
+		left:-10px;
+		bottom:5px;
+		content:" ";
+		width:0;
+		height:0;
+		padding:0;
+		border:10px solid transparent;
+		border-width:8px 10px;
+		border-right-color:inherit;
+		border-left-width:0;
+	}
+	div.errormsg:after{
+		border-right-color:white;
+		left:-8px;
+	}
+
+input.invalid + div.errormsg{
+
+}

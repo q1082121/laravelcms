@@ -1,0 +1,12 @@
+{
+  "name": "jquery-form",
+  "version": "1.0.0",
+  "main": "dist/jquery.form.js",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}

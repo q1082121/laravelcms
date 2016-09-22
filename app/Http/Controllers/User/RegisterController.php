@@ -127,7 +127,7 @@ class RegisterController extends Controller
             if($rule == 1)
             {
                 $msg_array['data']['is_reload']=0;
-                $msg_array['data']['curl']="";
+                $msg_array['data']['curl']="/user/login";
                 $msg_array['info']=$success_msg;
                 $json_message=json_message(1,$msg_array['data'],$msg_array['info']);
                 return $json_message;

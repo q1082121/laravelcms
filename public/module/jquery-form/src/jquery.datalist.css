@@ -1,0 +1,28 @@
+/**
+ * Datalist
+ */
+div.datalist{
+	display:none;
+	position:absolute;
+	background-color:white;
+	border:1px solid gray;
+}
+input.datalist + div.datalist{
+	display:block;
+}
+	div.datalist ul{
+		margin:5px;
+		padding:0;
+	}
+		div.datalist ul li{
+			list-style:none;
+			padding:5px;
+		}
+		div.datalist ul li:hover, 
+		div.datalist ul li.hover{
+			text-decoration:underline;
+			background-color:#efefef;
+		}
+datalist select{
+	display:none;
+}

@@ -113,7 +113,7 @@
                                 {
                                     var msg_data=msg.data;
                                     var curl=msg_data.curl;
-                                    layermsg_success(msg.info);
+                                    layermsg_s(msg.info,curl);
                                 }
                                 else
                                 {

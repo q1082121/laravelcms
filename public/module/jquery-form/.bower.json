@@ -1,0 +1,22 @@
+{
+  "name": "jquery-form",
+  "main": "dist/jquery.form.js",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  },
+  "homepage": "https://github.com/foundation-mts/jquery.form.js",
+  "_release": "1eba275000",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "1eba27500052c2e55a94fe283dfc160b582e976f"
+  },
+  "_source": "https://github.com/foundation-mts/jquery.form.js.git",
+  "_target": "*",
+  "_originalSource": "good-form",
+  "_direct": true
+}

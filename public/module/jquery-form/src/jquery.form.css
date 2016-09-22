@@ -1,0 +1,19 @@
+﻿/********************************
+ * FORM
+ * jquery.form.css
+ ********************************/
+
+
+/* normalize */
+form{
+    margin:0;
+    padding:0;
+}
+
+    /********************************
+     * Normal elements
+     ********************************/
+		
+	form label.required:after{
+	    content:" *";
+	}

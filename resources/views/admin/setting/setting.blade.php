@@ -55,6 +55,12 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label">{{trans('admin.website_setting_sysfax')}}：</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="sysfax" v-model="saveModel.sysfax" value="@{{ info.sysfax }}"  placeholder="例如：15011112222" >
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label">{{trans('admin.website_setting_sysqq')}}：</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" name="sysqq" v-model="saveModel.sysqq" value="@{{ info.sysqq }}"  placeholder="例如：471416739" >
@@ -115,6 +121,7 @@
                 sysmaster:        '{{$website["info"]["sysmaster"]}}' ,
                 sysemail:         '{{$website["info"]["sysemail"]}}' ,
                 sysmobile:        '{{$website["info"]["sysmobile"]}}' ,
+                sysfax:           '{{$website["info"]["sysfax"]}}' ,
                 sysqq:            '{{$website["info"]["sysqq"]}}' ,
                 syswechat:        '{{$website["info"]["syswechat"]}}' ,
                 syscompany:       '{{$website["info"]["syscompany"]}}' ,
@@ -132,6 +139,7 @@
                 sysmaster: '' ,
                 sysemail: '' ,
                 sysmobile: '' ,
+                sysfax:'',
                 sysqq: '' ,
                 syswechat: '' ,
                 syscompany: '' ,

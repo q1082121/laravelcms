@@ -71,6 +71,7 @@ return [
     'website_setting_sysmaster'                    =>   '网站站长',
     'website_setting_sysemail'                     =>   '站长邮箱',
     'website_setting_sysmobile'                    =>   '站长手机',
+    'website_setting_sysfax'                       =>   '站长传真',
     'website_setting_sysqq'                        =>   '站长QQ',
     'website_setting_syswechat'                    =>   '站长微信',
     'website_setting_syscompany'                   =>   '公司名称',

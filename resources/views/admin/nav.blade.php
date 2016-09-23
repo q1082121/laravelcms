@@ -1,12 +1,12 @@
 <ul class="sidebar-menu">
   <li class="header">{{trans('admin.website_main_navigation')}}</li>
   <li>
-    <a href="javascript:void(0);">
+    <a href="/admin">
       <i class="fa fa-star"></i> <span>{{trans('admin.website_navigation_one')}}</span>
     </a>
   </li>
   <li>
-    <a href="javascript:void(0);">
+    <a href="/">
       <i class="fa fa-home"></i> <span>{{trans('admin.website_navigation_one_home')}}</span>
     </a>
   </li>

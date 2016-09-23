@@ -29,24 +29,10 @@ class SettingController extends PublicController
 		$code = $request->get('action_type');
 		if($code =='save')
 		{
-			$setting['systitle']=$request->get('systitle');
-			$setting['syskeyword']=$request->get('syskeyword');
-			$setting['sysdescription']=$request->get('sysdescription');
-			$setting['sysicp']=$request->get('sysicp');
-			$setting['sysmaster']=$request->get('sysmaster');
-			$setting['sysemail']=$request->get('sysemail');
-			$setting['sysmobile']=$request->get('sysmobile');
-			$setting['sysfax']=$request->get('sysfax');
-			$setting['sysqq']=$request->get('sysqq');
-			$setting['syswechat']=$request->get('syswechat');
-			$setting['syscompany']=$request->get('syscompany');
-			$setting['sysaddress']=$request->get('sysaddress');
-			$setting['syscoordinate_h']=$request->get('syscoordinate_h');
-			$setting['syscoordinate_w']=$request->get('syscoordinate_w');
-
-			Cache::forever('root', $setting);
-
-			$msg_array['data']['resource']=$setting;
+			$getdata=$request->all();
+			Cache::forever('root', $getdata);
+			
+			$msg_array['data']['resource']=$getdata;
 			$msg_array['data']['is_reload']=0;
 			$msg_array['info']=trans('admin.website_save_success');
 			$json_message=json_message(1,$msg_array['data'],$msg_array['info']);

@@ -10,7 +10,6 @@
           <!-- /.box-header -->
           <!-- form start -->
           <form role="form" id="frm-box" class="form-horizontal" method="POST">
-            <input type="hidden" name="_token" v-model="saveModel._token"  value="<?php echo csrf_token(); ?>">
             <div class="box-body">
               <div class="form-group">
                 <label class="col-sm-2 control-label" >{{trans('admin.website_setting_systitle')}}：</label>
@@ -107,7 +106,7 @@
         <!-- /.box -->
     </section>
     <script type="text/javascript">
-      Vue.http.options.emulateHTTP = true;
+      Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
       Vue.http.options.emulateJSON = true;
       new Vue({
           el: '#app-content',
@@ -130,7 +129,6 @@
                 syscoordinate_w:  '{{$website["info"]["syscoordinate_w"]}}' ,
               },
               saveModel:{
-                _token:'',
                 action_type: 'save' ,
                 systitle: '' ,
                 syskeyword: '' ,
@@ -161,20 +159,15 @@
                   {
                     //响应成功
                     layer.close(loadi);
-                    getdata=response.body;
-                    getdata=JSON.parse(getdata);
-                    if(getdata.success==1)
+                    var statusinfo=response.data;
+                    if(statusinfo.status==1)
                     {
-                        var msg_data=getdata.data;
-                        var info=msg_data.resource;
-                        var msg=getdata.info;
-                        this.$set('info', info);
-                        layermsg_success(msg);
+                        this.info=statusinfo.resource;
+                        layermsg_success(statusinfo.info);
                     }
                     else
                     {
-                        var msg=getdata.info;
-                        layermsg_error(msg);
+                        layermsg_error(statusinfo.info);
                     }
                   },(response) => 
                   {

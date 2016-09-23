@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
     Route::get('/', 'HomeController@index');
 	Route::get('setting', 'SettingController@index');
 	Route::get('user', 'UserController@index');
+	Route::post('user/api_user_list', 'UserController@api_user_list');
 	Route::post('setting', 'SettingController@saveaction');
 	Route::resource('article', 'ArticleController');
 });

@@ -56,6 +56,9 @@ return [
     'website_save_failure'                         =>   '保存失败',
     'website_outtime'                              =>   '响应超时',
     'website_outtime_error'                        =>   '响应异常',
+    'website_get_success'                          =>   '获取成功',
+    'website_get_failure'                          =>   '获取失败',
+    'website_get_empty'                            =>   '数据为空',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置
@@ -79,5 +82,29 @@ return [
     'website_setting_syscoordinate_h'              =>   '地址坐标纬度',
     'website_setting_syscoordinate_w'              =>   '地址坐标经度',
     
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 用户管理
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_item_option'                           =>   '操作项',
+    'website_user_module_list'                      =>   '用户列表',
+    'website_user_module_add'                       =>   '用户添加',
+    'website_user_module_edit'                      =>   '用户编辑',
+    'website_user_item_id'                          =>   'ID',
+    'website_user_item_username'                    =>   '用户名',
+    'website_user_item_email'                       =>   '邮箱',
+    'website_user_item_mobile'                      =>   '手机',
+    'website_user_item_group'                       =>   '用户组',
+    'website_user_item_nick'                        =>   '昵称',
+    'website_user_item_money'                       =>   '账户',
+    'website_user_item_score'                       =>   '积分',
+    'website_user_item_lock'                        =>   '状态锁',
+    
+
+
 
 ];

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 //使用内存缓存
@@ -32,20 +33,19 @@ class SettingController extends PublicController
 			$getdata=$request->all();
 			Cache::forever('root', $getdata);
 			
-			$msg_array['data']['resource']=$getdata;
-			$msg_array['data']['is_reload']=0;
+			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_save_success');
-			$json_message=json_message(1,$msg_array['data'],$msg_array['info']);
-
+			$msg_array['is_reload']=0;
+			$msg_array['resource']=$getdata;
 		}
 		else
 		{
-			$msg_array['data']['is_reload']=1;
+			$msg_array['status']='0';
 			$msg_array['info']=trans('admin.website_save_failure');
-			$json_message=json_message(2,$msg_array['data'],$msg_array['info']);
+			$msg_array['is_reload']=1;
+			$msg_array['resource']="";
 		}
-		
-        return $json_message;
+        return response()->json($msg_array);
 
 	}
 }

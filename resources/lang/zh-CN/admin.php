@@ -59,6 +59,11 @@ return [
     'website_get_success'                          =>   '获取成功',
     'website_get_failure'                          =>   '获取失败',
     'website_get_empty'                            =>   '数据为空',
+    'website_page_total'                           =>   '总记录数 0 条',
+    'website_per_page_title'                       =>   '首页',
+    'website_last_page_title'                      =>   '尾页',
+    'website_prev_page_title'                      =>   '上一页',
+    'website_next_page_title'                      =>   '下一页',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置
@@ -104,7 +109,7 @@ return [
     'website_user_item_score'                       =>   '积分',
     'website_user_item_lock'                        =>   '状态锁',
     
-
+    
 
 
 ];

@@ -55,13 +55,13 @@
         <div class="box-footer clearfix">
           <ul class="pagination pagination-sm no-margin pull-right">
             <li><a href="javascript:void(0);">@{{ totals_title }}</a></li>
-            <li><a href="javascript:void(0);" @click="btnClick(per_page)" >@{{ per_page_title }}</a></li>
-            <li><a href="javascript:void(0);"  >@{{ prev_page }}</a></li>
+            <li><a href="javascript:void(0);" @click="btnClick(per_page)" >{{trans('admin.website_per_page_title')}}</a></li>
+            <li><a href="javascript:void(0);" @click="btnClick(prev_page)" >{{trans('admin.website_prev_page_title')}}</a></li>
             <li v-for="index in totals"  v-bind:class="{ 'active': current_page == index+1}">
                 <a href="javascript:void(0);" @click="btnClick(index+1)" >@{{ index+1 }} </a>
             </li>
-            <li><a href="@{{ next_page_url }}">@{{ next_page }}</a></li>
-            <li><a href="javascript:void(0);" @click="btnClick(last_page)" >@{{ last_page_title }}</a></li>
+            <li><a href="javascript:void(0);" @click="btnClick(next_page)" >{{trans('admin.website_next_page_title')}}</a></li>
+            <li><a href="javascript:void(0);" @click="btnClick(last_page)" >{{trans('admin.website_last_page_title')}}</a></li>
           </ul>
         </div>
         <!-- /.page -->
@@ -80,21 +80,16 @@ Vue.http.options.emulateJSON = true;
 new Vue({
     el: '#app-content',
     data: {
-             totals         :     0,
-             totals_title   :     '总记录数 0 条',  
-             per_page_title :     '首页',
-             per_page :           1,
-             last_page_title:     '尾页',
-             last_page:           1,
-             prev_page:           "上一页", 
-             current_page:        1,
-             current_page_url:    'javascript:void(0);',
-             next_page:           "下一页",
-             prev_page_url:       'javascript:void(0);',
-             next_page_url:       'javascript:void(0);',
+             totals               : 0,
+             totals_title         :"{{trans('admin.website_page_total')}}",  
+             per_page             :1,//首页
+             prev_page            :1,//上一页
+             current_page         :1,//当前页
+             next_page            :1,//下一页
+             last_page            :1,//尾页
              datalist :           [],
              apiUrl   :           '/admin/user/api_user_list',
-             paramdata:           
+             pageparams:           
              {
                     page   :        1,
                     way    :        'nick',
@@ -104,7 +99,7 @@ new Vue({
           },
     ready: function (){ 
             //这里是vue初始化完成后执行的函数 
-            this.$http.post(this.apiUrl,this.paramdata,{
+            this.$http.post(this.apiUrl,this.pageparams,{
               before:function(request)
               {
                 loadi=layer.load("检测中...");
@@ -128,35 +123,32 @@ new Vue({
     methods: {
             btnClick: function(data)
             {   //页码点击事件
-                /*
+                /**/
                 if(data != this.current_page)
                 {
-                    this.current_page = data ;
+                   // this.current_page = data ;
+                   this.pageparams.page=data;
+                   this.$http.post(this.apiUrl,this.pageparams,{
+                      before:function(request)
+                      {
+                        loadi=layer.load("检测中...");
+                      },
+                    })
+                    .then((response) => 
+                      {
+                        this.do_list_action(response);
+                      },(response) => 
+                      {
+                        //响应错误
+                        var msg="{{trans('admin.website_outtime')}}";
+                        layermsg_error(msg);
+                      })
+                      .catch(function(response) {
+                        //异常抛出
+                        var msg="{{trans('admin.website_outtime_error')}}";
+                        layermsg_error(msg);
+                      })
                 }
-                */
-                this.paramdata.page=data;
-
-                this.$http.post(this.apiUrl,this.paramdata,{
-                  before:function(request)
-                  {
-                    loadi=layer.load("检测中...");
-                  },
-                })
-                .then((response) => 
-                  {
-                    this.do_list_action(response);
-                  },(response) => 
-                  {
-                    //响应错误
-                    var msg="{{trans('admin.website_outtime')}}";
-                    layermsg_error(msg);
-                  })
-                  .catch(function(response) {
-                    //异常抛出
-                    var msg="{{trans('admin.website_outtime_error')}}";
-                    layermsg_error(msg);
-                  })
-
             },
             //处理列表数据
             do_list_action:function(response)
@@ -167,20 +159,38 @@ new Vue({
                 //console.log(statusinfo);
                 if(statusinfo.status==1)
                 {
+                    //查询条件数据
                     if(statusinfo.keyword)
                     {
-                      this.paramdata.way=statusinfo.way;
-                      this.paramdata.keyword=statusinfo.keyword;
+                      this.pageparams.way=statusinfo.way;
+                      this.pageparams.keyword=statusinfo.keyword;
                     }
-                    //渲染数据列表
-                    this.current_page=statusinfo.resource.current_page;
+                    //分页参数赋值
+                    this.current_page=statusinfo.resource.current_page;//当前页数据
+                    this.totals_title='总记录数 '+statusinfo.resource.total+' 条';//总记页数标题
+                    this.totals=statusinfo.resource.total;//总记录页数
+                    this.per_page=statusinfo.resource.per_page;//首页数据
+                    this.last_page=statusinfo.resource.last_page;//尾页数据
+                    //下一页数据
+                    if(this.current_page==this.totals)
+                    {
+                      this.next_page=this.totals;
+                    }
+                    else
+                    {
+                      this.next_page=this.current_page+1;
+                    }
+                    //上一页数据
+                    if(this.current_page==1)
+                    {
+                      this.prev_page=1;
+                    }
+                    else
+                    {
+                      this.prev_page=this.current_page-1;
+                    }
+                    //渲染列表数据
                     this.datalist=statusinfo.resource.data;
-                    this.totals_title='总记录数 '+statusinfo.resource.total+' 条';
-                    this.totals=statusinfo.resource.total;
-                    this.per_page=statusinfo.resource.per_page;
-                    this.last_page=statusinfo.resource.last_page;
-                    //渲染分页
-                    //layermsg_success(statusinfo.info);
                 }
                 else
                 {

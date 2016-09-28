@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+//使用User模型
+use App\Http\Model\User;
+
 class UserController extends PublicController
 {
 	/******************************************
@@ -22,7 +25,23 @@ class UserController extends PublicController
 	*******************************************/
 	public function api_user_list(Request $request)  
 	{
-		$list="";
+		$search_field=$request->get('way')?$request->get('way'):'title';
+		$keyword=$request->get('keyword');
+		if($keyword)
+		{
+			$list=User::join('userinfos', 'userinfos.user_id', '=', 'users.id')->where('users.id', '>', 0)->where($search_field, 'like', '%'.$keyword.'%')->paginate(1);
+			//分页传参数
+			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
+			$list['way']=$search_field;
+			$list['keyword']=$keyword;
+		}
+		else
+		{
+			$list=User::join('userinfos', 'userinfos.user_id', '=', 'users.id')->where('users.id', '>', 0)->paginate(1);
+			
+		}
+		
+
 		if($list)
 		{
 			$msg_array['status']='1';

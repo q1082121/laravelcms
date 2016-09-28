@@ -43,6 +43,9 @@ class PublicController extends Controller
 		$this->website['website_seo_title']=($root['systitle']?$root['systitle']:trans('admin.website_name'));
 		$this->website['website_seo_keyword']=$root['syskeyword'];
 		$this->website['website_seo_description']=$root['sysdescription'];
+
+		//分页常量定义
+		$this->pagesize=$pagesize=env('APP_ADMIN_PAGE_SIZE', 20);
 		/*
 	    |--------------------------------------------------------------------------
 	    | 默认消息 - 验证信息
@@ -88,6 +91,7 @@ class PublicController extends Controller
 							$this->userinfo=json_decode(Redis::get($cache_userinfo),true);
 							break;
 			}
+
 			$this->user=$user;
 			//dump($this->userinfo);
 			//dump($this->user);

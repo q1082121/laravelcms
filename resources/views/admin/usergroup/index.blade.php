@@ -22,38 +22,35 @@
             </div>
           </div>
         </div>
+        <div class="col-xs-12" style="margin-bottom:10px;">
+          <a href="/admin/usergroup/add" >
+          <button type="button" class="btn btn-success pull-left">
+            <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
+          </button>
+          </a>
+        </div>
         <!-- /.box-header -->
         <div class="box-body" >
           <table class="table table-bordered">
             <thead>
             <tr>
-              <th>{{trans('admin.website_user_item_id')}}</th>
-              <th>{{trans('admin.website_user_item_username')}}</th>
-              <th>{{trans('admin.website_user_item_email')}}</th>
-              <th>{{trans('admin.website_user_item_mobile')}}</th>
-              <th>{{trans('admin.website_user_item_group')}}</th>
-              <th>{{trans('admin.website_user_item_nick')}}</th>
-              <th>{{trans('admin.website_user_item_money')}}</th>
-              <th>{{trans('admin.website_user_item_score')}}</th>
-              <th>{{trans('admin.website_user_item_lock')}}</th>
+              <th>{{trans('admin.website_item_id')}}</th>
+              <th>{{trans('admin.website_usergroup_item_name')}}</th>
+              <th>{{trans('admin.website_usergroup_item_display_name')}}</th>
+              <th>{{trans('admin.website_usergroup_item_description')}}</th>
               <th>{{trans('admin.website_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
-                <td>@{{ item.username }}</td>
-                <td>@{{ item.email }}</td>
-                <td>@{{ item.mobile }}</td>
-                <td>@{{ item.group }}</td>
-                <td>@{{ item.nick }}</td>
-                <td>@{{ item.money }}</td>
-                <td>@{{ item.score }}</td>
-                <td><i v-if="item.is_lock == 1"  class="fa fa-lock"></i> <i v-if="item.is_lock == 0"  class="fa fa-unlock"></i></td>
+                <td>@{{ item.name }}</td>
+                <td>@{{ item.display_name }}</td>
+                <td>@{{ item.description }}</td>
                 <td>
                   <div class="tools">
-                    <a href="javascript:void(0);" @click="link_action(item.id)" style="margin-right:4%"> <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</a>
-                    <a href="javascript:void(0);"><i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</a>
+                    <a href="javascript:void(0);" @click="edit_action(item.id)" style="margin-right:4%"> <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</a>
+                    <!--<a href="javascript:void(0);"><i class="fa fa-trash-o"></i> {{trans('admin.website_action_delete')}}</a>-->
                   </div>
                 </td>
               </tr>
@@ -89,7 +86,8 @@ Vue.http.options.emulateJSON = true;
 new Vue({
     el: '#app-content',
     data: {
-             apiUrl   :           '/admin/user/api_user_list', 
+             apiUrl               :'/admin/usergroup/api_list',
+             edit_Url             :'/admin/usergroup/edit', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              per_page             :1,//首页
@@ -101,10 +99,11 @@ new Vue({
              pageparams:           
              {
                     page           :1,
-                    way            :'nick',
+                    way            :'name',
                     wayoption      :[
-                                      {text:'昵称',value:'nick'},
-                                      {text:'用户名',value:'username'},
+                                      {text:'用户组键值',value:'name'},
+                                      {text:'用户组名称',value:'display_name '},
+                                      {text:'用户组描述',value:'description '},
                                     ],
                     keyword        :'',
              },
@@ -219,10 +218,11 @@ new Vue({
                    this.get_list_action();
                 }
             },
-            //点击跳转编辑
-            link_action:function(data)
+            //点击编辑跳转
+            edit_action:function(data)
             {
-                
+                var editurl=this.edit_Url+'/'+data
+                window.location.href=editurl;
             }
 
         }            

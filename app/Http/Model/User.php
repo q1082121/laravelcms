@@ -3,8 +3,9 @@
 namespace App\Http\Model;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Authenticatable 
 {
     /**
      * The attributes that are mass assignable.
@@ -32,6 +33,4 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Http\Model\Userinfo', 'user_id', 'id');
     }
-
-
 }

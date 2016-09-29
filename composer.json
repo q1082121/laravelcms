@@ -10,7 +10,8 @@
         "overtrue/laravel-lang": "1.0.*",
 		"gregwar/captcha": "1.*",
         "barryvdh/laravel-debugbar": "^2.2",
-        "predis/predis": "~1.0"
+        "predis/predis": "~1.0",
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

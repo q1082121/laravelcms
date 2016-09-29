@@ -33,6 +33,11 @@
   </li>
   <li class="header">{{trans('admin.website_main_navigation_two')}}</li>
   <li>
+    <a href="/admin/usergroup">
+      <i class="fa fa-cubes"></i> <span>{{trans('admin.website_navigation_role')}}</span>
+    </a>
+  </li>
+  <li>
     <a href="/admin/user">
       <i class="fa fa-users"></i> <span>{{trans('admin.website_navigation_five')}}</span>
     </a>

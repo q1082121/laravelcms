@@ -60,7 +60,12 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
     Route::get('/', 'HomeController@index');
 	Route::get('setting', 'SettingController@index');
 	Route::get('user', 'UserController@index');
-	Route::post('user/api_user_list', 'UserController@api_user_list');
+	Route::post('user/api_list', 'UserController@api_list');
+	Route::get('usergroup', 'UsergroupController@index');
+	Route::post('usergroup/api_list', 'UsergroupController@api_list');
+	Route::get('usergroup/add', 'UsergroupController@add');
+	Route::post('usergroup/api_add', 'UsergroupController@api_add');
+	Route::get('usergroup/edit/{id}', 'UsergroupController@edit');
 	Route::post('setting', 'SettingController@saveaction');
 	Route::resource('article', 'ArticleController');
 });

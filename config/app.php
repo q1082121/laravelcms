@@ -160,6 +160,8 @@ return [
 		
 		//edit by rubbish.boy@163.com 2016-08-29
 		Barryvdh\Debugbar\ServiceProvider::class,
+		//edit by rubbish.boy@163.com 2016-09-29
+		Zizaco\Entrust\EntrustServiceProvider::class,
 
     ],
 
@@ -206,7 +208,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-		
+		//edit by rubbish.boy@163.com 2016-09-29
+		'Entrust' => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];

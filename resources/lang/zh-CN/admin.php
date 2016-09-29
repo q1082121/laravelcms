@@ -44,6 +44,7 @@ return [
     'website_navigation_two'                       =>   '系统设置',
     'website_navigation_three'                     =>   '日志管理',
     'website_navigation_four'                      =>   '消息管理',
+    'website_navigation_role'                      =>   '用户权限',
     'website_navigation_five'                      =>   '用户管理',
     'website_navigation_six'                       =>   '资讯管理',
     'website_navigation_seven'                     =>   '图片管理',
@@ -54,6 +55,9 @@ return [
     'website_getback'                              =>   '返回页面',
     'website_save_success'                         =>   '保存成功',
     'website_save_failure'                         =>   '保存失败',
+    'website_add_success'                          =>   '添加成功',
+    'website_add_failure'                          =>   '添加失败',
+    'website_add_exit'                             =>   '信息已存在',
     'website_outtime'                              =>   '响应超时',
     'website_outtime_error'                        =>   '响应异常',
     'website_get_success'                          =>   '获取成功',
@@ -68,6 +72,7 @@ return [
     'website_action_add'                           =>   '添加',
     'website_action_save'                          =>   '保存',
     'website_action_lock'                          =>   '锁开关',
+    'website_action_delete'                        =>   '删除',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置
@@ -100,10 +105,10 @@ return [
     |
     */
     'website_item_option'                           =>   '操作项',
+    'website_item_id'                               =>   'ID',
     'website_user_module_list'                      =>   '用户列表',
     'website_user_module_add'                       =>   '用户添加',
     'website_user_module_edit'                      =>   '用户编辑',
-    'website_user_item_id'                          =>   'ID',
     'website_user_item_username'                    =>   '用户名',
     'website_user_item_email'                       =>   '邮箱',
     'website_user_item_mobile'                      =>   '手机',
@@ -113,7 +118,18 @@ return [
     'website_user_item_score'                       =>   '积分',
     'website_user_item_lock'                        =>   '状态锁',
     
-    
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 用户管理
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_usergroup_item_name'                    =>   '用户组键值',
+    'website_usergroup_item_display_name'            =>   '用户组名称',
+    'website_usergroup_item_description'             =>   '用户组描述',
+    'usergroup_failure_tip1'                         =>  '请输入用户组键值',
 
 
 ];

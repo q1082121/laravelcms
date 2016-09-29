@@ -54,5 +54,13 @@ class Kernel extends HttpKernel
          +++++++++++++++++++++++++++++++++++++++++++
         */
         'auth_admin' => \App\Http\Middleware\AuthAdminMiddleware::class,
+		/*
+         +++++++++++++++++++++++++++++++++++++++++++
+         +权限控制验证中间件
+         +++++++++++++++++++++++++++++++++++++++++++
+        */
+		'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
+		'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+		'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
     ];
 }

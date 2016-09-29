@@ -8,12 +8,16 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">{{trans('admin.website_user_module_list')}}</h3>
+          <div style="position: absolute;right:170px;top:5px;width: 120px;">
+          <select  v-model="pageparams.way" style="width: 100%;height:30px;line-height:30px;padding:1% 3%;">
+            <option v-for="item in pageparams.wayoption" value="@{{ item.value }}">@{{ item.text }}</option>
+          </select>
+          </div>
           <div class="box-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
-              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
+              <input type="text" autocomplete="off" class="form-control pull-right" placeholder="Search" v-model="pageparams.keyword" value="@{{ pageparams.keyword }}">
               <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                <button type="submit" class="btn btn-default" @click="search_list_action()" ><i class="fa fa-search"></i></button>
               </div>
             </div>
           </div>
@@ -45,8 +49,13 @@
                 <td>@{{ item.nick }}</td>
                 <td>@{{ item.money }}</td>
                 <td>@{{ item.score }}</td>
-                <td>@{{ item.is_lock }}</td>
-                <td></td>
+                <td><i v-if="item.is_lock == 1"  class="fa fa-lock"></i> <i v-if="item.is_lock == 0"  class="fa fa-unlock"></i></td>
+                <td>
+                  <div class="tools">
+                    <a href="javascript:void(0);" @click="link_action(item.id)" style="margin-right:4%"> <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</a>
+                    <a href="javascript:void(0);"><i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</a>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -80,6 +89,7 @@ Vue.http.options.emulateJSON = true;
 new Vue({
     el: '#app-content',
     data: {
+             apiUrl   :           '/admin/user/api_user_list', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              per_page             :1,//首页
@@ -87,25 +97,34 @@ new Vue({
              current_page         :1,//当前页
              next_page            :1,//下一页
              last_page            :1,//尾页
-             datalist :           [],
-             apiUrl   :           '/admin/user/api_user_list',
+             datalist :           [],//列表数据
              pageparams:           
              {
-                    page   :        1,
-                    way    :        'nick',
-                    keyword:        '',
-                    
+                    page           :1,
+                    way            :'nick',
+                    wayoption      :[
+                                      {text:'昵称',value:'nick'},
+                                      {text:'用户名',value:'username'},
+                                    ],
+                    keyword        :'',
              },
           },
     ready: function (){ 
             //这里是vue初始化完成后执行的函数 
-            this.$http.post(this.apiUrl,this.pageparams,{
-              before:function(request)
-              {
-                loadi=layer.load("检测中...");
-              },
-            })
-            .then((response) => 
+            this.get_list_action();
+            },
+    methods: {
+            //获取列表数据
+            get_list_action:function()
+            {
+
+              this.$http.post(this.apiUrl,this.pageparams,{
+                before:function(request)
+                {
+                  loadi=layer.load("检测中...");
+                },
+              })
+              .then((response) => 
               {
                 this.do_list_action(response);
               },(response) => 
@@ -119,53 +138,35 @@ new Vue({
                 var msg="{{trans('admin.website_outtime_error')}}";
                 layermsg_error(msg);
               })
-            },
-    methods: {
-            btnClick: function(data)
-            {   //页码点击事件
-                /**/
-                if(data != this.current_page)
-                {
-                   // this.current_page = data ;
-                   this.pageparams.page=data;
-                   this.$http.post(this.apiUrl,this.pageparams,{
-                      before:function(request)
-                      {
-                        loadi=layer.load("检测中...");
-                      },
-                    })
-                    .then((response) => 
-                      {
-                        this.do_list_action(response);
-                      },(response) => 
-                      {
-                        //响应错误
-                        var msg="{{trans('admin.website_outtime')}}";
-                        layermsg_error(msg);
-                      })
-                      .catch(function(response) {
-                        //异常抛出
-                        var msg="{{trans('admin.website_outtime_error')}}";
-                        layermsg_error(msg);
-                      })
-                }
+
             },
             //处理列表数据
             do_list_action:function(response)
             {
+                this.datalist=[];
                 //响应成功
                 layer.close(loadi);
                 var statusinfo=response.data;
                 //console.log(statusinfo);
                 if(statusinfo.status==1)
                 {
-                    //查询条件数据
+                    /*
+                     |---------------------------------------------
+                     | 查询条件数据赋值
+                     |---------------------------------------------
+                     |
+                     */
                     if(statusinfo.keyword)
                     {
-                      this.pageparams.way=statusinfo.way;
-                      this.pageparams.keyword=statusinfo.keyword;
+                      this.pageparams.way=response.way;
+                      this.pageparams.keyword=response.keyword;
                     }
-                    //分页参数赋值
+                    /*
+                     |---------------------------------------------
+                     | 分页参数赋值
+                     |---------------------------------------------
+                     |
+                     */
                     this.current_page=statusinfo.resource.current_page;//当前页数据
                     this.totals_title='总记录数 '+statusinfo.resource.total+' 条';//总记页数标题
                     this.totals=statusinfo.resource.total;//总记录页数
@@ -189,14 +190,41 @@ new Vue({
                     {
                       this.prev_page=this.current_page-1;
                     }
-                    //渲染列表数据
+                    /*
+                     |---------------------------------------------
+                     | 渲染列表数据
+                     |---------------------------------------------
+                     |
+                     */
+
                     this.datalist=statusinfo.resource.data;
                 }
                 else
                 {
                     layermsg_error(statusinfo.info);
                 }
+            },
+            //点击搜索获取列表数据
+            search_list_action:function()
+            {
+              this.get_list_action();
+            },
+            //点击页码获取列表数据
+            btnClick: function(data)
+            {   
+                if(data != this.current_page)
+                {
+                   // this.current_page = data ;
+                   this.pageparams.page=data;
+                   this.get_list_action();
+                }
+            },
+            //点击跳转编辑
+            link_action:function(data)
+            {
+                
             }
+
         }            
 })
 

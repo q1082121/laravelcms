@@ -64,6 +64,10 @@ return [
     'website_last_page_title'                      =>   '尾页',
     'website_prev_page_title'                      =>   '上一页',
     'website_next_page_title'                      =>   '下一页',
+    'website_action_edit'                          =>   '编辑',
+    'website_action_add'                           =>   '添加',
+    'website_action_save'                          =>   '保存',
+    'website_action_lock'                          =>   '锁开关',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置

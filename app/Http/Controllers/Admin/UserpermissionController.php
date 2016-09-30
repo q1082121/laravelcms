@@ -239,7 +239,7 @@ class UserpermissionController extends PublicController
 		}
 		else
 		{
-			$list=Permission::leftJoin('permission_role', 'permission_role.permission_id', '=', 'permissions.id','permission_role.role_id', '=', $role_id)->paginate($this->pagesize);
+			$list=Permission::leftJoin('permission_role', 'permission_role.permission_id', '=', 'permissions.id')->paginate($this->pagesize);
 			$list->appends(['role_id' => $role_id])->links();
 			
 		}

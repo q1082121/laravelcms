@@ -57,15 +57,40 @@ Route::post('comment', 'CommentController@store');
 ****@Title :后台访问需登录控制
 *******************************************/
 Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {  
+	/*
+	 ***********************************************************************
+	 *	   get 路由
+	 ***********************************************************************
+	 */	
     Route::get('/', 'HomeController@index');
 	Route::get('setting', 'SettingController@index');
+
 	Route::get('user', 'UserController@index');
+
+	Route::get('userrole', 'UserroleController@index');
+	Route::get('userrole/add', 'UserroleController@add');
+	Route::get('userrole/edit/{id}', 'UserroleController@edit');
+
+	Route::get('userpermission', 'UserpermissionController@index');
+	Route::get('userpermission/add', 'UserpermissionController@add');
+	Route::get('userpermission/edit/{id}', 'UserpermissionController@edit');
+	/*
+	 ***********************************************************************
+	 *	   post 路由
+	 ***********************************************************************
+	 */	
 	Route::post('user/api_list', 'UserController@api_list');
-	Route::get('usergroup', 'UsergroupController@index');
-	Route::post('usergroup/api_list', 'UsergroupController@api_list');
-	Route::get('usergroup/add', 'UsergroupController@add');
-	Route::post('usergroup/api_add', 'UsergroupController@api_add');
-	Route::get('usergroup/edit/{id}', 'UsergroupController@edit');
+
+	Route::post('userrole/api_list', 'UserroleController@api_list');
+	Route::post('userrole/api_add', 'UserroleController@api_add');
+	Route::post('userrole/api_info', 'UserroleController@api_info');
+	Route::post('userrole/api_edit', 'UserroleController@api_edit');
+
+	Route::post('userpermission/api_list', 'UserpermissionController@api_list');
+	Route::post('userpermission/api_add', 'UserpermissionController@api_add');
+	Route::post('userpermission/api_info', 'UserpermissionController@api_info');
+	Route::post('userpermission/api_edit', 'UserpermissionController@api_edit');
+
 	Route::post('setting', 'SettingController@saveaction');
 	Route::resource('article', 'ArticleController');
 });

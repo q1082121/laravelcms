@@ -7,7 +7,13 @@
     <div class="col-xs-12">
       <div class="box" id="app-content">
         <div class="box-header">
-          <h3 class="box-title">{{trans('admin.website_user_module_list')}}</h3>
+          <h3 class="box-title">
+            <a href="{{$website['link_add']}}" >
+            <button type="button" class="btn btn-success pull-left">
+              <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
+            </button>
+            </a>
+          </h3>
           <div style="position: absolute;right:170px;top:5px;width: 120px;">
           <select  v-model="pageparams.way" style="width: 100%;height:30px;line-height:30px;padding:1% 3%;">
             <option v-for="item in pageparams.wayoption" value="@{{ item.value }}">@{{ item.text }}</option>
@@ -22,22 +28,15 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-12" style="margin-bottom:10px;">
-          <a href="/admin/usergroup/add" >
-          <button type="button" class="btn btn-success pull-left">
-            <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
-          </button>
-          </a>
-        </div>
         <!-- /.box-header -->
         <div class="box-body" >
           <table class="table table-bordered">
             <thead>
             <tr>
               <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_usergroup_item_name')}}</th>
-              <th>{{trans('admin.website_usergroup_item_display_name')}}</th>
-              <th>{{trans('admin.website_usergroup_item_description')}}</th>
+              <th>{{trans('admin.website_userrole_item_name')}}</th>
+              <th>{{trans('admin.website_userrole_item_display_name')}}</th>
+              <th>{{trans('admin.website_userrole_item_description')}}</th>
               <th>{{trans('admin.website_item_option')}}</th>
             </tr>
             </thead>
@@ -49,7 +48,7 @@
                 <td>@{{ item.description }}</td>
                 <td>
                   <div class="tools">
-                    <a href="javascript:void(0);" @click="edit_action(item.id)" style="margin-right:4%"> <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</a>
+                    <button type="button" @click="edit_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
                     <!--<a href="javascript:void(0);"><i class="fa fa-trash-o"></i> {{trans('admin.website_action_delete')}}</a>-->
                   </div>
                 </td>
@@ -61,7 +60,7 @@
         <div class="box-footer clearfix">
           <ul class="pagination pagination-sm no-margin pull-right">
             <li><a href="javascript:void(0);">@{{ totals_title }}</a></li>
-            <li><a href="javascript:void(0);" @click="btnClick(per_page)" >{{trans('admin.website_per_page_title')}}</a></li>
+            <li><a href="javascript:void(0);" @click="btnClick(first_page)" >{{trans('admin.website_first_page_title')}}</a></li>
             <li><a href="javascript:void(0);" @click="btnClick(prev_page)" >{{trans('admin.website_prev_page_title')}}</a></li>
             <li v-for="index in totals"  v-bind:class="{ 'active': current_page == index+1}">
                 <a href="javascript:void(0);" @click="btnClick(index+1)" >@{{ index+1 }} </a>
@@ -86,11 +85,11 @@ Vue.http.options.emulateJSON = true;
 new Vue({
     el: '#app-content',
     data: {
-             apiUrl               :'/admin/usergroup/api_list',
-             edit_Url             :'/admin/usergroup/edit', 
+             apiurl_list          :'{{$website["apiurl_list"]}}',
+             linkurl_edit         :'{{$website["link_edit"]}}', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
-             per_page             :1,//首页
+             first_page           :1,//首页
              prev_page            :1,//上一页
              current_page         :1,//当前页
              next_page            :1,//下一页
@@ -99,12 +98,8 @@ new Vue({
              pageparams:           
              {
                     page           :1,
-                    way            :'name',
-                    wayoption      :[
-                                      {text:'用户组键值',value:'name'},
-                                      {text:'用户组名称',value:'display_name '},
-                                      {text:'用户组描述',value:'description '},
-                                    ],
+                    way            :'{{$website["way"]}}',
+                    wayoption      :eval(htmlspecialchars_decode('{{$website["wayoption"]}}')),
                     keyword        :'',
              },
           },
@@ -117,10 +112,10 @@ new Vue({
             get_list_action:function()
             {
 
-              this.$http.post(this.apiUrl,this.pageparams,{
+              this.$http.post(this.apiurl_list,this.pageparams,{
                 before:function(request)
                 {
-                  loadi=layer.load("检测中...");
+                  loadi=layer.load("...");
                 },
               })
               .then((response) => 
@@ -146,7 +141,6 @@ new Vue({
                 //响应成功
                 layer.close(loadi);
                 var statusinfo=response.data;
-                //console.log(statusinfo);
                 if(statusinfo.status==1)
                 {
                     /*
@@ -167,9 +161,8 @@ new Vue({
                      |
                      */
                     this.current_page=statusinfo.resource.current_page;//当前页数据
-                    this.totals_title='总记录数 '+statusinfo.resource.total+' 条';//总记页数标题
-                    this.totals=statusinfo.resource.total;//总记录页数
-                    this.per_page=statusinfo.resource.per_page;//首页数据
+                    this.totals_title=statusinfo.resource.total+' {{trans('admin.website_page_total_tip')}}';//总记页数标题
+                    this.totals=Math.ceil(statusinfo.resource.total/statusinfo.resource.per_page);//总记录页数
                     this.last_page=statusinfo.resource.last_page;//尾页数据
                     //下一页数据
                     if(this.current_page==this.totals)
@@ -195,7 +188,6 @@ new Vue({
                      |---------------------------------------------
                      |
                      */
-
                     this.datalist=statusinfo.resource.data;
                 }
                 else
@@ -213,7 +205,6 @@ new Vue({
             {   
                 if(data != this.current_page)
                 {
-                   // this.current_page = data ;
                    this.pageparams.page=data;
                    this.get_list_action();
                 }
@@ -221,8 +212,7 @@ new Vue({
             //点击编辑跳转
             edit_action:function(data)
             {
-                var editurl=this.edit_Url+'/'+data
-                window.location.href=editurl;
+                window.location.href=this.linkurl_edit+data;
             }
 
         }            

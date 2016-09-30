@@ -1,60 +1,4 @@
 /*公共js片段存储 start */
-//cookie相关函数
-function set_cookie(name, value, expires, path, domain, secure)
-{
-// set time, it's in milliseconds
-var today = new Date();
-today.setTime( today.getTime() );
-
-if ( expires )
-{
-expires = expires * 1000 * 60 * 60 * 24;
-}
-var expires_date = new Date( today.getTime() + (expires) );
-
-document.cookie = name + "=" +escape( value ) +
-( ( expires ) ? ";expires=" + expires_date.toGMTString() : "" ) +
-( ( path ) ? ";path=" + path : "" ) +
-( ( domain ) ? ";domain=" + domain : "" ) +
-( ( secure ) ? ";secure" : "" );
-}
-
-function get_cookie(name) {
-var start = document.cookie.indexOf(name + "=");
-var len = start + name.length + 1;
-if ((!start) && (name != document.cookie.substring(0, name.length )))
-{
-return null;
-}
-if (start == -1) return null;
-var end = document.cookie.indexOf(";", len);
-if (end == -1) end = document.cookie.length;
-return (document.cookie.substring(len, end));
-}
-//
-//	确定下拉列表的值
-//
-function checkall(form)
-{
-	for (var i=0;i<form.elements.length;i++)
-	{
-		var e = form.elements[i];
-		if (e.Name != "chkall")
-		e.checked = form.chkall.checked;
-	}
-}
-
-function js_set_sel(obj, val)
-{
-    for (i=0; i<obj.length; i++)
-    {
-        if (obj.options[i].value == val)
-        {
-            obj.options[i].selected = true;
-            break;
-        }
-    }
-}
 function isEmail(s) {
 	if (s.length > 100)	return false;
 	if (s.indexOf("'")!=-1 || s.indexOf("/")!=-1 || s.indexOf("\\")!=-1 || s.indexOf("<")!=-1 || s.indexOf(">")!=-1) return false;
@@ -97,15 +41,6 @@ function validatemobile(mobile)
         	return true;
         }
 }
-$(document).ready(function(){ 
-	/*select 分页触发表单*/
-	$('.selpage').change(function(){
-		var oform = $(this).closest('form');
-		oform.get(0).submit();
-	}
-	);
-
-});
 /***********************************
  * 方法名：js链接地址跳转函数
  * 作者： Tommy（rubbish.boy@163.com）
@@ -286,152 +221,7 @@ function iFrameHeight(idname) {
         ifm.height = subWeb.body.scrollHeight;
     }
 }
-/***********************************
- * 方法名：验证手机号码是否注册
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
- ***********************************/
-function onBlur_check()
-{
-	var forminput=document.getElementById("mobile");
-	var	inputval = forminput.value;
-	var loadi;
-	if(forminput.value.length >= 11)
-	{
-		$(function()
-				{
-				 $.ajax({
-						type:"POST",
-						url:"/User/Register/checkauth/",
-						data:{"mobile":inputval,"authname":'mobile',"type":2},
-						dataType:'json',
-						beforeSend: function (){ 
-							loadi=layer.load("检测中...");
-						},
-						success:function(msg)
-						{
-							layer.close(loadi);
-							if(msg.success==1)
-							{
-								var find_data=msg.data;
-								if (find_data.data==0)
-								{
-									var msgs=find_data.message;
-									//layermsg_success(msgs);
-								}
-								else
-								{
-									var msgs=find_data.message;
-									var forminput=document.getElementById("mobile");
-									forminput.value="";
-									layermsg_error(msgs);
-								}
-							}
-							else
-							{
-								var msgs="响应请求失败！";
-								layermsg_error(msgs);
-							}
-						},
-						error:function()
-						{
-							layer.close(loadi);
-							var msgs="响应请求失败！";
-							layermsg_error(msgs);
-						}     
-	                })
-				});
-	}
-	else if(forminput.value.length >0)
-	{
-		var msgs="请输入有效长度号码";
-		layermsg_error(msgs);
-	}
-}
-/***********************************
- * 方法名：设置默认发短信按钮可点击
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
- ***********************************/
-$(function()
-{
-  $('#verifybutton').attr("disabled", false);
-}); 
-/***********************************
- * 方法名：发送短信方法
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
- ***********************************/
-function sendcode(val,sms_token)
-{
-  var forminput=document.getElementById("mobile");
-  var inputval = forminput.value;
-  var loadi;
-  var token=sms_token;
-  if(forminput.value.length >= 11)
-  {
-    $(function()
-    {
-     $.ajax({
-        type:"POST",
-        url:"/User/Comapi/send_mobile_verifycode",
-        data:{"mobile":inputval,"token":token},
-        dataType:'json',
-        beforeSend: function (){ 
-          loadi=layer.load("发送至手机中...");
-        },
-        success:function(msg)
-        {
-          layer.close(loadi);
-          if(msg.success==1)
-          {
-            countdown=60;
-            set_time(countdown);
-            layermsg_success(msg.info);
-          }
-          else
-          {
-            layermsg_error(msg.info);
-          }
-        },
-        error:function()
-        {
-          layer.close(loadi);
-          var msgs="响应请求失败，请刷新页面重新提交！";
-          layermsg_error(msgs);
-        }     
-      })
-    });
-  }
-  else
-  {
-    var msgs="请输入有效长度号码";
-    layermsg_error(msgs);
-  } 
-}
-/***********************************
- * 方法名：设置发送短信按钮倒计时 
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
- ***********************************/
-function set_time(countdown) 
-{ 
-  var timeact;
-  if (countdown == 0) { 
-    document.getElementById("verifybutton").removeAttribute("disabled");  
-    document.getElementById("verifybutton").value="短信获取验证码";
-    clearTimeout(timeact);
-  }
-  else
-  { 
-    document.getElementById("verifybutton").setAttribute("disabled", true); 
-    document.getElementById("verifybutton").value="重新发送(" + countdown + ")"; 
-    countdown--; 
-    timeact=setTimeout(function() 
-    { set_time(countdown) },1000); 
-  } 
-  
-} 
+
 /***********************************
  * 方法名：从 file 域获取 本地图片 url 
  * 作者： Tommy（rubbish.boy@163.com）
@@ -523,131 +313,6 @@ function showResponse(responseText, statusText)
   }
 }
 /***********************************
- * 方法名：删除记录方法 
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2016年6月3日
- ***********************************/ 
-function do_del_confir(links)
-{
-    layer.confirm('您确定要删除?', 
-    {
-        btn: ['确定','取消'], //按钮
-        shade: [0.8, '#333'],
-        skin: 'layui-layer-rim',
-    }, 
-    function()
-    {
-        var loadi;  
-        $.ajax({
-                type:"GET",
-                url:links,
-                dataType:'json',
-                beforeSend: function (){ 
-                loadi=layer.load("处理中...");
-                },
-                success:function(msg)
-                {
-                    layer.close(loadi);
-                    if(msg.success==1)
-                    {
-                        layermsg_success_reload(msg.info);
-                    }
-                    else
-                    {
-                        layermsg_error(msg.info);
-                    }
-                },
-                error:function()
-                {
-                    layer.close(loadi);
-                    layer.msg("响应繁忙，稍后再试!", {shift: 6});
-                }     
-          });
-    }, 
-    function()
-    {
-        layer.msg("取消删除", {shift: 6});
-    }
-    );
-}
-
-
-/***********************************
- * 方法名：询问方法 
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
- ***********************************/
-function make_confirminfo(info,links,onethis)
-{
-    layer.confirm('您确定要【'+info+"】?", 
-    {
-        btn: ['确定','取消'], //按钮
-        shade: false //不显示遮罩
-    }, 
-    function()
-    {
-        var loadi;  
-        $.ajax({
-                type:"GET",
-                url:links,
-                dataType:'json',
-                beforeSend: function (){ 
-                loadi=layer.load("处理中...");
-                },
-                success:function(msg)
-                {
-                    layer.close(loadi);
-                    if(msg.success==1)
-                    {
-                        var msgdata=msg.data;
-                        if(msgdata.curl)
-				        {
-                            if(info=='退出登录')
-                            {
-                                layer.msg(msg.info, {
-                                    icon: 6,    //1
-                                    shade: [0.8, '#393D49'],
-                                    time: 2000     //2秒关闭 2000（如果不配置，默认是3秒）
-                                }, function(){
-                                    window.parent.location.href=msgdata.curl;
-                                });  
-                            }
-                            else
-                            {
-                                layermsg_s(msg.info,msgdata.curl);
-                            }
-				        }
-				        else
-				        {
-                          if(msgdata.isreload)
-                          {
-                            layermsg_success_reload(msg.info);
-                          }
-                          else
-                          {
-                            layermsg_success(msg.info);
-                          }
-				        }
-                    }
-                    else
-                    {
-                    	layermsg_error(msg.info);
-                    }
-                },
-                error:function()
-                {
-                    layer.close(loadi);
-                    layer.msg("响应繁忙，稍后再试!", {shift: 6});
-                }     
-          });
-    }, 
-    function()
-    {
-        layer.msg("取消"+info, {shift: 6});
-    }
-    );
-}
-/***********************************
  * 方法名：触发登录窗口
  * 作者： Tommy（rubbish.boy@163.com）
  * 时间：2016年3月19日
@@ -667,7 +332,6 @@ function box_open(divid)
         }
     });
 }
-
 /***********************************
  * 方法名：触发弹出框
  * 作者： Tommy（rubbish.boy@163.com）
@@ -724,21 +388,6 @@ function open_iframe_box(url,isclose,width,height)
         }
     });
 }
-/***********************************
- * 方法名：在图片上停留时逐渐增强或减弱的透明效果
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2016年3月19日
- ***********************************/
-$(document).ready(function()
-{
-    $(".thumbs img").fadeTo("slow", 0.8); // This sets the opacity of the thumbs to fade down to 60% when the page loads
-
-    $(".thumbs img").hover(function(){
-        $(this).fadeTo("slow", 1.0); // This should set the opacity to 100% on hover
-    },function(){
-        $(this).fadeTo("slow", 0.8); // This should set the opacity back to 60% on mouseout
-    });
-});
 /***********************************
 * 方法名：js HTML实体 转换为 html字符串 htmlspecialchars_decode
 * 作者： Tommy（rubbish.boy@163.com）

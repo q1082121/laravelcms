@@ -1,4 +1,8 @@
 <?php
+/******************************************
+****AuThor:rubbish@163.com
+****Title :用户
+*******************************************/
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -6,22 +10,33 @@ use App\Http\Controllers\Controller;
 
 //使用User模型
 use App\Http\Model\User;
-
+//使用URL生成地址
+use URL;
 class UserController extends PublicController
 {
 	/******************************************
 	****AuThor:rubbish@163.com
-	****Title :用户列表
+	****Title :列表
 	*******************************************/
 	public function index()  
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_five');
+
+		$website['apiurl_list']=URL::action('Admin\UserController@api_list');
+		$website['link_edit']='/admin/user/edit/';
+		$website['way']='username';
+		$wayoption[]=array('text'=>trans('admin.website_user_item_username'),'value'=>'username');
+		$wayoption[]=array('text'=>trans('admin.website_user_item_email'),'value'=>'email');
+		$wayoption[]=array('text'=>trans('admin.website_user_item_mobile'),'value'=>'mobile');
+		$wayoption[]=array('text'=>trans('admin.website_user_item_nick'),'value'=>'nick');
+		$website['wayoption']=json_encode($wayoption);
+
 		return view('admin/user/index')->with('website',$website);
 	}
 	/******************************************
 	****AuThor:rubbish@163.com
-	****Title :用户列表_数据_api
+	****Title :列表接口
 	*******************************************/
 	public function api_list(Request $request)  
 	{

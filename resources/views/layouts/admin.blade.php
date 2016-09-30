@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <title>{{$website['website_seo_title']}}-{{trans('admin.website_type')}}</title>
+  <title>{{$website['cursitename']}}-{{$website['website_seo_title']}}-{{trans('admin.website_type')}}</title>
   <meta name="keywords" content="{{$website['website_seo_keyword']}}" >
   <meta name="description" content="{{$website['website_seo_description']}}" >
   <!-- Tell the browser to be responsive to screen width -->

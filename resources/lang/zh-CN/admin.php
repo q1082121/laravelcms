@@ -44,7 +44,8 @@ return [
     'website_navigation_two'                       =>   '系统设置',
     'website_navigation_three'                     =>   '日志管理',
     'website_navigation_four'                      =>   '消息管理',
-    'website_navigation_role'                      =>   '用户权限',
+    'website_navigation_role'                      =>   '用户角色',
+    'website_navigation_permission'                =>   '角色权限',
     'website_navigation_five'                      =>   '用户管理',
     'website_navigation_six'                       =>   '资讯管理',
     'website_navigation_seven'                     =>   '图片管理',
@@ -64,7 +65,8 @@ return [
     'website_get_failure'                          =>   '获取失败',
     'website_get_empty'                            =>   '数据为空',
     'website_page_total'                           =>   '总记录数 0 条',
-    'website_per_page_title'                       =>   '首页',
+    'website_page_total_tip'                       =>   ' 条数据',
+    'website_first_page_title'                     =>   '首页',
     'website_last_page_title'                      =>   '尾页',
     'website_prev_page_title'                      =>   '上一页',
     'website_next_page_title'                      =>   '下一页',
@@ -126,10 +128,10 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_usergroup_item_name'                    =>   '用户组键值',
-    'website_usergroup_item_display_name'            =>   '用户组名称',
-    'website_usergroup_item_description'             =>   '用户组描述',
-    'usergroup_failure_tip1'                         =>  '请输入用户组键值',
+    'website_userrole_item_name'                    =>   '用户角色键值',
+    'website_userrole_item_display_name'            =>   '用户角色名称',
+    'website_userrole_item_description'             =>   '用户角色描述',
+    'userrole_failure_tip1'                         =>  '请输入用户角色键值',
 
 
 ];

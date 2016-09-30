@@ -30,6 +30,7 @@ class UserroleController extends PublicController
 		$website['apiurl_list']=URL::action('Admin\UserroleController@api_list');
 		$website['link_add']=URL::action('Admin\UserroleController@add');
 		$website['link_edit']='/admin/userrole/edit/';
+		$website['link_set']='/admin/userrole/set/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.website_userrole_item_name'),'value'=>'name');
 		$wayoption[]=array('text'=>trans('admin.website_userrole_item_display_name'),'value'=>'display_name');
@@ -65,6 +66,28 @@ class UserroleController extends PublicController
 		$website['apiurl_edit']=URL::action('Admin\UserroleController@api_edit');
 		$website['id']=$id;
 		return view('admin/userrole/add')->with('website',$website);
+	}
+	/******************************************
+	****AuThor : rubbish@163.com
+	****Title  : 设置
+	*******************************************/
+	public function set($id)  
+	{
+		$website=$this->website;
+		$website['cursitename']=trans('admin.website_action_set_permission');
+
+		$website['apiurl_list']=URL::action('Admin\UserpermissionController@api_list_related');
+		$website['apiurl_get']=URL::action('Admin\UserpermissionController@api_get_permission');
+		$website['way']='name';
+		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_name'),'value'=>'name');
+		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_display_name'),'value'=>'display_name');
+		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_description'),'value'=>'description');
+		$website['wayoption']=json_encode($wayoption);
+		$website['id']=$id;
+		$condition['id']=$id;
+		$info=object_array(DB::table('roles')->where($condition)->first());
+		$website['info']=$info;
+		return view('admin/userrole/set')->with('website',$website);
 	}
 	/******************************************
 	****AuThor:rubbish@163.com

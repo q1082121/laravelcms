@@ -34,9 +34,9 @@
             <thead>
             <tr>
               <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_userrole_item_name')}}</th>
-              <th>{{trans('admin.website_userrole_item_display_name')}}</th>
-              <th>{{trans('admin.website_userrole_item_description')}}</th>
+              <th>{{trans('admin.website_userpermission_item_name')}}</th>
+              <th>{{trans('admin.website_userpermission_item_display_name')}}</th>
+              <th>{{trans('admin.website_userpermission_item_description')}}</th>
               <th>{{trans('admin.website_item_option')}}</th>
             </tr>
             </thead>
@@ -49,7 +49,6 @@
                 <td>
                   <div class="tools">
                     <button type="button" @click="edit_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
-                    <button type="button" @click="set_action(item.id)" class="btn btn-danger" > <i class="fa fa-magic"></i> {{trans('admin.website_action_set_permission')}}</button>
                     <!--<a href="javascript:void(0);"><i class="fa fa-trash-o"></i> {{trans('admin.website_action_delete')}}</a>-->
                   </div>
                 </td>
@@ -88,7 +87,6 @@ new Vue({
     data: {
              apiurl_list          :'{{$website["apiurl_list"]}}',
              linkurl_edit         :'{{$website["link_edit"]}}', 
-             linkurl_set          :'{{$website["link_set"]}}', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -215,10 +213,6 @@ new Vue({
             edit_action:function(data)
             {
                 window.location.href=this.linkurl_edit+data;
-            },
-            set_action:function(data)
-            {
-              window.location.href=this.linkurl_set+data;
             }
 
         }            

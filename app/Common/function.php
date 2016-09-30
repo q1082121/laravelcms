@@ -70,35 +70,6 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0)
 
 }
 /***********************************
- * 方法名：Json消息返回封装函数
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月10日
- ***********************************/
-function json_message($act=0,$data=null,$info=null)
-{
-	switch($act)
-	{
-		case 1:
-				$message['data']=$data;
-				$message['code']=666;
-				$message['info']=$info!=null?$info:'操作成功';
-				$message['success']=1;
-				break;
-		case 2:
-				$message['data']=$data;
-				$message['code']=110;
-				$message['info']=$info!=null?$info:'无效的参数';
-				$message['success']=0;
-				break;
-		default:
-				$message['data']=$data;
-				$message['code']=404;
-				$message['info']=$info!=null?$info:'未接受到数据';
-				$message['success']=0;
-	}
-	return json_encode($message);
-}
-/***********************************
  * 方法名：Curl 请求
  * 作者： Tommy（rubbish.boy@163.com）
  * 时间：2015年6月10日
@@ -152,19 +123,7 @@ function get_authid()
 	$order_id = $order_id_main . str_pad((100 - $order_id_sum % 100) % 100,2,'0',STR_PAD_LEFT);
 	return $order_id;
 }
-/***********************************
- * 方法名：unicode转utf8
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月17日
- ***********************************/ 
-function unicode2utf8_2($str) {
-		$str=strtolower($str);
-		$str = "\u".$str;
-        $str = '{"result_str":"' . $str . '"}'; 
-        $strarray = json_decode ( $str, true ); 
-		$returnstr=$strarray['result_str'];
-        return $returnstr;
-}
+
 /***********************************
  * 方法名：判断访问终端是否手机
  * 作者： Tommy（rubbish.boy@163.com）
@@ -186,43 +145,7 @@ function is_mobile_request()
 	    		                        if($mobile_browser>0)     return true;
 	    		                            else   return false;
 }
-/***********************************
- * 方法名：字符串省略处理！
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月17日
- ***********************************/  
-function cutcontent($content,$length=0,$doflag=0)
-{
-	$cut_length = $length>0?$length:200;
 
-	if($content)
-	{
-		$tmp_content = str_replace('&nbsp;','',strip_tags(htmlspecialchars_decode(trim($content))));
-		$deal_cotent = cut_str($tmp_content,$cut_length);
-	}
-	else{ $deal_cotent = '';}
-
-	return $deal_cotent;	
-}
-/***********************************
- * 方法名：
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月10日
- ***********************************/
-function htmlcontent($content)
-{
-	$tmp_content=stripslashes(htmlspecialchars_decode(trim($content)));
-	return $tmp_content;	
-}
-/***********************************
- * 方法名：返回当前的毫秒时间戳
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年9月6日
- ***********************************/
-function msectime() {
-    list($tmp1, $tmp2) = explode(' ', microtime());
-    return (float)sprintf('%.0f', (floatval($tmp1) + floatval($tmp2)) * 1000);
-}
 /*******************************************
 移动：134、135、136、137、138、139、150、151、152、157、158、159、182、183、184、187、188、178(4G)、147(上网卡)；
 联通：130、131、132、155、156、185、186、176(4G)、145(上网卡)；
@@ -239,52 +162,8 @@ function isMobile($mobile)
     }
     return preg_match('#^13[\d]{9}$|^14[5,7]{1}\d{8}$|^15[^4]{1}\d{8}$|^17[0,6,7,8]{1}\d{8}$|^18[\d]{9}$#', $mobile) ? true : false;
 }
-/***********************************
- * 方法名：二维数组 按照某一键值排序
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2016年8月8日
- ***********************************/
-function auto_array_sort($multi_array,$sort_key,$sort=SORT_ASC)
-{ 
-	if(is_array($multi_array))
-	{ 
-		foreach ($multi_array as $row_array)
-		{ 
-			if(is_array($row_array))
-			{ 
-				$key_array[] = $row_array[$sort_key]; 
-			}
-			else
-			{ 
-				return false; 
-			} 
-		}
-		array_multisort($key_array,$sort,$multi_array);  
-		return $multi_array;
-	}
-	else
-	{ 
-		return false; 
-	}
-} 
-/***********************************
- * 方法名：根据生日计算年龄
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2016年2月24日
- ***********************************/ 
-function birthday($birthday){ 
- $age = strtotime($birthday); 
- if($age === false){ 
-  return false; 
- } 
- list($y1,$m1,$d1) = explode("-",date("Y-m-d",$age)); 
- $now = strtotime("now"); 
- list($y2,$m2,$d2) = explode("-",date("Y-m-d",$now)); 
- $age = $y2 - $y1; 
- if((int)($m2.$d2) < (int)($m1.$d1)) 
-  $age -= 1; 
- return $age; 
-} 
+
+
 /***********************************
  * 方法名：日志记录
  * 作者： Tommy（rubbish.boy@163.com）
@@ -300,5 +179,24 @@ function in_log($data)
     $log->info = $data['info'];
     $log->ip = $data['ip'];
     $log->save();
+}
+/***********************************
+ * 方法名：PHP stdClass Object转array
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function object_array($array)
+{
+   if(is_object($array))
+   {
+    $array = (array)$array;
+   }
+   if(is_array($array))
+   {
+    foreach($array as $key=>$value)
+    {
+     $array[$key] = object_array($value);
+    }
+   }
+   return $array;
 }
 ?>

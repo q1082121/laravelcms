@@ -75,7 +75,13 @@ return [
     'website_action_save'                          =>   '保存',
     'website_action_lock'                          =>   '锁开关',
     'website_action_delete'                        =>   '删除',
+    'website_action_set_permission'                =>   '设置权限',
+    'website_action_get_permission'                =>   '获取权限',
+    'website_action_cancel_permission'             =>   '取消权限',
+    'website_action_set_success'                   =>   '设置成功',
+    'website_action_set_failure'                   =>   '设置失败',
     'website_demo_tip'                             =>   '示例',
+
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置
@@ -123,7 +129,7 @@ return [
     
     /*
     |--------------------------------------------------------------------------
-    | 默认消息 - 用户管理
+    | 默认消息 - 用户角色
     |--------------------------------------------------------------------------
     |
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
@@ -132,7 +138,20 @@ return [
     'website_userrole_item_name'                    =>   '用户角色键值',
     'website_userrole_item_display_name'            =>   '用户角色名称',
     'website_userrole_item_description'             =>   '用户角色描述',
-    'userrole_failure_tip1'                         =>  '请输入用户角色键值',
+    'userrole_failure_tip1'                         =>   '请输入用户角色键值',
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 角色权限
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_userpermission_item_name'               =>   '角色权限键值',
+    'website_userpermission_item_display_name'       =>   '角色权限名称',
+    'website_userpermission_item_description'        =>   '角色权限描述',
+    'userpermission_failure_tip1'                    =>   '请输入角色权限键值',
 
 
 ];

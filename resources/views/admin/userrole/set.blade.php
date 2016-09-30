@@ -8,11 +8,8 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">
-            <a href="{{$website['link_add']}}" >
-            <button type="button" class="btn btn-success pull-left">
-              <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
-            </button>
-            </a>
+            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_navigation_role')}}</button>
+            <button type="button" class="btn btn-primary" > <i class="fa fa-bookmark"></i> {{$website['info']['display_name']}} </button>
           </h3>
           <div style="position: absolute;right:170px;top:5px;width: 120px;">
           <select  v-model="pageparams.way" style="width: 100%;height:30px;line-height:30px;padding:1% 3%;">
@@ -34,9 +31,9 @@
             <thead>
             <tr>
               <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_userrole_item_name')}}</th>
-              <th>{{trans('admin.website_userrole_item_display_name')}}</th>
-              <th>{{trans('admin.website_userrole_item_description')}}</th>
+              <th>{{trans('admin.website_userpermission_item_name')}}</th>
+              <th>{{trans('admin.website_userpermission_item_display_name')}}</th>
+              <th>{{trans('admin.website_userpermission_item_description')}}</th>
               <th>{{trans('admin.website_item_option')}}</th>
             </tr>
             </thead>
@@ -48,9 +45,8 @@
                 <td>@{{ item.description }}</td>
                 <td>
                   <div class="tools">
-                    <button type="button" @click="edit_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
-                    <button type="button" @click="set_action(item.id)" class="btn btn-danger" > <i class="fa fa-magic"></i> {{trans('admin.website_action_set_permission')}}</button>
-                    <!--<a href="javascript:void(0);"><i class="fa fa-trash-o"></i> {{trans('admin.website_action_delete')}}</a>-->
+                    <button v-if="item.role_id != paramsdata.id " @click="get_action(item.id)" type="button"  class="btn btn-success" > <i class="fa fa-bookmark"></i> {{trans('admin.website_action_get_permission')}}</button>
+                    <button v-else type="button"  class="btn btn-danger" > <i class="fa fa-bookmark-o"></i> {{trans('admin.website_action_cancel_permission')}}</button>
                   </div>
                 </td>
               </tr>
@@ -87,8 +83,7 @@ new Vue({
     el: '#app-content',
     data: {
              apiurl_list          :'{{$website["apiurl_list"]}}',
-             linkurl_edit         :'{{$website["link_edit"]}}', 
-             linkurl_set          :'{{$website["link_set"]}}', 
+             apiurl_get           :'{{$website["apiurl_get"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -103,7 +98,14 @@ new Vue({
                     way            :'{{$website["way"]}}',
                     wayoption      :eval(htmlspecialchars_decode('{{$website["wayoption"]}}')),
                     keyword        :'',
+                    role_id        :'{{$website["id"]}}',
              },
+             paramsdata:
+             {
+                    id             :'{{$website["id"]}}',
+                    permission_id  :'',
+             }
+             
           },
     ready: function (){ 
             //这里是vue初始化完成后执行的函数 
@@ -211,15 +213,75 @@ new Vue({
                    this.get_list_action();
                 }
             },
-            //点击编辑跳转
-            edit_action:function(data)
+            //点击返回
+            back_action:function()
             {
-                window.location.href=this.linkurl_edit+data;
+              goback();
             },
-            set_action:function(data)
+            //返回信息处理
+            return_info_action:function(response)
             {
-              window.location.href=this.linkurl_set+data;
+              layer.close(loadi);
+              var statusinfo=response.data;
+              if(statusinfo.status==1)
+              {
+                  if(statusinfo.is_reload==1)
+                  {
+                    layermsg_success_reload(statusinfo.info);
+                  }
+                  else
+                  {
+                    if(statusinfo.curl)
+                    {
+                      layermsg_s(statusinfo.info,statusinfo.curl);
+                    }
+                    else
+                    {
+                      layermsg_success(statusinfo.info);
+                      this.get_list_action();
+                    }
+                  }
+              }
+              else
+              {
+                  if(statusinfo.curl)
+                  {
+                    layermsg_e(statusinfo.info,statusinfo.curl);
+                  }
+                  else
+                  {
+
+                    layermsg_error(statusinfo.info);
+                  }
+              }
+            },
+            //点击获取权限
+            get_action:function(data)
+            {
+              this.paramsdata.permission_id=data;
+              this.$http.post(this.apiurl_get,this.paramsdata,{
+                before:function(request)
+                {
+                  loadi=layer.load("...");
+                },
+              })
+              .then((response) => 
+              {
+                this.return_info_action(response);
+
+              },(response) => 
+              {
+                //响应错误
+                var msg="{{trans('admin.website_outtime')}}";
+                layermsg_error(msg);
+              })
+              .catch(function(response) {
+                //异常抛出
+                var msg="{{trans('admin.website_outtime_error')}}";
+                layermsg_error(msg);
+              })
             }
+
 
         }            
 })

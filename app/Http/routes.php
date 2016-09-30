@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::get('userrole', 'UserroleController@index');
 	Route::get('userrole/add', 'UserroleController@add');
 	Route::get('userrole/edit/{id}', 'UserroleController@edit');
+	Route::get('userrole/set/{id}', 'UserroleController@set');
 
 	Route::get('userpermission', 'UserpermissionController@index');
 	Route::get('userpermission/add', 'UserpermissionController@add');
@@ -87,6 +88,8 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('userrole/api_edit', 'UserroleController@api_edit');
 
 	Route::post('userpermission/api_list', 'UserpermissionController@api_list');
+	Route::post('userpermission/api_get_permission', 'UserpermissionController@api_get_permission');
+	Route::post('userpermission/api_list_related', 'UserpermissionController@api_list_related');
 	Route::post('userpermission/api_add', 'UserpermissionController@api_add');
 	Route::post('userpermission/api_info', 'UserpermissionController@api_info');
 	Route::post('userpermission/api_edit', 'UserpermissionController@api_edit');

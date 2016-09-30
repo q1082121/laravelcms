@@ -13,16 +13,16 @@
 
           <div class="box-body">
             <div class="form-group">
-              <label >{{trans('admin.website_userrole_item_name')}} </label>
-              <input type="text" id="name" class="form-control" v-model="params_data.name"  placeholder="{{trans('admin.website_demo_tip')}}：admin "  >
+              <label >{{trans('admin.website_userpermission_item_name')}} </label>
+              <input type="text" id="name" class="form-control" v-model="params_data.name"  placeholder="{{trans('admin.website_demo_tip')}}：add "  >
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_userrole_item_display_name')}}</label>
-              <input type="text" class="form-control" v-model="params_data.display_name"  placeholder="{{trans('admin.website_demo_tip')}}：管理员" >
+              <label >{{trans('admin.website_userpermission_item_display_name')}}</label>
+              <input type="text" class="form-control" v-model="params_data.display_name"  placeholder="{{trans('admin.website_demo_tip')}}：添加" >
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_userrole_item_description')}}</label>
-              <input type="text" class="form-control" v-model="params_data.description"  placeholder="{{trans('admin.website_demo_tip')}}：管理员会员组拥有全部权限" >
+              <label >{{trans('admin.website_userpermission_item_description')}}</label>
+              <input type="text" class="form-control" v-model="params_data.description"  placeholder="{{trans('admin.website_demo_tip')}}：添加操作权限" >
             </div>
           </div>
           <!-- /.box-body -->
@@ -107,7 +107,7 @@ new Vue({
       {
           if (this.params_data.name=='')
           {
-              var msg="{{trans('admin.userrole_failure_tip1')}}";
+              var msg="{{trans('admin.userpermission_failure_tip1')}}";
               layermsg_error(msg);
           }
           else

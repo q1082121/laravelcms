@@ -127,12 +127,12 @@ class UserroleController extends PublicController
 		}
 		else
 		{
-			$role = new Role;
-			$role->name = $request->get('name');
-			$role->display_name	= $request->get('display_name');
-			$role->description	= $request->get('description');
+			$params = new Role;
+			$params->name = $request->get('name');
+			$params->display_name	= $request->get('display_name');
+			$params->description	= $request->get('description');
 
-			if ($role->save()) 
+			if ($params->save()) 
 			{
 				$msg_array['status']='1';
 				$msg_array['info']=trans('admin.website_add_success');
@@ -196,11 +196,11 @@ class UserroleController extends PublicController
 	public function api_edit(Request $request)
 	{
 
-		$role = Role::find($request->get('id'));
-		$role->display_name = $request->get('display_name');
-		$role->description = $request->get('description');
+		$params = Role::find($request->get('id'));
+		$params->display_name = $request->get('display_name');
+		$params->description = $request->get('description');
 		
-		if ($role->save()) 
+		if ($params->save()) 
 		{
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_save_success');

@@ -75,6 +75,7 @@ return [
     'website_action_save'                          =>   '保存',
     'website_action_lock'                          =>   '锁开关',
     'website_action_delete'                        =>   '删除',
+    'website_demo_tip'                             =>   '示例',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置

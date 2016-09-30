@@ -14,20 +14,20 @@
           <div class="box-body">
             <div class="form-group">
               <label for="exampleInputEmail1">{{trans('admin.website_userrole_item_name')}} </label>
-              <input type="text" id="name" class="form-control" v-model="params_data.name"  placeholder="示例：admin "  >
+              <input type="text" id="name" class="form-control" v-model="params_data.name"  placeholder="{{trans('admin.website_demo_tip')}}：admin "  >
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">{{trans('admin.website_userrole_item_display_name')}}</label>
-              <input type="text" class="form-control" v-model="params_data.display_name"  placeholder="示例：管理员" >
+              <input type="text" class="form-control" v-model="params_data.display_name"  placeholder="{{trans('admin.website_demo_tip')}}：管理员" >
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">{{trans('admin.website_userrole_item_description')}}</label>
-              <input type="text" class="form-control" v-model="params_data.description"  placeholder="示例：管理员会员组拥有全部权限" >
+              <input type="text" class="form-control" v-model="params_data.description"  placeholder="{{trans('admin.website_demo_tip')}}：管理员会员组拥有全部权限" >
             </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button v-if="id == 0" type="button" @click="add_action()" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
+            <button v-if="params_data.id == 0" type="button" @click="add_action()" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
             <button v-else type="button" @click="post_edit_action()" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
             <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_getback')}}</button>
           </div>
@@ -47,9 +47,9 @@ Vue.http.options.emulateJSON = true;
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_add:            '{{$website["api_add"]}}', 
-             apiurl_info:           '{{$website["api_info"]}}', 
-             apiurl_edit:           '{{$website["api_edit"]}}', 
+             apiurl_add:            '{{$website["apiurl_add"]}}', 
+             apiurl_info:           '{{$website["apiurl_info"]}}', 
+             apiurl_edit:           '{{$website["apiurl_edit"]}}', 
              params_data:
              {
                 name                :'',

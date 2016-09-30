@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-//使用Role模型
+//使用Permission模型
 use App\Http\Model\Permission;
 use DB;
 //使用内存缓存
@@ -16,7 +16,6 @@ use Redis;
 use Cache;
 //使用URL生成地址
 use URL;
-
 class UserpermissionController extends PublicController
 {
 	/******************************************
@@ -27,7 +26,17 @@ class UserpermissionController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_permission');
-		return view('admin/userrole/index')->with('website',$website);
+
+		$website['apiurl_list']=URL::action('Admin\UserpermissionController@api_list');
+		$website['link_add']=URL::action('Admin\UserpermissionController@add');
+		$website['link_edit']='/admin/userpermission/edit/';
+		$website['way']='name';
+		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_name'),'value'=>'name');
+		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_display_name'),'value'=>'display_name');
+		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_description'),'value'=>'description');
+		$website['wayoption']=json_encode($wayoption);
+
+		return view('admin/userpermission/index')->with('website',$website);
 	}
 	/******************************************
 	****AuThor:rubbish@163.com
@@ -37,8 +46,11 @@ class UserpermissionController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_permission');
+		$website['apiurl_add']=URL::action('Admin\UserpermissionController@api_add');
+		$website['apiurl_info']=URL::action('Admin\UserpermissionController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\UserpermissionController@api_edit');
 		$website['id']=0;
-		return view('admin/userrole/add')->with('website',$website);
+		return view('admin/userpermission/add')->with('website',$website);
 	}
 	/******************************************
 	****AuThor : rubbish@163.com
@@ -48,8 +60,11 @@ class UserpermissionController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_permission');
+		$website['apiurl_add']=URL::action('Admin\UserpermissionController@api_add');
+		$website['apiurl_info']=URL::action('Admin\UserpermissionController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\UserpermissionController@api_edit');
 		$website['id']=$id;
-		return view('admin/userrole/add')->with('website',$website);
+		return view('admin/userpermission/add')->with('website',$website);
 	}
 	/******************************************
 	****AuThor:rubbish@163.com
@@ -112,17 +127,17 @@ class UserpermissionController extends PublicController
 		}
 		else
 		{
-			$role = new Permission;
-			$role->name = $request->get('name');
-			$role->display_name	= $request->get('display_name');
-			$role->description	= $request->get('description');
+			$params = new Permission;
+			$params->name = $request->get('name');
+			$params->display_name	= $request->get('display_name');
+			$params->description	= $request->get('description');
 
-			if ($role->save()) 
+			if ($params->save()) 
 			{
 				$msg_array['status']='1';
 				$msg_array['info']=trans('admin.website_add_success');
 				$msg_array['is_reload']=0;
-				$msg_array['curl']=URL::action('Admin\UserroleController@index');
+				$msg_array['curl']=URL::action('Admin\UserpermissionController@index');
 				$msg_array['resource']='';
 				$msg_array['param_way']='';
 				$msg_array['param_keyword']='';
@@ -175,22 +190,22 @@ class UserpermissionController extends PublicController
 	}
 	/******************************************
 	****@AuThor : rubbish@163.com
-	****@Title  : 更新数据
+	****@Title  : 更新数据接口
 	****@return : Response
 	*******************************************/
 	public function api_edit(Request $request)
 	{
 
-		$role = Permission::find($request->get('id'));
-		$role->display_name = $request->get('display_name');
-		$role->description = $request->get('description');
+		$params = Permission::find($request->get('id'));
+		$params->display_name = $request->get('display_name');
+		$params->description = $request->get('description');
 		
-		if ($role->save()) 
+		if ($params->save()) 
 		{
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\UserroleController@index');
+			$msg_array['curl']=URL::action('Admin\UserpermissionController@index');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';

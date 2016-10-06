@@ -233,13 +233,17 @@ class UserpermissionController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Permission::leftJoin('permission_role', 'permission_role.permission_id', '=', 'permissions.id')->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Permission::leftJoin('permission_role as b', function($join)use($role_id)
+			{$join->on('permissions.id', '=', 'b.permission_id')->where('b.role_id','=',$role_id);}
+			)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field,'role_id'=>$role_id])->links();
 		}
 		else
 		{
-			$list=Permission::leftJoin('permission_role', 'permission_role.permission_id', '=', 'permissions.id')->paginate($this->pagesize);
+			$list=Permission::leftJoin('permission_role as b',  function($join)use($role_id)
+			{$join->on('permissions.id', '=', 'b.permission_id')->where('b.role_id','=',$role_id);}
+			)->paginate($this->pagesize);
 			$list->appends(['role_id' => $role_id])->links();
 			
 		}
@@ -307,6 +311,40 @@ class UserpermissionController extends PublicController
 				$msg_array['param_way']='';
 				$msg_array['param_keyword']='';	
 			}
+			
+		}
+        return response()->json($msg_array);
+
+	}
+	/******************************************
+	****AuThor:rubbish@163.com
+	****Title :取消权限接口
+	*******************************************/
+	public function api_cancel_permission(Request $request)  
+	{
+		$condition['permission_id']=$request->get('permission_id');
+		$condition['role_id']=$request->get('id');
+		$info=DB::table('permission_role')->where($condition)->delete();//返回1;
+		if($info)
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.website_cancel_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']='';
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';
+		}
+		else
+		{
+			
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.website_cancel_error');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']='';
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';	
 			
 		}
         return response()->json($msg_array);

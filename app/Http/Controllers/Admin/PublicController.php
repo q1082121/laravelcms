@@ -21,7 +21,7 @@ use Carbon;
 
 //使用User模型
 use App\Http\Model\User;
-
+use Redirect;
 class PublicController extends Controller
 {
 	protected $userinfo;
@@ -95,10 +95,25 @@ class PublicController extends Controller
 			$this->user=$user;
 			//dump($this->userinfo);
 			//dump($this->user);
+
+			//用户信息
+			$this->website['website_userinfo']=$this->userinfo;
+			//用户
+			$this->website['website_user']=$this->user;
+
+			//用户角色组判断
+			$user = User::where('id', '=', $user['id'])->first();
+			$isrole=$user->hasRole(['admin', 'superadmin']);
+			if($isrole == false )
+			{
+				alert('/user/logout','当前角色尚未授权');
+			}
         }
-        //用户信息
-		$this->website['website_userinfo']=$this->userinfo;
-		//用户
-		$this->website['website_user']=$this->user;
+		else
+		{	
+				alert('/user/login','用户尚未登录');
+		}
+        
+		
 	}
 }

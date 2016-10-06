@@ -46,7 +46,7 @@
                 <td>
                   <div class="tools">
                     <button v-if="item.role_id != paramsdata.id " @click="get_action(item.id)" type="button"  class="btn btn-success" > <i class="fa fa-bookmark"></i> {{trans('admin.website_action_get_permission')}}</button>
-                    <button v-else type="button"  class="btn btn-danger" > <i class="fa fa-bookmark-o"></i> {{trans('admin.website_action_cancel_permission')}}</button>
+                    <button v-else type="button"  class="btn btn-danger" @click="cancel_action(item.id)" > <i class="fa fa-bookmark-o"></i> {{trans('admin.website_action_cancel_permission')}}</button>
                   </div>
                 </td>
               </tr>
@@ -84,6 +84,7 @@ new Vue({
     data: {
              apiurl_list          :'{{$website["apiurl_list"]}}',
              apiurl_get           :'{{$website["apiurl_get"]}}',
+             apiurl_cancel        :'{{$website["apiurl_cancel"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -260,6 +261,32 @@ new Vue({
             {
               this.paramsdata.permission_id=data;
               this.$http.post(this.apiurl_get,this.paramsdata,{
+                before:function(request)
+                {
+                  loadi=layer.load("...");
+                },
+              })
+              .then((response) => 
+              {
+                this.return_info_action(response);
+
+              },(response) => 
+              {
+                //响应错误
+                var msg="{{trans('admin.website_outtime')}}";
+                layermsg_error(msg);
+              })
+              .catch(function(response) {
+                //异常抛出
+                var msg="{{trans('admin.website_outtime_error')}}";
+                layermsg_error(msg);
+              })
+            },
+             //点击取消权限
+            cancel_action:function(data)
+            {
+              this.paramsdata.permission_id=data;
+              this.$http.post(this.apiurl_cancel,this.paramsdata,{
                 before:function(request)
                 {
                   loadi=layer.load("...");

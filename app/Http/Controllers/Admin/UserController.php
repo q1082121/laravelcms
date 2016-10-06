@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 
 //使用User模型
 use App\Http\Model\User;
+use DB;
 //使用URL生成地址
 use URL;
 class UserController extends PublicController
@@ -25,6 +26,7 @@ class UserController extends PublicController
 
 		$website['apiurl_list']=URL::action('Admin\UserController@api_list');
 		$website['link_edit']='/admin/user/edit/';
+		$website['link_set']='/admin/user/set/';
 		$website['way']='username';
 		$wayoption[]=array('text'=>trans('admin.website_user_item_username'),'value'=>'username');
 		$wayoption[]=array('text'=>trans('admin.website_user_item_email'),'value'=>'email');
@@ -75,5 +77,28 @@ class UserController extends PublicController
 			$msg_array['param_keyword']=$keyword;
 		}
         return response()->json($msg_array);
+	}
+	/******************************************
+	****AuThor : rubbish@163.com
+	****Title  : 设置
+	*******************************************/
+	public function set($id)  
+	{
+		$website=$this->website;
+		$website['cursitename']=trans('admin.website_action_set_role');
+
+		$website['apiurl_list']=URL::action('Admin\UserroleController@api_list_related');
+		$website['apiurl_get']=URL::action('Admin\UserroleController@api_get_role');
+		$website['apiurl_cancel']=URL::action('Admin\UserroleController@api_cancel_role');
+		$website['way']='name';
+		$wayoption[]=array('text'=>trans('admin.website_userrole_item_name'),'value'=>'name');
+		$wayoption[]=array('text'=>trans('admin.website_userrole_item_display_name'),'value'=>'display_name');
+		$wayoption[]=array('text'=>trans('admin.website_userrole_item_description'),'value'=>'description');
+		$website['wayoption']=json_encode($wayoption);
+		$website['id']=$id;
+		$condition['id']=$id;
+		$info=object_array(DB::table('userinfos')->where($condition)->first());
+		$website['info']=$info;
+		return view('admin/user/set')->with('website',$website);
 	}
 }

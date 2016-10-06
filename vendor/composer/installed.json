@@ -3590,7 +3590,7 @@
         },
         "time": "2016-03-24 15:24:42",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "classmap": [
                 "src/commands"

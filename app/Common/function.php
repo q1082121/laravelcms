@@ -1,5 +1,43 @@
 <?php
 /***********************************
+ * 方法名：layer 封装提示跳转
+ * 作者： Tommy（rubbish.boy@163.com）
+ * 时间：2015年6月10日
+ ***********************************/
+function alert($url,$info)
+{
+	echo  '<script language="javascript" type="text/javascript"> alert("'.$info.'");window.location.href="'.$url.'";</script>';
+}
+/***********************************
+ * 方法名：Json消息返回封装函数
+ * 作者： Tommy（rubbish.boy@163.com）
+ * 时间：2015年6月10日
+ ***********************************/
+function json_message($act=0,$data=null,$info=null)
+{
+	switch($act)
+	{
+		case 1:
+				$message['data']=$data;
+				$message['code']=666;
+				$message['info']=$info!=null?$info:'操作成功';
+				$message['success']=1;
+				break;
+		case 2:
+				$message['data']=$data;
+				$message['code']=110;
+				$message['info']=$info!=null?$info:'无效的参数';
+				$message['success']=0;
+				break;
+		default:
+				$message['data']=$data;
+				$message['code']=404;
+				$message['info']=$info!=null?$info:'未接受到数据';
+				$message['success']=0;
+	}
+	return json_encode($message);
+}
+/***********************************
  * 方法名：判断IE浏览器
  * 作者： Tommy（rubbish.boy@163.com）
  * 时间：2015年6月10日

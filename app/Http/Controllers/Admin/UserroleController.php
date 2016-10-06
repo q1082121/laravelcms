@@ -78,6 +78,7 @@ class UserroleController extends PublicController
 
 		$website['apiurl_list']=URL::action('Admin\UserpermissionController@api_list_related');
 		$website['apiurl_get']=URL::action('Admin\UserpermissionController@api_get_permission');
+		$website['apiurl_cancel']=URL::action('Admin\UserpermissionController@api_cancel_permission');
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_name'),'value'=>'name');
 		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_display_name'),'value'=>'display_name');
@@ -244,5 +245,133 @@ class UserroleController extends PublicController
 			$msg_array['param_keyword']='';	
 		}
 		return response()->json($msg_array);
+	}
+	/******************************************
+	****AuThor:rubbish@163.com
+	****Title :关联列表接口
+	*******************************************/
+	public function api_list_related(Request $request)  
+	{
+		$search_field=$request->get('way')?$request->get('way'):'title';
+		$user_id=$request->get('user_id');
+		$keyword=$request->get('keyword');
+		if($keyword)
+		{
+			$list=Role::leftJoin('role_user as b', function($join)use($role_id)
+			{$join->on('roles.id', '=', 'b.role_id')->where('b.user_id','=',$user_id);}
+			)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			//分页传参数
+			$list->appends(['keyword' => $keyword,'way' =>$search_field,'user_id'=>$user_id])->links();
+		}
+		else
+		{
+			$list=Role::leftJoin('role_user as b',  function($join)use($user_id)
+			{$join->on('roles.id', '=', 'b.role_id')->where('b.user_id','=',$user_id);}
+			)->paginate($this->pagesize);
+			$list->appends(['user_id' => $user_id])->links();
+			
+		}
+		if($list)
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']=$list;
+			$msg_array['param_way']=$search_field;
+			$msg_array['param_keyword']=$keyword;
+		}
+		else
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']="";
+			$msg_array['param_way']=$search_field;
+			$msg_array['param_keyword']=$keyword;
+		}
+        return response()->json($msg_array);
+	}
+	/******************************************
+	****AuThor:rubbish@163.com
+	****Title :获取权限接口
+	*******************************************/
+	public function api_get_role(Request $request)  
+	{
+		$condition['role_id']=$request->get('role_id');
+		$condition['user_id']=$request->get('id');
+		$info_count=DB::table('role_user')->where($condition)->count();
+		if($info_count)
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.website_add_exit');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']="";
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';	
+		}
+		else
+		{
+			$info=DB::table('role_user')->insert($condition);
+			if($info)//true
+			{
+				$msg_array['status']='1';
+				$msg_array['info']=trans('admin.website_action_set_success');
+				$msg_array['is_reload']=0;
+				$msg_array['curl']='';
+				$msg_array['resource']='';
+				$msg_array['param_way']='';
+				$msg_array['param_keyword']='';
+			}
+			else
+			{
+				$msg_array['status']='0';
+				$msg_array['info']=trans('admin.website_action_set_failure');
+				$msg_array['is_reload']=0;
+				$msg_array['curl']='';
+				$msg_array['resource']="";
+				$msg_array['param_way']='';
+				$msg_array['param_keyword']='';	
+			}
+			
+		}
+        return response()->json($msg_array);
+
+	}
+	/******************************************
+	****AuThor:rubbish@163.com
+	****Title :取消权限接口
+	*******************************************/
+	public function api_cancel_role(Request $request)  
+	{
+		$condition['role_id']=$request->get('role_id');
+		$condition['user_id']=$request->get('id');
+		$info=DB::table('role_user')->where($condition)->delete();//返回1;
+		if($info)
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.website_cancel_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']='';
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';
+		}
+		else
+		{
+			
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.website_cancel_error');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']='';
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';	
+			
+		}
+        return response()->json($msg_array);
+
 	}
 }

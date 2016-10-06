@@ -86,7 +86,7 @@ class LoginController extends Controller
                 {
                     case 1:
                         // 尝试登录
-                        if (Auth::guard($guard)->attempt(['email' => $request->get('email'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
+                        if (Auth::guard($guard)->attempt(['email' => $request->get('email'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ])) 
                         {
                             // 认证通过...
                             $rule=1;
@@ -95,7 +95,7 @@ class LoginController extends Controller
                         break;
                     case 2:
                         // 尝试登录
-                        if (Auth::guard($guard)->attempt(['username' => $request->get('username'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
+                        if (Auth::guard($guard)->attempt(['username' => $request->get('username'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ])) 
                         {
                             // 认证通过...
                             $rule=1;
@@ -104,7 +104,7 @@ class LoginController extends Controller
                         break;
                     case 3:
                         // 尝试登录
-                        if (Auth::guard($guard)->attempt(['mobile' => $request->get('mobile'), 'password' => $request->get('userpwd') ,'is_lock' => 0 ,'role_group'=>1 ])) 
+                        if (Auth::guard($guard)->attempt(['mobile' => $request->get('mobile'), 'password' => $request->get('userpwd') ,'is_lock' => 0  ])) 
                         {
                             // 认证通过...
                             $rule=1;

@@ -94,7 +94,6 @@ class RegisterController extends Controller
                     $user->mobile = $request->get('mobile');
                     $user->password = bcrypt($request->get('userpwd'));
                     $user->remember_token = "";
-                    $user->role_group = 1;
                     $user->is_lock = 0;
                     if ($user->save()) 
                     {

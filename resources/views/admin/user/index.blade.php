@@ -52,6 +52,7 @@
                 <td><i v-if="item.is_lock == 1"  class="fa fa-lock"></i> <i v-if="item.is_lock == 0"  class="fa fa-unlock"></i></td>
                 <td>
                   <div class="tools">
+                    <button type="button" @click="set_action(item.id)" class="btn btn-primary" > <i class="fa fa-magic"></i> {{trans('admin.website_action_set_role')}}</button>
                     <button type="button" @click="link_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
                     <button type="button"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</button>
                   </div>
@@ -90,6 +91,7 @@ new Vue({
     el: '#app-content',
     data: {
              apiurl_list          :'{{$website["apiurl_list"]}}',
+             linkurl_set          :'{{$website["link_set"]}}',  
              linkurl_edit         :'{{$website["link_edit"]}}', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
@@ -220,6 +222,11 @@ new Vue({
             link_action:function(data)
             {
                 
+            },
+            //设置操作跳转
+            set_action:function(data)
+            {
+              window.location.href=this.linkurl_set+data;
             }
 
         }            

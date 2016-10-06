@@ -66,7 +66,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::get('setting', 'SettingController@index');
 
 	Route::get('user', 'UserController@index');
-
+	Route::get('user/set/{id}', 'UserController@set');
 	Route::get('userrole', 'UserroleController@index');
 	Route::get('userrole/add', 'UserroleController@add');
 	Route::get('userrole/edit/{id}', 'UserroleController@edit');
@@ -83,12 +83,16 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('user/api_list', 'UserController@api_list');
 
 	Route::post('userrole/api_list', 'UserroleController@api_list');
+	Route::post('userrole/api_get_role', 'UserroleController@api_get_role');
+	Route::post('userrole/api_cancel_role', 'UserroleController@api_cancel_role');
+	Route::post('userrole/api_list_related', 'UserroleController@api_list_related');
 	Route::post('userrole/api_add', 'UserroleController@api_add');
 	Route::post('userrole/api_info', 'UserroleController@api_info');
 	Route::post('userrole/api_edit', 'UserroleController@api_edit');
 
 	Route::post('userpermission/api_list', 'UserpermissionController@api_list');
 	Route::post('userpermission/api_get_permission', 'UserpermissionController@api_get_permission');
+	Route::post('userpermission/api_cancel_permission', 'UserpermissionController@api_cancel_permission');
 	Route::post('userpermission/api_list_related', 'UserpermissionController@api_list_related');
 	Route::post('userpermission/api_add', 'UserpermissionController@api_add');
 	Route::post('userpermission/api_info', 'UserpermissionController@api_info');

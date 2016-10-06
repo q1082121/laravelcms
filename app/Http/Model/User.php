@@ -3,10 +3,11 @@
 namespace App\Http\Model;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-
-class User extends Authenticatable 
+//use Illuminate\Database\Eloquent\Model;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
+class User extends Authenticatable//\Eloquent 
 {
+    use EntrustUserTrait;
     /**
      * The attributes that are mass assignable.
      *

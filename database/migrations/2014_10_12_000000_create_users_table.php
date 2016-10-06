@@ -18,7 +18,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
 			$table->string('mobile',15)->unique()->nullable();
             $table->string('password');
-			$table->tinyInteger('role_group')->default(0);
 			$table->tinyInteger('is_lock')->default(0);
             $table->rememberToken();
             $table->timestamps();

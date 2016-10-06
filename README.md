@@ -6,6 +6,9 @@
 1. 启动 redis-server.exe 
 2. 使用命令行 建立数据库魔法
    php artisan migrate
+   
+   composer require zizaco/entrust 5.2.x-dev
+   
 3. 注册用户(当前默认为用户名注册)已扩展 Email Mobile 注册字段
 4. 登录后台
 5. 设置角色权限

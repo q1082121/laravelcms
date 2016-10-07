@@ -108,6 +108,11 @@ class PublicController extends Controller
 			{
 				alert('/user/logout','当前角色尚未授权');
 			}
+			else
+			{
+				$roleinfo=$user->roles;
+				
+			}
         }
 		else
 		{	

@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 
 //使用Role模型
 use App\Http\Model\Role;
+//使用User模型
+use App\Http\Model\User;
 use DB;
 //使用内存缓存
 use Redis;
@@ -299,8 +301,9 @@ class UserroleController extends PublicController
 	*******************************************/
 	public function api_get_role(Request $request)  
 	{
-		$condition['role_id']=$request->get('role_id');
+		
 		$condition['user_id']=$request->get('id');
+		$condition['role_id']=$request->get('role_id');
 		$info_count=DB::table('role_user')->where($condition)->count();
 		if($info_count)
 		{
@@ -314,26 +317,49 @@ class UserroleController extends PublicController
 		}
 		else
 		{
-			$info=DB::table('role_user')->insert($condition);
-			if($info)//true
+			switch (1) 
 			{
-				$msg_array['status']='1';
-				$msg_array['info']=trans('admin.website_action_set_success');
-				$msg_array['is_reload']=0;
-				$msg_array['curl']='';
-				$msg_array['resource']='';
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';
-			}
-			else
-			{
-				$msg_array['status']='0';
-				$msg_array['info']=trans('admin.website_action_set_failure');
-				$msg_array['is_reload']=0;
-				$msg_array['curl']='';
-				$msg_array['resource']="";
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';	
+				//扩展接口方法
+				case '1':
+							$user = User::where('id', '=', $request->get('id'))->first();
+							$user->attachRole($request->get('role_id'));
+
+							$msg_array['status']='1';
+							$msg_array['info']=trans('admin.website_action_set_success');
+							$msg_array['is_reload']=0;
+							$msg_array['curl']='';
+							$msg_array['resource']='';
+							$msg_array['param_way']='';
+							$msg_array['param_keyword']='';
+					break;
+				//自定义方法	
+				case '2':
+							$info=DB::table('role_user')->insert($condition);
+							if($info)//true
+							{
+								$msg_array['status']='1';
+								$msg_array['info']=trans('admin.website_action_set_success');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';
+							}
+							else
+							{
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.website_action_set_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']="";
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';	
+							}
+					break;	
+				
+				default:
+					# code...
+					break;
 			}
 			
 		}
@@ -346,31 +372,54 @@ class UserroleController extends PublicController
 	*******************************************/
 	public function api_cancel_role(Request $request)  
 	{
-		$condition['role_id']=$request->get('role_id');
-		$condition['user_id']=$request->get('id');
-		$info=DB::table('role_user')->where($condition)->delete();//返回1;
-		if($info)
-		{
-			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_cancel_success');
-			$msg_array['is_reload']=0;
-			$msg_array['curl']='';
-			$msg_array['resource']='';
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
-		}
-		else
-		{
+		switch (1) 
+		{	//扩展接口方法
+			case '1':
+						$user = User::where('id', '=', $request->get('id'))->first();
+						$user->detachRole($request->get('role_id'));
+
+						$msg_array['status']='1';
+						$msg_array['info']=trans('admin.website_cancel_success');
+						$msg_array['is_reload']=0;
+						$msg_array['curl']='';
+						$msg_array['resource']='';
+						$msg_array['param_way']='';
+						$msg_array['param_keyword']='';
+				break;
+			//自定义方法	
+			case '2':
+						$condition['role_id']=$request->get('role_id');
+						$condition['user_id']=$request->get('id');
+						$info=DB::table('role_user')->where($condition)->delete();//返回1;
+						if($info)
+						{
+							$msg_array['status']='1';
+							$msg_array['info']=trans('admin.website_cancel_success');
+							$msg_array['is_reload']=0;
+							$msg_array['curl']='';
+							$msg_array['resource']='';
+							$msg_array['param_way']='';
+							$msg_array['param_keyword']='';
+						}
+						else
+						{
+							
+							$msg_array['status']='0';
+							$msg_array['info']=trans('admin.website_cancel_error');
+							$msg_array['is_reload']=0;
+							$msg_array['curl']='';
+							$msg_array['resource']='';
+							$msg_array['param_way']='';
+							$msg_array['param_keyword']='';	
+							
+						}
+				break;	
 			
-			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_cancel_error');
-			$msg_array['is_reload']=0;
-			$msg_array['curl']='';
-			$msg_array['resource']='';
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
-			
+			default:
+				# code...
+				break;
 		}
+
         return response()->json($msg_array);
 
 	}

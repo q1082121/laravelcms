@@ -96,7 +96,7 @@ class UserController extends PublicController
 		$wayoption[]=array('text'=>trans('admin.website_userrole_item_description'),'value'=>'description');
 		$website['wayoption']=json_encode($wayoption);
 		$website['id']=$id;
-		$condition['id']=$id;
+		$condition['user_id']=$id;
 		$info=object_array(DB::table('userinfos')->where($condition)->first());
 		$website['info']=$info;
 		return view('admin/user/set')->with('website',$website);

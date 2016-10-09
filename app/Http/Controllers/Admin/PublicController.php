@@ -22,6 +22,9 @@ use Carbon;
 //使用User模型
 use App\Http\Model\User;
 use Redirect;
+
+use Entrust;
+
 class PublicController extends Controller
 {
 	protected $userinfo;
@@ -102,21 +105,14 @@ class PublicController extends Controller
 			$this->website['website_user']=$this->user;
 
 			//用户角色组判断
-			$user = User::where('id', '=', $user['id'])->first();
-			$isrole=$user->hasRole(['admin', 'superadmin']);
-			if($isrole == false )
+			if(Entrust::hasRole(['admin', 'superadmin','admin.*']) == false )
 			{
-				alert('/user/logout','当前角色尚未授权');
-			}
-			else
-			{
-				$roleinfo=$user->roles;
-				
+				alert('/user/logout',trans('admin.website_user_role_failure'));
 			}
         }
 		else
 		{	
-				alert('/user/login','用户尚未登录');
+				alert('/user/login',trans('admin.website_user_role_login'));
 		}
         
 		

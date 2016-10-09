@@ -86,7 +86,8 @@ return [
     'website_action_set_success'                   =>   '设置成功',
     'website_action_set_failure'                   =>   '设置失败',
     'website_demo_tip'                             =>   '示例',
-
+    'website_user_role_failure'                    =>   '当前角色尚未授权',
+    'website_user_role_login'                      =>   '用户尚未登录',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置

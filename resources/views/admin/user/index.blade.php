@@ -41,7 +41,7 @@
             </thead>
             <tbody>
               <tr v-for="item in datalist">
-                <td>@{{ item.id }}</td>
+                <td>@{{ item.user_id }}</td>
                 <td>@{{ item.username }}</td>
                 <td>@{{ item.email }}</td>
                 <td>@{{ item.mobile }}</td>
@@ -52,8 +52,8 @@
                 <td><i v-if="item.is_lock == 1"  class="fa fa-lock"></i> <i v-if="item.is_lock == 0"  class="fa fa-unlock"></i></td>
                 <td>
                   <div class="tools">
-                    <button type="button" @click="set_action(item.id)" class="btn btn-primary" > <i class="fa fa-magic"></i> {{trans('admin.website_action_set_role')}}</button>
-                    <button type="button" @click="link_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
+                    <button type="button" @click="set_action(item.user_id)" class="btn btn-primary" > <i class="fa fa-magic"></i> {{trans('admin.website_action_set_role')}}</button>
+                    <button type="button" @click="link_action(item.user_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
                     <button type="button"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</button>
                   </div>
                 </td>

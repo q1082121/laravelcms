@@ -63,25 +63,63 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	 ***********************************************************************
 	 */	
     Route::get('/', 'HomeController@index');
-	Route::get('setting', 'SettingController@index');
+	Route::get('setting', 
+				[
+			        'middleware' => ['permission:model_setting'], 
+			        'uses' => 'SettingController@index'
+    			]);
 
-	Route::get('user', 'UserController@index');
-	Route::get('user/set/{id}', 'UserController@set');
-	Route::get('userrole', 'UserroleController@index');
-	Route::get('userrole/add', 'UserroleController@add');
-	Route::get('userrole/edit/{id}', 'UserroleController@edit');
-	Route::get('userrole/set/{id}', 'UserroleController@set');
-
-	Route::get('userpermission', 'UserpermissionController@index');
-	Route::get('userpermission/add', 'UserpermissionController@add');
-	Route::get('userpermission/edit/{id}', 'UserpermissionController@edit');
+	Route::get('user', 
+				[
+			        'middleware' => ['permission:model_user'], 
+			        'uses' => 'UserController@index'
+    			]);
+	Route::get('user/set/{id}', 
+				[
+			        'middleware' => ['permission:set_role'], 
+			        'uses' => 'UserController@set'
+    			]);
+	Route::get('userrole', 
+				[
+			        'middleware' => ['permission:model_role'], 
+			        'uses' => 'UserroleController@index'
+    			]);
+	Route::get('userrole/add', 
+				[
+			        'middleware' => ['permission:add'], 
+			        'uses' => 'UserroleController@add'
+    			]);
+	Route::get('userrole/edit/{id}', 
+				[
+			        'middleware' => ['permission:edit'], 
+			        'uses' => 'UserroleController@edit'
+    			]);
+	Route::get('userrole/set/{id}', 
+				[
+			        'middleware' => ['permission:set_permission'], 
+			        'uses' => 'UserroleController@set'
+    			]);
+	Route::get('userpermission', 
+				[
+			        'middleware' => ['permission:model_permission'], 
+			        'uses' => 'UserpermissionController@index'
+    			]);
+	Route::get('userpermission/add', 
+				[
+			        'middleware' => ['permission:add'], 
+			        'uses' => 'UserpermissionController@add'
+    			]);
+	Route::get('userpermission/edit/{id}', 
+				[
+			        'middleware' => ['permission:edit'], 
+			        'uses' => 'UserpermissionController@edit'
+    			]);
 	/*
 	 ***********************************************************************
 	 *	   post 路由
 	 ***********************************************************************
 	 */	
 	Route::post('user/api_list', 'UserController@api_list');
-
 	Route::post('userrole/api_list', 'UserroleController@api_list');
 	Route::post('userrole/api_get_role', 'UserroleController@api_get_role');
 	Route::post('userrole/api_cancel_role', 'UserroleController@api_cancel_role');

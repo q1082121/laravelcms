@@ -52,6 +52,7 @@ return [
     'website_navigation_eight'                     =>   '链接管理',
     'website_navigation_nine'                      =>   '微信管理',
     'website_navigation_ten'                       =>   '数据图表',
+    'website_navigation_class'                     =>   '栏目分类',
     'website_save'                                 =>   '保存信息',
     'website_getback'                              =>   '返回页面',
     'website_save_success'                         =>   '保存成功',

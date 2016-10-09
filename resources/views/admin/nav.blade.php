@@ -50,6 +50,11 @@
   <li class="header">{{trans('admin.website_main_navigation_three')}}</li>
   <li>
     <a href="javascript:void(0);">
+      <i class="fa fa-reorder"></i> <span>{{trans('admin.website_navigation_class')}}</span>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:void(0);">
       <i class="fa fa-newspaper-o"></i> <span>{{trans('admin.website_navigation_six')}}</span>
     </a>
   </li>

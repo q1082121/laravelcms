@@ -105,7 +105,7 @@ class PublicController extends Controller
 			$this->website['website_user']=$this->user;
 
 			//用户角色组判断
-			if(Entrust::hasRole(['admin', 'superadmin','admin.*']) == false )
+			if(Entrust::hasRole(['admin', 'superadmin','user']) == false )
 			{
 				alert('/user/logout',trans('admin.website_user_role_failure'));
 			}

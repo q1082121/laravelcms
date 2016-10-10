@@ -52,7 +52,7 @@ return [
     'website_navigation_eight'                     =>   '链接管理',
     'website_navigation_nine'                      =>   '微信管理',
     'website_navigation_ten'                       =>   '数据图表',
-    'website_navigation_class'                     =>   '栏目分类',
+    'website_navigation_classify'                  =>   '栏目分类',
     'website_save'                                 =>   '保存信息',
     'website_getback'                              =>   '返回页面',
     'website_save_success'                         =>   '保存成功',
@@ -77,6 +77,7 @@ return [
     'website_action_add'                           =>   '添加',
     'website_action_save'                          =>   '保存',
     'website_action_lock'                          =>   '锁开关',
+    'website_action_status'                        =>   '状态开关',
     'website_action_delete'                        =>   '删除',
     'website_action_set_permission'                =>   '设置权限',
     'website_action_get_permission'                =>   '获取权限',
@@ -89,6 +90,13 @@ return [
     'website_demo_tip'                             =>   '示例',
     'website_user_role_failure'                    =>   '当前角色尚未授权',
     'website_user_role_login'                      =>   '用户尚未登录',
+    'website_yes'                                  =>   '是',
+    'website_no'                                   =>   '否',
+    'website_perpage'                              =>   '单页',
+    'website_list'                                 =>   '列表',
+    'website_status_on'                            =>   '启用',
+    'website_status_off'                           =>   '禁用',
+    'website_select_default'                       =>   '请选择',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置
@@ -160,5 +168,30 @@ return [
     'website_userpermission_item_description'        =>   '角色权限描述',
     'userpermission_failure_tip1'                    =>   '请输入角色权限键值',
 
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 栏目分类
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_model_info'                              =>   '资讯模块',
+    'website_model_product'                           =>   '产品模块',
+
+    'website_classify_item_topclass'                  =>   '分类父类',
+    'website_classify_item_modelid'                   =>   '分类模块',
+    'website_classify_item_name'                      =>   '分类名称',
+    'website_classify_item_bcid'                      =>   '大类',
+    'website_classify_item_scid'                      =>   '小类',
+    'website_classify_item_topid'                     =>   '父类',
+    'website_classify_item_grade'                     =>   '级别',
+    'website_classify_item_navflag'                   =>   '主导航',
+    'website_classify_item_perpage'                   =>   '单页/列表',
+    'website_classify_item_attachment'                =>   '封面',
+    'website_classify_item_orderid'                   =>   '排序',
+    'website_classify_item_linkurl'                   =>   '链接',
+    'website_classify_item_status'                    =>   '状态',
+    'classify_failure_tip1'                           =>   '请输入分类名称',
 
 ];

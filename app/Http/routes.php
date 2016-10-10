@@ -114,6 +114,16 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'UserpermissionController@edit'
     			]);
+	Route::get('classify', 
+				[
+			        'middleware' => ['ability:admin,model_classify'], 
+			        'uses' => 'ClassifyController@index'
+    			]);
+	Route::get('classify/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'ClassifyController@add'
+    			]);
 	/*
 	 ***********************************************************************
 	 *	   post 路由
@@ -136,8 +146,13 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('userpermission/api_info', 'UserpermissionController@api_info');
 	Route::post('userpermission/api_edit', 'UserpermissionController@api_edit');
 
+	Route::post('classify/api_list', 'ClassifyController@api_list');
+	Route::post('classify/api_add', 'ClassifyController@api_add');
+	Route::post('classify/api_info', 'ClassifyController@api_info');
+	Route::post('classify/api_edit', 'ClassifyController@api_edit');
+
 	Route::post('setting', 'SettingController@saveaction');
-	Route::resource('article', 'ArticleController');
+
 });
 
 Route::get('/home', 'HomeController@index');

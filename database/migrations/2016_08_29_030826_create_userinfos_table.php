@@ -14,16 +14,16 @@ class CreateUserinfosTable extends Migration
     {
         Schema::create('userinfos', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('name',50)->nullable();
-			$table->string('nick',50)->nullable();
-			$table->tinyInteger('sex')->default(0);
-			$table->timestamp('birthday')->nullable();
-			$table->string('qq',15)->nullable();
-			$table->integer('area_pid')->default(0);
-			$table->integer('area_cid')->default(0);
-			$table->integer('area_xid')->default(0);
-			$table->integer('score')->default(0);
-			$table->DECIMAL('money',8,2);
+			$table->string('name',50)->nullable();		//姓名
+			$table->string('nick',50)->nullable();		//昵称
+			$table->tinyInteger('sex')->default(0);		//性别
+			$table->timestamp('birthday')->nullable();	//生日
+			$table->string('qq',15)->nullable();		//QQ
+			$table->integer('area_pid')->default(0);	//省级
+			$table->integer('area_cid')->default(0);	//市级
+			$table->integer('area_xid')->default(0);	//县级
+			$table->integer('score')->default(0);		//积分
+			$table->DECIMAL('money',8,2);				//钱包	
 			$table->string('user_id')->unique();
 			$table->timestamps();
 		});

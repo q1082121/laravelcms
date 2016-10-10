@@ -237,4 +237,5 @@ function object_array($array)
    }
    return $array;
 }
+
 ?>

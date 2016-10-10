@@ -4,11 +4,10 @@
 
 #	使用了laravel哪些扩展包？ composer.json
 1. zizaco/entrust 权限验证
-2. etrepat/baum 无限级分类树
-3. predis/predis redis-php扩展包
-4. overtrue/laravel-lang laravel多个国家的语言包
-5. gregwar/captcha 验证码类库
-6. barryvdh/laravel-debugbar 调式Debug插件
+2. predis/predis redis-php扩展包
+3. overtrue/laravel-lang laravel多个国家的语言包
+4. gregwar/captcha 验证码类库
+5. barryvdh/laravel-debugbar 调式Debug插件
 
 #	laravel使用了哪些前端组件？ bower.json
 

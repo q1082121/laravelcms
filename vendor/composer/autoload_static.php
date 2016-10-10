@@ -309,6 +309,7 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
 
     public static $classMap = array (
         'ArticleSeeder' => __DIR__ . '/../..' . '/database/seeds/ArticleSeeder.php',
+        'CreateClassifyTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_10_020548_create_classify_table.php',
         'CreateLogsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_07_020701_create_logs_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUserinfosTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_29_030826_create_userinfos_table.php',
@@ -821,6 +822,7 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'Zizaco\\Entrust\\MigrationCommand' => __DIR__ . '/..' . '/zizaco/entrust/src/commands/MigrationCommand.php',
+        'app\\Common\\lib\\Cates' => __DIR__ . '/../..' . '/app/Common/lib/Cates.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

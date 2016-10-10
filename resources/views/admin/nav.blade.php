@@ -49,8 +49,8 @@
   </li>
   <li class="header">{{trans('admin.website_main_navigation_three')}}</li>
   <li>
-    <a href="javascript:void(0);">
-      <i class="fa fa-reorder"></i> <span>{{trans('admin.website_navigation_class')}}</span>
+    <a href="/admin/classify">
+      <i class="fa fa-reorder"></i> <span>{{trans('admin.website_navigation_classify')}}</span>
     </a>
   </li>
   <li>

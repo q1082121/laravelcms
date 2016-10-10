@@ -49,6 +49,10 @@ class PublicController extends Controller
 
 		//分页常量定义
 		$this->pagesize=$pagesize=env('APP_ADMIN_PAGE_SIZE', 20);
+		//默认常量数据
+		$this->modellist[]=array('text'=>trans('admin.website_model_info'),'value'=>1);
+		$this->modellist[]=array('text'=>trans('admin.website_model_product'),'value'=>2);
+
 		/*
 	    |--------------------------------------------------------------------------
 	    | 默认消息 - 验证信息

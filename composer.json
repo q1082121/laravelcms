@@ -22,7 +22,8 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+			"app/Common/lib/Cates.php" 
         ],
         "psr-4": {
             "App\\": "app/"

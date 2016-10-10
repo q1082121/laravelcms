@@ -65,7 +65,7 @@
                     <button type="button" @click="link_action(item.user_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
                     @endability
                     @ability('admin', 'set_lock')
-                    <button type="button"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</button>
+                    <button v-if="item.user_id != 1" type="button"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</button>
                     @endability
                   </div>
                 </td>

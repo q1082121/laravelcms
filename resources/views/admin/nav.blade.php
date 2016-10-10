@@ -33,13 +33,13 @@
   </li>
   <li class="header">{{trans('admin.website_main_navigation_two')}}</li>
   <li>
-    <a href="/admin/userrole">
-      <i class="fa fa-cubes"></i> <span>{{trans('admin.website_navigation_role')}}</span>
+    <a href="/admin/userpermission">
+      <i class="fa fa-gavel"></i> <span>{{trans('admin.website_navigation_permission')}}</span>
     </a>
   </li>
   <li>
-    <a href="/admin/userpermission">
-      <i class="fa fa-gavel"></i> <span>{{trans('admin.website_navigation_permission')}}</span>
+    <a href="/admin/userrole">
+      <i class="fa fa-cubes"></i> <span>{{trans('admin.website_navigation_role')}}</span>
     </a>
   </li>
   <li>

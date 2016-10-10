@@ -14,7 +14,7 @@
             </button>
             </a>
           </h3>
-          @permission('search')
+          @ability('admin', 'search')
           <div style="position: absolute;right:170px;top:5px;width: 120px;">
           <select  v-model="pageparams.way" style="width: 100%;height:30px;line-height:30px;padding:1% 3%;">
             <option v-for="item in pageparams.wayoption" value="@{{ item.value }}">@{{ item.text }}</option>
@@ -28,7 +28,7 @@
               </div>
             </div>
           </div>
-          @endpermission
+          @endability
         </div>
         <!-- /.box-header -->
         <div class="box-body" >
@@ -50,10 +50,9 @@
                 <td>@{{ item.description }}</td>
                 <td>
                   <div class="tools">
-                    @permission('edit')
+                    @ability('admin', 'edit')
                     <button type="button" @click="edit_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
-                    @endpermission
-                    <!--<a href="javascript:void(0);"><i class="fa fa-trash-o"></i> {{trans('admin.website_action_delete')}}</a>-->
+                    @endability
                   </div>
                 </td>
               </tr>

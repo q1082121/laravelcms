@@ -65,53 +65,53 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
     Route::get('/', 'HomeController@index');
 	Route::get('setting', 
 				[
-			        'middleware' => ['permission:model_setting'], 
+			        'middleware' => ['ability:admin,model_setting'], 
 			        'uses' => 'SettingController@index'
     			]);
 
 	Route::get('user', 
 				[
-			        'middleware' => ['permission:model_user'], 
+			        'middleware' => ['ability:admin,model_user'], 
 			        'uses' => 'UserController@index'
     			]);
 	Route::get('user/set/{id}', 
 				[
-			        'middleware' => ['permission:set_role'], 
+			        'middleware' => ['ability:admin,set_role'], 
 			        'uses' => 'UserController@set'
     			]);
 	Route::get('userrole', 
 				[
-			        'middleware' => ['permission:model_role'], 
+			        'middleware' => ['ability:admin,model_role'], 
 			        'uses' => 'UserroleController@index'
     			]);
 	Route::get('userrole/add', 
 				[
-			        'middleware' => ['permission:add'], 
+			        'middleware' => ['ability:admin,add'], 
 			        'uses' => 'UserroleController@add'
     			]);
 	Route::get('userrole/edit/{id}', 
 				[
-			        'middleware' => ['permission:edit'], 
+			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'UserroleController@edit'
     			]);
 	Route::get('userrole/set/{id}', 
 				[
-			        'middleware' => ['permission:set_permission'], 
+			        'middleware' => ['ability:admin,set_permission'], 
 			        'uses' => 'UserroleController@set'
     			]);
 	Route::get('userpermission', 
 				[
-			        'middleware' => ['permission:model_permission'], 
+			        'middleware' => ['ability:admin,model_permission'], 
 			        'uses' => 'UserpermissionController@index'
     			]);
 	Route::get('userpermission/add', 
 				[
-			        'middleware' => ['permission:add'], 
+			        'middleware' => ['ability:admin,add'], 
 			        'uses' => 'UserpermissionController@add'
     			]);
 	Route::get('userpermission/edit/{id}', 
 				[
-			        'middleware' => ['permission:edit'], 
+			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'UserpermissionController@edit'
     			]);
 	/*

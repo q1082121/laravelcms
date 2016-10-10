@@ -11,7 +11,7 @@
             <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_navigation_five')}}</button>
             <button type="button" class="btn btn-primary" > <i class="fa fa-bookmark"></i> {{$website['info']['nick']}} </button>
           </h3>
-          @permission('search')
+          @ability('admin', 'search')
           <div style="position: absolute;right:170px;top:5px;width: 120px;">
           <select  v-model="pageparams.way" style="width: 100%;height:30px;line-height:30px;padding:1% 3%;">
             <option v-for="item in pageparams.wayoption" value="@{{ item.value }}">@{{ item.text }}</option>
@@ -25,7 +25,7 @@
               </div>
             </div>
           </div>
-          @endpermission
+          @endability
         </div>
         <!-- /.box-header -->
         <div class="box-body" >
@@ -47,12 +47,12 @@
                 <td>@{{ item.description }}</td>
                 <td>
                   <div class="tools">
-                    @permission('get_user_role')
+                    @ability('admin', 'get_user_role')
                     <button v-if="item.user_id != paramsdata.id " @click="get_action(item.id)" type="button"  class="btn btn-success" > <i class="fa fa-bookmark"></i> {{trans('admin.website_action_get_role')}}</button>
-                    @endpermission
-                    @permission('cancel_user_role')
+                    @endability
+                    @ability('admin', 'cancel_user_role')
                     <button v-else type="button"  class="btn btn-danger" @click="cancel_action(item.id)" > <i class="fa fa-bookmark-o"></i> {{trans('admin.website_action_cancel_role')}}</button>
-                    @endpermission
+                    @endability
                   </div>
                 </td>
               </tr>

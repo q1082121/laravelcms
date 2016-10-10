@@ -8,8 +8,8 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title"></h3>
-          
-          @permission('search')
+
+          @ability('admin', 'search')
           <div style="position: absolute;right:170px;top:5px;width: 120px;">
           <select  v-model="pageparams.way" style="width: 100%;height:30px;line-height:30px;padding:1% 3%;">
             <option v-for="item in pageparams.wayoption" value="@{{ item.value }}">@{{ item.text }}</option>
@@ -25,7 +25,7 @@
               </div>
             </div>
           </div>
-          @endpermission
+          @endability
 
         </div>
         <!-- /.box-header -->
@@ -58,15 +58,15 @@
                 <td><i v-if="item.is_lock == 1"  class="fa fa-lock"></i> <i v-if="item.is_lock == 0"  class="fa fa-unlock"></i></td>
                 <td>
                   <div class="tools">
-                    @permission('set_role')
+                    @ability('admin', 'set_role')
                     <button type="button" @click="set_action(item.user_id)" class="btn btn-primary" > <i class="fa fa-magic"></i> {{trans('admin.website_action_set_role')}}</button>
-                    @endpermission
-                    @permission('edit')
+                    @endability
+                    @ability('admin', 'edit')
                     <button type="button" @click="link_action(item.user_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
-                    @endpermission
-                    @permission('set_lock')
+                    @endability
+                    @ability('admin', 'set_lock')
                     <button type="button"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</button>
-                    @endpermission
+                    @endability
                   </div>
                 </td>
               </tr>

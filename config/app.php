@@ -162,6 +162,8 @@ return [
 		Barryvdh\Debugbar\ServiceProvider::class,
 		//edit by rubbish.boy@163.com 2016-09-29
 		Zizaco\Entrust\EntrustServiceProvider::class,
+		//edit by rubbish.boy@163.com 2016-10-11
+		Intervention\Image\ImageServiceProvider::class
 
     ],
 
@@ -210,6 +212,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 		//edit by rubbish.boy@163.com 2016-09-29
 		'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+		//edit by rubbish.boy@163.com 2016-10-11
+		'Image' => Intervention\Image\Facades\Image::class,
+		//edit by rubbish.boy@163.com 2016-10-11
+		'Input' => Illuminate\Support\Facades\Input::class,
     ],
 
 ];

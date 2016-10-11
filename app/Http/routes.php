@@ -124,12 +124,19 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,add'], 
 			        'uses' => 'ClassifyController@add'
     			]);
+	Route::get('classify/edit/{id}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'ClassifyController@edit'
+    			]);
 	/*
 	 ***********************************************************************
 	 *	   post 路由
 	 ***********************************************************************
 	 */	
 	Route::post('user/api_list', 'UserController@api_list');
+	Route::post('user/api_get_one', 'UserController@api_get_one');
+	
 	Route::post('userrole/api_list', 'UserroleController@api_list');
 	Route::post('userrole/api_get_role', 'UserroleController@api_get_role');
 	Route::post('userrole/api_cancel_role', 'UserroleController@api_cancel_role');
@@ -150,6 +157,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('classify/api_add', 'ClassifyController@api_add');
 	Route::post('classify/api_info', 'ClassifyController@api_info');
 	Route::post('classify/api_edit', 'ClassifyController@api_edit');
+	Route::post('classify/api_get_one', 'ClassifyController@api_get_one');
 
 	Route::post('setting', 'SettingController@saveaction');
 

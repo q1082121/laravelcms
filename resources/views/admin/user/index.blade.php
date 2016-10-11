@@ -65,7 +65,8 @@
                     <button type="button" @click="link_action(item.user_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
                     @endability
                     @ability('admin', 'set_lock')
-                    <button v-if="item.user_id != 1" type="button"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</button>
+                    <button v-if="item.user_id != 1 && item.is_lock == 0 " @click="get_one_action(item.user_id,'is_lock')" type="button"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</button>
+                    <button v-if="item.user_id != 1 && item.is_lock == 1 " @click="get_one_action(item.user_id,'is_lock')" type="button"  class="btn btn-danger" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_lock')}}</button>
                     @endability
                   </div>
                 </td>
@@ -103,6 +104,7 @@ new Vue({
     el: '#app-content',
     data: {
              apiurl_list          :'{{$website["apiurl_list"]}}',
+             apiurl_get_one       :'{{$website["apiurl_get_one"]}}',
              linkurl_set          :'{{$website["link_set"]}}',  
              linkurl_edit         :'{{$website["link_edit"]}}', 
              totals               : 0,
@@ -120,6 +122,11 @@ new Vue({
                     wayoption      :eval(htmlspecialchars_decode('{{$website["wayoption"]}}')),
                     keyword        :'',
              },
+             paramsdata:
+             {
+                    id             :'',
+                    fields         :'',
+             }
           },
     ready: function (){ 
             //这里是vue初始化完成后执行的函数 
@@ -241,7 +248,73 @@ new Vue({
             set_action:function(data)
             {
               window.location.href=this.linkurl_set+data;
-            }
+            },
+             //点击获取一键操作
+            get_one_action:function(data,fields)
+            {
+              this.paramsdata.id=data;
+              this.paramsdata.fields=fields;
+              this.$http.post(this.apiurl_get_one,this.paramsdata,{
+                before:function(request)
+                {
+                  loadi=layer.load("...");
+                },
+              })
+              .then((response) => 
+              {
+                this.return_info_action(response);
+
+              },(response) => 
+              {
+                //响应错误
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime')}}";
+                layermsg_error(msg);
+              })
+              .catch(function(response) {
+                //异常抛出
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime_error')}}";
+                layermsg_error(msg);
+              })
+            },
+            //返回信息处理
+            return_info_action:function(response)
+            {
+              layer.close(loadi);
+              var statusinfo=response.data;
+              if(statusinfo.status==1)
+              {
+                  if(statusinfo.is_reload==1)
+                  {
+                    layermsg_success_reload(statusinfo.info);
+                  }
+                  else
+                  {
+                    if(statusinfo.curl)
+                    {
+                      layermsg_s(statusinfo.info,statusinfo.curl);
+                    }
+                    else
+                    {
+                      layermsg_success(statusinfo.info);
+                      this.get_list_action();
+                    }
+                  }
+              }
+              else
+              {
+                  if(statusinfo.curl)
+                  {
+                    layermsg_e(statusinfo.info,statusinfo.curl);
+                  }
+                  else
+                  {
+
+                    layermsg_error(statusinfo.info);
+                  }
+              }
+            },
 
         }            
 })

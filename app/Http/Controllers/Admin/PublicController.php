@@ -138,6 +138,7 @@ class PublicController extends Controller
 	public function uploads_action($classname,$data_image)
 	{
 		// 引入 composer autoload
+		$suffix='.png';
 		require base_path('vendor').'/autoload.php';
 		//上传文件夹路径
 		$uploads_dir=public_path('uploads');
@@ -145,10 +146,11 @@ class PublicController extends Controller
 		$datetime=date('YmdHis');
 		//水印图片路径
 		$watermark_dir=public_path('watermark').'/logo.png';
+		$datetimename=$datetime.$suffix;
 		//保存文件名
-		$filename=$uploads_dir.'/'.$classname.'/'.$datetime.'.jpg';
-		$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$datetime.'.jpg';
-		$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$datetime.'.jpg';
+		$filename=$uploads_dir.'/'.$classname.'/'.$datetimename;
+		$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$datetimename;
+		$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$datetimename;
 
 
 		if($this->is_watermark==1)
@@ -182,7 +184,7 @@ class PublicController extends Controller
 		// 将处理后的图片重新保存到其他路径
 		Image::make($data_image)->save($filename);
 
-		return $datetime.'.jpg';
+		return $datetimename;
 
 	}
 

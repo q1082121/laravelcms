@@ -42,6 +42,7 @@
               <th>{{trans('admin.website_item_id')}}</th>
               <th>{{trans('admin.website_classify_item_modelid')}}</th>
               <th>{{trans('admin.website_classify_item_name')}}</th>
+              <th>{{trans('admin.website_classify_item_attachment')}}</th>
               <th>{{trans('admin.website_classify_item_bcid')}}</th>
               <th>{{trans('admin.website_classify_item_scid')}}</th>
               <th>{{trans('admin.website_classify_item_navflag')}}</th>
@@ -57,6 +58,7 @@
                 <td v-if="item.modelid == 1"> <i class="fa fa-newspaper-o"></i> {{trans('admin.website_model_info')}}</td>
                 <td v-if="item.modelid == 2"> <i class="fa fa-product-hunt"></i> {{trans('admin.website_model_product')}}</td>
                 <td>@{{ item.gtstr }} @{{ item.name }}</td>
+                <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/classify/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
                 <td>@{{ item.bcid }}</td>
                 <td>@{{ item.scid }}</td>
                 <td> <i v-if="item.navflag == 1" class="fa fa-star"></i> <i v-else class="fa fa-star-o"></i> </td>

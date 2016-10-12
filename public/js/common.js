@@ -221,56 +221,6 @@ function iFrameHeight(idname) {
         ifm.height = subWeb.body.scrollHeight;
     }
 }
-
-/***********************************
- * 方法名：从 file 域获取 本地图片 url 
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
- ***********************************/
-function getFileUrl(sourceId) 
-{ 
-	var url; 
-	if (navigator.userAgent.indexOf("MSIE")>=1) 
-	{ 
-		// IE 
-		url = document.getElementById(sourceId).value; 
-	} 
-	else if(navigator.userAgent.indexOf("Firefox")>0) 
-	{ 
-		// Firefox 
-		url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0)); 
-	} 
-	else if(navigator.userAgent.indexOf("Chrome")>0) 
-	{ 
-		// Chrome 
-		url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0)); 
-	} 
-	return url; 
-}
-/***********************************
- * 方法名：判断上传文件类型
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
- ***********************************/
-function getPhotoinfo(obj,default_src,attachment,nonepic){
-    photoExt=obj.value.substr(obj.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
-    if(photoExt!='.jpg' && photoExt!='.JPG' && photoExt!='.png' && photoExt!='.PNG' && photoExt!='.jpeg' && photoExt!='.JPEG')
-    {
-        var imgsrc = default_src; 
-        $("#"+nonepic).attr("src", imgsrc);
-
-        var obj_attachment = document.getElementById(attachment) ; 
-        obj_attachment.outerHTML=obj_attachment.outerHTML; 
-
-        layer.alert("请选择jpg/png类型图片"+photoExt,{icon: 7,skin: 'layer-ext-moon'});
-        return false;
-    }
-    else
-    {
-        var imgsrc=getFileUrl(attachment);
-        $("#"+nonepic).attr("src", imgsrc);
-    }
-} 
 /***********************************
  * 方法名：ajaxform返回处理 
  * 作者： Tommy（rubbish.boy@163.com）
@@ -400,4 +350,20 @@ function htmlspecialchars_decode(str){
   str = str.replace(/&quot;/g, "'");  
   str = str.replace(/&#039;/g, "'");  
   return str;  
+}
+/***********************************
+* 方法名：layer 弹窗
+* 作者： Tommy（rubbish.boy@163.com）
+* 时间：2016年6月6日
+***********************************/
+function open_box_image(dir)
+{
+    layer.open({
+      type: 1,
+      title: false,
+      closeBtn: 0,
+      skin: 'layui-layer-nobg', //没有背景色
+      shadeClose: true,
+      content: '<img src="'+dir+'">'
+    });
 }

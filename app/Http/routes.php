@@ -158,6 +158,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('classify/api_info', 'ClassifyController@api_info');
 	Route::post('classify/api_edit', 'ClassifyController@api_edit');
 	Route::post('classify/api_get_one', 'ClassifyController@api_get_one');
+	Route::post('classify/api_delete', 'ClassifyController@api_delete');
 	Route::post('classify/api_del_image', 'ClassifyController@api_del_image');
 
 	Route::post('setting', 'SettingController@saveaction');

@@ -195,5 +195,6 @@ return [
     'website_classify_item_linkurl'                   =>   '链接',
     'website_classify_item_status'                    =>   '状态',
     'classify_failure_tip1'                           =>   '请输入分类名称',
+    'classify_failure_delete'                         =>   '请先删除子类',
 
 ];

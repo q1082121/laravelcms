@@ -74,6 +74,9 @@
                     <button v-if="item.status == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_status')}}</button>
                     <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_status')}}</button>
                     @endability
+                    @ability('admin', 'delete')
+                    <button type="button" @click="delete_action(item.id)" class="btn btn-danger" > <i class="fa fa-trash"></i> {{trans('admin.website_action_delete')}}</button>
+                    @endability
                   </div>
                 </td>
               </tr>
@@ -111,6 +114,7 @@ new Vue({
     data: {
              apiurl_list          :'{{$website["apiurl_list"]}}',
              apiurl_get_one       :'{{$website["apiurl_get_one"]}}',
+             apiurl_delete        :'{{$website["apiurl_delete"]}}',
              linkurl_edit         :'{{$website["link_edit"]}}', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
@@ -247,6 +251,33 @@ new Vue({
             edit_action:function(data)
             {
                 window.location.href=this.linkurl_edit+data;
+            },
+             //点击删除
+            delete_action:function(data)
+            {
+              this.$http.post(this.apiurl_delete,{id:data},{
+                before:function(request)
+                {
+                  loadi=layer.load("...");
+                },
+              })
+              .then((response) => 
+              {
+                this.return_info_action(response);
+
+              },(response) => 
+              {
+                //响应错误
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime')}}";
+                layermsg_error(msg);
+              })
+              .catch(function(response) {
+                //异常抛出
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime_error')}}";
+                layermsg_error(msg);
+              })
             },
             //点击获取一键操作
             get_one_action:function(data,fields)

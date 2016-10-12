@@ -32,6 +32,7 @@ class ClassifyController extends PublicController
 		$website['cursitename']=trans('admin.website_navigation_classify');
 		$website['apiurl_list']=URL::action('Admin\ClassifyController@api_list');
 		$website['apiurl_get_one']=URL::action('Admin\ClassifyController@api_get_one');
+		$website['apiurl_delete']=URL::action('Admin\ClassifyController@api_delete');
 		$website['link_add']=URL::action('Admin\ClassifyController@add');
 		$website['link_edit']='/admin/classify/edit/';
 		$website['way']='name';
@@ -382,6 +383,57 @@ class ClassifyController extends PublicController
 				# code...
 				break;
 		}
+
+        return response()->json($msg_array);
+
+	}
+	/******************************************
+	****AuThor:rubbish@163.com
+	****Title :删除接口
+	*******************************************/
+	public function api_delete(Request $request)  
+	{
+
+		$subcondition['topid']=$request->get('id');
+		$subinfo=DB::table('classifies')->where($subcondition)->get();
+		if($subinfo)
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.classify_failure_delete');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']='';
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';	
+		}
+		else
+		{
+			$condition['id']=$request->get('id');
+			$info=DB::table('classifies')->where($condition)->delete();//返回1;
+			if($info)
+			{
+				$msg_array['status']='1';
+				$msg_array['info']=trans('admin.website_del_success');
+				$msg_array['is_reload']=0;
+				$msg_array['curl']='';
+				$msg_array['resource']='';
+				$msg_array['param_way']='';
+				$msg_array['param_keyword']='';
+			}
+			else
+			{
+				
+				$msg_array['status']='0';
+				$msg_array['info']=trans('admin.website_del_failure');
+				$msg_array['is_reload']=0;
+				$msg_array['curl']='';
+				$msg_array['resource']='';
+				$msg_array['param_way']='';
+				$msg_array['param_keyword']='';	
+				
+			}
+		}
+		
 
         return response()->json($msg_array);
 

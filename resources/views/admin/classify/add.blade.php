@@ -44,7 +44,9 @@
               <input type="file" size="30"  @change="onFileChange" />
               <input type="hidden" v-model="params_data.attachment" >
               </div>
+              @ability('admin', 'delete')
               <button v-else type="button" @click="del_image_action()"  class="btn btn-block btn-danger btn-lg">删除图片</button>
+              @endability
               <p class="help-block">200*200</p>
               <img  v-if="image" :src="image" width="200" height="200" />
               <script>

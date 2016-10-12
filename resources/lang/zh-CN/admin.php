@@ -59,6 +59,8 @@ return [
     'website_save_failure'                         =>   '保存失败',
     'website_add_success'                          =>   '添加成功',
     'website_add_failure'                          =>   '添加失败',
+    'website_del_success'                          =>   '删除成功',
+    'website_del_failure'                          =>   '删除失败',
     'website_add_exit'                             =>   '信息已存在',
     'website_cancel_success'                       =>   '取消成功',
     'website_cancel_error'                         =>   '取消失败',

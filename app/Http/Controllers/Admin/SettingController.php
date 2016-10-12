@@ -18,7 +18,7 @@ class SettingController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_two');
-		$website['info']=Cache::get('root');
+		$website['info']=Cache::store('file')->get('root');
 		return view('admin/setting/setting')->with('website',$website);
 	}
 	/******************************************
@@ -31,7 +31,7 @@ class SettingController extends PublicController
 		if($code =='save')
 		{
 			$getdata=$request->all();
-			Cache::forever('root', $getdata);
+			Cache::store('file')->forever('root', $getdata);
 			
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_save_success');

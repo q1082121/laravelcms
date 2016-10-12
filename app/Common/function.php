@@ -237,6 +237,39 @@ function object_array($array)
    }
    return $array;
 }
-
+/***********************************
+ * 方法名： 获取当前控制器名  
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function getCurrentControllerName($group='Admin')  
+{  
+	$fullname=getCurrentAction()['controller'];
+	switch ($group) 
+	{
+		case 'Admin':
+			$string = substr($fullname, 27);
+			$string = str_replace("Controller", "", $string);
+			break;
+	}
+    return $string;  
+}  
+/***********************************
+ * 方法名： 获取当前方法名   
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/  
+function getCurrentMethodName()  
+{  
+    return getCurrentAction()['method'];  
+}  
+/***********************************
+ * 方法名： 获取当前控制器与方法 
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function getCurrentAction()  
+{  
+    $action = \Route::current()->getActionName();  
+    list($class, $method) = explode('@', $action);  
+    return ['controller' => $class, 'method' => $method];  
+} 
 
 ?>

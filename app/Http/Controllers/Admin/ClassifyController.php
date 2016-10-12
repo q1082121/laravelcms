@@ -17,8 +17,7 @@ use URL;
 //使用自定义第三方类库:分类列表数据 
 use App\Common\lib\Cates; 
 
-// 导入 Intervention Image Manager Class
-use Intervention\Image\ImageManagerStatic as Image;
+
 
 
 class ClassifyController extends PublicController
@@ -39,6 +38,7 @@ class ClassifyController extends PublicController
 		$wayoption[]=array('text'=>trans('admin.website_classify_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
 		$website['modellist']=$this->modellist;
+
 		return view('admin/classify/index')->with('website',$website);
 	}
 	/******************************************
@@ -178,6 +178,17 @@ class ClassifyController extends PublicController
 			$params->grade=$classify_info['grade']+1;	
 		}
 
+		//图片上传处理接口
+		$attachment='attachment';
+		$data_image=$request->get($attachment);
+		if($data_image)
+		{
+			//上传文件归类：获取控制器名称
+			$classname=getCurrentControllerName();
+			$params->attachment=$this->uploads_action($classname,$data_image);
+			$params->isattach=1;
+		}
+
 		if ($params->save()) 
 		{
 			
@@ -300,37 +311,12 @@ class ClassifyController extends PublicController
 
 		//图片上传处理接口
 		$attachment='attachment';
-		if($request->get($attachment))
+		$data_image=$request->get($attachment);
+		if($data_image)
 		{
-			//上传文件类别名称
-			$classname='Classify';
-			// 引入 composer autoload
-			require base_path('vendor').'/autoload.php';
-			//上传文件夹路径
-			$uploads_dir=public_path('uploads');
-			//上传日期时间
-			$datetime=date('YmdHis');
-			//水印图片路径
-			$watermark_dir=public_path('watermark').'/logo.png';
-			//保存文件名
-			$filename=$uploads_dir.'/'.$classname.'/'.$datetime.'.jpg';
-			$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$datetime.'.jpg';
-			$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$datetime.'.jpg';
-
-			if($this->is_watermark==1)
-			{
-				// 合成水印
-				$img = Image::make($request->get($attachment))->insert($watermark_dir, 'bottom-right', 15, 10)->save($watermark_filename);
-			}
-			if($this->is_thumb==1)
-			{
-				// 生成缩略图
-				$img = Image::make($request->get($attachment))->resize(200, 200)->save($thumb_filename);
-			}
-			// 将处理后的图片重新保存到其他路径
-			Image::make($request->get($attachment))->save($filename);
-			
-			$params->attachment=$datetime.'.jpg';
+			//上传文件归类：获取控制器名称
+			$classname=getCurrentControllerName();
+			$params->attachment=$this->uploads_action($classname,$data_image);
 			$params->isattach=1;
 		}
 
@@ -407,49 +393,24 @@ class ClassifyController extends PublicController
 	*******************************************/
 	public function api_del_image(Request $request)
 	{
-		switch ($request->get('classname')) 
+		$classname=getCurrentControllerName();
+		switch ($classname) 
 		{
 			case 'Classify':
 				$params = Classify::find($request->get('id'));
-				$classname=$request->get('classname');
-				# code...
-				break;
-			
-			default:
 				# code...
 				break;
 		}
+		
 		if($params['isattach']==1)
 		{
-			//上传文件夹路径
-			$uploads_dir=public_path('uploads');
-			//保存文件名
-			$filename=$uploads_dir.'/'.$classname.'/'.$params['attachment'];
-			$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$params['attachment'];
-			$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$params['attachment'];
-
-			
-			if (file_exists($watermark_filename)) 
-			{
-			    unlink ($watermark_filename);
-			}
-			if (file_exists($thumb_filename)) 
-			{
-			    unlink ($thumb_filename);
-			}
-			if (file_exists($filename)) 
-			{
-			    $result=unlink ($filename);
-			    if($result)
-			    {
-			    	$params->attachment='';
-					$params->isattach=0;
-			    }
-			}
-			
+			$result=$this->del_image_action($classname,$params['attachment']);
 		}
 		if($result)
 		{
+			$params->attachment='';
+			$params->isattach=0;
+
 			if ($params->save()) 
 			{
 				$msg_array['status']='1';
@@ -484,4 +445,6 @@ class ClassifyController extends PublicController
 		
 		return response()->json($msg_array);
 	}
+	
+
 }

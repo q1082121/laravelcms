@@ -25,6 +25,9 @@ use Redirect;
 
 use Entrust;
 
+// 导入 Intervention Image Manager Class
+use Intervention\Image\ImageManagerStatic as Image;
+
 class PublicController extends Controller
 {
 	protected $userinfo;
@@ -42,7 +45,7 @@ class PublicController extends Controller
 	    |
 	    */
 		//后台通用参数设置
-		$root=Cache::get('root');
+		$root=Cache::store('file')->get('root');
 		$this->website['website_seo_title']=($root['systitle']?$root['systitle']:trans('admin.website_name'));
 		$this->website['website_seo_keyword']=$root['syskeyword'];
 		$this->website['website_seo_description']=$root['sysdescription'];
@@ -55,7 +58,7 @@ class PublicController extends Controller
 		$this->thumb_height=$thumb_height=env('APP_THUMB_HEIGHT', 200);				//缩略图高度
 		
 
-		//默认常量数据
+		//默认分类模块
 		$this->modellist[]=array('text'=>trans('admin.website_model_info'),'value'=>1);
 		$this->modellist[]=array('text'=>trans('admin.website_model_product'),'value'=>2);
 
@@ -126,5 +129,92 @@ class PublicController extends Controller
 		}
         
 		
+	}
+
+	/******************************************
+	****AuThor:rubbish@163.com
+	****Title :图片上传
+	*******************************************/
+	public function uploads_action($classname,$data_image)
+	{
+		// 引入 composer autoload
+		require base_path('vendor').'/autoload.php';
+		//上传文件夹路径
+		$uploads_dir=public_path('uploads');
+		//上传日期时间
+		$datetime=date('YmdHis');
+		//水印图片路径
+		$watermark_dir=public_path('watermark').'/logo.png';
+		//保存文件名
+		$filename=$uploads_dir.'/'.$classname.'/'.$datetime.'.jpg';
+		$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$datetime.'.jpg';
+		$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$datetime.'.jpg';
+
+
+		if($this->is_watermark==1)
+		{	
+			if(!is_dir($uploads_dir.'/'.$classname.'/watermark/')) 
+			{
+				mkdir($uploads_dir.'/'.$classname.'/watermark/', 0777, true);
+			}
+			// 合成水印
+			$img = Image::make($data_image)->insert($watermark_dir, 'bottom-right', 15, 10)->save($watermark_filename);
+
+			
+		}
+		if($this->is_thumb==1)
+		{
+			if(!is_dir($uploads_dir.'/'.$classname.'/thumb/')) 
+			{
+				mkdir($uploads_dir.'/'.$classname.'/thumb/', 0777, true);
+			}
+			// 生成缩略图
+			$img = Image::make($data_image)->resize($this->thumb_width,$this->thumb_height)->save($thumb_filename);
+		
+			
+		}
+
+		if(!is_dir($uploads_dir.'/'.$classname.'/')) 
+		{
+			mkdir($uploads_dir.'/'.$classname.'/', 0777, true);
+		}
+
+		// 将处理后的图片重新保存到其他路径
+		Image::make($data_image)->save($filename);
+
+		return $datetime.'.jpg';
+
+	}
+
+	/******************************************
+	****@AuThor : rubbish@163.com
+	****@Title  : 删除图片
+	****@return : Response
+	*******************************************/
+	public function del_image_action($classname,$attachment)
+	{
+		
+		//上传文件夹路径
+		$uploads_dir=public_path('uploads');
+		//保存文件名
+		$filename=$uploads_dir.'/'.$classname.'/'.$attachment;
+		$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$attachment;
+		$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$attachment;
+
+		
+		if (file_exists($watermark_filename)) 
+		{
+		    unlink ($watermark_filename);
+		}
+		if (file_exists($thumb_filename)) 
+		{
+		    unlink ($thumb_filename);
+		}
+		if (file_exists($filename)) 
+		{
+		    $result=unlink ($filename);
+		}
+
+		return $result;
 	}
 }

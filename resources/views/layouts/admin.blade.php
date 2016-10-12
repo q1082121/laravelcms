@@ -373,169 +373,230 @@
   </footer>
 
   <!-- Control Sidebar 设置-->
-  <aside class="control-sidebar control-sidebar-dark">
+  <aside class="control-sidebar control-sidebar-dark" id="app-setting">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li class="active"><a href='#control-sidebar-theme-demo-options-tab' data-toggle='tab'><i class='fa fa-wrench'></i></a></li>
       <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
       <!-- Home tab content -->
-      <div class="tab-pane" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+      <div class="tab-pane active" id="control-sidebar-theme-demo-options-tab">
+        <h3 class="control-sidebar-heading">布局选项</h3>
+        <div class='form-group'>
+        <label class='control-sidebar-subheading'>
+        <input type='checkbox' @click="layout_action('layout_fixed')" v-model="params_data.layout_fixed"  data-layout='fixed' class='pull-right'/>
+        固定布局
+        </label>
+        <p>激活固定布局。 您不能同时使用固定和盒装布局</p>
+        </div>
 
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+        <div class='form-group'>
+        <label class='control-sidebar-subheading'>
+        <input type='checkbox' @click="layout_action('layout_boxed')" v-model="params_data.layout_boxed" data-layout='layout-boxed' class='pull-right'/>
+        盒装布局
+        </label>
+        <p>激活带框的布局</p>
+        </div>
 
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
+        <div class='form-group'>
+        <label class='control-sidebar-subheading'>
+        <input type='checkbox' @click="layout_action('layout_sidebar_collapse')" v-model="params_data.layout_sidebar_collapse" data-layout='sidebar-collapse' class='pull-right'/>
+        切换侧栏
+        </label>
+        <p>切换左侧栏的状态（打开或折叠）</p>
+        </div>
+
+        <div class='form-group'>
+        <label class='control-sidebar-subheading'>
+        <input type='checkbox' @click="layout_action('layout_expandOnHover')" v-model="params_data.layout_expandOnHover" data-enable='expandOnHover' class='pull-right'/> 
+        侧栏在悬停时展开
+        </label>
+        <p>让侧栏小部件在悬停时展开</p>
+        </div>
+
+        <div class='form-group'>
+        <label class='control-sidebar-subheading'>
+        <input type='checkbox' @click="layout_action('layout_control_sidebar_open')" v-model="params_data.layout_control_sidebar_open"  data-controlsidebar='control-sidebar-open' class='pull-right'/>
+        切换右侧边栏幻灯片
+        </label>
+        <p>在幻灯片内容和推送内容效果之间切换</p>
+        </div>
+
+        <div class='form-group'>
+        <label class='control-sidebar-subheading'>
+        <input type='checkbox' @click="layout_action('layout_toggle')" v-model="params_data.layout_toggle" data-sidebarskin='toggle' class='pull-right'/>
+        切换右侧边皮肤
+        </label>
+        <p>在右侧边栏的暗色和浅色皮肤之间切换</p>
+        </div>
+        <!-- /.control-sidebar-Options -->
+
+        <h3 class="control-sidebar-heading">皮肤</h3>
+        <ul class="list-unstyled clearfix">
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9;"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin">蓝色</p>
           </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-user bg-yellow"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                <p>New phone +1(800)555-1234</p>
-              </div>
-            </a>
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-black" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display:block; width: 20%; float: left; height: 7px; background: #fefefe;"></span><span style="display:block; width: 80%; float: left; height: 7px; background: #fefefe;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin">白色</p>
           </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                <p>nora@example.com</p>
-              </div>
-            </a>
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin">紫色</p>
           </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                <p>Execution time 5 seconds</p>
-              </div>
-            </a>
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin">绿色</p>
           </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="label label-danger pull-right">70%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin">红色</p>
           </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Update Resume
-                <span class="label label-success pull-right">95%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-              </div>
-            </a>
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-yellow" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display:block; width: 80%; float: left; height: 7px;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin">黄色</p>
           </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Laravel Integration
-                <span class="label label-warning pull-right">50%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-              </div>
-            </a>
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-blue-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9;"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin" style="font-size: 12px">蓝白</p>
           </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Back End Framework
-                <span class="label label-primary pull-right">68%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-              </div>
-            </a>
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-black-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display:block; width: 20%; float: left; height: 7px; background: #fefefe;"></span><span style="display:block; width: 80%; float: left; height: 7px; background: #fefefe;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin" style="font-size: 12px">白白</p>
           </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-purple-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin" style="font-size: 12px">紫白</p>
+          </li>
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-green-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin" style="font-size: 12px">绿白</p>
+          </li>
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-red-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin" style="font-size: 12px">红白</p>
+          </li>
+          <li style="float:left; width: 33.33333%; padding: 5px;">
+              <a href="javascript:void(0);" data-skin="skin-yellow-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                  <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display:block; width: 80%; float: left; height: 7px;"></span>
+                  </div>
+                  <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
+                  </div>
+              </a>
+              <p class="text-center no-margin" style="font-size: 12px;">黄白</p>
+          </li>
+      </ul>
+      <!-- /.control-sidebar-Skins -->
 
       </div>
       <!-- /.tab-pane -->
       <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+      <div class="tab-pane" id="control-sidebar-stats-tab">统计信息选项卡内容</div>
       <!-- /.tab-pane -->
       <!-- Settings tab content -->
       <div class="tab-pane" id="control-sidebar-settings-tab">
         <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
+          <h3 class="control-sidebar-heading">常规设置</h3>
 
           <div class="form-group">
             <label class="control-sidebar-subheading">
-              Report panel usage
+              报告面板用法
               <input type="checkbox" class="pull-right" checked>
             </label>
 
             <p>
-              Some information about this general settings option
+              有关此常规设置选项的一些信息
             </p>
           </div>
           <!-- /.form-group -->
 
           <div class="form-group">
             <label class="control-sidebar-subheading">
-              Allow mail redirect
+              允许邮件重定向
               <input type="checkbox" class="pull-right" checked>
             </label>
 
             <p>
-              Other sets of options are available
+              其他选项集可用
             </p>
           </div>
           <!-- /.form-group -->
 
           <div class="form-group">
             <label class="control-sidebar-subheading">
-              Expose author name in posts
+              在帖子中公开作者姓名
               <input type="checkbox" class="pull-right" checked>
             </label>
 
             <p>
-              Allow the user to show his name in blog posts
+              允许用户在博客帖子中显示他的名字
             </p>
           </div>
           <!-- /.form-group -->
 
-          <h3 class="control-sidebar-heading">Chat Settings</h3>
+          <h3 class="control-sidebar-heading">聊天设置</h3>
 
           <div class="form-group">
             <label class="control-sidebar-subheading">
-              Show me as online
+              显示为在线
               <input type="checkbox" class="pull-right" checked>
             </label>
           </div>
@@ -543,7 +604,7 @@
 
           <div class="form-group">
             <label class="control-sidebar-subheading">
-              Turn off notifications
+              关闭通知
               <input type="checkbox" class="pull-right">
             </label>
           </div>
@@ -561,6 +622,7 @@
       <!-- /.tab-pane -->
     </div>
   </aside>
+
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -609,6 +671,122 @@
 <script src="{{asset('/module/jquery-form')}}/dist/jquery.form.min.js"></script>
 -->
 
+<script type="text/javascript">
+  Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
+  Vue.http.options.emulateJSON = true;
+  new Vue({
+      el: '#app-setting',
+      data: {
+               apiurl_layout                  :'{{$website["apiurl_layout"]}}', 
+               params_data:
+               {
+                  layout_fixed                :{{$website["layout"]["layout_fixed"]}},
+                  layout_boxed                :{{$website["layout"]["layout_boxed"]}},
+                  layout_sidebar_collapse     :{{$website["layout"]["layout_sidebar_collapse"]}},
+                  layout_expandOnHover        :{{$website["layout"]["layout_expandOnHover"]}},
+                  layout_control_sidebar_open :{{$website["layout"]["layout_control_sidebar_open"]}},
+                  layout_toggle               :{{$website["layout"]["layout_toggle"]}},
+                  layout_attributes           :'',
+               }
+            },
+      ready: function ()
+      { 
+          if(this.params_data.layout_fixed==1)
+          {
+             $("[data-layout='fixed']").trigger("readys");
+          }
+          if(this.params_data.layout_boxed==1)
+          {
+             $("[data-layout='layout-boxed']").trigger("readys");
+          }
+          if(this.params_data.layout_sidebar_collapse==1)
+          {
+             $("[data-layout='sidebar-collapse']").trigger("readys");
+          }
+          if(this.params_data.layout_expandOnHover==1)
+          {
+             $("[data-enable='expandOnHover']").trigger("readys");
+          }
+          if(this.params_data.layout_control_sidebar_open==1)
+          {
+             $("[data-controlsidebar='control-sidebar-open']").trigger("readys");
+          }
+          if(this.params_data.layout_toggle==1)
+          {
+             $("[data-sidebarskin='toggle']").trigger("readys");
+          }
+
+      }, 
+      methods: 
+      {
+        //提交修改数据
+        layout_action:function(data)
+        {
+          this.params_data.layout_attributes=data;
+          this.$http.post(this.apiurl_layout,this.params_data,{
+            before:function(request)
+            {
+              loadi=layer.load("...");
+            },
+          })
+          .then((response) => 
+          {
+            this.return_info_action(response);
+
+          },(response) => 
+          {
+            //响应错误
+            layer.close(loadi);
+            var msg="{{trans('admin.website_outtime')}}";
+            layermsg_error(msg);
+          })
+          .catch(function(response) {
+            //异常抛出
+            layer.close(loadi);
+            var msg="{{trans('admin.website_outtime_error')}}";
+            layermsg_error(msg);
+          })
+        },
+        //返回信息处理
+        return_info_action:function(response)
+        {
+          layer.close(loadi);
+          var statusinfo=response.data;
+          if(statusinfo.status==1)
+          {
+              if(statusinfo.is_reload==1)
+              {
+                layermsg_success_reload(statusinfo.info);
+              }
+              else
+              {
+                if(statusinfo.curl)
+                {
+                  layermsg_s(statusinfo.info,statusinfo.curl);
+                }
+                else
+                {
+                  layermsg_success(statusinfo.info);
+                }
+              }
+          }
+          else
+          {
+              if(statusinfo.curl)
+              {
+                layermsg_e(statusinfo.info,statusinfo.curl);
+              }
+              else
+              {
+
+                layermsg_error(statusinfo.info);
+              }
+          }
+        }
+
+      }               
+  })
+  </script>
 
 </body>
 </html>

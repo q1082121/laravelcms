@@ -25,6 +25,8 @@ use Redirect;
 
 use Entrust;
 
+//使用URL生成地址
+use URL;
 // 导入 Intervention Image Manager Class
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -46,9 +48,19 @@ class PublicController extends Controller
 	    */
 		//后台通用参数设置
 		$root=Cache::store('file')->get('root');
+		$layout=Cache::store('file')->get('layout');
+		$layoutdata['layout_fixed']=0;
+		$layoutdata['layout_boxed']=0;
+		$layoutdata['layout_sidebar_collapse']=0;
+		$layoutdata['layout_expandOnHover']=0;
+		$layoutdata['layout_control_sidebar_open']=0;
+		$layoutdata['layout_toggle']=0;
+		$this->website['layout']=$layout?$layout:$layoutdata;
+		//dump($layout);
 		$this->website['website_seo_title']=($root['systitle']?$root['systitle']:trans('admin.website_name'));
 		$this->website['website_seo_keyword']=$root['syskeyword'];
 		$this->website['website_seo_description']=$root['sysdescription'];
+		$this->website['apiurl_layout']=URL::action('Admin\HomeController@api_layout');
 
 		//常量定义
 		$this->pagesize=$pagesize=env('APP_ADMIN_PAGE_SIZE', 20);					//分页

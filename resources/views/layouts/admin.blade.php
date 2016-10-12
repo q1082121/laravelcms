@@ -386,7 +386,7 @@
         <h3 class="control-sidebar-heading">布局选项</h3>
         <div class='form-group'>
         <label class='control-sidebar-subheading'>
-        <input type='checkbox' @click="layout_action('layout_fixed')" v-model="params_data.layout_fixed"  data-layout='fixed' class='pull-right'/>
+        <input type='checkbox' @click="setting_action('layout_fixed')" v-model="params_data.layout_fixed"  data-layout='fixed' class='pull-right'/>
         固定布局
         </label>
         <p>激活固定布局。 您不能同时使用固定和盒装布局</p>
@@ -394,7 +394,7 @@
 
         <div class='form-group'>
         <label class='control-sidebar-subheading'>
-        <input type='checkbox' @click="layout_action('layout_boxed')" v-model="params_data.layout_boxed" data-layout='layout-boxed' class='pull-right'/>
+        <input type='checkbox' @click="setting_action('layout_boxed')" v-model="params_data.layout_boxed" data-layout='layout-boxed' class='pull-right'/>
         盒装布局
         </label>
         <p>激活带框的布局</p>
@@ -402,7 +402,7 @@
 
         <div class='form-group'>
         <label class='control-sidebar-subheading'>
-        <input type='checkbox' @click="layout_action('layout_sidebar_collapse')" v-model="params_data.layout_sidebar_collapse" data-layout='sidebar-collapse' class='pull-right'/>
+        <input type='checkbox' @click="setting_action('layout_sidebar_collapse')" v-model="params_data.layout_sidebar_collapse" data-layout='sidebar-collapse' class='pull-right'/>
         切换侧栏
         </label>
         <p>切换左侧栏的状态（打开或折叠）</p>
@@ -410,7 +410,7 @@
 
         <div class='form-group'>
         <label class='control-sidebar-subheading'>
-        <input type='checkbox' @click="layout_action('layout_expandOnHover')" v-model="params_data.layout_expandOnHover" data-enable='expandOnHover' class='pull-right'/> 
+        <input type='checkbox' @click="setting_action('layout_expandOnHover')" v-model="params_data.layout_expandOnHover" data-enable='expandOnHover' class='pull-right'/> 
         侧栏在悬停时展开
         </label>
         <p>让侧栏小部件在悬停时展开</p>
@@ -418,7 +418,7 @@
 
         <div class='form-group'>
         <label class='control-sidebar-subheading'>
-        <input type='checkbox' @click="layout_action('layout_control_sidebar_open')" v-model="params_data.layout_control_sidebar_open"  data-controlsidebar='control-sidebar-open' class='pull-right'/>
+        <input type='checkbox' @click="setting_action('layout_control_sidebar_open')" v-model="params_data.layout_control_sidebar_open"  data-controlsidebar='control-sidebar-open' class='pull-right'/>
         切换右侧边栏幻灯片
         </label>
         <p>在幻灯片内容和推送内容效果之间切换</p>
@@ -426,7 +426,7 @@
 
         <div class='form-group'>
         <label class='control-sidebar-subheading'>
-        <input type='checkbox' @click="layout_action('layout_toggle')" v-model="params_data.layout_toggle" data-sidebarskin='toggle' class='pull-right'/>
+        <input type='checkbox' @click="setting_action('layout_toggle')" v-model="params_data.layout_toggle" data-sidebarskin='toggle' class='pull-right'/>
         切换右侧边皮肤
         </label>
         <p>在右侧边栏的暗色和浅色皮肤之间切换</p>
@@ -436,7 +436,7 @@
         <h3 class="control-sidebar-heading">皮肤</h3>
         <ul class="list-unstyled clearfix">
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_blue')" href="javascript:void(0);" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9;"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -445,7 +445,7 @@
               <p class="text-center no-margin">蓝色</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-black" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a  @click="setting_action('skin_black')" href="javascript:void(0);" data-skin="skin-black" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display:block; width: 20%; float: left; height: 7px; background: #fefefe;"></span><span style="display:block; width: 80%; float: left; height: 7px; background: #fefefe;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -454,7 +454,7 @@
               <p class="text-center no-margin">白色</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_purple')" href="javascript:void(0);" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -463,7 +463,7 @@
               <p class="text-center no-margin">紫色</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_green')" href="javascript:void(0);" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -472,7 +472,7 @@
               <p class="text-center no-margin">绿色</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_red')" href="javascript:void(0);" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -481,7 +481,7 @@
               <p class="text-center no-margin">红色</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-yellow" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_yellow')" href="javascript:void(0);" data-skin="skin-yellow" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display:block; width: 80%; float: left; height: 7px;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -490,7 +490,7 @@
               <p class="text-center no-margin">黄色</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-blue-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_blue_light')" href="javascript:void(0);" data-skin="skin-blue-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9;"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -499,7 +499,7 @@
               <p class="text-center no-margin" style="font-size: 12px">蓝白</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-black-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_black_light')" href="javascript:void(0);" data-skin="skin-black-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display:block; width: 20%; float: left; height: 7px; background: #fefefe;"></span><span style="display:block; width: 80%; float: left; height: 7px; background: #fefefe;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -508,7 +508,7 @@
               <p class="text-center no-margin" style="font-size: 12px">白白</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-purple-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_purple_light')" href="javascript:void(0);" data-skin="skin-purple-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -517,7 +517,7 @@
               <p class="text-center no-margin" style="font-size: 12px">紫白</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-green-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_green_light')" href="javascript:void(0);" data-skin="skin-green-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -526,7 +526,7 @@
               <p class="text-center no-margin" style="font-size: 12px">绿白</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-red-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_red_light')" href="javascript:void(0);" data-skin="skin-red-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -535,7 +535,7 @@
               <p class="text-center no-margin" style="font-size: 12px">红白</p>
           </li>
           <li style="float:left; width: 33.33333%; padding: 5px;">
-              <a href="javascript:void(0);" data-skin="skin-yellow-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+              <a @click="setting_action('skin_yellow_light')" href="javascript:void(0);" data-skin="skin-yellow-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                   <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display:block; width: 80%; float: left; height: 7px;"></span>
                   </div>
                   <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span>
@@ -677,15 +677,27 @@
   new Vue({
       el: '#app-setting',
       data: {
-               apiurl_layout                  :'{{$website["apiurl_layout"]}}', 
+               apiurl_setting                  :'{{$website["apiurl_setting"]}}', 
                params_data:
                {
-                  layout_fixed                :{{$website["layout"]["layout_fixed"]}},
-                  layout_boxed                :{{$website["layout"]["layout_boxed"]}},
-                  layout_sidebar_collapse     :{{$website["layout"]["layout_sidebar_collapse"]}},
-                  layout_expandOnHover        :{{$website["layout"]["layout_expandOnHover"]}},
-                  layout_control_sidebar_open :{{$website["layout"]["layout_control_sidebar_open"]}},
-                  layout_toggle               :{{$website["layout"]["layout_toggle"]}},
+                  layout_fixed                :{{$website["setting"]["layout_fixed"]}},
+                  layout_boxed                :{{$website["setting"]["layout_boxed"]}},
+                  layout_sidebar_collapse     :{{$website["setting"]["layout_sidebar_collapse"]}},
+                  layout_expandOnHover        :{{$website["setting"]["layout_expandOnHover"]}},
+                  layout_control_sidebar_open :{{$website["setting"]["layout_control_sidebar_open"]}},
+                  layout_toggle               :{{$website["setting"]["layout_toggle"]}},
+                  skin_blue                   :{{$website["setting"]["skin_blue"]}},
+                  skin_black                  :{{$website["setting"]["skin_black"]}},
+                  skin_purple                 :{{$website["setting"]["skin_purple"]}},
+                  skin_green                  :{{$website["setting"]["skin_green"]}},
+                  skin_red                    :{{$website["setting"]["skin_red"]}},
+                  skin_yellow                 :{{$website["setting"]["skin_yellow"]}},
+                  skin_blue_light             :{{$website["setting"]["skin_blue_light"]}},
+                  skin_black_light            :{{$website["setting"]["skin_black_light"]}},
+                  skin_purple_light           :{{$website["setting"]["skin_purple_light"]}},
+                  skin_green_light            :{{$website["setting"]["skin_green_light"]}},
+                  skin_red_light              :{{$website["setting"]["skin_red_light"]}},
+                  skin_yellow_light           :{{$website["setting"]["skin_yellow_light"]}},
                   layout_attributes           :'',
                }
             },
@@ -716,14 +728,65 @@
              $("[data-sidebarskin='toggle']").trigger("readys");
           }
 
+
+          if(this.params_data.skin_blue==1)
+          {
+             $("[data-skin='skin-blue']").trigger("readys");
+          }
+          if(this.params_data.skin_black==1)
+          {
+             $("[data-skin='skin-black']").trigger("readys");
+          }
+          if(this.params_data.skin_purple==1)
+          {
+             $("[data-skin='skin-purple']").trigger("readys");
+          }
+          if(this.params_data.skin_green==1)
+          {
+             $("[data-skin='skin-green']").trigger("readys");
+          }
+          if(this.params_data.skin_red==1)
+          {
+             $("[data-skin='skin-red']").trigger("readys");
+          }
+          if(this.params_data.skin_yellow==1)
+          {
+             $("[data-skin='skin-yellow']").trigger("readys");
+          }
+
+          if(this.params_data.skin_blue_light==1)
+          {
+             $("[data-skin='skin-blue-light']").trigger("readys");
+          }
+          if(this.params_data.skin_black_light==1)
+          {
+             $("[data-skin='skin-black-light']").trigger("readys");
+          }
+          if(this.params_data.skin_purple_light==1)
+          {
+             $("[data-skin='skin-purple-light']").trigger("readys");
+          }
+          if(this.params_data.skin_green_light==1)
+          {
+             $("[data-skin='skin-green-light']").trigger("readys");
+          }
+          if(this.params_data.skin_red_light==1)
+          {
+             $("[data-skin='skin-red-light']").trigger("readys");
+          }
+          if(this.params_data.skin_yellow_light==1)
+          {
+             $("[data-skin='skin-yellow-light']").trigger("readys");
+          }
+
       }, 
       methods: 
       {
         //提交修改数据
-        layout_action:function(data)
+        setting_action:function(data)
         {
           this.params_data.layout_attributes=data;
-          this.$http.post(this.apiurl_layout,this.params_data,{
+          this.$http.post(this.apiurl_setting,this.params_data,{
             before:function(request)
             {
               loadi=layer.load("...");
@@ -767,6 +830,7 @@
                 else
                 {
                   layermsg_success(statusinfo.info);
+                  this.params_data=statusinfo.resource;
                 }
               }
           }

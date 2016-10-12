@@ -134,7 +134,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	 *	   post 路由
 	 ***********************************************************************
 	 */	
-	Route::post('home/api_layout', 'HomeController@api_layout');
+	Route::post('home/api_setting', 'HomeController@api_setting');
 
 	Route::post('user/api_list', 'UserController@api_list');
 	Route::post('user/api_get_one', 'UserController@api_get_one');

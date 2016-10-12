@@ -179,6 +179,13 @@
     }
 	
 	//////////////////////////////////////////////////////////////////
+	$("[data-skin]").on('readys', function (e) {
+      if($(this).hasClass('knob'))
+        return;
+      e.preventDefault();
+      change_skin($(this).data('skin'));
+    });
+	
 	
 	 $("[data-layout]").on('readys', function () {
       change_layout($(this).data('layout'));

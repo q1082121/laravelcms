@@ -74,6 +74,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,model_user'], 
 			        'uses' => 'UserController@index'
     			]);
+	Route::get('/userinfo', 
+				[
+			        'middleware' => ['ability:admin,set_userinfo'], 
+			        'uses' => 'UserController@userinfo'
+    			]);
 	Route::get('user/set/{id}', 
 				[
 			        'middleware' => ['ability:admin,set_role'], 
@@ -138,6 +143,8 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 
 	Route::post('user/api_list', 'UserController@api_list');
 	Route::post('user/api_get_one', 'UserController@api_get_one');
+	Route::post('userinfo/api_info', 'UserController@api_info');
+	Route::post('userinfo/api_edit', 'UserController@api_edit');
 	
 	Route::post('userrole/api_list', 'UserroleController@api_list');
 	Route::post('userrole/api_get_role', 'UserroleController@api_get_role');

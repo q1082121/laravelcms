@@ -47,6 +47,7 @@ return [
     'website_navigation_role'                      =>   '用户角色',
     'website_navigation_permission'                =>   '角色权限',
     'website_navigation_five'                      =>   '用户管理',
+    'website_navigation_userinfo'                  =>   '用户资料',
     'website_navigation_six'                       =>   '资讯管理',
     'website_navigation_seven'                     =>   '图片管理',
     'website_navigation_eight'                     =>   '链接管理',
@@ -143,7 +144,25 @@ return [
     'website_user_item_money'                       =>   '账户',
     'website_user_item_score'                       =>   '积分',
     'website_user_item_lock'                        =>   '状态锁',
-    
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 用户资料
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+
+    'website_userinfo_name'                          =>   '姓名',
+    'website_userinfo_nick'                          =>   '昵称',
+    'website_userinfo_sex'                           =>   '性别',
+    'website_userinfo_birthday'                      =>   '出生日期',
+    'website_userinfo_qq'                            =>   'QQ',
+    'website_userinfo_area'                          =>   '地区',
+    'website_userinfo_area_pid'                      =>   '省份',
+    'website_userinfo_area_cid'                      =>   '城市',
+    'website_userinfo_area_xid'                      =>   '县区',
+
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 用户角色

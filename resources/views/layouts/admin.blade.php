@@ -300,7 +300,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">{{trans('admin.website_user_profile')}}</a>
+                  <a href="/admin/userinfo" class="btn btn-default btn-flat">{{trans('admin.website_user_profile')}}</a>
                 </div>
                 <div class="pull-right">
                   <a href="/user/logout" class="btn btn-default btn-flat">{{trans('admin.website_user_signout')}}</a>

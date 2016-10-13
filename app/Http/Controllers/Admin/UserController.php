@@ -79,6 +79,37 @@ class UserController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
+	****AuThor:rubbish@163.com
+	****Title :详情接口
+	*******************************************/
+	public function api_info(Request $request)  
+	{
+
+		$condition['user_id']=$request->get('id');
+		$info=DB::table('userinfos')->where($condition)->first();
+		if($info)
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']=$info;
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';
+		}
+		else
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']="";
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';
+		}
+        return response()->json($msg_array);
+	}
+	/******************************************
 	****AuThor : rubbish@163.com
 	****Title  : 设置
 	*******************************************/
@@ -100,6 +131,20 @@ class UserController extends PublicController
 		$info=object_array(DB::table('userinfos')->where($condition)->first());
 		$website['info']=$info;
 		return view('admin/user/set')->with('website',$website);
+	}
+	/******************************************
+	****AuThor:rubbish@163.com
+	****Title :用户资料
+	*******************************************/
+	public function userinfo()  
+	{
+		$website=$this->website;
+		$website['cursitename']=trans('admin.website_navigation_userinfo');
+		$website['apiurl_info']=URL::action('Admin\UserController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\UserController@api_edit');
+		$website['id']=$this->user['id'];
+
+		return view('admin/user/userinfo')->with('website',$website);
 	}
 	/******************************************
 	****AuThor:rubbish@163.com

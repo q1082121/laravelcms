@@ -11,7 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-		$this->call(ArticleSeeder::class);
+		$this->call(UserSeeder::class);
+		$this->call(RoleSeeder::class);
+		$this->call(PermissionSeeder::class);
+		//数据较大比较慢
+		$this->call(DistrictSeeder::class);
+		
     }
 }

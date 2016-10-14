@@ -110,6 +110,44 @@ class UserController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
+	****@AuThor : rubbish@163.com
+	****@Title  : 更新数据接口
+	****@return : Response
+	*******************************************/
+	public function api_edit(Request $request)
+	{
+		$condition['user_id']=$request->get('id');
+
+		$params['name']=$request->get('name');
+		$params['nick']=$request->get('nick');
+		$params['sex']=$request->get('sex');
+		$params['birthday']=$request->get('birthday');
+		$params['qq']=$request->get('qq');
+
+		$info=DB::table('userinfos')->where($condition)->update($params);
+		if ($info) 
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.website_save_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']=URL::action('Admin\UserController@index');
+			$msg_array['resource']='';
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';
+		} 
+		else 
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.website_save_exit');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']="";
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';	
+		}
+		return response()->json($msg_array);
+	}
+	/******************************************
 	****AuThor : rubbish@163.com
 	****Title  : 设置
 	*******************************************/

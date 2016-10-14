@@ -58,6 +58,7 @@ return [
     'website_getback'                              =>   '返回页面',
     'website_save_success'                         =>   '保存成功',
     'website_save_failure'                         =>   '保存失败',
+    'website_save_exit'                            =>   '无变更信息',
     'website_add_success'                          =>   '添加成功',
     'website_add_failure'                          =>   '添加失败',
     'website_del_success'                          =>   '删除成功',

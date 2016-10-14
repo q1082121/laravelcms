@@ -22,7 +22,8 @@
 	layer-v2.4 弹层组件
 	error 错误页面模板
 	login 用户登录,用户注册模板
-	
+	DateTimePicker 时间日期控件 兼容移动端
+
 	public/js/common.js 公共函数
 
 #	使用手册
@@ -34,16 +35,29 @@
 
 2.2 使用命令行 建立数据库魔法
     php artisan migrate
-
-3. 注册用户(当前默认为用户名注册)已扩展 Email Mobile 注册字段
-4. 登录后台
-5. 设置角色权限
-6. 设置用户角色
-
+	
+2.3 填充网站初始数据(由于地区数据比较多，生成比较慢，预计时间5-10分钟内)	
+	php artisan db:seed
+	
+	也可以单独填充数据
+	php artisan db:seed --class=UserSeeder		 账号默认密码:111111
+	php artisan db:seed --class=RoleSeeder
+	php artisan db:seed --class=PermissionSeeder
+	php artisan db:seed --class=DistrictSeeder	 数据较大
+	
 #	开发进展
 
++修改密码 开发中 ing
 +系统设置
 +用户角色
 +角色权限
 +用户管理
 +栏目分类
++用户资料
++资讯管理 开发中
++图片管理 开发中
++友情链接 开发中
++微信管理 开发中
++日志管理 开发中
++消息管理 开发中
++数据图表 开发中

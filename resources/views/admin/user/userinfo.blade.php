@@ -11,10 +11,28 @@
         </div>
         <!-- /.box-header -->
 
+          <link rel="stylesheet" type="text/css" href="{{asset('/module/DateTimePicker')}}/src/DateTimePicker.css" />
+          <script type="text/javascript" src="{{asset('/module/DateTimePicker')}}/src/DateTimePicker.js"></script>
+          <div id="dtBox"></div>
+          <script type="text/javascript">
+          
+            $(document).ready(function()
+            {
+              $("#dtBox").DateTimePicker({
+              
+                dateFormat: "yyyy-MM-dd",
+                timeFormat: "HH:mm",
+                dateTimeFormat: "yyyy-MM-dd HH:mm:ss"
+              
+              });
+            });
+          
+          </script>
+
           <div class="box-body">
             <div class="form-group">
               <label >{{trans('admin.website_userinfo_name')}} </label>
-              <input type="text" id="name" class="form-control" v-model="params_data.name"    >
+              <input type="text" id="name" class="form-control" v-model="params_data.name" >
             </div>
             <div class="form-group">
               <label >{{trans('admin.website_userinfo_nick')}}</label>
@@ -22,19 +40,17 @@
             </div>
             <div class="form-group">
               <label >{{trans('admin.website_userinfo_sex')}}</label>
-              
+              <br>
+              <input type="radio"  value="1" v-model="params_data.sex"> 男 
+              <input type="radio"  value="2" v-model="params_data.sex"> 女 
             </div>
             <div class="form-group">
               <label >{{trans('admin.website_userinfo_birthday')}}</label>
-              <input type="text" class="form-control" v-model="params_data.birthday"   >
+              <input type="text" class="form-control" v-model="params_data.birthday"  data-field="date" data-format="yyyy-MM-dd" readonly >
             </div>
             <div class="form-group">
               <label >{{trans('admin.website_userinfo_qq')}}</label>
               <input type="text" class="form-control" v-model="params_data.qq"   >
-            </div>
-            <div class="form-group">
-              <label >{{trans('admin.website_userinfo_area')}}</label>
-              
             </div>
           </div>
           <!-- /.box-body -->
@@ -64,8 +80,9 @@ new Vue({
              {
                 name                :'',
                 nick                :'',
-                sex                 :'',
+                sex                 :0,
                 birthday            :'',
+                qq                  :'',
                 id                  :'{{$website["id"]}}',
              },
           },

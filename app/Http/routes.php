@@ -74,10 +74,15 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,model_user'], 
 			        'uses' => 'UserController@index'
     			]);
-	Route::get('/userinfo', 
+	Route::get('userinfo', 
 				[
 			        'middleware' => ['ability:admin,set_userinfo'], 
 			        'uses' => 'UserController@userinfo'
+    			]);
+	Route::get('edit_pwd', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'UserController@edit_pwd'
     			]);
 	Route::get('user/set/{id}', 
 				[
@@ -143,6 +148,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 
 	Route::post('user/api_list', 'UserController@api_list');
 	Route::post('user/api_get_one', 'UserController@api_get_one');
+	Route::post('user/api_edit_pwd', 'UserController@api_edit_pwd');
 	Route::post('userinfo/api_info', 'UserController@api_info');
 	Route::post('userinfo/api_edit', 'UserController@api_edit');
 	

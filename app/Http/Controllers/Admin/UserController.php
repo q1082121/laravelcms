@@ -13,6 +13,7 @@ use App\Http\Model\User;
 use DB;
 //使用URL生成地址
 use URL;
+use Hash;
 class UserController extends PublicController
 {
 	/******************************************
@@ -148,6 +149,84 @@ class UserController extends PublicController
 		return response()->json($msg_array);
 	}
 	/******************************************
+	****@AuThor : rubbish@163.com
+	****@Title  : 修改密码接口
+	****@return : Response
+	*******************************************/
+	public function api_edit_pwd(Request $request)
+	{
+		$condition['id']=$request->get('id');
+		$user = User::findOrFail($request->get('id'));
+		$oldpwd  = $request->get('oldpwd');
+		$newpwd  = $request->get('newpwd');
+		$surepwd = $request->get('surepwd');
+		
+		$check=Hash::check($oldpwd, $user->password);
+		if($check)
+		{
+			if($newpwd!=$surepwd)
+			{
+				$msg_array['status']='0';
+				$msg_array['info']=trans('admin.website_editpwd_surefailure');
+				$msg_array['is_reload']=0;
+				$msg_array['curl']='';
+				$msg_array['resource']="";
+				$msg_array['param_way']='';
+				$msg_array['param_keyword']='';	
+			}
+			else if (strlen($newpwd)<6) 
+			{
+				$msg_array['status']='0';
+				$msg_array['info']=trans('admin.website_editpwd_failurelength');
+				$msg_array['is_reload']=0;
+				$msg_array['curl']='';
+				$msg_array['resource']="";
+				$msg_array['param_way']='';
+				$msg_array['param_keyword']='';
+			}
+			else
+			{
+				$params['password']=Hash::make($newpwd);
+				$params['remember_token']="";
+
+				$result=$user->fill($params)->save();
+				
+				if ($result) 
+				{
+					$msg_array['status']='1';
+					$msg_array['info']=trans('admin.website_edit_success');
+					$msg_array['is_reload']=0;
+					$msg_array['curl']=URL::action('User\LoginController@logout');
+					$msg_array['resource']='';
+					$msg_array['param_way']='';
+					$msg_array['param_keyword']='';
+				} 
+				else 
+				{
+					$msg_array['status']='0';
+					$msg_array['info']=trans('admin.website_edit_failure');
+					$msg_array['is_reload']=0;
+					$msg_array['curl']='';
+					$msg_array['resource']="";
+					$msg_array['param_way']='';
+					$msg_array['param_keyword']='';	
+				}
+			}
+		}
+		else
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.website_editpwd_failure');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']='';
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';	
+		}
+
+		return response()->json($msg_array);
+	}
+	/******************************************
 	****AuThor : rubbish@163.com
 	****Title  : 设置
 	*******************************************/
@@ -183,6 +262,19 @@ class UserController extends PublicController
 		$website['id']=$this->user['id'];
 
 		return view('admin/user/userinfo')->with('website',$website);
+	}
+	/******************************************
+	****AuThor:rubbish@163.com
+	****Title :修改密码
+	*******************************************/
+	public function edit_pwd()  
+	{
+		$website=$this->website;
+		$website['cursitename']=trans('admin.website_user_editpwd');
+		$website['apiurl_edit_pwd']=URL::action('Admin\UserController@api_edit_pwd');
+		$website['id']=$this->user['id'];
+		
+		return view('admin/user/edit_pwd')->with('website',$website);
 	}
 	/******************************************
 	****AuThor:rubbish@163.com

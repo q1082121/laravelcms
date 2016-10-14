@@ -302,8 +302,11 @@
                 <div class="pull-left">
                   <a href="/admin/userinfo" class="btn btn-default btn-flat">{{trans('admin.website_user_profile')}}</a>
                 </div>
-                <div class="pull-right">
+                <div class="pull-right" >
                   <a href="/user/logout" class="btn btn-default btn-flat">{{trans('admin.website_user_signout')}}</a>
+                </div>
+                <div class="pull-right" style="margin-right:6px">
+                  <a href="/admin/edit_pwd" class="btn btn-default btn-flat">{{trans('admin.website_user_editpwd')}}</a>
                 </div>
               </li>
             </ul>

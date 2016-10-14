@@ -29,6 +29,7 @@ return [
     'website_user_friends'                         =>   '好友',
 	'website_user_profile'                         =>   '用户档案',
     'website_user_signout'                         =>   '退出登录',
+    'website_user_editpwd'                         =>   '修改密码',
     'website_user_online'                          =>   '在线',
     'website_search_tip'                           =>   '搜索...',
     'website_site'                                 =>   '当前路径',
@@ -59,6 +60,8 @@ return [
     'website_save_success'                         =>   '保存成功',
     'website_save_failure'                         =>   '保存失败',
     'website_save_exit'                            =>   '无变更信息',
+    'website_edit_success'                         =>   '修改成功',
+    'website_edit_failure'                         =>   '修改失败',
     'website_add_success'                          =>   '添加成功',
     'website_add_failure'                          =>   '添加失败',
     'website_del_success'                          =>   '删除成功',
@@ -166,6 +169,27 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | 默认消息 - 修改密码
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_editpwd_old'                            =>   '当前密码',
+    'website_editpwd_new'                            =>   '新的密码',
+    'website_editpwd_sure'                           =>   '确认密码',
+    'editpwd_failure_tip1'                           =>   '请输入当前密码',   
+    'editpwd_failure_tip2'                           =>   '请输入新的密码',
+    'editpwd_failure_tip3'                           =>   '新密码不能与旧密码相同',
+    'editpwd_failure_tip4'                           =>   '新密码长度不能少于6位',
+    'editpwd_failure_tip5'                           =>   '请输入确认密码',
+    'editpwd_failure_tip6'                           =>   '确认密码与新密码不相同',
+
+    'website_editpwd_failure'                        =>   '当前密码不正确',
+    'website_editpwd_surefailure'                    =>   '新密码和确认密码不相同',
+    'website_editpwd_failurelength'                  =>   '新密码长度至少6位',
+    /*
+    |--------------------------------------------------------------------------
     | 默认消息 - 用户角色
     |--------------------------------------------------------------------------
     |
@@ -216,5 +240,8 @@ return [
     'website_classify_item_status'                    =>   '状态',
     'classify_failure_tip1'                           =>   '请输入分类名称',
     'classify_failure_delete'                         =>   '请先删除子类',
+
+    
+
 
 ];

@@ -2,6 +2,9 @@
 # laravelcms V1.1.0 
 基于 laravel5.2 的内容管理系统  后台基于AdminLTE主题  前端组件Vue.js
 
+作者:rubbish.boy@163.com
+QQ	:471416739
+
 #	使用了laravel哪些扩展包？ composer.json
 1. zizaco/entrust 权限验证
 2. predis/predis redis-php扩展包

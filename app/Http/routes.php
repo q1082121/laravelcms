@@ -145,13 +145,15 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	 ***********************************************************************
 	 */	
 	Route::post('home/api_setting', 'HomeController@api_setting');
+	
+	Route::post('district/api_area', 'DistrictController@api_area');
 
 	Route::post('user/api_list', 'UserController@api_list');
 	Route::post('user/api_get_one', 'UserController@api_get_one');
 	Route::post('user/api_edit_pwd', 'UserController@api_edit_pwd');
 	Route::post('userinfo/api_info', 'UserController@api_info');
 	Route::post('userinfo/api_edit', 'UserController@api_edit');
-	
+
 	Route::post('userrole/api_list', 'UserroleController@api_list');
 	Route::post('userrole/api_get_role', 'UserroleController@api_get_role');
 	Route::post('userrole/api_cancel_role', 'UserroleController@api_cancel_role');

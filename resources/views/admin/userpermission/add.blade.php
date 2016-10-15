@@ -13,16 +13,22 @@
 
           <div class="box-body">
             <div class="form-group">
-              <label >{{trans('admin.website_userpermission_item_name')}} </label>
-              <input type="text" id="name" class="form-control" v-model="params_data.name"  placeholder="{{trans('admin.website_demo_tip')}}：add "  >
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_userpermission_item_name')}}</span>
+                <input type="text" id="name" class="form-control" v-model="params_data.name"  placeholder="{{trans('admin.website_demo_tip')}}：add "  >
+              </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_userpermission_item_display_name')}}</label>
-              <input type="text" class="form-control" v-model="params_data.display_name"  placeholder="{{trans('admin.website_demo_tip')}}：添加" >
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_userpermission_item_display_name')}}</span>
+                <input type="text" class="form-control" v-model="params_data.display_name"  placeholder="{{trans('admin.website_demo_tip')}}：添加" >
+              </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_userpermission_item_description')}}</label>
-              <input type="text" class="form-control" v-model="params_data.description"  placeholder="{{trans('admin.website_demo_tip')}}：添加操作权限" >
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_userpermission_item_description')}}</span>
+                <input type="text" class="form-control" v-model="params_data.description"  placeholder="{{trans('admin.website_demo_tip')}}：添加操作权限" >
+              </div>
             </div>
           </div>
           <!-- /.box-body -->

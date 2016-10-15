@@ -12,16 +12,22 @@
         <!-- /.box-header -->
           <div class="box-body">
             <div class="form-group">
-              <label >{{trans('admin.website_editpwd_old')}} </label>
-              <input type="password" class="form-control" v-model="params_data.oldpwd" >
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_editpwd_old')}}</span>
+                <input type="password" class="form-control" v-model="params_data.oldpwd" >
+              </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_editpwd_new')}}</label>
-              <input type="password" class="form-control" v-model="params_data.newpwd" >
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_editpwd_new')}}</span>
+                <input type="password" class="form-control" v-model="params_data.newpwd" >
+              </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_editpwd_sure')}}</label>
-              <input type="password" class="form-control" v-model="params_data.surepwd" >
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_editpwd_sure')}}</span>
+                <input type="password" class="form-control" v-model="params_data.surepwd" >
+              </div>
             </div>
           </div>
           <!-- /.box-body -->

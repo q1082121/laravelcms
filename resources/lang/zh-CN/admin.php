@@ -166,7 +166,9 @@ return [
     'website_userinfo_area_pid'                      =>   '省份',
     'website_userinfo_area_cid'                      =>   '城市',
     'website_userinfo_area_xid'                      =>   '县区',
-
+    'website_select_p'                               =>   '请选择省份',
+    'website_select_c'                               =>   '请选择城市',
+    'website_select_x'                               =>   '请选择乡县',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 修改密码

@@ -13,20 +13,26 @@
           
           <div class="box-body">
             <div class="form-group">
-              <label >{{trans('admin.website_classify_item_modelid')}} </label>
-              <select class="form-control" v-model="params_data.modelid">
-                <option v-for="item in modellist" value="@{{ item.value }}">@{{ item.text }}</option>
-              </select>
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_classify_item_modelid')}}</span>
+                <select class="form-control" v-model="params_data.modelid">
+                  <option v-for="item in modellist" value="@{{ item.value }}">@{{ item.text }}</option>
+                </select>
+              </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_classify_item_topclass')}} </label>
-              <select class="form-control" v-model="params_data.topid" >
-                <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
-              </select>
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_classify_item_topclass')}}</span>
+                <select class="form-control" v-model="params_data.topid" >
+                  <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
+                </select>
+              </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_classify_item_name')}}</label>
-              <input type="text" class="form-control" v-model="params_data.name"   >
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_classify_item_name')}}</span>
+                <input type="text" class="form-control" v-model="params_data.name"   >
+              </div>
             </div>
             <div class="form-group">
               <label >{{trans('admin.website_classify_item_attachment')}}</label><br>
@@ -72,30 +78,33 @@
                   
               });
               </script> 
-
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_classify_item_orderid')}}</label>
-              <input type="text" class="form-control" v-model="params_data.orderid"   >
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_classify_item_orderid')}}</span>
+                <input type="text" class="form-control" v-model="params_data.orderid"   >
+              </div>  
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_classify_item_linkurl')}}</label>
-              <input type="text" class="form-control" v-model="params_data.linkurl"   >
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_classify_item_linkurl')}}</span>
+                <input type="text" class="form-control" v-model="params_data.linkurl"   >
+              </div>
             </div>
             <div class="form-group">
                 <label >{{trans('admin.website_classify_item_navflag')}}</label>
-                <div style="clear:both;display:block;padding-left:10px;"><input type="radio"  value="1" v-model="params_data.navflag" style="margin-right:10px;"> {{trans('admin.website_yes')}}</div>
-                <div style="clear:both;display:block;padding-left:10px;"><input type="radio"  value="0" v-model="params_data.navflag" style="margin-right:10px;"> {{trans('admin.website_no')}}</div>
+                <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.navflag" style="margin-right:10px;"> {{trans('admin.website_yes')}}</div>
+                <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.navflag" style="margin-right:10px;"> {{trans('admin.website_no')}}</div>
             </div>
             <div class="form-group">
                 <label >{{trans('admin.website_classify_item_perpage')}}</label>
-                <div style="clear:both;display:block;padding-left:10px;"><input type="radio"  value="1" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.website_perpage')}}</div>
-                <div style="clear:both;display:block;padding-left:10px;"><input type="radio"  value="0" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.website_list')}}</div>
+                <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.website_perpage')}}</div>
+                <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.website_list')}}</div>
             </div>
             <div class="form-group">
                 <label >{{trans('admin.website_classify_item_status')}}</label>
-                <div style="clear:both;display:block;padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
-                <div style="clear:both;display:block;padding-left:10px;"><input type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
+                <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
+                <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
             </div>
           </div>
           <!-- /.box-body -->

@@ -243,7 +243,25 @@ return [
     'classify_failure_tip1'                           =>   '请输入分类名称',
     'classify_failure_delete'                         =>   '请先删除子类',
 
-    
-
-
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 文章资讯
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_article_select'                          =>   '请选择栏目分类',
+    'website_article_item_classid'                    =>   '分类',
+    'website_article_item_title'                      =>   '标题',
+    'website_article_item_introduction'               =>   '导读',
+    'website_article_item_author'                     =>   '作者',
+    'website_article_item_sources'                    =>   '来源',
+    'website_article_item_attachment'                 =>   '封面',
+    'website_article_item_content'                    =>   '内容',
+    'website_article_item_clicks'                     =>   '浏览',
+    'website_article_item_orderid'                    =>   '排序',
+    'website_article_item_linkurl'                    =>   '外链接',
+    'website_article_item_status'                     =>   '状态',
+    'article_failure_tip1'                            =>   '请填写标题',
 ];

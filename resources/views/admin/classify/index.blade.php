@@ -113,7 +113,7 @@ new Vue({
     el: '#app-content',
     data: {
              apiurl_list          :'{{$website["apiurl_list"]}}',
-             apiurl_get_one       :'{{$website["apiurl_get_one"]}}',
+             apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
              apiurl_delete        :'{{$website["apiurl_delete"]}}',
              linkurl_edit         :'{{$website["link_edit"]}}', 
              totals               : 0,
@@ -135,6 +135,7 @@ new Vue({
              {
                     id             :'',
                     fields         :'',
+                    modelname      :'{{$website["modelname"]}}',
              }
           },
     ready: function (){ 
@@ -255,7 +256,8 @@ new Vue({
              //点击删除
             delete_action:function(data)
             {
-              this.$http.post(this.apiurl_delete,{id:data},{
+              var deletedata={'id':data,'modelname':'{{ $website["modelname"]}}'};
+              this.$http.post(this.apiurl_delete,deletedata,{
                 before:function(request)
                 {
                   loadi=layer.load("...");
@@ -284,7 +286,7 @@ new Vue({
             {
               this.paramsdata.id=data;
               this.paramsdata.fields=fields;
-              this.$http.post(this.apiurl_get_one,this.paramsdata,{
+              this.$http.post(this.apiurl_one_action,this.paramsdata,{
                 before:function(request)
                 {
                   loadi=layer.load("...");

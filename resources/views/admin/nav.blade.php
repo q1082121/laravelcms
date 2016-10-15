@@ -54,7 +54,7 @@
     </a>
   </li>
   <li>
-    <a href="javascript:void(0);">
+    <a href="/admin/article">
       <i class="fa fa-newspaper-o"></i> <span>{{trans('admin.website_navigation_six')}}</span>
     </a>
   </li>

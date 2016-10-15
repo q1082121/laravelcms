@@ -14,35 +14,32 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_modelid')}}</span>
-                <select class="form-control" v-model="params_data.modelid">
-                  <option v-for="item in modellist" value="@{{ item.value }}">@{{ item.text }}</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_topclass')}}</span>
-                <select class="form-control" v-model="params_data.topid" >
+                <span class="input-group-addon">{{trans('admin.website_article_item_classid')}}</span>
+                <select class="form-control" v-model="params_data.classid" >
                   <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_name')}}</span>
-                <input type="text" class="form-control" v-model="params_data.name"   >
+                <span class="input-group-addon">{{trans('admin.website_article_item_title')}}</span>
+                <input type="text" class="form-control" v-model="params_data.title"   >
+              </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_article_item_introduction')}}</span>
+                  <textarea class="form-control" rows="3" v-model="params_data.introduction" > </textarea>
+                </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_article_item_sources')}}</span>
+                <input type="text" class="form-control" v-model="params_data.sources"   >
               </div>
             </div>
             <div class="form-group">
               <label >{{trans('admin.website_classify_item_attachment')}}</label><br>
-              <!--
-              <input type="file" @change="onFileChange" id="fileuploads" class="file"  accept="image/*">
-              
-              <p class="help-block">200*200</p>
-              <img  v-if="image" :src="image" width="200" height="200" />
-              -->
-              <!-- file style -->
               <link rel="stylesheet" href="{{asset('/module/jQueryIpputCss')}}/css/style.css">
               <div class="uploader white" v-if="params_data.isattach == 0">
               <input type="text" class="filename" readonly/>
@@ -80,6 +77,12 @@
               </script> 
             </div>
             <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_article_item_content')}}</span>
+                  <textarea class="form-control" rows="3" v-model="params_data.content" > </textarea>
+                </div>
+            </div>
+            <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon">{{trans('admin.website_classify_item_orderid')}}</span>
                 <input type="text" class="form-control" v-model="params_data.orderid"   >
@@ -90,16 +93,6 @@
                 <span class="input-group-addon">{{trans('admin.website_classify_item_linkurl')}}</span>
                 <input type="text" class="form-control" v-model="params_data.linkurl"   >
               </div>
-            </div>
-            <div class="form-group">
-                <label >{{trans('admin.website_classify_item_navflag')}}</label>
-                <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.navflag" style="margin-right:10px;"> {{trans('admin.website_yes')}}</div>
-                <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.navflag" style="margin-right:10px;"> {{trans('admin.website_no')}}</div>
-            </div>
-            <div class="form-group">
-                <label >{{trans('admin.website_classify_item_perpage')}}</label>
-                <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.website_perpage')}}</div>
-                <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.website_list')}}</div>
             </div>
             <div class="form-group">
                 <label >{{trans('admin.website_classify_item_status')}}</label>
@@ -134,18 +127,17 @@ new Vue({
              apiurl_edit:           '{{$website["apiurl_edit"]}}',
              apiurl_del_image:      '{{$website["apiurl_del_image"]}}',
              classlist:             eval(htmlspecialchars_decode('{{$website["classlist"]}}')), 
-             modellist:             eval(htmlspecialchars_decode('{{$website["modellist"]}}')), 
              params_data:
              {
-                modelid             :1,
-                topid               :0,
-                name                :'',
+                classid             :0,
+                title               :'',
+                introduction        :'',
+                sources             :'',
                 attachment          :'',
                 isattach            :0,
+                content             :'',
                 orderid             :0,
                 linkurl             :'',
-                navflag             :0,
-                perpage             :1,
                 status              :1,
                 id                  :'{{$website["id"]}}',
              },
@@ -222,9 +214,14 @@ new Vue({
       //点击数据验证
       add_action:function()
       {
-          if (this.params_data.name=='')
+          if (this.params_data.classid==0)
           {
-              var msg="{{trans('admin.classify_failure_tip1')}}";
+              var msg="{{trans('admin.website_article_select')}}";
+              layermsg_error(msg);
+          }
+          else if (this.params_data.title=='')
+          {
+              var msg="{{trans('admin.article_failure_tip1')}}";
               layermsg_error(msg);
           }
           else

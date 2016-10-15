@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Common\\lib\\Cates' => $baseDir . '/app/Common/lib/Cates.php',
+    'CreateArticlesTable' => $baseDir . '/database/migrations/2016_10_15_060229_create_articles_table.php',
     'CreateClassifiesTable' => $baseDir . '/database/migrations/2016_10_10_020548_create_classifies_table.php',
     'CreateDistrictsTable' => $baseDir . '/database/migrations/2016_10_14_031628_create_districts_table.php',
     'CreateLogsTable' => $baseDir . '/database/migrations/2016_09_07_020701_create_logs_table.php',

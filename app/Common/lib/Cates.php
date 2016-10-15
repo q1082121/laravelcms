@@ -9,10 +9,15 @@ class Cates{
     var $opt;
 	var $optdata;
 	var $optlist;
+	var $type=1;
     var $lanmua = array();
     var $lanmub = array();
 	
-	
+	public function settype($type=1)
+	{
+		$this->type=$type;
+	}
+
     public function separate($allcates){
         foreach($allcates as $key => $val)
 		{
@@ -27,7 +32,16 @@ class Cates{
 	public function opt($allcates,$select=''){
         @$this->lanmua or $this->separate($allcates);
 		asort($this->lanmua);
-		$this->optdata[0]=array('text'=>'选择父类','value'=>0);
+		switch($this->type)
+		{
+			case 1:
+					$this->optdata[0]=array('text'=>'请选择父类','value'=>0);
+					break;
+			case 2:
+					$this->optdata[0]=array('text'=>'请选择栏目分类','value'=>0);
+					break;		
+		}
+		
         foreach(@$this->lanmua as $key => $val){
             $selected = $val['id'] == $select ? " selected" : "";
 			$nextgt="|-->";			
@@ -70,8 +84,7 @@ class Cates{
 				
 			}
 		}
-        
-
-    }    
+    }
+	    
 }
 ?>

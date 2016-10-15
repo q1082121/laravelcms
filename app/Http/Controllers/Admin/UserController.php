@@ -25,7 +25,7 @@ class UserController extends PublicController
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_five');
 		$website['apiurl_list']=URL::action('Admin\UserController@api_list');
-		$website['apiurl_get_one']=URL::action('Admin\UserController@api_get_one');
+		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['link_edit']='/admin/user/edit/';
 		$website['link_set']='/admin/user/set/';
 		$website['way']='username';
@@ -34,6 +34,7 @@ class UserController extends PublicController
 		$wayoption[]=array('text'=>trans('admin.website_user_item_mobile'),'value'=>'mobile');
 		$wayoption[]=array('text'=>trans('admin.website_user_item_nick'),'value'=>'nick');
 		$website['wayoption']=json_encode($wayoption);
+		$website['modelname']=getCurrentControllerName();
 
 		return view('admin/user/index')->with('website',$website);
 	}
@@ -287,49 +288,5 @@ class UserController extends PublicController
 		$website['id']=$this->user['id'];
 		
 		return view('admin/user/edit_pwd')->with('website',$website);
-	}
-	/******************************************
-	****AuThor:rubbish.boy@163.com
-	****Title :获取一键操作接口
-	*******************************************/
-	public function api_get_one(Request $request)  
-	{
-		$params = User::find($request->get('id'));
-		switch ($request->get('fields')) 
-		{
-			//扩展接口方法
-			case 'is_lock':
-						$params->is_lock=($params->is_lock==1?0:1);
-
-						if ($params->save()) 
-						{
-							$msg_array['status']='1';
-							$msg_array['info']=trans('admin.website_action_set_success');
-							$msg_array['is_reload']=0;
-							$msg_array['curl']=URL::action('Admin\UserController@index');
-							$msg_array['resource']='';
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';
-						} 
-						else 
-						{
-							$msg_array['status']='0';
-							$msg_array['info']=trans('admin.website_action_set_failure');
-							$msg_array['is_reload']=0;
-							$msg_array['curl']='';
-							$msg_array['resource']="";
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';	
-						}
-
-				break;
-			
-			default:
-				# code...
-				break;
-		}
-
-        return response()->json($msg_array);
-
 	}
 }

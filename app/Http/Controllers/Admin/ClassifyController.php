@@ -16,9 +16,6 @@ use URL;
 //使用自定义第三方类库:分类列表数据 
 use App\Common\lib\Cates; 
 
-
-
-
 class ClassifyController extends PublicController
 {
     /******************************************
@@ -30,14 +27,15 @@ class ClassifyController extends PublicController
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_classify');
 		$website['apiurl_list']=URL::action('Admin\ClassifyController@api_list');
-		$website['apiurl_get_one']=URL::action('Admin\ClassifyController@api_get_one');
-		$website['apiurl_delete']=URL::action('Admin\ClassifyController@api_delete');
+		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
+		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
 		$website['link_add']=URL::action('Admin\ClassifyController@add');
 		$website['link_edit']='/admin/classify/edit/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.website_classify_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
 		$website['modellist']=$this->modellist;
+		$website['modelname']=getCurrentControllerName();
 
 		return view('admin/classify/index')->with('website',$website);
 	}
@@ -52,7 +50,8 @@ class ClassifyController extends PublicController
 		$website['apiurl_add']=URL::action('Admin\ClassifyController@api_add');
 		$website['apiurl_info']=URL::action('Admin\ClassifyController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\ClassifyController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\ClassifyController@api_del_image');
+		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['modelname']=getCurrentControllerName();
 		$website['id']=0;
 		$website['modellist']=json_encode($this->modellist);
 		
@@ -84,8 +83,8 @@ class ClassifyController extends PublicController
 		$website['apiurl_add']=URL::action('Admin\ClassifyController@api_add');
 		$website['apiurl_info']=URL::action('Admin\ClassifyController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\ClassifyController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\ClassifyController@api_del_image');
-		
+		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['modelname']=getCurrentControllerName();
 		$website['id']=$id;
 		$website['modellist']=json_encode($this->modellist);
 
@@ -342,160 +341,5 @@ class ClassifyController extends PublicController
 		}
 		return response()->json($msg_array);
 	}
-	/******************************************
-	****AuThor:rubbish.boy@163.com
-	****Title :获取一键操作接口
-	*******************************************/
-	public function api_get_one(Request $request)  
-	{
-		$params = Classify::find($request->get('id'));
-		switch ($request->get('fields')) 
-		{
-			//扩展接口方法
-			case 'status':
-						$params->status=($params->status==1?0:1);
-
-						if ($params->save()) 
-						{
-							$msg_array['status']='1';
-							$msg_array['info']=trans('admin.website_action_set_success');
-							$msg_array['is_reload']=0;
-							$msg_array['curl']=URL::action('Admin\ClassifyController@index');
-							$msg_array['resource']='';
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';
-						} 
-						else 
-						{
-							$msg_array['status']='0';
-							$msg_array['info']=trans('admin.website_action_set_failure');
-							$msg_array['is_reload']=0;
-							$msg_array['curl']='';
-							$msg_array['resource']="";
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';	
-						}
-
-				break;
-			
-			default:
-				# code...
-				break;
-		}
-
-        return response()->json($msg_array);
-
-	}
-	/******************************************
-	****AuThor:rubbish.boy@163.com
-	****Title :删除接口
-	*******************************************/
-	public function api_delete(Request $request)  
-	{
-
-		$subcondition['topid']=$request->get('id');
-		$subinfo=DB::table('classifies')->where($subcondition)->get();
-		if($subinfo)
-		{
-			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.classify_failure_delete');
-			$msg_array['is_reload']=0;
-			$msg_array['curl']='';
-			$msg_array['resource']='';
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
-		}
-		else
-		{
-			$condition['id']=$request->get('id');
-			$info=DB::table('classifies')->where($condition)->delete();//返回1;
-			if($info)
-			{
-				$msg_array['status']='1';
-				$msg_array['info']=trans('admin.website_del_success');
-				$msg_array['is_reload']=0;
-				$msg_array['curl']='';
-				$msg_array['resource']='';
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';
-			}
-			else
-			{
-				
-				$msg_array['status']='0';
-				$msg_array['info']=trans('admin.website_del_failure');
-				$msg_array['is_reload']=0;
-				$msg_array['curl']='';
-				$msg_array['resource']='';
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';	
-				
-			}
-		}
-		
-
-        return response()->json($msg_array);
-
-	}
-	/******************************************
-	****@AuThor : rubbish.boy@163.com
-	****@Title  : 更新数据接口
-	****@return : Response
-	*******************************************/
-	public function api_del_image(Request $request)
-	{
-		$classname=getCurrentControllerName();
-		switch ($classname) 
-		{
-			case 'Classify':
-				$params = Classify::find($request->get('id'));
-				# code...
-				break;
-		}
-		
-		if($params['isattach']==1)
-		{
-			$result=$this->del_image_action($classname,$params['attachment']);
-		}
-		if($result)
-		{
-			$params->attachment='';
-			$params->isattach=0;
-
-			if ($params->save()) 
-			{
-				$msg_array['status']='1';
-				$msg_array['info']=trans('admin.website_del_success');
-				$msg_array['is_reload']=1;
-				$msg_array['curl']='';
-				$msg_array['resource']='';
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';
-			} 
-			else 
-			{
-				$msg_array['status']='0';
-				$msg_array['info']=trans('admin.website_del_failure');
-				$msg_array['is_reload']=0;
-				$msg_array['curl']='';
-				$msg_array['resource']="";
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';	
-			}
-		}
-		else
-		{
-			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_del_failure');
-			$msg_array['is_reload']=0;
-			$msg_array['curl']='';
-			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
-		}
-		
-		return response()->json($msg_array);
-	}
 	
-
 }

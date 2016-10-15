@@ -7,7 +7,13 @@
     <div class="col-xs-12">
       <div class="box" id="app-content">
         <div class="box-header">
-          <h3 class="box-title"></h3>
+          <h3 class="box-title">
+            <a href="{{$website['link_add']}}" >
+            <button type="button" class="btn btn-success pull-left">
+              <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
+            </button>
+            </a>
+          </h3>
 
           @ability('admin', 'search')
           <div style="position: absolute;right:170px;top:5px;width: 120px;">
@@ -34,39 +40,39 @@
             <thead>
             <tr>
               <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_user_item_username')}}</th>
-              <th>{{trans('admin.website_user_item_email')}}</th>
-              <th>{{trans('admin.website_user_item_mobile')}}</th>
-              <th>{{trans('admin.website_user_item_group')}}</th>
-              <th>{{trans('admin.website_user_item_nick')}}</th>
-              <th>{{trans('admin.website_user_item_money')}}</th>
-              <th>{{trans('admin.website_user_item_score')}}</th>
-              <th>{{trans('admin.website_user_item_lock')}}</th>
+              <th>{{trans('admin.website_article_item_classid')}}</th>
+              <th>{{trans('admin.website_article_item_title')}}</th>
+              <th>{{trans('admin.website_article_item_attachment')}}</th>
+              <th>{{trans('admin.website_article_item_author')}}</th>
+              <th>{{trans('admin.website_article_item_sources')}}</th>
+              <th>{{trans('admin.website_article_item_clicks')}}</th>
+              <th>{{trans('admin.website_article_item_orderid')}}</th>
+              <th>{{trans('admin.website_article_item_status')}}</th>
               <th>{{trans('admin.website_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               <tr v-for="item in datalist">
-                <td>@{{ item.user_id }}</td>
-                <td>@{{ item.username }}</td>
-                <td>@{{ item.email }}</td>
-                <td>@{{ item.mobile }}</td>
-                <td>@{{ item.group }}</td>
-                <td>@{{ item.nick }}</td>
-                <td>@{{ item.money }}</td>
-                <td>@{{ item.score }}</td>
-                <td><i v-if="item.is_lock == 1"  class="fa fa-lock"></i> <i v-if="item.is_lock == 0"  class="fa fa-unlock"></i></td>
+                <td>@{{ item.id }}</td>
+                <td>@{{ item.classid }}</td>
+                <td>@{{ item.title }}</td>
+                <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/Article/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
+                <td>@{{ item.userid }}</td>
+                <td>@{{ item.sources }}</td>
+                <td>@{{ item.clicks }}</td>
+                <td>@{{ item.orderid }}</td>
+                <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>
                   <div class="tools">
-                    @ability('admin', 'set_role')
-                    <button type="button" @click="set_action(item.user_id)" class="btn btn-primary" > <i class="fa fa-magic"></i> {{trans('admin.website_action_set_role')}}</button>
-                    @endability
                     @ability('admin', 'edit')
-                    <button type="button" @click="link_action(item.user_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
+                    <button type="button" @click="edit_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
                     @endability
-                    @ability('admin', 'set_lock')
-                    <button v-if="item.user_id != 1 && item.is_lock == 0 " @click="get_one_action(item.user_id,'is_lock')" type="button"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</button>
-                    <button v-if="item.user_id != 1 && item.is_lock == 1 " @click="get_one_action(item.user_id,'is_lock')" type="button"  class="btn btn-danger" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_lock')}}</button>
+                    @ability('admin', 'set_status')
+                    <button v-if="item.status == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_status')}}</button>
+                    <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_status')}}</button>
+                    @endability
+                    @ability('admin', 'delete')
+                    <button type="button" @click="delete_action(item.id)" class="btn btn-danger" > <i class="fa fa-trash"></i> {{trans('admin.website_action_delete')}}</button>
                     @endability
                   </div>
                 </td>
@@ -105,7 +111,7 @@ new Vue({
     data: {
              apiurl_list          :'{{$website["apiurl_list"]}}',
              apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
-             linkurl_set          :'{{$website["link_set"]}}',  
+             apiurl_delete        :'{{$website["apiurl_delete"]}}',
              linkurl_edit         :'{{$website["link_edit"]}}', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
@@ -217,7 +223,6 @@ new Vue({
                      |---------------------------------------------
                      |
                      */
-
                     this.datalist=statusinfo.resource.data;
                 }
                 else
@@ -240,17 +245,40 @@ new Vue({
                    this.get_list_action();
                 }
             },
-            //点击跳转编辑
-            link_action:function(data)
+             //点击编辑跳转
+            edit_action:function(data)
             {
-                
+                window.location.href=this.linkurl_edit+data;
             },
-            //设置操作跳转
-            set_action:function(data)
+             //点击删除
+            delete_action:function(data)
             {
-              window.location.href=this.linkurl_set+data;
+              var deletedata={'id':data,'modelname':'{{ $website["modelname"]}}'};
+              this.$http.post(this.apiurl_delete,deletedata,{
+                before:function(request)
+                {
+                  loadi=layer.load("...");
+                },
+              })
+              .then((response) => 
+              {
+                this.return_info_action(response);
+
+              },(response) => 
+              {
+                //响应错误
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime')}}";
+                layermsg_error(msg);
+              })
+              .catch(function(response) {
+                //异常抛出
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime_error')}}";
+                layermsg_error(msg);
+              })
             },
-             //点击获取一键操作
+            //点击获取一键操作
             get_one_action:function(data,fields)
             {
               this.paramsdata.id=data;

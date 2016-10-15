@@ -32,11 +32,8 @@ QQ	:471416739
 #	使用手册
 1. 启动 redis-server.exe  
 
-2.1 （zizaco/entrust）扩展无法上传至github 所以需要自行进行安装
-方法一
-	找到vendor\zizaco目录下的压缩包entrust.zip 解压压缩包至entrust空文件夹中
-方法二
-    安装使用教程 https://github.com/Zizaco/entrust 
+2.1（zizaco/entrust）扩展无法上传至github 所以需要自行进行安装,找到vendor\zizaco目录下的压缩包entrust.zip 解压压缩包至entrust空文件夹中
+
 2.2 使用命令行 建立数据库魔法
     php artisan migrate
 	

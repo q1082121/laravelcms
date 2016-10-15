@@ -19,26 +19,26 @@ Route::get('/', function () {
 
 //Route::auth();
 /******************************************
-****@AuThor:rubbish@163.com
+****@AuThor:rubbish.boy@163.com
 ****@Title :会员中心
 *******************************************/
 Route::group(['namespace' => 'User', 'prefix' => 'user'], function() {  
     /******************************************
-	****@AuThor:rubbish@163.com
+	****@AuThor:rubbish.boy@163.com
 	****@Title :会员注册
 	*******************************************/
 	Route::get('register/{type?}','RegisterController@register');
 	Route::get('register/captcha/{tmp}', 'RegisterController@captcha');
 	Route::post('register', 'RegisterController@store');
 	/******************************************
-	****@AuThor:rubbish@163.com
+	****@AuThor:rubbish.boy@163.com
 	****@Title :会员登录
 	*******************************************/
 	Route::get('login/{type?}','LoginController@login');
 	Route::get('login/captcha/{tmp}', 'LoginController@captcha');
 	Route::post('login', 'LoginController@login_action');
 	/******************************************
-	****@AuThor:rubbish@163.com
+	****@AuThor:rubbish.boy@163.com
 	****@Title :退出登录
 	*******************************************/
 	Route::get('logout','LoginController@logout');
@@ -46,14 +46,14 @@ Route::group(['namespace' => 'User', 'prefix' => 'user'], function() {
 
 
 /******************************************
-****@AuThor:rubbish@163.com
+****@AuThor:rubbish.boy@163.com
 ****@Title :前台访问控制
 *******************************************/
 Route::get('/', 'HomeController@index');
 Route::get('article/{id}', 'ArticleController@show');
 Route::post('comment', 'CommentController@store');
 /******************************************
-****@AuThor:rubbish@163.com
+****@AuThor:rubbish.boy@163.com
 ****@Title :后台访问需登录控制
 *******************************************/
 Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {  
@@ -89,6 +89,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,set_role'], 
 			        'uses' => 'UserController@set'
     			]);
+	//用户角色			
 	Route::get('userrole', 
 				[
 			        'middleware' => ['ability:admin,model_role'], 
@@ -109,6 +110,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,set_permission'], 
 			        'uses' => 'UserroleController@set'
     			]);
+	//角色权限				
 	Route::get('userpermission', 
 				[
 			        'middleware' => ['ability:admin,model_permission'], 
@@ -124,6 +126,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'UserpermissionController@edit'
     			]);
+	//栏目分类			
 	Route::get('classify', 
 				[
 			        'middleware' => ['ability:admin,model_classify'], 
@@ -139,14 +142,34 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'ClassifyController@edit'
     			]);
+	//文章资讯				
+	Route::get('article', 
+				[
+			        'middleware' => ['ability:admin,model_article'], 
+			        'uses' => 'ArticleController@index'
+    			]);
+	Route::get('article/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'ArticleController@add'
+    			]);
+	Route::get('article/edit/{id}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'ArticleController@edit'
+    			]);						
 	/*
 	 ***********************************************************************
 	 *	   post 路由
 	 ***********************************************************************
 	 */	
 	Route::post('home/api_setting', 'HomeController@api_setting');
-	
 	Route::post('district/api_area', 'DistrictController@api_area');
+
+	Route::post('deleteapi/api_delete', 'DeleteapiController@api_delete');
+	Route::post('deleteapi/api_del_image', 'DeleteapiController@api_del_image');
+
+	Route::post('oneactionapi/api_one_action', 'OneactionapiController@api_one_action');
 
 	Route::post('user/api_list', 'UserController@api_list');
 	Route::post('user/api_get_one', 'UserController@api_get_one');
@@ -174,9 +197,12 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('classify/api_add', 'ClassifyController@api_add');
 	Route::post('classify/api_info', 'ClassifyController@api_info');
 	Route::post('classify/api_edit', 'ClassifyController@api_edit');
-	Route::post('classify/api_get_one', 'ClassifyController@api_get_one');
-	Route::post('classify/api_delete', 'ClassifyController@api_delete');
-	Route::post('classify/api_del_image', 'ClassifyController@api_del_image');
+
+	Route::post('article/api_list', 'ArticleController@api_list');
+	Route::post('article/api_add', 'ArticleController@api_add');
+	Route::post('article/api_info', 'ArticleController@api_info');
+	Route::post('article/api_edit', 'ArticleController@api_edit');
+	
 
 	Route::post('setting', 'SettingController@saveaction');
 

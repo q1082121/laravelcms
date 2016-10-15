@@ -49,7 +49,7 @@ return [
     'website_navigation_permission'                =>   '角色权限',
     'website_navigation_five'                      =>   '用户管理',
     'website_navigation_userinfo'                  =>   '用户资料',
-    'website_navigation_six'                       =>   '资讯管理',
+    'website_navigation_six'                       =>   '文章资讯',
     'website_navigation_seven'                     =>   '图片管理',
     'website_navigation_eight'                     =>   '链接管理',
     'website_navigation_nine'                      =>   '微信管理',
@@ -224,7 +224,7 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_model_info'                              =>   '资讯模块',
+    'website_model_info'                              =>   '文章资讯',
     'website_model_product'                           =>   '产品模块',
 
     'website_classify_item_topclass'                  =>   '分类父类',

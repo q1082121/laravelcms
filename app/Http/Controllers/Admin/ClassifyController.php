@@ -1,6 +1,6 @@
 <?php
 /******************************************
-****AuThor:rubbish@163.com
+****AuThor:rubbish.boy@163.com
 ****Title :栏目分类
 *******************************************/
 namespace App\Http\Controllers\Admin;
@@ -22,7 +22,7 @@ use App\Common\lib\Cates;
 class ClassifyController extends PublicController
 {
     /******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :列表
 	*******************************************/
 	public function index()  
@@ -42,7 +42,7 @@ class ClassifyController extends PublicController
 		return view('admin/classify/index')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :添加
 	*******************************************/
 	public function add()
@@ -74,7 +74,7 @@ class ClassifyController extends PublicController
 		return view('admin/classify/add')->with('website',$website);
 	}
 	/******************************************
-	****AuThor : rubbish@163.com
+	****AuThor : rubbish.boy@163.com
 	****Title  : 编辑信息
 	*******************************************/
 	public function edit($id)  
@@ -106,7 +106,7 @@ class ClassifyController extends PublicController
 		return view('admin/classify/add')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :列表接口
 	*******************************************/
 	public function api_list(Request $request)  
@@ -152,7 +152,7 @@ class ClassifyController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :添加接口
 	*******************************************/
 	public function api_add(Request $request)  
@@ -237,7 +237,7 @@ class ClassifyController extends PublicController
 
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :详情接口
 	*******************************************/
 	public function api_info(Request $request)  
@@ -268,7 +268,7 @@ class ClassifyController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
-	****@AuThor : rubbish@163.com
+	****@AuThor : rubbish.boy@163.com
 	****@Title  : 更新数据接口
 	****@return : Response
 	*******************************************/
@@ -343,7 +343,7 @@ class ClassifyController extends PublicController
 		return response()->json($msg_array);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :获取一键操作接口
 	*******************************************/
 	public function api_get_one(Request $request)  
@@ -387,7 +387,7 @@ class ClassifyController extends PublicController
 
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :删除接口
 	*******************************************/
 	public function api_delete(Request $request)  
@@ -438,7 +438,7 @@ class ClassifyController extends PublicController
 
 	}
 	/******************************************
-	****@AuThor : rubbish@163.com
+	****@AuThor : rubbish.boy@163.com
 	****@Title  : 更新数据接口
 	****@return : Response
 	*******************************************/

@@ -1,4 +1,8 @@
 <?php
+/******************************************
+****AuThor:rubbish.boy@163.com
+****Title :系统设置
+*******************************************/
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -11,7 +15,7 @@ use Cache;
 class SettingController extends PublicController
 {
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :后台首页
 	*******************************************/
 	public function index()  
@@ -22,7 +26,7 @@ class SettingController extends PublicController
 		return view('admin/setting/setting')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :处理系统缓存
 	*******************************************/
 	public function saveaction(Request $request)

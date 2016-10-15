@@ -1,6 +1,6 @@
 <?php
 /******************************************
-****AuThor:rubbish@163.com
+****AuThor:rubbish.boy@163.com
 ****Title :省市区地区
 *******************************************/
 namespace App\Http\Controllers\Admin;
@@ -16,7 +16,7 @@ class DistrictController extends PublicController
 {
     //
     /******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :列表接口
 	*******************************************/
 	public function api_area(Request $request)  

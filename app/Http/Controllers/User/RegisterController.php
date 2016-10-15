@@ -1,5 +1,8 @@
 <?php
-
+/******************************************
+****AuThor:rubbish.boy@163.com
+****Title :用户注册
+*******************************************/
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
@@ -22,7 +25,7 @@ use DB;
 class RegisterController extends Controller
 {
 	/******************************************
-    ****@AuThor : rubbish@163.com
+    ****@AuThor : rubbish.boy@163.com
     ****@Title  : 注册页面
     ****@param  : 
     ****@return : Response
@@ -37,7 +40,7 @@ class RegisterController extends Controller
         return view('user/register')->with('website',$website);
     }
     /******************************************
-    ****@AuThor : rubbish@163.com
+    ****@AuThor : rubbish.boy@163.com
     ****@Title  : 注册写入
     ****@param  : $request
     ****@return : Response
@@ -151,7 +154,7 @@ class RegisterController extends Controller
         }
     }
     /******************************************
-    ****@AuThor : rubbish@163.com
+    ****@AuThor : rubbish.boy@163.com
     ****@Title  : 验证码
     ****@param  : int  $tmp
     ****@return : Response

@@ -1,5 +1,8 @@
 <?php
-
+/******************************************
+****AuThor:rubbish.boy@163.com
+****Title :后台信息
+*******************************************/
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -10,7 +13,7 @@ use Cache;
 class HomeController extends PublicController
 {
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :后台首页
 	*******************************************/
 	public function index()  
@@ -22,7 +25,7 @@ class HomeController extends PublicController
 		return view('admin/home')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :缓存布局设置
 	*******************************************/
 	public function api_setting(Request $request)

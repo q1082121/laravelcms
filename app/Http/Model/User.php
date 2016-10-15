@@ -1,5 +1,8 @@
 <?php
-
+/******************************************
+****AuThor:rubbish.boy@163.com
+****Title :用户
+*******************************************/
 namespace App\Http\Model;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;

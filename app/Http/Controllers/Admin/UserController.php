@@ -1,6 +1,6 @@
 <?php
 /******************************************
-****AuThor:rubbish@163.com
+****AuThor:rubbish.boy@163.com
 ****Title :用户
 *******************************************/
 namespace App\Http\Controllers\Admin;
@@ -17,7 +17,7 @@ use Hash;
 class UserController extends PublicController
 {
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :列表
 	*******************************************/
 	public function index()  
@@ -38,7 +38,7 @@ class UserController extends PublicController
 		return view('admin/user/index')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :列表接口
 	*******************************************/
 	public function api_list(Request $request)  
@@ -80,7 +80,7 @@ class UserController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :详情接口
 	*******************************************/
 	public function api_info(Request $request)  
@@ -111,7 +111,7 @@ class UserController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
-	****@AuThor : rubbish@163.com
+	****@AuThor : rubbish.boy@163.com
 	****@Title  : 更新数据接口
 	****@return : Response
 	*******************************************/
@@ -152,7 +152,7 @@ class UserController extends PublicController
 		return response()->json($msg_array);
 	}
 	/******************************************
-	****@AuThor : rubbish@163.com
+	****@AuThor : rubbish.boy@163.com
 	****@Title  : 修改密码接口
 	****@return : Response
 	*******************************************/
@@ -230,7 +230,7 @@ class UserController extends PublicController
 		return response()->json($msg_array);
 	}
 	/******************************************
-	****AuThor : rubbish@163.com
+	****AuThor : rubbish.boy@163.com
 	****Title  : 设置
 	*******************************************/
 	public function set($id)  
@@ -253,7 +253,7 @@ class UserController extends PublicController
 		return view('admin/user/set')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :用户资料
 	*******************************************/
 	public function userinfo()  
@@ -276,7 +276,7 @@ class UserController extends PublicController
 		return view('admin/user/userinfo')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :修改密码
 	*******************************************/
 	public function edit_pwd()  
@@ -289,7 +289,7 @@ class UserController extends PublicController
 		return view('admin/user/edit_pwd')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :获取一键操作接口
 	*******************************************/
 	public function api_get_one(Request $request)  

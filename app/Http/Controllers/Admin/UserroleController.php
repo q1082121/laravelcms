@@ -1,6 +1,6 @@
 <?php
 /******************************************
-****AuThor:rubbish@163.com
+****AuThor:rubbish.boy@163.com
 ****Title :用户角色
 *******************************************/
 namespace App\Http\Controllers\Admin;
@@ -21,7 +21,7 @@ use URL;
 class UserroleController extends PublicController
 {
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :列表
 	*******************************************/
 	public function index()  
@@ -42,7 +42,7 @@ class UserroleController extends PublicController
 		return view('admin/userrole/index')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :添加
 	*******************************************/
 	public function add()
@@ -56,7 +56,7 @@ class UserroleController extends PublicController
 		return view('admin/userrole/add')->with('website',$website);
 	}
 	/******************************************
-	****AuThor : rubbish@163.com
+	****AuThor : rubbish.boy@163.com
 	****Title  : 编辑信息
 	*******************************************/
 	public function edit($id)  
@@ -70,7 +70,7 @@ class UserroleController extends PublicController
 		return view('admin/userrole/add')->with('website',$website);
 	}
 	/******************************************
-	****AuThor : rubbish@163.com
+	****AuThor : rubbish.boy@163.com
 	****Title  : 设置
 	*******************************************/
 	public function set($id)  
@@ -93,7 +93,7 @@ class UserroleController extends PublicController
 		return view('admin/userrole/set')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :列表接口
 	*******************************************/
 	public function api_list(Request $request)  
@@ -134,7 +134,7 @@ class UserroleController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :添加接口
 	*******************************************/
 	public function api_add(Request $request)  
@@ -184,7 +184,7 @@ class UserroleController extends PublicController
 
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :详情接口
 	*******************************************/
 	public function api_info(Request $request)  
@@ -215,7 +215,7 @@ class UserroleController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
-	****@AuThor : rubbish@163.com
+	****@AuThor : rubbish.boy@163.com
 	****@Title  : 更新数据接口
 	****@return : Response
 	*******************************************/
@@ -249,7 +249,7 @@ class UserroleController extends PublicController
 		return response()->json($msg_array);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :关联列表接口
 	*******************************************/
 	public function api_list_related(Request $request)  
@@ -296,7 +296,7 @@ class UserroleController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :获取权限接口
 	*******************************************/
 	public function api_get_role(Request $request)  
@@ -367,7 +367,7 @@ class UserroleController extends PublicController
 
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :取消权限接口
 	*******************************************/
 	public function api_cancel_role(Request $request)  

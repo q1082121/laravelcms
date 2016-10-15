@@ -1,5 +1,8 @@
 <?php
-
+/******************************************
+****AuThor:rubbish.boy@163.com
+****Title :用户登录
+*******************************************/
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
@@ -20,7 +23,7 @@ use Auth;
 class LoginController extends Controller
 {
 	/******************************************
-    ****@AuThor : rubbish@163.com
+    ****@AuThor : rubbish.boy@163.com
     ****@Title  : 登录页面
     ****@param  : 
     ****@return : Response
@@ -35,7 +38,7 @@ class LoginController extends Controller
         return view('user/login')->with('website',$website);
     }
     /******************************************
-    ****@AuThor : rubbish@163.com
+    ****@AuThor : rubbish.boy@163.com
     ****@Title  : 登录验证
     ****@param  : 
     ****@return : Response
@@ -159,7 +162,7 @@ class LoginController extends Controller
         }
     }
     /******************************************
-    ****@AuThor : rubbish@163.com
+    ****@AuThor : rubbish.boy@163.com
     ****@Title  : 验证码
     ****@param  : int  $tmp
     ****@return : Response
@@ -182,7 +185,7 @@ class LoginController extends Controller
 
     }
     /******************************************
-    ****@AuThor : rubbish@163.com
+    ****@AuThor : rubbish.boy@163.com
     ****@Title  : 退出登录
     ****@param  : 
     ****@return : Response

@@ -1,5 +1,8 @@
 <?php
-
+/******************************************
+****AuThor:rubbish.boy@163.com
+****Title :公共控制器
+*******************************************/
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -35,7 +38,7 @@ class PublicController extends Controller
 	protected $userinfo;
 	protected $website;
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :后台首页
 	*******************************************/
 	public function __construct()
@@ -160,7 +163,7 @@ class PublicController extends Controller
 	}
 
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :图片上传
 	*******************************************/
 	public function uploads_action($classname,$data_image)
@@ -217,7 +220,7 @@ class PublicController extends Controller
 	}
 
 	/******************************************
-	****@AuThor : rubbish@163.com
+	****@AuThor : rubbish.boy@163.com
 	****@Title  : 删除图片
 	****@return : Response
 	*******************************************/

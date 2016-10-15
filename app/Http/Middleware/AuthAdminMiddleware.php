@@ -1,5 +1,8 @@
 <?php
-
+/******************************************
+****AuThor:rubbish.boy@163.com
+****Title :后台登录状态中间件
+*******************************************/
 namespace App\Http\Middleware;
 
 use Closure;

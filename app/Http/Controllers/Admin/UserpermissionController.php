@@ -1,6 +1,6 @@
 <?php
 /******************************************
-****AuThor:rubbish@163.com
+****AuThor:rubbish.boy@163.com
 ****Title :角色权限
 *******************************************/
 namespace App\Http\Controllers\Admin;
@@ -19,7 +19,7 @@ use URL;
 class UserpermissionController extends PublicController
 {
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :列表
 	*******************************************/
 	public function index()  
@@ -39,7 +39,7 @@ class UserpermissionController extends PublicController
 		return view('admin/userpermission/index')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :添加
 	*******************************************/
 	public function add()
@@ -53,7 +53,7 @@ class UserpermissionController extends PublicController
 		return view('admin/userpermission/add')->with('website',$website);
 	}
 	/******************************************
-	****AuThor : rubbish@163.com
+	****AuThor : rubbish.boy@163.com
 	****Title  : 编辑信息
 	*******************************************/
 	public function edit($id)  
@@ -67,7 +67,7 @@ class UserpermissionController extends PublicController
 		return view('admin/userpermission/add')->with('website',$website);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :列表接口
 	*******************************************/
 	public function api_list(Request $request)  
@@ -108,7 +108,7 @@ class UserpermissionController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :添加接口
 	*******************************************/
 	public function api_add(Request $request)  
@@ -158,7 +158,7 @@ class UserpermissionController extends PublicController
 
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :详情接口
 	*******************************************/
 	public function api_info(Request $request)  
@@ -189,7 +189,7 @@ class UserpermissionController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
-	****@AuThor : rubbish@163.com
+	****@AuThor : rubbish.boy@163.com
 	****@Title  : 更新数据接口
 	****@return : Response
 	*******************************************/
@@ -223,7 +223,7 @@ class UserpermissionController extends PublicController
 		return response()->json($msg_array);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :关联列表接口
 	*******************************************/
 	public function api_list_related(Request $request)  
@@ -270,7 +270,7 @@ class UserpermissionController extends PublicController
         return response()->json($msg_array);
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :获取权限接口
 	*******************************************/
 	public function api_get_permission(Request $request)  
@@ -317,7 +317,7 @@ class UserpermissionController extends PublicController
 
 	}
 	/******************************************
-	****AuThor:rubbish@163.com
+	****AuThor:rubbish.boy@163.com
 	****Title :取消权限接口
 	*******************************************/
 	public function api_cancel_permission(Request $request)  

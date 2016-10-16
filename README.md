@@ -70,4 +70,4 @@ QQ	:471416739
 	可以使用“composer update vender/.....” 选择性更新安装扩展
 	
 #	打赏小二	
-	![官人下次再来](http://www.tzsuteng.com/Public/images/alipay.jpg) 
+	

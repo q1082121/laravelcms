@@ -69,5 +69,5 @@ QQ	:471416739
 	请谨慎使用“composer update” 全部更新操作 会重置一些组件的默认配置设置
 	可以使用“composer update vender/.....” 选择性更新安装扩展
 	
-#	打赏小二	
-	![image](https://github.com/q1082121/laravelcms/public/images/alipay.jpg)
+#	打赏小二
+![image](https://github.com/q1082121/laravelcms/public/images/alipay.jpg)

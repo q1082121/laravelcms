@@ -70,4 +70,4 @@ QQ	:471416739
 	可以使用“composer update vender/.....” 选择性更新安装扩展
 	
 #	打赏小二
-![image](https://github.com/q1082121/laravelcms/tree/master/public/images/alipay.jpg)
+![image](https://github.com/q1082121/laravelcms/blob/master/public/images/alipay.jpg)

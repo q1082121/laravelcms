@@ -163,8 +163,9 @@ return [
 		//edit by rubbish.boy@163.com 2016-09-29
 		Zizaco\Entrust\EntrustServiceProvider::class,
 		//edit by rubbish.boy@163.com 2016-10-11
-		Intervention\Image\ImageServiceProvider::class
-
+		Intervention\Image\ImageServiceProvider::class,
+        //edit by rubbish.boy@163.com 2016-10-16
+        YuanChao\Editor\EndaEditorServiceProvider::class
     ],
 
     /*
@@ -216,6 +217,8 @@ return [
 		'Image' => Intervention\Image\Facades\Image::class,
 		//edit by rubbish.boy@163.com 2016-10-11
 		'Input' => Illuminate\Support\Facades\Input::class,
+        //edit by rubbish.boy@163.com 2016-10-16
+        'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class
     ],
 
 ];

@@ -12,7 +12,8 @@
         "barryvdh/laravel-debugbar": "^2.2",
         "predis/predis": "~1.0",
         "zizaco/entrust": "5.2.x-dev",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+		"yuanchao/laravel-5-markdown-editor": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

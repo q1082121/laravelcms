@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b686decf3a2fc678ceff44cc550ef29c",
-    "content-hash": "95f4cfe849f88577dbd2c1d30441825a",
+    "hash": "a84b3de0f999675cc311f17c1d5d425a",
+    "content-hash": "58e5eb8d378ba5d2d03dad9cf7ed4bf0",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2245,6 +2245,39 @@
             "time": "2016-06-14 14:14:52"
         },
         {
+            "name": "yuanchao/laravel-5-markdown-editor",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yccphp/laravel-5-markdown-editor.git",
+                "reference": "420f93671d19b6edff7bd045ed728704c4e083c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/yccphp/laravel-5-markdown-editor/420f93671d19b6edff7bd045ed728704c4e083c2.zip",
+                "reference": "420f93671d19b6edff7bd045ed728704c4e083c2",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "YuanChao\\Editor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "yuanchao",
+                    "email": "653069653@qq.com"
+                }
+            ],
+            "description": "Based on the markdown editor laravel 5",
+            "time": "2016-06-06 03:00:54"
+        },
+        {
             "name": "zizaco/entrust",
             "version": "5.2.x-dev",
             "source": {
@@ -3689,7 +3722,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zizaco/entrust": 20
+        "zizaco/entrust": 20,
+        "yuanchao/laravel-5-markdown-editor": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

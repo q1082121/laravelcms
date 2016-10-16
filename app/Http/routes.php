@@ -169,6 +169,8 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('deleteapi/api_delete', 'DeleteapiController@api_delete');
 	Route::post('deleteapi/api_del_image', 'DeleteapiController@api_del_image');
 
+	Route::post('markdownupload', 'MarkdownapiController@upload');
+
 	Route::post('oneactionapi/api_one_action', 'OneactionapiController@api_one_action');
 
 	Route::post('user/api_list', 'UserController@api_list');

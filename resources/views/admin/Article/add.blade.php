@@ -1,5 +1,11 @@
 @extends('layouts.admin')
 @section('content')
+<!--处理markdown 弹窗锁定层兼容问题 -->
+@include('editor::head')
+<style>
+.modal-backdrop{display:none}
+</style>
+<!--处理markdown 弹窗锁定层兼容问题 -->
 <!-- Main content -->
 <section class="content">
   <!-- row -->
@@ -79,7 +85,9 @@
             <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_article_item_content')}}</span>
-                  <textarea class="form-control" rows="3" v-model="params_data.content" > </textarea>
+                  <div class="editor">
+                    <textarea id='myEditor' class="form-control" rows="3" v-model="params_data.content" > </textarea>
+                  </div>
                 </div>
             </div>
             <div class="form-group">

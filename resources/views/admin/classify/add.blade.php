@@ -109,8 +109,8 @@
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button v-if="params_data.id == 0" type="button" @click="add_action()" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
-            <button v-else type="button" @click="post_edit_action()" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
+            <button v-if="params_data.id == 0" type="button" @click="check_action(apiurl_add)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
+            <button v-else type="button" @click="check_action(apiurl_edit)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
             <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_getback')}}</button>
           </div>
 
@@ -220,7 +220,7 @@ new Vue({
         })
       },
       //点击数据验证
-      add_action:function()
+      check_action:function(posturl)
       {
           if (this.params_data.name=='')
           {
@@ -229,13 +229,13 @@ new Vue({
           }
           else
           {
-              this.post_add_action();
+              this.post_action(posturl);
           }
       },
       //提交数据
-      post_add_action:function()
+      post_action:function(posturl)
       {
-        this.$http.post(this.apiurl_add,this.params_data,{
+        this.$http.post(posturl,this.params_data,{
           before:function(request)
           {
             loadi=layer.load("等待中...");
@@ -259,33 +259,6 @@ new Vue({
           layermsg_error(msg);
         })
 
-      },
-      //提交修改数据
-      post_edit_action:function()
-      {
-        this.$http.post(this.apiurl_edit,this.params_data,{
-          before:function(request)
-          {
-            loadi=layer.load("...");
-          },
-        })
-        .then((response) => 
-        {
-          this.return_info_action(response);
-
-        },(response) => 
-        {
-          //响应错误
-          layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
-          layermsg_error(msg);
-        })
-        .catch(function(response) {
-          //异常抛出
-          layer.close(loadi);
-          var msg="{{trans('admin.website_outtime_error')}}";
-          layermsg_error(msg);
-        })
       },
       //返回信息处理
       return_info_action:function(response)

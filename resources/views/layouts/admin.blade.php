@@ -49,6 +49,8 @@
   <script src="{{asset('/module/layer')}}/layer.js"></script>
   <!--common-->
   <script src="{{asset('/js')}}/common.js"></script>
+  <!--jquery.form-->
+  <script src="{{asset('/js')}}/jquery.form.min.js"></script>
 
 
   

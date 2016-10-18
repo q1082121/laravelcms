@@ -50,7 +50,8 @@ class PublicController extends Controller
 	    |
 	    */
 		//后台通用参数设置
-		$root=Cache::store('file')->get('root');
+		$this->root=$root=Cache::store('file')->get('root');
+		$this->website['root']=$root;
 		$setting=Cache::store('file')->get('setting');
 
 		$settingdata['layout_fixed']=0;

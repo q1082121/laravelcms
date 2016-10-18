@@ -29,7 +29,7 @@ $(function() {
             sql : /^mysql$/i,
             xml : /^(html|html5|xhtml)$/i
         };
-        var hlLangs = hljs.listLanguages();
+        //var hlLangs = hljs.listLanguages();
 
         function myHighLight($this) {
             var t = $this, children = t.children(), highlighted = false;

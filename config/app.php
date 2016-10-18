@@ -165,7 +165,9 @@ return [
 		//edit by rubbish.boy@163.com 2016-10-11
 		Intervention\Image\ImageServiceProvider::class,
         //edit by rubbish.boy@163.com 2016-10-16
-        YuanChao\Editor\EndaEditorServiceProvider::class
+        YuanChao\Editor\EndaEditorServiceProvider::class,
+		//edit by rubbish.boy@163.com 2016-10-18
+		Stevenyangecho\UEditor\UEditorServiceProvider::class
     ],
 
     /*

@@ -23,6 +23,9 @@ class SettingController extends PublicController
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_two');
 		$website['info']=Cache::store('file')->get('root');
+		$editoroption[]=array('text'=>trans('admin.website_setting_editor_item1'),'value'=>'Markdown');
+		$editoroption[]=array('text'=>trans('admin.website_setting_editor_item2'),'value'=>'Ueditor');
+		$website['editoroption']=json_encode($editoroption);
 		return view('admin/setting/setting')->with('website',$website);
 	}
 	/******************************************
@@ -31,24 +34,15 @@ class SettingController extends PublicController
 	*******************************************/
 	public function saveaction(Request $request)
 	{
-		$code = $request->get('action_type');
-		if($code =='save')
-		{
-			$getdata=$request->all();
-			Cache::store('file')->forever('root', $getdata);
-			
-			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_save_success');
-			$msg_array['is_reload']=0;
-			$msg_array['resource']=$getdata;
-		}
-		else
-		{
-			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_save_failure');
-			$msg_array['is_reload']=1;
-			$msg_array['resource']="";
-		}
+
+		$getdata=$request->all();
+		Cache::store('file')->forever('root', $getdata);
+		
+		$msg_array['status']='1';
+		$msg_array['info']=trans('admin.website_save_success');
+		$msg_array['is_reload']=0;
+		$msg_array['resource']=$getdata;
+
         return response()->json($msg_array);
 
 	}

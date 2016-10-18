@@ -112,6 +112,7 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
+    
     'website_setting_systitle'                     =>   '网站名称',
     'website_setting_syskeyword'                   =>   '关键词语',
     'website_setting_sysdescription'               =>   '网站描述',
@@ -126,6 +127,10 @@ return [
     'website_setting_sysaddress'                   =>   '联系地址',
     'website_setting_syscoordinate_h'              =>   '地址坐标纬度',
     'website_setting_syscoordinate_w'              =>   '地址坐标经度',
+    'website_setting_editor'                       =>   '编辑器选项',
+    'website_setting_editor_type'                  =>   '编辑器类型',
+    'website_setting_editor_item1'                 =>   'Markdown编辑器',
+    'website_setting_editor_item2'                 =>   'Ueditor编辑器',
     
     /*
     |--------------------------------------------------------------------------

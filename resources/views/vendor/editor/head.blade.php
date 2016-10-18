@@ -23,7 +23,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
+var myEditor;
     $(function() {
         url = "{{ url(config('editor.uploadUrl')) }}";
 
@@ -33,8 +33,9 @@
         ajaxTopicSearchUrl = null;
         @endif
 
-        var myEditor = new Editor(url,ajaxTopicSearchUrl);
+        myEditor = new Editor(url,ajaxTopicSearchUrl);
         myEditor.render('#myEditor');
+		
     });
 </script>
 

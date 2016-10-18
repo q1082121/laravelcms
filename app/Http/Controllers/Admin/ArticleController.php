@@ -160,6 +160,7 @@ class ArticleController extends PublicController
 		$params->introduction = $request->get('introduction');
         $params->sources	= $request->get('sources');
         $params->content	= $request->get('content');
+		$params->syseditor	= $request->get('syseditor');
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
         $params->user_id	= $this->user['id'];
@@ -245,6 +246,7 @@ class ArticleController extends PublicController
 		$params->introduction = $request->get('introduction');
         $params->sources	= $request->get('sources');
         $params->content	= $request->get('content');
+		$params->syseditor	= $request->get('syseditor');
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
 		$params->status		= $request->get('status');

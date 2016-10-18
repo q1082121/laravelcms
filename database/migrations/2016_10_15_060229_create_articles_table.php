@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration
             $table->string('attachment',100);			        //封面
 			$table->tinyInteger('isattach')->default(0);        //是否有封面
             $table->text('content')->nullable();		        //内容
+            $table->string('syseditor',20);			            //编辑器代码
 			$table->integer('clicks')->default(0);		        //浏览
 			$table->string('linkurl')->nullable();		        //外链接
             $table->integer('orderid')->default(0);		        //排序

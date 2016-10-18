@@ -1,11 +1,16 @@
 @extends('layouts.admin')
 @section('content')
-<!--处理markdown 弹窗锁定层兼容问题 -->
-@include('editor::head')
-<style>
-.modal-backdrop{display:none}
-</style>
-<!--处理markdown 弹窗锁定层兼容问题 -->
+
+@if($website['root']['syseditor']=='Ueditor')
+<!--处理UEditor start--> 
+@include('UEditor::head');
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+  var ueditors;
+</script>
+<!--处理UEditor end  -->
+@endif
+
 <!-- Main content -->
 <section class="content">
   <!-- row -->
@@ -15,13 +20,12 @@
         <div class="box-header">
           <h3 class="box-title"> 【 @{{cur_title}} 】 </h3>
         </div>
-        <!-- /.box-header -->
-          
+        <!-- /.box-header --> 
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon">{{trans('admin.website_article_item_classid')}}</span>
-                <select class="form-control" v-model="params_data.classid" >
+                <select class="form-control"  v-model="params_data.classid" >
                   <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
               </div>
@@ -29,21 +33,22 @@
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon">{{trans('admin.website_article_item_title')}}</span>
-                <input type="text" class="form-control" v-model="params_data.title"   >
+                <input  type="text" class="form-control" v-model="params_data.title"   >
               </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_article_item_introduction')}}</span>
-                  <textarea class="form-control" rows="3" v-model="params_data.introduction" > </textarea>
+                  <textarea  class="form-control" rows="3" v-model="params_data.introduction" > </textarea>
                 </div>
             </div>
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon">{{trans('admin.website_article_item_sources')}}</span>
-                <input type="text" class="form-control" v-model="params_data.sources"   >
+                <input  type="text" class="form-control" v-model="params_data.sources"   >
               </div>
             </div>
+            <!--图片上传控件 start-->
             <div class="form-group">
               <label >{{trans('admin.website_classify_item_attachment')}}</label><br>
               <link rel="stylesheet" href="{{asset('/module/jQueryIpputCss')}}/css/style.css">
@@ -51,7 +56,7 @@
               <input type="text" class="filename" readonly/>
               <input type="button"  name="file" class="button" value="选择图片"/>
               <input type="file" size="30"  @change="onFileChange" />
-              <input type="hidden" v-model="params_data.attachment" >
+              <input type="hidden"  v-model="params_data.attachment" >
               </div>
               @ability('admin', 'delete')
               <button v-else type="button" @click="del_image_action()"  class="btn btn-block btn-danger btn-lg">删除图片</button>
@@ -78,40 +83,57 @@
                   $("input[type=file]").each(function(){
                   if($(this).val()==""){$(this).parents(".uploader").find(".filename").val("尚未选择图片");}
                   });
-                  
               });
               </script> 
             </div>
+            <!--图片上传控件 end-->
+            @if($website['root']['syseditor']=='Ueditor')
             <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_article_item_content')}}</span>
                   <div class="editor">
-                    <textarea id='myEditor' class="form-control" rows="3" v-model="params_data.content" > </textarea>
+                    <textarea id='myEditor'  rows="3" debounce="500" >
+                      @{{params_data.content}}
+                    </textarea>
                   </div>
                 </div>
             </div>
+            @endif
+
+            @if($website['root']['syseditor']=='Markdown') 
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_article_item_content')}}</span>
+                  <div class="editor">
+                    <textarea id='myEditor'  v-model="params_data.content"  class="form-control"  rows="3"  >
+                    </textarea>
+                  </div>
+                </div>
+            </div>
+            @endif
+
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon">{{trans('admin.website_classify_item_orderid')}}</span>
-                <input type="text" class="form-control" v-model="params_data.orderid"   >
+                <input   type="text" class="form-control" v-model="params_data.orderid"   >
               </div>  
             </div>
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon">{{trans('admin.website_classify_item_linkurl')}}</span>
-                <input type="text" class="form-control" v-model="params_data.linkurl"   >
+                <input  type="text" class="form-control" v-model="params_data.linkurl"   >
               </div>
             </div>
             <div class="form-group">
                 <label >{{trans('admin.website_classify_item_status')}}</label>
-                <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
-                <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
+                <div style="padding-left:10px;"><input  type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
+                <div style="padding-left:10px;"><input  type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
             </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button v-if="params_data.id == 0" type="button" @click="add_action()" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
-            <button v-else type="button" @click="post_edit_action()" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
+            <button v-if="params_data.id == 0" type="button" @click="check_action(apiurl_add)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
+            <button v-else type="button" @click="check_action(apiurl_edit)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
             <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_getback')}}</button>
           </div>
 
@@ -126,10 +148,10 @@
 <script type="text/javascript">
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
 Vue.http.options.emulateJSON = true;
-
 new Vue({
     el: '#app-content',
-    data: {
+    data: { 
+             syseditor:             '{{$website["root"]["syseditor"]}}', 
              apiurl_add:            '{{$website["apiurl_add"]}}', 
              apiurl_info:           '{{$website["apiurl_info"]}}', 
              apiurl_edit:           '{{$website["apiurl_edit"]}}',
@@ -137,6 +159,7 @@ new Vue({
              classlist:             eval(htmlspecialchars_decode('{{$website["classlist"]}}')), 
              params_data:
              {
+                syseditor           :'',
                 classid             :0,
                 title               :'',
                 introduction        :'',
@@ -220,7 +243,7 @@ new Vue({
         })
       },
       //点击数据验证
-      add_action:function()
+      check_action:function(posturl)
       {
           if (this.params_data.classid==0)
           {
@@ -234,13 +257,24 @@ new Vue({
           }
           else
           {
-              this.post_add_action();
+            this.params_data.syseditor=this.syseditor;
+             this.post_action(posturl);
           }
       },
       //提交数据
-      post_add_action:function()
+      post_action:function(posturl)
       {
-        this.$http.post(this.apiurl_add,this.params_data,{
+        
+        if(this.syseditor=="Ueditor")
+        {
+          this.params_data.content=ueditors.getContent();
+        }
+        if(this.syseditor=="Markdown")
+        {
+          this.params_data.content=myEditor.codemirror.getValue();
+        } 
+
+        this.$http.post(posturl,this.params_data,{
           before:function(request)
           {
             loadi=layer.load("等待中...");
@@ -264,33 +298,6 @@ new Vue({
           layermsg_error(msg);
         })
 
-      },
-      //提交修改数据
-      post_edit_action:function()
-      {
-        this.$http.post(this.apiurl_edit,this.params_data,{
-          before:function(request)
-          {
-            loadi=layer.load("...");
-          },
-        })
-        .then((response) => 
-        {
-          this.return_info_action(response);
-
-        },(response) => 
-        {
-          //响应错误
-          layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
-          layermsg_error(msg);
-        })
-        .catch(function(response) {
-          //异常抛出
-          layer.close(loadi);
-          var msg="{{trans('admin.website_outtime_error')}}";
-          layermsg_error(msg);
-        })
       },
       //返回信息处理
       return_info_action:function(response)
@@ -336,14 +343,22 @@ new Vue({
         if(statusinfo.status==1)
         {
             this.params_data=statusinfo.resource;
-
-            //console.log(this.params_data);
             if(this.params_data.attachment)
             {
               this.image="/uploads/"+this.del_data.modelname+"/thumb/"+this.params_data.attachment;
               this.params_data.attachment="";
             }
 
+            if(this.syseditor=="Ueditor")
+            {
+              var contents=this.params_data.content;
+              ueditors=UE.getEditor('myEditor');
+              ueditors.addListener("ready", function () 
+              {
+                // editor准备好之后才可以使用
+                ueditors.setContent(contents);
+              });   
+            }
         }
         else
         {
@@ -356,6 +371,7 @@ new Vue({
               layermsg_error(statusinfo.info);
             }
         }
+
       },
       //点击返回
       back_action:function()
@@ -387,9 +403,19 @@ new Vue({
           var msg="{{trans('admin.website_outtime_error')}}";
           layermsg_error(msg);
         })
-      }
+      },
     }               
 })
 
 </script>
+
+@if($website['root']['syseditor']=='Markdown')
+<!--处理markdown 弹窗锁定层兼容问题 -->
+@include('editor::head')
+<style>
+.modal-backdrop{display:none}
+</style>
+<!--处理markdown 弹窗锁定层兼容问题 -->
+@endif
+
 @endsection

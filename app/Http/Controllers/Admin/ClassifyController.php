@@ -29,6 +29,7 @@ class ClassifyController extends PublicController
 		$website['apiurl_list']=URL::action('Admin\ClassifyController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
+		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
 		$website['link_add']=URL::action('Admin\ClassifyController@add');
 		$website['link_edit']='/admin/classify/edit/';
 		$website['way']='name';

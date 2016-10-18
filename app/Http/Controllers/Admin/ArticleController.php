@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 //使用Class模型
 use App\Http\Model\Article;
 use DB;
+use Cache;
 //使用URL生成地址
 use URL;
 //使用自定义第三方类库:分类列表数据 
@@ -127,6 +128,12 @@ class ArticleController extends PublicController
 		}
 		if($list)
 		{
+			$classlist=Cache::store('file')->get('class');
+			foreach($list as $key=>$val)
+			{
+				$list[$key]['classname']=$classlist[$val['classid']]['name'];
+			}
+			
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_get_success');
 			$msg_array['is_reload']=0;

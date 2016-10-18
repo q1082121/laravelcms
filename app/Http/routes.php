@@ -63,6 +63,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	 ***********************************************************************
 	 */	
     Route::get('/', 'HomeController@index');
+	
 	Route::get('setting', 
 				[
 			        'middleware' => ['ability:admin,model_setting'], 
@@ -164,13 +165,14 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	 ***********************************************************************
 	 */	
 	Route::post('home/api_setting', 'HomeController@api_setting');
+
+	Route::post('cacheapi/api_cache', 'CacheapiController@api_cache');
 	Route::post('district/api_area', 'DistrictController@api_area');
 
 	Route::post('deleteapi/api_delete', 'DeleteapiController@api_delete');
 	Route::post('deleteapi/api_del_image', 'DeleteapiController@api_del_image');
 
 	Route::post('markdownupload', 'MarkdownapiController@upload');
-
 	Route::post('oneactionapi/api_one_action', 'OneactionapiController@api_one_action');
 
 	Route::post('user/api_list', 'UserController@api_list');
@@ -204,9 +206,6 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('article/api_add', 'ArticleController@api_add');
 	Route::post('article/api_info', 'ArticleController@api_info');
 	Route::post('article/api_edit', 'ArticleController@api_edit');
-	
-
-	Route::post('setting', 'SettingController@saveaction');
 
 });
 

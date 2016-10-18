@@ -9,10 +9,15 @@
         <div class="box-header">
           <h3 class="box-title">
             <a href="{{$website['link_add']}}" >
-            <button type="button" class="btn btn-success pull-left">
+            <button type="button" class="btn btn-success pull-left ">
               <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
             </button>
             </a>
+            @ability('admin', 'create_cache_class')
+            <button @click="create_cache()" type="button" class="btn btn-danger pull-left " style="margin:0 0 0 10px;">
+            <i class="fa fa-add"></i> {{trans('admin.website_classify_create_cache')}}
+            </button>
+            @endability
           </h3>
 
           @ability('admin', 'search')
@@ -115,6 +120,7 @@ new Vue({
              apiurl_list          :'{{$website["apiurl_list"]}}',
              apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
              apiurl_delete        :'{{$website["apiurl_delete"]}}',
+             apiurl_cache         :'{{$website["apiurl_cache"]}}',
              linkurl_edit         :'{{$website["link_edit"]}}', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
@@ -347,7 +353,33 @@ new Vue({
                   }
               }
             },
+            //生成缓存
+            create_cache:function()
+            {
+              this.$http.post(this.apiurl_cache,this.paramsdata,{
+                before:function(request)
+                {
+                  loadi=layer.load("...");
+                },
+              })
+              .then((response) => 
+              {
+                this.return_info_action(response);
 
+              },(response) => 
+              {
+                //响应错误
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime')}}";
+                layermsg_error(msg);
+              })
+              .catch(function(response) {
+                //异常抛出
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime_error')}}";
+                layermsg_error(msg);
+              })
+            }
         }            
 })
 

@@ -71,6 +71,7 @@ return [
     'website_cancel_error'                         =>   '取消失败',
     'website_outtime'                              =>   '响应超时',
     'website_outtime_error'                        =>   '响应异常',
+    'website_create_success'                       =>   '生成成功',
     'website_get_success'                          =>   '获取成功',
     'website_get_failure'                          =>   '获取失败',
     'website_get_empty'                            =>   '数据为空',
@@ -247,6 +248,8 @@ return [
     'website_classify_item_status'                    =>   '状态',
     'classify_failure_tip1'                           =>   '请输入分类名称',
     'classify_failure_delete'                         =>   '请先删除子类',
+
+    'website_classify_create_cache'                   =>   '生成栏目缓存',
 
     /*
     |--------------------------------------------------------------------------

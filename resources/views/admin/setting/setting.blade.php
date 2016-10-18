@@ -123,9 +123,11 @@
       new Vue({
           el: '#app-content',
           data: {
-              apiUrl: '/admin/setting',
+            
+              apiurl_cache:       '{{$website["apiurl_cache"]}}',
               editoroption        :eval(htmlspecialchars_decode('{{$website["editoroption"]}}')),
               info: {
+                modelname:        '{{$website["modelname"]}}' ,
                 systitle:         '{{$website["info"]["systitle"]}}' ,
                 syskeyword:       '{{$website["info"]["syskeyword"]}}' ,
                 sysdescription :  '{{$website["info"]["sysdescription"]}}' ,
@@ -145,7 +147,7 @@
           },
           methods: {
             saveaction: function () {
-                this.$http.post(this.apiUrl, this.info,{
+                this.$http.post(this.apiurl_cache, this.info,{
                   before:function(request)
                   {
                     loadi=layer.load("检测中...");

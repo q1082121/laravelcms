@@ -13,6 +13,7 @@ QQ	:471416739
 5. barryvdh/laravel-debugbar 调式Debug插件
 6. intervention/image 图片处理类库
 7. yuanchao/laravel-5-markdown-editor 文本编辑器
+8. stevenyangecho/laravel-u-editor 百度富文本编辑器
 
 #	laravel使用了哪些前端组件？ bower.json
 

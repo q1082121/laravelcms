@@ -51,7 +51,7 @@ QQ	:471416739
 	php artisan db:seed --class=PermissionSeeder
 	php artisan db:seed --class=DistrictSeeder	 数据较大
 	
-6.	开始体验
+6. 开始体验
 	
 #	开发进展
 

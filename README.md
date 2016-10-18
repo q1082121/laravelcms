@@ -35,12 +35,14 @@ QQ	:471416739
 #	使用手册
 1. 启动 redis-server.exe  
 
-2.1（zizaco/entrust）扩展无法上传至github 所以需要自行进行安装,找到vendor\zizaco目录下的压缩包entrust.zip 解压压缩包至entrust空文件夹中
+2. 获取项目文件：git clone 或者 github 上下载压缩包
 
-2.2 使用命令行 建立数据库魔法
+3. 打开项目文件夹 vender :（zizaco/entrust）扩展无法上传至github 所以需要自行进行安装,找到vendor\zizaco目录下的压缩包entrust.zip 解压压缩包至entrust空文件夹中
+
+4. 使用命令行 建立数据库魔法
     php artisan migrate
 	
-2.3 填充网站初始数据(由于地区数据比较多，生成比较慢，预计时间5-10分钟内)	
+5. 填充网站初始数据(由于地区数据比较多，生成比较慢，预计时间5-10分钟内)	
 	php artisan db:seed
 	
 	也可以单独填充数据
@@ -48,6 +50,8 @@ QQ	:471416739
 	php artisan db:seed --class=RoleSeeder
 	php artisan db:seed --class=PermissionSeeder
 	php artisan db:seed --class=DistrictSeeder	 数据较大
+	
+6.	开始体验
 	
 #	开发进展
 

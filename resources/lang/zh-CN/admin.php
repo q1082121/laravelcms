@@ -50,7 +50,7 @@ return [
     'website_navigation_five'                      =>   '用户管理',
     'website_navigation_userinfo'                  =>   '用户资料',
     'website_navigation_six'                       =>   '文章资讯',
-    'website_navigation_seven'                     =>   '图片管理',
+    'website_navigation_seven'                     =>   '广告图片',
     'website_navigation_eight'                     =>   '链接管理',
     'website_navigation_nine'                      =>   '微信管理',
     'website_navigation_ten'                       =>   '数据图表',

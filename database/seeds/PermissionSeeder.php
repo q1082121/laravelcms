@@ -38,7 +38,7 @@ class PermissionSeeder extends Seeder
 		  array('name' => 'model_permission','display_name' => '模块-角色权限','description' => ''),
 		  array('name' => 'model_user','display_name' => '模块-用户管理','description' => ''),
 		  array('name' => 'model_article','display_name' => '模块-文章资讯','description' => ''),
-		  array('name' => 'model_picture','display_name' => '模块-图片管理','description' => ''),
+		  array('name' => 'model_picture','display_name' => '模块-广告图片','description' => ''),
 		  array('name' => 'model_links','display_name' => '模块-链接管理','description' => ''),
 		  array('name' => 'model_wechat','display_name' => '模块-微信管理','description' => ''),
 		  array('name' => 'model_chart','display_name' => '模块-数据图表','description' => ''),

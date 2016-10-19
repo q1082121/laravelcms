@@ -59,7 +59,7 @@
     </a>
   </li>
   <li>
-    <a href="javascript:void(0);">
+    <a href="/admin/picture">
       <i class="fa fa-photo"></i> <span>{{trans('admin.website_navigation_seven')}}</span>
     </a>
   </li>

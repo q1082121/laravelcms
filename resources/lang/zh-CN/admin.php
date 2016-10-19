@@ -13,7 +13,7 @@ return [
     'website_name'                                 =>   'LaravelCMS',
     'website_sname'                                =>   'LCMS',
     'website_version_name'                         =>   '版本',
-    'website_version'                              =>   '0.0.1',
+    'website_version'                              =>   '1.1.2',
     'website_version_tip'                          =>   '版权所有',
     'website_type'                                 =>   '内容管理系统',
     'website_center_tip'                           =>   '中心界面',
@@ -272,4 +272,28 @@ return [
     'website_article_item_linkurl'                    =>   '外链接',
     'website_article_item_status'                     =>   '状态',
     'article_failure_tip1'                            =>   '请填写标题',
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 广告图片
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_model_picture1'                          =>   '首页展示图',
+    'website_model_picture2'                          =>   '公共展示图',
+    'website_model_picture3'                          =>   '微站展示图',
+    'website_model_picture4'                          =>   '漂浮展示图',
+
+    'website_picture_item_modelid'                    =>   '图片分类',
+    'website_picture_item_title'                      =>   '标题',
+    'website_picture_item_attachment'                 =>   '图片',
+    'website_picture_item_linkurl'                    =>   '链接',
+    'website_picture_item_orderid'                    =>   '排序',
+    'website_picture_item_status'                     =>   '状态',
+    'picture_failure_tip1'                            =>   '请填写标题',
+
+    'website_picture_create_cache'                    =>   '生成图片缓存',
+
 ];

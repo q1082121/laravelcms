@@ -13,6 +13,7 @@ use URL;
 
 use App\Http\Model\Article;
 use App\Http\Model\Classify;
+use App\Http\Model\Picture;
 
 class DeleteapiController extends PublicController
 {
@@ -90,6 +91,31 @@ class DeleteapiController extends PublicController
 								
 							}
 			break;
+			case 'Picture':
+							$info=$this->delete_action('pictures',$request->get('id'));
+							if($info)
+							{
+								$msg_array['status']='1';
+								$msg_array['info']=trans('admin.website_del_success');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';
+							}
+							else
+							{
+								
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.website_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';	
+								
+							}
+			break;
 		}
 
         return response()->json($msg_array);
@@ -122,7 +148,11 @@ class DeleteapiController extends PublicController
 			case 'Article':
 				$params = Article::find($request->get('id'));
 				# code...
-				break;	
+				break;
+			case 'Picture':
+				$params = Picture::find($request->get('id'));
+				# code...
+				break;			
 		}
 		
 		if($params['isattach']==1)

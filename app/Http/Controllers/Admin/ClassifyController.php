@@ -25,6 +25,7 @@ class ClassifyController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
+		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_classify');
 		$website['apiurl_list']=URL::action('Admin\ClassifyController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
@@ -36,7 +37,7 @@ class ClassifyController extends PublicController
 		$wayoption[]=array('text'=>trans('admin.website_classify_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
 		$website['modellist']=$this->modellist;
-		$website['modelname']=getCurrentControllerName();
+		
 
 		return view('admin/classify/index')->with('website',$website);
 	}
@@ -47,12 +48,12 @@ class ClassifyController extends PublicController
 	public function add()
 	{
 		$website=$this->website;
+		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_classify');
 		$website['apiurl_add']=URL::action('Admin\ClassifyController@api_add');
 		$website['apiurl_info']=URL::action('Admin\ClassifyController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\ClassifyController@api_edit');
 		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
-		$website['modelname']=getCurrentControllerName();
 		$website['id']=0;
 		$website['modellist']=json_encode($this->modellist);
 		
@@ -80,12 +81,12 @@ class ClassifyController extends PublicController
 	public function edit($id)  
 	{
 		$website=$this->website;
+		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_classify');
 		$website['apiurl_add']=URL::action('Admin\ClassifyController@api_add');
 		$website['apiurl_info']=URL::action('Admin\ClassifyController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\ClassifyController@api_edit');
 		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
-		$website['modelname']=getCurrentControllerName();
 		$website['id']=$id;
 		$website['modellist']=json_encode($this->modellist);
 

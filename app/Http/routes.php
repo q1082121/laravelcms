@@ -158,7 +158,24 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 				[
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'ArticleController@edit'
-    			]);						
+    			]);	
+	//广告图片		
+	Route::get('picture', 
+				[
+			        'middleware' => ['ability:admin,model_picture'], 
+			        'uses' => 'PictureController@index'
+    			]);
+	Route::get('picture/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'PictureController@add'
+    			]);
+	Route::get('picture/edit/{id}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'PictureController@edit'
+    			]);
+
 	/*
 	 ***********************************************************************
 	 *	   post 路由
@@ -206,6 +223,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('article/api_add', 'ArticleController@api_add');
 	Route::post('article/api_info', 'ArticleController@api_info');
 	Route::post('article/api_edit', 'ArticleController@api_edit');
+
+	Route::post('picture/api_list', 'PictureController@api_list');
+	Route::post('picture/api_add', 'PictureController@api_add');
+	Route::post('picture/api_info', 'PictureController@api_info');
+	Route::post('picture/api_edit', 'PictureController@api_edit');
 
 });
 

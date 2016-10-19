@@ -31,6 +31,7 @@ class CacheapiController extends PublicController
                             $info=trans('admin.website_save_success');
             break;
             case 'Classify':
+                            $getdata="";
                             $list=object_array(DB::table('classifies')->orderBy('id', 'asc')->get());
                             if(is_array($list))
                             {
@@ -40,6 +41,19 @@ class CacheapiController extends PublicController
                                 }
                             }
 		                    Cache::store('file')->forever('class', $getdata);
+                            $info=trans('admin.website_create_success');
+            break;
+            case 'Picture':
+                            $getdata="";
+                            $list=object_array(DB::table('pictures')->orderBy('id', 'asc')->get());
+                            if(is_array($list))
+                            {
+                                foreach($list as $key=>$val)
+                                {
+                                    $getdata[$val['id']]=$val;
+                                }
+                            }
+		                    Cache::store('file')->forever('picture', $getdata);
                             $info=trans('admin.website_create_success');
             break;
         }

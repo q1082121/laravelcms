@@ -92,10 +92,14 @@ class PublicController extends Controller
 		$this->thumb_height=$thumb_height=env('APP_THUMB_HEIGHT', 200);				//缩略图高度
 		
 
-		//默认分类模块
+		//默认栏目分类模块
 		$this->modellist[]=array('text'=>trans('admin.website_model_info'),'value'=>1);
 		$this->modellist[]=array('text'=>trans('admin.website_model_product'),'value'=>2);
-
+		//默认广告图片模块
+		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture1'),'value'=>1);
+		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture2'),'value'=>2);
+		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture3'),'value'=>3);
+		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture4'),'value'=>4);
 		/*
 	    |--------------------------------------------------------------------------
 	    | 默认消息 - 验证信息
@@ -198,15 +202,34 @@ class PublicController extends Controller
 
 			
 		}
+		
 		if($this->is_thumb==1)
 		{
+			switch($classname)
+			{
+				case 'Classify':
+								$thumb_width=$this->thumb_width;
+								$thumb_height=$this->thumb_height;	
+				break;
+				case 'Article':
+								$thumb_width=$this->thumb_width;
+								$thumb_height=$this->thumb_height;	
+				break;
+				case 'Picture':
+								$thumb_width=$this->thumb_width;
+								$thumb_height=$this->thumb_height;	
+				break;
+				default:
+								$thumb_width=$this->thumb_width;
+								$thumb_height=$this->thumb_height;
+				break;
+			}
 			if(!is_dir($uploads_dir.'/'.$classname.'/thumb/')) 
 			{
 				mkdir($uploads_dir.'/'.$classname.'/thumb/', 0777, true);
 			}
 			// 生成缩略图
-			$img = Image::make($data_image)->resize($this->thumb_width,$this->thumb_height)->save($thumb_filename);
-		
+			$img = Image::make($data_image)->resize($thumb_width,$thumb_height)->save($thumb_filename);
 			
 		}
 

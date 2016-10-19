@@ -1,21 +1,19 @@
 <?php
 /******************************************
 ****AuThor:rubbish.boy@163.com
-****Title :文章资讯
+****Title :广告图片
 *******************************************/
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-//使用Class模型
-use App\Http\Model\Article;
+
+use App\Http\Model\Picture;
 use DB;
-use Cache;
 //使用URL生成地址
 use URL;
-//使用自定义第三方类库:分类列表数据 
-use App\Common\lib\Cates; 
-class ArticleController extends PublicController
+
+class PictureController extends PublicController
 {
     //
     /******************************************
@@ -25,19 +23,21 @@ class ArticleController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_six');
-		$website['apiurl_list']=URL::action('Admin\ArticleController@api_list');
+        $website['modelname']=getCurrentControllerName();
+		$website['cursitename']=trans('admin.website_navigation_seven');
+		$website['apiurl_list']=URL::action('Admin\PictureController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['link_add']=URL::action('Admin\ArticleController@add');
-		$website['link_edit']='/admin/article/edit/';
+		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
+		$website['link_add']=URL::action('Admin\PictureController@add');
+		$website['link_edit']='/admin/picture/edit/';
 		$website['way']='title';
-		$wayoption[]=array('text'=>trans('admin.website_article_item_title'),'value'=>'title');
+		$wayoption[]=array('text'=>trans('admin.website_picture_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
-        
+		$website['modellist']=$this->picture_modellist;
+		
 
-		return view('admin/article/index')->with('website',$website);
+		return view('admin/picture/index')->with('website',$website);
 	}
     /******************************************
 	****AuThor:rubbish.boy@163.com
@@ -46,68 +46,35 @@ class ArticleController extends PublicController
 	public function add()
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_six');
-		$website['apiurl_add']=URL::action('Admin\ArticleController@api_add');
-		$website['apiurl_info']=URL::action('Admin\ArticleController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\ArticleController@api_edit');
-        $website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+        $website['modelname']=getCurrentControllerName();
+		$website['cursitename']=trans('admin.website_navigation_seven');
+		$website['apiurl_add']=URL::action('Admin\PictureController@api_add');
+		$website['apiurl_info']=URL::action('Admin\PictureController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\PictureController@api_edit');
+		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=0;
+		$website['modellist']=json_encode($this->picture_modellist);
+		
 
-        $condition_class['modelid']=1;
-        $condition_class['status']=1;
-        $list=object_array(DB::table('classifies')->where($condition_class)->orderBy('id', 'desc')->get());
-		if($list)
-		{
-			$cates=new Cates();
-            $cates->type=2;
-			$cates->opt($list);
-			$classopts = $cates->opt;
-			$classoptsdata = $cates->optdata;
-			$website['classlist']=json_encode($classoptsdata);
-		}
-		else
-		{
-			$classlist[]=array('text'=>trans('admin.website_article_select'),'value'=>'0');
-			$website['classlist']=json_encode($classlist);
-		}
-
-		return view('admin/article/add')->with('website',$website);
+		return view('admin/picture/add')->with('website',$website);
 	}
-	/******************************************
+    /******************************************
 	****AuThor : rubbish.boy@163.com
 	****Title  : 编辑信息
 	*******************************************/
 	public function edit($id)  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_six');
-		$website['apiurl_add']=URL::action('Admin\ArticleController@api_add');
-		$website['apiurl_info']=URL::action('Admin\ArticleController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\ArticleController@api_edit');
-        $website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+        $website['modelname']=getCurrentControllerName();
+		$website['cursitename']=trans('admin.website_navigation_seven');
+		$website['apiurl_add']=URL::action('Admin\PictureController@api_add');
+		$website['apiurl_info']=URL::action('Admin\PictureController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\PictureController@api_edit');
+		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=$id;
+		$website['modellist']=json_encode($this->picture_modellist);
 
-        $condition_class['modelid']=1;
-        $condition_class['status']=1;
-        $list=object_array(DB::table('classifies')->where($condition_class)->orderBy('id', 'desc')->get());
-		if($list)
-		{
-			$cates=new Cates();
-            $cates->type=2;
-			$cates->opt($list);
-			$classopts = $cates->opt;
-			$classoptsdata = $cates->optdata;
-			$website['classlist']=json_encode($classoptsdata);
-		}
-		else
-		{
-			$classlist[]=array('text'=>trans('admin.website_article_select'),'value'=>'0');
-			$website['classlist']=json_encode($classlist);
-		}
-
-		return view('admin/article/add')->with('website',$website);
+		return view('admin/picture/add')->with('website',$website);
 	}
     /******************************************
 	****AuThor:rubbish.boy@163.com
@@ -115,26 +82,20 @@ class ArticleController extends PublicController
 	*******************************************/
 	public function api_list(Request $request)  
 	{
-		$search_field=$request->get('way')?$request->get('way'):'title';
+		$search_field=$request->get('way')?$request->get('way'):'name';
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Article::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Picture::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Article::paginate($this->pagesize);
+			$list=Picture::paginate($this->pagesize);
 		}
 		if($list)
 		{
-			$classlist=Cache::store('file')->get('class');
-			foreach($list as $key=>$val)
-			{
-				$list[$key]['classname']=$classlist[$val['classid']]['name'];
-			}
-			
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_get_success');
 			$msg_array['is_reload']=0;
@@ -162,16 +123,11 @@ class ArticleController extends PublicController
 	public function api_add(Request $request)  
 	{
 
-		$params = new Article;
-		$params->classid 	= $request->get('classid');
+		$params = new Picture;
+		$params->modelid 	= $request->get('modelid');
 		$params->title 		= $request->get('title');
-		$params->introduction = $request->get('introduction');
-        $params->sources	= $request->get('sources');
-        $params->content	= $request->get('content');
-		$params->syseditor	= $request->get('syseditor');
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
-        $params->user_id	= $this->user['id'];
 		$params->status		= $request->get('status');
 
 		//图片上传处理接口
@@ -184,12 +140,13 @@ class ArticleController extends PublicController
 			$params->attachment=$this->uploads_action($classname,$data_image);
 			$params->isattach=1;
 		}
+
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_add_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\ArticleController@index');
+			$msg_array['curl']=URL::action('Admin\PictureController@index');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -207,7 +164,6 @@ class ArticleController extends PublicController
 		}	
 
         return response()->json($msg_array);
-
 	}
     /******************************************
 	****AuThor:rubbish.boy@163.com
@@ -217,7 +173,7 @@ class ArticleController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('articles')->where($condition)->first();
+		$info=DB::table('pictures')->where($condition)->first();
 		if($info)
 		{
 			$msg_array['status']='1';
@@ -240,7 +196,7 @@ class ArticleController extends PublicController
 		}
         return response()->json($msg_array);
 	}
-	/******************************************
+    /******************************************
 	****@AuThor : rubbish.boy@163.com
 	****@Title  : 更新数据接口
 	****@return : Response
@@ -248,18 +204,14 @@ class ArticleController extends PublicController
 	public function api_edit(Request $request)
 	{
 
-		$params = Article::find($request->get('id'));
-		$params->classid 	= $request->get('classid');
+		$params = Picture::find($request->get('id'));
+		$params->modelid 	= $request->get('modelid');
 		$params->title 		= $request->get('title');
-		$params->introduction = $request->get('introduction');
-        $params->sources	= $request->get('sources');
-        $params->content	= $request->get('content');
-		$params->syseditor	= $request->get('syseditor');
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
 		$params->status		= $request->get('status');
-		
-        //图片上传处理接口
+
+		//图片上传处理接口
 		$attachment='attachment';
 		$data_image=$request->get($attachment);
 		if($data_image)
@@ -275,7 +227,7 @@ class ArticleController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\ArticleController@index');
+			$msg_array['curl']=URL::action('Admin\PictureController@index');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -292,5 +244,5 @@ class ArticleController extends PublicController
 		}
 		return response()->json($msg_array);
 	}
-    
+
 }

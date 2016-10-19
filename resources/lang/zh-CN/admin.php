@@ -66,6 +66,8 @@ return [
     'website_add_failure'                          =>   '添加失败',
     'website_del_success'                          =>   '删除成功',
     'website_del_failure'                          =>   '删除失败',
+    'website_clear_success'                        =>   '清理成功',
+    'website_clear_failure'                        =>   '清理失败',
     'website_add_exit'                             =>   '信息已存在',
     'website_cancel_success'                       =>   '取消成功',
     'website_cancel_error'                         =>   '取消失败',
@@ -95,6 +97,7 @@ return [
     'website_action_cancel_role'                   =>   '取消角色',
     'website_action_set_success'                   =>   '设置成功',
     'website_action_set_failure'                   =>   '设置失败',
+    'website_action_clear_data'                    =>   '清空数据',
     'website_demo_tip'                             =>   '示例',
     'website_user_role_failure'                    =>   '当前角色尚未授权',
     'website_user_role_login'                      =>   '用户尚未登录',
@@ -133,6 +136,21 @@ return [
     'website_setting_editor_item1'                 =>   'Markdown编辑器',
     'website_setting_editor_item2'                 =>   'Ueditor编辑器',
     
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 日志管理
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_model_log1'                            =>   '登录操作',
+    'website_log_item_type'                         =>   '类型',
+    'website_log_item_name'                         =>   '用户名',
+    'website_log_item_info'                         =>   '信息',
+    'website_log_item_ip'                           =>   'IP',
+    'website_log_item_created_at'                   =>   '时间',
+
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 用户管理

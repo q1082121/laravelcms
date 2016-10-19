@@ -15,6 +15,8 @@ use App\Http\Model\Article;
 use App\Http\Model\Classify;
 use App\Http\Model\Picture;
 use App\Http\Model\Link;
+use App\Http\Model\Log;
+
 class DeleteapiController extends PublicController
 {
     /******************************************
@@ -26,6 +28,31 @@ class DeleteapiController extends PublicController
 		$modelname=$request->get('modelname');
 		switch($modelname)
 		{
+			case 'Log':
+							$info=$this->delete_action('logs',$request->get('id'));
+							if($info)
+							{
+								$msg_array['status']='1';
+								$msg_array['info']=trans('admin.website_del_success');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';
+							}
+							else
+							{
+								
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.website_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';	
+								
+							}
+			break;
 			case 'Classify':
 								$subcondition['topid']=$request->get('id');
 								$subinfo=DB::table('classifies')->where($subcondition)->get();
@@ -141,6 +168,7 @@ class DeleteapiController extends PublicController
 								
 							}
 			break;
+			
 		}
 
         return response()->json($msg_array);
@@ -155,7 +183,44 @@ class DeleteapiController extends PublicController
 		$info=DB::table($tablename)->where($condition)->delete();//返回1;
 		return $info;
 	} 
+	/******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :清空数据
+	*******************************************/
+	public function api_clear(Request $request) 
+	{
+		$modelname=$request->get('modelname');
+		switch($modelname)
+		{
+			case 'Log':
+						$info=DB::table('logs')->delete();
+			break;
+		}
+		if($info)
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.website_clear_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']=$info;
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';
+		}
+		else
+		{
+			
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.website_clear_failure');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']=$info;
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';	
+			
+		}
 
+		return response()->json($msg_array);
+	}
 	/******************************************
 	****@AuThor : rubbish.boy@163.com
 	****@Title  : 删除图片

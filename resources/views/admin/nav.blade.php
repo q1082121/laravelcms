@@ -65,7 +65,7 @@
     </a>
   </li>
   <li>
-    <a href="javascript:void(0);">
+    <a href="/admin/log">
       <i class="fa fa-bookmark-o"></i> <span>{{trans('admin.website_navigation_three')}}</span>
     </a>
   </li>

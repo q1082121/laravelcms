@@ -91,7 +91,7 @@ class PublicController extends Controller
 		$this->thumb_width=$thumb_width=env('APP_THUMB_WIDTH', 200);				//缩略图宽度
 		$this->thumb_height=$thumb_height=env('APP_THUMB_HEIGHT', 200);				//缩略图高度
 		
-
+		
 		//默认栏目分类模块
 		$this->modellist[]=array('text'=>trans('admin.website_model_info'),'value'=>1);
 		$this->modellist[]=array('text'=>trans('admin.website_model_product'),'value'=>2);
@@ -103,6 +103,9 @@ class PublicController extends Controller
 		//默认友情链接模块
 		$this->link_modellist[]=array('text'=>trans('admin.website_model_link1'),'value'=>1);
 		$this->link_modellist[]=array('text'=>trans('admin.website_model_link2'),'value'=>2);
+		//默认日志管理模块
+		$this->log_modellist[]=array('text'=>trans('admin.website_model_log1'),'value'=>1);
+
 		/*
 	    |--------------------------------------------------------------------------
 	    | 默认消息 - 验证信息

@@ -190,7 +190,14 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 				[
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'LinkController@edit'
-    			]);			
+    			]);	
+	//日志管理		
+	Route::get('log', 
+				[
+			        'middleware' => ['ability:admin,model_log'], 
+			        'uses' => 'LogController@index'
+    			]);
+	
 	/*
 	 ***********************************************************************
 	 *	   post 路由
@@ -202,10 +209,13 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('district/api_area', 'DistrictController@api_area');
 
 	Route::post('deleteapi/api_delete', 'DeleteapiController@api_delete');
+	Route::post('deleteapi/api_clear', 'DeleteapiController@api_clear');
 	Route::post('deleteapi/api_del_image', 'DeleteapiController@api_del_image');
 
 	Route::post('markdownupload', 'MarkdownapiController@upload');
 	Route::post('oneactionapi/api_one_action', 'OneactionapiController@api_one_action');
+
+	Route::post('log/api_list', 'LogController@api_list');
 
 	Route::post('user/api_list', 'UserController@api_list');
 	Route::post('user/api_get_one', 'UserController@api_get_one');

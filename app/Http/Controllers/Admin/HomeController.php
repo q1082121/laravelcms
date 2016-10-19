@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 use Cache;
 
 class HomeController extends PublicController
@@ -21,7 +22,22 @@ class HomeController extends PublicController
 		//dump($this->website);
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_one');
-		//dump($this->userinfo);
+		
+		//Log
+		$website['count_log']=$count_article=DB::table('logs')->count();
+		//User
+		$website['count_user']=$count_user=DB::table('users')->count();
+		//Classify
+		$website['count_classify']=$count_classify=DB::table('classifies')->count();
+		//Article
+		$website['count_article']=$count_article=DB::table('articles')->count();
+		//Picture
+		$website['count_picture']=$count_picture=DB::table('pictures')->count();
+		//Link
+		$website['count_link']=$count_link=DB::table('links')->count();
+		//Wechat
+		$website['count_wechat']=$count_wechat=0;
+
 		return view('admin/home')->with('website',$website);
 	}
 	/******************************************

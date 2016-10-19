@@ -1,5 +1,5 @@
 
-# laravelcms V1.1.0 
+# laravelcms V1.2.0
 基于 laravel5.2 的内容管理系统  后台基于AdminLTE主题  前端组件Vue.js
 
 作者:rubbish.boy@163.com
@@ -66,9 +66,9 @@ QQ	:471416739
 	用户资料 
 	资讯管理 
 	图片管理 
-	友情链接 ing
+	友情链接 
 	微信管理 开发中
-	日志管理 开发中
+	日志管理 ing
 	消息管理 开发中
 	数据图表 开发中
 

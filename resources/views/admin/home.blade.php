@@ -12,7 +12,7 @@
               <p>{{trans('admin.website_navigation_three')}}</p>
             </div>
             <div class="icon">
-              <i class="ion ion-calendar-o"></i>
+              <i class="ion ion-calendar"></i>
             </div>
             <a href="/admin/log" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>

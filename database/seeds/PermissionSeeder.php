@@ -30,6 +30,7 @@ class PermissionSeeder extends Seeder
 		  array('name' => 'set_userinfo','display_name' => '设置用户资料','description' => ''),
 		  array('name' => 'create_cache_class','display_name' => '生成栏目分类缓存','description' => ''),
 		  array('name' => 'create_cache_picture','display_name' => '生成广告图片缓存','description' => ''),
+		  array('name' => 'create_cache_link','display_name' => '生成友情链接缓存','description' => ''),
 		  array('name' => 'create_cache_class_wechat','display_name' => '生成微信菜单缓存','description' => ''),
 		  array('name' => 'model_setting','display_name' => '模块-系统设置','description' => ''),
 		  array('name' => 'model_log','display_name' => '模块-日志管理','description' => ''),
@@ -37,12 +38,13 @@ class PermissionSeeder extends Seeder
 		  array('name' => 'model_role','display_name' => '模块-用户角色','description' => ''),
 		  array('name' => 'model_permission','display_name' => '模块-角色权限','description' => ''),
 		  array('name' => 'model_user','display_name' => '模块-用户管理','description' => ''),
+		  array('name' => 'model_classify','display_name' => '模块-栏目分类','description' => ''),
 		  array('name' => 'model_article','display_name' => '模块-文章资讯','description' => ''),
 		  array('name' => 'model_picture','display_name' => '模块-广告图片','description' => ''),
-		  array('name' => 'model_links','display_name' => '模块-链接管理','description' => ''),
+		  array('name' => 'model_link','display_name' => '模块-友情链接','description' => ''),
 		  array('name' => 'model_wechat','display_name' => '模块-微信管理','description' => ''),
 		  array('name' => 'model_chart','display_name' => '模块-数据图表','description' => ''),
-		  array('name' => 'model_class','display_name' => '模块-栏目分类','description' => ''),
+		  
 		);
 
 		/***********************************/

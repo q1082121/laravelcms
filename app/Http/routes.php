@@ -175,7 +175,22 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'PictureController@edit'
     			]);
-
+	//友情链接		
+	Route::get('link', 
+				[
+			        'middleware' => ['ability:admin,model_link'], 
+			        'uses' => 'LinkController@index'
+    			]);
+	Route::get('link/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'LinkController@add'
+    			]);
+	Route::get('link/edit/{id}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'LinkController@edit'
+    			]);			
 	/*
 	 ***********************************************************************
 	 *	   post 路由
@@ -228,6 +243,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('picture/api_add', 'PictureController@api_add');
 	Route::post('picture/api_info', 'PictureController@api_info');
 	Route::post('picture/api_edit', 'PictureController@api_edit');
+
+	Route::post('link/api_list', 'LinkController@api_list');
+	Route::post('link/api_add', 'LinkController@api_add');
+	Route::post('link/api_info', 'LinkController@api_info');
+	Route::post('link/api_edit', 'LinkController@api_edit');
 
 });
 

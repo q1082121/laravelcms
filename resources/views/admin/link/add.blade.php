@@ -14,7 +14,7 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_picture_item_modelid')}}</span>
+                <span class="input-group-addon">{{trans('admin.website_link_item_modelid')}}</span>
                 <select class="form-control" v-model="params_data.modelid">
                   <option v-for="item in modellist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
@@ -22,12 +22,12 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_picture_item_title')}}</span>
+                <span class="input-group-addon">{{trans('admin.website_link_item_title')}}</span>
                 <input type="text" class="form-control" v-model="params_data.title"   >
               </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_picture_item_attachment')}}</label><br>
+              <label >{{trans('admin.website_link_item_attachment')}}</label><br>
               <!--
               <input type="file" @change="onFileChange" id="fileuploads" class="file"  accept="image/*">
               
@@ -73,18 +73,18 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_orderid')}}</span>
+                <span class="input-group-addon">{{trans('admin.website_link_item_orderid')}}</span>
                 <input type="text" class="form-control" v-model="params_data.orderid"   >
               </div>  
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_linkurl')}}</span>
+                <span class="input-group-addon">{{trans('admin.website_link_item_linkurl')}}</span>
                 <input type="text" class="form-control" v-model="params_data.linkurl"   >
               </div>
             </div>
             <div class="form-group">
-                <label >{{trans('admin.website_classify_item_status')}}</label>
+                <label >{{trans('admin.website_link_item_status')}}</label>
                 <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
                 <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
             </div>
@@ -202,7 +202,7 @@ new Vue({
       {
           if (this.params_data.title=='')
           {
-              var msg="{{trans('admin.picture_failure_tip1')}}";
+              var msg="{{trans('admin.link_failure_tip1')}}";
               layermsg_error(msg);
           }
           else

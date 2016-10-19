@@ -56,6 +56,19 @@ class CacheapiController extends PublicController
 		                    Cache::store('file')->forever('picture', $getdata);
                             $info=trans('admin.website_create_success');
             break;
+            case 'Link':
+                            $getdata="";
+                            $list=object_array(DB::table('links')->orderBy('id', 'asc')->get());
+                            if(is_array($list))
+                            {
+                                foreach($list as $key=>$val)
+                                {
+                                    $getdata[$val['id']]=$val;
+                                }
+                            }
+		                    Cache::store('file')->forever('link', $getdata);
+                            $info=trans('admin.website_create_success');
+            break;
         }
 		
 		$msg_array['status']='1';

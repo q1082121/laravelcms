@@ -51,7 +51,7 @@ return [
     'website_navigation_userinfo'                  =>   '用户资料',
     'website_navigation_six'                       =>   '文章资讯',
     'website_navigation_seven'                     =>   '广告图片',
-    'website_navigation_eight'                     =>   '链接管理',
+    'website_navigation_eight'                     =>   '友情链接',
     'website_navigation_nine'                      =>   '微信管理',
     'website_navigation_ten'                       =>   '数据图表',
     'website_navigation_classify'                  =>   '栏目分类',
@@ -232,7 +232,6 @@ return [
     */
     'website_model_info'                              =>   '文章资讯',
     'website_model_product'                           =>   '产品模块',
-
     'website_classify_item_topclass'                  =>   '分类父类',
     'website_classify_item_modelid'                   =>   '分类模块',
     'website_classify_item_name'                      =>   '分类名称',
@@ -248,7 +247,6 @@ return [
     'website_classify_item_status'                    =>   '状态',
     'classify_failure_tip1'                           =>   '请输入分类名称',
     'classify_failure_delete'                         =>   '请先删除子类',
-
     'website_classify_create_cache'                   =>   '生成栏目缓存',
 
     /*
@@ -285,7 +283,6 @@ return [
     'website_model_picture2'                          =>   '公共展示图',
     'website_model_picture3'                          =>   '微站展示图',
     'website_model_picture4'                          =>   '漂浮展示图',
-
     'website_picture_item_modelid'                    =>   '图片分类',
     'website_picture_item_title'                      =>   '标题',
     'website_picture_item_attachment'                 =>   '图片',
@@ -293,7 +290,25 @@ return [
     'website_picture_item_orderid'                    =>   '排序',
     'website_picture_item_status'                     =>   '状态',
     'picture_failure_tip1'                            =>   '请填写标题',
-
     'website_picture_create_cache'                    =>   '生成图片缓存',
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 友情链接
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_model_link1'                             =>   '文字链接',
+    'website_model_link2'                             =>   '图片链接',
+    'website_link_item_modelid'                       =>   '链接类型',
+    'website_link_item_title'                         =>   '标题',
+    'website_link_item_attachment'                    =>   '图片',
+    'website_link_item_linkurl'                       =>   '链接',
+    'website_link_item_orderid'                       =>   '排序',
+    'website_link_item_status'                        =>   '状态',
+    'link_failure_tip1'                               =>   '请填写标题',
+    'website_link_create_cache'                       =>   '生成链接缓存',
 
 ];

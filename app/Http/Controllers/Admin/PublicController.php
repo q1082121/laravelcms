@@ -100,6 +100,9 @@ class PublicController extends Controller
 		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture2'),'value'=>2);
 		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture3'),'value'=>3);
 		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture4'),'value'=>4);
+		//默认友情链接模块
+		$this->link_modellist[]=array('text'=>trans('admin.website_model_link1'),'value'=>1);
+		$this->link_modellist[]=array('text'=>trans('admin.website_model_link2'),'value'=>2);
 		/*
 	    |--------------------------------------------------------------------------
 	    | 默认消息 - 验证信息
@@ -216,6 +219,10 @@ class PublicController extends Controller
 								$thumb_height=$this->thumb_height;	
 				break;
 				case 'Picture':
+								$thumb_width=$this->thumb_width;
+								$thumb_height=$this->thumb_height;	
+				break;
+				case 'Link':
 								$thumb_width=$this->thumb_width;
 								$thumb_height=$this->thumb_height;	
 				break;

@@ -13,9 +13,9 @@
               <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
             </button>
             </a>
-            @ability('admin', 'create_cache_picture')
+            @ability('admin', 'create_cache_link')
             <button @click="create_cache()" type="button" class="btn btn-danger pull-left " style="margin:0 0 0 10px;">
-            <i class="fa fa-add"></i> {{trans('admin.website_picture_create_cache')}}
+            <i class="fa fa-add"></i> {{trans('admin.website_link_create_cache')}}
             </button>
             @endability
           </h3>
@@ -45,21 +45,19 @@
             <thead>
             <tr>
               <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_picture_item_modelid')}}</th>
-              <th>{{trans('admin.website_picture_item_title')}}</th>
-              <th>{{trans('admin.website_picture_item_attachment')}}</th>
-              <th>{{trans('admin.website_picture_item_orderid')}}</th>
-              <th>{{trans('admin.website_picture_item_status')}}</th>
+              <th>{{trans('admin.website_link_item_modelid')}}</th>
+              <th>{{trans('admin.website_link_item_title')}}</th>
+              <th>{{trans('admin.website_link_item_attachment')}}</th>
+              <th>{{trans('admin.website_link_item_orderid')}}</th>
+              <th>{{trans('admin.website_link_item_status')}}</th>
               <th>{{trans('admin.website_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
-                <td v-if="item.modelid == 1"> <i class="fa fa-leaf"></i> {{trans('admin.website_model_picture1')}}</td>
-                <td v-if="item.modelid == 2"> <i class="fa fa-leaf"></i> {{trans('admin.website_model_picture2')}}</td>
-                <td v-if="item.modelid == 3"> <i class="fa fa-leaf"></i> {{trans('admin.website_model_picture3')}}</td>
-                <td v-if="item.modelid == 4"> <i class="fa fa-leaf"></i> {{trans('admin.website_model_picture4')}}</td>
+                <td v-if="item.modelid == 1"> <i class="fa fa-leaf"></i> {{trans('admin.website_model_link1')}}</td>
+                <td v-if="item.modelid == 2"> <i class="fa fa-leaf"></i> {{trans('admin.website_model_link2')}}</td>
                 <td>@{{ item.title }}</td>
                 <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
                 <td>@{{ item.orderid }}</td>

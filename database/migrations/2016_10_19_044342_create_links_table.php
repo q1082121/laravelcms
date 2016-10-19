@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePicturesTable extends Migration
+class CreateLinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePicturesTable extends Migration
     public function up()
     {
         //
-        Schema::create('pictures', function(Blueprint $table) 
+        Schema::create('links', function(Blueprint $table) 
 		{
 			$table->increments('id');
             $table->integer('modelid')->default(0);		        //分类模块
@@ -36,6 +36,6 @@ class CreatePicturesTable extends Migration
     public function down()
     {
         //
-		Schema::drop('pictures');
+        Schema::drop('links');
     }
 }

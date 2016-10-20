@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-//使用Class模型
+
 use App\Http\Model\Article;
 use DB;
 use Cache;

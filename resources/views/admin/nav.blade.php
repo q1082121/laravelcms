@@ -64,20 +64,20 @@
       <i class="fa fa-cogs"></i> <span>{{trans('admin.website_navigation_two')}}</span>
     </a>
   </li>
+  <li class="header">{{trans('admin.website_main_navigation_fiver')}}</li>
   <li>
     <a href="/admin/log">
       <i class="fa fa-bookmark-o"></i> <span>{{trans('admin.website_navigation_three')}}</span>
     </a>
   </li>
   <li>
-    <a href="javascript:void(0);">
-      <i class="fa fa-bell-o"></i> <span>{{trans('admin.website_navigation_four')}}</span>
+    <a href="/admin/letter">
+      <i class="fa fa-envelope-o"></i> <span>{{trans('admin.website_navigation_ten')}}</span>
     </a>
   </li>
-  <li class="header">{{trans('admin.website_main_navigation_fiver')}}</li>
   <li>
     <a href="javascript:void(0);">
-      <i class="fa fa-area-chart"></i> <span>{{trans('admin.website_navigation_ten')}}</span>
+      <i class="fa fa-bell-o"></i> <span>{{trans('admin.website_navigation_four')}}</span>
     </a>
   </li>
 </ul>

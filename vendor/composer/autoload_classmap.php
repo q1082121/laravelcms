@@ -10,6 +10,7 @@ return array(
     'CreateArticlesTable' => $baseDir . '/database/migrations/2016_10_15_060229_create_articles_table.php',
     'CreateClassifiesTable' => $baseDir . '/database/migrations/2016_10_10_020548_create_classifies_table.php',
     'CreateDistrictsTable' => $baseDir . '/database/migrations/2016_10_14_031628_create_districts_table.php',
+    'CreateLettersTable' => $baseDir . '/database/migrations/2016_10_20_100235_create_letters_table.php',
     'CreateLinksTable' => $baseDir . '/database/migrations/2016_10_19_044342_create_links_table.php',
     'CreateLogsTable' => $baseDir . '/database/migrations/2016_09_07_020701_create_logs_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

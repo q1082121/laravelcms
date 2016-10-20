@@ -38,7 +38,7 @@ return [
     'website_main_navigation_two'                  =>   '用户相关',
     'website_main_navigation_three'                =>   '内容相关',
     'website_main_navigation_four'                 =>   '微信相关',
-    'website_main_navigation_fiver'                =>   '统计相关',
+    'website_main_navigation_fiver'                =>   '消息相关',
     'website_navigation_one'                       =>   '后台首页',
     'website_navigation_one_home'                  =>   '网站首页',
     'website_navigation_one_wechat'                =>   '微站首页',
@@ -53,7 +53,7 @@ return [
     'website_navigation_seven'                     =>   '广告图片',
     'website_navigation_eight'                     =>   '友情链接',
     'website_navigation_nine'                      =>   '微信管理',
-    'website_navigation_ten'                       =>   '数据图表',
+    'website_navigation_ten'                       =>   '信件管理',
     'website_navigation_classify'                  =>   '栏目分类',
     'website_save'                                 =>   '保存信息',
     'website_getback'                              =>   '返回页面',
@@ -171,6 +171,7 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
+
     'website_model_log1'                            =>   '登录操作',
     'website_log_item_type'                         =>   '类型',
     'website_log_item_name'                         =>   '用户名',
@@ -355,5 +356,34 @@ return [
     'website_link_item_status'                        =>   '状态',
     'link_failure_tip1'                               =>   '请填写标题',
     'website_link_create_cache'                       =>   '生成链接缓存',
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 信件管理
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_letter_action_add'                         =>   '新增',
+    'website_letter_action_star'                        =>   '星标记',
+    'website_letter_action_trash'                       =>   '扔垃圾箱',
+    
+    'website_letter_folders'                            =>   '文件夹',
+    'website_letter_received'                           =>   '收信箱',
+    'website_letter_send'                               =>   '已发送',
+    'website_letter_star'                               =>   '星标记',
+    'website_letter_trash'                              =>   '垃圾箱',
+
+    'website_letter_item_title'                         =>   '标题',
+    'website_letter_item_attachment'                    =>   '图片',
+    'website_letter_item_to_user'                       =>   '收信人',
+    'website_letter_item_content'                       =>   '内容',
+    'website_letter_item_attachment'                    =>   '附件',
+    'website_letter_item_isstar'                        =>   '星标',
+    'website_letter_item_isoverhead'                    =>   '顶置',
+    'website_letter_item_status'                        =>   '状态',
+    'website_letter_item_time'                          =>   '时间',
+    'letter_failure_tip1'                               =>   '请填写标题',
 
 ];

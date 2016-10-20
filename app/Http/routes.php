@@ -197,7 +197,18 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,model_log'], 
 			        'uses' => 'LogController@index'
     			]);
-	
+	//信件管理				
+	Route::get('letter', 
+				[
+			        'middleware' => ['ability:admin,model_letter'], 
+			        'uses' => 'LetterController@index'
+    			]);
+	Route::get('letter/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'LetterController@add'
+    			]);
+
 	/*
 	 ***********************************************************************
 	 *	   post 路由
@@ -258,6 +269,10 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('link/api_add', 'LinkController@api_add');
 	Route::post('link/api_info', 'LinkController@api_info');
 	Route::post('link/api_edit', 'LinkController@api_edit');
+
+	Route::post('letter/api_list', 'LetterController@api_list');
+	Route::post('letter/api_add', 'LetterController@api_add');
+	Route::post('letter/api_info', 'LetterController@api_info');
 
 });
 

@@ -350,6 +350,7 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'CreateArticlesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_15_060229_create_articles_table.php',
         'CreateClassifiesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_10_020548_create_classifies_table.php',
         'CreateDistrictsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_14_031628_create_districts_table.php',
+        'CreateLettersTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_20_100235_create_letters_table.php',
         'CreateLinksTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_19_044342_create_links_table.php',
         'CreateLogsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_07_020701_create_logs_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

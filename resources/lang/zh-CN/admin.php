@@ -108,6 +108,33 @@ return [
     'website_status_on'                            =>   '启用',
     'website_status_off'                           =>   '禁用',
     'website_select_default'                       =>   '请选择',
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 服务器信息
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_navigation_serverinfo'               =>   '服务器信息',
+    'website_serverinfo_phpver'                   =>   'PHP版本号',
+    'website_serverinfo_phpos'                    =>   'PHP操作系统',
+    'website_serverinfo_phpsafe'                  =>   'PHP安全模式',
+    'website_serverinfo_phpdir'                   =>   'PHP安装路径',
+    'website_serverinfo_server_host'              =>   '主机地址',
+    'website_serverinfo_server_port'              =>   '主机端口',
+    'website_serverinfo_server_serverip'          =>   'Ip地址',
+    'website_serverinfo_xcachesp'                 =>   'xcache支持',
+    'website_serverinfo_cookiesp'                 =>   'cookie支持',
+    'website_serverinfo_sessionsp'                =>   'session支持',
+    'website_serverinfo_maxpostsize'              =>   'POST数据限制',
+    'website_serverinfo_maxupsize'                =>   '上传文件限制',
+    'website_serverinfo_maxexectime'              =>   '超时限制',
+    'website_serverinfo_curlsp'                   =>   'CURL支持',
+    'website_serverinfo_gdsp'                     =>   'GD支持',
+    'website_serverinfo_systime'                  =>   '系统时间',
+    
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置

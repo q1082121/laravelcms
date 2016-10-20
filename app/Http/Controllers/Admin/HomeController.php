@@ -38,6 +38,39 @@ class HomeController extends PublicController
 		//Wechat
 		$website['count_wechat']=$count_wechat=0;
 
+		/*------------------------------------------
+		 -服务器信息
+		 -------------------------------------------
+		 */
+		$serverinfo['phpver']				=PHP_VERSION;
+		$serverinfo['phpos']				=PHP_OS;
+		$serverinfo['server_soft'] 			=$_SERVER['SERVER_SOFTWARE'];
+		$serverinfo['server_host'] 			=$_SERVER['SERVER_NAME'];
+		$serverinfo['server_port'] 			=$_SERVER['SERVER_PORT'];
+		$serverinfo['serverapi']			=strtoupper(php_sapi_name());
+		$serverinfo['phpdir']				=DEFAULT_INCLUDE_PATH;
+		$serverinfo['xcachesp']				=@extension_loaded('XCache')?'YES':'NO';
+		$serverinfo['cookiesp']				=isset($_COOKIE)?'YES':'NO';
+		$serverinfo['phpsafe']				=getcon("safe_mode");
+		$serverinfo['dispalyerror']			=getcon("display_errors");
+		$serverinfo['allowurlopen']			=getcon("allow_url_fopen");
+		$serverinfo['registerglobal']		=getcon("register_globals");
+		$serverinfo['maxpostsize']			=getcon("post_max_size");
+		$serverinfo['maxupsize']			=getcon("upload_max_filesize");
+		$serverinfo['maxexectime']			=getcon("max_execution_time").'s';
+		$serverinfo['mqqsp']				=get_magic_quotes_gpc()===1?'YES':'NO';
+		$serverinfo['mprsp']				=get_magic_quotes_runtime()===1?'YES':'NO';
+		$serverinfo['dbasp']				=extension_loaded('dba')?'YES':'NO';
+		$serverinfo['zendoptsp']			=(get_cfg_var("zend_optimizer.optimization_level")||get_cfg_var("zend_extension_manager.optimizer_ts")||get_cfg_var("zend_extension_ts"))?'YES':'NO';
+		$serverinfo['curlsp']				=isfun('curl_init');
+		$serverinfo['gdsp']					=isfun('gd_info');
+		$serverinfo['zlibsp']				=isfun('gzclose');
+		$serverinfo['eaccsp']				=isfun('eaccelerator_info');
+		$serverinfo['sessionsp']			=isfun("session_start");
+		$serverinfo['serverip']				=@gethostbyname($_SERVER['SERVER_NAME']);
+		$serverinfo['systime']				=gmdate("Y年n月j日 H:i:s",time()+8*3600); 
+		$website['serverinfo']=$serverinfo;
+
 		return view('admin/home')->with('website',$website);
 	}
 	/******************************************

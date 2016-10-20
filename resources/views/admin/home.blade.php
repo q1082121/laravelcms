@@ -110,7 +110,207 @@
       <!-- /.row -->
       <!-- Main row -->
       <div class="row">
-        
+        <div class="col-md-12">
+          <div class="box box-solid">
+              <div class="box-header with-border" style="margin:0 0 15px 0;">
+                <i class="fa fa-server"></i>
+                <h3 class="box-title">{{trans('admin.website_navigation_serverinfo')}} ： {{$website['serverinfo']['server_soft']}}</h3>
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_systime')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['systime']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_server_host')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['server_host']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_server_port')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['server_port']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_serverip')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['serverip']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_phpver')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['phpver']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_phpos')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['phpos']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_phpsafe')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['phpsafe']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_phpdir')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['phpdir']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-yellow"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_xcachesp')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['xcachesp']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-yellow"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_cookiesp')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['cookiesp']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-yellow"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_sessionsp')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['sessionsp']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-yellow"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_curlsp')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['curlsp']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-yellow"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_gdsp')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['gdsp']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-red"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_maxpostsize')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['maxpostsize']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-red"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_maxupsize')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['maxupsize']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-red"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_maxexectime')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['maxexectime']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+
+          </div>
+        </div>
       </div>
       <!-- /.row (main row) -->
 

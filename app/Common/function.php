@@ -1,8 +1,35 @@
 <?php
 /***********************************
+ * 方法名：获取站内信息相关函数
+ * 作者： Tommy（rubbish.boy@163.com）
+ */
+function getcon($varName)
+{
+	switch($res = get_cfg_var($varName))
+	{
+		case 0:
+			return 'NO';
+			break;
+		case 1:
+			return 'YES';
+			break;
+		default:
+			return $res;
+			break;
+	}
+
+}
+/***********************************
+ * 方法名： 判断是否存在该自定义函数
+ * 作者： Tommy（rubbish.boy@163.com）
+ */
+function isfun($funName)
+{
+	return (false !== function_exists($funName))?'YES':'NO';
+}
+/***********************************
  * 方法名：layer 封装提示跳转
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月10日
  ***********************************/
 function alert($url,$info)
 {
@@ -11,7 +38,6 @@ function alert($url,$info)
 /***********************************
  * 方法名：Json消息返回封装函数
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月10日
  ***********************************/
 function json_message($act=0,$data=null,$info=null)
 {
@@ -40,7 +66,6 @@ function json_message($act=0,$data=null,$info=null)
 /***********************************
  * 方法名：判断IE浏览器
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月10日
  ***********************************/
 function is_ie()
 {
@@ -54,63 +79,8 @@ function is_ie()
 	}
 }
 /***********************************
- * 方法名：加密函数
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月10日
- ***********************************/
-function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) 
-{
-	$ckey_length = 4;
-	$key = md5($key ? $key : $GLOBALS['authkey']);
-	$keya = md5(substr($key, 0, 16));
-	$keyb = md5(substr($key, 16, 16));
-	$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : '';
-
-	$cryptkey = $keya.md5($keya.$keyc);
-	$key_length = strlen($cryptkey);
-
-	$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
-	$string_length = strlen($string);
-
-	$result = '';
-	$box = range(0, 255);
-
-	$rndkey = array();
-	for($i = 0; $i <= 255; $i++) {
-		$rndkey[$i] = ord($cryptkey[$i % $key_length]);
-	}
-
-	for($j = $i = 0; $i < 256; $i++) {
-		$j = ($j + $box[$i] + $rndkey[$i]) % 256;
-		$tmp = $box[$i];
-		$box[$i] = $box[$j];
-		$box[$j] = $tmp;
-	}
-
-	for($a = $j = $i = 0; $i < $string_length; $i++) {
-		$a = ($a + 1) % 256;
-		$j = ($j + $box[$a]) % 256;
-		$tmp = $box[$a];
-		$box[$a] = $box[$j];
-		$box[$j] = $tmp;
-		$result .= chr(ord($string[$i]) ^ ($box[($box[$a] + $box[$j]) % 256]));
-	}
-
-	if($operation == 'DECODE') {
-		if((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$keyb), 0, 16)) {
-			return substr($result, 26);
-		} else {
-			return '';
-		}
-	} else {
-		return $keyc.str_replace('=', '', base64_encode($result));
-	}
-
-}
-/***********************************
  * 方法名：Curl 请求
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月10日
  ***********************************/
 function http_curl_request($url,$data=null,$isjson=0)
 {
@@ -140,7 +110,6 @@ function http_curl_request($url,$data=null,$isjson=0)
 /***********************************
  * 方法名：获取24位长度的唯一编号
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月10日
  ***********************************/
 function get_authid()
 {
@@ -165,7 +134,6 @@ function get_authid()
 /***********************************
  * 方法名：判断访问终端是否手机
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月17日
  ***********************************/ 
 function is_mobile_request()
 {    

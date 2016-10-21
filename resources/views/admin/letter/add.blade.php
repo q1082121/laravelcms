@@ -26,9 +26,11 @@
           <h3 class="box-title">{{trans('admin.website_letter_add_tip')}}</h3>
         </div>
         <!-- /.box-header -->
+        <form>
         <div class="box-body">
+          
           <div class="form-group">
-            <input v-model="params_data.email" class="form-control" placeholder="{{trans('admin.website_letter_item_to_user')}} : rubbish.boy@163.com ">
+            <input v-model="params_data.email" onBlur="onBlur_check('email',2);" id="email"  class="form-control" placeholder="{{trans('admin.website_letter_item_to_user')}} : rubbish.boy@163.com ">
           </div>
           <div class="form-group">
             <input v-model="params_data.title" class="form-control" placeholder="{{trans('admin.website_letter_item_title')}} : ">
@@ -53,13 +55,15 @@
           </div>
           @endif
         </div>
+        
         <!-- /.box-body -->
         <div class="box-footer">
           <div class="pull-right">
-            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> {{trans('admin.website_letter_action_send')}} </button>
+            <button type="button" @click="check_action(apiurl_add)"  class="btn btn-primary"><i class="fa fa-envelope-o"></i> {{trans('admin.website_letter_action_send')}} </button>
           </div>
           <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> {{trans('admin.website_letter_action_discard')}}</button>
         </div>
+        </form>
         <!-- /.box-footer -->
       </div>
       <!-- /. box -->
@@ -76,6 +80,7 @@ Vue.http.options.emulateJSON = true;
 new Vue({
     el: '#app-content',
     data: { 
+             email:                 '{{$website["website_user"]["email"]}}' ,
              syseditor:             '{{$website["root"]["syseditor"]}}', 
              apiurl_add:            '{{$website["apiurl_add"]}}', 
              params_data:
@@ -102,9 +107,14 @@ new Vue({
               var msg="{{trans('admin.website_letter_item_to_user')}}";
               layermsg_error(msg);
           }
-          else if (this.params_data.title=='')
+          else if (this.params_data.email==this.email)
           {
               var msg="{{trans('admin.letter_failure_tip1')}}";
+              layermsg_error(msg);
+          }
+          else if (this.params_data.title=='')
+          {
+              var msg="{{trans('admin.letter_failure_tip2')}}";
               layermsg_error(msg);
           }
           else

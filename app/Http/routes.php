@@ -204,6 +204,21 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,model_letter'], 
 			        'uses' => 'LetterController@index'
     			]);
+	Route::get('letter/send', 
+				[
+			        'middleware' => ['ability:admin,model_letter'], 
+			        'uses' => 'LetterController@send'
+    			]);
+	Route::get('letter/star', 
+				[
+			        'middleware' => ['ability:admin,model_letter'], 
+			        'uses' => 'LetterController@star'
+    			]);	
+	Route::get('letter/trash', 
+				[
+			        'middleware' => ['ability:admin,model_letter'], 
+			        'uses' => 'LetterController@trash'
+    			]);										
 	Route::get('letter/add', 
 				[
 			        'middleware' => ['ability:admin,add'], 
@@ -274,7 +289,8 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('letter/api_list', 'LetterController@api_list');
 	Route::post('letter/api_add', 'LetterController@api_add');
 	Route::post('letter/api_info', 'LetterController@api_info');
-
+	Route::post('letter/api_count', 'LetterController@api_count');
+	
 });
 
 Route::get('/home', 'HomeController@index');

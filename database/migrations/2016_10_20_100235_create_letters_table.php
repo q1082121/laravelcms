@@ -31,6 +31,7 @@ class CreateLettersTable extends Migration
             $table->tinyInteger('isoverhead_from')->default(0); //发送信件是否顶置
             $table->tinyInteger('istrash_from')->default(0);    //发送信件是否进回收站
             $table->tinyInteger('isdel_from')->default(0);      //发送信件删除状态
+            $table->tinyInteger('status')->default(0);          //阅读状态
 			$table->timestamps();
 		});
     }

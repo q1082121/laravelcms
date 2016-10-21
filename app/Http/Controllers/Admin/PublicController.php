@@ -151,10 +151,7 @@ class PublicController extends Controller
 							$this->userinfo=json_decode(Redis::get($cache_userinfo),true);
 							break;
 			}
-
 			$this->user=$user;
-			//dump($this->userinfo);
-			//dump($this->user);
 
 			//用户信息
 			$this->website['website_userinfo']=$this->userinfo;
@@ -166,6 +163,20 @@ class PublicController extends Controller
 			{
 				alert('/user/logout',trans('admin.website_user_role_failure'));
 			}
+			else
+			{
+				//获取未读信件
+				//index
+				$condition_index['email_to']=$this->user['email'];
+				$condition_index['istrash_to']=0;
+				$condition_index['isdel_to']=0;
+				$condition_index['status']=0;
+				$letters_count=DB::table('letters')->where($condition_index)->count();
+				$letters_list=DB::table('letters')->where($condition_index)->take(5)->get();
+				$this->website['letters_count']=$letters_count?$letters_count:0;
+				$this->website['letters_list']=json_encode(object_array($letters_list));
+			}
+
         }
 		else
 		{	

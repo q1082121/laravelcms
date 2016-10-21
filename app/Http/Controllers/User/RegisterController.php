@@ -168,6 +168,7 @@ class RegisterController extends Controller
     {
         $fieldname=$request->get('fieldname');
 		$fieldval=$request->get('fieldval');
+        $type=$request->get('type');
         /*******************************************/
         //屏蔽数据
         $clear_username="admin,superadmin,demo,111111";
@@ -184,7 +185,7 @@ class RegisterController extends Controller
                                 }
                                 else
                                 {
-                                    $username = DB::table('users')->where('username', $fieldname)->first();
+                                    $username = DB::table('users')->where('username', $fieldval)->first();
                                     if($username)
                                     {
                                         $msg_array['data']=1;
@@ -193,7 +194,7 @@ class RegisterController extends Controller
                                     else
                                     {
                                         $msg_array['data']=0;
-                                        $msg_array['message']=trans('register.success_username');
+                                        $msg_array['message']=$type==1?trans('register.success_username'):trans('register.failure_username_2');
                                     }		
                                 }
                                 $json_message=json_message(1,$msg_array['data'],$msg_array['message']);
@@ -207,7 +208,7 @@ class RegisterController extends Controller
                                 }
                                 else
                                 {
-                                    $user_email = DB::table('users')->where('email', $fieldname)->first();
+                                    $user_email = DB::table('users')->where('email',$fieldval)->first();
                                     if($user_email)
                                     {
                                         $msg_array['data']=1;
@@ -216,7 +217,7 @@ class RegisterController extends Controller
                                     else
                                     {
                                         $msg_array['data']=0;
-                                        $msg_array['message']=trans('register.success_email');
+                                        $msg_array['message']=$type==1?trans('register.success_email'):trans('register.failure_email_2');
                                     }		
                                 }
                                 $json_message=json_message(1,$msg_array['data'],$msg_array['message']);
@@ -230,7 +231,7 @@ class RegisterController extends Controller
                                 }
                                 else
                                 {
-                                    $user_mobile = DB::table('users')->where('mobile', $fieldname)->first();
+                                    $user_mobile = DB::table('users')->where('mobile', $fieldval)->first();
                                     if($user_mobile)
                                     {
                                         $msg_array['data']=1;
@@ -239,7 +240,7 @@ class RegisterController extends Controller
                                     else
                                     {
                                         $msg_array['data']=0;
-                                        $msg_array['message']=trans('register.success_mobile');
+                                        $msg_array['message']=$type==1?trans('register.success_mobile'):trans('register.failure_mobile_2');
                                     }		
                                 }
                                 $json_message=json_message(1,$msg_array['data'],$msg_array['message']);

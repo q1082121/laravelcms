@@ -239,7 +239,8 @@ function getCurrentControllerName($group='Admin')
  ***********************************/  
 function getCurrentMethodName()  
 {  
-    return getCurrentAction()['method'];  
+	$fullname=getCurrentAction()['method'];
+	return $fullname;
 }  
 /***********************************
  * 方法名： 获取当前控制器与方法 

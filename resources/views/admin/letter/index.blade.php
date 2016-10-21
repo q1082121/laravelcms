@@ -49,27 +49,48 @@
               </thead>
               <tbody>
               <tr v-for="item in datalist" >
-                <td class="mailbox-star" v-if="item.isstart == 1" ><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                <td class="mailbox-star" v-if="item.isstart == 0" ><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                <td class="mailbox-name"><a href="read-mail.html">@{{ item.to_user_id }}</a></td>
+                <td class="mailbox-id">@{{ item.id }}</td>
+                <td class="mailbox-star" v-if="item.isstar_from == 1 && item.email_from == email " ><a href="javascript:void(0);" @click="get_one_action(item.id,'isstar_from')" ><i class="fa fa-star text-yellow"></i></a></td>
+                <td class="mailbox-star" v-if="item.isstar_from == 0 && item.email_from == email " ><a href="javascript:void(0);" @click="get_one_action(item.id,'isstar_from')"><i class="fa fa-star-o text-yellow"></i></a></td>
+                <td class="mailbox-star" v-if="item.isstar_to == 1 && item.email_to == email " ><a href="javascript:void(0);" @click="get_one_action(item.id,'isstar_to')" ><i class="fa fa-star text-yellow"></i></a></td>
+                <td class="mailbox-star" v-if="item.isstar_to == 0 && item.email_to == email " ><a href="javascript:void(0);" @click="get_one_action(item.id,'isstar_to')"><i class="fa fa-star-o text-yellow"></i></a></td>
                 <td class="mailbox-subject"><b>@{{ item.title }}</b></td>
-                <td class="mailbox-attachment"></td>
+                <td class="mailbox-attachment">@{{ item.email_to }}</td>
                 <td class="mailbox-date">@{{ item.created_at }}</td>
+                @if($website['actionname']=='index')
                 <td>
                   <div class="tools">
-                    @ability('admin', 'set_letter_isstar')
-                    <button v-if="item.isstar == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_letter_action_star')}}</button>
-                    <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_star')}}</button>
-                    @endability
-                    @ability('admin', 'set_letter_istrash')
-                    <button v-if="item.trash == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_trash')}}</button>
-                    <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_trash')}}</button>
-                    @endability
+                    <button v-if="actionname =='index' && item.istrash_to == 0 && item.isdel_to == 0 "  type="button" @click="get_one_action(item.id,'istrash_to')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_trash')}}</button>
+                  </div>
+                </td>
+                @endif
+                @if($website['actionname']=='send')
+                <td>
+                  <div class="tools">
+                    <button v-if="actionname =='send' && item.istrash_from == 0 && item.isdel_from == 0 "  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_letter_action_trash')}}</button>
+                  </div>
+                </td>
+                @endif
+                @if($website['actionname']=='star')
+                <td>
+                  <div class="tools">
+                    <button v-if="actionname =='star' && item.istrash_from == 0  && item.isdel_from == 0 && item.email_from == email"  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_trash')}}</button>
+                    <button v-if="actionname =='star' && item.istrash_to == 0 && item.isdel_to == 0 && item.email_to == email"  type="button" @click="get_one_action(item.id,'istrash_to')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_trash')}}</button>
+                  </div>
+                </td>
+                @endif
+                @if($website['actionname']=='trash')
+                <td>
+                  <div class="tools">
+                    <button v-if="actionname =='trash' && item.istrash_from == 1  && item.isdel_from == 0 && item.email_from == email"  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_back')}}</button>
+                    <button v-if="actionname =='trash' && item.istrash_to == 1 && item.isdel_to == 0 && item.email_to == email"  type="button" @click="get_one_action(item.id,'istrash_to')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_back')}}</button>
                     @ability('admin', 'delete')
-                    <button type="button" @click="delete_action(item.id)" class="btn btn-danger" > <i class="fa fa-trash"></i> {{trans('admin.website_action_delete')}}</button>
+                    <button v-if="actionname =='trash' && item.istrash_from == 1 && item.isdel_from == 0 " type="button" @click="get_one_action(item.id,'isdel_from')" class="btn btn-danger" > <i class="fa fa-trash"></i> {{trans('admin.website_action_delete')}}</button>
+                    <button v-if="actionname =='trash' && item.istrash_to == 1 && item.isdel_to == 0 " type="button" @click="get_one_action(item.id,'isdel_to')" class="btn btn-danger" > <i class="fa fa-trash"></i> {{trans('admin.website_action_delete')}}</button>
                     @endability
                   </div>
                 </td>
+                @endif
               </tr>
               </tbody>
             </table>
@@ -110,6 +131,9 @@ new Vue({
              apiurl_list          :'{{$website["apiurl_list"]}}',
              apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
              apiurl_delete        :'{{$website["apiurl_delete"]}}',
+             apiurl_count         :'{{$website["apiurl_count"]}}',
+             email                :'{{$website["website_user"]["email"]}}' ,
+             actionname           :'{{$website["actionname"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -124,20 +148,63 @@ new Vue({
                     way            :'{{$website["way"]}}',
                     wayoption      :eval(htmlspecialchars_decode('{{$website["wayoption"]}}')),
                     keyword        :'',
+                    actionname     :'', 
              },
              paramsdata:
              {
                     id             :'',
                     fields         :'',
                     modelname      :'{{$website["modelname"]}}',
+             },
+             countdata:
+             {
+                    count_index    :0,
+                    count_send     :0,
+                    count_star     :0,
+                    count_trash    :0,
              }
+             
           },
-    ready: function (){ 
+    ready: function ()
+            { 
+            this.pageparams.actionname=this.actionname;  
             //这里是vue初始化完成后执行的函数 
             this.get_list_action();
             },
     methods: {
             //获取列表数据
+            get_count_action:function()
+            {
+              this.$http.post(this.apiurl_count,{'email':this.email},{
+                before:function(request)
+                {
+                  loadi=layer.load("...");
+                },
+              })
+              .then((response) => 
+              {
+                  layer.close(loadi);
+                  var statusinfo=response.data;
+                  if(statusinfo.status==1)
+                  {
+                      this.countdata=statusinfo.resource;
+                  }
+
+              },(response) => 
+              {
+                //响应错误
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime')}}";
+                layermsg_error(msg);
+              })
+              .catch(function(response) {
+                //异常抛出
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime_error')}}";
+                layermsg_error(msg);
+              })
+
+            },
             get_list_action:function()
             {
 
@@ -150,6 +217,7 @@ new Vue({
               .then((response) => 
               {
                 this.do_list_action(response);
+                this.get_count_action();
               },(response) => 
               {
                 //响应错误

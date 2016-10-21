@@ -20,7 +20,8 @@ return [
     'website_rightinfo'                            =>   '版权所有',
     'website_Toggle_navigation'                    =>   '切换导航', 
     'website_menu_main'                            =>   '后台首页',
-    'website_feedback_tip'                         =>   '你有新的留言',
+    'website_letter_newtip'                        =>   '你有新的信件',
+    'website_allletter_tip'                        =>   '查看全部信件',
     'website_msg_tip'                              =>   '您有新的消息',
     'website_task_tip'                             =>   '您有新的任务',
     'website_user_regdate'                         =>   '用户注册日期',
@@ -65,6 +66,8 @@ return [
     'website_edit_failure'                         =>   '修改失败',
     'website_add_success'                          =>   '添加成功',
     'website_add_failure'                          =>   '添加失败',
+    'website_send_success'                         =>   '发送成功',
+    'website_send_failure'                         =>   '发送失败',
     'website_del_success'                          =>   '删除成功',
     'website_del_failure'                          =>   '删除失败',
     'website_clear_success'                        =>   '清理成功',
@@ -369,14 +372,22 @@ return [
     'website_letter_action_add'                         =>   '新增',
     'website_letter_action_send'                        =>   '发送',
     'website_letter_action_discard'                     =>   '丢弃',
-    'website_letter_action_star'                        =>   '星标记',
+    'website_letter_action_star'                        =>   '星标',
+    'website_letter_action_cancelstar'                  =>   '取消星标',
     'website_letter_action_trash'                       =>   '扔垃圾箱',
+    'website_letter_action_back'                        =>   '捡回',
     'website_letter_folders'                            =>   '文件夹',
     'website_letter_received'                           =>   '收信箱',
     'website_letter_send'                               =>   '已发送',
     'website_letter_star'                               =>   '星标记',
     'website_letter_trash'                              =>   '垃圾箱',
     'website_letter_add_tip'                            =>   '撰写新信件',
+
+    'website_letter_action_star_success'                =>   '星标记成功',
+    'website_letter_action_star_success2'               =>   '取消星标成功',
+    'website_letter_action_trash_success'               =>   '仍入垃圾箱成功',
+    'website_letter_action_trash_success2'              =>   '捡回信件成功',
+    'website_letter_action_del_trash_success'           =>   '删除垃圾成功',
 
     'website_letter_item_title'                         =>   '标题',
     'website_letter_item_attachment'                    =>   '图片',
@@ -387,8 +398,8 @@ return [
     'website_letter_item_isoverhead'                    =>   '顶置',
     'website_letter_item_status'                        =>   '状态',
     'website_letter_item_time'                          =>   '时间',
-    'letter_failure_tip1'                               =>   '请填写标题',
-
+    'letter_failure_tip1'                               =>   '收信人不能为自己',
+    'letter_failure_tip2'                               =>   '请填写标题',
 
 
 ];

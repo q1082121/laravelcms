@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+    'tip'          =>  '用户名 / 邮箱 / 手机号码',
     'name'         =>  '用户登录',
     'code'         =>  '验证码',
     /*
@@ -52,5 +52,5 @@ return [
     'failure_tip3'      =>  '请输入有效的手机号码',
     'failure_tip4'      =>  '请您填写登录密码',
     'failure_tip5'      =>  '请您填写验证码',
-
+    'failure_account'   =>  '请输入用户帐号',
 ];

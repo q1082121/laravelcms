@@ -33,6 +33,7 @@
 			    }
 			    @elseif ($website['type'] == 2)
 			    var username = frm.username;
+				var email = frm.email;
 			    if(username.value=="" )
 			    {
 			        layer.alert("{{trans('register.failure_tip2')}}",{icon: 7,skin: 'layer-ext-moon'});
@@ -43,6 +44,12 @@
 			        layer.alert("{{trans('register.failure_tip3')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
+				if(email.value=="" || isEmail(email.value)==false)
+			    {
+			        layer.alert("{{trans('register.failure_tip1')}}",{icon: 7,skin: 'layer-ext-moon'});
+			        return false;
+			    }
+
 			    @elseif ($website['type'] == 3)
 			    var mobile = frm.mobile;
 			    if(mobile.value=="" || validatemobile(mobile.value)==false)
@@ -52,16 +59,6 @@
 			    }
 			    @endif
 
-			    if(nick.value=="")
-			    {
-			        layer.alert("{{trans('register.failure_tip5')}}",{icon: 7,skin: 'layer-ext-moon'});
-			        return false;
-			    }
-			    if(nick.value.length>8)
-			    {
-			        layer.alert("{{trans('register.failure_tip6')}}",{icon: 7,skin: 'layer-ext-moon'});
-			        return false;
-			    }
 			    if(userpwd.value=="")
 			    {
 			        layer.alert("{{trans('register.failure_tip7')}}",{icon: 7,skin: 'layer-ext-moon'});
@@ -136,16 +133,15 @@
 				{{ csrf_field() }}
 				@if ($website['type'] == 1)
 				<input type="hidden" name="type" value="1">
-				<input type="text" class="text" id="email" name="email" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/email.png') no-repeat left center;">
+				<input type="text" class="text" onBlur="onBlur_check('email');" id="email" name="email" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/email.png') no-repeat left center;">
 				@elseif ($website['type'] == 2)
 				<input type="hidden" name="type" value="2">
-				<input type="text" class="text" id="username" name="username" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/username.png') no-repeat left center;">
+				<input type="text" class="text" onBlur="onBlur_check('username');" id="username" name="username" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/username.png') no-repeat left center;">
+				<input type="text" class="text" onBlur="onBlur_check('email');" id="email" name="email" value="" placeholder="：" style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/email.png') no-repeat left center;">
 				@elseif ($website['type'] == 3)
 				<input type="hidden" name="type" value="3">
-				<input type="text" class="text" id="mobile" name="mobile" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/mobile.png') no-repeat left center;">
+				<input type="text" class="text" onBlur="onBlur_check('mobile');" id="mobile" name="mobile" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/mobile.png') no-repeat left center;">
 				@endif
-
-				<input type="text" class="text" name="nick" value="" placeholder="：" style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/nick.png') no-repeat left center;">
 				<input id="password" type="password"  name="userpwd" placeholder="："  style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/pwd.png') no-repeat left center;">
 				<input id="password" type="password"  name="reuserpwd" placeholder="：" style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/repwd.png') no-repeat left center;">
 				<input type="text" name="code" maxlength="5" placeholder="验证码"  style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/code.png') no-repeat left center;">
@@ -164,4 +160,5 @@
 				</div>
 			</form>
 	</div>
+
 @endsection

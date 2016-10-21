@@ -17,9 +17,9 @@ class RoleSeeder extends Seeder
 		/***********************************/
 		$roles = array(
 		  array('name' => 'admin','display_name' => '管理员','description' => '管理员拥有全部权限'),
-		  array('name' => 'user','display_name' => '普通用户组','description' => '普通权限'),
+		  array('name' => 'subadmin','display_name' => '子管理员','description' => '部分权限限制的'),
 		  array('name' => 'vip','display_name' => '高级会员','description' => '高级权限可操作'),
-		  array('name' => 'subadmin','display_name' => '子管理员','description' => '部分权限限制的')
+		  array('name' => 'user','display_name' => '普通用户组','description' => '普通权限'),
 		);
 
 		/***********************************/

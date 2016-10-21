@@ -34,7 +34,7 @@ class LoginController extends Controller
         $website['login_name']=trans('login.name');
         $website['website_center_tip']=trans('admin.website_center_tip');
     	$website['copyrights']=trans('admin.website_name').trans('admin.website_rightinfo');
-        $website['type']=$request->route('type')?$request->route('type'):2;
+        $website['type']=$request->route('type')?$request->route('type'):4;
         return view('user/login')->with('website',$website);
     }
     /******************************************
@@ -78,7 +78,15 @@ class LoginController extends Controller
                         $rule=13;
                         $errory_msg=trans('login.failure_13');
                     }
-                    break;    
+                    break; 
+                case 4:
+                    $account=$request->get('account');
+                    if(empty($account))
+                    {
+                        $rule=14;
+                        $errory_msg=trans('login.failure_account');
+                    }
+                    break;        
                 default:
                         
                     break;
@@ -113,6 +121,26 @@ class LoginController extends Controller
                             $rule=1;
                             //return redirect()->intended('/admin');
                         }
+                    case 4:
+                        // 尝试登录
+                        if (Auth::guard($guard)->attempt(['username' => $request->get('account'), 'password' => $request->get('userpwd') ,'is_lock' => 0  ])) 
+                        {
+                            // 认证通过...
+                            $rule=1;
+                            //return redirect()->intended('/admin');
+                        }
+                        else if(Auth::guard($guard)->attempt(['email' => $request->get('account'), 'password' => $request->get('userpwd') ,'is_lock' => 0  ]))
+                        {
+                            // 认证通过...
+                            $rule=1;
+                            //return redirect()->intended('/admin');
+                        }
+                        else if(Auth::guard($guard)->attempt(['mobile' => $request->get('account'), 'password' => $request->get('userpwd') ,'is_lock' => 0  ]))
+                        {
+                            // 认证通过...
+                            $rule=1;
+                            //return redirect()->intended('/admin');
+                        }     
                         break;    
                     default:
                             

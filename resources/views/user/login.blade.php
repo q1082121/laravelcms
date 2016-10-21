@@ -50,6 +50,13 @@ function placeFocus() { document.forms[0].elements[0].focus();
 			        layer.alert("{{trans('login.failure_tip3')}}",{icon: 7,skin: 'layer-ext-moon'});
 			        return false;
 			    }
+				@elseif ($website['type'] == 4)
+			    var account = frm.account;
+			    if(account.value=="")
+			    {
+			        layer.alert("{{trans('login.failure_account')}}",{icon: 7,skin: 'layer-ext-moon'});
+			        return false;
+			    }
 			    @endif
 
 			    if(userpwd.value=="")
@@ -119,6 +126,9 @@ function placeFocus() { document.forms[0].elements[0].focus();
 				@elseif ($website['type'] == 3)
 				<input type="hidden" name="type" value="3">
 				<input type="text" class="text" id="mobile" name="mobile" value="" placeholder="：" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/mobile.png') no-repeat left center;">
+				@elseif ($website['type'] == 4)
+				<input type="hidden" name="type" value="4">
+				<input type="text" class="text" id="account" name="account" value="" placeholder="：{{trans('login.tip')}}" style="width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/account.png') no-repeat left center;">
 				@endif
 				<input id="password" type="password"  name="userpwd" placeholder="："  style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/login_pwd.png') no-repeat left center;">
 				<input type="text" name="code" maxlength="5" placeholder="{{trans('login.code')}}"  style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/code.png') no-repeat left center;">

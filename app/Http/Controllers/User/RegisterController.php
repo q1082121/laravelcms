@@ -58,24 +58,30 @@ class RegisterController extends Controller
             switch ($request->get('type')) 
             {
                 case 1:
-                    $user = DB::table('users')->where('email', $request->get('email'))->first();
-                    if($user)
+                    $user_email = DB::table('users')->where('email', $request->get('email'))->first();
+                    if($user_email)
                     {
                         $rule=11;
                         $errory_msg=trans('register.failure11');
                     }
                     break;
                 case 2:
-                    $user = DB::table('users')->where('username', $request->get('username'))->first();
-                    if($user)
+                    $username = DB::table('users')->where('username', $request->get('username'))->first();
+                    $user_email = DB::table('users')->where('email', $request->get('email'))->first();
+                    if($username)
                     {
                         $rule=12;
                         $errory_msg=trans('register.failure12');
                     }
+                    else if($user_email)
+                    {
+                        $rule=11;
+                        $errory_msg=trans('register.failure11');
+                    }
                     break;
                 case 3:
-                    $user = DB::table('users')->where('mobile', $request->get('mobile'))->first();
-                    if($user)
+                    $user_mobile = DB::table('users')->where('mobile', $request->get('mobile'))->first();
+                    if($user_mobile)
                     {
                         $rule=13;
                         $errory_msg=trans('register.failure13');
@@ -103,7 +109,6 @@ class RegisterController extends Controller
                         $user_id=$user->id;
 
                         $userinfo=new Userinfo;
-                        $userinfo->nick = $request->get('nick');
                         $userinfo->user_id = $user_id;
 
                         if($userinfo->save())
@@ -152,6 +157,98 @@ class RegisterController extends Controller
             $json_message=json_message(2,$msg_array['data'],$msg_array['info']);
             return $json_message;
         }
+    }
+    /******************************************
+    ****@AuThor : rubbish.boy@163.com
+    ****@Title  : 检测数据存在
+    ****@param  : $request
+    ****@return : Response
+    *******************************************/
+    public function exit_api(Request $request)
+    {
+        $fieldname=$request->get('fieldname');
+		$fieldval=$request->get('fieldval');
+        /*******************************************/
+        //屏蔽数据
+        $clear_username="admin,superadmin,demo,111111";
+        $clear_email="admin@163.com,rubbish.boy@163.com";
+        $clear_mobile="15067636212";
+		switch($fieldname)
+		{
+			case 'username':
+                                $checkinfo=check_string_sub($clear_username,$fieldval,2);
+                                if($checkinfo==true)
+                                {
+                                    $msg_array['data']=1;
+                                    $msg_array['message']=trans('register.failure_username');
+                                }
+                                else
+                                {
+                                    $username = DB::table('users')->where('username', $fieldname)->first();
+                                    if($username)
+                                    {
+                                        $msg_array['data']=1;
+                                        $msg_array['message']=trans('register.failure12');
+                                    }
+                                    else
+                                    {
+                                        $msg_array['data']=0;
+                                        $msg_array['message']=trans('register.success_username');
+                                    }		
+                                }
+                                $json_message=json_message(1,$msg_array['data'],$msg_array['message']);
+                    break;
+			case 'email':
+                                $checkinfo=check_string_sub($clear_email,$fieldval,2);
+                                if($checkinfo==true)
+                                {
+                                    $msg_array['data']=1;
+                                    $msg_array['message']=trans('register.failure_email');
+                                }
+                                else
+                                {
+                                    $user_email = DB::table('users')->where('email', $fieldname)->first();
+                                    if($user_email)
+                                    {
+                                        $msg_array['data']=1;
+                                        $msg_array['message']=trans('register.failure11');
+                                    }
+                                    else
+                                    {
+                                        $msg_array['data']=0;
+                                        $msg_array['message']=trans('register.success_email');
+                                    }		
+                                }
+                                $json_message=json_message(1,$msg_array['data'],$msg_array['message']);
+                    break;
+            case 'mobile':
+                                $checkinfo=check_string_sub($clear_mobile,$fieldval,2);
+                                if($checkinfo==true)
+                                {
+                                    $msg_array['data']=1;
+                                    $msg_array['message']=trans('register.failure_mobile');
+                                }
+                                else
+                                {
+                                    $user_mobile = DB::table('users')->where('mobile', $fieldname)->first();
+                                    if($user_mobile)
+                                    {
+                                        $msg_array['data']=1;
+                                        $msg_array['message']=trans('register.failure13');
+                                    }
+                                    else
+                                    {
+                                        $msg_array['data']=0;
+                                        $msg_array['message']=trans('register.success_mobile');
+                                    }		
+                                }
+                                $json_message=json_message(1,$msg_array['data'],$msg_array['message']);
+                    break;        
+			default:
+				$json_message=json_message();
+				break;
+		}
+		return $json_message;
     }
     /******************************************
     ****@AuThor : rubbish.boy@163.com

@@ -57,6 +57,7 @@ return [
     'website_navigation_classify'                  =>   '栏目分类',
     'website_save'                                 =>   '保存信息',
     'website_getback'                              =>   '返回页面',
+    'website_goback'                               =>   '返回',
     'website_save_success'                         =>   '保存成功',
     'website_save_failure'                         =>   '保存失败',
     'website_save_exit'                            =>   '无变更信息',
@@ -366,14 +367,16 @@ return [
     |
     */
     'website_letter_action_add'                         =>   '新增',
+    'website_letter_action_send'                        =>   '发送',
+    'website_letter_action_discard'                     =>   '丢弃',
     'website_letter_action_star'                        =>   '星标记',
     'website_letter_action_trash'                       =>   '扔垃圾箱',
-    
     'website_letter_folders'                            =>   '文件夹',
     'website_letter_received'                           =>   '收信箱',
     'website_letter_send'                               =>   '已发送',
     'website_letter_star'                               =>   '星标记',
     'website_letter_trash'                              =>   '垃圾箱',
+    'website_letter_add_tip'                            =>   '撰写新信件',
 
     'website_letter_item_title'                         =>   '标题',
     'website_letter_item_attachment'                    =>   '图片',
@@ -385,5 +388,7 @@ return [
     'website_letter_item_status'                        =>   '状态',
     'website_letter_item_time'                          =>   '时间',
     'letter_failure_tip1'                               =>   '请填写标题',
+
+
 
 ];

@@ -15,9 +15,9 @@ class UserSeeder extends Seeder
 		DB::table('users')->delete();
 		/***********************************/
 		$users = array(
-		  array('username' => 'admin','email' => NULL,'mobile' => NULL,'password' => '$2y$10$U0dVKJBNjQn7lkwCtQjDROGbyURoby0nT/8o30Yr0uhmpyMU3CDb.','is_lock' => '0','remember_token' => 'LT9ywRFzVzMzUVURXsvO7CiqQigDrovNCsW9WpPZKfZP9dXv09Vep187V9np'),
-		  array('username' => 'subadmin','email' => NULL,'mobile' => NULL,'password' => '$2y$10$B94m7TC01z5yKNaDypV2y.eQCPwXl2YUlf6Ik3mIeHxa1wTAZuo3q','is_lock' => '0','remember_token' => ''),
-		  array('username' => 'demo','email' => NULL,'mobile' => NULL,'password' => '$2y$10$lGIkegbR0q9S5yIlTPxwfuWsH40vZsP053oqjOcNwuZw9XLdpd.YS','is_lock' => '0','remember_token' => '')
+		  array('username' => 'admin','email' => 'rubbish.boy@163.com','mobile' => NULL,'password' => '$2y$10$U0dVKJBNjQn7lkwCtQjDROGbyURoby0nT/8o30Yr0uhmpyMU3CDb.','is_lock' => '0','remember_token' => 'LT9ywRFzVzMzUVURXsvO7CiqQigDrovNCsW9WpPZKfZP9dXv09Vep187V9np'),
+		  array('username' => 'subadmin','email' => 'demo108@163.com','mobile' => NULL,'password' => '$2y$10$B94m7TC01z5yKNaDypV2y.eQCPwXl2YUlf6Ik3mIeHxa1wTAZuo3q','is_lock' => '0','remember_token' => ''),
+		  array('username' => 'demo','email' => '471416739@qq.com','mobile' => NULL,'password' => '$2y$10$lGIkegbR0q9S5yIlTPxwfuWsH40vZsP053oqjOcNwuZw9XLdpd.YS','is_lock' => '0','remember_token' => '')
 		);
 		/***********************************/
 		foreach($users  as $key => $val)

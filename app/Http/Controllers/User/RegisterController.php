@@ -16,7 +16,6 @@ use App\Http\Model\Userinfo;
 
 //引用对应的命名空间
 use Validator;
-use Gregwar\Captcha\CaptchaBuilder;
 use Session;
 
 //使用数据库操作DB
@@ -48,7 +47,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $code = $request->get('code');
-        if (Session::get('cmscaptcha') == $code) 
+        if (Session::get('register_captcha') == $code) 
         {
             $rule=0;
             
@@ -251,27 +250,5 @@ class RegisterController extends Controller
 		}
 		return $json_message;
     }
-    /******************************************
-    ****@AuThor : rubbish.boy@163.com
-    ****@Title  : 验证码
-    ****@param  : int  $tmp
-    ****@return : Response
-    *******************************************/
-    public function captcha($tmp) 
-    {
-        //生成验证码图片的Builder对象，配置相应属性
-        $builder = new CaptchaBuilder;
-        //可以设置图片宽高及字体
-        $builder->build($width = 200, $height = 40, $font = null );
-        //获取验证码的内容
-        $phrase = $builder->getPhrase();
 
-        //把内容存入session
-        Session::flash('cmscaptcha', $phrase);
-        //生成图片
-        header("Cache-Control: no-cache, must-revalidate");
-        header('Content-Type: image/jpeg');
-        $builder->output();
-
-    }
 }

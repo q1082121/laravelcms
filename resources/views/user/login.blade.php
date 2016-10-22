@@ -82,7 +82,7 @@ function placeFocus() { document.forms[0].elements[0].focus();
                         var loadi;
                         $.ajax({
                             type:"POST",
-                            url:"{{ url('/user/login') }}",
+                            url:"{{ route('post.user.login') }}",
                             data:$('#do_form').serialize(),
                             dataType:'json',
                             beforeSend: function (){
@@ -133,11 +133,11 @@ function placeFocus() { document.forms[0].elements[0].focus();
 				<input id="password" type="password"  name="userpwd" placeholder="："  style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/login_pwd.png') no-repeat left center;">
 				<input type="text" name="code" maxlength="5" placeholder="{{trans('login.code')}}"  style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/code.png') no-repeat left center;">
           		<a onclick="javascript:re_captcha();" >
-          			<img src="{{ URL('user/login/captcha/1') }}" style="width:30%;margin-top:1em;margin-bottom:1em;"  alt="{{trans('login.code')}}" title="刷新图片"  height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0">
+          			<img src="{{ route('get.captcha.login') }}/1" style="width:30%;margin-top:1em;margin-bottom:1em;"  alt="{{trans('login.code')}}" title="刷新图片"  height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0">
           		</a>
 				<script>  
 				  function re_captcha() {
-				    $url = "{{ URL('user/login/captcha') }}";
+				    $url = "{{ route('get.captcha.login') }}";
 				        $url = $url + "/" + Math.random();
 				        document.getElementById('c2c98f0de5a04167a9e427d883690ff6').src=$url;
 				  }

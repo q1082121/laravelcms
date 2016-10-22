@@ -32,7 +32,7 @@ class ClassifyController extends PublicController
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
 		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
 		$website['link_add']=URL::action('Admin\ClassifyController@add');
-		$website['link_edit']='/admin/classify/edit/';
+		$website['link_edit']=route('get.admin.classify.edit').'/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.website_classify_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);

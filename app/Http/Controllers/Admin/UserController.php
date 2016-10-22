@@ -26,8 +26,8 @@ class UserController extends PublicController
 		$website['cursitename']=trans('admin.website_navigation_five');
 		$website['apiurl_list']=URL::action('Admin\UserController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['link_edit']='/admin/user/edit/';
-		$website['link_set']='/admin/user/set/';
+		$website['link_edit']=route('get.admin.user.edit').'/';
+		$website['link_set']=route('get.admin.user.set').'/';
 		$website['way']='username';
 		$wayoption[]=array('text'=>trans('admin.website_user_item_username'),'value'=>'username');
 		$wayoption[]=array('text'=>trans('admin.website_user_item_email'),'value'=>'email');

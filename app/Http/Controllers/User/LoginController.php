@@ -12,7 +12,6 @@ use App\Http\Controllers\Controller;
 
 //引用对应的命名空间
 use Validator;
-use Gregwar\Captcha\CaptchaBuilder;
 use Session;
 
 //使用数据库操作DB
@@ -46,7 +45,7 @@ class LoginController extends Controller
     public function login_action(Request $request)
     {
         $code = $request->get('code');
-        if (Session::get('admincaptcha') == $code) 
+        if (Session::get('login_captcha') == $code) 
         {
             $rule=0;
             $guard="admin";
@@ -165,7 +164,7 @@ class LoginController extends Controller
                  +          】      
                 ********************/
                 $msg_array['data']['is_reload']=0;
-                $msg_array['data']['curl']="/admin";
+                $msg_array['data']['curl']=route('get.admin');
                 $msg_array['info']=$success_msg;
                 $json_message=json_message(1,$msg_array['data'],$msg_array['info']);
                 return $json_message;
@@ -191,29 +190,6 @@ class LoginController extends Controller
     }
     /******************************************
     ****@AuThor : rubbish.boy@163.com
-    ****@Title  : 验证码
-    ****@param  : int  $tmp
-    ****@return : Response
-    *******************************************/
-    public function captcha($tmp) 
-    {
-        //生成验证码图片的Builder对象，配置相应属性
-        $builder = new CaptchaBuilder;
-        //可以设置图片宽高及字体
-        $builder->build($width = 200, $height = 40, $font = null );
-        //获取验证码的内容
-        $phrase = $builder->getPhrase();
-
-        //把内容存入session
-        Session::flash('admincaptcha', $phrase);
-        //生成图片
-        header("Cache-Control: no-cache, must-revalidate");
-        header('Content-Type: image/jpeg');
-        $builder->output();
-
-    }
-    /******************************************
-    ****@AuThor : rubbish.boy@163.com
     ****@Title  : 退出登录
     ****@param  : 
     ****@return : Response
@@ -222,7 +198,7 @@ class LoginController extends Controller
     {
        $guard="admin";
        Auth::guard($guard)->logout();
-       return redirect('/user/login');
+       return redirect(route('get.user.login'));
     }
 
 }

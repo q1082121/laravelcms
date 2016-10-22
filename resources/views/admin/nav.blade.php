@@ -1,7 +1,7 @@
 <ul class="sidebar-menu">
   <li class="header">{{trans('admin.website_main_navigation')}}</li>
   <li>
-    <a href="/admin">
+    <a href="{{ route('get.admin') }}">
       <i class="fa fa-star"></i> <span>{{trans('admin.website_navigation_one')}}</span>
     </a>
   </li>
@@ -17,38 +17,38 @@
   </li>
   <li class="header">{{trans('admin.website_main_navigation_three')}}</li>
   <li>
-    <a href="/admin/classify">
+    <a href="{{ route('get.admin.classify') }}">
       <i class="fa fa-reorder"></i> <span>{{trans('admin.website_navigation_classify')}}</span>
     </a>
   </li>
   <li>
-    <a href="/admin/article">
+    <a href="{{ route('get.admin.article') }}">
       <i class="fa fa-newspaper-o"></i> <span>{{trans('admin.website_navigation_six')}}</span>
     </a>
   </li>
   <li>
-    <a href="/admin/picture">
+    <a href="{{ route('get.admin.picture') }}">
       <i class="fa fa-photo"></i> <span>{{trans('admin.website_navigation_seven')}}</span>
     </a>
   </li>
   <li>
-    <a href="/admin/link">
+    <a href="{{ route('get.admin.link') }}">
       <i class="fa fa-external-link"></i> <span>{{trans('admin.website_navigation_eight')}}</span>
     </a>
   </li>
   <li class="header">{{trans('admin.website_main_navigation_two')}}</li>
   <li>
-    <a href="/admin/userpermission">
+    <a href="{{ route('get.admin.userpermission') }}">
       <i class="fa fa-gavel"></i> <span>{{trans('admin.website_navigation_permission')}}</span>
     </a>
   </li>
   <li>
-    <a href="/admin/userrole">
+    <a href="{{ route('get.admin.userrole') }}">
       <i class="fa fa-cubes"></i> <span>{{trans('admin.website_navigation_role')}}</span>
     </a>
   </li>
   <li>
-    <a href="/admin/user">
+    <a href="{{ route('get.admin.user') }}">
       <i class="fa fa-users"></i> <span>{{trans('admin.website_navigation_five')}}</span>
     </a>
   </li>
@@ -60,18 +60,18 @@
   </li>
   <li class="header">{{trans('admin.website_main_navigation_one')}}</li>
   <li>
-    <a href="/admin/setting">
+    <a href="{{ route('get.admin.setting') }}">
       <i class="fa fa-cogs"></i> <span>{{trans('admin.website_navigation_two')}}</span>
     </a>
   </li>
   <li class="header">{{trans('admin.website_main_navigation_fiver')}}</li>
   <li>
-    <a href="/admin/log">
+    <a href="{{ route('get.admin.log') }}">
       <i class="fa fa-bookmark-o"></i> <span>{{trans('admin.website_navigation_three')}}</span>
     </a>
   </li>
   <li>
-    <a href="/admin/letter">
+    <a href="{{ route('get.admin.letter') }}">
       <i class="fa fa-envelope-o"></i> <span>{{trans('admin.website_navigation_ten')}}</span>
     </a>
   </li>

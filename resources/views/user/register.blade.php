@@ -97,7 +97,7 @@
                         var loadi;
                         $.ajax({
                             type:"POST",
-                            url:"{{ url('/user/register') }}",
+                            url:"{{ route('post.user.register') }}",
                             data:$('#do_form').serialize(),
                             dataType:'json',
                             beforeSend: function (){
@@ -146,11 +146,11 @@
 				<input id="password" type="password"  name="reuserpwd" placeholder="：" style="margin-bottom:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/repwd.png') no-repeat left center;">
 				<input type="text" name="code" maxlength="5" placeholder="验证码"  style="margin-top:0;width:60%;padding-left:5em;background:url('{{asset('/module/login')}}/images/code.png') no-repeat left center;">
           		<a onclick="javascript:re_captcha();" >
-          			<img src="{{ URL('user/register/captcha/1') }}" style="width:30%;margin-top:1em;margin-bottom:1em;"  alt="验证码" title="刷新图片"  height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0">
+          			<img src="{{ route('get.captcha.register') }}/1" style="width:30%;margin-top:1em;margin-bottom:1em;"  alt="验证码" title="刷新图片"  height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0">
           		</a>
 				<script>  
 				  function re_captcha() {
-				    $url = "{{ URL('user/register/captcha') }}";
+				    $url = "{{ route('get.captcha.register') }}";
 				        $url = $url + "/" + Math.random();
 				        document.getElementById('c2c98f0de5a04167a9e427d883690ff6').src=$url;
 				  }

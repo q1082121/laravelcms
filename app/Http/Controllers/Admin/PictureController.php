@@ -30,7 +30,7 @@ class PictureController extends PublicController
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
 		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
 		$website['link_add']=URL::action('Admin\PictureController@add');
-		$website['link_edit']='/admin/picture/edit/';
+		$website['link_edit']=route('get.admin.picture.edit').'/';
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.website_picture_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);

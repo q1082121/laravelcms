@@ -31,7 +31,7 @@ class ArticleController extends PublicController
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
 		$website['link_add']=URL::action('Admin\ArticleController@add');
-		$website['link_edit']='/admin/article/edit/';
+		$website['link_edit']=route('get.admin.article.edit').'/';
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.website_article_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);

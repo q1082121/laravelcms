@@ -30,7 +30,7 @@ class LinkController extends PublicController
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
 		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
 		$website['link_add']=URL::action('Admin\LinkController@add');
-		$website['link_edit']='/admin/link/edit/';
+		$website['link_edit']=route('get.admin.link.edit').'/';
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.website_link_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);

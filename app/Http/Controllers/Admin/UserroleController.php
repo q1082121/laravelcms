@@ -31,8 +31,8 @@ class UserroleController extends PublicController
 
 		$website['apiurl_list']=URL::action('Admin\UserroleController@api_list');
 		$website['link_add']=URL::action('Admin\UserroleController@add');
-		$website['link_edit']='/admin/userrole/edit/';
-		$website['link_set']='/admin/userrole/set/';
+		$website['link_edit']=route('get.admin.userrole.edit').'/';
+		$website['link_set']=route('get.admin.userrole.set').'/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.website_userrole_item_name'),'value'=>'name');
 		$wayoption[]=array('text'=>trans('admin.website_userrole_item_display_name'),'value'=>'display_name');

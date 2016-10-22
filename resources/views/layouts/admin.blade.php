@@ -181,13 +181,13 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="/admin/userinfo" class="btn btn-default btn-flat">{{trans('admin.website_user_profile')}}</a>
+                  <a href="{{ route('get.admin.userinfo') }}" class="btn btn-default btn-flat">{{trans('admin.website_user_profile')}}</a>
                 </div>
                 <div class="pull-right" >
-                  <a href="/user/logout" class="btn btn-default btn-flat">{{trans('admin.website_user_signout')}}</a>
+                  <a href="{{ route('get.user.logout') }}" class="btn btn-default btn-flat">{{trans('admin.website_user_signout')}}</a>
                 </div>
                 <div class="pull-right" style="margin-right:6px">
-                  <a href="/admin/edit_pwd" class="btn btn-default btn-flat">{{trans('admin.website_user_editpwd')}}</a>
+                  <a href="{{ route('get.admin.edit_pwd') }}" class="btn btn-default btn-flat">{{trans('admin.website_user_editpwd')}}</a>
                 </div>
               </li>
             </ul>
@@ -244,7 +244,7 @@
           <small>{{trans('admin.website_site')}}</small>
           </h1>
           <ol class="breadcrumb">
-          <li><a href="/admin"><i class="fa fa-dashboard"></i> {{trans('admin.website_navigation_one')}}</a></li>
+          <li><a href="{{ route('get.admin') }}"><i class="fa fa-dashboard"></i> {{trans('admin.website_navigation_one')}}</a></li>
           <li class="active">{{$website['cursitename']}}</li>
           </ol>
       </section>

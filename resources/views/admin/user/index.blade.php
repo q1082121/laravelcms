@@ -61,9 +61,6 @@
                     @ability('admin', 'set_role')
                     <button type="button" @click="set_action(item.user_id)" class="btn btn-primary" > <i class="fa fa-magic"></i> {{trans('admin.website_action_set_role')}}</button>
                     @endability
-                    @ability('admin', 'edit')
-                    <button type="button" @click="link_action(item.user_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
-                    @endability
                     @ability('admin', 'set_lock')
                     <button v-if="item.user_id != 1 && item.is_lock == 0 " @click="get_one_action(item.user_id,'is_lock')" type="button"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_lock')}}</button>
                     <button v-if="item.user_id != 1 && item.is_lock == 1 " @click="get_one_action(item.user_id,'is_lock')" type="button"  class="btn btn-danger" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_lock')}}</button>
@@ -106,7 +103,6 @@ new Vue({
              apiurl_list          :'{{$website["apiurl_list"]}}',
              apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
              linkurl_set          :'{{$website["link_set"]}}',  
-             linkurl_edit         :'{{$website["link_edit"]}}', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页

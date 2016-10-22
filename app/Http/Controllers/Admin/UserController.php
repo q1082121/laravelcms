@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 //使用User模型
 use App\Http\Model\User;
 use DB;
+use Cache;
 //使用URL生成地址
 use URL;
 use Hash;
@@ -26,7 +27,6 @@ class UserController extends PublicController
 		$website['cursitename']=trans('admin.website_navigation_five');
 		$website['apiurl_list']=URL::action('Admin\UserController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['link_edit']=route('get.admin.user.edit').'/';
 		$website['link_set']=route('get.admin.user.set').'/';
 		$website['way']='username';
 		$wayoption[]=array('text'=>trans('admin.website_user_item_username'),'value'=>'username');
@@ -129,9 +129,26 @@ class UserController extends PublicController
 		$params['area_cid']=$request->get('area_cid');
 		$params['area_xid']=$request->get('area_xid');
 
+		//图片上传处理接口
+		$attachment='attachment';
+		$data_image=$request->get($attachment);
+		if($data_image)
+		{
+			//上传文件归类：获取控制器名称
+			$classname=getCurrentControllerName();
+			$params['attachment']=$this->uploads_action($classname,$data_image);
+			$params['isattach']=1;
+		}
+
+
 		$info=DB::table('userinfos')->where($condition)->update($params);
 		if ($info) 
 		{
+			$cache_userinfo='userinfo_'.$this->user['id'];
+			$userinfo=User::find($this->user['id'])->hasOneUserinfo;
+			$minutes=3600;
+			Cache::store('file')->put($cache_userinfo, $userinfo, $minutes);
+
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_save_success');
 			$msg_array['is_reload']=0;
@@ -260,11 +277,12 @@ class UserController extends PublicController
 	public function userinfo()  
 	{
 		$website=$this->website;
+		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_userinfo');
 		$website['apiurl_info']=URL::action('Admin\UserController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\UserController@api_edit');
 		$website['apiurl_area']=URL::action('Admin\DistrictController@api_area');
-
+		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$area_data_p[]=array('id'=>0,'name'=>trans('admin.website_select_p'),'alias'=>trans('admin.website_select_p'));
 		$area_data_c[]=array('id'=>0,'name'=>trans('admin.website_select_c'),'alias'=>trans('admin.website_select_c'));
 		$area_data_x[]=array('id'=>0,'name'=>trans('admin.website_select_x'),'alias'=>trans('admin.website_select_x'));

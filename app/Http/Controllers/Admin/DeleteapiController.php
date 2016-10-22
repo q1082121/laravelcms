@@ -229,6 +229,7 @@ class DeleteapiController extends PublicController
 	public function api_del_image(Request $request)
 	{
 		$classname=$request->get('modelname');
+		$type=1;
 		switch ($classname) 
 		{
 			case 'Classify':
@@ -246,7 +247,14 @@ class DeleteapiController extends PublicController
 			case 'Link':
 				$params = Picture::find($request->get('id'));
 				# code...
-				break;				
+				break;		
+			case 'User':
+				$condition['id']=$request->get('id');
+				$tablename="userinfos";
+				$params = object_array(DB::table($tablename)->where($condition)->first());
+				$type=2;
+				# code...
+				break;							
 		}
 		
 		if($params['isattach']==1)
@@ -255,29 +263,60 @@ class DeleteapiController extends PublicController
 		}
 		if($result)
 		{
-			$params->attachment='';
-			$params->isattach=0;
+			switch($type)
+			{
+				case 1:
+						$params->attachment='';
+						$params->isattach=0;
 
-			if ($params->save()) 
-			{
-				$msg_array['status']='1';
-				$msg_array['info']=trans('admin.website_del_success');
-				$msg_array['is_reload']=1;
-				$msg_array['curl']='';
-				$msg_array['resource']='';
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';
-			} 
-			else 
-			{
-				$msg_array['status']='0';
-				$msg_array['info']=trans('admin.website_del_failure');
-				$msg_array['is_reload']=0;
-				$msg_array['curl']='';
-				$msg_array['resource']="";
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';	
+						if ($params->save()) 
+						{
+							$msg_array['status']='1';
+							$msg_array['info']=trans('admin.website_del_success');
+							$msg_array['is_reload']=1;
+							$msg_array['curl']='';
+							$msg_array['resource']='';
+							$msg_array['param_way']='';
+							$msg_array['param_keyword']='';
+						} 
+						else 
+						{
+							$msg_array['status']='0';
+							$msg_array['info']=trans('admin.website_del_failure');
+							$msg_array['is_reload']=0;
+							$msg_array['curl']='';
+							$msg_array['resource']="";
+							$msg_array['param_way']='';
+							$msg_array['param_keyword']='';	
+						}
+				break;
+				case 2:
+						$params2['attachment']="";
+						$params2['isattach']=0;
+						$info=DB::table($tablename)->where($condition)->update($params2);
+						if ($info) 
+						{
+							$msg_array['status']='1';
+							$msg_array['info']=trans('admin.website_del_success');
+							$msg_array['is_reload']=1;
+							$msg_array['curl']='';
+							$msg_array['resource']='';
+							$msg_array['param_way']='';
+							$msg_array['param_keyword']='';
+						} 
+						else 
+						{
+							$msg_array['status']='0';
+							$msg_array['info']=trans('admin.website_del_failure');
+							$msg_array['is_reload']=0;
+							$msg_array['curl']='';
+							$msg_array['resource']="";
+							$msg_array['param_way']='';
+							$msg_array['param_keyword']='';	
+						}
+				break;
 			}
+			
 		}
 		else
 		{

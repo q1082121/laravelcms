@@ -91,7 +91,7 @@
                   <li v-for="item in letters_list" >
                     <a href="javascript:void(0);">
                       <div class="pull-left">
-                        <img src="{{asset('/module/AdminLTE')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="{{$website['website_userinfo']['avatar']}}" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         @{{item.email_from}}
@@ -103,7 +103,7 @@
                   <!-- end message -->
                 </ul>
               </li>
-              <li class="footer"><a href="/admin/letter">{{trans('admin.website_allletter_tip')}}</a></li>
+              <li class="footer"><a href="{{ route('get.admin.letter') }}">{{trans('admin.website_allletter_tip')}}</a></li>
             </ul>
           </li>
           <!-- Notifications: style can be found in dropdown.less-->
@@ -151,13 +151,13 @@
           <!-- User Account: style can be found in dropdown.less  用户简介信息-->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{asset('/module/AdminLTE')}}/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="{{$website['website_userinfo']['avatar']}}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{$website['website_user']['username']}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{asset('/module/AdminLTE')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{$website['website_userinfo']['avatar']}}" class="img-circle" alt="User Image">
 
                 <p>
                   {{$website['website_user']['username']}} - {{$website['website_userinfo']['nick']}}
@@ -208,7 +208,7 @@
       <!-- Sidebar user panel 当前用户信息-->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{asset('/module/AdminLTE')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="{{$website['website_userinfo']['avatar']}}" class="img-circle" alt="User Image" onclick="localcul('{{ route('get.admin.userinfo') }}') " >
         </div>
         <div class="pull-left info">
           <p>{{$website['website_user']['username']}}</p>

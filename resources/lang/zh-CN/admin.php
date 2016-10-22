@@ -215,6 +215,7 @@ return [
 
     'website_userinfo_name'                          =>   '姓名',
     'website_userinfo_nick'                          =>   '昵称',
+    'website_userinfo_attachment'                    =>   '头像',
     'website_userinfo_sex'                           =>   '性别',
     'website_userinfo_birthday'                      =>   '出生日期',
     'website_userinfo_qq'                            =>   'QQ',

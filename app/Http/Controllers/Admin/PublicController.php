@@ -76,8 +76,6 @@ class PublicController extends Controller
 		$settingdata['skin_yellow_light']=0;
 
 		$this->website['setting']=$setting?$setting:$settingdata;
-		//dump($layout);
-		
 
 		$this->website['website_seo_title']=($root['systitle']?$root['systitle']:trans('admin.website_name'));
 		$this->website['website_seo_keyword']=$root['syskeyword'];
@@ -112,7 +110,6 @@ class PublicController extends Controller
 	    |--------------------------------------------------------------------------
 	    |
 	    */
-	    //是否验证通过
 		$guard="admin";
 	    if (Auth::guard($guard)->check()) 
         {
@@ -132,7 +129,7 @@ class PublicController extends Controller
 							else
 							{
 								$userinfo=User::find($user['id'])->hasOneUserinfo;
-								$minutes=1800;
+								$minutes=3600;
 								Cache::store('file')->put($cache_userinfo, $userinfo, $minutes);
 							}
 							$this->userinfo=Cache::store('file')->get($cache_userinfo);
@@ -152,13 +149,16 @@ class PublicController extends Controller
 							break;
 			}
 			$this->user=$user;
-
-			//用户信息
+			$this->userinfo['avatar']=$this->userinfo['isattach']==1?"/uploads/User/".$this->userinfo['attachment']:"/images/avatar/200.png";
 			$this->website['website_userinfo']=$this->userinfo;
-			//用户
 			$this->website['website_user']=$this->user;
 
-			//用户角色组判断
+			/*
+			|--------------------------------------------------------------------------
+			| 默认消息 - 用户角色组判断
+			|--------------------------------------------------------------------------
+			|
+			*/
 			if(Entrust::hasRole(['admin', 'subadmin']) == false )
 			{
 				alert('/user/logout',trans('admin.website_user_role_failure'));
@@ -176,6 +176,7 @@ class PublicController extends Controller
 				$this->website['letters_count']=$letters_count?$letters_count:0;
 				$this->website['letters_list']=json_encode(object_array($letters_list));
 			}
+
 
         }
 		else
@@ -207,17 +208,22 @@ class PublicController extends Controller
 		$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$datetimename;
 		$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$datetimename;
 
+		switch($classname)
+		{
+			case "User":
 
-		if($this->is_watermark==1)
-		{	
-			if(!is_dir($uploads_dir.'/'.$classname.'/watermark/')) 
-			{
-				mkdir($uploads_dir.'/'.$classname.'/watermark/', 0777, true);
-			}
-			// 合成水印
-			$img = Image::make($data_image)->insert($watermark_dir, 'bottom-right', 15, 10)->save($watermark_filename);
-
-			
+			break;
+			default:
+					if($this->is_watermark==1)
+					{	
+						if(!is_dir($uploads_dir.'/'.$classname.'/watermark/')) 
+						{
+							mkdir($uploads_dir.'/'.$classname.'/watermark/', 0777, true);
+						}
+						// 合成水印
+						$img = Image::make($data_image)->insert($watermark_dir, 'bottom-right', 15, 10)->save($watermark_filename);
+					}
+			break;
 		}
 		
 		if($this->is_thumb==1)
@@ -237,6 +243,10 @@ class PublicController extends Controller
 								$thumb_height=$this->thumb_height;	
 				break;
 				case 'Link':
+								$thumb_width=$this->thumb_width;
+								$thumb_height=$this->thumb_height;	
+				break;
+				case 'User':
 								$thumb_width=$this->thumb_width;
 								$thumb_height=$this->thumb_height;	
 				break;

@@ -19,6 +19,8 @@ class CreateUserinfosTable extends Migration
 			$table->tinyInteger('sex')->default(0);		//性别
 			$table->date('birthday')->nullable();	    //生日
 			$table->string('qq',15)->nullable();		//QQ
+            $table->string('attachment',50)->nullable();//头像
+            $table->tinyInteger('isattach')->default(0);//是否有头像
 			$table->integer('area_pid')->default(0);	//省级
 			$table->integer('area_cid')->default(0);	//市级
 			$table->integer('area_xid')->default(0);	//县级

@@ -61,7 +61,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{ route('get.admin') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels 项目名称简称-->
       <span class="logo-mini"><b>{{trans('admin.website_sname')}}</b></span>
       <!-- logo for regular state and mobile devices 项目名称全称-->

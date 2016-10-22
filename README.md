@@ -34,7 +34,7 @@ QQ	:471416739
 	public/js/common.js 公共函数
 
 #	使用手册
-1. 启动 redis-server.exe  
+1. 如果需要设置 SESSION_DRIVER=redis 那么需要启动 redis-server.exe  默认为file
 
 2. 获取项目文件：git clone 或者 github 上下载压缩包
 
@@ -69,10 +69,11 @@ QQ	:471416739
 	图片管理 
 	友情链接 
 	日志管理 
+	信件管理 
 	微信管理 开发中
 	消息管理 开发中
-	信件管理 
-
+	用户头像 开发中
+	
 
 #	注意事项
 	请谨慎使用“composer update” 全部更新操作 会重置一些组件的默认配置设置

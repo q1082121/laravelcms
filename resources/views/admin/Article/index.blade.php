@@ -43,7 +43,6 @@
               <th>{{trans('admin.website_article_item_classid')}}</th>
               <th>{{trans('admin.website_article_item_title')}}</th>
               <th>{{trans('admin.website_article_item_attachment')}}</th>
-              <th>{{trans('admin.website_article_item_author')}}</th>
               <th>{{trans('admin.website_article_item_sources')}}</th>
               <th>{{trans('admin.website_article_item_clicks')}}</th>
               <th>{{trans('admin.website_article_item_orderid')}}</th>
@@ -54,10 +53,9 @@
             <tbody>
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
-                <td>@{{ [item.classname]}}</td>
+                <td>@{{ item.classname }}</td>
                 <td>@{{ item.title }}</td>
                 <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
-                <td>@{{ item.userid }}</td>
                 <td>@{{ item.sources }}</td>
                 <td>@{{ item.clicks }}</td>
                 <td>@{{ item.orderid }}</td>

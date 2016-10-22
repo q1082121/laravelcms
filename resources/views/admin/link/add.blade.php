@@ -22,6 +22,14 @@
             </div>
             <div class="form-group">
               <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_link_item_classid')}}</span>
+                <select class="form-control"  v-model="params_data.classid" >
+                  <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
                 <span class="input-group-addon">{{trans('admin.website_link_item_title')}}</span>
                 <input type="text" class="form-control" v-model="params_data.title"   >
               </div>
@@ -116,9 +124,11 @@ new Vue({
              apiurl_edit:           '{{$website["apiurl_edit"]}}',
              apiurl_del_image:      '{{$website["apiurl_del_image"]}}',
              modellist:             eval(htmlspecialchars_decode('{{$website["modellist"]}}')), 
+             classlist:             eval(htmlspecialchars_decode('{{$website["classlist"]}}')), 
              params_data:
              {
                 modelid             :1,
+                classid             :0,
                 title               :'',
                 attachment          :'',
                 isattach            :0,
@@ -200,7 +210,12 @@ new Vue({
       //点击数据验证
       check_action:function(posturl)
       {
-          if (this.params_data.title=='')
+          if (this.params_data.classid==0)
+          {
+              var msg="{{trans('admin.website_link_select')}}";
+              layermsg_error(msg);
+          }
+          else if (this.params_data.title=='')
           {
               var msg="{{trans('admin.link_failure_tip1')}}";
               layermsg_error(msg);

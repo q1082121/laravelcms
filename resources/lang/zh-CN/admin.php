@@ -311,7 +311,7 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_article_select'                          =>   '请选择栏目分类',
+    'website_article_select'                          =>   '请选择文章分类',
     'website_article_item_classid'                    =>   '分类',
     'website_article_item_title'                      =>   '标题',
     'website_article_item_introduction'               =>   '导读',
@@ -324,6 +324,7 @@ return [
     'website_article_item_linkurl'                    =>   '外链接',
     'website_article_item_status'                     =>   '状态',
     'article_failure_tip1'                            =>   '请填写标题',
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -379,9 +380,11 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
+    'website_link_select'                             =>   '请选择链接分类',
     'website_model_link1'                             =>   '文字链接',
     'website_model_link2'                             =>   '图片链接',
-    'website_link_item_modelid'                       =>   '链接类型',
+    'website_link_item_modelid'                       =>   '类型',
+    'website_link_item_classid'                       =>   '分类',
     'website_link_item_title'                         =>   '标题',
     'website_link_item_attachment'                    =>   '图片',
     'website_link_item_linkurl'                       =>   '链接',

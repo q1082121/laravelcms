@@ -11,9 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Model\Article;
 use DB;
 use Cache;
-//使用URL生成地址
 use URL;
-//使用自定义第三方类库:分类列表数据 
 use App\Common\lib\Cates; 
 class ArticleController extends PublicController
 {
@@ -54,7 +52,6 @@ class ArticleController extends PublicController
         $website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=0;
 
-        $condition_class['modelid']=1;
         $condition_class['status']=1;
         $list=object_array(DB::table('classifies')->where($condition_class)->orderBy('id', 'desc')->get());
 		if($list)

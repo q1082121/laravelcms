@@ -45,6 +45,7 @@
             <thead>
             <tr>
               <th>{{trans('admin.website_item_id')}}</th>
+              <th>{{trans('admin.website_link_item_classid')}}</th>
               <th>{{trans('admin.website_link_item_modelid')}}</th>
               <th>{{trans('admin.website_link_item_title')}}</th>
               <th>{{trans('admin.website_link_item_attachment')}}</th>
@@ -56,6 +57,7 @@
             <tbody>
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
+                <td>@{{ item.classname }}</td>
                 <td v-if="item.modelid == 1"> <i class="fa fa-leaf"></i> {{trans('admin.website_model_link1')}}</td>
                 <td v-if="item.modelid == 2"> <i class="fa fa-leaf"></i> {{trans('admin.website_model_link2')}}</td>
                 <td>@{{ item.title }}</td>

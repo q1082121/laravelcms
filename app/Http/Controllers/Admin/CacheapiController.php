@@ -52,7 +52,7 @@ class CacheapiController extends PublicController
                                     $getdata[$val['id']]=$val;
                                 }
                             }
-		                    Cache::store('file')->forever('classlinks', $getdata);
+		                    Cache::store('file')->forever('classlink', $getdata);
                             $info=trans('admin.website_create_success');                
             break;
             case 'Picture':

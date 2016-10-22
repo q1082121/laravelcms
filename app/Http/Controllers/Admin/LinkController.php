@@ -10,9 +10,9 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Model\Link;
 use DB;
-//使用URL生成地址
 use URL;
-
+use Cache;
+use App\Common\lib\Cates; 
 class LinkController extends PublicController
 {
     //
@@ -55,6 +55,22 @@ class LinkController extends PublicController
 		$website['id']=0;
 		$website['modellist']=json_encode($this->link_modellist);
 		
+		$condition_class['status']=1;
+        $list=object_array(DB::table('classifylinks')->where($condition_class)->orderBy('id', 'desc')->get());
+		if($list)
+		{
+			$cates=new Cates();
+            $cates->type=2;
+			$cates->opt($list);
+			$classopts = $cates->opt;
+			$classoptsdata = $cates->optdata;
+			$website['classlist']=json_encode($classoptsdata);
+		}
+		else
+		{
+			$classlist[]=array('text'=>trans('admin.website_link_select'),'value'=>'0');
+			$website['classlist']=json_encode($classlist);
+		}
 
 		return view('admin/link/add')->with('website',$website);
 	}
@@ -73,6 +89,23 @@ class LinkController extends PublicController
 		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=$id;
 		$website['modellist']=json_encode($this->link_modellist);
+
+		$condition_class['status']=1;
+        $list=object_array(DB::table('classifylinks')->where($condition_class)->orderBy('id', 'desc')->get());
+		if($list)
+		{
+			$cates=new Cates();
+            $cates->type=2;
+			$cates->opt($list);
+			$classopts = $cates->opt;
+			$classoptsdata = $cates->optdata;
+			$website['classlist']=json_encode($classoptsdata);
+		}
+		else
+		{
+			$classlist[]=array('text'=>trans('admin.website_link_select'),'value'=>'0');
+			$website['classlist']=json_encode($classlist);
+		}
 
 		return view('admin/link/add')->with('website',$website);
 	}
@@ -96,6 +129,12 @@ class LinkController extends PublicController
 		}
 		if($list)
 		{
+			$classlist=Cache::store('file')->get('classlink');
+			foreach($list as $key=>$val)
+			{
+				$list[$key]['classname']=$classlist[$val['classid']]['name'];
+			}
+
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_get_success');
 			$msg_array['is_reload']=0;
@@ -125,6 +164,7 @@ class LinkController extends PublicController
 
 		$params = new Link;
 		$params->modelid 	= $request->get('modelid');
+		$params->classid 	= $request->get('classid');
 		$params->title 		= $request->get('title');
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
@@ -206,6 +246,7 @@ class LinkController extends PublicController
 
 		$params = Link::find($request->get('id'));
 		$params->modelid 	= $request->get('modelid');
+		$params->classid 	= $request->get('classid');
 		$params->title 		= $request->get('title');
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');

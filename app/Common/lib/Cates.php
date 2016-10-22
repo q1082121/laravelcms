@@ -38,7 +38,7 @@ class Cates{
 					$this->optdata[0]=array('text'=>'请选择父类','value'=>0);
 					break;
 			case 2:
-					$this->optdata[0]=array('text'=>'请选择栏目分类','value'=>0);
+					$this->optdata[0]=array('text'=>'请选择分类','value'=>0);
 					break;		
 		}
 		

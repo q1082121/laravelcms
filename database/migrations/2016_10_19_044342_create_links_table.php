@@ -16,7 +16,8 @@ class CreateLinksTable extends Migration
         Schema::create('links', function(Blueprint $table) 
 		{
 			$table->increments('id');
-            $table->integer('modelid')->default(0);		        //分类模块
+            $table->integer('modelid')->default(0);		        //链接类型
+            $table->integer('classid')->default(0);		        //链接分类
 			$table->string('title',100);				        //标题
             $table->string('attachment',100);			        //封面
 			$table->tinyInteger('isattach')->default(0);        //是否有封面

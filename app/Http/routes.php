@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	 *	   get 路由
 	 ***********************************************************************
 	 */	
-    	Route::get('/', 'HomeController@index')->name('get.admin');
+    Route::get('/', 'HomeController@index')->name('get.admin');
 	
 	Route::get('setting', 
 				[
@@ -135,7 +135,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'UserpermissionController@edit'
     			])->name('get.admin.userpermission.edit');
-	//栏目分类			
+	//文章分类			
 	Route::get('classify', 
 				[
 			        'middleware' => ['ability:admin,model_classify'], 
@@ -183,6 +183,22 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'PictureController@edit'
     			])->name('get.admin.picture.edit');
+	//文章分类			
+	Route::get('classifylink', 
+				[
+			        'middleware' => ['ability:admin,model_classifylink'], 
+			        'uses' => 'ClassifylinkController@index'
+    			])->name('get.admin.classifylink');
+	Route::get('classifylink/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'ClassifylinkController@add'
+    			])->name('get.admin.classifylink.add');
+	Route::get('classifylink/edit/{id?}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'ClassifylinkController@edit'
+    			])->name('get.admin.classifylink.edit');			
 	//友情链接		
 	Route::get('link', 
 				[
@@ -287,6 +303,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('picture/api_add', 'PictureController@api_add')->name('post.admin.picture.api_add');
 	Route::post('picture/api_info', 'PictureController@api_info')->name('post.admin.picture.api_info');
 	Route::post('picture/api_edit', 'PictureController@api_edit')->name('post.admin.picture.api_edit');
+
+	Route::post('classifylink/api_list', 'ClassifylinkController@api_list')->name('post.admin.classifylink.api_list');
+	Route::post('classifylink/api_add', 'ClassifylinkController@api_add')->name('post.admin.classifylink.api_add');
+	Route::post('classifylink/api_info', 'ClassifylinkController@api_info')->name('post.admin.classifylink.api_info');
+	Route::post('classifylink/api_edit', 'ClassifylinkController@api_edit')->name('post.admin.classifylink.api_edit');
 
 	Route::post('link/api_list', 'LinkController@api_list')->name('post.admin.link.api_list');
 	Route::post('link/api_add', 'LinkController@api_add')->name('post.admin.link.api_add');

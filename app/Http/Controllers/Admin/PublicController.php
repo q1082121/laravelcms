@@ -89,10 +89,6 @@ class PublicController extends Controller
 		$this->thumb_width=$thumb_width=env('APP_THUMB_WIDTH', 200);				//缩略图宽度
 		$this->thumb_height=$thumb_height=env('APP_THUMB_HEIGHT', 200);				//缩略图高度
 		
-		
-		//默认栏目分类模块
-		$this->modellist[]=array('text'=>trans('admin.website_model_info'),'value'=>1);
-		$this->modellist[]=array('text'=>trans('admin.website_model_product'),'value'=>2);
 		//默认广告图片模块
 		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture1'),'value'=>1);
 		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture2'),'value'=>2);

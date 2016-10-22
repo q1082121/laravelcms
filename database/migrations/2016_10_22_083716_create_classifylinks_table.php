@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClassifiesTable extends Migration
+class CreateClassifylinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateClassifiesTable extends Migration
     public function up()
     {
         //
-		 Schema::create('classifies', function(Blueprint $table) {
+        Schema::create('classifylinks', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('name',50);					//分类名称
 			$table->integer('bcid')->default(0);		//大类ID
@@ -22,7 +22,6 @@ class CreateClassifiesTable extends Migration
 			$table->tinyInteger('grade')->default(0);	//分类级别
 			$table->text('node')->nullable();			//分类从属过程
 			$table->tinyInteger('navflag')->default(0);	//主导航
-			$table->tinyInteger('perpage')->default(0); //是否单页 1 是 0否
 			$table->string('attachment',100);			//封面
 			$table->tinyInteger('isattach')->default(0);//是否有封面
 			$table->integer('orderid')->default(0);		//排序
@@ -41,6 +40,6 @@ class CreateClassifiesTable extends Migration
     public function down()
     {
         //
-		Schema::drop('classifies');
+        Schema::drop('classifylinks');
     }
 }

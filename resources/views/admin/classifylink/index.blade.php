@@ -15,7 +15,7 @@
             </a>
             @ability('admin', 'create_cache_class')
             <button @click="create_cache()" type="button" class="btn btn-danger pull-left " style="margin:0 0 0 10px;">
-            <i class="fa fa-add"></i> {{trans('admin.website_classify_create_cache')}}
+            <i class="fa fa-add"></i> {{trans('admin.website_classifylink_create_cache')}}
             </button>
             @endability
           </h3>
@@ -45,14 +45,13 @@
             <thead>
             <tr>
               <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_classify_item_name')}}</th>
-              <th>{{trans('admin.website_classify_item_attachment')}}</th>
-              <th>{{trans('admin.website_classify_item_bcid')}}</th>
-              <th>{{trans('admin.website_classify_item_scid')}}</th>
-              <th>{{trans('admin.website_classify_item_navflag')}}</th>
-              <th>{{trans('admin.website_classify_item_perpage')}}</th>
-              <th>{{trans('admin.website_classify_item_orderid')}}</th>
-              <th>{{trans('admin.website_classify_item_status')}}</th>
+              <th>{{trans('admin.website_classifylink_item_name')}}</th>
+              <th>{{trans('admin.website_classifylink_item_attachment')}}</th>
+              <th>{{trans('admin.website_classifylink_item_bcid')}}</th>
+              <th>{{trans('admin.website_classifylink_item_scid')}}</th>
+              <th>{{trans('admin.website_classifylink_item_navflag')}}</th>
+              <th>{{trans('admin.website_classifylink_item_orderid')}}</th>
+              <th>{{trans('admin.website_classifylink_item_status')}}</th>
               <th>{{trans('admin.website_item_option')}}</th>
             </tr>
             </thead>
@@ -64,7 +63,6 @@
                 <td>@{{ item.bcid }}</td>
                 <td>@{{ item.scid }}</td>
                 <td> <i v-if="item.navflag == 1" class="fa fa-star"></i> <i v-else class="fa fa-star-o"></i> </td>
-                <td> <i v-if="item.navflag == 1" class="fa fa-file-text"> 单 </i> <i v-else class="fa fa-list"> 列 </i> </td>
                 <td>@{{ item.orderid }}</td>
                 <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>

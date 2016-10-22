@@ -14,6 +14,7 @@ use URL;
 use App\Http\Model\Article;
 use App\Http\Model\Classify;
 use App\Http\Model\Picture;
+use App\Http\Model\Classifylink;
 use App\Http\Model\Link;
 use App\Http\Model\Log;
 
@@ -69,6 +70,46 @@ class DeleteapiController extends PublicController
 								else
 								{
 									$info=$this->delete_action('classifies',$request->get('id'));
+									if($info)
+									{
+										$msg_array['status']='1';
+										$msg_array['info']=trans('admin.website_del_success');
+										$msg_array['is_reload']=0;
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+										$msg_array['param_way']='';
+										$msg_array['param_keyword']='';
+									}
+									else
+									{
+										
+										$msg_array['status']='0';
+										$msg_array['info']=trans('admin.website_del_failure');
+										$msg_array['is_reload']=0;
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+										$msg_array['param_way']='';
+										$msg_array['param_keyword']='';	
+										
+									}
+								}
+			break;
+			case 'Classifylink':
+								$subcondition['topid']=$request->get('id');
+								$subinfo=DB::table('classifylinks')->where($subcondition)->get();
+								if($subinfo)
+								{
+									$msg_array['status']='0';
+									$msg_array['info']=trans('admin.classify_failure_delete');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';
+									$msg_array['param_way']='';
+									$msg_array['param_keyword']='';	
+								}
+								else
+								{
+									$info=$this->delete_action('classifylinks',$request->get('id'));
 									if($info)
 									{
 										$msg_array['status']='1';
@@ -236,6 +277,10 @@ class DeleteapiController extends PublicController
 				$params = Classify::find($request->get('id'));
 				# code...
 				break;
+			case 'Classifylink':
+				$params = Classifylink::find($request->get('id'));
+				# code...
+				break;	
 			case 'Article':
 				$params = Article::find($request->get('id'));
 				# code...

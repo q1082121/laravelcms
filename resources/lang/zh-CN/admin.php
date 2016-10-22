@@ -280,16 +280,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | 默认消息 - 栏目分类
+    | 默认消息 - 文章分类
     |--------------------------------------------------------------------------
     |
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_model_info'                              =>   '文章资讯',
-    'website_model_product'                           =>   '产品模块',
+
     'website_classify_item_topclass'                  =>   '分类父类',
-    'website_classify_item_modelid'                   =>   '分类模块',
     'website_classify_item_name'                      =>   '分类名称',
     'website_classify_item_attachment'                =>   '图标',
     'website_classify_item_bcid'                      =>   '大类',
@@ -303,7 +301,7 @@ return [
     'website_classify_item_status'                    =>   '状态',
     'classify_failure_tip1'                           =>   '请输入分类名称',
     'classify_failure_delete'                         =>   '请先删除子类',
-    'website_classify_create_cache'                   =>   '生成栏目分类缓存',
+    'website_classify_create_cache'                   =>   '生成文章分类缓存',
 
     /*
     |--------------------------------------------------------------------------
@@ -347,6 +345,31 @@ return [
     'website_picture_item_status'                     =>   '状态',
     'picture_failure_tip1'                            =>   '请填写标题',
     'website_picture_create_cache'                    =>   '生成图片缓存',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 链接分类
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+
+    'website_classifylink_item_topclass'               =>   '分类父类',
+    'website_classifylink_item_name'                   =>   '分类名称',
+    'website_classifylink_item_attachment'             =>   '图标',
+    'website_classifylink_item_bcid'                   =>   '大类',
+    'website_classifylink_item_scid'                   =>   '小类',
+    'website_classifylink_item_topid'                  =>   '父类',
+    'website_classifylink_item_grade'                  =>   '级别',
+    'website_classifylink_item_navflag'                =>   '主导航',
+    'website_classifylink_item_orderid'                =>   '排序',
+    'website_classifylink_item_linkurl'                =>   '链接',
+    'website_classifylink_item_status'                 =>   '状态',
+    'classifylink_failure_tip1'                        =>   '请输入分类名称',
+    'classifylink_failure_delete'                      =>   '请先删除子类',
+    'website_classifylink_create_cache'                =>   '生成链接分类缓存',
 
     /*
     |--------------------------------------------------------------------------

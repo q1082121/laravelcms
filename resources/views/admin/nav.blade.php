@@ -39,7 +39,7 @@
       </span>
     </a>
     <ul class="treeview-menu">
-      <li><a href=""><i class="fa fa-reorder"></i> {{trans('admin.website_navigation_classifylink')}}</a></li>
+      <li><a href="{{ route('get.admin.classifylink') }}"><i class="fa fa-reorder"></i> {{trans('admin.website_navigation_classifylink')}}</a></li>
       <li><a href="{{ route('get.admin.link') }}"><i class="fa fa-external-link"></i> {{trans('admin.website_navigation_eight')}}</a></li>
     </ul>
   </li>

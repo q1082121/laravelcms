@@ -99,6 +99,12 @@ class PublicController extends Controller
 		$this->link_modellist[]=array('text'=>trans('admin.website_model_link2'),'value'=>2);
 		//默认日志管理模块
 		$this->log_modellist[]=array('text'=>trans('admin.website_model_log1'),'value'=>1);
+		//默认微信公众号类型
+		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat1'),'value'=>1);
+		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat2'),'value'=>2);
+		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat3'),'value'=>3);
+		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat4'),'value'=>4);
+		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat5'),'value'=>5);
 
 		/*
 	    |--------------------------------------------------------------------------
@@ -206,7 +212,19 @@ class PublicController extends Controller
 
 		switch($classname)
 		{
+			case "Classify":
+
+			break;
+			case "Classifylink":
+
+			break;
+			case "Link":
+
+			break;
 			case "User":
+
+			break;
+			case "Wechat":
 
 			break;
 			default:
@@ -230,6 +248,10 @@ class PublicController extends Controller
 								$thumb_width=$this->thumb_width;
 								$thumb_height=$this->thumb_height;	
 				break;
+				case 'Classifylink':
+								$thumb_width=$this->thumb_width;
+								$thumb_height=$this->thumb_height;	
+				break;
 				case 'Article':
 								$thumb_width=$this->thumb_width;
 								$thumb_height=$this->thumb_height;	
@@ -243,6 +265,10 @@ class PublicController extends Controller
 								$thumb_height=$this->thumb_height;	
 				break;
 				case 'User':
+								$thumb_width=$this->thumb_width;
+								$thumb_height=$this->thumb_height;	
+				break;
+				case 'Wechat':
 								$thumb_width=$this->thumb_width;
 								$thumb_height=$this->thumb_height;	
 				break;

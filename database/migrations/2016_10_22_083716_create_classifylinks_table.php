@@ -22,7 +22,7 @@ class CreateClassifylinksTable extends Migration
 			$table->tinyInteger('grade')->default(0);	//分类级别
 			$table->text('node')->nullable();			//分类从属过程
 			$table->tinyInteger('navflag')->default(0);	//主导航
-			$table->string('attachment',100);			//封面
+			$table->string('attachment',100)->nullable();//封面
 			$table->tinyInteger('isattach')->default(0);//是否有封面
 			$table->integer('orderid')->default(0);		//排序
 			$table->text('linkurl')->nullable();		//外链接

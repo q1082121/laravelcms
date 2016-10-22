@@ -10,7 +10,6 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Model\Picture;
 use DB;
-//使用URL生成地址
 use URL;
 
 class PictureController extends PublicController
@@ -129,6 +128,7 @@ class PictureController extends PublicController
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
 		$params->status		= $request->get('status');
+		$params->user_id	= $this->user['id'];
 
 		//图片上传处理接口
 		$attachment='attachment';

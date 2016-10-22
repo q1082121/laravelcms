@@ -17,7 +17,7 @@ class CreateLettersTable extends Migration
 		{
 			$table->increments('id');
 			$table->string('title',100);				        //标题
-            $table->string('attachment',100);			        //附件
+            $table->string('attachment',100)->nullable();		//附件
 			$table->tinyInteger('isattach')->default(0);        //是否有附件
             $table->string('syseditor',20);			            //编辑器代码
             $table->text('content')->nullable();		        //内容

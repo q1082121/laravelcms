@@ -59,7 +59,7 @@
   </li>
   <li class="header">{{trans('admin.website_main_navigation_four')}}</li>
   <li>
-    <a href="javascript:void(0);">
+    <a href="{{ route('get.admin.wechat') }}">
       <i class="fa fa-wechat"></i> <span>{{trans('admin.website_navigation_nine')}}</span>
     </a>
   </li>

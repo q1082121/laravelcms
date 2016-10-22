@@ -358,6 +358,7 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'CreatePicturesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_18_231205_create_pictures_table.php',
         'CreateUserinfosTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_29_030826_create_userinfos_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
+        'CreateWechatsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_22_093035_create_wechats_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DistrictSeeder' => __DIR__ . '/../..' . '/database/seeds/DistrictSeeder.php',
         'EntrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2016_09_29_033513_entrust_setup_tables.php',

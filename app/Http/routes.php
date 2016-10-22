@@ -247,7 +247,22 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,add'], 
 			        'uses' => 'LetterController@add'
     			])->name('get.admin.letter.add');
-
+	//微信管理		
+	Route::get('wechat', 
+				[
+			        'middleware' => ['ability:admin,model_wechat'], 
+			        'uses' => 'WechatController@index'
+    			])->name('get.admin.wechat');
+	Route::get('wechat/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'WechatController@add'
+    			])->name('get.admin.wechat.add');
+	Route::get('wechat/edit/{id?}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'WechatController@edit'
+    			])->name('get.admin.wechat.edit');
 	/*
 	 ***********************************************************************
 	 *	   post 路由
@@ -318,6 +333,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('letter/api_add', 'LetterController@api_add')->name('post.admin.letter.api_add');
 	Route::post('letter/api_info', 'LetterController@api_info')->name('post.admin.letter.api_info');
 	Route::post('letter/api_count', 'LetterController@api_count')->name('post.admin.letter.api_edit');
+
+	Route::post('wechat/api_list', 'WechatController@api_list')->name('post.admin.wechat.api_list');
+	Route::post('wechat/api_add', 'WechatController@api_add')->name('post.admin.wechat.api_add');
+	Route::post('wechat/api_info', 'WechatController@api_info')->name('post.admin.wechat.api_info');
+	Route::post('wechat/api_edit', 'WechatController@api_edit')->name('post.admin.wechat.api_edit');
 	
 });
 

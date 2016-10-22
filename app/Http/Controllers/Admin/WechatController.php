@@ -1,19 +1,17 @@
 <?php
 /******************************************
 ****AuThor:rubbish.boy@163.com
-****Title :链接分类
+****Title :微信公众号
 *******************************************/
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Http\Model\Classifylink;
+use App\Http\Model\Wechat;
 use DB;
 use URL;
-use App\Common\lib\Cates; 
-
-class ClassifylinkController extends PublicController
+class WechatController extends PublicController
 {
     //
     /******************************************
@@ -23,84 +21,55 @@ class ClassifylinkController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_classifylink');
-		$website['apiurl_list']=URL::action('Admin\ClassifylinkController@api_list');
+        $website['modelname']=getCurrentControllerName();
+		$website['cursitename']=trans('admin.website_navigation_nine');
+		$website['apiurl_list']=URL::action('Admin\WechatController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
-		$website['link_add']=URL::action('Admin\ClassifylinkController@add');
-		$website['link_edit']=route('get.admin.classifylink.edit').'/';
+		$website['link_add']=URL::action('Admin\WechatController@add');
+		$website['link_edit']=route('get.admin.wechat.edit').'/';
 		$website['way']='name';
-		$wayoption[]=array('text'=>trans('admin.website_classify_item_name'),'value'=>'name');
+		$wayoption[]=array('text'=>trans('admin.website_wechat_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
-
-		return view('admin/classifylink/index')->with('website',$website);
+		
+		return view('admin/wechat/index')->with('website',$website);
 	}
-	/******************************************
+    /******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :添加
 	*******************************************/
 	public function add()
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_classifylink');
-		$website['apiurl_add']=URL::action('Admin\ClassifylinkController@api_add');
-		$website['apiurl_info']=URL::action('Admin\ClassifylinkController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\ClassifylinkController@api_edit');
+        $website['modelname']=getCurrentControllerName();
+		$website['cursitename']=trans('admin.website_navigation_nine');
+		$website['apiurl_add']=URL::action('Admin\WechatController@api_add');
+		$website['apiurl_info']=URL::action('Admin\WechatController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\WechatController@api_edit');
 		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=0;
+        $website['modellist']=json_encode($this->wechat_modellist);
 		
-		$list=object_array(DB::table('classifylinks')->where('status','=','1')->orderBy('id', 'desc')->get());
-		if($list)
-		{
-			$cates=new Cates();
-			$cates->opt($list);
-			$classopts = $cates->opt;
-			$classoptsdata = $cates->optdata;
-			$website['classlist']=json_encode($classoptsdata);
-		}
-		else
-		{
-			$classlist[]=array('text'=>trans('admin.website_select_default'),'value'=>'0');
-			$website['classlist']=json_encode($classlist);
-		}
-
-		return view('admin/classifylink/add')->with('website',$website);
+		return view('admin/wechat/add')->with('website',$website);
 	}
-	/******************************************
+    /******************************************
 	****AuThor : rubbish.boy@163.com
 	****Title  : 编辑信息
 	*******************************************/
 	public function edit($id)  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_classifylink');
-		$website['apiurl_add']=URL::action('Admin\ClassifylinkController@api_add');
-		$website['apiurl_info']=URL::action('Admin\ClassifylinkController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\ClassifylinkController@api_edit');
+        $website['modelname']=getCurrentControllerName();
+		$website['cursitename']=trans('admin.website_navigation_nine');
+		$website['apiurl_add']=URL::action('Admin\WechatController@api_add');
+		$website['apiurl_info']=URL::action('Admin\WechatController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\WechatController@api_edit');
 		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=$id;
+		$website['modellist']=json_encode($this->wechat_modellist);
 
-		$list=object_array(DB::table('classifylinks')->where('status','=','1')->orderBy('id', 'desc')->get());
-		if($list)
-		{
-			$cates=new Cates();
-			$cates->opt($list);
-			$classopts = $cates->opt;
-			$classoptsdata = $cates->optdata;
-			$website['classlist']=json_encode($classoptsdata);
-		}
-		else
-		{
-			$classlist[]=array('text'=>trans('admin.website_select_default'),'value'=>'0');
-			$website['classlist']=json_encode($classlist);
-		}
-		return view('admin/classifylink/add')->with('website',$website);
+		return view('admin/wechat/add')->with('website',$website);
 	}
-	/******************************************
+    /******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :列表接口
 	*******************************************/
@@ -110,22 +79,16 @@ class ClassifylinkController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Classifylink::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Wechat::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Classifylink::paginate($this->pagesize);
-			
+			$list=Wechat::paginate($this->pagesize);
 		}
 		if($list)
 		{
-			$cates=new Cates();
-			$cates->opt($list);
-			$classoptlist = $cates->optlist;
-			$list['cates']=$classoptlist;
-
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_get_success');
 			$msg_array['is_reload']=0;
@@ -146,31 +109,35 @@ class ClassifylinkController extends PublicController
 		}
         return response()->json($msg_array);
 	}
-	/******************************************
+    /******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :添加接口
 	*******************************************/
 	public function api_add(Request $request)  
 	{
 
-		$params = new Classifylink;
-		$params->topid 		= $request->get('topid');
-		$params->name 		= $request->get('name');
-		$params->orderid	= $request->get('orderid');
-		$params->linkurl	= $request->get('linkurl');
-		$params->navflag	= $request->get('navflag');
-		$params->status		= $request->get('status');
-		$params->user_id	= $this->user['id'];
-		
-		if($params->topid == 0)
-		{
-			$params->grade=1;
-		}
-		else
-		{
-			$classify_info=Classifylink::find($params->topid);
-			$params->grade=$classify_info['grade']+1;	
-		}
+		$params = new Wechat;
+		$params->token 	            = $request->get('token');
+		$params->name 	            = $request->get('name');
+		$params->wechataccount 		= $request->get('wechataccount');
+		$params->gid	            = $request->get('gid');
+		$params->type	            = $request->get('type');
+		$params->appid		        = $request->get('appid');
+        $params->appsecret		    = $request->get('appsecret');
+        $params->encodingaeskey		= $request->get('encodingaeskey');
+        $params->mchid		        = $request->get('mchid');
+        $params->paykey		        = $request->get('paykey');
+        $params->openid_items		= $request->get('openid_items');
+        $params->temp_name1		    = $request->get('temp_name1');
+        $params->temp_id1		    = $request->get('temp_id1');
+        $params->temp_name2		    = $request->get('temp_name2');
+        $params->temp_id2		    = $request->get('temp_id2');
+        $params->temp_name3		    = $request->get('temp_name3');
+        $params->temp_id3		    = $request->get('temp_id3');
+        $params->temp_name4		    = $request->get('temp_name4');
+        $params->temp_id4		    = $request->get('temp_id4');
+        $params->status		        = $request->get('status');
+        $params->user_id		    = $this->user['id'];
 
 		//图片上传处理接口
 		$attachment='attachment';
@@ -185,32 +152,10 @@ class ClassifylinkController extends PublicController
 
 		if ($params->save()) 
 		{
-			
-
-			if($params->topid ==0 && $params->grade==1)
-			{ 
-					$params->node='';
-					$params->bcid=$params->id;
-			}
-			else
-			{
-				$params->bcid=$params->topid;
-				if($params->grade==2)
-				{
-					$params->node=$params->topid.','.$params->id;
-				}
-				else
-				{
-					$params->node= $classify_info['node'].','.$params->id;
-				}
-				$params->scid=$params->id;
-			}
-			$params->save();
-
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_add_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\ClassifylinkController@index');
+			$msg_array['curl']=URL::action('Admin\WechatController@index');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -228,9 +173,8 @@ class ClassifylinkController extends PublicController
 		}	
 
         return response()->json($msg_array);
-
 	}
-	/******************************************
+    /******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :详情接口
 	*******************************************/
@@ -238,7 +182,7 @@ class ClassifylinkController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('classifylinks')->where($condition)->first();
+		$info=DB::table('wechats')->where($condition)->first();
 		if($info)
 		{
 			$msg_array['status']='1';
@@ -261,7 +205,7 @@ class ClassifylinkController extends PublicController
 		}
         return response()->json($msg_array);
 	}
-	/******************************************
+    /******************************************
 	****@AuThor : rubbish.boy@163.com
 	****@Title  : 更新数据接口
 	****@return : Response
@@ -269,37 +213,27 @@ class ClassifylinkController extends PublicController
 	public function api_edit(Request $request)
 	{
 
-		$params = Classifylink::find($request->get('id'));
-		$params->topid 		= $request->get('topid');
-		$params->name 		= $request->get('name');
-		$params->orderid	= $request->get('orderid');
-		$params->linkurl	= $request->get('linkurl');
-		$params->navflag	= $request->get('navflag');
-		$params->status		= $request->get('status');
-
-		if($params->topid==0)
-		{
-			$params->grade=1;
-			$params->node= '';
-			$params->bcid=$request->get('id');
-		}
-		else
-		{
-			$classify_info=Classifylink::find($params->topid);
-			$params->grade=$classify_info['grade']+1;	
-
-			$params->bcid=$params->topid;	
-
-			if($params->grade==2)
-			{
-				$params->node=$params->topid.','.$params->id;
-			}
-			else
-			{
-				$params->node= $classify_info['node'].','.$params->id;
-			}
-			$params->scid=$params->id;	
-		}
+		$params = Wechat::find($request->get('id'));
+		$params->token 	            = $request->get('token');
+		$params->name 	            = $request->get('name');
+		$params->wechataccount 		= $request->get('wechataccount');
+		$params->gid	            = $request->get('gid');
+		$params->type	            = $request->get('type');
+		$params->appid		        = $request->get('appid');
+        $params->appsecret		    = $request->get('appsecret');
+        $params->encodingaeskey		= $request->get('encodingaeskey');
+        $params->mchid		        = $request->get('mchid');
+        $params->paykey		        = $request->get('paykey');
+        $params->openid_items		= $request->get('openid_items');
+        $params->temp_name1		    = $request->get('temp_name1');
+        $params->temp_id1		    = $request->get('temp_id1');
+        $params->temp_name2		    = $request->get('temp_name2');
+        $params->temp_id2		    = $request->get('temp_id2');
+        $params->temp_name3		    = $request->get('temp_name3');
+        $params->temp_id3		    = $request->get('temp_id3');
+        $params->temp_name4		    = $request->get('temp_name4');
+        $params->temp_id4		    = $request->get('temp_id4');
+        $params->status		        = $request->get('status');
 
 		//图片上传处理接口
 		$attachment='attachment';
@@ -317,7 +251,7 @@ class ClassifylinkController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\ClassifylinkController@index');
+			$msg_array['curl']=URL::action('Admin\WechatController@index');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';

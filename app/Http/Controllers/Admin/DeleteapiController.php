@@ -17,7 +17,7 @@ use App\Http\Model\Picture;
 use App\Http\Model\Classifylink;
 use App\Http\Model\Link;
 use App\Http\Model\Log;
-
+use App\Http\Model\Wechat;
 class DeleteapiController extends PublicController
 {
     /******************************************
@@ -289,6 +289,10 @@ class DeleteapiController extends PublicController
 				$params = Picture::find($request->get('id'));
 				# code...
 				break;	
+			case 'Wechat':
+				$params = Wechat::find($request->get('id'));
+				# code...
+				break;		
 			case 'Link':
 				$params = Picture::find($request->get('id'));
 				# code...

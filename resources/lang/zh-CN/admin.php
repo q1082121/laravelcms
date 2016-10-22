@@ -401,6 +401,7 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
+
     'website_letter_action_add'                         =>   '新增',
     'website_letter_action_send'                        =>   '发送',
     'website_letter_action_discard'                     =>   '丢弃',
@@ -433,5 +434,46 @@ return [
     'letter_failure_tip1'                               =>   '收信人不能为自己',
     'letter_failure_tip2'                               =>   '请填写标题',
 
-
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 微信管理
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_wechat_action_api'                         =>   '对接接口',
+    'website_wechat_action_manage'                      =>   '管理中心',
+    'website_model_wechat1'                             =>   '订阅号',
+    'website_model_wechat2'                             =>   '认证订阅号',
+    'website_model_wechat3'                             =>   '服务号',
+    'website_model_wechat4'                             =>   '认证服务号',
+    'website_model_wechat5'                             =>   '企业号',
+    'website_wechat_item_token'                         =>   'Token',
+    'website_wechat_item_name'                          =>   '公众号名称',
+    'website_wechat_item_wechataccount'                 =>   '微信号',
+    'website_wechat_item_gid'                           =>   '原始ID',
+    'website_wechat_item_type'                          =>   '公众号类型',
+    'website_wechat_item_appid'                         =>   '应用ID',
+    'website_wechat_item_appsecret'                     =>   '应用密钥',
+    'website_wechat_item_encodingaeskey'                =>   '消息加解密密钥',
+    'website_wechat_item_attachment'                    =>   'LOGO',
+    'website_wechat_item_mchid'                         =>   '商户ID',
+    'website_wechat_item_paykey'                        =>   '支付密钥',
+    'website_wechat_item_openid_items'                  =>   '消息接受主体',
+    'website_wechat_item_temp_name1'                    =>   '消息模版名称一',
+    'website_wechat_item_temp_id1'                      =>   '消息模版编号一',
+    'website_wechat_item_temp_name2'                    =>   '消息模版名称二',
+    'website_wechat_item_temp_id2'                      =>   '消息模版编号二',
+    'website_wechat_item_temp_name3'                    =>   '消息模版名称三',
+    'website_wechat_item_temp_id3'                      =>   '消息模版编号三',
+    'website_wechat_item_temp_name4'                    =>   '消息模版名称四',
+    'website_wechat_item_temp_id4'                      =>   '消息模版编号四',
+    'website_wechat_item_status'                        =>   '状态',
+    'wechat_failure_tip1'                               =>   '请填写Token',
+    'wechat_failure_tip2'                               =>   '请填写公众号名称',
+    'wechat_failure_tip3'                               =>   '请填写原始ID',
+    'website_wechat_tip_pay'                            =>   '【微信支付配置】',
+    'website_wechat_tip_msg'                            =>   '【微信消息模版配置】',
+    
 ];

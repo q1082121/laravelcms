@@ -18,6 +18,7 @@ return array(
     'CreatePicturesTable' => $baseDir . '/database/migrations/2016_10_18_231205_create_pictures_table.php',
     'CreateUserinfosTable' => $baseDir . '/database/migrations/2016_08_29_030826_create_userinfos_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
+    'CreateWechatsTable' => $baseDir . '/database/migrations/2016_10_22_093035_create_wechats_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'DistrictSeeder' => $baseDir . '/database/seeds/DistrictSeeder.php',
     'EntrustSetupTables' => $baseDir . '/database/migrations/2016_09_29_033513_entrust_setup_tables.php',

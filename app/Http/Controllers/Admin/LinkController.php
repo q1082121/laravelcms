@@ -169,6 +169,7 @@ class LinkController extends PublicController
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
 		$params->status		= $request->get('status');
+		$params->user_id	= $this->user['id'];
 
 		//图片上传处理接口
 		$attachment='attachment';

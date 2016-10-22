@@ -160,7 +160,8 @@ class ClassifyController extends PublicController
 		$params->navflag	= $request->get('navflag');
 		$params->perpage	= $request->get('perpage');
 		$params->status		= $request->get('status');
-
+		$params->user_id	= $this->user['id'];
+		
 		if($params->topid == 0)
 		{
 			$params->grade=1;

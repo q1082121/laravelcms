@@ -14,20 +14,39 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_picture_item_modelid')}}</span>
-                <select class="form-control" v-model="params_data.modelid">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_type')}}</span>
+                <select class="form-control" v-model="params_data.type">
                   <option v-for="item in modellist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_picture_item_title')}}</span>
-                <input type="text" class="form-control" v-model="params_data.title"   >
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_token')}}</span>
+                <input type="text" class="form-control" v-model="params_data.token"   >
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_name')}}</span>
+                <input type="text" class="form-control" v-model="params_data.name"   >
               </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_picture_item_attachment')}}</label><br>
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_wechataccount')}}</span>
+                <input type="text" class="form-control" v-model="params_data.wechataccount"   >
+              </div>  
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_gid')}}</span>
+                <input type="text" class="form-control" v-model="params_data.gid"   >
+              </div>  
+            </div>
+            <div class="form-group">
+              <label >{{trans('admin.website_wechat_item_attachment')}}</label><br>
               <!--
               <input type="file" @change="onFileChange" id="fileuploads" class="file"  accept="image/*">
               
@@ -73,18 +92,96 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_picture_item_orderid')}}</span>
-                <input type="text" class="form-control" v-model="params_data.orderid"   >
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_appid')}}</span>
+                <input type="text" class="form-control" v-model="params_data.appid"   >
               </div>  
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_picture_item_linkurl')}}</span>
-                <input type="text" class="form-control" v-model="params_data.linkurl"   >
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_appsecret')}}</span>
+                <input type="text" class="form-control" v-model="params_data.appsecret"   >
+              </div>  
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_wechat_item_encodingaeskey')}}</span>
+                  <textarea  class="form-control" rows="3" v-model="params_data.encodingaeskey" > </textarea>
+                </div>
+            </div>
+            <div class="box-header with-border">
+              <h3 class="box-title">{{trans('admin.website_wechat_tip_pay')}}</h3>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_mchid')}}</span>
+                <input type="text" class="form-control" v-model="params_data.mchid"   >
               </div>
             </div>
             <div class="form-group">
-                <label >{{trans('admin.website_picture_item_status')}}</label>
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_paykey')}}</span>
+                <input type="text" class="form-control" v-model="params_data.paykey"   >
+              </div>
+            </div>  
+            <div class="box-header with-border">
+              <h3 class="box-title">{{trans('admin.website_wechat_tip_msg')}}</h3>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_wechat_item_openid_items')}}</span>
+                  <textarea  class="form-control" rows="3" v-model="params_data.openid_items" > </textarea>
+                </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_name1')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_name1"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_id1')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_id1"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_name2')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_name2"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_id2')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_id2"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_name3')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_name3"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_id3')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_id3"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_name4')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_name4"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_id4')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_id4"   >
+              </div>
+            </div>
+            <div class="form-group">
+                <label >{{trans('admin.website_wechat_item_status')}}</label>
                 <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
                 <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
             </div>
@@ -118,12 +215,27 @@ new Vue({
              modellist:             eval(htmlspecialchars_decode('{{$website["modellist"]}}')), 
              params_data:
              {
-                modelid             :1,
-                title               :'',
+                type                :1,
+                token               :'',
+                name                :'',
+                wechataccount       :'',
+                gid                 :'',
+                appid               :'',
+                appsecret           :'',
+                encodingaeskey	    :'',
                 attachment          :'',
                 isattach            :0,
-                orderid             :0,
-                linkurl             :'',
+                mchid               :'',
+                paykey              :'',
+                openid_items        :'',
+                temp_name1          :'',
+                temp_id1            :'',
+                temp_name2          :'',
+                temp_id2            :'',
+                temp_name3          :'',
+                temp_id3            :'',
+                temp_name4          :'',
+                temp_id4            :'',
                 status              :1,
                 id                  :'{{$website["id"]}}',
              },
@@ -200,9 +312,19 @@ new Vue({
       //点击数据验证
       check_action:function(posturl)
       {
-          if (this.params_data.title=='')
+          if (this.params_data.token=='')
           {
-              var msg="{{trans('admin.picture_failure_tip1')}}";
+              var msg="{{trans('admin.wechat_failure_tip1')}}";
+              layermsg_error(msg);
+          }
+          else if (this.params_data.name=='')
+          {
+              var msg="{{trans('admin.wechat_failure_tip2')}}";
+              layermsg_error(msg);
+          }
+          else if (this.params_data.gid=='')
+          {
+              var msg="{{trans('admin.wechat_failure_tip3')}}";
               layermsg_error(msg);
           }
           else

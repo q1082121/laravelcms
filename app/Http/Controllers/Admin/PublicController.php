@@ -120,12 +120,12 @@ class PublicController extends Controller
             $user=Auth::guard($guard)->user();
             $cache_userinfo='userinfo_'.$user['id'];
 
-			$default_data_cache_type="redis";
-			switch($default_data_cache_type)
+			$default_session_cache_type=env('SESSION_DRIVER', "file");
+			switch($default_session_cache_type)
 			{
 				case 'file':
 							//file 版缓存
-							if (Cache::has($cache_userinfo)) 
+							if (Cache::store('file')->has($cache_userinfo)) 
 							{
 								
 							}
@@ -133,9 +133,9 @@ class PublicController extends Controller
 							{
 								$userinfo=User::find($user['id'])->hasOneUserinfo;
 								$minutes=1800;
-								Cache::put($cache_userinfo, $userinfo, $minutes);
+								Cache::store('file')->put($cache_userinfo, $userinfo, $minutes);
 							}
-							$this->userinfo=Cache::get($cache_userinfo);
+							$this->userinfo=Cache::store('file')->get($cache_userinfo);
 							break;
 				case 'redis':
 							//Redis 版缓存

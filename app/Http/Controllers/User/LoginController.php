@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
 //引用对应的命名空间
 use Validator;
 use Session;
-
+use Cache;
 //使用数据库操作DB
 use DB;
 //引入验证控制
@@ -34,6 +34,7 @@ class LoginController extends Controller
         $website['website_center_tip']=trans('admin.website_center_tip');
     	$website['copyrights']=trans('admin.website_name').trans('admin.website_rightinfo');
         $website['type']=$request->route('type')?$request->route('type'):4;
+        $website['info']=Cache::store('file')->get('root');
         return view('user/login')->with('website',$website);
     }
     /******************************************

@@ -81,6 +81,9 @@ function placeFocus() { document.forms[0].elements[0].focus();
                     {
                         var loadi;
                         $.ajax({
+							headers: {
+									'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							},
                             type:"POST",
                             url:"{{ route('post.user.login') }}",
                             data:$('#do_form').serialize(),

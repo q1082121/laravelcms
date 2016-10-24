@@ -14,6 +14,7 @@ QQ	:471416739
 6. intervention/image 图片处理类库
 7. yuanchao/laravel-5-markdown-editor 文本编辑器
 8. stevenyangecho/laravel-u-editor 百度富文本编辑器
+9. workerman/phpsocket.io,workerman/workerman  目前开发用的是win版本, 压缩包是linux版本
 
 #	laravel使用了哪些前端组件？ bower.json
 
@@ -30,18 +31,23 @@ QQ	:471416739
 	login 用户登录,用户注册模板
 	DateTimePicker 时间日期控件 兼容移动端
 	moment 时间处理控件
-
+	socket.io-client-1.3.7 web通信
+	
 	public/js/common.js 公共函数
 
 #	使用手册
 1. 如果需要设置 SESSION_DRIVER=redis 那么需要启动 redis-server.exe  默认为file
 
-2. 获取项目文件：git clone 或者 github 上下载压缩包
+2. window环境手动运行项目环境下的start_for_win.bat
 
-3. 使用命令行 建立数据库魔法
+3. linux环境随服务器启动自动运行start_io.php（必要）  start_web.php（不可必要）
+
+4. 获取项目文件：git clone 或者 github 上下载压缩包
+
+5. 使用命令行 建立数据库魔法
     php artisan migrate
 	
-4. 填充网站初始数据(由于地区数据比较多，生成比较慢，预计时间5-10分钟内)	
+6. 填充网站初始数据(由于地区数据比较多，生成比较慢，预计时间5-10分钟内)	
 		1 php artisan db:seed
 		
 		2 php artisan db:seed --class=UserSeeder		 账号默认密码:111111
@@ -52,7 +58,7 @@ QQ	:471416739
 		
 		5 php artisan db:seed --class=DistrictSeeder	 数据较大
 		
-5. 开始体验
+7. 开始体验
 	
 #	开发进展
 

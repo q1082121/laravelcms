@@ -96,6 +96,9 @@
                     {
                         var loadi;
                         $.ajax({
+							headers: {
+									'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							},
                             type:"POST",
                             url:"{{ route('post.user.register') }}",
                             data:$('#do_form').serialize(),

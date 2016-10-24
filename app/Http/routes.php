@@ -57,7 +57,11 @@ Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user
 ****@AuThor:rubbish.boy@163.com
 ****@Title :前台访问控制
 *******************************************/
+Route::group(['middleware' => ['cors']], function() {  
 Route::get('/', 'HomeController@index');
+});
+
+
 
 
 

@@ -22,15 +22,16 @@ Route::get('/', function () {
 ****@AuThor:rubbish.boy@163.com
 ****@Title :公共方法访问控制
 *******************************************/
-Route::get('/captcha/register/{tmp?}', 'CaptchaController@register')->name('get.captcha.register');
-Route::get('/captcha/login/{tmp?}', 'CaptchaController@login')->name('get.captcha.login');
-
+Route::group(['middleware' => ['cors'], 'prefix' => 'captcha'], function() {  
+Route::get('/register/{tmp?}', 'CaptchaController@register')->name('get.captcha.register');
+Route::get('/login/{tmp?}', 'CaptchaController@login')->name('get.captcha.login');
+});
 
 /******************************************
 ****@AuThor:rubbish.boy@163.com
 ****@Title :会员中心
 *******************************************/
-Route::group(['namespace' => 'User', 'prefix' => 'user'], function() {  
+Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user'], function() {  
     /******************************************
 	****@AuThor:rubbish.boy@163.com
 	****@Title :会员注册

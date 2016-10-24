@@ -51,7 +51,10 @@ class PublicController extends Controller
 	    */
 		//后台通用参数设置
 		$root=Cache::store('file')->get('root');
-		$root['syseditor']=$root['syseditor']?$root['syseditor']:"Markdown";
+		$root['syseditor']=@$root['syseditor']?@$root['syseditor']:"Markdown";
+		$root['systitle']=@$root['systitle']?@$root['systitle']:"LaravelCms";
+		$root['syskeyword']=@$root['syskeyword']?@$root['syskeyword']:"";
+		$root['sysdescription']=@$root['sysdescription']?@$root['sysdescription']:"";
 		$this->root=$root;
 		$this->website['root']=$root;
 		$setting=Cache::store('file')->get('setting');

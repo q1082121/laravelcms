@@ -62,5 +62,17 @@ class Kernel extends HttpKernel
 		'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
 		'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
 		'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+		/*
+         +++++++++++++++++++++++++++++++++++++++++++
+         +跨域请求中间件
+         +++++++++++++++++++++++++++++++++++++++++++
+        */
+		'cors' => \App\Http\Middleware\CorsMiddleware::class,
+		/*
+         +++++++++++++++++++++++++++++++++++++++++++
+         +单点登录
+         +++++++++++++++++++++++++++++++++++++++++++
+        */
+		'sso' => \App\Http\Middleware\SsoMiddleware::class,
     ];
 }

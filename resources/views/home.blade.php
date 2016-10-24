@@ -17,11 +17,23 @@
 
 <script src="{{asset('/module')}}/socket.io-client-1.3.7/socket.io.js"></script>
 <script>
-// 如果服务端不在本机，请把127.0.0.1改成服务端ip
-var socket = io('http://127.0.0.1:2120');
-// 当连接服务端成功时触发connect默认事件
-socket.on('connect', function(){
-    console.log('connect success');
+$(document).ready(function () {
+    var uid=1;
+    // 连接服务端
+    var socket = io('http://'+document.domain+':2120');
+    // 连接后登录
+    socket.on('connect', function(){
+        socket.emit('login', uid);
+    });
+    // 后端推送来消息时
+    socket.on('new_msg', function(msg){
+            $('#content').html('收到消息：'+msg);
+            $('.notification.sticky').notify();
+    });
+    // 后端推送来在线数据时
+    socket.on('update_online_count', function(online_stat){
+        $('#online_box').html(online_stat);
+    });
 });
 </script>
 

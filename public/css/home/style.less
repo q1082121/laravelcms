@@ -1,0 +1,94 @@
+/*@-----------------------------------------@
+  @标题：参数初始化设置
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/
+@default_background:#fff;@bgurl:"/Public/images/home/";@default_width:100%;@default_fontsize:12px;	                           
+html,body {text-align:left;font-family:"\5fae\8f6f\96c5\9ed1";margin:0 auto;padding:0;font-size:@default_fontsize;color:#333;background:@default_background;}
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td {margin:0;padding:0;}
+li,dl{list-style-image:none;list-style-position:outside;list-style-type:none;}
+h1,h2,h3,h4,h5,h6 { margin:0; padding:0;}
+img {border:0;}
+a {text-decoration:none;outline-style: none;outline-width: 0px;}
+a:link {text-decoration:none;outline-style: none;outline-width: 0px;}
+a:visited {text-decoration:none;outline-style: none;outline-width: 0px;}
+a:hover {text-decoration:none;outline-style: none;outline-width: 0px;}
+a:active {text-decoration:none;outline-style: none;outline-width: 0px;}
+/*@-----------------------------------------@
+  @标题：less 参数初始化设置
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/
+//@height
+.auto_m_h(@min_h:0px;){height: auto !important;height: 100%;min-height: @min_h;height: @min_h;overflow: hidden !important;_overflow: visible;}
+//@float
+.c_b{clear:both;}.left{float:left;}.right{float:right;}
+//@margin
+.m_c{margin:0 auto;}.m_tb_c (@mtop:0;@mbot:0;) {margin: @mtop auto @mbot;}.m_tb_lr (@mtop_bot:0;@mleft_right:0;) {margin: @mtop_bot @mleft_right;}
+//@background
+.bg_img(@bgname;@x_align:left;@y_align:top;@set_repeat:no-repeat;){background: url("@{bgurl}@{bgname}") @set_repeat @x_align @y_align;}
+//@text-align
+.t_c{text-align: center;}.t_l{text-align: left;}.t_r{text-align: right;}
+//@list-style
+.u_none{list-style: none;padding: 0;margin: 0;}
+//@ellipsis
+.a_out{float:left;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
+//@border-radius
+.radius(@radius:5px){border-radius: @radius;-moz-border-radius: @radius;-khtml-border-radius: @radius;-webkit-border-radius: @radius;}
+//@box-shadow x阴影  y阴影  5羽化  阴影颜色
+.bbshadow {box-shadow: 1px 1px 1px #000;}
+//@box-shadow x阴影  y阴影  10羽化  阴影颜色 inset向内阴影
+.bbshadowi{box-shadow: 0px 0px 10px black inset;}
+//@text-shadow x阴影  y阴影  10羽化  阴影颜色
+.tshadow{text-shadow: 0px 0px 20px black;}
+//@transition 动画过渡效果
+.transition(@transition:0.4s;@transition_action:ease-out;){-webkit-transition: -webkit-transform @transition @transition_action;-moz-transition: -moz-transform @transition @transition_action;transition: transform @transition @transition_action;-khtml-transition: transform @transition @transition_action;}
+//@transform > rotate 实例旋转方法
+.transform_rotate(@transform:360deg){transform: rotate(@transform);-webkit-transform: rotate(@transform);-moz-transform: rotate(@transform);-khtml-transform: rotate(@transform);}
+//@transform 公共转换方法
+.transform(@transform_action;){transform: @transform_action;-webkit-transform: @transform_action;-moz-transform: @transform_action;-khtml-transform: @transform_action;}
+//@animate 包含动画
+//@import (less) "../common/animate/animate.min.css";
+//@animate 动画循环执行
+.animation(@animation_name;@animation-duration:3s;@animation-timing-function:ease;@animation-iteration-count:infinite;)
+{   
+	-webkit-animation-name: @animation_name; /*动画名称*/
+    -webkit-animation-duration: @animation-duration;/*播放一次所持续时间*/
+    -webkit-animation-timing-function: @animation-timing-function;/*动画播放频率*/
+    -webkit-animation-iteration-count: @animation-iteration-count;/*动画播放次涒为无限次*/
+   	-moz-animation-name: @animation_name; /*动画名称*/
+    -moz-animation-duration: @animation-duration;/*播放一次所持续时间*/
+    -moz-animation-timing-function: @animation-timing-function;/*动画播放频率*/
+    -moz-animation-iteration-count: @animation-iteration-count;/*动画播放次涒为无限次*/
+   	-khtml-animation-name: @animation_name; /*动画名称*/
+    -khtml-animation-duration: @animation-duration;/*播放一次所持续时间*/
+    -khtml-animation-timing-function: @animation-timing-function;/*动画播放频率*/
+    -khtml-animation-iteration-count: @animation-iteration-count;/*动画播放次涒为无限次*/
+    animation-name: @animation_name; /*动画名称*/
+    animation-duration: @animation-duration;/*播放一次所持续时间*/
+    animation-timing-function: @animation-timing-function;/*动画播放频率*/
+    animation-iteration-count: @animation-iteration-count;/*动画播放次涒为无限次*/
+}
+/*@-----------------------------------------@
+  @标题：项目公共 common
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/
+
+/*@-----------------------------------------@
+  @标题：项目头部 header
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/
+
+/*@-----------------------------------------@
+  @标题：项目导航 menu
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/
+
+/*@-----------------------------------------@
+  @标题：项目尾部 footer
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/

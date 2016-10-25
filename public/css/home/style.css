@@ -1,0 +1,150 @@
+/*@-----------------------------------------@
+  @标题：参数初始化设置
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/
+html,
+body {
+  text-align: left;
+  font-family: "\5fae\8f6f\96c5\9ed1";
+  margin: 0 auto;
+  padding: 0;
+  font-size: 12px;
+  color: #333;
+  background: #ffffff;
+}
+html,
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+li,
+dl {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+img {
+  border: 0;
+}
+a {
+  text-decoration: none;
+  outline-style: none;
+  outline-width: 0px;
+}
+a:link {
+  text-decoration: none;
+  outline-style: none;
+  outline-width: 0px;
+}
+a:visited {
+  text-decoration: none;
+  outline-style: none;
+  outline-width: 0px;
+}
+a:hover {
+  text-decoration: none;
+  outline-style: none;
+  outline-width: 0px;
+}
+a:active {
+  text-decoration: none;
+  outline-style: none;
+  outline-width: 0px;
+}
+/*@-----------------------------------------@
+  @标题：less 参数初始化设置
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/
+.c_b {
+  clear: both;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.m_c {
+  margin: 0 auto;
+}
+.t_c {
+  text-align: center;
+}
+.t_l {
+  text-align: left;
+}
+.t_r {
+  text-align: right;
+}
+.u_none {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.a_out {
+  float: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.bbshadow {
+  box-shadow: 1px 1px 1px #000;
+}
+.bbshadowi {
+  box-shadow: 0px 0px 10px black inset;
+}
+.tshadow {
+  text-shadow: 0px 0px 20px black;
+}
+/*@-----------------------------------------@
+  @标题：项目公共 common
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/
+/*@-----------------------------------------@
+  @标题：项目头部 header
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/
+/*@-----------------------------------------@
+  @标题：项目导航 menu
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/
+/*@-----------------------------------------@
+  @标题：项目尾部 footer
+  @作者：rubbish.boy@163.com
+  @-----------------------------------------@  
+*/

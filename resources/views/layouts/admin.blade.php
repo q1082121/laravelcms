@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>{{$website['cursitename']}}-{{$website['website_seo_title']}}-{{trans('admin.website_type')}}</title>
-  <meta name="keywords" content="{{$website['website_seo_keyword']}}" >
+  <meta name="keywords" content="{{$website['website_seo_keywords']}}" >
   <meta name="description" content="{{$website['website_seo_description']}}" >
   <link rel="shortcut icon" href="/favicon.ico" >
   <!-- Tell the browser to be responsive to screen width -->

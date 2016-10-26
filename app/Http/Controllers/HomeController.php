@@ -1,11 +1,20 @@
 <?php
-
+/******************************************
+****AuThor:rubbish.boy@163.com
+****Title :首页控制器
+*******************************************/
 namespace App\Http\Controllers;
-
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+//使用数据库操作DB
+use DB;
+use Session;
+use Cache;
+use URL;
+
+class HomeController extends PublicController
 {
     /**
      * Show the application dashboard.
@@ -14,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $website=$this->website;
+        
+        return view('home')->with('website',$website);
     }
 }

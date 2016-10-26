@@ -53,7 +53,7 @@ class PublicController extends Controller
 		$root=Cache::store('file')->get('root');
 		$root['syseditor']=@$root['syseditor']?@$root['syseditor']:"Markdown";
 		$root['systitle']=@$root['systitle']?@$root['systitle']:"LaravelCms";
-		$root['syskeyword']=@$root['syskeyword']?@$root['syskeyword']:"";
+		$root['syskeywords']=@$root['syskeywords']?@$root['syskeywords']:"";
 		$root['sysdescription']=@$root['sysdescription']?@$root['sysdescription']:"";
 		$this->root=$root;
 		$this->website['root']=$root;
@@ -80,9 +80,9 @@ class PublicController extends Controller
 
 		$this->website['setting']=$setting?$setting:$settingdata;
 
-		$this->website['website_seo_title']=($root['systitle']?$root['systitle']:trans('admin.website_name'));
-		$this->website['website_seo_keyword']=$root['syskeyword'];
-		$this->website['website_seo_description']=$root['sysdescription'];
+		$this->website['website_seo_title']=(@$root['systitle']?@$root['systitle']:trans('admin.website_name'));
+		$this->website['website_seo_keywords']=@$root['syskeywords'];
+		$this->website['website_seo_description']=@$root['sysdescription'];
 		$this->website['apiurl_setting']=URL::action('Admin\HomeController@api_setting');
 
 		//常量定义

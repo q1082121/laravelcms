@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+
+/* HTML5 defaults */
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {background: none repeat scroll 0 0 transparent; border: 0 none; font-size: 100%; margin: 0; outline: 0 none; padding: 0; vertical-align: baseline; }
+article, aside, figcaption, figure, footer, header, hgroup, nav, section, time {display: block;}
+
+/* Theme */
+
+html, body {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	min-width: 999px;
+}
+
+header {
+	height: 100%;
+	position: relative;
+}
+
+header div.content {
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 50%;
+	max-width: none;
+	height: 290px;
+	margin-top: -145px;
+	background: rgba(255,255,255,0.5);
+	text-align: center;
+}
+
+/*header div.content h1  {
+	font-size: 12pt;
+	font-weight: normal;
+}*/
+
+header div#logo {
+	font-family: Raleway, cursive;
+	font-size: 48pt;
+	text-align: center;
+	padding-top: 30px;
+	color: #CC002A;
+}
+
+/*header div.content h1  {
+	color: #222222;
+}*/
+
+header .buttons-wrapper div.buttons div a:hover {
+	color: #222222;
+}
+
+.color-1 {
+	color: #CC002A;
+}
+
+.color-2 {
+	color: #ff007f;
+}

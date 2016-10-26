@@ -19,7 +19,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_syskeyword')}}</span>
-                  <input type="text" class="form-control" name="syskeyword" v-model="info.syskeyword" value="@{{ info.syskeyword }}"  placeholder="例如：LaravelCms" >
+                  <input type="text" class="form-control" name="syskeywords" v-model="info.syskeywords" value="@{{ info.syskeywords }}"  placeholder="例如：LaravelCms" >
                 </div>
               </div>
               <div class="form-group">
@@ -129,7 +129,7 @@
               info: {
                 modelname:        '{{$website["modelname"]}}' ,
                 systitle:         '{{$website["info"]["systitle"]}}' ,
-                syskeyword:       '{{$website["info"]["syskeyword"]}}' ,
+                syskeywords:      '{{$website["info"]["syskeywords"]}}' ,
                 sysdescription :  '{{$website["info"]["sysdescription"]}}' ,
                 sysicp:           '{{$website["info"]["sysicp"]}}' ,
                 sysmaster:        '{{$website["info"]["sysmaster"]}}' ,

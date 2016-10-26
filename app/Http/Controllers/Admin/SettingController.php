@@ -25,7 +25,7 @@ class SettingController extends PublicController
 		$website=$this->website;
 		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
 		$website['cursitename']=trans('admin.website_navigation_two');
-		$website['info']=Cache::store('file')->get('root');
+		$website['info']=$this->root;
 		$editoroption[]=array('text'=>trans('admin.website_setting_editor_item1'),'value'=>'Markdown');
 		$editoroption[]=array('text'=>trans('admin.website_setting_editor_item2'),'value'=>'Ueditor');
 		$website['editoroption']=json_encode($editoroption);

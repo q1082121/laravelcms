@@ -75,9 +75,9 @@
 </script>
 @yield('content')
 
-<footer class="containor">
-  <p>blog template<br/>
-    <small>© Copyright XXX. by the AmazeUI Team.</small>
+<footer class="containor footer">
+  <p>美食街<br/>
+    <small>© Copyright 2016  站长：rubbish.boy@163.com </small>
   </p>
 </footer>
 

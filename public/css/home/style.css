@@ -132,7 +132,7 @@ img {
   background-size: 100% auto;
 }
 /*@-----------------------------------------@
-  @标题：项目头部 首页
+  @标题：项目首页 index
   @作者：rubbish.boy@163.com
   @-----------------------------------------@  
 */
@@ -180,17 +180,51 @@ img {
   bottom: 0;
   display: block;
   color: #fff;
-  width: 5vw;
-  height: 5vw;
+  width: 6.5vw;
+  height: 6.5vw;
   border-radius: 50%;
   -moz-border-radius: 50%;
   -khtml-border-radius: 50%;
   -webkit-border-radius: 50%;
-  line-height: 5.5vw;
+  line-height: 8.1vw;
   text-align: center;
 }
 .panel-icon i::before {
-  font-size: 20px;
+  font-size: 32px;
+}
+.detail-h2 {
+  text-align: center;
+  font-size: 150%;
+  margin: 40px 0;
+}
+.detail-h3 {
+  color: #FF6600;
+  margin: 10px 0;
+}
+.detail-p {
+  color: #7f8c8d;
+}
+.hope {
+  background: #0bb59b;
+  padding: 50px 0;
+  margin: 20px auto;
+}
+.hope-img {
+  text-align: center;
+}
+.hope-hr {
+  border-color: #149C88;
+}
+.hope-title {
+  font-size: 140%;
+}
+.hope-list {
+  color: #fff;
+}
+.hope-list i {
+  color: #FF6600;
+  margin: 0 10px 0 0;
+  line-height: 24px;
 }
 /*@-----------------------------------------@
   @标题：项目导航 menu
@@ -485,3 +519,10 @@ img {
   @作者：rubbish.boy@163.com
   @-----------------------------------------@  
 */
+.footer p {
+  color: #fff;
+  margin: 0;
+  padding: 15px 0;
+  text-align: center;
+  background: #FF6600;
+}

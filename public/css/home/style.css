@@ -114,6 +114,12 @@ img {
 .color-58eaa1 {
   background: #58eaa1;
 }
+.margin-20 {
+  margin: 20px auto;
+}
+.margin-40 {
+  margin: 40px auto;
+}
 /*@-----------------------------------------@
   @标题：项目头部 header
   @作者：rubbish.boy@163.com
@@ -204,6 +210,9 @@ img {
 .detail-p {
   color: #7f8c8d;
 }
+.detail-img {
+  margin: 0 auto;
+}
 .hope {
   background: #0bb59b;
   padding: 50px 0;
@@ -225,6 +234,21 @@ img {
   color: #FF6600;
   margin: 0 10px 0 0;
   line-height: 24px;
+}
+.notice_box_top {
+  width: 90%;
+  height: auto !important;
+  height: 100%;
+  min-height: 4vw;
+  height: 4vw;
+  overflow: hidden !important;
+  _overflow: visible;
+  line-height: 4vw;
+  text-align: center;
+  background: #fff;
+  margin: 10px auto;
+  color: #FF6767;
+  font-weight: 700;
 }
 /*@-----------------------------------------@
   @标题：项目导航 menu

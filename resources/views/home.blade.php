@@ -2,88 +2,115 @@
 @section('content')
 
 <div class="containor" style="position:relative;margin-top:-5vw;z-index:10;">
-<div class="am-g am-g-collapse">
-  <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
-    <!--panel start -->
-    <a href="javascript:void(0);">
-    <div class="panel panel-success">
-        <div class="panel-heading color-FF6600">名小吃</div>
-        <div class="panel-body">
-            <span class="color-FF6600 panel-icon" >
-                <i class="am-icon-magic panel-i"></i>
-            </span>
+    <div class="am-g am-g-collapse">
+    <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+        <!--panel start -->
+        <a href="javascript:void(0);">
+        <div class="panel panel-success">
+            <div class="panel-heading color-FF6600">名小吃</div>
+            <div class="panel-body">
+                <span class="color-FF6600 panel-icon" >
+                    <i class="am-icon-magic panel-i"></i>
+                </span>
+            </div>
         </div>
+        </a>
+        <!--panel end -->
     </div>
-    </a>
-    <!--panel end -->
-  </div>
-  <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
-    <!--panel start -->
-    <a href="javascript:void(0);">
-    <div class="panel panel-success">
-        <div class="panel-heading color-5ac8fa">馋零食</div>
-        <div class="panel-body">
-            <span class="color-5ac8fa panel-icon" >
-                <i class="am-icon-angellist panel-i"></i>
-            </span>
+    <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+        <!--panel start -->
+        <a href="javascript:void(0);">
+        <div class="panel panel-success">
+            <div class="panel-heading color-5ac8fa">馋零食</div>
+            <div class="panel-body">
+                <span class="color-5ac8fa panel-icon" >
+                    <i class="am-icon-angellist panel-i"></i>
+                </span>
+            </div>
         </div>
+        </a>
+        <!--panel end -->
     </div>
-    </a>
-    <!--panel end -->
-  </div>
-  <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
-    <!--panel start -->
-    <a href="javascript:void(0);">
-    <div class="panel panel-success">
-        <div class="panel-heading color-FF6767">暗黑系</div>
-        <div class="panel-body">
-            <span class="color-FF6767 panel-icon" >
-                <i class="am-icon-thumbs-up panel-i"></i>
-            </span>
+    <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+        <!--panel start -->
+        <a href="javascript:void(0);">
+        <div class="panel panel-success">
+            <div class="panel-heading color-FF6767">暗黑系</div>
+            <div class="panel-body">
+                <span class="color-FF6767 panel-icon" >
+                    <i class="am-icon-thumbs-up panel-i"></i>
+                </span>
+            </div>
         </div>
+        </a>
+        <!--panel end -->
     </div>
-    </a>
-    <!--panel end -->
-  </div>
-  <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
-    <!--panel start -->
-    <a href="javascript:void(0);">
-    <div class="panel panel-success">
-        <div class="panel-heading color-58eaa1">最贪吃</div>
-        <div class="panel-body">
-            <span class="color-58eaa1 panel-icon" >
-                <i class="am-icon-heart panel-i"></i>
-            </span>
+    <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+        <!--panel start -->
+        <a href="javascript:void(0);">
+        <div class="panel panel-success">
+            <div class="panel-heading color-58eaa1">最贪吃</div>
+            <div class="panel-body">
+                <span class="color-58eaa1 panel-icon" >
+                    <i class="am-icon-heart panel-i"></i>
+                </span>
+            </div>
         </div>
+        </a>
+        <!--panel end -->
     </div>
-    </a>
-    <!--panel end -->
-  </div>
-</div>
-</div>
-
-<div class="containor">
-<img class="am-img-responsive" src="/images/home/bannerad.jpg">
+    </div>
 </div>
 
 <!-- -->
-<div class="containor">
+<div class="containor margin-40 color-FF6767">
+    <div class="am-g am-g-collapse">
+        <div class="am-u-lg-8 am-u-md-12 am-u-sm-12">
+            <link rel="stylesheet" href="{{asset('/module/jquery-unitegallery')}}/css/unite-gallery.css" type="text/css">
+            <script type="text/javascript" src="{{asset('/module/jquery-unitegallery')}}/js/unitegallery.min.js"></script>
+            <script type="text/javascript" src="{{asset('/module/jquery-unitegallery')}}/themes/compact/ug-theme-compact.js"></script>	
+            <div id="gallery" style="display:none;">
+                <img src="/images/home/thumbs/1.jpg" data-image="/images/home/tu/1.jpg" data-description="Preview Image 1 Description">
+                <img src="/images/home/thumbs/2.jpg" data-image="/images/home/tu/2.jpg" data-description="Preview Image 2 Description">
+                <img src="/images/home/thumbs/3.jpg" data-image="/images/home/tu/3.jpg" data-description="Preview Image 3 Description">
+                <img src="/images/home/thumbs/4.jpg" data-image="/images/home/tu/4.jpg" data-description="Preview Image 4 Description">
+                <img src="/images/home/thumbs/5.jpg" data-image="/images/home/tu/5.jpg" data-description="Preview Image 5 Description">
+                <img src="/images/home/thumbs/6.jpg" data-image="/images/home/tu/6.jpg" data-description="Preview Image 6 Description">        
+            </div>
+            <script type="text/javascript">
+            jQuery(document).ready(function(){
+                jQuery("#gallery").unitegallery({
+                    theme_panel_position: "top"		
+                });
+            });
+            </script>    
+        </div>
+        <div class="am-u-lg-4 am-u-md-12 am-u-sm-12">
+            <div class="notice_box_top">
+                通知公告
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -->
+
+<!-- -->
+<div class="containor margin-40">
     <div class="detail">
         <h2 class="detail-h2">不知道这些，你还敢称是“ 美食达人 ”吗!</h2>
         <div class="am-g ">
             <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
-                <img class="am-img-responsive" src="/images/home/ic11.jpg">
+                <img class="am-img-responsive am-img-thumbnail detail-img" src="/images/home/ic11.jpg"  >
                 <h3 class="detail-h3">
                     <i class="am-icon-star am-icon-sm"></i>
                     夹糕
                 </h3>
-                
                 <p class="detail-p">
                     温岭有一传统早点，那就是手打糕，当地人一般称之为“嵌糕”。
                 </p>
             </div>
             <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
-                <img class="am-img-responsive" src="/images/home/ic12.jpg">
+                <img class="am-img-responsive am-img-thumbnail detail-img" src="/images/home/ic12.jpg" >
                 <h3 class="detail-h3">
                     <i class="am-icon-star am-icon-sm"></i>
                     泡虾
@@ -93,7 +120,7 @@
                 </p>
             </div>
             <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
-                <img class="am-img-responsive" src="/images/home/ic13.jpg">
+                <img class="am-img-responsive am-img-thumbnail detail-img" src="/images/home/ic13.jpg" >
                 <h3 class="detail-h3">
                     <i class="am-icon-star am-icon-sm"></i>
                     青团
@@ -104,7 +131,7 @@
                 </p>
             </div>
             <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
-                <img class="am-img-responsive" src="/images/home/ic14.jpg">
+                <img class="am-img-responsive am-img-thumbnail detail-img" src="/images/home/ic14.jpg">
                 <h3 class="detail-h3">
                     <i class="am-icon-star am-icon-sm"></i>
                     麦饼
@@ -119,7 +146,23 @@
 <!-- -->
 
 <!-- -->
-<div class="containor">
+<div class="containor margin-20">
+    <img class="am-img-responsive" src="/images/home/bannerad.jpg">
+</div>
+<!-- -->
+
+<!-- -->
+<div class="containor margin-40">
+    <div class="am-g">
+        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 ">
+
+        </div>
+    </div>
+</div>
+<!-- -->
+
+<!-- -->
+<div class="containor margin-40">
     <div class="hope">
     <div class="am-g am-container">
         <div class="am-u-lg-4 am-u-md-6 am-u-sm-12 hope-img">

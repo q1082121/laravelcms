@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="containor" style="position:relative;margin-top:-5vw;z-index:10;">
+<div class="containor ico-position">
     <div class="am-g am-g-collapse">
     <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
         <!--panel start -->
@@ -89,6 +89,58 @@
             <div class="notice_box_top">
                 通知公告
             </div>
+            <div class="notice_box_list">
+                <ul>
+                    <li>
+                        <span>2016-10-10</span>
+                        <a href="javascript:void(0);" class="am-text-truncate">
+                           <i class="am-icon-bell-o am-icon-fw"></i> 第四届温岭美食节国际美食周在温岭数码城拉开帷幕。
+                        </a>
+                    </li>
+                    <li>
+                        <span>2016-10-10</span>
+                        <a href="javascript:void(0);" class="am-text-truncate">
+                           <i class="am-icon-bell-o am-icon-fw"></i> 第四届温岭美食节国际美食周在温岭数码城拉开帷幕。
+                        </a>
+                    </li>
+                    <li>
+                        <span>2016-10-10</span>
+                        <a href="javascript:void(0);" class="am-text-truncate">
+                           <i class="am-icon-bell-o am-icon-fw"></i> 第四届温岭美食节国际美食周在温岭数码城拉开帷幕。
+                        </a>
+                    </li>
+                    <li>
+                        <span>2016-10-10</span>
+                        <a href="javascript:void(0);" class="am-text-truncate">
+                           <i class="am-icon-bell-o am-icon-fw"></i> 第四届温岭美食节国际美食周在温岭数码城拉开帷幕。
+                        </a>
+                    </li>
+                    <li>
+                        <span>2016-10-10</span>
+                        <a href="javascript:void(0);" class="am-text-truncate">
+                           <i class="am-icon-bell-o am-icon-fw"></i> 第四届温岭美食节国际美食周在温岭数码城拉开帷幕。
+                        </a>
+                    </li>
+                    <li>
+                        <span>2016-10-10</span>
+                        <a href="javascript:void(0);" class="am-text-truncate">
+                           <i class="am-icon-bell-o am-icon-fw"></i> 第四届温岭美食节国际美食周在温岭数码城拉开帷幕。
+                        </a>
+                    </li>
+                    <li>
+                        <span>2016-10-10</span>
+                        <a href="javascript:void(0);" class="am-text-truncate">
+                           <i class="am-icon-bell-o am-icon-fw"></i> 第四届温岭美食节国际美食周在温岭数码城拉开帷幕。
+                        </a>
+                    </li>
+                    <li>
+                        <span>2016-10-10</span>
+                        <a href="javascript:void(0);" class="am-text-truncate">
+                           <i class="am-icon-bell-o am-icon-fw"></i> 第四届温岭美食节国际美食周在温岭数码城拉开帷幕。
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -152,11 +204,213 @@
 <!-- -->
 
 <!-- -->
+<link rel="stylesheet" href="{{asset('/css/common')}}/effect/css/style.css">
 <div class="containor margin-40">
-    <div class="am-g">
-        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 ">
-
-        </div>
+    <div class="team-members row">
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/1.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>糯米糕</h3>
+                    <h5>中国</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/2.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>鸡蛋仔</h3>
+                    <h5>台湾</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/3.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>泡虾</h3>
+                    <h5>温岭</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/4.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>春卷</h3>
+                    <h5>浙江</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/1.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>糯米糕</h3>
+                    <h5>中国</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/2.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>鸡蛋仔</h3>
+                    <h5>台湾</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/3.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>泡虾</h3>
+                    <h5>温岭</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/4.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>春卷</h3>
+                    <h5>浙江</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/1.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>糯米糕</h3>
+                    <h5>中国</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/2.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>鸡蛋仔</h3>
+                    <h5>台湾</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/3.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>泡虾</h3>
+                    <h5>温岭</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
+            <!-- effect-3 html -->
+            <div class="single-member effect-3">
+                <div class="member-image">
+                    <img src="images/home/tu/4.jpg" alt="Member">
+                </div>
+                <div class="member-info">
+                    <h3>春卷</h3>
+                    <h5>浙江</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                    <div class="social-touch">
+                        <a class="fb-touch" href="#"></a>
+                        <a class="tweet-touch" href="#"></a>
+                        <a class="linkedin-touch" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- effect-3 html end -->
     </div>
 </div>
 <!-- -->

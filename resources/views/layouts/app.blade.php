@@ -44,6 +44,11 @@
     <script src="{{asset('/module/jquery-mkinfinite')}}/src/jquery.mkinfinite.js"></script> 
 </head>
 <body>
+
+  <div class="header_top">
+      
+  </div>
+
 <div class="header_bg">
   <div class="containor">
     <ul class="venus-menu">

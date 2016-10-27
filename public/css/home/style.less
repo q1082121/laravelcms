@@ -3,7 +3,7 @@
   @作者：rubbish.boy@163.com
   @-----------------------------------------@  
 */
-@default_background:#fff;@bgurl:"/images/home/";@default_width:100%;	                           
+@default_background:#fff;@bgurl:"/images/home/";@default_width:100%;	                      
 body {text-align:left;font-family:"\5fae\8f6f\96c5\9ed1";margin:0 auto;padding:0;color:#333;}
 html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td {margin:0;padding:0;}
 img {box-sizing: border-box;vertical-align: middle;border: 0;}
@@ -85,6 +85,8 @@ img {box-sizing: border-box;vertical-align: middle;border: 0;}
   @作者：rubbish.boy@163.com
   @-----------------------------------------@  
 */
+.header_top{width: 100%;.auto_m_h(60px);.bg_img('dc.jpg',right,center);filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')"; -moz-background-size:auto 100%; background-size:auto 100%;}
+.ico-position{position:relative;margin-top:-5vw;z-index:10;}
 .panel{width:100%;.auto_m_h(15vw);}
 .panel-success{background: #F3F7F8}
 .panel-heading{width: 100%;.auto_m_h(5vw);line-height: 5vw;text-align: center;color: #fff;font-weight: 700;}
@@ -92,7 +94,7 @@ img {box-sizing: border-box;vertical-align: middle;border: 0;}
 .panel-icon{margin:auto;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: block;color: #fff;width: 6.5vw;height: 6.5vw;.radius(50%);line-height:8.1vw;text-align: center}
 .panel-icon i::before{font-size: 32px;}
 .detail-h2 {text-align: center;font-size: 150%;margin: 40px 0;}
-.detail-h3 {color: #FF6600;margin: 10px 0;}
+.detail-h3 {color: #FF6600;margin: 10px 0;text-align: center}
 .detail-p {color: #7f8c8d;}
 .detail-img{margin: 0 auto;}
 .hope {background: #0bb59b;padding: 50px 0;margin: 20px auto;}
@@ -102,6 +104,11 @@ img {box-sizing: border-box;vertical-align: middle;border: 0;}
 .hope-list{color: #fff;}
 .hope-list i{color:#FF6600;margin: 0 10px 0 0;line-height: 24px; }
 .notice_box_top{width: 90%;.auto_m_h(4vw);line-height: 4vw;.t_c;background: #fff;margin: 10px auto;color: #FF6767;font-weight: 700;}
+.notice_box_list{width: 90%;.auto_m_h(12vw);margin: 10px auto;background: #fff;padding: 2%;}
+.notice_box_list ul{.u_none;}
+.notice_box_list ul li{.left;width: 100%;line-height: 3.2vw;}
+.notice_box_list ul li span{float: right;color: #BABABA;}
+.notice_box_list ul li a{float: left;color:#FF6767;width: 60%; }
 /*@-----------------------------------------@
   @标题：项目导航 menu
   @作者：rubbish.boy@163.com
@@ -179,6 +186,7 @@ transition:color 0.2s linear;
 }
 @media only screen and (max-width:768px)
 {
+  .ico-position{position:relative;margin-top:0;z-index:10;}
 	.venus-menu{margin-top: 0;}.venus-menu li{display:block;width:100%;}
 	.venus-menu > li > a{padding:13px 0 14px 20px;}
 	.venus-menu > li.brand{display:none !important;}

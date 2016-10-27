@@ -142,6 +142,24 @@ img {
   @作者：rubbish.boy@163.com
   @-----------------------------------------@  
 */
+.header_top {
+  width: 100%;
+  height: auto !important;
+  height: 100%;
+  min-height: 60px;
+  height: 60px;
+  overflow: hidden !important;
+  _overflow: visible;
+  background: url("/images/home/dc.jpg") no-repeat right center;
+  filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+  -moz-background-size: auto 100%;
+  background-size: auto 100%;
+}
+.ico-position {
+  position: relative;
+  margin-top: -5vw;
+  z-index: 10;
+}
 .panel {
   width: 100%;
   height: auto !important;
@@ -206,6 +224,7 @@ img {
 .detail-h3 {
   color: #FF6600;
   margin: 10px 0;
+  text-align: center;
 }
 .detail-p {
   color: #7f8c8d;
@@ -249,6 +268,37 @@ img {
   margin: 10px auto;
   color: #FF6767;
   font-weight: 700;
+}
+.notice_box_list {
+  width: 90%;
+  height: auto !important;
+  height: 100%;
+  min-height: 12vw;
+  height: 12vw;
+  overflow: hidden !important;
+  _overflow: visible;
+  margin: 10px auto;
+  background: #fff;
+  padding: 2%;
+}
+.notice_box_list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.notice_box_list ul li {
+  float: left;
+  width: 100%;
+  line-height: 3.2vw;
+}
+.notice_box_list ul li span {
+  float: right;
+  color: #BABABA;
+}
+.notice_box_list ul li a {
+  float: left;
+  color: #FF6767;
+  width: 60%;
 }
 /*@-----------------------------------------@
   @标题：项目导航 menu
@@ -474,6 +524,11 @@ img {
   }
 }
 @media only screen and (max-width: 768px) {
+  .ico-position {
+    position: relative;
+    margin-top: 0;
+    z-index: 10;
+  }
   .venus-menu {
     margin-top: 0;
   }

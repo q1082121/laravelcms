@@ -69,7 +69,7 @@
             <link rel="stylesheet" href="{{asset('/module/jquery-unitegallery')}}/css/unite-gallery.css" type="text/css">
             <script type="text/javascript" src="{{asset('/module/jquery-unitegallery')}}/js/unitegallery.min.js"></script>
             <script type="text/javascript" src="{{asset('/module/jquery-unitegallery')}}/themes/compact/ug-theme-compact.js"></script>	
-            <div id="gallery" style="display:none;">
+            <div id="gallery" style="display:none;margin:0 auto;">
                 <img src="/images/home/thumbs/1.jpg" data-image="/images/home/tu/1.jpg" data-description="Preview Image 1 Description">
                 <img src="/images/home/thumbs/2.jpg" data-image="/images/home/tu/2.jpg" data-description="Preview Image 2 Description">
                 <img src="/images/home/thumbs/3.jpg" data-image="/images/home/tu/3.jpg" data-description="Preview Image 3 Description">
@@ -91,12 +91,6 @@
             </div>
             <div class="notice_box_list">
                 <ul>
-                    <li>
-                        <span>2016-10-10</span>
-                        <a href="javascript:void(0);" class="am-text-truncate">
-                           <i class="am-icon-bell-o am-icon-fw"></i> 第四届温岭美食节国际美食周在温岭数码城拉开帷幕。
-                        </a>
-                    </li>
                     <li>
                         <span>2016-10-10</span>
                         <a href="javascript:void(0);" class="am-text-truncate">

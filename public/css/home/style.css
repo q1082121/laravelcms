@@ -277,7 +277,7 @@ img {
   height: 12vw;
   overflow: hidden !important;
   _overflow: visible;
-  margin: 10px auto;
+  margin: 18px auto;
   background: #fff;
   padding: 2%;
 }
@@ -598,10 +598,18 @@ img {
   @作者：rubbish.boy@163.com
   @-----------------------------------------@  
 */
+.footer {
+  height: auto !important;
+  height: 100%;
+  min-height: 100px;
+  height: 100px;
+  overflow: hidden !important;
+  _overflow: visible;
+  background: #FF6600;
+}
 .footer p {
   color: #fff;
   margin: 0;
   padding: 15px 0;
   text-align: center;
-  background: #FF6600;
 }

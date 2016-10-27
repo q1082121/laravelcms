@@ -81,7 +81,7 @@
 </script>
 @yield('content')
 
-<footer class="containor footer">
+<footer class="footer">
   <p>美食街<br/>
     <small>© Copyright 2016  站长：rubbish.boy@163.com </small>
   </p>

@@ -53,7 +53,7 @@ class ProductController extends PublicController
 		$website['id']=0;
 
         $condition_class['status']=1;
-        $list=object_array(DB::table('products')->where($condition_class)->orderBy('id', 'desc')->get());
+        $list=object_array(DB::table('classifyproducts')->where($condition_class)->orderBy('id', 'desc')->get());
 		if($list)
 		{
 			$cates=new Cates();
@@ -87,7 +87,7 @@ class ProductController extends PublicController
 		$website['id']=$id;
 
         $condition_class['status']=1;
-        $list=object_array(DB::table('products')->where($condition_class)->orderBy('id', 'desc')->get());
+        $list=object_array(DB::table('classifyproducts')->where($condition_class)->orderBy('id', 'desc')->get());
 		if($list)
 		{
 			$cates=new Cates();

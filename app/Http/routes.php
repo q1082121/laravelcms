@@ -140,6 +140,22 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'UserpermissionController@edit'
     			])->name('get.admin.userpermission.edit');
+	//主导航栏			
+	Route::get('navigation', 
+				[
+			        'middleware' => ['ability:admin,model_navigation'], 
+			        'uses' => 'NavigationController@index'
+    			])->name('get.admin.navigation');
+	Route::get('navigation/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'NavigationController@add'
+    			])->name('get.admin.navigation.add');
+	Route::get('navigation/edit/{id?}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'NavigationController@edit'
+    			])->name('get.admin.navigation.edit');		    
 	//文章分类			
 	Route::get('classify', 
 				[
@@ -309,6 +325,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('userpermission/api_add', 'UserpermissionController@api_add')->name('post.admin.userpermission.api_add');
 	Route::post('userpermission/api_info', 'UserpermissionController@api_info')->name('post.admin.userpermission.api_info');
 	Route::post('userpermission/api_edit', 'UserpermissionController@api_edit')->name('post.admin.userpermission.api_edit');
+
+	Route::post('navigation/api_list', 'NavigationController@api_list')->name('post.admin.navigation.api_list');
+	Route::post('navigation/api_add', 'NavigationController@api_add')->name('post.admin.navigation.api_add');
+	Route::post('navigation/api_info', 'NavigationController@api_info')->name('post.admin.navigation.api_info');
+	Route::post('navigation/api_edit', 'NavigationController@api_edit')->name('post.admin.navigation.api_edit');
 
 	Route::post('classify/api_list', 'ClassifyController@api_list')->name('post.admin.classify.api_list');
 	Route::post('classify/api_add', 'ClassifyController@api_add')->name('post.admin.classify.api_add');

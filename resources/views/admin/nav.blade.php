@@ -11,6 +11,7 @@
       <li><a href="{{ route('get.admin') }}"><i class="fa fa-star"></i> {{trans('admin.website_navigation_one')}}</a></li>
       <li><a href="/" target="_blank"><i class="fa fa-home"></i> {{trans('admin.website_navigation_one_home')}}</a></li>
       <li><a href="javascript:void(0);" target="_blank"><i class="fa fa-wechat"></i> {{trans('admin.website_navigation_one_wechat')}}</a></li>
+      <li><a href="{{ route('get.admin.navigation') }}" ><i class="fa fa-navicon"></i> {{trans('admin.website_navigation_navigation')}}</a></li>
     </ul>
   </li>
   <li class="header">{{trans('admin.website_main_navigation_three')}}</li>

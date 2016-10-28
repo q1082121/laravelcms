@@ -12,12 +12,14 @@ use DB;
 use URL;
 
 use App\Http\Model\Article;
+use App\Http\Model\Navigation;
 use App\Http\Model\Classify;
 use App\Http\Model\Picture;
 use App\Http\Model\Classifylink;
 use App\Http\Model\Link;
 use App\Http\Model\Log;
 use App\Http\Model\Wechat;
+
 class DeleteapiController extends PublicController
 {
     /******************************************
@@ -53,6 +55,46 @@ class DeleteapiController extends PublicController
 								$msg_array['param_keyword']='';	
 								
 							}
+			break;
+			case 'Navigation':
+								$subcondition['topid']=$request->get('id');
+								$subinfo=DB::table('navigations')->where($subcondition)->get();
+								if($subinfo)
+								{
+									$msg_array['status']='0';
+									$msg_array['info']=trans('admin.navigation_failure_delete');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';
+									$msg_array['param_way']='';
+									$msg_array['param_keyword']='';	
+								}
+								else
+								{
+									$info=$this->delete_action('navigations',$request->get('id'));
+									if($info)
+									{
+										$msg_array['status']='1';
+										$msg_array['info']=trans('admin.website_del_success');
+										$msg_array['is_reload']=0;
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+										$msg_array['param_way']='';
+										$msg_array['param_keyword']='';
+									}
+									else
+									{
+										
+										$msg_array['status']='0';
+										$msg_array['info']=trans('admin.website_del_failure');
+										$msg_array['is_reload']=0;
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+										$msg_array['param_way']='';
+										$msg_array['param_keyword']='';	
+										
+									}
+								}
 			break;
 			case 'Classify':
 								$subcondition['topid']=$request->get('id');
@@ -100,7 +142,7 @@ class DeleteapiController extends PublicController
 								if($subinfo)
 								{
 									$msg_array['status']='0';
-									$msg_array['info']=trans('admin.classify_failure_delete');
+									$msg_array['info']=trans('admin.classifylink_failure_delete');
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
@@ -273,6 +315,10 @@ class DeleteapiController extends PublicController
 		$type=1;
 		switch ($classname) 
 		{
+			case 'Navigation':
+				$params = Navigation::find($request->get('id'));
+				# code...
+				break;
 			case 'Classify':
 				$params = Classify::find($request->get('id'));
 				# code...

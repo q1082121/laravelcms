@@ -39,6 +39,7 @@ class PermissionSeeder extends Seeder
 		  array('name' => 'model_role','display_name' => '模块-用户角色','description' => ''),
 		  array('name' => 'model_permission','display_name' => '模块-角色权限','description' => ''),
 		  array('name' => 'model_user','display_name' => '模块-用户管理','description' => ''),
+		  array('name' => 'model_navigation','display_name' => '模块-主导航栏','description' => ''),
 		  array('name' => 'model_classify','display_name' => '模块-文章分类','description' => ''),
 		  array('name' => 'model_article','display_name' => '模块-文章资讯','description' => ''),
 		  array('name' => 'model_picture','display_name' => '模块-广告图片','description' => ''),

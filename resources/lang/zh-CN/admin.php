@@ -40,10 +40,12 @@ return [
     'website_main_navigation_three'                =>   '内容相关',
     'website_main_navigation_four'                 =>   '微信相关',
     'website_main_navigation_fiver'                =>   '消息相关',
+
     'website_navigation_homenav'                   =>   '导航指南',
     'website_navigation_one'                       =>   '后台首页',
     'website_navigation_one_home'                  =>   '网站首页',
     'website_navigation_one_wechat'                =>   '微站首页',
+    'website_navigation_navigation'                =>   '主导航栏',
     'website_navigation_two'                       =>   '系统设置',
     'website_navigation_three'                     =>   '日志管理',
     'website_navigation_four'                      =>   '消息管理',
@@ -61,6 +63,7 @@ return [
     'website_navigation_ten'                       =>   '信件管理',
     'website_navigation_classify'                  =>   '文章分类',
     'website_navigation_classifylink'              =>   '链接分类',
+
     'website_save'                                 =>   '保存信息',
     'website_getback'                              =>   '返回页面',
     'website_goback'                               =>   '返回',
@@ -171,6 +174,8 @@ return [
     'website_setting_editor_type'                  =>   '编辑器类型',
     'website_setting_editor_item1'                 =>   'Markdown编辑器',
     'website_setting_editor_item2'                 =>   'Ueditor编辑器',
+    'website_setting_navigation_thumb_width'       =>   '主导航栏缩略图宽度' ,
+    'website_setting_navigation_thumb_height'      =>   '主导航栏缩略图高度' ,
     'website_setting_classify_thumb_width'         =>   '文章分类缩略图宽度' ,
     'website_setting_classify_thumb_height'        =>   '文章分类缩略图高度' ,
     'website_setting_article_thumb_width'          =>   '文章缩略图宽度' ,
@@ -293,6 +298,32 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | 默认消息 - 主导航栏
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+
+    'website_navigation_item_topclass'                  =>   '分类父类',
+    'website_navigation_item_name'                      =>   '分类名称',
+    'website_navigation_item_ico'                       =>   'ico图标',
+    'website_navigation_item_attachment'                =>   '图标',
+    'website_navigation_item_bcid'                      =>   '大类',
+    'website_navigation_item_scid'                      =>   '小类',
+    'website_navigation_item_topid'                     =>   '父类',
+    'website_navigation_item_grade'                     =>   '级别',
+    'website_navigation_item_navflag'                   =>   '主导航',
+    'website_navigation_item_perpage'                   =>   '单页/列表',
+    'website_navigation_item_orderid'                   =>   '排序',
+    'website_navigation_item_linkurl'                   =>   '链接',
+    'website_navigation_item_status'                    =>   '状态',
+    'navigation_failure_tip1'                           =>   '请输入分类名称',
+    'navigation_failure_delete'                         =>   '请先删除子类',
+    'website_navigation_create_cache'                   =>   '生成主导航栏缓存',
+
+    /*
+    |--------------------------------------------------------------------------
     | 默认消息 - 文章分类
     |--------------------------------------------------------------------------
     |
@@ -373,6 +404,7 @@ return [
 
     'website_classifylink_item_topclass'               =>   '分类父类',
     'website_classifylink_item_name'                   =>   '分类名称',
+    'website_classifylink_item_ico'                    =>   'ico图标',
     'website_classifylink_item_attachment'             =>   '图标',
     'website_classifylink_item_bcid'                   =>   '大类',
     'website_classifylink_item_scid'                   =>   '小类',

@@ -214,6 +214,9 @@ class PublicController extends Controller
 
 		switch($classname)
 		{
+			case "Navigation":
+
+			break;
 			case "Classify":
 
 			break;
@@ -246,6 +249,10 @@ class PublicController extends Controller
 		{
 			switch($classname)
 			{
+				case 'Navigation':
+								$thumb_width=@$this->root['navigation_thumb_width']?@$this->root['navigation_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['navigation_thumb_height']?@$this->root['navigation_thumb_height']:$this->thumb_height;	
+				break;
 				case 'Classify':
 								$thumb_width=@$this->root['classify_thumb_width']?@$this->root['classify_thumb_width']:$this->thumb_width;
 								$thumb_height=@$this->root['classify_thumb_height']?@$this->root['classify_thumb_height']:$this->thumb_height;	

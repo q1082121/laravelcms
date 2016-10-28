@@ -111,6 +111,18 @@
             </duv>
             <div class="form-group">
                 <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_navigation_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.navigation_thumb_width"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_navigation_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.navigation_thumb_height"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_classify_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.classify_thumb_width"   placeholder="默认200px" >
                 </div>

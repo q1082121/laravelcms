@@ -12,6 +12,7 @@ use DB;
 use URL;
 
 use App\Http\Model\Article;
+use App\Http\Model\Navigation;
 use App\Http\Model\Classify;
 use App\Http\Model\User;
 use App\Http\Model\Picture;
@@ -60,6 +61,37 @@ class OneactionapiController extends PublicController
 													$msg_array['param_keyword']='';	
 												}
 								break;
+							}
+			break;
+			case 'Navigation':
+							switch ($fields) 
+							{
+								//扩展接口方法
+								case 'status':
+											$params = Navigation::find($request->get('id'));
+											$params->status=($params->status==1?0:1);
+											if ($params->save()) 
+											{
+												$msg_array['status']='1';
+												$msg_array['info']=trans('admin.website_action_set_success');
+												$msg_array['is_reload']=0;
+												$msg_array['curl']='';
+												$msg_array['resource']='';
+												$msg_array['param_way']='';
+												$msg_array['param_keyword']='';
+											} 
+											else 
+											{
+												$msg_array['status']='0';
+												$msg_array['info']=trans('admin.website_action_set_failure');
+												$msg_array['is_reload']=0;
+												$msg_array['curl']='';
+												$msg_array['resource']="";
+												$msg_array['param_way']='';
+												$msg_array['param_keyword']='';	
+											}
+
+									break;
 							}
 			break;
 			case 'Classify':

@@ -60,7 +60,9 @@
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
                 <td>@{{ item.gtstr }} @{{ item.name }}</td>
-                <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
+                <td>
+                  <i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i>
+                </td>
                 <td>@{{ item.bcid }}</td>
                 <td>@{{ item.scid }}</td>
                 <td> <i v-if="item.navflag == 1" class="fa fa-star"></i> <i v-else class="fa fa-star-o"></i> </td>

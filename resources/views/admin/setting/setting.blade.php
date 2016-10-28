@@ -13,91 +13,91 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_systitle')}}</span>
-                  <input type="text" class="form-control" name="systitle" v-model="info.systitle" value="@{{ info.systitle }}"  placeholder="例如：LaravelCms内容管理系统" >
+                  <input type="text" class="form-control"  v-model="info.systitle"   placeholder="例如：LaravelCms内容管理系统" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_syskeyword')}}</span>
-                  <input type="text" class="form-control" name="syskeywords" v-model="info.syskeywords" value="@{{ info.syskeywords }}"  placeholder="例如：LaravelCms" >
+                  <input type="text" class="form-control"  v-model="info.syskeywords"   placeholder="例如：LaravelCms" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_sysdescription')}}</span>
-                  <textarea class="form-control" rows="3" name="sysdescription" v-model="info.sysdescription" placeholder="例如：LaravelCms内容管理系统">@{{ info.sysdescription }}</textarea>
+                  <textarea class="form-control" rows="3"  v-model="info.sysdescription" placeholder="例如：LaravelCms内容管理系统"></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_sysicp')}}</span>
-                  <input type="text" class="form-control" name="sysicp" v-model="info.sysicp" value="@{{ info.sysicp }}"  placeholder="例如：浙ICP备15022520号-1" >
+                  <input type="text" class="form-control"  v-model="info.sysicp"   placeholder="例如：浙ICP备15022520号-1" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_sysmaster')}}</span>
-                  <input type="text" class="form-control" name="sysmaster" v-model="info.sysmaster" value="@{{ info.sysmaster }}"  placeholder="例如：管理员" >
+                  <input type="text" class="form-control"  v-model="info.sysmaster"  placeholder="例如：管理员" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_sysemail')}}</span>
-                  <input type="text" class="form-control" name="sysemail" v-model="info.sysemail" value="@{{ info.sysemail }}"  placeholder="例如：admin@admin.com" >
+                  <input type="text" class="form-control"  v-model="info.sysemail"  placeholder="例如：admin@admin.com" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_sysmobile')}}</span>
-                  <input type="text" class="form-control" name="sysmobile" v-model="info.sysmobile" value="@{{ info.sysmobile }}"  placeholder="例如：15011112222" >
+                  <input type="text" class="form-control"  v-model="info.sysmobile"  placeholder="例如：15011112222" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_sysfax')}}</span>
-                  <input type="text" class="form-control" name="sysfax" v-model="info.sysfax" value="@{{ info.sysfax }}"  placeholder="例如：15011112222" >
+                  <input type="text" class="form-control"  v-model="info.sysfax"   placeholder="例如：15011112222" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_sysqq')}}</span>
-                  <input type="text" class="form-control" name="sysqq" v-model="info.sysqq" value="@{{ info.sysqq }}"  placeholder="例如：471416739" >
+                  <input type="text" class="form-control"  v-model="info.sysqq"   placeholder="例如：471416739" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_syswechat')}}</span>
-                  <input type="text" class="form-control" name="syswechat" v-model="info.syswechat" value="@{{ info.syswechat }}"  placeholder="例如：XBDtommy" >
+                  <input type="text" class="form-control"  v-model="info.syswechat"  placeholder="例如：XBDtommy" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_syscompany')}}</span>
-                  <input type="text" class="form-control" name="syscompany" v-model="info.syscompany" value="@{{ info.syscompany }}"  placeholder="例如：LaravelCms有限公司" >
+                  <input type="text" class="form-control"  v-model="info.syscompany"   placeholder="例如：LaravelCms有限公司" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_sysaddress')}}</span>
-                  <input type="text" class="form-control" name="sysaddress" v-model="info.sysaddress" value="@{{ info.sysaddress }}"  placeholder="例如：浙江省台州市温岭市XX街道XX村XX号" >
+                  <input type="text" class="form-control"  v-model="info.sysaddress"   placeholder="例如：浙江省台州市温岭市XX街道XX村XX号" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_syscoordinate_h')}}</span>
-                  <input type="text" class="form-control" name="syscoordinate_h" v-model="info.syscoordinate_h" value="@{{ info.syscoordinate_h }}"  placeholder="例如北京：39.915053" >
+                  <input type="text" class="form-control"  v-model="info.syscoordinate_h"   placeholder="例如北京：39.915053" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_syscoordinate_w')}}</span>
-                  <input type="text" class="form-control" name="syscoordinate_w" v-model="info.syscoordinate_w" value="@{{ info.syscoordinate_w }}"  placeholder="例如北京：116.403951" >
+                  <input type="text" class="form-control"  v-model="info.syscoordinate_w"   placeholder="例如北京：116.403951" >
                 </div>
               </div>
             </div>
             <!-- /.box-body -->
             <div class="box-header with-border">
-              <h3 class="box-title">{{trans('admin.website_setting_editor')}}</h3>
+              <h3 class="box-title">{{trans('admin.website_setting_option')}}</h3>
             </div>
             <div class="box-body">
               <div class="form-group">
@@ -109,6 +109,78 @@
                   </div>
               </div>
             </duv>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_classify_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.classify_thumb_width"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_classify_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.classify_thumb_height"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_article_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.article_thumb_width"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_article_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.article_thumb_height"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_picture_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.picture_thumb_width"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_picture_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.picture_thumb_height"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_classifylink_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.classifylink_thumb_width"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_classifylink_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.classifylink_thumb_height"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_link_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.link_thumb_width"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_link_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.link_thumb_height"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_wechat_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.wechat_thumb_width"  placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_wechat_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.wechat_thumb_height"  placeholder="默认200px" >
+                </div>
+            </div>
             <div class="box-footer">
               <center><button @click="saveaction" type="button" class="btn btn-primary">{{trans('admin.website_save')}}</button> <button @click="getbackaction" type="button" class="btn btn-primary">{{trans('admin.website_getback')}}</button></center>
             </div>
@@ -123,29 +195,94 @@
       new Vue({
           el: '#app-content',
           data: {
-            
+              apiurl_info:        '{{$website["apiurl_info"]}}',
               apiurl_cache:       '{{$website["apiurl_cache"]}}',
               editoroption        :eval(htmlspecialchars_decode('{{$website["editoroption"]}}')),
               info: {
                 modelname:        '{{$website["modelname"]}}' ,
-                systitle:         '{{$website["info"]["systitle"]}}' ,
-                syskeywords:      '{{$website["info"]["syskeywords"]}}' ,
-                sysdescription :  '{{$website["info"]["sysdescription"]}}' ,
-                sysicp:           '{{$website["info"]["sysicp"]}}' ,
-                sysmaster:        '{{$website["info"]["sysmaster"]}}' ,
-                sysemail:         '{{$website["info"]["sysemail"]}}' ,
-                sysmobile:        '{{$website["info"]["sysmobile"]}}' ,
-                sysfax:           '{{$website["info"]["sysfax"]}}' ,
-                sysqq:            '{{$website["info"]["sysqq"]}}' ,
-                syswechat:        '{{$website["info"]["syswechat"]}}' ,
-                syscompany:       '{{$website["info"]["syscompany"]}}' ,
-                sysaddress:       '{{$website["info"]["sysaddress"]}}' ,
-                syscoordinate_h:  '{{$website["info"]["syscoordinate_h"]}}' ,
-                syscoordinate_w:  '{{$website["info"]["syscoordinate_w"]}}' ,
-                syseditor:        '{{$website["info"]["syseditor"]}}' ,
-              },
+                systitle:         '' ,
+                syskeywords:      '' ,
+                sysdescription :  '' ,
+                sysicp:           '' ,
+                sysmaster:        '' ,
+                sysemail:         '' ,
+                sysmobile:        '' ,
+                sysfax:           '' ,
+                sysqq:            '' ,
+                syswechat:        '' ,
+                syscompany:       '' ,
+                sysaddress:       '' ,
+                syscoordinate_h:  '' ,
+                syscoordinate_w:  '' ,
+                syseditor:        '' ,
+                classify_thumb_width:         '' ,
+                classify_thumb_height:        '' ,
+                article_thumb_width:          '' ,
+                article_thumb_height:         '' ,
+                picture_thumb_width:          '' ,
+                picture_thumb_height:         '' ,
+                classifylink_thumb_width:     '' ,
+                classifylink_thumb_height:    '' ,
+                link_thumb_width:             '' ,
+                link_thumb_height:            '' ,
+                wechat_thumb_width:           '' ,
+                wechat_thumb_height:          '' ,
+              }
           },
-          methods: {
+          ready: function (){ 
+                 //这里是vue初始化完成后执行的函数 
+                 this.get_info_action();
+          }, 
+          methods: 
+          {
+            //获取数据详情
+            get_info_action:function()
+            {
+              this.$http.post(this.apiurl_info,{'modelname':this.info.modelname},
+              {
+                before:function(request)
+                {
+                  loadi=layer.load("...");
+                },
+              })
+              .then((response) => 
+              {
+                this.ready_info_action(response);
+              },(response) => 
+              {
+                //响应错误
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime')}}";
+                layermsg_error(msg);
+              })
+              .catch(function(response) {
+                //异常抛出
+                layer.close(loadi);
+                var msg="{{trans('admin.website_outtime_error')}}";
+                layermsg_error(msg);
+              })
+            },
+            //处理初始化数据
+            ready_info_action:function(response)
+            {
+              layer.close(loadi);
+              var statusinfo=response.data;
+              if(statusinfo.status==1)
+              {
+                  this.info=statusinfo.resource;
+              }
+              else
+              {
+                  if(statusinfo.curl)
+                  {
+                    layermsg_e(statusinfo.info,statusinfo.curl);
+                  }
+                  else
+                  {
+                    layermsg_error(statusinfo.info);
+                  }
+              }
+            },
             saveaction: function () {
                 this.$http.post(this.apiurl_cache, this.info,{
                   before:function(request)

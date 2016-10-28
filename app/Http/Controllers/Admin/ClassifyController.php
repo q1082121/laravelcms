@@ -155,6 +155,7 @@ class ClassifyController extends PublicController
 		$params = new Classify;
 		$params->topid 		= $request->get('topid');
 		$params->name 		= $request->get('name');
+		$params->ico 		= $request->get('ico');
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
 		$params->navflag	= $request->get('navflag');
@@ -272,6 +273,7 @@ class ClassifyController extends PublicController
 		$params = Classify::find($request->get('id'));
 		$params->topid 		= $request->get('topid');
 		$params->name 		= $request->get('name');
+		$params->ico 		= $request->get('ico');
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
 		$params->navflag	= $request->get('navflag');

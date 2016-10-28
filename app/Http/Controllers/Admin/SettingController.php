@@ -24,6 +24,7 @@ class SettingController extends PublicController
 	{
 		$website=$this->website;
 		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
+		$website['apiurl_info']=URL::action('Admin\SettingController@api_info');
 		$website['cursitename']=trans('admin.website_navigation_two');
 		$website['info']=$this->root;
 		$editoroption[]=array('text'=>trans('admin.website_setting_editor_item1'),'value'=>'Markdown');
@@ -32,6 +33,38 @@ class SettingController extends PublicController
 		$website['modelname']=getCurrentControllerName();
 
 		return view('admin/setting/setting')->with('website',$website);
+	}
+	/******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :详情接口
+	*******************************************/
+	public function api_info(Request $request)  
+	{
+		
+		$modelname=$request->get('modelname');
+		if($modelname=='Setting')
+		{
+			$root=Cache::store('file')->get('root');
+
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']=$root;
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';
+		}
+		else
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']="";
+			$msg_array['param_way']='';
+			$msg_array['param_keyword']='';
+		}
+        return response()->json($msg_array);
 	}
 
 }

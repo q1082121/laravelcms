@@ -40,7 +40,7 @@ return [
     'website_main_navigation_three'                =>   '内容相关',
     'website_main_navigation_four'                 =>   '微信相关',
     'website_main_navigation_fiver'                =>   '消息相关',
-    'website_navigation_homenav'                   =>   '首页导航',
+    'website_navigation_homenav'                   =>   '导航指南',
     'website_navigation_one'                       =>   '后台首页',
     'website_navigation_one_home'                  =>   '网站首页',
     'website_navigation_one_wechat'                =>   '微站首页',
@@ -167,11 +167,22 @@ return [
     'website_setting_sysaddress'                   =>   '联系地址',
     'website_setting_syscoordinate_h'              =>   '地址坐标纬度',
     'website_setting_syscoordinate_w'              =>   '地址坐标经度',
-    'website_setting_editor'                       =>   '编辑器选项',
+    'website_setting_option'                       =>   '内容参数设置',
     'website_setting_editor_type'                  =>   '编辑器类型',
     'website_setting_editor_item1'                 =>   'Markdown编辑器',
     'website_setting_editor_item2'                 =>   'Ueditor编辑器',
-    
+    'website_setting_classify_thumb_width'         =>   '文章分类缩略图宽度' ,
+    'website_setting_classify_thumb_height'        =>   '文章分类缩略图高度' ,
+    'website_setting_article_thumb_width'          =>   '文章缩略图宽度' ,
+    'website_setting_article_thumb_height'         =>   '文章缩略图高度' ,
+    'website_setting_picture_thumb_width'          =>   '广告缩略图宽度' ,
+    'website_setting_picture_thumb_height'         =>   '广告缩略图高度' ,
+    'website_setting_classifylink_thumb_width'    =>   '链接分类缩略图宽度' ,
+    'website_setting_classifylink_thumb_height'   =>   '链接分类缩略图高度' ,
+    'website_setting_link_thumb_width'             =>   '链接缩略图宽度' ,
+    'website_setting_link_thumb_height'            =>   '链接缩略图高度' ,
+    'website_setting_wechat_thumb_width'           =>   '微信缩略图宽度' ,
+    'website_setting_wechat_thumb_height'          =>   '微信缩略图高度' ,
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 日志管理
@@ -289,6 +300,7 @@ return [
 
     'website_classify_item_topclass'                  =>   '分类父类',
     'website_classify_item_name'                      =>   '分类名称',
+    'website_classify_item_ico'                       =>   'ico图标',
     'website_classify_item_attachment'                =>   '图标',
     'website_classify_item_bcid'                      =>   '大类',
     'website_classify_item_scid'                      =>   '小类',

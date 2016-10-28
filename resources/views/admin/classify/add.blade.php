@@ -27,6 +27,12 @@
               </div>
             </div>
             <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">{{trans('admin.website_classify_item_ico')}}</span>
+                <input type="text" class="form-control" v-model="params_data.ico"   >
+              </div>
+            </div>
+            <div class="form-group">
               <label >{{trans('admin.website_classify_item_attachment')}}</label><br>
               <!--
               <input type="file" @change="onFileChange" id="fileuploads" class="file"  accept="image/*">
@@ -130,6 +136,7 @@ new Vue({
              {
                 topid               :0,
                 name                :'',
+                ico                 :'',
                 attachment          :'',
                 isattach            :0,
                 orderid             :0,

@@ -274,6 +274,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	 ***********************************************************************
 	 */	
 	Route::post('home/api_setting', 'HomeController@api_setting')->name('post.admin.home.api_setting');
+	Route::post('setting/api_info', 'SettingController@api_info')->name('post.admin.setting.api_info');
 
 	Route::post('cacheapi/api_cache', 'CacheapiController@api_cache')->name('post.admin.cacheapi.api_cache');
 	Route::post('district/api_area', 'DistrictController@api_area')->name('post.admin.district.api_area');

@@ -67,7 +67,7 @@
     <ul class="treeview-menu">
       <li><a href="{{ route('get.admin.user') }}"><i class="fa fa-users"></i> {{trans('admin.website_navigation_five')}}</a></li>
       <li><a href="{{ route('get.admin.userrole') }}"><i class="fa fa-gavel"></i> {{trans('admin.website_navigation_role')}}</a></li>
-      <li><a href="{{ route('get.admin.userpermission') }}"><i class="fa fa-cubes"></i> {{trans('admin.website_navigation_permission')}}</a></li>
+      <li><a href="{{ route('get.admin.userpermission') }}"><i class="fa fa-eye"></i> {{trans('admin.website_navigation_permission')}}</a></li>
     </ul>
   </li>
   <li class="header">{{trans('admin.website_main_navigation_four')}}</li>

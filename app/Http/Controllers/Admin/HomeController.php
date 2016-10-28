@@ -27,16 +27,39 @@ class HomeController extends PublicController
 		$website['count_log']=$count_article=DB::table('logs')->count();
 		//User
 		$website['count_user']=$count_user=DB::table('users')->count();
+		//Permissions
+		$website['count_permission']=$count_permission=DB::table('permissions')->count();
+		//Role
+		$website['count_role']=$count_role=DB::table('roles')->count();
+		//Navigation
+		$website['count_navigation']=$count_navigation=DB::table('navigations')->count();
 		//Classify
 		$website['count_classify']=$count_classify=DB::table('classifies')->count();
 		//Article
 		$website['count_article']=$count_article=DB::table('articles')->count();
+		//Classifyproduct
+		$website['count_classifyproduct']=$count_classifyproduct=DB::table('classifyproducts')->count();
+		//Product
+		$website['count_product']=$count_product=DB::table('products')->count();
 		//Picture
 		$website['count_picture']=$count_picture=DB::table('pictures')->count();
 		//Link
 		$website['count_link']=$count_link=DB::table('links')->count();
+		//Classifylink
+		$website['count_classifylink']=$count_classifylink=DB::table('classifylinks')->count();
 		//Wechat
-		$website['count_wechat']=$count_wechat=0;
+		$website['count_wechat']=$count_wechat=DB::table('wechats')->count();
+		//Letter_from
+		$condiiton_from['email_from']=$this->user['email'];
+		$condiiton_from['istrash_from']=0;	
+		$condiiton_from['isdel_from']=0;	
+		$website['count_letter_from']=$count_letter_from=DB::table('letters')->where($condiiton_from)->count();
+		//Letter_to
+		$condiiton_to['email_to']=$this->user['email'];
+		$condiiton_to['istrash_to']=0;	
+		$condiiton_to['isdel_to']=0;	
+		$website['count_letter_to']=$count_letter_to=DB::table('letters')->where($condiiton_to)->count();
+		
 
 		/*------------------------------------------
 		 -服务器信息

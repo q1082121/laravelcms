@@ -8,13 +8,13 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>{{$website['count_log']}}</h3>
-              <p>{{trans('admin.website_navigation_three')}}</p>
+              <h3>{{$website['count_navigation']}}</h3>
+              <p>{{trans('admin.website_navigation_navigation')}}</p>
             </div>
             <div class="icon">
-              <i class="ion ion-calendar"></i>
+              <i class="fa fa-navicon"></i>
             </div>
-            <a href="/admin/log" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/admin/navigation" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -34,6 +34,34 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>{{$website['count_role']}}</h3>
+              <p>{{trans('admin.website_navigation_role')}}</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-gavel"></i>
+            </div>
+            <a href="/admin/role" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>{{$website['count_permission']}}</h3>
+              <p>{{trans('admin.website_navigation_permission')}}</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-eye"></i>
+            </div>
+            <a href="/admin/permission" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
               <h3>{{$website['count_classify']}}</h3>
@@ -45,7 +73,6 @@
             <a href="/admin/classify" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
@@ -63,18 +90,45 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>{{$website['count_picture']}}</h3>
-              <p>{{trans('admin.website_navigation_seven')}}</p>
+              <h3>{{$website['count_classifyproduct']}}</h3>
+              <p>{{trans('admin.website_navigation_classifyproduct')}}</p>
             </div>
             <div class="icon">
-              <i class="ion ion-image"></i>
+              <i class="ion ion-cube"></i>
             </div>
-            <a href="/admin/picture" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/admin/classifyproduct" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>{{$website['count_product']}}</h3>
+              <p>{{trans('admin.website_navigation_product')}}</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-cubes"></i>
+            </div>
+            <a href="/admin/product" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>{{$website['count_classifylink']}}</h3>
+              <p>{{trans('admin.website_navigation_classifylink')}}</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-leaf"></i>
+            </div>
+            <a href="/admin/classifylink" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
@@ -90,6 +144,61 @@
           </div>
         </div>
         <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>{{$website['count_picture']}}</h3>
+              <p>{{trans('admin.website_navigation_seven')}}</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-image"></i>
+            </div>
+            <a href="/admin/picture" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>{{$website['count_log']}}</h3>
+              <p>{{trans('admin.website_navigation_three')}}</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-calendar"></i>
+            </div>
+            <a href="/admin/log" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-purple">
+            <div class="inner">
+              <h3>{{$website['count_letter_to']}}</h3>
+              <p>{{trans('admin.website_letter_received')}}</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-envelope-o"></i>
+            </div>
+            <a href="/admin/letter" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-purple">
+            <div class="inner">
+              <h3>{{$website['count_letter_from']}}</h3>
+              <p>{{trans('admin.website_letter_send')}}</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-envelope-o"></i>
+            </div>
+            <a href="/admin/letter/send" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
@@ -105,7 +214,7 @@
           </div>
         </div>
         <!-- ./col -->
-
+        
       </div>
       <!-- /.row -->
       <!-- Main row -->

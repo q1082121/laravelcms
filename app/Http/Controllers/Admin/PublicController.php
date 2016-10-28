@@ -195,7 +195,7 @@ class PublicController extends Controller
 	****AuThor:rubbish.boy@163.com
 	****Title :图片上传
 	*******************************************/
-	public function uploads_action($classname,$data_image,$thumb_width="",$thumb_height="")
+	public function uploads_action($classname,$data_image)
 	{
 		// 引入 composer autoload
 		$suffix='.png';
@@ -247,32 +247,32 @@ class PublicController extends Controller
 			switch($classname)
 			{
 				case 'Classify':
-								$thumb_width=$thumb_width?$thumb_width:$this->thumb_width;
-								$thumb_height=$thumb_height?$thumb_height:$this->thumb_height;	
+								$thumb_width=@$this->root['classify_thumb_width']?@$this->root['classify_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['classify_thumb_height']?@$this->root['classify_thumb_height']:$this->thumb_height;	
 				break;
 				case 'Classifylink':
-								$thumb_width=$thumb_width?$thumb_width:$this->thumb_width;
-								$thumb_height=$thumb_height?$thumb_height:$this->thumb_height;	
+								$thumb_width=@$this->root['classifylink_thumb_width']?@$this->root['classifylink_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['classifylink_thumb_height']?@$this->root['classifylink_thumb_height']:$this->thumb_height;	
 				break;
 				case 'Article':
-								$thumb_width=$thumb_width?$thumb_width:$this->thumb_width;
-								$thumb_height=$thumb_height?$thumb_height:$this->thumb_height;	
+								$thumb_width=@$this->root['article_thumb_width']?@$this->root['article_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['article_thumb_height']?@$this->root['article_thumb_height']:$this->thumb_height;	
 				break;
 				case 'Picture':
-								$thumb_width=$thumb_width?$thumb_width:$this->thumb_width;
-								$thumb_height=$thumb_height?$thumb_height:$this->thumb_height;	
+								$thumb_width=@$this->root['picture_thumb_width']?@$this->root['picture_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['picture_thumb_height']?@$this->root['picture_thumb_height']:$this->thumb_height;	
 				break;
 				case 'Link':
-								$thumb_width=$thumb_width?$thumb_width:$this->thumb_width;
-								$thumb_height=$thumb_height?$thumb_height:$this->thumb_height;	
+								$thumb_width=@$this->root['link_thumb_width']?@$this->root['link_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['link_thumb_height']?@$this->root['link_thumb_height']:$this->thumb_height;	
 				break;
 				case 'User':
-								$thumb_width=$thumb_width?$thumb_width:$this->thumb_width;
-								$thumb_height=$thumb_height?$thumb_height:$this->thumb_height;	
+								$thumb_width=@$this->root['user_thumb_width']?@$this->root['user_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['user_thumb_height']?@$this->root['user_thumb_height']:$this->thumb_height;	
 				break;
 				case 'Wechat':
-								$thumb_width=$thumb_width?$thumb_width:$this->thumb_width;
-								$thumb_height=$thumb_height?$thumb_height:$this->thumb_height;
+								$thumb_width=@$this->root['wechat_thumb_width']?@$this->root['wechat_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['wechat_thumb_height']?@$this->root['wechat_thumb_height']:$this->thumb_height;
 				break;
 				default:
 								$thumb_width=$thumb_width?$thumb_width:$this->thumb_width;

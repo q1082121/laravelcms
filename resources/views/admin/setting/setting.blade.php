@@ -171,6 +171,18 @@
             </div>
             <div class="form-group">
                 <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_user_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.user_thumb_width"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_user_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.user_thumb_height"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_wechat_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.wechat_thumb_width"  placeholder="默认200px" >
                 </div>
@@ -225,6 +237,8 @@
                 classifylink_thumb_height:    '' ,
                 link_thumb_width:             '' ,
                 link_thumb_height:            '' ,
+                user_thumb_width:             '' ,
+                user_thumb_height:            '' ,
                 wechat_thumb_width:           '' ,
                 wechat_thumb_height:          '' ,
               }

@@ -223,6 +223,9 @@ class PublicController extends Controller
 			case "Classifylink":
 
 			break;
+			case "Classifyproduct":
+
+			break;
 			case "Link":
 
 			break;
@@ -261,9 +264,17 @@ class PublicController extends Controller
 								$thumb_width=@$this->root['classifylink_thumb_width']?@$this->root['classifylink_thumb_width']:$this->thumb_width;
 								$thumb_height=@$this->root['classifylink_thumb_height']?@$this->root['classifylink_thumb_height']:$this->thumb_height;	
 				break;
+				case 'Classifyproduct':
+								$thumb_width=@$this->root['classifyproduct_thumb_width']?@$this->root['classifyproduct_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['classifyproduct_thumb_height']?@$this->root['classifyproduct_thumb_height']:$this->thumb_height;	
+				break;
 				case 'Article':
 								$thumb_width=@$this->root['article_thumb_width']?@$this->root['article_thumb_width']:$this->thumb_width;
 								$thumb_height=@$this->root['article_thumb_height']?@$this->root['article_thumb_height']:$this->thumb_height;	
+				break;
+				case 'Product':
+								$thumb_width=@$this->root['product_thumb_width']?@$this->root['product_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['product_thumb_height']?@$this->root['product_thumb_height']:$this->thumb_height;	
 				break;
 				case 'Picture':
 								$thumb_width=@$this->root['picture_thumb_width']?@$this->root['picture_thumb_width']:$this->thumb_width;

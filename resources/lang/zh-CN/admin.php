@@ -56,6 +56,9 @@ return [
     'website_navigation_userinfo'                  =>   '用户资料',
     'website_navigation_article'                   =>   '文章管理',
     'website_navigation_six'                       =>   '文章资讯',
+    'website_navigation_product_management'        =>   '产品管理',
+    'website_navigation_classifyproduct'           =>   '产品分类',
+    'website_navigation_product'                   =>   '产品内容',
     'website_navigation_seven'                     =>   '广告图片',
     'website_navigation_link'                      =>   '链接管理',
     'website_navigation_eight'                     =>   '友情链接',
@@ -370,6 +373,52 @@ return [
     'website_article_item_status'                     =>   '状态',
     'article_failure_tip1'                            =>   '请填写标题',
     
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 产品分类
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+
+    'website_classifyproduct_item_topclass'               =>   '分类父类',
+    'website_classifyproduct_item_name'                   =>   '分类名称',
+    'website_classifyproduct_item_ico'                    =>   'ico图标',
+    'website_classifyproduct_item_attachment'             =>   '图标',
+    'website_classifyproduct_item_bcid'                   =>   '大类',
+    'website_classifyproduct_item_scid'                   =>   '小类',
+    'website_classifyproduct_item_topid'                  =>   '父类',
+    'website_classifyproduct_item_grade'                  =>   '级别',
+    'website_classifyproduct_item_navflag'                =>   '主导航',
+    'website_classifyproduct_item_orderid'                =>   '排序',
+    'website_classifyproduct_item_linkurl'                =>   '链接',
+    'website_classifyproduct_item_status'                 =>   '状态',
+    'classifyproduct_failure_tip1'                        =>   '请输入分类名称',
+    'classifyproduct_failure_delete'                      =>   '请先删除子类',
+    'website_classifyproduct_create_cache'                =>   '生成产品分类缓存',
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 产品内容
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_product_select'                          =>   '请选择产品分类',
+    'website_product_item_classid'                    =>   '分类',
+    'website_product_item_title'                      =>   '标题',
+    'website_product_item_introduction'               =>   '导读',
+    'website_product_item_author'                     =>   '作者',
+    'website_product_item_sources'                    =>   '来源',
+    'website_product_item_attachment'                 =>   '封面',
+    'website_product_item_content'                    =>   '内容',
+    'website_product_item_clicks'                     =>   '浏览',
+    'website_product_item_orderid'                    =>   '排序',
+    'website_product_item_linkurl'                    =>   '外链接',
+    'website_product_item_status'                     =>   '状态',
+    'product_failure_tip1'                            =>   '请填写标题',
 
     /*
     |--------------------------------------------------------------------------

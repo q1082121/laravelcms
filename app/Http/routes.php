@@ -187,7 +187,39 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 				[
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'ArticleController@edit'
-    			])->name('get.admin.article.edit');	
+    			])->name('get.admin.article.edit');
+	//产品分类			
+	Route::get('classifyproduct', 
+				[
+			        'middleware' => ['ability:admin,model_classifyproduct'], 
+			        'uses' => 'ClassifyproductController@index'
+    			])->name('get.admin.classifyproduct');
+	Route::get('classifyproduct/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'ClassifyproductController@add'
+    			])->name('get.admin.classifyproduct.add');
+	Route::get('classifyproduct/edit/{id?}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'ClassifyproductController@edit'
+    			])->name('get.admin.classifyproduct.edit');
+	//产品内容			
+	Route::get('product', 
+				[
+			        'middleware' => ['ability:admin,model_product'], 
+			        'uses' => 'ProductController@index'
+    			])->name('get.admin.product');
+	Route::get('product/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'ProductController@add'
+    			])->name('get.admin.product.add');
+	Route::get('product/edit/{id?}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'ProductController@edit'
+    			])->name('get.admin.product.edit');		    
 	//广告图片		
 	Route::get('picture', 
 				[
@@ -204,7 +236,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'PictureController@edit'
     			])->name('get.admin.picture.edit');
-	//文章分类			
+	//链接分类			
 	Route::get('classifylink', 
 				[
 			        'middleware' => ['ability:admin,model_classifylink'], 
@@ -340,6 +372,16 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('article/api_add', 'ArticleController@api_add')->name('post.admin.article.api_add');
 	Route::post('article/api_info', 'ArticleController@api_info')->name('post.admin.article.api_info');
 	Route::post('article/api_edit', 'ArticleController@api_edit')->name('post.admin.article.api_edit');
+
+	Route::post('classifyproduct/api_list', 'ClassifyproductController@api_list')->name('post.admin.classifyproduct.api_list');
+	Route::post('classifyproduct/api_add', 'ClassifyproductController@api_add')->name('post.admin.classifyproduct.api_add');
+	Route::post('classifyproduct/api_info', 'ClassifyproductController@api_info')->name('post.admin.classifyproduct.api_info');
+	Route::post('classifyproduct/api_edit', 'ClassifyproductController@api_edit')->name('post.admin.classifyproduct.api_edit');
+
+	Route::post('product/api_list', 'ProductController@api_list')->name('post.admin.product.api_list');
+	Route::post('product/api_add', 'ProductController@api_add')->name('post.admin.product.api_add');
+	Route::post('product/api_info', 'ProductController@api_info')->name('post.admin.product.api_info');
+	Route::post('product/api_edit', 'ProductController@api_edit')->name('post.admin.product.api_edit');
 
 	Route::post('picture/api_list', 'PictureController@api_list')->name('post.admin.picture.api_list');
 	Route::post('picture/api_add', 'PictureController@api_add')->name('post.admin.picture.api_add');

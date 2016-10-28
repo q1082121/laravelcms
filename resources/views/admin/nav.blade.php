@@ -27,6 +27,18 @@
       <li><a href="{{ route('get.admin.article') }}"><i class="fa fa-newspaper-o"></i> {{trans('admin.website_navigation_six')}}</a></li>
     </ul>
   </li>
+  <li class="treeview" >
+    <a href="javascript:void(0);">
+      <i class="fa fa-cubes"></i> <span>{{trans('admin.website_navigation_product_management')}}</span>
+      <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      <li><a href="{{ route('get.admin.classifyproduct') }}"><i class="fa fa-reorder"></i> {{trans('admin.website_navigation_classifyproduct')}}</a></li>
+      <li><a href="{{ route('get.admin.product') }}"><i class="fa fa-cube"></i> {{trans('admin.website_navigation_product')}}</a></li>
+    </ul>
+  </li>
   <li>
     <a href="{{ route('get.admin.picture') }}">
       <i class="fa fa-photo"></i> <span>{{trans('admin.website_navigation_seven')}}</span>

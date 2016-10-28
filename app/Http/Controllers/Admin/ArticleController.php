@@ -86,7 +86,6 @@ class ArticleController extends PublicController
         $website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=$id;
 
-        $condition_class['modelid']=1;
         $condition_class['status']=1;
         $list=object_array(DB::table('classifies')->where($condition_class)->orderBy('id', 'desc')->get());
 		if($list)

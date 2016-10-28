@@ -1,19 +1,19 @@
 <?php
 /******************************************
 ****AuThor:rubbish.boy@163.com
-****Title :链接分类
+****Title :产品内容
 *******************************************/
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Http\Model\Classifylink;
+use App\Http\Model\Product;
 use DB;
+use Cache;
 use URL;
 use App\Common\lib\Cates; 
-
-class ClassifylinkController extends PublicController
+class ProductController extends PublicController
 {
     //
     /******************************************
@@ -24,20 +24,20 @@ class ClassifylinkController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_classifylink');
-		$website['apiurl_list']=URL::action('Admin\ClassifylinkController@api_list');
+		$website['cursitename']=trans('admin.website_navigation_product');
+		$website['apiurl_list']=URL::action('Admin\ProductController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
-		$website['link_add']=URL::action('Admin\ClassifylinkController@add');
-		$website['link_edit']=route('get.admin.classifylink.edit').'/';
-		$website['way']='name';
-		$wayoption[]=array('text'=>trans('admin.website_classify_item_name'),'value'=>'name');
+		$website['link_add']=URL::action('Admin\ProductController@add');
+		$website['link_edit']=route('get.admin.product.edit').'/';
+		$website['way']='title';
+		$wayoption[]=array('text'=>trans('admin.website_product_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
+        
 
-		return view('admin/classifylink/index')->with('website',$website);
+		return view('admin/product/index')->with('website',$website);
 	}
-	/******************************************
+    /******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :添加
 	*******************************************/
@@ -45,17 +45,19 @@ class ClassifylinkController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_classifylink');
-		$website['apiurl_add']=URL::action('Admin\ClassifylinkController@api_add');
-		$website['apiurl_info']=URL::action('Admin\ClassifylinkController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\ClassifylinkController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['cursitename']=trans('admin.website_navigation_product');
+		$website['apiurl_add']=URL::action('Admin\ProductController@api_add');
+		$website['apiurl_info']=URL::action('Admin\ProductController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\ProductController@api_edit');
+        $website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=0;
-		
-		$list=object_array(DB::table('classifylinks')->where('status','=','1')->orderBy('id', 'desc')->get());
+
+        $condition_class['status']=1;
+        $list=object_array(DB::table('products')->where($condition_class)->orderBy('id', 'desc')->get());
 		if($list)
 		{
 			$cates=new Cates();
+            $cates->type=2;
 			$cates->opt($list);
 			$classopts = $cates->opt;
 			$classoptsdata = $cates->optdata;
@@ -63,11 +65,11 @@ class ClassifylinkController extends PublicController
 		}
 		else
 		{
-			$classlist[]=array('text'=>trans('admin.website_select_default'),'value'=>'0');
+			$classlist[]=array('text'=>trans('admin.website_product_select'),'value'=>'0');
 			$website['classlist']=json_encode($classlist);
 		}
 
-		return view('admin/classifylink/add')->with('website',$website);
+		return view('admin/product/add')->with('website',$website);
 	}
 	/******************************************
 	****AuThor : rubbish.boy@163.com
@@ -77,17 +79,19 @@ class ClassifylinkController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_classifylink');
-		$website['apiurl_add']=URL::action('Admin\ClassifylinkController@api_add');
-		$website['apiurl_info']=URL::action('Admin\ClassifylinkController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\ClassifylinkController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['cursitename']=trans('admin.website_navigation_product');
+		$website['apiurl_add']=URL::action('Admin\ProductController@api_add');
+		$website['apiurl_info']=URL::action('Admin\ProductController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\ProductController@api_edit');
+        $website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=$id;
 
-		$list=object_array(DB::table('classifylinks')->where('status','=','1')->orderBy('id', 'desc')->get());
+        $condition_class['status']=1;
+        $list=object_array(DB::table('products')->where($condition_class)->orderBy('id', 'desc')->get());
 		if($list)
 		{
 			$cates=new Cates();
+            $cates->type=2;
 			$cates->opt($list);
 			$classopts = $cates->opt;
 			$classoptsdata = $cates->optdata;
@@ -95,37 +99,38 @@ class ClassifylinkController extends PublicController
 		}
 		else
 		{
-			$classlist[]=array('text'=>trans('admin.website_select_default'),'value'=>'0');
+			$classlist[]=array('text'=>trans('admin.website_product_select'),'value'=>'0');
 			$website['classlist']=json_encode($classlist);
 		}
-		return view('admin/classifylink/add')->with('website',$website);
+
+		return view('admin/product/add')->with('website',$website);
 	}
-	/******************************************
+    /******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :列表接口
 	*******************************************/
 	public function api_list(Request $request)  
 	{
-		$search_field=$request->get('way')?$request->get('way'):'name';
+		$search_field=$request->get('way')?$request->get('way'):'title';
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Classifylink::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Product::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Classifylink::paginate($this->pagesize);
-			
+			$list=Product::paginate($this->pagesize);
 		}
 		if($list)
 		{
-			$cates=new Cates();
-			$cates->opt($list);
-			$classoptlist = $cates->optlist;
-			$list['cates']=$classoptlist;
-
+			$classlist=Cache::store('file')->get('classproduct');
+			foreach($list as $key=>$val)
+			{
+				$list[$key]['classname']=$classlist[$val['classid']]['name'];
+			}
+			
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_get_success');
 			$msg_array['is_reload']=0;
@@ -146,32 +151,24 @@ class ClassifylinkController extends PublicController
 		}
         return response()->json($msg_array);
 	}
-	/******************************************
+    /******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :添加接口
 	*******************************************/
 	public function api_add(Request $request)  
 	{
 
-		$params = new Classifylink;
-		$params->topid 		= $request->get('topid');
-		$params->name 		= $request->get('name');
-		$params->ico 		= $request->get('ico');
+		$params = new Product;
+		$params->classid 	= $request->get('classid');
+		$params->title 		= $request->get('title');
+		$params->introduction = $request->get('introduction');
+        $params->sources	= $request->get('sources');
+        $params->content	= $request->get('content');
+		$params->syseditor	= $request->get('syseditor');
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
-		$params->navflag	= $request->get('navflag');
+        $params->user_id	= $this->user['id'];
 		$params->status		= $request->get('status');
-		$params->user_id	= $this->user['id'];
-		
-		if($params->topid == 0)
-		{
-			$params->grade=1;
-		}
-		else
-		{
-			$info=Classifylink::find($params->topid);
-			$params->grade=$info['grade']+1;	
-		}
 
 		//图片上传处理接口
 		$attachment='attachment';
@@ -183,35 +180,12 @@ class ClassifylinkController extends PublicController
 			$params->attachment=$this->uploads_action($classname,$data_image);
 			$params->isattach=1;
 		}
-
 		if ($params->save()) 
 		{
-			
-
-			if($params->topid ==0 && $params->grade==1)
-			{ 
-					$params->node='';
-					$params->bcid=$params->id;
-			}
-			else
-			{
-				$params->bcid=$params->topid;
-				if($params->grade==2)
-				{
-					$params->node=$params->topid.','.$params->id;
-				}
-				else
-				{
-					$params->node= $info['node'].','.$params->id;
-				}
-				$params->scid=$params->id;
-			}
-			$params->save();
-
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_add_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\ClassifylinkController@index');
+			$msg_array['curl']=URL::action('Admin\ProductController@index');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -231,7 +205,7 @@ class ClassifylinkController extends PublicController
         return response()->json($msg_array);
 
 	}
-	/******************************************
+    /******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :详情接口
 	*******************************************/
@@ -239,7 +213,7 @@ class ClassifylinkController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('classifylinks')->where($condition)->first();
+		$info=DB::table('products')->where($condition)->first();
 		if($info)
 		{
 			$msg_array['status']='1';
@@ -270,40 +244,18 @@ class ClassifylinkController extends PublicController
 	public function api_edit(Request $request)
 	{
 
-		$params = Classifylink::find($request->get('id'));
-		$params->topid 		= $request->get('topid');
-		$params->name 		= $request->get('name');
-		$params->ico 		= $request->get('ico');
+		$params = Product::find($request->get('id'));
+		$params->classid 	= $request->get('classid');
+		$params->title 		= $request->get('title');
+		$params->introduction = $request->get('introduction');
+        $params->sources	= $request->get('sources');
+        $params->content	= $request->get('content');
+		$params->syseditor	= $request->get('syseditor');
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
-		$params->navflag	= $request->get('navflag');
 		$params->status		= $request->get('status');
-
-		if($params->topid==0)
-		{
-			$params->grade=1;
-			$params->node= '';
-			$params->bcid=$request->get('id');
-		}
-		else
-		{
-			$info=Classifylink::find($params->topid);
-			$params->grade=$info['grade']+1;	
-
-			$params->bcid=$params->topid;	
-
-			if($params->grade==2)
-			{
-				$params->node=$params->topid.','.$params->id;
-			}
-			else
-			{
-				$params->node= $info['node'].','.$params->id;
-			}
-			$params->scid=$params->id;	
-		}
-
-		//图片上传处理接口
+		
+        //图片上传处理接口
 		$attachment='attachment';
 		$data_image=$request->get($attachment);
 		if($data_image)
@@ -319,7 +271,7 @@ class ClassifylinkController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\ClassifylinkController@index');
+			$msg_array['curl']=URL::action('Admin\ProductController@index');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -336,4 +288,5 @@ class ClassifylinkController extends PublicController
 		}
 		return response()->json($msg_array);
 	}
+    
 }

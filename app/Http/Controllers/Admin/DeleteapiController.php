@@ -14,6 +14,8 @@ use URL;
 use App\Http\Model\Article;
 use App\Http\Model\Navigation;
 use App\Http\Model\Classify;
+use App\Http\Model\Classifyproduct;
+use App\Http\Model\Product;
 use App\Http\Model\Picture;
 use App\Http\Model\Classifylink;
 use App\Http\Model\Link;
@@ -176,8 +178,73 @@ class DeleteapiController extends PublicController
 									}
 								}
 			break;
+			case 'Classifyproduct':
+								$subcondition['topid']=$request->get('id');
+								$subinfo=DB::table('classifyproducts')->where($subcondition)->get();
+								if($subinfo)
+								{
+									$msg_array['status']='0';
+									$msg_array['info']=trans('admin.classifyproduct_failure_delete');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';
+									$msg_array['param_way']='';
+									$msg_array['param_keyword']='';	
+								}
+								else
+								{
+									$info=$this->delete_action('classifyproducts',$request->get('id'));
+									if($info)
+									{
+										$msg_array['status']='1';
+										$msg_array['info']=trans('admin.website_del_success');
+										$msg_array['is_reload']=0;
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+										$msg_array['param_way']='';
+										$msg_array['param_keyword']='';
+									}
+									else
+									{
+										
+										$msg_array['status']='0';
+										$msg_array['info']=trans('admin.website_del_failure');
+										$msg_array['is_reload']=0;
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+										$msg_array['param_way']='';
+										$msg_array['param_keyword']='';	
+										
+									}
+								}
+			break;
 			case 'Article':
 							$info=$this->delete_action('articles',$request->get('id'));
+							if($info)
+							{
+								$msg_array['status']='1';
+								$msg_array['info']=trans('admin.website_del_success');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';
+							}
+							else
+							{
+								
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.website_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';	
+								
+							}
+			break;
+			case 'Product':
+							$info=$this->delete_action('products',$request->get('id'));
 							if($info)
 							{
 								$msg_array['status']='1';
@@ -327,10 +394,18 @@ class DeleteapiController extends PublicController
 				$params = Classifylink::find($request->get('id'));
 				# code...
 				break;	
+			case 'Classifyproduct':
+				$params = Classifyproduct::find($request->get('id'));
+				# code...
+				break;		
 			case 'Article':
 				$params = Article::find($request->get('id'));
 				# code...
 				break;
+			case 'Product':
+				$params = Product::find($request->get('id'));
+				# code...
+				break;	
 			case 'Picture':
 				$params = Picture::find($request->get('id'));
 				# code...

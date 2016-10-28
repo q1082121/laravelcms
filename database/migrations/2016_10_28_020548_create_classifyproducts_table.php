@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatenavigationsTable extends Migration
+class CreateClassifyproductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatenavigationsTable extends Migration
     public function up()
     {
         //
-		 Schema::create('navigations', function(Blueprint $table) {
+		 Schema::create('classifyproducts', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('name',50);					//分类名称
 			$table->string('ico',50)->nullable();		//ico图标
@@ -42,6 +42,6 @@ class CreatenavigationsTable extends Migration
     public function down()
     {
         //
-		Schema::drop('navigations');
+		Schema::drop('classifyproducts');
     }
 }

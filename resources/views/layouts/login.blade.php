@@ -6,8 +6,8 @@
 <title>{{ $website['title'] }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<meta name="keywords" content="{{$website['info']['keywords']}}" >
-<meta name="description" content="{{$website['info']['sysdescription']}}" >
+<meta name="keywords" content="{{$website['root']['syskeywords']}}" >
+<meta name="description" content="{{$website['root']['sysdescription']}}" >
 <link rel="shortcut icon" href="/favicon.ico" >
 <link href="{{asset('/module/login')}}/css/style.css" rel='stylesheet' type='text/css' />
 <!--webfonts

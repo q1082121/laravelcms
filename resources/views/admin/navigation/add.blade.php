@@ -95,11 +95,6 @@
                 <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.navflag" style="margin-right:10px;"> {{trans('admin.website_no')}}</div>
             </div>
             <div class="form-group">
-                <label >{{trans('admin.website_navigation_item_perpage')}}</label>
-                <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.website_perpage')}}</div>
-                <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.website_list')}}</div>
-            </div>
-            <div class="form-group">
                 <label >{{trans('admin.website_navigation_item_status')}}</label>
                 <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
                 <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
@@ -121,9 +116,6 @@
 <!-- /.content -->
 
 <script type="text/javascript">
-Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
-Vue.http.options.emulateJSON = true;
-
 new Vue({
     el: '#app-content',
     data: {

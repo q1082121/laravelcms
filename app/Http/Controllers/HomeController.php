@@ -24,7 +24,10 @@ class HomeController extends PublicController
     public function index()
     {
         $website=$this->website;
-        
+        $website['modelname']=getCurrentControllerName('Home');
+        $website['curnav']=1;
+        $website['title']=@$this->root['systitle'];
+        $website['apiurl_cache']=URL::action('CacheapiController@api_cache');
         return view('home')->with('website',$website);
     }
 }

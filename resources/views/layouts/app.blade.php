@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{$website['root']['systitle']}}</title>
+    <title>{{$website['title']}}</title>
     <meta name="keywords" content="{{$website['root']['syskeywords']}}">
     <meta name="description" content="{{$website['root']['sysdescription']}}">
     <!-- Set render engine for 360 browser -->
@@ -36,6 +36,10 @@
     <script src="{{asset('/module/vue')}}/dist/vue.min.js"></script>
     <!--vue-resource-->
     <script src="{{asset('/module/vue-resource')}}/dist/vue-resource.min.js"></script>
+    <script type="text/javascript">
+    Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
+    Vue.http.options.emulateJSON = true;
+    </script>
     <!--layer-->
     <script src="{{asset('/module/layer')}}/layer.js"></script>
     <!--common-->
@@ -50,18 +54,18 @@
   </div>
 </div>
 -->
-<div class="header_bg">
+<div class="header_bg" id="nav-content" >
   <div class="containor">
     <ul class="venus-menu">
-      <li class="active"><a href="/"><i class="am-icon-home"></i>美食街</a></li>
-      <li><a href="#"><i class="am-icon-magic"></i>美食攻略</a></li>
-      <li><a href="#"><i class="am-icon-thumbs-up"></i>周边小吃</a></li>
-      <li><a href="#"><i class="am-icon-bomb"></i>黑暗料理</a></li>
+      <li v-for="item in cache.navigation" :class="item.id == curnav ? 'active' : '' " >
+        <a href="#"><i class="@{{ item.ico }}"></i>@{{ item.name }}</a>
+      </li>
       <li><a href="#"><i class="am-icon-user"></i>美食猎人</a></li>
     </ul>
   </div>
 </div>
 <script type="text/javascript">
+  var imagesList;
   $(document).ready(function(){
     $('.header_bg').mkinfinite({
       maxZoom:       1.4,
@@ -70,11 +74,15 @@
       isFixedBG:     true,
       zoomIn:        true,
       imagesList:    new Array(
-        '/images/home/banner1.jpg',
-        '/images/home/banner2.jpg',
-        '/images/home/banner3.jpg',
-        '/images/home/banner4.jpg',
-        '/images/home/banner5.jpg'
+        <?php $i=1; $counts=count($website['cache_picture']);?>
+        @foreach ($website['cache_picture'] as $key=>$items)
+        @if ($i == $counts)
+        '/uploads/Picture/{{$items["attachment"]}}'
+        @else
+        '/uploads/Picture/{{$items["attachment"]}}',
+        @endif
+        <?php $i++; ?>
+        @endforeach
       )
     });
   });
@@ -86,6 +94,84 @@
     <small>© Copyright 2016  站长：rubbish.boy@163.com </small>
   </p>
 </footer>
+
+<script type="text/javascript">
+new Vue({
+    el: '#nav-content',
+    data: {
+            curnav              :{{$website['curnav']}},
+            apiurl_cache:       '{{$website["apiurl_cache"]}}', 
+            cache: {
+              modelname         :'{{$website["modelname"]}}',
+              navigation        :[],
+              class             :[],
+              classlink         :[],
+              classproduct      :[],
+              picture           :[],
+              link              :[],
+            }
+    },
+    ready: function (){ 
+            //这里是vue初始化完成后执行的函数 
+            this.get_cache_action();
+    },
+    methods: 
+    {
+      //获取数据详情
+      get_cache_action:function()
+      {
+        this.$http.post(this.apiurl_cache,this.cache,
+        {
+          before:function(request)
+          {
+            loadi=layer.load("...");
+          },
+        })
+        .then((response) => 
+        {
+          this.ready_cahce_action(response);
+        },(response) => 
+        {
+          //响应错误
+          layer.close(loadi);
+          var msg="{{trans('admin.website_outtime')}}";
+          layermsg_error(msg);
+        })
+        .catch(function(response) {
+          //异常抛出
+          layer.close(loadi);
+          var msg="{{trans('admin.website_outtime_error')}}";
+          layermsg_error(msg);
+        })
+      },
+      //处理初始化数据
+      ready_cahce_action:function(response)
+      {
+        layer.close(loadi);
+        var statusinfo=response.data;
+        if(statusinfo.status==1)
+        {
+            this.cache=statusinfo.resource;
+            imagesList=this.cache.picture;
+            console.dir(imagesList);
+        }
+        else
+        {
+            if(statusinfo.curl)
+            {
+              layermsg_e(statusinfo.info,statusinfo.curl);
+            }
+            else
+            {
+              layermsg_error(statusinfo.info);
+            }
+        }
+
+      },
+    }
+
+})
+</script>
 
 </body>
 </html>

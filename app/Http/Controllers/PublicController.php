@@ -32,18 +32,24 @@ class PublicController extends Controller
 	    */
 		//系统设置缓存
 		$this->root=Cache::store('file')->get('root');
+		//主导航栏目缓存
+		$this->cache_navigation=Cache::store('file')->get('navigation');
 		//文章栏目缓存
 		$this->cache_class=Cache::store('file')->get('class');
 		//链接栏目缓存
 		$this->cache_classlink=Cache::store('file')->get('classlink');
+		//产品栏目缓存
+		$this->cache_classproduct=Cache::store('file')->get('classproduct');
 		//广告图片缓存
 		$this->cache_picture=Cache::store('file')->get('picture');
 		//友情链接缓存
 		$this->cache_link=Cache::store('file')->get('link');
 
 		$this->website['root']=@$this->root;
+		$this->website['cache_navigation']=@$this->cache_navigation;
 		$this->website['cache_class']=@$this->cache_class;
 		$this->website['cache_classlink']=@$this->cache_classlink;
+		$this->website['cache_classproduct']=@$this->cache_classproduct;
 		$this->website['cache_picture']=@$this->cache_picture;
 		$this->website['cache_link']=@$this->cache_link;
 		

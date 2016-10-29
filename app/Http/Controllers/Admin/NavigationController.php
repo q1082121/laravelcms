@@ -159,7 +159,6 @@ class NavigationController extends PublicController
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
 		$params->navflag	= $request->get('navflag');
-		$params->perpage	= $request->get('perpage');
 		$params->status		= $request->get('status');
 		$params->user_id	= $this->user['id'];
 		
@@ -277,7 +276,6 @@ class NavigationController extends PublicController
 		$params->orderid	= $request->get('orderid');
 		$params->linkurl	= $request->get('linkurl');
 		$params->navflag	= $request->get('navflag');
-		$params->perpage	= $request->get('perpage');
 		$params->status		= $request->get('status');
 
 		if($params->topid==0)

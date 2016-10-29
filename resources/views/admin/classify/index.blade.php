@@ -66,7 +66,7 @@
                 <td>@{{ item.bcid }}</td>
                 <td>@{{ item.scid }}</td>
                 <td> <i v-if="item.navflag == 1" class="fa fa-star"></i> <i v-else class="fa fa-star-o"></i> </td>
-                <td> <i v-if="item.navflag == 1" class="fa fa-file-text"> 单 </i> <i v-else class="fa fa-list"> 列 </i> </td>
+                <td> <i v-if="item.perpage == 1" class="fa fa-file-text"> 单 </i> <i v-else class="fa fa-list"> 列 </i> </td>
                 <td>@{{ item.orderid }}</td>
                 <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>
@@ -110,9 +110,6 @@
 <!-- /.content -->
 
 <script type="text/javascript">
-Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
-Vue.http.options.emulateJSON = true;
-
 new Vue({
     el: '#app-content',
     data: {

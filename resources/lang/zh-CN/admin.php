@@ -317,7 +317,6 @@ return [
     'website_navigation_item_topid'                     =>   '父类',
     'website_navigation_item_grade'                     =>   '级别',
     'website_navigation_item_navflag'                   =>   '主导航',
-    'website_navigation_item_perpage'                   =>   '单页/列表',
     'website_navigation_item_orderid'                   =>   '排序',
     'website_navigation_item_linkurl'                   =>   '链接',
     'website_navigation_item_status'                    =>   '状态',

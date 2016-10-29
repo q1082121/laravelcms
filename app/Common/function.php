@@ -217,6 +217,7 @@ function object_array($array)
    }
    return $array;
 }
+
 /***********************************
  * 方法名： 获取当前控制器名  
  * 作者： Tommy（rubbish.boy@163.com）
@@ -228,6 +229,10 @@ function getCurrentControllerName($group='Admin')
 	{
 		case 'Admin':
 			$string = substr($fullname, 27);
+			$string = str_replace("Controller", "", $string);
+			break;
+		case 'Home':
+			$string = substr($fullname, 21);
 			$string = str_replace("Controller", "", $string);
 			break;
 	}

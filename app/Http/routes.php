@@ -58,7 +58,8 @@ Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user
 ****@Title :前台访问控制
 *******************************************/
 Route::group(['middleware' => ['cors']], function() {  
-Route::get('/', 'HomeController@index');
+	Route::get('/', 'HomeController@index');
+	Route::post('/api_cache', 'CacheapiController@api_cache')->name('post.cacheapi.api_cache');
 });
 
 

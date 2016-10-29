@@ -44,6 +44,10 @@
   <script src="{{asset('/module/vue')}}/dist/vue.min.js"></script>
   <!--vue-resource-->
   <script src="{{asset('/module/vue-resource')}}/dist/vue-resource.min.js"></script>
+  <script type="text/javascript">
+    Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
+    Vue.http.options.emulateJSON = true;
+  </script>
   <!-- jQuery 2.2.3 -->
   <script src="{{asset('/module/AdminLTE')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!--layer-->
@@ -561,8 +565,6 @@
 -->
 
 <script type="text/javascript">
-  Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
-  Vue.http.options.emulateJSON = true;
   new Vue({
       el: '#app-setting',
       data: {

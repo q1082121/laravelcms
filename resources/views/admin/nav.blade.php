@@ -56,6 +56,17 @@
       <li><a href="{{ route('get.admin.link') }}"><i class="fa fa-external-link"></i> {{trans('admin.website_navigation_eight')}}</a></li>
     </ul>
   </li>
+  <li class="treeview">
+    <a href="javascript:void(0);">
+      <i class="fa fa-mortar-board"></i> <span>{{trans('admin.website_navigation_question_management')}}</span>
+      <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      <li><a href="{{ route('get.admin.classifyquestion') }}"><i class="fa fa-reorder"></i> {{trans('admin.website_navigation_classifyquestion')}}</a></li>
+    </ul>
+  </li>
   <li class="header">{{trans('admin.website_main_navigation_two')}}</li>
   <li class="treeview">
     <a href="">

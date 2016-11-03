@@ -226,6 +226,9 @@ class PublicController extends Controller
 			case "Classifyproduct":
 
 			break;
+			case "Classifyquestion":
+
+			break;
 			case "Link":
 
 			break;
@@ -267,6 +270,10 @@ class PublicController extends Controller
 				case 'Classifyproduct':
 								$thumb_width=@$this->root['classifyproduct_thumb_width']?@$this->root['classifyproduct_thumb_width']:$this->thumb_width;
 								$thumb_height=@$this->root['classifyproduct_thumb_height']?@$this->root['classifyproduct_thumb_height']:$this->thumb_height;	
+				break;
+				case 'Classifyquestion':
+								$thumb_width=@$this->root['classifyquestion_thumb_width']?@$this->root['classifyquestion_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['classifyquestion_thumb_height']?@$this->root['classifyquestion_thumb_height']:$this->thumb_height;	
 				break;
 				case 'Article':
 								$thumb_width=@$this->root['article_thumb_width']?@$this->root['article_thumb_width']:$this->thumb_width;

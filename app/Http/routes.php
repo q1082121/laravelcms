@@ -268,7 +268,23 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 				[
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'LinkController@edit'
-    			])->name('get.admin.link.edit');	
+    			])->name('get.admin.link.edit');
+	//题目分类			
+	Route::get('classifyquestion', 
+				[
+			        'middleware' => ['ability:admin,model_classifyquestion'], 
+			        'uses' => 'ClassifyquestionController@index'
+    			])->name('get.admin.classifyquestion');
+	Route::get('classifyquestion/add', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'ClassifyquestionController@add'
+    			])->name('get.admin.classifyquestion.add');
+	Route::get('classifyquestion/edit/{id?}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'ClassifyquestionController@edit'
+    			])->name('get.admin.classifyquestion.edit');		    	
 	//日志管理		
 	Route::get('log', 
 				[
@@ -398,6 +414,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('link/api_add', 'LinkController@api_add')->name('post.admin.link.api_add');
 	Route::post('link/api_info', 'LinkController@api_info')->name('post.admin.link.api_info');
 	Route::post('link/api_edit', 'LinkController@api_edit')->name('post.admin.link.api_edit');
+
+	Route::post('classifyquestion/api_list', 'ClassifyquestionController@api_list')->name('post.admin.classifyquestion.api_list');
+	Route::post('classifyquestion/api_add', 'ClassifyquestionController@api_add')->name('post.admin.classifyquestion.api_add');
+	Route::post('classifyquestion/api_info', 'ClassifyquestionController@api_info')->name('post.admin.classifyquestion.api_info');
+	Route::post('classifyquestion/api_edit', 'ClassifyquestionController@api_edit')->name('post.admin.classifyquestion.api_edit');
 
 	Route::post('letter/api_list', 'LetterController@api_list')->name('post.admin.letter.api_list');
 	Route::post('letter/api_add', 'LetterController@api_add')->name('post.admin.letter.api_add');

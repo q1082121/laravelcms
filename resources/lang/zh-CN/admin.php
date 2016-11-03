@@ -64,8 +64,10 @@ return [
     'website_navigation_eight'                     =>   '友情链接',
     'website_navigation_nine'                      =>   '微信管理',
     'website_navigation_ten'                       =>   '信件管理',
+    'website_navigation_question_management'       =>   '题目管理',
     'website_navigation_classify'                  =>   '文章分类',
     'website_navigation_classifylink'              =>   '链接分类',
+    'website_navigation_classifyquestion'          =>   '题目分类',
 
     'website_save'                                 =>   '保存信息',
     'website_getback'                              =>   '返回页面',
@@ -486,6 +488,32 @@ return [
     'website_link_item_status'                        =>   '状态',
     'link_failure_tip1'                               =>   '请填写标题',
     'website_link_create_cache'                       =>   '生成链接缓存',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 题目分类
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+
+    'website_classifyquestion_item_topclass'               =>   '分类父类',
+    'website_classifyquestion_item_name'                   =>   '分类名称',
+    'website_classifyquestion_item_ico'                    =>   'ico图标',
+    'website_classifyquestion_item_attachment'             =>   '图标',
+    'website_classifyquestion_item_bcid'                   =>   '大类',
+    'website_classifyquestion_item_scid'                   =>   '小类',
+    'website_classifyquestion_item_topid'                  =>   '父类',
+    'website_classifyquestion_item_grade'                  =>   '级别',
+    'website_classifyquestion_item_amount'                 =>   '抽题数量',
+    'website_classifyquestion_item_orderid'                =>   '排序',
+    'website_classifyquestion_item_status'                 =>   '状态',
+    'classifyquestion_failure_tip1'                        =>   '请输入分类名称',
+    'classifyquestion_failure_delete'                      =>   '请先删除子类',
+    'website_classifyquestion_create_cache'                =>   '生成题目分类缓存',
+
 
     /*
     |--------------------------------------------------------------------------

@@ -171,6 +171,18 @@
             </div>
             <div class="form-group">
                 <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_classifyquestion_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.classifyquestion_thumb_width"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_classifyquestion_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.classifyquestion_thumb_height"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_link_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.link_thumb_width"   placeholder="默认200px" >
                 </div>
@@ -245,6 +257,8 @@
                 picture_thumb_height:         '' ,
                 classifylink_thumb_width:     '' ,
                 classifylink_thumb_height:    '' ,
+                classifyquestion_thumb_width: '' ,
+                classifyquestion_thumb_height:'' ,
                 link_thumb_width:             '' ,
                 link_thumb_height:            '' ,
                 user_thumb_width:             '' ,

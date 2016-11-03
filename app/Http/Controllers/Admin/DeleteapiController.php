@@ -19,6 +19,7 @@ use App\Http\Model\Product;
 use App\Http\Model\Picture;
 use App\Http\Model\Classifylink;
 use App\Http\Model\Link;
+use App\Http\Model\Classifyquestion;
 use App\Http\Model\Log;
 use App\Http\Model\Wechat;
 
@@ -194,6 +195,46 @@ class DeleteapiController extends PublicController
 								else
 								{
 									$info=$this->delete_action('classifyproducts',$request->get('id'));
+									if($info)
+									{
+										$msg_array['status']='1';
+										$msg_array['info']=trans('admin.website_del_success');
+										$msg_array['is_reload']=0;
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+										$msg_array['param_way']='';
+										$msg_array['param_keyword']='';
+									}
+									else
+									{
+										
+										$msg_array['status']='0';
+										$msg_array['info']=trans('admin.website_del_failure');
+										$msg_array['is_reload']=0;
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+										$msg_array['param_way']='';
+										$msg_array['param_keyword']='';	
+										
+									}
+								}
+			break;
+			case 'Classifyquestion':
+								$subcondition['topid']=$request->get('id');
+								$subinfo=DB::table('classifyquestions')->where($subcondition)->get();
+								if($subinfo)
+								{
+									$msg_array['status']='0';
+									$msg_array['info']=trans('admin.classifyquestion_failure_delete');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';
+									$msg_array['param_way']='';
+									$msg_array['param_keyword']='';	
+								}
+								else
+								{
+									$info=$this->delete_action('classifyquestions',$request->get('id'));
 									if($info)
 									{
 										$msg_array['status']='1';
@@ -397,7 +438,11 @@ class DeleteapiController extends PublicController
 			case 'Classifyproduct':
 				$params = Classifyproduct::find($request->get('id'));
 				# code...
-				break;		
+				break;	
+			case 'Classifyquestion':
+				$params = Classifyquestion::find($request->get('id'));
+				# code...
+				break;			
 			case 'Article':
 				$params = Article::find($request->get('id'));
 				# code...

@@ -47,6 +47,7 @@ class PermissionSeeder extends Seeder
 		  array('name' => 'model_picture','display_name' => '模块-广告图片','description' => ''),
 		  array('name' => 'model_classifylink','display_name' => '模块-链接分类','description' => ''),
 		  array('name' => 'model_link','display_name' => '模块-友情链接','description' => ''),
+		  array('name' => 'model_classifyquestion','display_name' => '模块-题目分类','description' => ''),
 		  array('name' => 'model_wechat','display_name' => '模块-微信管理','description' => ''),
 		  
 		  

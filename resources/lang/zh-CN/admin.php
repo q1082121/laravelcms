@@ -189,6 +189,8 @@ return [
     'website_setting_picture_thumb_height'         =>   '广告缩略图高度' ,
     'website_setting_classifylink_thumb_width'     =>   '链接分类缩略图宽度' ,
     'website_setting_classifylink_thumb_height'    =>   '链接分类缩略图高度' ,
+    'website_setting_classifyquestion_thumb_width' =>   '题目分类缩略图宽度' ,
+    'website_setting_classifyquestion_thumb_height'=>   '题目分类缩略图高度' ,
     'website_setting_link_thumb_width'             =>   '链接缩略图宽度' ,
     'website_setting_link_thumb_height'            =>   '链接缩略图高度' ,
     'website_setting_user_thumb_width'             =>   '用户头像缩略图宽度' ,

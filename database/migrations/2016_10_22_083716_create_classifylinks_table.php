@@ -16,7 +16,7 @@ class CreateClassifylinksTable extends Migration
         Schema::create('classifylinks', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('name',50);					//分类名称
-            $table->string('ico',50)nullable();			//ico图标
+            $table->string('ico',50)->nullable();			//ico图标
 			$table->integer('bcid')->default(0);		//大类ID
 			$table->integer('scid')->default(0);		//小类ID
 			$table->integer('topid')->default(0);		//父类ID

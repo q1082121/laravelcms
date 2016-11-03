@@ -75,14 +75,16 @@
       zoomIn:        true,
       imagesList:    new Array(
         <?php $i=1; $counts=count($website['cache_picture']);?>
-        @foreach ($website['cache_picture'] as $key=>$items)
-        @if ($i == $counts)
-        '/uploads/Picture/{{$items["attachment"]}}'
-        @else
-        '/uploads/Picture/{{$items["attachment"]}}',
-        @endif
-        <?php $i++; ?>
+        @if ($counts >0 )
+          @foreach ($website['cache_picture'] as $key=>$items)
+          @if ($i == $counts)
+          '/uploads/Picture/{{$items["attachment"]}}'
+          @else
+          '/uploads/Picture/{{$items["attachment"]}}',
+          @endif
+          <?php $i++; ?>
         @endforeach
+        @endif
       )
     });
   });

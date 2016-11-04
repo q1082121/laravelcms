@@ -202,6 +202,34 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
+          <div class="small-box bg-purple">
+            <div class="inner">
+              <h3>{{$website['count_question']}}</h3>
+              <p>{{trans('admin.website_navigation_question_management')}}</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-check-square-o"></i>
+            </div>
+            <a href="javascript:void(0);" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-purple">
+            <div class="inner">
+              <h3>{{$website['count_questionoption']}}</h3>
+              <p>{{trans('admin.website_navigation_question_option')}}</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-circle-o"></i>
+            </div>
+            <a href="javascript:void(0);" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
               <h3>{{$website['count_wechat']}}</h3>

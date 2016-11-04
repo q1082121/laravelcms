@@ -45,6 +45,10 @@ class HomeController extends PublicController
 		$website['count_picture']=$count_picture=DB::table('pictures')->count();
 		//Link
 		$website['count_link']=$count_link=DB::table('links')->count();
+		//Question
+		$website['count_question']=$count_question=DB::table('questions')->count();
+		//Questionoption
+		$website['count_questionoption']=$count_questionoption=DB::table('questionoptions')->count();
 		//Classifylink
 		$website['count_classifylink']=$count_classifylink=DB::table('classifylinks')->count();
 		//Wechat

@@ -115,10 +115,10 @@ QQ	:471416739
 ![image](https://github.com/q1082121/laravelcms/blob/master/public/images/alipay.jpg)
 
 #	示例图片
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/demo/1.png)
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/demo/2.png)
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/demo/3.png)
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/demo/4.png)
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/demo/5.png)
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/demo/6.png)
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/demo/7.png)
+![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/1.png)
+![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/2.png)
+![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/3.png)
+![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/4.png)
+![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/5.png)
+![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/6.png)
+![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/7.png)

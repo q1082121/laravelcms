@@ -235,6 +235,9 @@ class PublicController extends Controller
 			case "Question":
 
 			break;
+			case "Questionoption":
+
+			break;
 			case "User":
 
 			break;
@@ -293,6 +296,14 @@ class PublicController extends Controller
 				case 'Link':
 								$thumb_width=@$this->root['link_thumb_width']?@$this->root['link_thumb_width']:$this->thumb_width;
 								$thumb_height=@$this->root['link_thumb_height']?@$this->root['link_thumb_height']:$this->thumb_height;	
+				break;
+				case 'Questionoption':
+								$thumb_width=@$this->root['question_thumb_width']?@$this->root['question_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['question_thumb_height']?@$this->root['question_thumb_height']:$this->thumb_height;	
+				break;
+				case 'Questionoption':
+								$thumb_width=@$this->root['questionoption_thumb_width']?@$this->root['questionoption_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['questionoption_thumb_height']?@$this->root['questionoption_thumb_height']:$this->thumb_height;	
 				break;
 				case 'User':
 								$thumb_width=@$this->root['user_thumb_width']?@$this->root['user_thumb_width']:$this->thumb_width;

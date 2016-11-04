@@ -195,6 +195,30 @@
             </div>
             <div class="form-group">
                 <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_question_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.question_thumb_width"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_question_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.question_thumb_height"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_questionoption_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.questionoption_thumb_width"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{trans('admin.website_setting_questionoption_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.questionoption_thumb_height"   placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
                   <span class="input-group-addon">{{trans('admin.website_setting_user_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.user_thumb_width"   placeholder="默认200px" >
                 </div>

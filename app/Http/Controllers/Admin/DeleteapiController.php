@@ -21,6 +21,7 @@ use App\Http\Model\Classifylink;
 use App\Http\Model\Link;
 use App\Http\Model\Classifyquestion;
 use App\Http\Model\Question;
+use App\Http\Model\Questionoption;
 use App\Http\Model\Log;
 use App\Http\Model\Wechat;
 
@@ -360,7 +361,92 @@ class DeleteapiController extends PublicController
 								
 							}
 			break;
-			
+			case 'Question':
+							$rule=1;	
+							DB::beginTransaction();
+							try
+							{ 
+								$subinfo=$this->delete_action('questionoptions',$request->get('id'),'qid');
+								if($subinfo)
+								{
+									$rule=1;
+									DB::commit();
+								}
+								else
+								{
+									$rule=2;
+									DB::rollBack();
+								}
+							}
+							catch (\Exception $e) 
+							{ 
+								//接收异常处理并回滚
+								$rule=2;
+								DB::rollBack(); 
+							}
+							if($rule==1)
+							{
+								$info=$this->delete_action('questions',$request->get('id'));
+								if($info)
+								{
+									$msg_array['status']='1';
+									$msg_array['info']=trans('admin.website_del_success');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';
+									$msg_array['param_way']='';
+									$msg_array['param_keyword']='';
+								}
+								else
+								{
+									
+									$msg_array['status']='0';
+									$msg_array['info']=trans('admin.website_del_failure');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';
+									$msg_array['param_way']='';
+									$msg_array['param_keyword']='';	
+									
+								}
+							}
+							else
+							{
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.website_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';
+							}
+
+			break;
+			case 'Questionoption':
+							$info=$this->delete_action('questionoptions',$request->get('id'));
+							if($info)
+							{
+								$msg_array['status']='1';
+								$msg_array['info']=trans('admin.website_del_success');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';
+							}
+							else
+							{
+								
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.website_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';	
+								
+							}
+			break;
 		}
 
         return response()->json($msg_array);
@@ -369,10 +455,20 @@ class DeleteapiController extends PublicController
 	****AuThor:rubbish.boy@163.com
 	****Title :删除操作
 	*******************************************/
-	public function delete_action($tablename,$id) 
+	public function delete_action($tablename,$id,$filed='id') 
 	{
-		$condition['id']=$id;
+		$condition[$filed]=$id;
 		$info=DB::table($tablename)->where($condition)->delete();//返回1;
+		return $info;
+	} 
+	/******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :批量删除操作
+	*******************************************/
+	public function delete_more_action($tablename,$ids,$filed='id') 
+	{
+		$condition[$filed]=$ids;
+		$info=DB::table($tablename)->whereIn($condition)->delete();//返回;
 		return $info;
 	} 
 	/******************************************
@@ -385,7 +481,8 @@ class DeleteapiController extends PublicController
 		switch($modelname)
 		{
 			case 'Log':
-						$info=DB::table('logs')->delete();
+						//如果你希望清除整张表，也就是删除所有列并将自增ID置为0	
+						$info=DB::table('logs')->truncate();
 			break;
 		}
 		if($info)
@@ -456,6 +553,10 @@ class DeleteapiController extends PublicController
 				$params = Question::find($request->get('id'));
 				# code...
 				break;	
+			case 'Questionoption':
+				$params = Questionoption::find($request->get('id'));
+				# code...
+				break;		
 			case 'Picture':
 				$params = Picture::find($request->get('id'));
 				# code...

@@ -1,109 +1,63 @@
 <?php
 /******************************************
 ****AuThor:rubbish.boy@163.com
-****Title :题目题库
+****Title :题目选项
 *******************************************/
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Http\Model\Question;
+use App\Http\Model\Questionoption;
 use DB;
 use URL;
 use Cache;
 use App\Common\lib\Cates; 
-class QuestionController extends PublicController
+class QuestionoptionController extends PublicController
 {
     //
     /******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :列表
 	*******************************************/
-	public function index($type)  
+	public function index($id)  
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		switch($type)
-		{
-			case 1:
-					$website['cursitename']=trans('admin.website_navigation_question_radio');
-			break;
-			case 2:
-					$website['cursitename']=trans('admin.website_navigation_question_multiple_choice');
-			break;
-			case 3:
-					$website['cursitename']=trans('admin.website_navigation_question_judgment');
-			break;
-		}
-		$website['type']=$type;
-		$website['apiurl_list']=URL::action('Admin\QuestionController@api_list');
+		$website['cursitename']=trans('admin.website_navigation_question_option');
+		$website['apiurl_list']=URL::action('Admin\QuestionoptionController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
 		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
-		$website['link_add']=URL::action('Admin\QuestionController@add').'/'.$type;
-		$website['link_edit']=route('get.admin.question.edit').'/';
-		$website['link_option']=route('get.admin.questionoption').'/';
+		$website['link_add']=URL::action('Admin\QuestionoptionController@add').'/'.$id;
+		$website['link_edit']=route('get.admin.questionoption.edit').'/';
 		$website['way']='title';
-		$wayoption[]=array('text'=>trans('admin.website_question_item_title'),'value'=>'title');
+		$wayoption[]=array('text'=>trans('admin.website_questionoption_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
-
-		$subcondition['qid']=3;
-		$subinfo=object_array(DB::table('questionoptions')->where($subcondition)->pluck('id'));
-		if($subinfo)
-		{
-			dump($subinfo);
-		}
-		
-
-		return view('admin/question/index')->with('website',$website);
+		$info = object_array(DB::table('questions')->whereId($id)->first());
+		$website['link_back']=route('get.admin.question').'/'.$info['type'];
+		$website['info']=$info;
+		$website['qid']=$id;
+		return view('admin/questionoption/index')->with('website',$website);
 	}
     /******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :添加
 	*******************************************/
-	public function add($type)
+	public function add($id)
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		switch($type)
-		{
-			case 1:
-					$website['cursitename']=trans('admin.website_navigation_question_radio');
-			break;
-			case 2:
-					$website['cursitename']=trans('admin.website_navigation_question_multiple_choice');
-			break;
-			case 3:
-					$website['cursitename']=trans('admin.website_navigation_question_judgment');
-			break;
-		}
-		$website['type']=$type;
-		$website['apiurl_add']=URL::action('Admin\QuestionController@api_add');
-		$website['apiurl_info']=URL::action('Admin\QuestionController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\QuestionController@api_edit');
+		$website['cursitename']=trans('admin.website_navigation_question_option');
+		$website['apiurl_add']=URL::action('Admin\QuestionoptionController@api_add');
+		$website['apiurl_info']=URL::action('Admin\QuestionoptionController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\QuestionoptionController@api_edit');
 		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=0;
-		
-		
-		$condition_class['status']=1;
-        $list=object_array(DB::table('classifyquestions')->where($condition_class)->orderBy('id', 'desc')->get());
-		if($list)
-		{
-			$cates=new Cates();
-            $cates->type=2;
-			$cates->opt($list);
-			$classopts = $cates->opt;
-			$classoptsdata = $cates->optdata;
-			$website['classlist']=json_encode($classoptsdata);
-		}
-		else
-		{
-			$classlist[]=array('text'=>trans('admin.website_question_select'),'value'=>'0');
-			$website['classlist']=json_encode($classlist);
-		}
-
-		return view('admin/question/add')->with('website',$website);
+		$info = object_array(DB::table('questions')->whereId($id)->first());
+		$website['info']=$info;
+		$website['qid']=$id;
+		return view('admin/questionoption/add')->with('website',$website);
 	}
     /******************************************
 	****AuThor : rubbish.boy@163.com
@@ -113,43 +67,18 @@ class QuestionController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['apiurl_add']=URL::action('Admin\QuestionController@api_add');
-		$website['apiurl_info']=URL::action('Admin\QuestionController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\QuestionController@api_edit');
+		$website['cursitename']=trans('admin.website_navigation_question_option');
+		$website['apiurl_add']=URL::action('Admin\QuestionoptionController@api_add');
+		$website['apiurl_info']=URL::action('Admin\QuestionoptionController@api_info');
+		$website['apiurl_edit']=URL::action('Admin\QuestionoptionController@api_edit');
 		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
 		$website['id']=$id;
-		$info = object_array(DB::table('questions')->whereId($id)->first());
-		switch($info['type'])
-		{
-			case 1:
-					$website['cursitename']=trans('admin.website_navigation_question_radio');
-			break;
-			case 2:
-					$website['cursitename']=trans('admin.website_navigation_question_multiple_choice');
-			break;
-			case 3:
-					$website['cursitename']=trans('admin.website_navigation_question_judgment');
-			break;
-		}
-		$website['type']=$info['type'];
-		$condition_class['status']=1;
-        $list=object_array(DB::table('classifyquestions')->where($condition_class)->orderBy('id', 'desc')->get());
-		if($list)
-		{
-			$cates=new Cates();
-            $cates->type=2;
-			$cates->opt($list);
-			$classopts = $cates->opt;
-			$classoptsdata = $cates->optdata;
-			$website['classlist']=json_encode($classoptsdata);
-		}
-		else
-		{
-			$classlist[]=array('text'=>trans('admin.website_question_select'),'value'=>'0');
-			$website['classlist']=json_encode($classlist);
-		}
+		$info = object_array(DB::table('questionoptions')->whereId($id)->first());
+		$website['qid']=$info['qid'];
+		$qinfo= object_array(DB::table('questions')->whereId($info['qid'])->first());
+		$website['info']=$qinfo;
 
-		return view('admin/question/add')->with('website',$website);
+		return view('admin/questionoption/add')->with('website',$website);
 	}
     /******************************************
 	****AuThor:rubbish.boy@163.com
@@ -157,30 +86,23 @@ class QuestionController extends PublicController
 	*******************************************/
 	public function api_list(Request $request)  
 	{
-		$type=$request->get('type')?$request->get('type'):1;
-		$condiiton['type']=$type;
+		$qid=$request->get('qid');
+		$condiiton['qid']=$qid;
 		$search_field=$request->get('way')?$request->get('way'):'name';
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Question::where($condiiton)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Questionoption::where($condiiton)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
 			//分页传参数
-			$list->appends(['keyword' => $keyword,'way' =>$search_field,'type'=>$type])->links();
+			$list->appends(['keyword' => $keyword,'way' =>$search_field,'qid'=>$qid])->links();
 		}
 		else
 		{
-			$list=Question::where($condiiton)->paginate($this->pagesize);
-			$list->appends(['type'=>$type])->links();
+			$list=Questionoption::where($condiiton)->paginate($this->pagesize);
+			$list->appends(['qid'=>$qid])->links();
 		}
-
 		if($list)
 		{
-			$classlist=Cache::store('file')->get('classquestion');
-			foreach($list as $key=>$val)
-			{
-				$list[$key]['classname']=$classlist[$val['classid']]['name'];
-			}
-
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_get_success');
 			$msg_array['is_reload']=0;
@@ -208,12 +130,10 @@ class QuestionController extends PublicController
 	public function api_add(Request $request)  
 	{
 
-		$params = new Question;
-		$params->type 		= $request->get('type');
-		$params->classid 	= $request->get('classid');
+		$params = new Questionoption;
+		$params->qid 		= $request->get('qid');
 		$params->title 		= $request->get('title');
-		$params->score 		= $request->get('score');
-		$params->is_answer 	= $request->get('is_answer');
+		$params->is_answer	= $request->get('is_answer');
 		$params->status		= $request->get('status');
 		$params->user_id	= $this->user['id'];
 
@@ -233,7 +153,7 @@ class QuestionController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_add_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\QuestionController@index').'/'.$params->type;
+			$msg_array['curl']=URL::action('Admin\QuestionoptionController@index').'/'.$params->qid;
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -258,9 +178,9 @@ class QuestionController extends PublicController
 	*******************************************/
 	public function api_info(Request $request)  
 	{
-		
+
 		$condition['id']=$request->get('id');
-		$info=DB::table('questions')->where($condition)->first();
+		$info=DB::table('questionoptions')->where($condition)->first();
 		if($info)
 		{
 			$msg_array['status']='1';
@@ -291,10 +211,8 @@ class QuestionController extends PublicController
 	public function api_edit(Request $request)
 	{
 
-		$params = Question::find($request->get('id'));
-		$params->classid 	= $request->get('classid');
+		$params = Questionoption::find($request->get('id'));
 		$params->title 		= $request->get('title');
-		$params->score 		= $request->get('score');
 		$params->is_answer	= $request->get('is_answer');
 		$params->status		= $request->get('status');
 
@@ -314,7 +232,7 @@ class QuestionController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.website_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\QuestionController@index').'/'.$params->type;
+			$msg_array['curl']=URL::action('Admin\QuestionoptionController@index').'/'.$params->qid;
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';

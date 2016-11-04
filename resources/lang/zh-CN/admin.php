@@ -110,6 +110,7 @@ return [
     'website_action_save'                          =>   '保存',
     'website_action_lock'                          =>   '锁开关',
     'website_action_status'                        =>   '状态开关',
+    'website_action_is_answer'                     =>   '答案开关',
     'website_action_delete'                        =>   '删除',
     'website_action_set_permission'                =>   '设置权限',
     'website_action_get_permission'                =>   '获取权限',
@@ -198,6 +199,10 @@ return [
     'website_setting_classifyquestion_thumb_height'=>   '题目分类缩略图高度' ,
     'website_setting_link_thumb_width'             =>   '链接缩略图宽度' ,
     'website_setting_link_thumb_height'            =>   '链接缩略图高度' ,
+    'website_setting_question_thumb_width'         =>   '题目缩略图宽度' ,
+    'website_setting_question_thumb_height'        =>   '题目缩略图高度' ,
+    'website_setting_questionoption_thumb_width'   =>   '题目选项缩略图宽度' ,
+    'website_setting_questionoption_thumb_height'  =>   '题目选项缩略图高度' ,
     'website_setting_user_thumb_width'             =>   '用户头像缩略图宽度' ,
     'website_setting_user_thumb_height'            =>   '用户头像缩略图高度' ,
     'website_setting_wechat_thumb_width'           =>   '微信缩略图宽度' ,
@@ -541,6 +546,26 @@ return [
     'website_question_item_is_answer'                     =>   '是否答案',
     'website_question_item_status'                        =>   '状态',
     'question_failure_tip1'                               =>   '请填写标题',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 题目选项
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_questionoption_action_back'                    =>   '返回题目',
+    'website_questionoption_action_add'                     =>   '添加选项',
+    'website_questionoption_action_edit'                    =>   '编辑选项',
+    'website_questionoption_tip'                            =>   '题目名称',
+    'website_questionoption_item_title'                     =>   '标题',
+    'website_questionoption_item_attachment'                =>   '图片',
+    'website_questionoption_item_is_answer'                 =>   '是否答案',
+    'website_questionoption_item_status'                    =>   '状态',
+    'questionoption_failure_tip1'                           =>   '请填写标题',
+
 
     /*
     |--------------------------------------------------------------------------

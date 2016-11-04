@@ -10,9 +10,12 @@
           <h3 class="box-title">
             <a href="{{$website['link_add']}}" >
             <button type="button" class="btn btn-success pull-left ">
-              <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
+              <i class="fa fa-add"></i>{{trans('admin.website_questionoption_action_add')}} 【{{trans('admin.website_questionoption_tip')}}： {{$website['info']['title']}}】  
             </button>
             </a>
+            <button @click="back_action()" type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
+            <i class="fa fa-add"></i> {{trans('admin.website_questionoption_action_back')}}
+            </button>
           </h3>
 
           @ability('admin', 'search')
@@ -40,43 +43,30 @@
             <thead>
             <tr>
               <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_question_item_classid')}}</th>
-              <th>{{trans('admin.website_question_item_type')}}</th>
-              <th>{{trans('admin.website_question_item_title')}}</th>
-              <th>{{trans('admin.website_question_item_attachment')}}</th>
-              <th>{{trans('admin.website_question_item_score')}}</th>
-              @if ($website['type'] == 3)
-              <th>{{trans('admin.website_question_item_is_answer')}}</th>
-              @endif
-              <th>{{trans('admin.website_question_item_status')}}</th>
+              <th>{{trans('admin.website_questionoption_item_title')}}</th>
+              <th>{{trans('admin.website_questionoption_item_attachment')}}</th>
+              <th>{{trans('admin.website_questionoption_item_is_answer')}}</th>
+              <th>{{trans('admin.website_questionoption_item_status')}}</th>
               <th>{{trans('admin.website_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
-                <td>@{{ item.classname }}</td>
-                <td v-if="item.type == 1"> <i class="fa fa-leaf"></i> {{trans('admin.website_type_question1')}}</td>
-                <td v-if="item.type == 2"> <i class="fa fa-leaf"></i> {{trans('admin.website_type_question2')}}</td>
-                <td v-if="item.type == 3"> <i class="fa fa-leaf"></i> {{trans('admin.website_type_question3')}}</td>
                 <td>@{{ item.title }}</td>
                 <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
-                <td>@{{ item.score }}</td>
-                @if ($website['type'] == 3)
                 <td><i v-if="item.is_answer == 0"  class="fa fa-remove"></i> <i v-if="item.is_answer == 1"  class="fa fa-check"></i></td>
-                @endif
                 <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>
                   <div class="tools">
-                    @if ($website['type'] != 3)
-                    <button type="button" @click="questionoption_action(item.id)" class="btn btn-primary" > <i class="fa fa-stack-overflow"></i> {{trans('admin.website_navigation_question_option')}}</button>
-                    @endif
                     @ability('admin', 'edit')
                     <button type="button" @click="edit_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
                     @endability
                     @ability('admin', 'set_status')
                     <button v-if="item.status == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_status')}}</button>
                     <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_status')}}</button>
+                    <button v-if="item.is_answer == 1"  type="button" @click="get_one_action(item.id,'is_answer')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_is_answer')}}</button>
+                    <button v-else  type="button" @click="get_one_action(item.id,'is_answer')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_is_answer')}}</button>
                     @endability
                     @ability('admin', 'delete')
                     <button type="button" @click="delete_action(item.id)" class="btn btn-danger" > <i class="fa fa-trash"></i> {{trans('admin.website_action_delete')}}</button>
@@ -118,7 +108,7 @@ new Vue({
              apiurl_delete        :'{{$website["apiurl_delete"]}}',
              apiurl_cache         :'{{$website["apiurl_cache"]}}',
              linkurl_edit         :'{{$website["link_edit"]}}', 
-             linkurl_option       :'{{$website["link_option"]}}', 
+             linkurl_back         :'{{$website["link_back"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -130,7 +120,7 @@ new Vue({
              pageparams:           
              {
                     page           :1,
-                    type           :'{{$website["type"]}}',
+                    qid            :'{{$website["qid"]}}',
                     way            :'{{$website["way"]}}',
                     wayoption      :eval(htmlspecialchars_decode('{{$website["wayoption"]}}')),
                     keyword        :'',
@@ -257,9 +247,9 @@ new Vue({
             {
                 window.location.href=this.linkurl_edit+data;
             },
-            questionoption_action:function(data)
+            back_action:function()
             {
-                window.location.href=this.linkurl_option+data;
+                window.location.href=this.linkurl_back;
             },
              //点击删除
             delete_action:function(data)
@@ -355,6 +345,7 @@ new Vue({
                   }
               }
             },
+           
         }            
 })
 

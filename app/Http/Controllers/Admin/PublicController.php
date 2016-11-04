@@ -232,6 +232,9 @@ class PublicController extends Controller
 			case "Link":
 
 			break;
+			case "Question":
+
+			break;
 			case "User":
 
 			break;

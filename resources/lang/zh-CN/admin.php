@@ -65,6 +65,11 @@ return [
     'website_navigation_nine'                      =>   '微信管理',
     'website_navigation_ten'                       =>   '信件管理',
     'website_navigation_question_management'       =>   '题目管理',
+    'website_navigation_question_type'             =>   '题目类型',
+    'website_navigation_question_radio'            =>   '单选题目',
+    'website_navigation_question_multiple_choice'  =>   '多选题目',
+    'website_navigation_question_judgment'         =>   '判断题目',
+    'website_navigation_question_option'           =>   '题目选项',
     'website_navigation_classify'                  =>   '文章分类',
     'website_navigation_classifylink'              =>   '链接分类',
     'website_navigation_classifyquestion'          =>   '题目分类',
@@ -516,6 +521,26 @@ return [
     'classifyquestion_failure_delete'                      =>   '请先删除子类',
     'website_classifyquestion_create_cache'                =>   '生成题目分类缓存',
 
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 题目题库
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'website_question_select'                             =>   '请选择题目分类',
+    'website_type_question1'                              =>   '单选题目',
+    'website_type_question2'                              =>   '多选题目',
+    'website_type_question3'                              =>   '判断题目',
+    'website_question_item_type'                          =>   '类型',
+    'website_question_item_classid'                       =>   '分类',
+    'website_question_item_title'                         =>   '标题',
+    'website_question_item_attachment'                    =>   '图片',
+    'website_question_item_score'                         =>   '分数',
+    'website_question_item_is_answer'                     =>   '是否答案',
+    'website_question_item_status'                        =>   '状态',
+    'question_failure_tip1'                               =>   '请填写标题',
 
     /*
     |--------------------------------------------------------------------------

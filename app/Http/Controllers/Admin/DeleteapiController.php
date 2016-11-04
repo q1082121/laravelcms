@@ -20,6 +20,7 @@ use App\Http\Model\Picture;
 use App\Http\Model\Classifylink;
 use App\Http\Model\Link;
 use App\Http\Model\Classifyquestion;
+use App\Http\Model\Question;
 use App\Http\Model\Log;
 use App\Http\Model\Wechat;
 
@@ -449,6 +450,10 @@ class DeleteapiController extends PublicController
 				break;
 			case 'Product':
 				$params = Product::find($request->get('id'));
+				# code...
+				break;	
+			case 'Question':
+				$params = Question::find($request->get('id'));
 				# code...
 				break;	
 			case 'Picture':

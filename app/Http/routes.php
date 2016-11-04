@@ -284,7 +284,40 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 				[
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'ClassifyquestionController@edit'
-    			])->name('get.admin.classifyquestion.edit');		    	
+    			])->name('get.admin.classifyquestion.edit');	
+	//题目类型		
+	Route::get('question/{type?}', 
+				[
+			        'middleware' => ['ability:admin,model_question'], 
+			        'uses' => 'QuestionController@index'
+    			])->name('get.admin.question');
+	Route::get('question/add/{type?}', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'QuestionController@add'
+    			])->name('get.admin.question.add');
+	Route::get('question/edit/{id?}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'QuestionController@edit'
+    			])->name('get.admin.question.edit');
+	//题目选项		
+	Route::get('questionoption/{id?}', 
+				[
+			        'middleware' => ['ability:admin,model_questionoption'], 
+			        'uses' => 'QuestionoptionController@index'
+    			])->name('get.admin.questionoption');
+	Route::get('questionoption/add/{id?}', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'QuestionoptionController@add'
+    			])->name('get.admin.questionoption.add');
+	Route::get('questionoption/edit/{id?}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'QuestionoptionController@edit'
+    			])->name('get.admin.questionoption.edit');		    
+
 	//日志管理		
 	Route::get('log', 
 				[
@@ -419,6 +452,16 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('classifyquestion/api_add', 'ClassifyquestionController@api_add')->name('post.admin.classifyquestion.api_add');
 	Route::post('classifyquestion/api_info', 'ClassifyquestionController@api_info')->name('post.admin.classifyquestion.api_info');
 	Route::post('classifyquestion/api_edit', 'ClassifyquestionController@api_edit')->name('post.admin.classifyquestion.api_edit');
+
+	Route::post('question/api_list', 'QuestionController@api_list')->name('post.admin.question.api_list');
+	Route::post('question/api_add', 'QuestionController@api_add')->name('post.admin.question.api_add');
+	Route::post('question/api_info', 'QuestionController@api_info')->name('post.admin.question.api_info');
+	Route::post('question/api_edit', 'QuestionController@api_edit')->name('post.admin.question.api_edit');
+
+	Route::post('questionoption/api_list', 'QuestionoptionController@api_list')->name('post.admin.questionoption.api_list');
+	Route::post('questionoption/api_add', 'QuestionoptionController@api_add')->name('post.admin.questionoption.api_add');
+	Route::post('questionoption/api_info', 'QuestionoptionController@api_info')->name('post.admin.questionoption.api_info');
+	Route::post('questionoption/api_edit', 'QuestionoptionController@api_edit')->name('post.admin.questionoption.api_edit');
 
 	Route::post('letter/api_list', 'LetterController@api_list')->name('post.admin.letter.api_list');
 	Route::post('letter/api_add', 'LetterController@api_add')->name('post.admin.letter.api_add');

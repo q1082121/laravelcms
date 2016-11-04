@@ -42,6 +42,7 @@ class CacheapiController extends PublicController
                             }
 		                    Cache::store('file')->forever('class', $getdata);
                             $info=trans('admin.website_create_success');
+            break;                
             case 'Navigation':
                             $getdata="";
                             $list=object_array(DB::table('navigations')->orderBy('id', 'asc')->get());
@@ -53,7 +54,8 @@ class CacheapiController extends PublicController
                                 }
                             }
 		                    Cache::store('file')->forever('navigation', $getdata);
-                            $info=trans('admin.website_create_success');                
+                            $info=trans('admin.website_create_success'); 
+            break;                               
             case 'Classifylink':
                             $getdata="";
                             $list=object_array(DB::table('classifylinks')->orderBy('id', 'asc')->get());

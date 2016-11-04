@@ -65,11 +65,23 @@
     </a>
     <ul class="treeview-menu">
       <li><a href="{{ route('get.admin.classifyquestion') }}"><i class="fa fa-reorder"></i> {{trans('admin.website_navigation_classifyquestion')}}</a></li>
+      <li class="active">
+          <a href="javascript:void(0);"><i class="fa fa-check-square-o"></i> {{trans('admin.website_navigation_question_type')}}
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu menu-open" style="display: block;">
+            <li><a href="{{ route('get.admin.question') }}/1"><i class="fa fa-circle-o"></i> {{trans('admin.website_navigation_question_radio')}}</a></li>
+            <li><a href="{{ route('get.admin.question') }}/2"><i class="fa fa-circle-o"></i> {{trans('admin.website_navigation_question_multiple_choice')}}</a></li>
+            <li><a href="{{ route('get.admin.question') }}/3"><i class="fa fa-circle-o"></i> {{trans('admin.website_navigation_question_judgment')}}</a></li>
+          </ul>
+        </li>
     </ul>
   </li>
   <li class="header">{{trans('admin.website_main_navigation_two')}}</li>
   <li class="treeview">
-    <a href="">
+    <a href="javascript:void(0);">
       <i class="fa fa-users"></i> <span>{{trans('admin.website_navigation_usergroup')}}</span>
       <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>

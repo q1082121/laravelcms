@@ -169,8 +169,29 @@ class LoginController extends Controller
                 /*******************
                  +          】      
                 ********************/
+                $roleinfo=object_array(DB::table('role_user')->where('user_id',$user->id)->first());
+                switch(@$roleinfo['role_id'])
+                {
+                    case 1:
+                            $linkurl=route('get.admin');
+                    break;
+                    case 2:
+                            $linkurl=route('get.admin');
+                    break;
+                    case 3:
+                            $linkurl='/';
+                    break;
+                    case 4:
+                            $linkurl='/';
+                    break;
+                    
+                    default:
+                            $linkurl='/';
+                    break;
+                }
+
                 $msg_array['data']['is_reload']=0;
-                $msg_array['data']['curl']=route('get.admin');
+                $msg_array['data']['curl']=$linkurl;
                 $msg_array['info']=$success_msg;
                 $json_message=json_message(1,$msg_array['data'],$msg_array['info']);
                 return $json_message;

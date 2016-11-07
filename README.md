@@ -59,6 +59,7 @@ QQ	:471416739
 		5 php artisan db:seed --class=DistrictSeeder	 数据较大
 		
 7. 开始体验
+	DEMO http://www.demo.dc918.com
 	
 #	开发进展
 

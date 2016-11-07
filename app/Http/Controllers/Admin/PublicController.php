@@ -45,19 +45,26 @@ class PublicController extends Controller
 	{
 		/*
 	    |--------------------------------------------------------------------------
-	    | 默认消息 - 后台全局设置
+	    | 默认消息 - 后台通用参数设置
 	    |--------------------------------------------------------------------------
 	    |
 	    */
-		//后台通用参数设置
 		$root=Cache::store('file')->get('root');
 		$root['syseditor']=@$root['syseditor']?@$root['syseditor']:"Markdown";
 		$root['systitle']=@$root['systitle']?@$root['systitle']:"LaravelCms";
 		$root['syskeywords']=@$root['syskeywords']?@$root['syskeywords']:"";
 		$root['sysdescription']=@$root['sysdescription']?@$root['sysdescription']:"";
+		$this->website['website_seo_title']=(@$root['systitle']?@$root['systitle']:trans('admin.website_name'));
+		$this->website['website_seo_keywords']=@$root['syskeywords'];
+		$this->website['website_seo_description']=@$root['sysdescription'];
 		$this->website['root']=$this->root=@$root;
 		$setting=Cache::store('file')->get('setting');
-
+		/*
+	    |--------------------------------------------------------------------------
+	    | 默认消息 - 界面设置参数
+	    |--------------------------------------------------------------------------
+	    |
+	    */
 		$settingdata['layout_fixed']=0;
 		$settingdata['layout_boxed']=0;
 		$settingdata['layout_sidebar_collapse']=0;
@@ -76,21 +83,21 @@ class PublicController extends Controller
 		$settingdata['skin_green_light']=0;
 		$settingdata['skin_red_light']=0;
 		$settingdata['skin_yellow_light']=0;
-
 		$this->website['setting']=$setting?$setting:$settingdata;
-
-		$this->website['website_seo_title']=(@$root['systitle']?@$root['systitle']:trans('admin.website_name'));
-		$this->website['website_seo_keywords']=@$root['syskeywords'];
-		$this->website['website_seo_description']=@$root['sysdescription'];
 		$this->website['apiurl_setting']=URL::action('Admin\HomeController@api_setting');
-
+		/*
+	    |--------------------------------------------------------------------------
+	    | 默认消息 - 定义数据
+	    |--------------------------------------------------------------------------
+	    |
+	    */
 		//常量定义
 		$this->pagesize=$pagesize=env('APP_ADMIN_PAGE_SIZE', 20);					//分页
 		$this->is_watermark=$is_watermark=env('APP_IS_WATERMARK', 1);				//是否水印
 		$this->is_thumb=$is_thumb=env('APP_IS_THUMB', 1);							//是否缩略图
 		$this->thumb_width=$thumb_width=env('APP_THUMB_WIDTH', 200);				//缩略图宽度
 		$this->thumb_height=$thumb_height=env('APP_THUMB_HEIGHT', 200);				//缩略图高度
-		
+
 		//默认广告图片模块
 		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture1'),'value'=>1);
 		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture2'),'value'=>2);

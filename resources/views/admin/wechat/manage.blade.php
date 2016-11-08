@@ -17,7 +17,7 @@
                   <div class="info-box-content">
                       <h5 style="margin-top:5px;margin-bottom:5px;font-size:18px;">公众号名称 : {{$website['info']['name']}}</h5>
                       <h5 style="margin-top:5px;margin-bottom:5px;">TOKEN : {{$website['info']['token']}}</h5>
-                      <h5 style="margin-top:5px;margin-bottom:5px;">URL : {{asset('/')}}wechat/api/{{$website['info']['gid']}}.html</h5>
+                      <h5 style="margin-top:5px;margin-bottom:5px;">URL : {{asset('/')}}wechat/api/{{$website['info']['id']}}.html</h5>
                   </div>
                   <!-- /.info-box-content -->
                 </div>
@@ -40,7 +40,7 @@
           </div>
           <div class="box box-solid">
 
-            <a href="javascript:void(0);" class="c_black">
+            <a href="{{$website['link_subscribe']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
@@ -54,7 +54,7 @@
               </div>
             </a>
 
-            <a href="javascript:void(0);" class="c_black">
+            <a href="{{$website['link_default']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-delicious"></i></span>
@@ -68,7 +68,7 @@
               </div>
             </a>
 
-            <a href="javascript:void(0);" class="c_black">
+            <a href="{{$website['link_text']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-instagram"></i></span>
@@ -82,7 +82,7 @@
               </div>
             </a>
 
-            <a href="javascript:void(0);" class="c_black">
+            <a href="{{$website['link_imagetext']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-file-image-o"></i></span>
@@ -96,7 +96,7 @@
               </div>
             </a>
 
-            <a href="javascript:void(0);" class="c_black">
+            <a href="{{$website['link_menu']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-list"></i></span>
@@ -110,7 +110,7 @@
               </div>
             </a>
 
-            <a href="javascript:void(0);" class="c_black">
+            <a href="{{$website['link_user']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-users"></i></span>

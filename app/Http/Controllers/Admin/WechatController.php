@@ -79,8 +79,16 @@ class WechatController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_nine');
+		$website['link_subscribe']=route('get.admin.wechat.subscribe').'/'.$id;
+		$website['link_default']=route('get.admin.wechat.default').'/'.$id;
+		$website['link_text']=route('get.admin.wechat.text').'/'.$id;
+		$website['link_imagetext']=route('get.admin.wechat.imagetext').'/'.$id;
+		$website['link_menu']=route('get.admin.wechat.menu').'/'.$id;
+		$website['link_user']=route('get.admin.wechat.user').'/'.$id;
+
 		$info = object_array(DB::table('wechats')->whereId($id)->first());
 		$website['info']=$info;
+		$website['id']=$id;
 		return view('admin/wechat/manage')->with('website',$website);
 	}
     /******************************************

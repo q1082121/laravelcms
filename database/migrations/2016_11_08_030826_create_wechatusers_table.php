@@ -14,7 +14,6 @@ class CreateWechatusersTable extends Migration
     {
         Schema::create('wechatusers', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('gid',50);		                    //原始ID
 			$table->string('openid',50);	                    //用户的唯一标识
             $table->string('nickname',50)->nullable();	        //昵称
             $table->string('nickname_encode',50)->nullable();	//昵称加密
@@ -26,6 +25,7 @@ class CreateWechatusersTable extends Migration
             $table->text('headimgurl')->nullable();             //头像
 			$table->integer('score')->default(0);		        //积分
 			$table->DECIMAL('money',8,2);				        //钱包
+            $table->integer('wechat_id')->default(0);		    //平台公众号ID
             $table->tinyInteger('status')->default(0);		    //状态	
 			$table->timestamps();
 		});

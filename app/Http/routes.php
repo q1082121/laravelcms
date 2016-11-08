@@ -68,7 +68,7 @@ Route::group(['middleware' => ['cors']], function() {
 ****@Title :微信相关业务逻辑
 *******************************************/
 Route::group(['namespace' => 'Wechat','prefix' => 'wechat'], function() {  
-	Route::any('api/{gid?}', 'ApiController@index')->name('wechat.api');
+	Route::any('api/{id?}', 'ApiController@index')->name('wechat.api');
 });
 
 
@@ -367,16 +367,46 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,add'], 
 			        'uses' => 'WechatController@add'
     			])->name('get.admin.wechat.add');
-	Route::get('wechat/manage/{id?}', 
-				[
-			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@manage'
-    			])->name('get.admin.wechat.manage');		    
 	Route::get('wechat/edit/{id?}', 
 				[
 			        'middleware' => ['ability:admin,edit'], 
 			        'uses' => 'WechatController@edit'
     			])->name('get.admin.wechat.edit');
+	Route::get('wechat/manage/{id?}', 
+				[
+			        'middleware' => ['ability:admin,model_wechat'], 
+			        'uses' => 'WechatController@manage'
+    			])->name('get.admin.wechat.manage');
+	Route::get('wechat/subscribe/{id?}', 
+				[
+			        'middleware' => ['ability:admin,model_wechat'], 
+			        'uses' => 'WechatController@subscribe'
+    			])->name('get.admin.wechat.subscribe');
+	Route::get('wechat/default/{id?}', 
+				[
+			        'middleware' => ['ability:admin,model_wechat'], 
+			        'uses' => 'WechatController@default'
+    			])->name('get.admin.wechat.default');		    		    
+	Route::get('wechat/text/{id?}', 
+				[
+			        'middleware' => ['ability:admin,model_wechat'], 
+			        'uses' => 'WechatController@text'
+    			])->name('get.admin.wechat.text');	
+	Route::get('wechat/imagetext/{id?}', 
+				[
+			        'middleware' => ['ability:admin,model_wechat'], 
+			        'uses' => 'WechatController@imagetext'
+    			])->name('get.admin.wechat.imagetext');	
+	Route::get('wechat/menu/{id?}', 
+				[
+			        'middleware' => ['ability:admin,model_wechat'], 
+			        'uses' => 'WechatController@menu'
+    			])->name('get.admin.wechat.menu');
+	Route::get('wechat/user/{id?}', 
+				[
+			        'middleware' => ['ability:admin,model_wechat'], 
+			        'uses' => 'WechatController@user'
+    			])->name('get.admin.wechat.user');		    		    		    			    
 	/*
 	 ***********************************************************************
 	 *	   post 路由

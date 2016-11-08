@@ -12,10 +12,12 @@ use Cache;
 use Log;
 use EasyWeChat\Foundation\Application;
 use App\Http\Model\Wechatuser;
+use App\Http\Model\Wechat;
 class ApiController extends PublicController
 {
 	public $options;
 	public $gid;
+	public $openid;
 	public $mp;
 	public function __construct()
 	{
@@ -27,8 +29,8 @@ class ApiController extends PublicController
 	*******************************************/
 	public function index(Request $request)  
 	{
-		$this->gid=filter_suffixes($request->route('gid'));
-		$condition['gid']=$this->gid;
+		$id=filter_suffixes($request->route('id'));
+		$condition['id']=$id;
 		$condition['status']=1;
 		$this->mp=object_array(DB::table('wechats')->where($condition)->first());
 		if($this->mp)
@@ -104,11 +106,11 @@ class ApiController extends PublicController
 			$server = $app->server;
 			$server->setMessageHandler(function($message)
 			{
-				$gid=$message->ToUserName;
-				$openid=$message->FromUserName;
+				$this->gid=$gid=$message->ToUserName;
+				$this->openid=$openid=$message->FromUserName;
 
-				$condition_wechatuser['gid']=$gid;
-				$condition_wechatuser['openid']=$openid;
+				$condition_wechatuser['wechat_id']=$this->mp['id'];
+				$condition_wechatuser['openid']=$this->openid;
 
 				// 注意，这里的 $message 不仅仅是用户发来的消息，也可能是事件
 				// 当 $message->MsgType 为 event 时为事件
@@ -120,8 +122,8 @@ class ApiController extends PublicController
 							if(empty($result))
 							{
 								$params = new Wechatuser;
-								$params->gid 		= $gid;
-								$params->openid 	= $openid;
+								$params->wechat_id 	= $this->mp['id'];
+								$params->openid 	= $this->openid;
 								$params->status 	= 1;
 								$params->save();
 							}
@@ -243,5 +245,13 @@ class ApiController extends PublicController
 
 
 		}
+	}
+	/******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :获取公众号信息
+	*******************************************/
+	public function get_mp($id)
+	{
+		
 	}
 }

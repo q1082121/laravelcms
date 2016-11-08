@@ -36,6 +36,8 @@ class CreateWechatsTable extends Migration
             $table->string('temp_id3',50)->nullable();			//消息模版ID三
             $table->string('temp_name4',50)->nullable();		//消息模版名称四
             $table->string('temp_id4',50)->nullable();			//消息模版ID四
+            $table->text('subscribe_content_text')->nullable();	//关注回复文本
+            $table->string('subscribe_content_keyword',100)->nullable();//关注回复关键词
 			$table->tinyInteger('status')->default(0);	//状态
 			$table->integer('user_id');					
 			$table->timestamps();

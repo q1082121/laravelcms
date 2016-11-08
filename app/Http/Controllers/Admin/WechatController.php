@@ -27,6 +27,7 @@ class WechatController extends PublicController
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['link_add']=URL::action('Admin\WechatController@add');
 		$website['link_edit']=route('get.admin.wechat.edit').'/';
+		$website['link_manage']=route('get.admin.wechat.manage').'/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.website_wechat_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
@@ -68,6 +69,19 @@ class WechatController extends PublicController
 		$website['modellist']=json_encode($this->wechat_modellist);
 
 		return view('admin/wechat/add')->with('website',$website);
+	}
+	/******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :管理中心
+	*******************************************/
+	public function manage($id)  
+	{
+		$website=$this->website;
+        $website['modelname']=getCurrentControllerName();
+		$website['cursitename']=trans('admin.website_navigation_nine');
+		$info = object_array(DB::table('wechats')->whereId($id)->first());
+		$website['info']=$info;
+		return view('admin/wechat/manage')->with('website',$website);
 	}
     /******************************************
 	****AuThor:rubbish.boy@163.com

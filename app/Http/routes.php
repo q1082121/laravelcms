@@ -367,6 +367,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,add'], 
 			        'uses' => 'WechatController@add'
     			])->name('get.admin.wechat.add');
+	Route::get('wechat/manage/{id?}', 
+				[
+			        'middleware' => ['ability:admin,model_wechat'], 
+			        'uses' => 'WechatController@manage'
+    			])->name('get.admin.wechat.manage');		    
 	Route::get('wechat/edit/{id?}', 
 				[
 			        'middleware' => ['ability:admin,edit'], 

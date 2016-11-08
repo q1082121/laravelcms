@@ -71,8 +71,7 @@
                     <button v-if="item.status == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_status')}}</button>
                     <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_status')}}</button>
                     @endability
-                    <button type="button"  class="btn btn-success" > <i class="fa fa-plug"></i> {{trans('admin.website_wechat_action_api')}}</button>
-                    <button type="button"  class="btn btn-danger" > <i class="fa fa-certificate"></i> {{trans('admin.website_wechat_action_manage')}}</button>
+                    <button type="button" @click="link_manage_action(item.id)"  class="btn btn-danger" > <i class="fa fa-certificate"></i> {{trans('admin.website_wechat_action_manage')}}</button>
                   </div>
                 </td>
               </tr>
@@ -108,6 +107,7 @@ new Vue({
              apiurl_list          :'{{$website["apiurl_list"]}}',
              apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
              linkurl_edit         :'{{$website["link_edit"]}}', 
+             linkurl_manage       :'{{$website["link_manage"]}}', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -365,6 +365,10 @@ new Vue({
                 var msg="{{trans('admin.website_outtime_error')}}";
                 layermsg_error(msg);
               })
+            },
+            link_manage_action:function(id)
+            {
+                window.location.href=this.linkurl_manage+id;
             }
         }            
 })

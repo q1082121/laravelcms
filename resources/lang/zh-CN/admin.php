@@ -616,7 +616,6 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_wechat_action_api'                         =>   '对接接口',
     'website_wechat_action_manage'                      =>   '管理中心',
     'website_model_wechat1'                             =>   '订阅号',
     'website_model_wechat2'                             =>   '认证订阅号',
@@ -650,4 +649,20 @@ return [
     'website_wechat_tip_pay'                            =>   '【微信支付配置】',
     'website_wechat_tip_msg'                            =>   '【微信消息模版配置】',
     
+    'website_wechat_setting_api'                        =>   '微信配置接参数',
+    'website_wechat_model_base'                         =>   '微信基本功能模块',
+    'website_wechat_model_base_subscribe_reply'         =>   '关注回复信息',
+    'website_wechat_model_base_subscribe_tip'           =>   '文本 关键词',
+    'website_wechat_model_base_default_reply'           =>   '默认回复信息',
+    'website_wechat_model_base_default_tip'             =>   '文本 关键词 图片 音频 视频',
+    'website_wechat_model_base_text'                    =>   '文本回复',
+    'website_wechat_model_base_text_tip'                =>   '关键词触发回复文本信息',
+    'website_wechat_model_base_imagetext'               =>   '图文回复',
+    'website_wechat_model_base_imagetext_tip'           =>   '关键词触发回复图文信息',
+    'website_wechat_model_base_menu'                    =>   '微信自定义菜单',
+    'website_wechat_model_base_menu_tip'                =>   '微信底部导航栏',
+    'website_wechat_model_base_user'                    =>   '微信会员',
+    'website_wechat_model_base_user_tip'                =>   '微信获取粉丝信息数据',
+    'website_wechat_model_active'                       =>   '微信活动功能模块',
+
 ];

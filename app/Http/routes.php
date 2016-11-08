@@ -63,7 +63,13 @@ Route::group(['middleware' => ['cors']], function() {
 });
 
 
-
+/******************************************
+****@AuThor:rubbish.boy@163.com
+****@Title :微信相关业务逻辑
+*******************************************/
+Route::group(['namespace' => 'Wechat','prefix' => 'wechat'], function() {  
+	Route::any('api/{gid?}', 'ApiController@index')->name('wechat.api');
+});
 
 
 /******************************************

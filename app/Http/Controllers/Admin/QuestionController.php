@@ -47,13 +47,6 @@ class QuestionController extends PublicController
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.website_question_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
-
-		$subcondition['qid']=3;
-		$subinfo=object_array(DB::table('questionoptions')->where($subcondition)->pluck('id'));
-		if($subinfo)
-		{
-			dump($subinfo);
-		}
 		
 
 		return view('admin/question/index')->with('website',$website);

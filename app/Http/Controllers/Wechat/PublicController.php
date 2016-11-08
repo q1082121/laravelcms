@@ -17,7 +17,6 @@ use Carbon;
 use URL;
 // 导入 Intervention Image Manager Class
 use Intervention\Image\ImageManagerStatic as Image;
-
 class PublicController extends Controller
 {
 	protected $website;
@@ -43,15 +42,6 @@ class PublicController extends Controller
 		$this->website['website_seo_keywords']=@$root['syskeywords'];
 		$this->website['website_seo_description']=@$root['sysdescription'];
 		$this->website['root']=$this->root=@$root;
-
-		//默认微信公众号类型
-		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat1'),'value'=>1);
-		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat2'),'value'=>2);
-		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat3'),'value'=>3);
-		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat4'),'value'=>4);
-		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat5'),'value'=>5);
-		
-		require base_path('vendor').'/autoload.php';
 	}
 	
 }

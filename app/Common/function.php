@@ -211,5 +211,38 @@ function in_wechat_keyword($data)
 	$subparams->wechat_id 			= $data['wechat_id'];
     return $subparams->save();
 }
+/***********************************
+ * 方法名：微信关键词检索
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function search_keyword($keyword,$wechat_id,$limit=9)
+{
+	//检索图片类型
+	$condition['type']="imagetext";
+	$condition['wechat_id']=$wechat_id;
+	$datas=object_array(DB::table('wechatkeywords')->where($condition)->where("field_keyword", 'like', '%'.$keyword.'%')->take($limit)->get());
+	if($datas)
+	{
+
+	}
+	else
+	{
+		//检索文本类型
+		$condition['type']="text";
+		$condition['wechat_id']=$wechat_id;
+		$condition['field_keyword']=$keyword;
+		$datas=object_array(DB::table('wechatkeywords')->where($condition)->first());
+		if($datas)
+		{
+
+		}
+		else
+		{
+			//获取默认回复
+		}
+	}
+	return $datas;
+}
+
 
 ?>

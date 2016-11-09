@@ -11,6 +11,11 @@ use DB;
 use Cache;
 use Log;
 use EasyWeChat\Foundation\Application;
+use EasyWeChat\Message\Text;
+use EasyWeChat\Message\Image;
+use EasyWeChat\Message\News;
+use EasyWeChat\Message\Article;
+
 use App\Http\Model\Wechatuser;
 use App\Http\Model\Wechat;
 class ApiController extends PublicController
@@ -135,7 +140,7 @@ class ApiController extends PublicController
 							}
 							if($this->mp['subscribe_keyword'])
 							{
-								
+
 							}
 							else if($this->mp['subscribe_text'])
 							{
@@ -228,6 +233,8 @@ class ApiController extends PublicController
 					switch ($message->MsgType)
 					{
 						case 'text':
+							$keyword=$message->Content;
+
 							# 文字消息...
 							break;
 						case 'image':

@@ -92,6 +92,10 @@ class WechatController extends PublicController
 		$info = object_array(DB::table('wechats')->whereId($id)->first());
 		$website['info']=$info;
 		$website['id']=$id;
+
+		$data=search_keyword('一键拨号',1);
+		//dump($data);
+
 		return view('admin/wechat/manage')->with('website',$website);
 	}
     /******************************************

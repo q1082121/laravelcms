@@ -133,7 +133,19 @@ class ApiController extends PublicController
 								$params->status=1;
 								$params->save();
 							}
-							return "您好！欢迎关注我,么么哒!";
+							if($this->mp['subscribe_keyword'])
+							{
+								
+							}
+							else if($this->mp['subscribe_text'])
+							{
+								$reply=$this->mp['subscribe_text'];
+							}
+							else
+							{
+								$reply="您好！欢迎关注我,么么哒!";
+							}
+							return $reply;
 							# 订阅
 							break;
 						case 'unsubscribe':

@@ -27,43 +27,6 @@ function isfun($funName)
 	return (false !== function_exists($funName))?'YES':'NO';
 }
 /***********************************
- * 方法名：查找字符串中是否存在某字符
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月11日
- ***********************************/
-function check_string_sub($string,$sub,$type=1)
-{
-	$rule=0;
-	$returntext="";
-	if(!empty($sub))
-	{
-		$strarray=explode(',',$string);
-		if(is_array($strarray))
-		{
-			foreach($strarray as $key=>$val)
-			{
-				if($val==$sub)
-				{
-					$rule=1;
-				}
-			}
-		} 
-		if($rule==1)
-		{
-			switch($type)
-			{
-				case 1:
-						$returntext="checked";
-						break;	
-				case 2:
-						$returntext=true;
-						break;			
-			}
-		}
-	}	
-	return $returntext;
-}
-/***********************************
  * 方法名：layer 封装提示跳转
  * 作者： Tommy（rubbish.boy@163.com）
  ***********************************/
@@ -99,7 +62,6 @@ function json_message($act=0,$data=null,$info=null)
 	}
 	return json_encode($message);
 }
-
 /***********************************
  * 方法名：Curl 请求
  * 作者： Tommy（rubbish.boy@163.com）
@@ -130,21 +92,6 @@ function http_curl_request($url,$data=null,$isjson=0)
 	   return $info;
 }
 /***********************************
- * 方法名：判断IE浏览器
- * 作者： Tommy（rubbish.boy@163.com）
- ***********************************/
-function is_ie()
-{
-	if(strpos($_SERVER["HTTP_USER_AGENT"],'MSIE'))
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-}
-/***********************************
  * 方法名：判断访问终端是否手机
  * 作者： Tommy（rubbish.boy@163.com）
  ***********************************/ 
@@ -164,24 +111,6 @@ function is_mobile_request()
 	    		                        if($mobile_browser>0)     return true;
 	    		                            else   return false;
 }
-
-/*******************************************
-移动：134、135、136、137、138、139、150、151、152、157、158、159、182、183、184、187、188、178(4G)、147(上网卡)；
-联通：130、131、132、155、156、185、186、176(4G)、145(上网卡)；
-电信：133、153、180、181、189 、177(4G)；
-卫星通信：1349
-虚拟运营商：170
-*验证手机号码有效性
-*/
-function isMobile($mobile) 
-{
-    if (!is_numeric($mobile)) 
-    {
-        return false;
-    }
-    return preg_match('#^13[\d]{9}$|^14[5,7]{1}\d{8}$|^15[^4]{1}\d{8}$|^17[0,6,7,8]{1}\d{8}$|^18[\d]{9}$#', $mobile) ? true : false;
-}
-
 /***********************************
  * 方法名：日志记录
  * 作者： Tommy（rubbish.boy@163.com）

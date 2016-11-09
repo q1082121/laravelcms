@@ -1,4 +1,8 @@
 <?php
+/****************************************************************************************************
+****AuThor:rubbish.boy@163.com
+****Title :功能类型
+*****************************************************************************************************/
 /***********************************
  * 方法名：获取站内信息相关函数
  * 作者： Tommy（rubbish.boy@163.com）
@@ -33,34 +37,6 @@ function isfun($funName)
 function alert($url,$info)
 {
 	echo  '<script language="javascript" type="text/javascript"> alert("'.$info.'");window.location.href="'.$url.'";</script>';
-}
-/***********************************
- * 方法名：Json消息返回封装函数
- * 作者： Tommy（rubbish.boy@163.com）
- ***********************************/
-function json_message($act=0,$data=null,$info=null)
-{
-	switch($act)
-	{
-		case 1:
-				$message['data']=$data;
-				$message['code']=666;
-				$message['info']=$info!=null?$info:'操作成功';
-				$message['success']=1;
-				break;
-		case 2:
-				$message['data']=$data;
-				$message['code']=110;
-				$message['info']=$info!=null?$info:'无效的参数';
-				$message['success']=0;
-				break;
-		default:
-				$message['data']=$data;
-				$message['code']=404;
-				$message['info']=$info!=null?$info:'未接受到数据';
-				$message['success']=0;
-	}
-	return json_encode($message);
 }
 /***********************************
  * 方法名：Curl 请求
@@ -110,37 +86,6 @@ function is_mobile_request()
 	    		                    if(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows phone') !== false)     $mobile_browser++;
 	    		                        if($mobile_browser>0)     return true;
 	    		                            else   return false;
-}
-/***********************************
- * 方法名：日志记录
- * 作者： Tommy（rubbish.boy@163.com）
- + type 1 => 登录日志
- ***********************************/ 
-function in_log($data)
-{
-
-    $log = new App\Http\Model\Log;
-    $log->type = $data['type'];
-    $log->user_id = $data['user_id'];
-    $log->name = $data['name'];
-    $log->info = $data['info'];
-    $log->ip = $data['ip'];
-    $log->save();
-}
-/***********************************
- * 方法名：微信关键词记录
- * 作者： Tommy（rubbish.boy@163.com）
- ***********************************/ 
-function in_wechat_keyword($data)
-{
-
-    $subparams = new App\Http\Model\Wechatkeyword;
-    $subparams->type  				= $data['type'];
-	$subparams->tablename			= $data['tablename'];
-	$subparams->field_id			= $data['field_id'];
-	$subparams->field_keyword 		= $data['field_keyword'];
-	$subparams->wechat_id 			= $data['wechat_id'];
-    return $subparams->save();
 }
 /***********************************
  * 方法名：PHP stdClass Object转array
@@ -201,5 +146,70 @@ function getCurrentAction()
     list($class, $method) = explode('@', $action);  
     return ['controller' => $class, 'method' => $method];  
 } 
+
+/****************************************************************************************************
+****AuThor:rubbish.boy@163.com
+****Title :业务逻辑
+*****************************************************************************************************/
+/***********************************
+ * 方法名：Json消息返回封装函数
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function json_message($act=0,$data=null,$info=null)
+{
+	switch($act)
+	{
+		case 1:
+				$message['data']=$data;
+				$message['code']=666;
+				$message['info']=$info!=null?$info:'操作成功';
+				$message['success']=1;
+				break;
+		case 2:
+				$message['data']=$data;
+				$message['code']=110;
+				$message['info']=$info!=null?$info:'无效的参数';
+				$message['success']=0;
+				break;
+		default:
+				$message['data']=$data;
+				$message['code']=404;
+				$message['info']=$info!=null?$info:'未接受到数据';
+				$message['success']=0;
+	}
+	return json_encode($message);
+}
+
+/***********************************
+ * 方法名：日志记录
+ * 作者： Tommy（rubbish.boy@163.com）
+ + type 1 => 登录日志
+ ***********************************/ 
+function in_log($data)
+{
+
+    $log = new App\Http\Model\Log;
+    $log->type = $data['type'];
+    $log->user_id = $data['user_id'];
+    $log->name = $data['name'];
+    $log->info = $data['info'];
+    $log->ip = $data['ip'];
+    $log->save();
+}
+/***********************************
+ * 方法名：微信关键词记录
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function in_wechat_keyword($data)
+{
+
+    $subparams = new App\Http\Model\Wechatkeyword;
+    $subparams->type  				= $data['type'];
+	$subparams->tablename			= $data['tablename'];
+	$subparams->field_id			= $data['field_id'];
+	$subparams->field_keyword 		= $data['field_keyword'];
+	$subparams->wechat_id 			= $data['wechat_id'];
+    return $subparams->save();
+}
 
 ?>

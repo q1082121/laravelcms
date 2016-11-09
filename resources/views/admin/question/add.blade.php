@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_question_item_classid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_question_item_classid')}}</span>
                 <select class="form-control"  v-model="params_data.classid" >
                   <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_question_item_title')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_question_item_title')}}</span>
                 <input type="text" class="form-control" v-model="params_data.title"   >
               </div>
             </div>
@@ -80,7 +80,7 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_question_item_score')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_question_item_score')}}</span>
                 <input type="text" class="form-control" v-model="params_data.score"   >
               </div>
             </div>

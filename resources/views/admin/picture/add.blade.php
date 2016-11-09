@@ -14,7 +14,7 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_picture_item_modelid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_picture_item_modelid')}}</span>
                 <select class="form-control" v-model="params_data.modelid">
                   <option v-for="item in modellist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_picture_item_title')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_picture_item_title')}}</span>
                 <input type="text" class="form-control" v-model="params_data.title"   >
               </div>
             </div>
@@ -73,13 +73,13 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_picture_item_orderid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_picture_item_orderid')}}</span>
                 <input type="text" class="form-control" v-model="params_data.orderid"   >
               </div>  
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_picture_item_linkurl')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_picture_item_linkurl')}}</span>
                 <input type="text" class="form-control" v-model="params_data.linkurl"   >
               </div>
             </div>

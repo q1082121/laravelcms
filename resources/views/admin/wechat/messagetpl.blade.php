@@ -10,31 +10,65 @@
           <h3 class="box-title"> 【 @{{cur_title}} 】 </h3>
         </div>
         <!-- /.box-header -->
-
           <div class="box-body">
             <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_openid_items')}}</span>
+                  <textarea  class="form-control" rows="3" v-model="params_data.openid_items" > </textarea>
+                </div>
+            </div>
+            <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_userrole_item_name')}}</span>
-                <input type="text" id="name" class="form-control" v-model="params_data.name"  placeholder="{{trans('admin.website_demo_tip')}}：admin "  >
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_name1')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_name1"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_userrole_item_display_name')}}</span>
-                <input type="text" class="form-control" v-model="params_data.display_name"  placeholder="{{trans('admin.website_demo_tip')}}：管理员" >
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_id1')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_id1"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_userrole_item_description')}}</span>
-                <input type="text" class="form-control" v-model="params_data.description"  placeholder="{{trans('admin.website_demo_tip')}}：管理员会员组拥有全部权限" >
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_name2')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_name2"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_id2')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_id2"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_name3')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_name3"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_id3')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_id3"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_name4')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_name4"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_id4')}}</span>
+                <input type="text" class="form-control" v-model="params_data.temp_id4"   >
               </div>
             </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button v-if="params_data.id == 0" type="button" @click="add_action()" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
-            <button v-else type="button" @click="post_edit_action()" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
+            <button type="button" @click="check_action(apiurl_edit)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
             <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_getback')}}</button>
           </div>
 
@@ -50,33 +84,34 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_add:            '{{$website["apiurl_add"]}}', 
              apiurl_info:           '{{$website["apiurl_info"]}}', 
-             apiurl_edit:           '{{$website["apiurl_edit"]}}', 
+             apiurl_edit:           '{{$website["apiurl_edit"]}}',
              params_data:
              {
-                name                :'',
-                display_name        :'',
-                description         :'',
+                openid_items        :'',
+                temp_name1          :'',
+                temp_id1            :'',
+                temp_name2          :'',
+                temp_id2            :'',
+                temp_name3          :'',
+                temp_id3            :'',
+                temp_name4          :'',
+                temp_id4            :'',
                 id                  :'{{$website["id"]}}',
              },
+             image                  :'',
              cur_title              :'',
-             cur_title_add          :'{{trans("admin.website_action_add")}}',
-             cur_title_edit         :'{{trans("admin.website_action_edit")}}',
+             cur_title_edit         :'{{trans("admin.website_wechat_model_base_messagetpl")}}',
+             del_data:
+             {
+                id                  :'{{$website["id"]}}',
+                modelname           :'{{$website["modelname"]}}',
+             }
           },
     ready: function (){ 
             //这里是vue初始化完成后执行的函数 
-            if(this.params_data.id>0)
-            {
-                this.cur_title=this.cur_title_edit;
-                document.getElementById("name").disabled=true;
-                this.get_info_action();
-            }
-            else
-            {
-                this.cur_title=this.cur_title_add;
-                document.getElementById("name").disabled=false;
-            }
+            this.cur_title=this.cur_title_edit;
+            this.get_info_action();
     }, 
     methods: 
     {
@@ -108,22 +143,14 @@ new Vue({
         })
       },
       //点击数据验证
-      add_action:function()
+      check_action:function(posturl)
       {
-          if (this.params_data.name=='')
-          {
-              var msg="{{trans('admin.userrole_failure_tip1')}}";
-              layermsg_error(msg);
-          }
-          else
-          {
-              this.post_add_action();
-          }
+        this.post_action(posturl);
       },
       //提交数据
-      post_add_action:function()
+      post_action:function(posturl)
       {
-        this.$http.post(this.apiurl_add,this.params_data,{
+        this.$http.post(posturl,this.params_data,{
           before:function(request)
           {
             loadi=layer.load("等待中...");
@@ -147,33 +174,6 @@ new Vue({
           layermsg_error(msg);
         })
 
-      },
-      //提交修改数据
-      post_edit_action:function()
-      {
-        this.$http.post(this.apiurl_edit,this.params_data,{
-          before:function(request)
-          {
-            loadi=layer.load("...");
-          },
-        })
-        .then((response) => 
-        {
-          this.return_info_action(response);
-
-        },(response) => 
-        {
-          //响应错误
-          layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
-          layermsg_error(msg);
-        })
-        .catch(function(response) {
-          //异常抛出
-          layer.close(loadi);
-          var msg="{{trans('admin.website_outtime_error')}}";
-          layermsg_error(msg);
-        })
       },
       //返回信息处理
       return_info_action:function(response)
@@ -219,6 +219,7 @@ new Vue({
         if(statusinfo.status==1)
         {
             this.params_data=statusinfo.resource;
+            this.params_data.waytype="{{$website['waytype']}}";
         }
         else
         {

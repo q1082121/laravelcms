@@ -13,19 +13,19 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_editpwd_old')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_editpwd_old')}}</span>
                 <input type="password" class="form-control" v-model="params_data.oldpwd" >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_editpwd_new')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_editpwd_new')}}</span>
                 <input type="password" class="form-control" v-model="params_data.newpwd" >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_editpwd_sure')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_editpwd_sure')}}</span>
                 <input type="password" class="form-control" v-model="params_data.surepwd" >
               </div>
             </div>

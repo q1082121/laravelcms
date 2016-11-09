@@ -14,7 +14,7 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_topclass')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_classify_item_topclass')}}</span>
                 <select class="form-control" v-model="params_data.topid" >
                   <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
@@ -22,13 +22,13 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_name')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_classify_item_name')}}</span>
                 <input type="text" class="form-control" v-model="params_data.name"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_ico')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_classify_item_ico')}}</span>
                 <input type="text" class="form-control" v-model="params_data.ico"   >
               </div>
             </div>
@@ -79,13 +79,13 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_orderid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_classify_item_orderid')}}</span>
                 <input type="text" class="form-control" v-model="params_data.orderid"   >
               </div>  
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_linkurl')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_classify_item_linkurl')}}</span>
                 <input type="text" class="form-control" v-model="params_data.linkurl"   >
               </div>
             </div>

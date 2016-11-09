@@ -32,13 +32,13 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_userinfo_name')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_name')}}</span>
                 <input type="text" id="name" class="form-control" v-model="params_data.name" >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_userinfo_nick')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_nick')}}</span>
                 <input type="text" class="form-control" v-model="params_data.nick"   >
               </div>
             </div>
@@ -89,31 +89,31 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_userinfo_birthday')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_birthday')}}</span>
                 <input type="text" class="form-control" v-model="params_data.birthday"  data-field="date" data-format="yyyy-MM-dd" readonly >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_userinfo_qq')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_qq')}}</span>
                 <input type="text" class="form-control" v-model="params_data.qq"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_userinfo_area_pid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_area_pid')}}</span>
                 <select @change="get_area_action(params_data.area_pid,2)" v-model="params_data.area_pid" class="form-control" >
                   <option v-for="item in area_data_p" value="@{{ item.id }}">@{{ item.alias }}</option>
                 </select>
               </div>
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_userinfo_area_cid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_area_cid')}}</span>
                 <select @change="get_area_action(params_data.area_cid,3)" v-model="params_data.area_cid" class="form-control" >
                   <option v-for="item in area_data_c" value="@{{ item.id }}">@{{ item.alias }}</option>
                 </select>
               </div>
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_userinfo_area_xid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_area_xid')}}</span>
                 <select  v-model="params_data.area_xid" class="form-control" >
                   <option v-for="item in area_data_x" value="@{{ item.id }}">@{{ item.alias }}</option>
                 </select>

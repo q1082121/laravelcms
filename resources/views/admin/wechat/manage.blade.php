@@ -54,13 +54,27 @@
               </div>
             </a>
 
-            <a href="{{$website['link_default']}}" class="c_black">
+            <a href="{{$website['link_defaultreply']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-delicious"></i></span>
                   <div class="info-box-content">
                     <span class="info-box-number ">{{trans('admin.website_wechat_model_base_default_reply')}}</span>
                     <span class="info-box-text ">{{trans('admin.website_wechat_model_base_default_tip')}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+            </a>
+
+            <a href="{{$website['link_messagetpl']}}" class="c_black">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="fa fa-commenting"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-number ">{{trans('admin.website_wechat_model_base_messagetpl')}}</span>
+                    <span class="info-box-text ">{{trans('admin.website_wechat_model_base_messagetpl_tip')}}</span>
                   </div>
                   <!-- /.info-box-content -->
                 </div>

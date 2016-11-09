@@ -10,11 +10,10 @@
           <h3 class="box-title"> 【 @{{cur_title}} 】 </h3>
         </div>
         <!-- /.box-header -->
-          
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_type')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_type')}}</span>
                 <select class="form-control" v-model="params_data.type">
                   <option v-for="item in modellist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
@@ -22,26 +21,26 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_token')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_token')}}</span>
                 <input type="text" class="form-control" v-model="params_data.token"   >
               </div>
             </div>
             
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_name')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_name')}}</span>
                 <input type="text" class="form-control" v-model="params_data.name"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_wechataccount')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_wechataccount')}}</span>
                 <input type="text" class="form-control" v-model="params_data.wechataccount"   >
               </div>  
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_gid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_gid')}}</span>
                 <input type="text" class="form-control" v-model="params_data.gid"   >
               </div>  
             </div>
@@ -92,19 +91,19 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_appid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_appid')}}</span>
                 <input type="text" class="form-control" v-model="params_data.appid"   >
               </div>  
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_appsecret')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_appsecret')}}</span>
                 <input type="text" class="form-control" v-model="params_data.appsecret"   >
               </div>  
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_wechat_item_encodingaeskey')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_encodingaeskey')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.encodingaeskey" > </textarea>
                 </div>
             </div>
@@ -113,73 +112,16 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_mchid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_mchid')}}</span>
                 <input type="text" class="form-control" v-model="params_data.mchid"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_paykey')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_paykey')}}</span>
                 <input type="text" class="form-control" v-model="params_data.paykey"   >
               </div>
             </div>  
-            <div class="box-header with-border">
-              <h3 class="box-title">{{trans('admin.website_wechat_tip_msg')}}</h3>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_wechat_item_openid_items')}}</span>
-                  <textarea  class="form-control" rows="3" v-model="params_data.openid_items" > </textarea>
-                </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_name1')}}</span>
-                <input type="text" class="form-control" v-model="params_data.temp_name1"   >
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_id1')}}</span>
-                <input type="text" class="form-control" v-model="params_data.temp_id1"   >
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_name2')}}</span>
-                <input type="text" class="form-control" v-model="params_data.temp_name2"   >
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_id2')}}</span>
-                <input type="text" class="form-control" v-model="params_data.temp_id2"   >
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_name3')}}</span>
-                <input type="text" class="form-control" v-model="params_data.temp_name3"   >
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_id3')}}</span>
-                <input type="text" class="form-control" v-model="params_data.temp_id3"   >
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_name4')}}</span>
-                <input type="text" class="form-control" v-model="params_data.temp_name4"   >
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_wechat_item_temp_id4')}}</span>
-                <input type="text" class="form-control" v-model="params_data.temp_id4"   >
-              </div>
-            </div>
             <div class="form-group">
                 <label >{{trans('admin.website_wechat_item_status')}}</label>
                 <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
@@ -224,15 +166,6 @@ new Vue({
                 isattach            :0,
                 mchid               :'',
                 paykey              :'',
-                openid_items        :'',
-                temp_name1          :'',
-                temp_id1            :'',
-                temp_name2          :'',
-                temp_id2            :'',
-                temp_name3          :'',
-                temp_id3            :'',
-                temp_name4          :'',
-                temp_id4            :'',
                 status              :1,
                 id                  :'{{$website["id"]}}',
              },
@@ -401,14 +334,13 @@ new Vue({
         if(statusinfo.status==1)
         {
             this.params_data=statusinfo.resource;
+            this.params_data.waytype="{{$website['waytype']}}";
 
-            //console.log(this.params_data);
             if(this.params_data.attachment)
             {
               this.image="/uploads/"+this.del_data.modelname+"/thumb/"+this.params_data.attachment;
               this.params_data.attachment="";
             }
-
         }
         else
         {

@@ -14,19 +14,19 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_userpermission_item_name')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_userpermission_item_name')}}</span>
                 <input type="text" id="name" class="form-control" v-model="params_data.name"  placeholder="{{trans('admin.website_demo_tip')}}：add "  >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_userpermission_item_display_name')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_userpermission_item_display_name')}}</span>
                 <input type="text" class="form-control" v-model="params_data.display_name"  placeholder="{{trans('admin.website_demo_tip')}}：添加" >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_userpermission_item_description')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_userpermission_item_description')}}</span>
                 <input type="text" class="form-control" v-model="params_data.description"  placeholder="{{trans('admin.website_demo_tip')}}：添加操作权限" >
               </div>
             </div>

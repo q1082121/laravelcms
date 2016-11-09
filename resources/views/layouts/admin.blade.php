@@ -56,7 +56,9 @@
   <script src="{{asset('/js')}}/common.js"></script>
   <!--jquery.form-->
   <script src="{{asset('/js')}}/jquery.form.min.js"></script>
-
+  <style>
+        .minwidth{min-width:200px;text-align:right;}
+  </style>
 
   
 </head>

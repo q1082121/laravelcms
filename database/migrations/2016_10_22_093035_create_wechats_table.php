@@ -15,7 +15,7 @@ class CreateWechatsTable extends Migration
         //
         Schema::create('wechats', function(Blueprint $table) {
 			$table->increments('id');
-            $table->string('token',50);					    //token
+            $table->string('token',50);					        //token
 			$table->string('name',50);					        //公众号名称
             $table->string('wechataccount',50)->nullable();     //微信号
             $table->string('gid',30);			                //原始ID
@@ -36,8 +36,16 @@ class CreateWechatsTable extends Migration
             $table->string('temp_id3',50)->nullable();			//消息模版ID三
             $table->string('temp_name4',50)->nullable();		//消息模版名称四
             $table->string('temp_id4',50)->nullable();			//消息模版ID四
-            $table->text('subscribe_content_text')->nullable();	//关注回复文本
-            $table->string('subscribe_content_keyword',100)->nullable();//关注回复关键词
+            $table->text('subscribe_text')->nullable();	        //关注回复文本
+            $table->string('subscribe_keyword',50)->nullable();//关注回复关键词
+            $table->text('default_text')->nullable();	        //默认回复文本
+            $table->string('default_keyword',50)->nullable();   //默认回复关键词
+            $table->text('image_default_text')->nullable();         //图片触发默认回复文本
+            $table->string('image_default_keyword',50)->nullable(); //图片触发默认回复关键词
+            $table->text('voice_default_text')->nullable();         //声音触发默认回复文本
+            $table->string('voice_default_keyword',50)->nullable(); //声音触发默认回复关键词
+            $table->text('video_default_text')->nullable();         //视频触发默认回复文本
+            $table->string('video_default_keyword',50)->nullable(); //视频触发默认回复关键词
 			$table->tinyInteger('status')->default(0);	//状态
 			$table->integer('user_id');					
 			$table->timestamps();

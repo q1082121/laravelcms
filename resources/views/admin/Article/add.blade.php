@@ -24,7 +24,7 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_article_item_classid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_article_item_classid')}}</span>
                 <select class="form-control"  v-model="params_data.classid" >
                   <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
@@ -32,19 +32,19 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_article_item_title')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_article_item_title')}}</span>
                 <input  type="text" class="form-control" v-model="params_data.title"   >
               </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_article_item_introduction')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_article_item_introduction')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.introduction" > </textarea>
                 </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_article_item_sources')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_article_item_sources')}}</span>
                 <input  type="text" class="form-control" v-model="params_data.sources"   >
               </div>
             </div>
@@ -90,7 +90,7 @@
             @if($website['root']['syseditor']=='Ueditor')
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_article_item_content')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_article_item_content')}}</span>
                   <div class="editor">
                     <textarea id='myEditor'  rows="3" debounce="500" >
                       @{{params_data.content}}
@@ -103,7 +103,7 @@
             @if($website['root']['syseditor']=='Markdown') 
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_article_item_content')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_article_item_content')}}</span>
                   <div class="editor">
                     <textarea id='myEditor'  v-model="params_data.content"  class="form-control"  rows="3"  >
                     </textarea>
@@ -114,13 +114,13 @@
 
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_orderid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_classify_item_orderid')}}</span>
                 <input   type="text" class="form-control" v-model="params_data.orderid"   >
               </div>  
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_classify_item_linkurl')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_classify_item_linkurl')}}</span>
                 <input  type="text" class="form-control" v-model="params_data.linkurl"   >
               </div>
             </div>

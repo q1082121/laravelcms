@@ -382,11 +382,16 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 			        'middleware' => ['ability:admin,model_wechat'], 
 			        'uses' => 'WechatController@subscribe'
     			])->name('get.admin.wechat.subscribe');
-	Route::get('wechat/default/{id?}', 
+	Route::get('wechat/defaultreply/{id?}', 
 				[
 			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@default'
-    			])->name('get.admin.wechat.default');		    		    
+			        'uses' => 'WechatController@defaultreply'
+    			])->name('get.admin.wechat.defaultreply');
+	Route::get('wechat/messagetpl/{id?}', 
+				[
+			        'middleware' => ['ability:admin,model_wechat'], 
+			        'uses' => 'WechatController@messagetpl'
+    			])->name('get.admin.wechat.messagetpl');		    		    		    
 	Route::get('wechat/text/{id?}', 
 				[
 			        'middleware' => ['ability:admin,model_wechat'], 

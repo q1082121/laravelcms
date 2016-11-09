@@ -14,7 +14,7 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon">{{trans('admin.website_questionoption_item_title')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.website_questionoption_item_title')}}</span>
                 <input type="text" class="form-control" v-model="params_data.title"   >
               </div>
             </div>

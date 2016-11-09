@@ -12,85 +12,85 @@
           <div class="box-body">
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_systitle')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_systitle')}}</span>
                   <input type="text" class="form-control"  v-model="info.systitle"   placeholder="例如：LaravelCms内容管理系统" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_syskeyword')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_syskeyword')}}</span>
                   <input type="text" class="form-control"  v-model="info.syskeywords"   placeholder="例如：LaravelCms" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_sysdescription')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_sysdescription')}}</span>
                   <textarea class="form-control" rows="3"  v-model="info.sysdescription" placeholder="例如：LaravelCms内容管理系统"></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_sysicp')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_sysicp')}}</span>
                   <input type="text" class="form-control"  v-model="info.sysicp"   placeholder="例如：浙ICP备15022520号-1" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_sysmaster')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_sysmaster')}}</span>
                   <input type="text" class="form-control"  v-model="info.sysmaster"  placeholder="例如：管理员" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_sysemail')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_sysemail')}}</span>
                   <input type="text" class="form-control"  v-model="info.sysemail"  placeholder="例如：admin@admin.com" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_sysmobile')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_sysmobile')}}</span>
                   <input type="text" class="form-control"  v-model="info.sysmobile"  placeholder="例如：15011112222" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_sysfax')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_sysfax')}}</span>
                   <input type="text" class="form-control"  v-model="info.sysfax"   placeholder="例如：15011112222" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_sysqq')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_sysqq')}}</span>
                   <input type="text" class="form-control"  v-model="info.sysqq"   placeholder="例如：471416739" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_syswechat')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_syswechat')}}</span>
                   <input type="text" class="form-control"  v-model="info.syswechat"  placeholder="例如：XBDtommy" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_syscompany')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_syscompany')}}</span>
                   <input type="text" class="form-control"  v-model="info.syscompany"   placeholder="例如：LaravelCms有限公司" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_sysaddress')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_sysaddress')}}</span>
                   <input type="text" class="form-control"  v-model="info.sysaddress"   placeholder="例如：浙江省台州市温岭市XX街道XX村XX号" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_syscoordinate_h')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_syscoordinate_h')}}</span>
                   <input type="text" class="form-control"  v-model="info.syscoordinate_h"   placeholder="例如北京：39.915053" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_syscoordinate_w')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_syscoordinate_w')}}</span>
                   <input type="text" class="form-control"  v-model="info.syscoordinate_w"   placeholder="例如北京：116.403951" >
                 </div>
               </div>
@@ -102,7 +102,7 @@
             <div class="box-body">
               <div class="form-group">
                   <div class="input-group">
-                    <span class="input-group-addon">{{trans('admin.website_setting_editor_type')}}</span>
+                    <span class="input-group-addon minwidth">{{trans('admin.website_setting_editor_type')}}</span>
                     <select class="form-control" v-model="info.syseditor" >
                       <option v-for="item in editoroption" value="@{{ item.value }}">@{{ item.text }}</option>
                     </select>
@@ -111,133 +111,133 @@
             </duv>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_navigation_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_navigation_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.navigation_thumb_width"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_navigation_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_navigation_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.navigation_thumb_height"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_classify_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_classify_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.classify_thumb_width"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_classify_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_classify_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.classify_thumb_height"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_article_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_article_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.article_thumb_width"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_article_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_article_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.article_thumb_height"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_picture_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_picture_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.picture_thumb_width"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_picture_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_picture_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.picture_thumb_height"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_classifylink_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_classifylink_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.classifylink_thumb_width"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_classifylink_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_classifylink_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.classifylink_thumb_height"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_classifyquestion_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_classifyquestion_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.classifyquestion_thumb_width"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_classifyquestion_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_classifyquestion_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.classifyquestion_thumb_height"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_link_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_link_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.link_thumb_width"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_link_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_link_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.link_thumb_height"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_question_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_question_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.question_thumb_width"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_question_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_question_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.question_thumb_height"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_questionoption_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_questionoption_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.questionoption_thumb_width"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_questionoption_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_questionoption_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.questionoption_thumb_height"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_user_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_user_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.user_thumb_width"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_user_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_user_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.user_thumb_height"   placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_wechat_thumb_width')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_wechat_thumb_width')}}</span>
                   <input type="text" class="form-control"  v-model="info.wechat_thumb_width"  placeholder="默认200px" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">{{trans('admin.website_setting_wechat_thumb_height')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_wechat_thumb_height')}}</span>
                   <input type="text" class="form-control"  v-model="info.wechat_thumb_height"  placeholder="默认200px" >
                 </div>
             </div>

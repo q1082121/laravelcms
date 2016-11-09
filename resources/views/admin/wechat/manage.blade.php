@@ -15,7 +15,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-chain"></i></span>
                   <div class="info-box-content">
-                      <h5 style="margin-top:5px;margin-bottom:5px;font-size:18px;">公众号名称 : {{$website['info']['name']}}</h5>
+                      <h5 style="margin-top:5px;margin-bottom:5px;font-size:18px;">{{trans('admin.website_wechat_name')}} : {{$website['info']['name']}}</h5>
                       <h5 style="margin-top:5px;margin-bottom:5px;">TOKEN : {{$website['info']['token']}}</h5>
                       <h5 style="margin-top:5px;margin-bottom:5px;">URL : {{asset('/')}}wechat/api/{{$website['info']['id']}}.html</h5>
                   </div>
@@ -82,7 +82,7 @@
               </div>
             </a>
 
-            <a href="{{$website['link_text']}}" class="c_black">
+            <a href="{{$website['link_wechatreplytext']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-instagram"></i></span>
@@ -96,7 +96,7 @@
               </div>
             </a>
 
-            <a href="{{$website['link_imagetext']}}" class="c_black">
+            <a href="{{$website['link_wechatreplyimagetext']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-file-image-o"></i></span>

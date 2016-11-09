@@ -391,17 +391,40 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 				[
 			        'middleware' => ['ability:admin,model_wechat'], 
 			        'uses' => 'WechatController@messagetpl'
-    			])->name('get.admin.wechat.messagetpl');		    		    		    
-	Route::get('wechat/text/{id?}', 
+    			])->name('get.admin.wechat.messagetpl');	
+	//微信-文本回复	    		    		    
+	Route::get('wechatreplytext/{id?}', 
 				[
 			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@text'
-    			])->name('get.admin.wechat.text');	
-	Route::get('wechat/imagetext/{id?}', 
+			        'uses' => 'WechatreplytextController@index'
+    			])->name('get.admin.wechatreplytext.index');	
+	Route::get('wechatreplytext/add/{id?}', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'WechatreplytextController@add'
+    			])->name('get.admin.wechatreplytext.add');
+	Route::get('wechatreplytext/edit/{id?}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'WechatreplytextController@edit'
+    			])->name('get.admin.wechatreplytext.edit');
+	//微信-图文回复		    
+	Route::get('wechatreplyimagetext/{id?}', 
 				[
 			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@imagetext'
-    			])->name('get.admin.wechat.imagetext');	
+			        'uses' => 'WechatreplyimagetextController@index'
+    			])->name('get.admin.wechatreplyimagetext.index');
+	Route::get('wechatreplyimagetext/add/{id?}', 
+				[
+			        'middleware' => ['ability:admin,add'], 
+			        'uses' => 'WechatreplyimagetextController@add'
+    			])->name('get.admin.wechatreplyimagetext.add');
+	Route::get('wechatreplyimagetext/edit/{id?}', 
+				[
+			        'middleware' => ['ability:admin,edit'], 
+			        'uses' => 'WechatreplyimagetextController@edit'
+    			])->name('get.admin.wechatreplyimagetext.edit');
+	//		    
 	Route::get('wechat/menu/{id?}', 
 				[
 			        'middleware' => ['ability:admin,model_wechat'], 
@@ -518,7 +541,19 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('wechat/api_add', 'WechatController@api_add')->name('post.admin.wechat.api_add');
 	Route::post('wechat/api_info', 'WechatController@api_info')->name('post.admin.wechat.api_info');
 	Route::post('wechat/api_edit', 'WechatController@api_edit')->name('post.admin.wechat.api_edit');
-	
+
+	//微信-文本回复
+	Route::post('wechatreplytext/api_list', 'WechatreplytextController@api_list')->name('post.admin.wechatreplytext.api_list');
+	Route::post('wechatreplytext/api_add', 'WechatreplytextController@api_add')->name('post.admin.wechatreplytext.api_add');
+	Route::post('wechatreplytext/api_info', 'WechatreplytextController@api_info')->name('post.admin.wechatreplytext.api_info');
+	Route::post('wechatreplytext/api_edit', 'WechatreplytextController@api_edit')->name('post.admin.wechatreplytext.api_edit');
+
+	//微信-图文回复
+	Route::post('wechatreplyimagetext/api_list', 'WechatreplyimagetextController@api_list')->name('post.admin.wechatreplyimagetext.api_list');
+	Route::post('wechatreplyimagetext/api_add', 'WechatreplyimagetextController@api_add')->name('post.admin.wechatreplyimagetext.api_add');
+	Route::post('wechatreplyimagetext/api_info', 'WechatreplyimagetextController@api_info')->name('post.admin.wechatreplyimagetext.api_info');
+	Route::post('wechatreplyimagetext/api_edit', 'WechatreplyimagetextController@api_edit')->name('post.admin.wechatreplyimagetext.api_edit');
+
 });
 
 

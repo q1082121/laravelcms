@@ -199,6 +199,21 @@ function in_log($data)
     $log->save();
 }
 /***********************************
+ * 方法名：微信关键词记录
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function in_wechat_keyword($data)
+{
+
+    $subparams = new App\Http\Model\Wechatkeyword;
+    $subparams->type  				= $data['type'];
+	$subparams->tablename			= $data['tablename'];
+	$subparams->field_id			= $data['field_id'];
+	$subparams->field_keyword 		= $data['field_keyword'];
+	$subparams->wechat_id 			= $data['wechat_id'];
+    return $subparams->save();
+}
+/***********************************
  * 方法名：PHP stdClass Object转array
  * 作者： Tommy（rubbish.boy@163.com）
  ***********************************/ 

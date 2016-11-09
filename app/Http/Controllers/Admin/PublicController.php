@@ -251,6 +251,9 @@ class PublicController extends Controller
 			case "Wechat":
 
 			break;
+			case "Wechatreplyimagetext":
+
+			break;
 			default:
 					if($this->is_watermark==1)
 					{	
@@ -319,6 +322,10 @@ class PublicController extends Controller
 				case 'Wechat':
 								$thumb_width=@$this->root['wechat_thumb_width']?@$this->root['wechat_thumb_width']:$this->thumb_width;
 								$thumb_height=@$this->root['wechat_thumb_height']?@$this->root['wechat_thumb_height']:$this->thumb_height;
+				break;
+				case 'Wechatreplyimagetext':
+								$thumb_width=@$this->root['wechatreplyimagetext_thumb_width']?@$this->root['wechatreplyimagetext_thumb_width']:$this->thumb_width;
+								$thumb_height=@$this->root['wechatreplyimagetext_thumb_height']?@$this->root['wechatreplyimagetext_thumb_height']:$this->thumb_height;
 				break;
 				default:
 								$thumb_width=$thumb_width?$thumb_width:$this->thumb_width;

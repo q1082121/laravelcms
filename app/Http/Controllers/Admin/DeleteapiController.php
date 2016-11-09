@@ -24,7 +24,8 @@ use App\Http\Model\Question;
 use App\Http\Model\Questionoption;
 use App\Http\Model\Log;
 use App\Http\Model\Wechat;
-
+use App\Http\Model\Wechatreplytext;
+use App\Http\Model\Wechatreplyimagetext;
 class DeleteapiController extends PublicController
 {
     /******************************************
@@ -447,6 +448,68 @@ class DeleteapiController extends PublicController
 								
 							}
 			break;
+			case 'Wechatreplytext':
+							$info=$this->delete_action('wechatreplytexts',$request->get('id'));
+							if($info)
+							{
+								$subcondition['type']='text';
+								$subcondition['tablename']='wechatreplytexts';
+								$subcondition['field_id']=$request->get('id');
+
+								$subinfo=DB::table('wechatkeywords')->where($subcondition)->delete();
+
+								$msg_array['status']='1';
+								$msg_array['info']=trans('admin.website_del_success');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';
+							}
+							else
+							{
+								
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.website_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';	
+								
+							}
+			break;
+			case 'Wechatreplyimagetext':
+							$info=$this->delete_action('wechatreplyimagetexts',$request->get('id'));
+							if($info)
+							{
+								$subcondition['type']='imagetext';
+								$subcondition['tablename']='wechatreplyimagetexts';
+								$subcondition['field_id']=$request->get('id');
+
+								$subinfo=DB::table('wechatkeywords')->where($subcondition)->delete();
+
+								$msg_array['status']='1';
+								$msg_array['info']=trans('admin.website_del_success');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';
+							}
+							else
+							{
+								
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.website_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';	
+								
+							}
+			break;
 		}
 
         return response()->json($msg_array);
@@ -563,6 +626,10 @@ class DeleteapiController extends PublicController
 				break;	
 			case 'Wechat':
 				$params = Wechat::find($request->get('id'));
+				# code...
+				break;	
+			case 'Wechatreplyimagetext':
+				$params = Wechatreplyimagetext::find($request->get('id'));
 				# code...
 				break;		
 			case 'Link':

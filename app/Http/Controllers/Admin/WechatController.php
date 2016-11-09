@@ -84,8 +84,8 @@ class WechatController extends PublicController
 		$website['link_subscribe']=route('get.admin.wechat.subscribe').'/'.$id;
 		$website['link_defaultreply']=route('get.admin.wechat.defaultreply').'/'.$id;
 		$website['link_messagetpl']=route('get.admin.wechat.messagetpl').'/'.$id;
-		$website['link_text']=route('get.admin.wechat.text').'/'.$id;
-		$website['link_imagetext']=route('get.admin.wechat.imagetext').'/'.$id;
+		$website['link_wechatreplytext']=route('get.admin.wechatreplytext.index').'/'.$id;
+		$website['link_wechatreplyimagetext']=route('get.admin.wechatreplyimagetext.index').'/'.$id;
 		$website['link_menu']=route('get.admin.wechat.menu').'/'.$id;
 		$website['link_user']=route('get.admin.wechat.user').'/'.$id;
 		
@@ -367,7 +367,7 @@ class WechatController extends PublicController
 		$website['apiurl_edit']=URL::action('Admin\WechatController@api_edit');
 		$website['waytype']=4;
 		$website['id']=$id;
-
 		return view('admin/wechat/messagetpl')->with('website',$website);
 	}
+
 }

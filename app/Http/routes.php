@@ -82,359 +82,97 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	 *	   get 路由
 	 ***********************************************************************
 	 */	
-    Route::get('/', 'HomeController@index')->name('get.admin');
-	
-	Route::get('setting', 
-				[
-			        'middleware' => ['ability:admin,model_setting'], 
-			        'uses' => 'SettingController@index'
-    			])->name('get.admin.setting');
-
-	Route::get('user', 
-				[
-			        'middleware' => ['ability:admin,model_user'], 
-			        'uses' => 'UserController@index'
-    			])->name('get.admin.user');
-	Route::get('userinfo', 
-				[
-			        'middleware' => ['ability:admin,set_userinfo'], 
-			        'uses' => 'UserController@userinfo'
-    			])->name('get.admin.userinfo');
-	Route::get('edit_pwd', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'UserController@edit_pwd'
-    			])->name('get.admin.edit_pwd');
-	Route::get('user/set/{id?}', 
-				[
-			        'middleware' => ['ability:admin,set_role'], 
-			        'uses' => 'UserController@set'
-    			])->name('get.admin.user.set');
+    	Route::get('/', 'HomeController@index')->name('get.admin');
+	Route::get('setting', ['middleware' => ['ability:admin,model_setting'], 'uses' => 'SettingController@index'])->name('get.admin.setting');
+	Route::get('user', ['middleware' => ['ability:admin,model_user'], 'uses' => 'UserController@index'])->name('get.admin.user');
+	Route::get('userinfo', ['middleware' => ['ability:admin,set_userinfo'], 'uses' => 'UserController@userinfo'])->name('get.admin.userinfo');
+	Route::get('edit_pwd', ['middleware' => ['ability:admin,edit'], 'uses' => 'UserController@edit_pwd'])->name('get.admin.edit_pwd');
+	Route::get('user/set/{id?}', ['middleware' => ['ability:admin,set_role'], 'uses' => 'UserController@set'])->name('get.admin.user.set');
 	//用户角色			
-	Route::get('userrole', 
-				[
-			        'middleware' => ['ability:admin,model_role'], 
-			        'uses' => 'UserroleController@index'
-    			])->name('get.admin.userrole');
-	Route::get('userrole/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'UserroleController@add'
-    			])->name('get.admin.userrole.add');
-	Route::get('userrole/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'UserroleController@edit'
-    			])->name('get.admin.userrole.edit');
-	Route::get('userrole/set/{id?}', 
-				[
-			        'middleware' => ['ability:admin,set_permission'], 
-			        'uses' => 'UserroleController@set'
-    			])->name('get.admin.userrole.set');
+	Route::get('userrole', ['middleware' => ['ability:admin,model_role'], 'uses' => 'UserroleController@index'])->name('get.admin.userrole');
+	Route::get('userrole/add', ['middleware' => ['ability:admin,add'], 'uses' => 'UserroleController@add'])->name('get.admin.userrole.add');
+	Route::get('userrole/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'UserroleController@edit'])->name('get.admin.userrole.edit');
+	Route::get('userrole/set/{id?}', ['middleware' => ['ability:admin,set_permission'], 'uses' => 'UserroleController@set'])->name('get.admin.userrole.set');
 	//角色权限				
-	Route::get('userpermission', 
-				[
-			        'middleware' => ['ability:admin,model_permission'], 
-			        'uses' => 'UserpermissionController@index'
-    			])->name('get.admin.userpermission');
-	Route::get('userpermission/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'UserpermissionController@add'
-    			])->name('get.admin.userpermission.add');
-	Route::get('userpermission/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'UserpermissionController@edit'
-    			])->name('get.admin.userpermission.edit');
+	Route::get('userpermission', ['middleware' => ['ability:admin,model_permission'], 'uses' => 'UserpermissionController@index'])->name('get.admin.userpermission');
+	Route::get('userpermission/add', ['middleware' => ['ability:admin,add'], 'uses' => 'UserpermissionController@add'])->name('get.admin.userpermission.add');
+	Route::get('userpermission/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'UserpermissionController@edit'])->name('get.admin.userpermission.edit');
 	//主导航栏			
-	Route::get('navigation', 
-				[
-			        'middleware' => ['ability:admin,model_navigation'], 
-			        'uses' => 'NavigationController@index'
-    			])->name('get.admin.navigation');
-	Route::get('navigation/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'NavigationController@add'
-    			])->name('get.admin.navigation.add');
-	Route::get('navigation/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'NavigationController@edit'
-    			])->name('get.admin.navigation.edit');		    
+	Route::get('navigation', ['middleware' => ['ability:admin,model_navigation'], 'uses' => 'NavigationController@index'])->name('get.admin.navigation');
+	Route::get('navigation/add', ['middleware' => ['ability:admin,add'], 'uses' => 'NavigationController@add'])->name('get.admin.navigation.add');
+	Route::get('navigation/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'NavigationController@edit'])->name('get.admin.navigation.edit');		    
 	//文章分类			
-	Route::get('classify', 
-				[
-			        'middleware' => ['ability:admin,model_classify'], 
-			        'uses' => 'ClassifyController@index'
-    			])->name('get.admin.classify');
-	Route::get('classify/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'ClassifyController@add'
-    			])->name('get.admin.classify.add');
-	Route::get('classify/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'ClassifyController@edit'
-    			])->name('get.admin.classify.edit');
+	Route::get('classify', ['middleware' => ['ability:admin,model_classify'], 'uses' => 'ClassifyController@index'])->name('get.admin.classify');
+	Route::get('classify/add', ['middleware' => ['ability:admin,add'], 'uses' => 'ClassifyController@add'])->name('get.admin.classify.add');
+	Route::get('classify/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ClassifyController@edit'])->name('get.admin.classify.edit');
 	//文章资讯				
-	Route::get('article', 
-				[
-			        'middleware' => ['ability:admin,model_article'], 
-			        'uses' => 'ArticleController@index'
-    			])->name('get.admin.article');
-	Route::get('article/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'ArticleController@add'
-    			])->name('get.admin.article.add');
-	Route::get('article/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'ArticleController@edit'
-    			])->name('get.admin.article.edit');
+	Route::get('article', ['middleware' => ['ability:admin,model_article'], 'uses' => 'ArticleController@index'])->name('get.admin.article');
+	Route::get('article/add', ['middleware' => ['ability:admin,add'], 'uses' => 'ArticleController@add'])->name('get.admin.article.add');
+	Route::get('article/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ArticleController@edit'])->name('get.admin.article.edit');
 	//产品分类			
-	Route::get('classifyproduct', 
-				[
-			        'middleware' => ['ability:admin,model_classifyproduct'], 
-			        'uses' => 'ClassifyproductController@index'
-    			])->name('get.admin.classifyproduct');
-	Route::get('classifyproduct/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'ClassifyproductController@add'
-    			])->name('get.admin.classifyproduct.add');
-	Route::get('classifyproduct/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'ClassifyproductController@edit'
-    			])->name('get.admin.classifyproduct.edit');
+	Route::get('classifyproduct', ['middleware' => ['ability:admin,model_classifyproduct'], 'uses' => 'ClassifyproductController@index'])->name('get.admin.classifyproduct');
+	Route::get('classifyproduct/add', ['middleware' => ['ability:admin,add'], 'uses' => 'ClassifyproductController@add'])->name('get.admin.classifyproduct.add');
+	Route::get('classifyproduct/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ClassifyproductController@edit'])->name('get.admin.classifyproduct.edit');
 	//产品内容			
-	Route::get('product', 
-				[
-			        'middleware' => ['ability:admin,model_product'], 
-			        'uses' => 'ProductController@index'
-    			])->name('get.admin.product');
-	Route::get('product/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'ProductController@add'
-    			])->name('get.admin.product.add');
-	Route::get('product/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'ProductController@edit'
-    			])->name('get.admin.product.edit');		    
+	Route::get('product', ['middleware' => ['ability:admin,model_product'], 'uses' => 'ProductController@index'])->name('get.admin.product');
+	Route::get('product/add', ['middleware' => ['ability:admin,add'], 'uses' => 'ProductController@add'])->name('get.admin.product.add');
+	Route::get('product/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ProductController@edit'])->name('get.admin.product.edit');		    
 	//广告图片		
-	Route::get('picture', 
-				[
-			        'middleware' => ['ability:admin,model_picture'], 
-			        'uses' => 'PictureController@index'
-    			])->name('get.admin.picture');
-	Route::get('picture/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'PictureController@add'
-    			])->name('get.admin.picture.add');
-	Route::get('picture/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'PictureController@edit'
-    			])->name('get.admin.picture.edit');
+	Route::get('picture', ['middleware' => ['ability:admin,model_picture'], 'uses' => 'PictureController@index'])->name('get.admin.picture');
+	Route::get('picture/add', ['middleware' => ['ability:admin,add'], 'uses' => 'PictureController@add'])->name('get.admin.picture.add');
+	Route::get('picture/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'PictureController@edit'])->name('get.admin.picture.edit');
 	//链接分类			
-	Route::get('classifylink', 
-				[
-			        'middleware' => ['ability:admin,model_classifylink'], 
-			        'uses' => 'ClassifylinkController@index'
-    			])->name('get.admin.classifylink');
-	Route::get('classifylink/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'ClassifylinkController@add'
-    			])->name('get.admin.classifylink.add');
-	Route::get('classifylink/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'ClassifylinkController@edit'
-    			])->name('get.admin.classifylink.edit');			
+	Route::get('classifylink', ['middleware' => ['ability:admin,model_classifylink'], 'uses' => 'ClassifylinkController@index'])->name('get.admin.classifylink');
+	Route::get('classifylink/add', ['middleware' => ['ability:admin,add'], 'uses' => 'ClassifylinkController@add'])->name('get.admin.classifylink.add');
+	Route::get('classifylink/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ClassifylinkController@edit'])->name('get.admin.classifylink.edit');			
 	//友情链接		
-	Route::get('link', 
-				[
-			        'middleware' => ['ability:admin,model_link'], 
-			        'uses' => 'LinkController@index'
-    			])->name('get.admin.link');
-	Route::get('link/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'LinkController@add'
-    			])->name('get.admin.link.add');
-	Route::get('link/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'LinkController@edit'
-    			])->name('get.admin.link.edit');
+	Route::get('link', ['middleware' => ['ability:admin,model_link'], 'uses' => 'LinkController@index'])->name('get.admin.link');
+	Route::get('link/add', ['middleware' => ['ability:admin,add'], 'uses' => 'LinkController@add'])->name('get.admin.link.add');
+	Route::get('link/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'LinkController@edit'])->name('get.admin.link.edit');
 	//题目分类			
-	Route::get('classifyquestion', 
-				[
-			        'middleware' => ['ability:admin,model_classifyquestion'], 
-			        'uses' => 'ClassifyquestionController@index'
-    			])->name('get.admin.classifyquestion');
-	Route::get('classifyquestion/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'ClassifyquestionController@add'
-    			])->name('get.admin.classifyquestion.add');
-	Route::get('classifyquestion/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'ClassifyquestionController@edit'
-    			])->name('get.admin.classifyquestion.edit');	
+	Route::get('classifyquestion', ['middleware' => ['ability:admin,model_classifyquestion'], 'uses' => 'ClassifyquestionController@index'])->name('get.admin.classifyquestion');
+	Route::get('classifyquestion/add', ['middleware' => ['ability:admin,add'], 'uses' => 'ClassifyquestionController@add'])->name('get.admin.classifyquestion.add');
+	Route::get('classifyquestion/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ClassifyquestionController@edit'])->name('get.admin.classifyquestion.edit');	
 	//题目类型		
-	Route::get('question/{type?}', 
-				[
-			        'middleware' => ['ability:admin,model_question'], 
-			        'uses' => 'QuestionController@index'
-    			])->name('get.admin.question');
-	Route::get('question/add/{type?}', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'QuestionController@add'
-    			])->name('get.admin.question.add');
-	Route::get('question/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'QuestionController@edit'
-    			])->name('get.admin.question.edit');
+	Route::get('question/{type?}', ['middleware' => ['ability:admin,model_question'], 'uses' => 'QuestionController@index'])->name('get.admin.question');
+	Route::get('question/add/{type?}', ['middleware' => ['ability:admin,add'], 'uses' => 'QuestionController@add'])->name('get.admin.question.add');
+	Route::get('question/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'QuestionController@edit'])->name('get.admin.question.edit');
 	//题目选项		
-	Route::get('questionoption/{id?}', 
-				[
-			        'middleware' => ['ability:admin,model_questionoption'], 
-			        'uses' => 'QuestionoptionController@index'
-    			])->name('get.admin.questionoption');
-	Route::get('questionoption/add/{id?}', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'QuestionoptionController@add'
-    			])->name('get.admin.questionoption.add');
-	Route::get('questionoption/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'QuestionoptionController@edit'
-    			])->name('get.admin.questionoption.edit');		    
-
+	Route::get('questionoption/{id?}', ['middleware' => ['ability:admin,model_questionoption'], 'uses' => 'QuestionoptionController@index'])->name('get.admin.questionoption');
+	Route::get('questionoption/add/{id?}', ['middleware' => ['ability:admin,add'], 'uses' => 'QuestionoptionController@add'])->name('get.admin.questionoption.add');
+	Route::get('questionoption/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'QuestionoptionController@edit'])->name('get.admin.questionoption.edit');		    
 	//日志管理		
-	Route::get('log', 
-				[
-			        'middleware' => ['ability:admin,model_log'], 
-			        'uses' => 'LogController@index'
-    			])->name('get.admin.log');
+	Route::get('log', ['middleware' => ['ability:admin,model_log'], 'uses' => 'LogController@index'])->name('get.admin.log');
 	//信件管理				
-	Route::get('letter', 
-				[
-			        'middleware' => ['ability:admin,model_letter'], 
-			        'uses' => 'LetterController@index'
-    			])->name('get.admin.letter');
-	Route::get('letter/send', 
-				[
-			        'middleware' => ['ability:admin,model_letter'], 
-			        'uses' => 'LetterController@send'
-    			])->name('get.admin.letter.send');
-	Route::get('letter/star', 
-				[
-			        'middleware' => ['ability:admin,model_letter'], 
-			        'uses' => 'LetterController@star'
-    			])->name('get.admin.letter.star');	
-	Route::get('letter/trash', 
-				[
-			        'middleware' => ['ability:admin,model_letter'], 
-			        'uses' => 'LetterController@trash'
-    			])->name('get.admin.letter.trash');										
-	Route::get('letter/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'LetterController@add'
-    			])->name('get.admin.letter.add');
+	Route::get('letter', ['middleware' => ['ability:admin,model_letter'], 'uses' => 'LetterController@index'])->name('get.admin.letter');
+	Route::get('letter/send', ['middleware' => ['ability:admin,model_letter'], 'uses' => 'LetterController@send'])->name('get.admin.letter.send');
+	Route::get('letter/star', ['middleware' => ['ability:admin,model_letter'], 'uses' => 'LetterController@star'])->name('get.admin.letter.star');	
+	Route::get('letter/trash', ['middleware' => ['ability:admin,model_letter'], 'uses' => 'LetterController@trash'])->name('get.admin.letter.trash');										
+	Route::get('letter/add', ['middleware' => ['ability:admin,add'], 'uses' => 'LetterController@add'])->name('get.admin.letter.add');
 	//微信管理		
-	Route::get('wechat', 
-				[
-			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@index'
-    			])->name('get.admin.wechat');
-	Route::get('wechat/add', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'WechatController@add'
-    			])->name('get.admin.wechat.add');
-	Route::get('wechat/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'WechatController@edit'
-    			])->name('get.admin.wechat.edit');
-	Route::get('wechat/manage/{id?}', 
-				[
-			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@manage'
-    			])->name('get.admin.wechat.manage');
-	Route::get('wechat/subscribe/{id?}', 
-				[
-			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@subscribe'
-    			])->name('get.admin.wechat.subscribe');
-	Route::get('wechat/defaultreply/{id?}', 
-				[
-			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@defaultreply'
-    			])->name('get.admin.wechat.defaultreply');
-	Route::get('wechat/messagetpl/{id?}', 
-				[
-			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@messagetpl'
-    			])->name('get.admin.wechat.messagetpl');	
+	Route::get('wechat', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatController@index'])->name('get.admin.wechat');
+	Route::get('wechat/add', ['middleware' => ['ability:admin,add'], 'uses' => 'WechatController@add'])->name('get.admin.wechat.add');
+	Route::get('wechat/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'WechatController@edit'])->name('get.admin.wechat.edit');
+	Route::get('wechat/manage/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatController@manage'])->name('get.admin.wechat.manage');
+	Route::get('wechat/subscribe/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatController@subscribe'])->name('get.admin.wechat.subscribe');
+	Route::get('wechat/defaultreply/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatController@defaultreply'])->name('get.admin.wechat.defaultreply');
+	Route::get('wechat/messagetpl/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatController@messagetpl'])->name('get.admin.wechat.messagetpl');	
 	//微信-文本回复	    		    		    
-	Route::get('wechatreplytext/{id?}', 
-				[
-			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatreplytextController@index'
-    			])->name('get.admin.wechatreplytext.index');	
-	Route::get('wechatreplytext/add/{id?}', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'WechatreplytextController@add'
-    			])->name('get.admin.wechatreplytext.add');
-	Route::get('wechatreplytext/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'WechatreplytextController@edit'
-    			])->name('get.admin.wechatreplytext.edit');
+	Route::get('wechatreplytext/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatreplytextController@index'])->name('get.admin.wechatreplytext.index');	
+	Route::get('wechatreplytext/add/{id?}', ['middleware' => ['ability:admin,add'], 'uses' => 'WechatreplytextController@add'])->name('get.admin.wechatreplytext.add');
+	Route::get('wechatreplytext/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'WechatreplytextController@edit'])->name('get.admin.wechatreplytext.edit');
 	//微信-图文回复		    
-	Route::get('wechatreplyimagetext/{id?}', 
-				[
-			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatreplyimagetextController@index'
-    			])->name('get.admin.wechatreplyimagetext.index');
-	Route::get('wechatreplyimagetext/add/{id?}', 
-				[
-			        'middleware' => ['ability:admin,add'], 
-			        'uses' => 'WechatreplyimagetextController@add'
-    			])->name('get.admin.wechatreplyimagetext.add');
-	Route::get('wechatreplyimagetext/edit/{id?}', 
-				[
-			        'middleware' => ['ability:admin,edit'], 
-			        'uses' => 'WechatreplyimagetextController@edit'
-    			])->name('get.admin.wechatreplyimagetext.edit');
-	//		    
-	Route::get('wechat/menu/{id?}', 
-				[
-			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@menu'
-    			])->name('get.admin.wechat.menu');
-	Route::get('wechat/user/{id?}', 
-				[
-			        'middleware' => ['ability:admin,model_wechat'], 
-			        'uses' => 'WechatController@user'
-    			])->name('get.admin.wechat.user');		    		    		    			    
+	Route::get('wechatreplyimagetext/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatreplyimagetextController@index'])->name('get.admin.wechatreplyimagetext.index');
+	Route::get('wechatreplyimagetext/add/{id?}', ['middleware' => ['ability:admin,add'], 'uses' => 'WechatreplyimagetextController@add'])->name('get.admin.wechatreplyimagetext.add');
+	Route::get('wechatreplyimagetext/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'WechatreplyimagetextController@edit'])->name('get.admin.wechatreplyimagetext.edit');		    
+	Route::get('wechat/menu/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatController@menu'])->name('get.admin.wechat.menu');
+	Route::get('wechat/user/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatController@user'])->name('get.admin.wechat.user');		    		    		    			    
+	//微信菜单分类			
+	Route::get('classifywechat/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'ClassifywechatController@index'])->name('get.admin.classifywechat.index');
+	Route::get('classifywechat/add/{id?}', ['middleware' => ['ability:admin,add'], 'uses' => 'ClassifywechatController@add'])->name('get.admin.classifywechat.add');
+	Route::get('classifywechat/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ClassifywechatController@edit'])->name('get.admin.classifywechat.edit');	
+	
+
 	/*
 	 ***********************************************************************
 	 *	   post 路由
@@ -553,6 +291,12 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('wechatreplyimagetext/api_add', 'WechatreplyimagetextController@api_add')->name('post.admin.wechatreplyimagetext.api_add');
 	Route::post('wechatreplyimagetext/api_info', 'WechatreplyimagetextController@api_info')->name('post.admin.wechatreplyimagetext.api_info');
 	Route::post('wechatreplyimagetext/api_edit', 'WechatreplyimagetextController@api_edit')->name('post.admin.wechatreplyimagetext.api_edit');
+
+	//微信-菜单分类
+	Route::post('classifywechat/api_list', 'ClassifywechatController@api_list')->name('post.admin.classifywechat.api_list');
+	Route::post('classifywechat/api_add', 'ClassifywechatController@api_add')->name('post.admin.classifywechat.api_add');
+	Route::post('classifywechat/api_info', 'ClassifywechatController@api_info')->name('post.admin.classifywechat.api_info');
+	Route::post('classifywechat/api_edit', 'ClassifywechatController@api_edit')->name('post.admin.classifywechat.api_edit');
 
 });
 

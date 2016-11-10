@@ -262,6 +262,46 @@ class DeleteapiController extends PublicController
 									}
 								}
 			break;
+			case 'Classifywechat':
+								$subcondition['topid']=$request->get('id');
+								$subinfo=DB::table('classifywechats')->where($subcondition)->get();
+								if($subinfo)
+								{
+									$msg_array['status']='0';
+									$msg_array['info']=trans('admin.classifywechat_failure_delete');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';
+									$msg_array['param_way']='';
+									$msg_array['param_keyword']='';	
+								}
+								else
+								{
+									$info=$this->delete_action('classifywechats',$request->get('id'));
+									if($info)
+									{
+										$msg_array['status']='1';
+										$msg_array['info']=trans('admin.website_del_success');
+										$msg_array['is_reload']=0;
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+										$msg_array['param_way']='';
+										$msg_array['param_keyword']='';
+									}
+									else
+									{
+										
+										$msg_array['status']='0';
+										$msg_array['info']=trans('admin.website_del_failure');
+										$msg_array['is_reload']=0;
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+										$msg_array['param_way']='';
+										$msg_array['param_keyword']='';	
+										
+									}
+								}
+			break;
 			case 'Article':
 							$info=$this->delete_action('articles',$request->get('id'));
 							if($info)

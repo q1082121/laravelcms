@@ -649,7 +649,6 @@ return [
     'wechat_failure_tip3'                               =>   '请填写原始ID',
     'website_wechat_tip_pay'                            =>   '【微信支付配置】',
     'website_wechat_tip_msg'                            =>   '【微信消息模版配置】',
-    
     'website_wechat_setting_api'                        =>   '微信配置接参数',
     'website_wechat_name'                               =>   '公众号名称',
     'website_wechat_model_base'                         =>   '微信基本功能模块',
@@ -673,7 +672,6 @@ return [
     'website_wechat_model_base_text_tip'                =>   '关键词触发回复文本信息',
     'wechat_text_failure_tip1'                          =>   '请填写关键词',
     'wechat_text_failure_tip2'                          =>   '请填写文本内容',
-
     'website_wechat_model_base_imagetext'               =>   '图文回复',
     'website_wechat_model_base_imagetext_tip'           =>   '关键词触发回复图文信息',
     'website_wechat_model_base_imagetext_keyword'       =>   '关键词',
@@ -685,14 +683,45 @@ return [
     'website_wechat_model_base_imagetext_status'        =>   '状态',
     'wechat_imagetext_failure_tip1'                     =>   '请填写关键词',
     'wechat_imagetext_failure_tip2'                     =>   '请填写标题',
-
     'website_wechat_model_base_messagetpl'              =>   '模版消息',
     'website_wechat_model_base_messagetpl_tip'          =>   '微信模版消息 消息接收主体',
-    
     'website_wechat_model_base_menu'                    =>   '微信自定义菜单',
+    'website_menu_type1'                                =>   '关键词按钮',
+    'website_menu_type2'                                =>   '外链接按钮',
+    'website_menu_type3'                                =>   '扫描推事件【跳URL】',
+    'website_menu_type4'                                =>   '扫描推事件【不跳URL】',
+    'website_menu_type5'                                =>   '系统拍照发图',
+    'website_menu_type6'                                =>   '弹出拍照或者相册发图',
+    'website_menu_type7'                                =>   '弹出微信相册发图器',
+    'website_menu_type8'                                =>   '弹出地理位置选择器',
     'website_wechat_model_base_menu_tip'                =>   '微信底部导航栏',
     'website_wechat_model_base_user'                    =>   '微信会员',
     'website_wechat_model_base_user_tip'                =>   '微信获取粉丝信息数据',
     'website_wechat_model_active'                       =>   '微信活动功能模块',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 微信菜单分类
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+
+    'website_classifywechat_item_topclass'               =>   '分类父类',
+    'website_classifywechat_item_type'                   =>   '分类类型',
+    'website_classifywechat_item_name'                   =>   '分类名称',
+    'website_classifywechat_item_ico'                    =>   '图标代码',
+    'website_classifywechat_item_keyword'                =>   '关键词',
+    'website_classifywechat_item_linkurl'                =>   '外链接',
+    'website_classifywechat_item_linkurl'                =>   '外链接',
+    'website_classifywechat_item_orderid'                =>   '排序',
+    'website_classifywechat_item_status'                 =>   '状态',
+    'classifywechat_failure_tip1'                        =>   '请输入分类名称',
+    'classifywechat_failure_tip2'                        =>   '请输入关键词',
+    'classifywechat_failure_delete'                      =>   '请先删除子类',
+    'website_classifywechat_create_cache'                =>   '生成菜单数据',
+
 
 ];

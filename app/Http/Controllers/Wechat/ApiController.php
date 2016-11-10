@@ -140,7 +140,8 @@ class ApiController extends PublicController
 							}
 							if($this->mp['subscribe_keyword'])
 							{
-
+								$result=search_keyword($this->mp['subscribe_keyword'],$this->mp);
+								$reply=$this->result_message($result);
 							}
 							else if($this->mp['subscribe_text'])
 							{

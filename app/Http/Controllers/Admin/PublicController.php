@@ -91,13 +91,13 @@ class PublicController extends Controller
 	    |--------------------------------------------------------------------------
 	    |
 	    */
+
 		//常量定义
 		$this->pagesize=$pagesize=env('APP_ADMIN_PAGE_SIZE', 20);					//分页
 		$this->is_watermark=$is_watermark=env('APP_IS_WATERMARK', 1);				//是否水印
 		$this->is_thumb=$is_thumb=env('APP_IS_THUMB', 1);							//是否缩略图
 		$this->thumb_width=$thumb_width=env('APP_THUMB_WIDTH', 200);				//缩略图宽度
 		$this->thumb_height=$thumb_height=env('APP_THUMB_HEIGHT', 200);				//缩略图高度
-
 		//默认广告图片模块
 		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture1'),'value'=>1);
 		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture2'),'value'=>2);
@@ -114,6 +114,15 @@ class PublicController extends Controller
 		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat3'),'value'=>3);
 		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat4'),'value'=>4);
 		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat5'),'value'=>5);
+		//默认微信菜单栏目类型
+		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type1'),'value'=>'click');
+		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type2'),'value'=>'view');
+		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type3'),'value'=>'scancode_push');
+		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type4'),'value'=>'scancode_waitmsg');
+		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type5'),'value'=>'pic_sysphoto');
+		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type6'),'value'=>'pic_photo_or_album');
+		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type7'),'value'=>'pic_weixin');
+		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type8'),'value'=>'location_select');
 
 		/*
 	    |--------------------------------------------------------------------------

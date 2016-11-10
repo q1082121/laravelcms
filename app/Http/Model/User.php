@@ -31,7 +31,7 @@ class User extends Authenticatable//\Eloquent
 	
 	/******************************************
 	****@AuThor : rubbish@163.com
-	****@Title  : 在 User 模型中增加一对多关系的函数
+	****@Title  : 在 User 模型中增加一对一关系的函数
 	*******************************************/
 	public function hasOneUserinfo()
     {

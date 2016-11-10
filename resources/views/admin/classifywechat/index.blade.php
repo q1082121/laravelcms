@@ -254,6 +254,10 @@ new Vue({
             {
                 window.location.href=this.linkurl_edit+data;
             },
+            back_action:function()
+            {
+                window.location.href=this.linkurl_back;
+            },
              //点击删除
             delete_action:function(data)
             {

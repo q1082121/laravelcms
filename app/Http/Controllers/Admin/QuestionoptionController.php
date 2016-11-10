@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Model\Question;
 use App\Http\Model\Questionoption;
 use DB;
 use URL;
@@ -87,18 +88,17 @@ class QuestionoptionController extends PublicController
 	public function api_list(Request $request)  
 	{
 		$qid=$request->get('qid');
-		$condiiton['qid']=$qid;
 		$search_field=$request->get('way')?$request->get('way'):'name';
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Questionoption::where($condiiton)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Question::find($qid)->hasManyQuestionoptions()->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field,'qid'=>$qid])->links();
 		}
 		else
 		{
-			$list=Questionoption::where($condiiton)->paginate($this->pagesize);
+			$list=Question::find($qid)->hasManyQuestionoptions()->paginate($this->pagesize);
 			$list->appends(['qid'=>$qid])->links();
 		}
 		if($list)

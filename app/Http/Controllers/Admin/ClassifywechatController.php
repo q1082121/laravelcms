@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Model\Wechat;
 use App\Http\Model\Classifywechat;
 use DB;
 use URL;
@@ -118,18 +119,17 @@ class ClassifywechatController extends PublicController
 	public function api_list(Request $request)  
 	{
 		$wechat_id=$request->get('wechat_id');
-		$condiiton['wechat_id']=$wechat_id;
 		$search_field=$request->get('way')?$request->get('way'):'name';
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Classifywechat::where($condiiton)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Wechat::find($wechat_id)->hasManyClassifywechats()->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field,'wechat_id'=>$wechat_id])->links();
 		}
 		else
 		{
-			$list=Classifywechat::where($condiiton)->paginate($this->pagesize);
+			$list=Wechat::find($wechat_id)->hasManyClassifywechats()->paginate($this->pagesize);
 			$list->appends(['wechat_id'=>$wechat_id])->links();
 		}
 		if($list)

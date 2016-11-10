@@ -100,6 +100,11 @@ class WechatController extends PublicController
 		$data=search_keyword('网',$mp);
 		dump($data);
 		*/
+		$condition_mp['grade']=1;
+		$condition_mp['status']=1;
+		$data=Wechat::find(1)->hasManyClassifywechats()->where($condition_mp)->orderBy('orderid','asc')->get()->toArray();
+		dump($data);
+
 
 		return view('admin/wechat/manage')->with('website',$website);
 	}

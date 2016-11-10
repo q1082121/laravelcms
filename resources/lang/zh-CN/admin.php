@@ -96,6 +96,7 @@ return [
     'website_outtime'                              =>   '响应超时',
     'website_outtime_error'                        =>   '响应异常',
     'website_create_success'                       =>   '生成成功',
+    'website_create_failure'                       =>   '生成失败',
     'website_get_success'                          =>   '获取成功',
     'website_get_failure'                          =>   '获取失败',
     'website_get_empty'                            =>   '数据为空',

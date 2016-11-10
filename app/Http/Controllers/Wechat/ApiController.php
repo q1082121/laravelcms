@@ -24,9 +24,82 @@ class ApiController extends PublicController
 	public $gid;
 	public $openid;
 	public $mp;
-	public function __construct()
+	public function __construct(Request $request)
 	{
 		require base_path('vendor').'/autoload.php';
+
+		$id=filter_suffixes($request->route('id'));
+		$condition['id']=$id;
+		$condition['status']=1;
+		$this->mp=object_array(DB::table('wechats')->where($condition)->first());
+		$this->options = [
+			/**
+			* Debug 模式，bool 值：true/false
+			*
+			* 当值为 false 时，所有的日志都不会记录
+			*/	
+			'debug'  => true,
+			/**
+			* 账号基本信息，请从微信公众平台/开放平台获取
+			*/
+			'app_id' => @$this->mp['appid'],			 	// AppID	
+			'secret' => @$this->mp['appsecret'],		 	// AppSecret	
+			'token'  => @$this->mp['token'],			 	// Token
+			'aes_key' => @$this->mp['encodingaeskeynull'],	// EncodingAESKey，安全模式下请一定要填写！！！
+			/**
+			* 日志配置
+			*
+			* level: 日志级别, 可选为：
+			*         debug/info/notice/warning/error/critical/alert/emergency
+			* file：日志文件位置(绝对路径!!!)，要求可写权限
+			*/
+			'log' => [
+				'level' => 'debug',
+				'file'  => base_path('tmp').'/logs/easywechat.log', // XXX: 绝对路径！！！！
+			]
+		];
+
+		/**
+		* Guzzle 全局设置
+		*
+		* 更多请参考： http://docs.guzzlephp.org/en/latest/request-options.html
+		*/
+		$this->options['guzzle']=[
+				'timeout' => 3.0, // 超时时间（秒）
+				//'verify' => false, // 关掉 SSL 认证（强烈不建议！！！）
+		];
+
+		if(@$this->mp['type']==4)
+		{	
+			/**
+			* OAuth 配置
+			*
+			* scopes：公众平台（snsapi_userinfo / snsapi_base），开放平台：snsapi_login
+			* callback：OAuth授权完成后的回调页地址
+			*/
+			$this->options['oauth']=[
+					'scopes'   => ['snsapi_userinfo'],
+					'callback' => '/examples/oauth_callback.php',
+			];
+		}
+		if(@$this->mp['mchid']&&@$this->mp['paykey'])
+		{
+			/**
+			* 微信支付
+			*/
+			$this->options['payment']=[
+				'merchant_id'        => @$this->mp['mchid'],
+				'key'                => @$this->mp['paykey'],
+				'cert_path'          => @$this->mp['cert_path'], 	   // XXX: 绝对路径！！！！
+				'key_path'           => @$this->mp['key_path'],        // XXX: 绝对路径！！！！
+				// 'device_info'     => '013467007045764',
+				// 'sub_app_id'      => '',
+				// 'sub_merchant_id' => '',
+				// ...
+			];
+		}
+
+
 	}
 	/******************************************
 	****AuThor:rubbish.boy@163.com
@@ -34,79 +107,8 @@ class ApiController extends PublicController
 	*******************************************/
 	public function index(Request $request)  
 	{
-		$id=filter_suffixes($request->route('id'));
-		$condition['id']=$id;
-		$condition['status']=1;
-		$this->mp=object_array(DB::table('wechats')->where($condition)->first());
 		if($this->mp)
 		{
-			$this->options = [
-				/**
-				* Debug 模式，bool 值：true/false
-				*
-				* 当值为 false 时，所有的日志都不会记录
-				*/	
-				'debug'  => true,
-				/**
-				* 账号基本信息，请从微信公众平台/开放平台获取
-				*/
-				'app_id' => @$this->mp['appid'],			 	// AppID	
-				'secret' => @$this->mp['appsecret'],		 	// AppSecret	
-				'token'  => @$this->mp['token'],			 	// Token
-				'aes_key' => @$this->mp['encodingaeskeynull'],	// EncodingAESKey，安全模式下请一定要填写！！！
-				/**
-				* 日志配置
-				*
-				* level: 日志级别, 可选为：
-				*         debug/info/notice/warning/error/critical/alert/emergency
-				* file：日志文件位置(绝对路径!!!)，要求可写权限
-				*/
-				'log' => [
-					'level' => 'debug',
-					'file'  => base_path('tmp').'/logs/easywechat.log', // XXX: 绝对路径！！！！
-				]
-			];
-
-			/**
-			* Guzzle 全局设置
-			*
-			* 更多请参考： http://docs.guzzlephp.org/en/latest/request-options.html
-			*/
-			$this->options['guzzle']=[
-					'timeout' => 3.0, // 超时时间（秒）
-					//'verify' => false, // 关掉 SSL 认证（强烈不建议！！！）
-			];
-
-			if(@$this->mp['type']==4)
-			{	
-				/**
-				* OAuth 配置
-				*
-				* scopes：公众平台（snsapi_userinfo / snsapi_base），开放平台：snsapi_login
-				* callback：OAuth授权完成后的回调页地址
-				*/
-				$this->options['oauth']=[
-						'scopes'   => ['snsapi_userinfo'],
-						'callback' => '/examples/oauth_callback.php',
-				];
-			}
-			if(@$this->mp['mchid']&&@$this->mp['paykey'])
-			{
-				/**
-				* 微信支付
-				*/
-				$this->options['payment']=[
-					'merchant_id'        => @$this->mp['mchid'],
-					'key'                => @$this->mp['paykey'],
-					'cert_path'          => @$this->mp['cert_path'], 	   // XXX: 绝对路径！！！！
-					'key_path'           => @$this->mp['key_path'],        // XXX: 绝对路径！！！！
-					// 'device_info'     => '013467007045764',
-					// 'sub_app_id'      => '',
-					// 'sub_merchant_id' => '',
-					// ...
-				];
-			}
-
 			$app = new Application($this->options);
 			$server = $app->server;
 			$server->setMessageHandler(function($message)
@@ -269,7 +271,7 @@ class ApiController extends PublicController
 	}
 	/******************************************
 	****AuThor:rubbish.boy@163.com
-	****Title :获取公众号信息
+	****Title :处理返回消息
 	*******************************************/
 	public function result_message($result)
 	{
@@ -331,5 +333,38 @@ class ApiController extends PublicController
 			break;
 		}
 		return $response;
+	}
+	/******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :生成菜单数据
+	*******************************************/
+	public function create_menu(Request $request)
+	{
+		if($this->mp)
+		{
+			$condition_mp['grade']=1;
+			$condition_mp['status']=1;
+			$menu_top=Wechat::find($this->mp['id'])->hasManyClassifywechats()->where($condition_mp)->orderBy('orderid','asc')->get()->toArray();
+			
+
+			$app = new Application($this->options);
+			$menu = $app->menu;
+			//$menu->add($buttons);
+
+			$info=trans('admin.website_create_success');
+			$msg_array['status']='1';
+			$msg_array['info']=$info;
+			$msg_array['is_reload']=0;
+			$msg_array['resource']=$buttons;
+		}
+		else
+		{
+			$info=trans('admin.website_create_failure');
+			$msg_array['status']='2';
+			$msg_array['info']=$info;
+			$msg_array['is_reload']=0;
+			$msg_array['resource']=$id;
+		}
+		return response()->json($msg_array);
 	}
 }

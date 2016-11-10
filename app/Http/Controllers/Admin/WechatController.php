@@ -93,8 +93,13 @@ class WechatController extends PublicController
 		$website['info']=$info;
 		$website['id']=$id;
 
-		$data=search_keyword('一键拨号',1);
-		//dump($data);
+		/*
+		$condition_mp['id']=1;
+		$condition_mp['status']=1;
+		$mp=object_array(DB::table('wechats')->where($condition_mp)->first());
+		$data=search_keyword('网',$mp);
+		dump($data);
+		*/
 
 		return view('admin/wechat/manage')->with('website',$website);
 	}

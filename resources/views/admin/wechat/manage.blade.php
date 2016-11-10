@@ -11,13 +11,22 @@
                 <h3 class="box-title">{{trans('admin.website_wechat_setting_api')}}</h3>
           </div>
           <div class="box box-solid">
-              <div class="col-xs-12">
+              <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-chain"></i></span>
                   <div class="info-box-content">
-                      <h5 style="margin-top:5px;margin-bottom:5px;font-size:18px;">{{trans('admin.website_wechat_name')}} : {{$website['info']['name']}}</h5>
-                      <h5 style="margin-top:5px;margin-bottom:5px;">TOKEN : {{$website['info']['token']}}</h5>
-                      <h5 style="margin-top:5px;margin-bottom:5px;">URL : {{asset('/')}}wechat/api/{{$website['info']['id']}}.html</h5>
+                      <h5 style="margin-top:5px;margin-bottom:5px;font-size:18px;">{{$website['info']['name']}}</h5>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="fa fa-chain"></i></span>
+                  <div class="info-box-content">
+                      <h4 style="margin-bottom:5px;">URL : {{asset('/')}}wechat/api/{{$website['info']['id']}}.html</h5>
+                      <h4 style="margin-bottom:5px;">TOKEN : {{$website['info']['token']}}</h5>
                   </div>
                   <!-- /.info-box-content -->
                 </div>

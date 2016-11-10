@@ -146,7 +146,15 @@ function getCurrentAction()
     list($class, $method) = explode('@', $action);  
     return ['controller' => $class, 'method' => $method];  
 } 
-
+/***********************************
+ * 方法名： 获取客户端IP
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function get_client_ip()
+{
+	$ip=$_SERVER['REMOTE_ADDR'];
+	return $ip;
+} 
 /****************************************************************************************************
 ****AuThor:rubbish.boy@163.com
 ****Title :业务逻辑
@@ -212,36 +220,87 @@ function in_wechat_keyword($data)
     return $subparams->save();
 }
 /***********************************
+ * 方法名：过滤文件后缀
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function filter_suffixes($str)
+{
+	$str= str_replace(".html", "", $str);
+	$str= str_replace(".htm", "", $str);
+	$str= str_replace(".php", "", $str);
+	$str= str_replace(".asp", "", $str);
+	$str= str_replace(".aspx", "", $str);
+	$str= str_replace(".js", "", $str);
+	$str= str_replace(".css", "", $str);
+	return $str;
+}
+/***********************************
  * 方法名：微信关键词检索
  * 作者： Tommy（rubbish.boy@163.com）
  ***********************************/ 
-function search_keyword($keyword,$wechat_id,$limit=9)
+function search_keyword($keyword,$mp,$limit=9)
 {
-	//检索图片类型
-	$condition['type']="imagetext";
-	$condition['wechat_id']=$wechat_id;
-	$datas=object_array(DB::table('wechatkeywords')->where($condition)->where("field_keyword", 'like', '%'.$keyword.'%')->take($limit)->get());
-	if($datas)
+	$result['type']="text";
+	$result['data']="";
+	switch($keyword)
 	{
+		case "优惠券":
+		break;
 
+		default:
+				//检索图文类型
+				$condition['type']="imagetext";
+				$condition['wechat_id']=$mp['id'];
+				$datas=object_array(DB::table('wechatkeywords')->where($condition)->where("field_keyword", 'like', '%'.$keyword.'%')->take($limit)->get());
+				if($datas)
+				{
+					$result['type']="imagetext";
+					$result['data']=$datas;
+				}
+				else
+				{
+					//检索文本类型
+					$condition_text['type']="text";
+					$condition_text['wechat_id']=$mp['id'];
+					$condition_text['field_keyword']=$keyword;
+					$datas=object_array(DB::table('wechatkeywords')->where($condition_text)->first());
+					if($datas)
+					{
+						switch($datas['tablename'])
+						{
+							case "wechatreplytexts":
+													$textinfo=object_array(DB::table('wechatreplytexts')->whereId($datas['field_id'])->first());
+													$content=$textinfo['content'];
+							break;
+						}
+						
+						
+						$result['type']="text";
+						$result['data']=$content;
+					}
+					else
+					{
+						//获取默认回复
+						if($mp['default_text'])
+						{
+							$result['type']="text";
+							$result['data']=$mp['default_text'];
+						}
+						elseif($mp['default_keyword'] && $mp['default_keyword']!=$keyword)
+						{
+							return search_keyword($mp['default_keyword'],$mp);
+						}
+						else
+						{
+							$result['type']="text";
+							$result['data']="暂无内容,敬请期待！";
+						}
+					}
+				}
+		break;
 	}
-	else
-	{
-		//检索文本类型
-		$condition['type']="text";
-		$condition['wechat_id']=$wechat_id;
-		$condition['field_keyword']=$keyword;
-		$datas=object_array(DB::table('wechatkeywords')->where($condition)->first());
-		if($datas)
-		{
-
-		}
-		else
-		{
-			//获取默认回复
-		}
-	}
-	return $datas;
+	
+	return $result;
 }
 
 

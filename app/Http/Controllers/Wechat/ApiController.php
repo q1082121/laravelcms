@@ -234,7 +234,8 @@ class ApiController extends PublicController
 					{
 						case 'text':
 							$keyword=$message->Content;
-
+							$result=search_keyword($keyword,$this->mp);
+							return $this->result_message($result);
 							# 文字消息...
 							break;
 						case 'image':
@@ -269,8 +270,65 @@ class ApiController extends PublicController
 	****AuThor:rubbish.boy@163.com
 	****Title :获取公众号信息
 	*******************************************/
-	public function get_mp($id)
+	public function result_message($result)
 	{
-		
+		switch($result['type'])
+		{
+			case "text":
+						$response = new Text(['content' => $result['data']]);
+			break;
+			case "imagetext":
+						$count=count($result['data']);
+						if($count==1)
+						{
+							foreach($result['data'] as $key => $val)
+							{
+								switch($val['tablename'])
+								{
+									case "wechatreplyimagetexts":
+																	$info=object_array(DB::table($val['tablename'])->whereId($val['field_id'])->first());
+																	$datas['title']=$info['title'];	
+																	$datas['description']=$info['introduction'];	
+																	$datas['url']=$info['linkurl']?$info['linkurl']:"http://www.es12.com";	
+																	$datas['image']='http://'.$_SERVER['HTTP_HOST']."/uploads/Wechatreplyimagetext/".$info['attachment'];						
+									break;
+								}
+								
+								$response= new News();
+								$response->title 			=$datas['title'];
+								$response->description 		=$datas['description'];
+								$response->url 				=$datas['url'];
+								$response->image 			=$datas['image'];
+								
+							}
+						}
+						else
+						{
+							foreach($result['data'] as $key => $val)
+							{
+
+								switch($val['tablename'])
+								{
+									case "wechatreplyimagetexts":
+																	$info=object_array(DB::table($val['tablename'])->whereId($val['field_id'])->first());
+																	$datas['title']=$info['title'];	
+																	$datas['description']=$info['introduction'];	
+																	$datas['url']=$info['linkurl']?$info['linkurl']:"http://www.es12.com";	
+																	$datas['image']='http://'.$_SERVER['HTTP_HOST']."/uploads/Wechatreplyimagetext/".$info['attachment'];						
+									break;
+								}
+								$response[]= new News([
+											'title'       => $datas['title'],
+											'description' => $datas['description'],
+											'url'         => $datas['url'],
+											'image'       => $datas['image'],
+										]);
+							}
+						}
+						
+						
+			break;
+		}
+		return $response;
 	}
 }

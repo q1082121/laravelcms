@@ -10,7 +10,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use Cache;
-
+use App\Common\lib\Guestinfo;
 class HomeController extends PublicController
 {
 	/******************************************
@@ -69,6 +69,8 @@ class HomeController extends PublicController
 		 -服务器信息
 		 -------------------------------------------
 		 */
+		$Guestinfo=new Guestinfo();
+		$serverinfo['client_ip']			=get_client_ip();
 		$serverinfo['phpver']				=PHP_VERSION;
 		$serverinfo['phpos']				=PHP_OS;
 		$serverinfo['server_soft'] 			=$_SERVER['SERVER_SOFTWARE'];

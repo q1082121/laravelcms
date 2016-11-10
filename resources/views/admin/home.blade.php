@@ -1,5 +1,33 @@
 @extends('layouts.admin')
 @section('content')
+<script type="text/javascript">
+ window.onload = function() {
+  var show = document.getElementById("show");
+  setInterval(function() 
+  {
+   var time = new Date();
+   // 程序计时的月从0开始取值后+1
+   var m = time.getMonth() + 1;
+   var d = time.getDate();
+   var h = time.getHours();
+   var mt= time.getMinutes();
+   var ms = time.getSeconds();
+   if(m<10)
+   {m='0'+m;}
+   if(d<10)
+   {d='0'+d;}
+   if(h<10)
+   {h='0'+h;}
+   if(mt<10)
+   {mt='0'+mt;}
+   if(ms<10)
+   {ms='0'+ms;}
+   var t = time.getFullYear() + "-" + m + "-" + d + " " + h + ":" + mt + ":" + ms;
+   show.innerHTML = t;
+  }, 1000);
+ };
+</script>
+<!--common-->
 <!-- Main content 主要内容区-->
     <section class="content">
       <!-- Small boxes (Stat box) -->
@@ -259,7 +287,9 @@
                   <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
                     <span class="info-box-text">{{trans('admin.website_serverinfo_systime')}}</span>
-                    <span class="info-box-number">{{$website['serverinfo']['systime']}}</span>
+                    <span class="info-box-number" id="show">
+                    
+                    </span>
                   </div>
                   <!-- /.info-box-content -->
                 </div>
@@ -294,7 +324,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_serverip')}}</span>
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_server_serverip')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['serverip']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -302,6 +332,18 @@
                 <!-- /.info-box -->
               </div>
 
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">{{trans('admin.website_serverinfo_client_ip')}}</span>
+                    <span class="info-box-number">{{$website['serverinfo']['client_ip']}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
@@ -332,18 +374,6 @@
                   <div class="info-box-content">
                     <span class="info-box-text">{{trans('admin.website_serverinfo_phpsafe')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['phpsafe']}}</span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box">
-                  <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
-                  <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_phpdir')}}</span>
-                    <span class="info-box-number">{{$website['serverinfo']['phpdir']}}</span>
                   </div>
                   <!-- /.info-box-content -->
                 </div>

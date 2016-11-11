@@ -24,6 +24,7 @@ class ApiController extends PublicController
 	public $gid;
 	public $openid;
 	public $mp;
+	public $app;
 	public function __construct(Request $request)
 	{
 		require base_path('vendor').'/autoload.php';
@@ -109,15 +110,62 @@ class ApiController extends PublicController
 	{
 		if($this->mp)
 		{
-			$app = new Application($this->options);
+			$this->app= $app = new Application($this->options);
 			$server = $app->server;
 			$server->setMessageHandler(function($message)
 			{
 				$this->gid=$gid=$message->ToUserName;
 				$this->openid=$openid=$message->FromUserName;
-
+				
+				$userService = $this->app->user;
+				$user = $userService->get($this->openid);
 				$condition_wechatuser['wechat_id']=$this->mp['id'];
 				$condition_wechatuser['openid']=$this->openid;
+				$result=object_array(Wechatuser::where($condition_wechatuser)->first());
+				if(empty($result))
+				{
+					$params = new Wechatuser;
+					$params->wechat_id 	= $this->mp['id'];
+					$params->openid 	= $this->openid;
+					$params->nickname 	= $user->nickname;
+					$params->nickname_encode 	= base64_encode($user->nickname);
+					$params->sex 		= $user->sex;
+					$params->language 	= $user->language;
+					$params->city 		= $user->city;
+					$params->province 	= $user->province;
+					$params->country 	= $user->country;
+					$params->headimgurl = $user->headimgurl;
+					$params->subscribe  = $user->subscribe;
+					$params->status 	= 1;
+					$params->save();
+					
+				}
+				else
+				{
+					$rule=0;
+					$params = Wechatuser::find($result['id']);
+					if($user->subscribe!=$params->subscribe)
+					{
+						$params->subscribe=$user->subscribe;
+						$rule=1;
+					}
+					if($user->nickname!=$params->nickname)
+					{
+						$params->nickname=$user->nickname;
+						$params->nickname_encode=base64_encode($user->nickname);
+						$rule=1;
+					}
+					if($user->headimgurl!=$params->headimgurl)
+					{
+						$params->headimgurl=$user->headimgurl;
+						$rule=1;
+					}
+					if($rule==1)
+					{
+						$params->save();
+					}
+					
+				}
 
 				// 注意，这里的 $message 不仅仅是用户发来的消息，也可能是事件
 				// 当 $message->MsgType 为 event 时为事件
@@ -125,21 +173,6 @@ class ApiController extends PublicController
 					# code...
 					switch ($message->Event) {
 						case 'subscribe':
-							$result=object_array(Wechatuser::where($condition_wechatuser)->first());
-							if(empty($result))
-							{
-								$params = new Wechatuser;
-								$params->wechat_id 	= $this->mp['id'];
-								$params->openid 	= $this->openid;
-								$params->status 	= 1;
-								$params->save();
-							}
-							else
-							{
-								$params = Wechatuser::find($result['id']);
-								$params->status=1;
-								$params->save();
-							}
 							if($this->mp['subscribe_keyword'])
 							{
 								$result=search_keyword($this->mp['subscribe_keyword'],$this->mp);
@@ -157,13 +190,6 @@ class ApiController extends PublicController
 							# 订阅
 							break;
 						case 'unsubscribe':
-							$result=object_array(Wechatuser::where($condition_wechatuser)->first());
-							if($result)
-							{
-								$params = Wechatuser::find($result['id']);
-								$params->status=0;
-								$params->save();
-							}
 							return "主人不要丢下我!";
 							# 取消订阅
 							break;

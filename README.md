@@ -16,6 +16,7 @@ QQ	:471416739
 8. stevenyangecho/laravel-u-editor 百度富文本编辑器
 9. workerman/phpsocket.io,workerman/workerman  目前开发用的是win版本, 压缩包是linux版本
 10."overtrue/wechat": "~3.1"	微信扩展包
+
 #	laravel使用了哪些前端组件？ bower.json
 
 	前端组件默认安装存放目录：Public/module
@@ -90,15 +91,15 @@ QQ	:471416739
 	 -单选题
 	 -多选题
 	 -判断题
-	微信管理 	暂停
+	微信管理 	
 	>公众号管理 
 	>关注回复	
 	>默认回复	
 	>文本回复	 
 	>图文回复	 
 	>图片回复	开发中 
-	>微信菜单	开发中 
-	>粉丝列表	开发中 
+	>微信菜单	 
+	>粉丝列表	 
 	>渠道二维码	开发中 
 	>优惠券		开发中 
 	>大转盘		开发中 

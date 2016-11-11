@@ -112,7 +112,7 @@ new Vue({
       {
           if (this.params_data.name=='')
           {
-              var msg="{{trans('admin.userpermission_failure_tip1')}}";
+              var msg="{{trans('admin.option_failure_iskeyval')}}";
               layermsg_error(msg);
           }
           else

@@ -25,24 +25,24 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_imagetext_keyword')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_keyword')}}</span>
                 <input type="text" class="form-control" v-model="params_data.keyword"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_imagetext_title')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_title')}}</span>
                 <input type="text" class="form-control" v-model="params_data.title"   >
               </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_imagetext_introduction')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_introduction')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.introduction" > </textarea>
                 </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_wechat_model_base_imagetext_attachment')}}</label><br>
+              <label >{{trans('admin.fieldname_item_attachment')}}</label><br>
               <!--
               <input type="file" @change="onFileChange" id="fileuploads" class="file"  accept="image/*">
               
@@ -89,7 +89,7 @@
             @if($website['root']['syseditor']=='Ueditor')
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_imagetext_content')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_content')}}</span>
                   <div class="editor">
                     <textarea id='myEditor'  rows="3" debounce="500" >
                       @{{params_data.content}}
@@ -102,7 +102,7 @@
             @if($website['root']['syseditor']=='Markdown') 
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_imagetext_content')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_content')}}</span>
                   <div class="editor">
                     <textarea id='myEditor'  v-model="params_data.content"  class="form-control"  rows="3"  >
                     </textarea>
@@ -112,7 +112,7 @@
             @endif
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_imagetext_linkurl')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_linkurl')}}</span>
                 <input type="text" class="form-control" v-model="params_data.linkurl"   >
               </div>
             </div>
@@ -236,12 +236,12 @@ new Vue({
 
           if (this.params_data.keyword=='')
           {
-              var msg="{{trans('admin.wechat_imagetext_failure_tip1')}}";
+              var msg="{{trans('admin.option_failure_iskeyword')}}";
               layermsg_error(msg);
           }
           else if (this.params_data.title=='')
           {
-              var msg="{{trans('admin.wechat_imagetext_failure_tip2')}}";
+              var msg="{{trans('admin.option_failure_istitle')}}";
               layermsg_error(msg);
           }
           else

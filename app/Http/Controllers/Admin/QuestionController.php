@@ -92,7 +92,7 @@ class QuestionController extends PublicController
 		}
 		else
 		{
-			$classlist[]=array('text'=>trans('admin.website_question_select'),'value'=>'0');
+			$classlist[]=array('text'=>trans('admin.option_failure_isselect_class'),'value'=>'0');
 			$website['classlist']=json_encode($classlist);
 		}
 
@@ -138,7 +138,7 @@ class QuestionController extends PublicController
 		}
 		else
 		{
-			$classlist[]=array('text'=>trans('admin.website_question_select'),'value'=>'0');
+			$classlist[]=array('text'=>trans('admin.option_failure_isselect_class'),'value'=>'0');
 			$website['classlist']=json_encode($classlist);
 		}
 

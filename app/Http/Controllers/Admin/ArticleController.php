@@ -65,7 +65,7 @@ class ArticleController extends PublicController
 		}
 		else
 		{
-			$classlist[]=array('text'=>trans('admin.website_article_select'),'value'=>'0');
+			$classlist[]=array('text'=>trans('admin.option_failure_isselect_class'),'value'=>'0');
 			$website['classlist']=json_encode($classlist);
 		}
 
@@ -99,7 +99,7 @@ class ArticleController extends PublicController
 		}
 		else
 		{
-			$classlist[]=array('text'=>trans('admin.website_article_select'),'value'=>'0');
+			$classlist[]=array('text'=>trans('admin.option_failure_isselect_class'),'value'=>'0');
 			$website['classlist']=json_encode($classlist);
 		}
 

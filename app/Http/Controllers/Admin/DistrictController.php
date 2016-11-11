@@ -26,13 +26,13 @@ class DistrictController extends PublicController
 		switch($condition['level'])
 		{
 			case 1:
-					$list[]=array('id'=>0,'name'=>trans('admin.website_select_p'),'alias'=>trans('admin.website_select_p'));
+					$list[]=array('id'=>0,'name'=>trans('admin.option_select_p'),'alias'=>trans('admin.option_select_p'));
 			break;
 			case 2:
-					$list[]=array('id'=>0,'name'=>trans('admin.website_select_c'),'alias'=>trans('admin.website_select_c'));
+					$list[]=array('id'=>0,'name'=>trans('admin.option_select_c'),'alias'=>trans('admin.option_select_c'));
 			break;
 			case 3:
-					$list[]=array('id'=>0,'name'=>trans('admin.website_select_x'),'alias'=>trans('admin.website_select_x'));
+					$list[]=array('id'=>0,'name'=>trans('admin.option_select_x'),'alias'=>trans('admin.option_select_x'));
 			break;
 		}
 		$datalist=DB::table('districts')->where($condition)->get();

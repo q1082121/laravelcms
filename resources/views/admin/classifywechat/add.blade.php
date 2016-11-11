@@ -349,12 +349,12 @@ new Vue({
       {
           if (this.params_data.name=='')
           {
-              var msg="{{trans('admin.classifywechat_failure_tip1')}}";
+              var msg="{{trans('admin.option_failure_isclassname')}}";
               layermsg_error(msg);
           }
           else if (this.params_data.keyword=='')
           {
-              var msg="{{trans('admin.classifywechat_failure_tip2')}}";
+              var msg="{{trans('admin.option_failure_iskeyword')}}";
               layermsg_error(msg);
           }
           else

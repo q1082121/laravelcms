@@ -188,7 +188,7 @@ class UserController extends PublicController
 			if($newpwd!=$surepwd)
 			{
 				$msg_array['status']='0';
-				$msg_array['info']=trans('admin.website_editpwd_surefailure');
+				$msg_array['info']=trans('admin.option_editpwd_surefailure');
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
@@ -198,7 +198,7 @@ class UserController extends PublicController
 			else if (strlen($newpwd)<6) 
 			{
 				$msg_array['status']='0';
-				$msg_array['info']=trans('admin.website_editpwd_failurelength');
+				$msg_array['info']=trans('admin.option_editpwd_failurelength');
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
@@ -237,7 +237,7 @@ class UserController extends PublicController
 		else
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_editpwd_failure');
+			$msg_array['info']=trans('admin.option_editpwd_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']='';
@@ -283,9 +283,9 @@ class UserController extends PublicController
 		$website['apiurl_edit']=URL::action('Admin\UserController@api_edit');
 		$website['apiurl_area']=URL::action('Admin\DistrictController@api_area');
 		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
-		$area_data_p[]=array('id'=>0,'name'=>trans('admin.website_select_p'),'alias'=>trans('admin.website_select_p'));
-		$area_data_c[]=array('id'=>0,'name'=>trans('admin.website_select_c'),'alias'=>trans('admin.website_select_c'));
-		$area_data_x[]=array('id'=>0,'name'=>trans('admin.website_select_x'),'alias'=>trans('admin.website_select_x'));
+		$area_data_p[]=array('id'=>0,'name'=>trans('admin.option_select_p'),'alias'=>trans('admin.option_select_p'));
+		$area_data_c[]=array('id'=>0,'name'=>trans('admin.option_select_c'),'alias'=>trans('admin.option_select_c'));
+		$area_data_x[]=array('id'=>0,'name'=>trans('admin.option_select_x'),'alias'=>trans('admin.option_select_x'));
 		$website['area_data_p']=json_encode($area_data_p);
 		$website['area_data_c']=json_encode($area_data_c);
 		$website['area_data_x']=json_encode($area_data_x);

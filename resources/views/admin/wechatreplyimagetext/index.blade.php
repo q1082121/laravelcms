@@ -43,9 +43,9 @@
             <thead>
             <tr>
               <th>{{trans('admin.fieldname_item_id')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_imagetext_keyword')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_imagetext_title')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_imagetext_attachment')}}</th>
+              <th>{{trans('admin.fieldname_item_keyword')}}</th>
+              <th>{{trans('admin.fieldname_item_title')}}</th>
+              <th>{{trans('admin.fieldname_item_attachment')}}</th>
               <th>{{trans('admin.fieldname_item_status')}}</th>
               <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>

@@ -38,15 +38,15 @@
             <thead>
             <tr>
               <th>{{trans('admin.fieldname_item_id')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_user_headimhurl')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_user_nickname')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_user_sex')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_user_province')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_user_city')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_user_country')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_user_score')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_user_money')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_user_subscribe')}}</th>
+              <th>{{trans('admin.fieldname_item_headimage')}}</th>
+              <th>{{trans('admin.fieldname_item_nickname')}}</th>
+              <th>{{trans('admin.fieldname_item_sex')}}</th>
+              <th>{{trans('admin.fieldname_item_province')}}</th>
+              <th>{{trans('admin.fieldname_item_city')}}</th>
+              <th>{{trans('admin.fieldname_item_country')}}</th>
+              <th>{{trans('admin.fieldname_item_score')}}</th>
+              <th>{{trans('admin.fieldname_item_money')}}</th>
+              <th>{{trans('admin.fieldname_item_subscribe')}}</th>
               <th>{{trans('admin.fieldname_item_status')}}</th>
               <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>

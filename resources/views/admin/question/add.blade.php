@@ -209,12 +209,12 @@ new Vue({
       {
           if (this.params_data.classid==0)
           {
-              var msg="{{trans('admin.website_question_select')}}";
+              var msg="{{trans('admin.option_failure_isselect_class')}}";
               layermsg_error(msg);
           }
           else if (this.params_data.title=='')
           {
-              var msg="{{trans('admin.question_failure_tip1')}}";
+              var msg="{{trans('admin.option_failure_istitle')}}";
               layermsg_error(msg);
           }
           else

@@ -15,7 +15,7 @@
             </a>
             @ability('admin', 'create_cache_picture')
             <button @click="create_cache()" type="button" class="btn btn-danger pull-left " style="margin:0 0 0 10px;">
-            <i class="fa fa-add"></i> {{trans('admin.website_picture_create_cache')}}
+            <i class="fa fa-add"></i> {{trans('admin.website_action_create_cache')}}
             </button>
             @endability
           </h3>

@@ -68,7 +68,7 @@ class DeleteapiController extends PublicController
 								if($subinfo)
 								{
 									$msg_array['status']='0';
-									$msg_array['info']=trans('admin.navigation_failure_delete');
+									$msg_array['info']=trans('admin.message_failure_delete_sub');
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
@@ -108,7 +108,7 @@ class DeleteapiController extends PublicController
 								if($subinfo)
 								{
 									$msg_array['status']='0';
-									$msg_array['info']=trans('admin.classify_failure_delete');
+									$msg_array['info']=trans('admin.message_failure_delete_sub');
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
@@ -148,7 +148,7 @@ class DeleteapiController extends PublicController
 								if($subinfo)
 								{
 									$msg_array['status']='0';
-									$msg_array['info']=trans('admin.classifylink_failure_delete');
+									$msg_array['info']=trans('admin.message_failure_delete_sub');
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
@@ -188,7 +188,7 @@ class DeleteapiController extends PublicController
 								if($subinfo)
 								{
 									$msg_array['status']='0';
-									$msg_array['info']=trans('admin.classifyproduct_failure_delete');
+									$msg_array['info']=trans('admin.message_failure_delete_sub');
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
@@ -228,7 +228,7 @@ class DeleteapiController extends PublicController
 								if($subinfo)
 								{
 									$msg_array['status']='0';
-									$msg_array['info']=trans('admin.classifyquestion_failure_delete');
+									$msg_array['info']=trans('admin.message_failure_delete_sub');
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
@@ -268,7 +268,7 @@ class DeleteapiController extends PublicController
 								if($subinfo)
 								{
 									$msg_array['status']='0';
-									$msg_array['info']=trans('admin.classifywechat_failure_delete');
+									$msg_array['info']=trans('admin.message_failure_delete_sub');
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';

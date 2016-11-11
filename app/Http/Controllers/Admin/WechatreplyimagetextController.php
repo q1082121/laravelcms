@@ -34,8 +34,8 @@ class WechatreplyimagetextController extends PublicController
 		$website['link_edit']=route('get.admin.wechatreplyimagetext.edit').'/';
 		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;
 		$website['way']='keyword';
-		$wayoption[]=array('text'=>trans('admin.website_wechat_model_base_imagetext_keyword'),'value'=>'keyword');
-		$wayoption[]=array('text'=>trans('admin.website_wechat_model_base_imagetext_title'),'value'=>'title');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyword'),'value'=>'keyword');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
 		$info = object_array(DB::table('wechats')->whereId($id)->first());
 		$website['info']=$info;

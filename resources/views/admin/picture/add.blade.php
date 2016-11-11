@@ -199,7 +199,7 @@ new Vue({
       {
           if (this.params_data.title=='')
           {
-              var msg="{{trans('admin.picture_failure_tip1')}}";
+              var msg="{{trans('admin.option_failure_istitle')}}";
               layermsg_error(msg);
           }
           else

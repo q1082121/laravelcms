@@ -475,7 +475,7 @@ class OneactionapiController extends PublicController
 											if ($params->save()) 
 											{
 												$msg_array['status']='1';
-												$msg_array['info']=$params->isstar_to==1?trans('admin.website_letter_action_star_success'):trans('admin.website_letter_action_star_success2');
+												$msg_array['info']=$params->isstar_to==1?trans('admin.message_star_success'):trans('admin.message_star_success2');
 												$msg_array['is_reload']=0;
 												$msg_array['curl']='';
 												$msg_array['resource']='';
@@ -501,7 +501,7 @@ class OneactionapiController extends PublicController
 											if ($params->save()) 
 											{
 												$msg_array['status']='1';
-												$msg_array['info']=$params->isstar_from==1?trans('admin.website_letter_action_star_success'):trans('admin.website_letter_action_star_success2');
+												$msg_array['info']=$params->isstar_from==1?trans('admin.message_star_success'):trans('admin.message_star_success2');
 												$msg_array['is_reload']=0;
 												$msg_array['curl']='';
 												$msg_array['resource']='';
@@ -527,7 +527,7 @@ class OneactionapiController extends PublicController
 											if ($params->save()) 
 											{
 												$msg_array['status']='1';
-												$msg_array['info']=$params->istrash_to==1?trans('admin.website_letter_action_trash_success'):trans('admin.website_letter_action_trash_success2');
+												$msg_array['info']=$params->istrash_to==1?trans('admin.message_trash_success'):trans('admin.message_trash_success2');
 												$msg_array['is_reload']=0;
 												$msg_array['curl']='';
 												$msg_array['resource']='';
@@ -553,7 +553,7 @@ class OneactionapiController extends PublicController
 											if ($params->save()) 
 											{
 												$msg_array['status']='1';
-												$msg_array['info']=$params->istrash_from==1?trans('admin.website_letter_action_trash_success'):trans('admin.website_letter_action_trash_success2');
+												$msg_array['info']=$params->istrash_from==1?trans('admin.message_trash_success'):trans('admin.message_trash_success2');
 												$msg_array['is_reload']=0;
 												$msg_array['curl']='';
 												$msg_array['resource']='';
@@ -579,7 +579,7 @@ class OneactionapiController extends PublicController
 											if ($params->save()) 
 											{
 												$msg_array['status']='1';
-												$msg_array['info']=trans('admin.website_letter_action_del_trash_success');
+												$msg_array['info']=trans('admin.message_del_trash_success');
 												$msg_array['is_reload']=0;
 												$msg_array['curl']='';
 												$msg_array['resource']='';
@@ -605,7 +605,7 @@ class OneactionapiController extends PublicController
 											if ($params->save()) 
 											{
 												$msg_array['status']='1';
-												$msg_array['info']=trans('admin.website_letter_action_del_trash_success');
+												$msg_array['info']=trans('admin.message_del_trash_success');
 												$msg_array['is_reload']=0;
 												$msg_array['curl']='';
 												$msg_array['resource']='';

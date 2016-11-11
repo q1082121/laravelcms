@@ -13,19 +13,19 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_editpwd_old')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_editpwd_old')}}</span>
                 <input type="password" class="form-control" v-model="params_data.oldpwd" >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_editpwd_new')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_editpwd_new')}}</span>
                 <input type="password" class="form-control" v-model="params_data.newpwd" >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_editpwd_sure')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_editpwd_sure')}}</span>
                 <input type="password" class="form-control" v-model="params_data.surepwd" >
               </div>
             </div>
@@ -64,36 +64,36 @@ new Vue({
 
         if(this.params_data.oldpwd=="")
         {
-          var msg="{{trans('admin.editpwd_failure_tip1')}}";
+          var msg="{{trans('admin.option_editpwd_failure_tip1')}}";
           layermsg_error(msg);
         }
         else if(this.params_data.newpwd=="")
         {
-          var msg="{{trans('admin.editpwd_failure_tip2')}}";
+          var msg="{{trans('admin.option_editpwd_failure_tip2')}}";
           layermsg_error(msg);
         }
         else if(this.params_data.newpwd==this.params_data.oldpwd)
         {
-          var msg="{{trans('admin.editpwd_failure_tip3')}}";
+          var msg="{{trans('admin.option_editpwd_failure_tip3')}}";
           layermsg_error(msg);
           this.params_data.newpwd="";
           this.params_data.surepwd="";
         }
         else if(this.params_data.newpwd.length<6)
         {
-          var msg="{{trans('admin.editpwd_failure_tip4')}}";
+          var msg="{{trans('admin.option_editpwd_failure_tip4')}}";
           layermsg_error(msg);
           this.params_data.newpwd="";
           this.params_data.surepwd="";
         }
         else if(this.params_data.surepwd=="")
         {
-          var msg="{{trans('admin.editpwd_failure_tip5')}}";
+          var msg="{{trans('admin.option_editpwd_failure_tip5')}}";
           layermsg_error(msg);
         }
         else if(this.params_data.surepwd!=this.params_data.newpwd)
         {
-          var msg="{{trans('admin.editpwd_failure_tip6')}}";
+          var msg="{{trans('admin.option_editpwd_failure_tip6')}}";
           layermsg_error(msg);
           this.params_data.surepwd="";
         }

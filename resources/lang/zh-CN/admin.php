@@ -141,6 +141,8 @@ return [
     'website_action_cancelstar'                    =>   '取消星标',
     'website_action_trash'                         =>   '扔垃圾箱',
     'website_action_back'                          =>   '捡回',
+    'website_action_create_cache'                  =>   '生成缓存数据',
+    'website_action_create_menu'                   =>   '生成菜单数据',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称 消息提示
@@ -174,10 +176,16 @@ return [
     'message_get_empty'                            =>   '数据为空',
     'message_set_success'                          =>   '设置成功',
     'message_set_failure'                          =>   '设置失败',
-
-    //
     'message_userrole_failure'                     =>   '当前角色尚未授权',
     'message_userrole_login'                       =>   '用户尚未登录',
+    'message_failure_delete_sub'                   =>   '请先删除子类',
+    'message_star_success'                         =>   '星标记成功',
+    'message_star_success2'                        =>   '取消星标成功',
+    'message_trash_success'                        =>   '仍入垃圾箱成功',
+    'message_trash_success2'                       =>   '捡回信件成功',
+    'message_del_trash_success'                    =>   '删除垃圾成功',
+    //
+    
     'website_model_log1'                           =>   '登录操作',
     /*
     |--------------------------------------------------------------------------
@@ -187,6 +195,9 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
+    'fieldname_item_editpwd_old'                    =>   '当前密码',
+    'fieldname_item_editpwd_new'                    =>   '新的密码',
+    'fieldname_item_editpwd_sure'                   =>   '确认密码',    
     'fieldname_item_created_at'                     =>   '时间',
     'fieldname_item_option'                         =>   '操作项',
     'fieldname_item_status'                         =>   '状态', 
@@ -242,7 +253,35 @@ return [
     'fieldname_item_isoverhead'                     =>   '顶置',
     'fieldname_item_ico_code'                       =>   '图标代码',
     'fieldname_item_keyword'                        =>   '关键词',
-
+    'fieldname_item_province'                       =>   '省份',
+    'fieldname_item_city'                           =>   '城市',
+    'fieldname_item_country'                        =>   '国籍',
+    'fieldname_item_subscribe'                      =>   '关注',
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 常用项名称-操作提示
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'option_select_p'                              =>   '请选择省份',
+    'option_select_c'                              =>   '请选择城市',
+    'option_select_x'                              =>   '请选择乡县',
+    'option_editpwd_failure_tip1'                  =>   '请输入当前密码',   
+    'option_editpwd_failure_tip2'                  =>   '请输入新的密码',
+    'option_editpwd_failure_tip3'                  =>   '新密码不能与旧密码相同',
+    'option_editpwd_failure_tip4'                  =>   '新密码长度不能少于6位',
+    'option_editpwd_failure_tip5'                  =>   '请输入确认密码',
+    'option_editpwd_failure_tip6'                  =>   '确认密码与新密码不相同',
+    'option_editpwd_failure'                       =>   '当前密码不正确',
+    'option_editpwd_surefailure'                   =>   '新密码和确认密码不相同',
+    'option_editpwd_failurelength'                 =>   '新密码长度至少6位',
+    'option_failure_iskeyval'                      =>   '请输入键值',
+    'option_failure_isclassname'                   =>   '请输入分类名称',
+    'option_failure_isselect_class'                =>   '请选择分类',
+    'option_failure_istitle'                       =>   '请填写标题',
+    'option_failure_iskeyword'                     =>   '请输入关键词',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 服务器信息
@@ -332,106 +371,7 @@ return [
     'website_user_module_list'                      =>   '用户列表',
     'website_user_module_add'                       =>   '用户添加',
     'website_user_module_edit'                      =>   '用户编辑',
-    'website_select_p'                              =>   '请选择省份',
-    'website_select_c'                              =>   '请选择城市',
-    'website_select_x'                              =>   '请选择乡县',
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 修改密码
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    'website_editpwd_old'                            =>   '当前密码',
-    'website_editpwd_new'                            =>   '新的密码',
-    'website_editpwd_sure'                           =>   '确认密码',
-    'editpwd_failure_tip1'                           =>   '请输入当前密码',   
-    'editpwd_failure_tip2'                           =>   '请输入新的密码',
-    'editpwd_failure_tip3'                           =>   '新密码不能与旧密码相同',
-    'editpwd_failure_tip4'                           =>   '新密码长度不能少于6位',
-    'editpwd_failure_tip5'                           =>   '请输入确认密码',
-    'editpwd_failure_tip6'                           =>   '确认密码与新密码不相同',
-    'website_editpwd_failure'                        =>   '当前密码不正确',
-    'website_editpwd_surefailure'                    =>   '新密码和确认密码不相同',
-    'website_editpwd_failurelength'                  =>   '新密码长度至少6位',
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 用户角色
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    'userrole_failure_tip1'                         =>   '请输入用户角色键值',
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 角色权限
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    'userpermission_failure_tip1'                    =>   '请输入角色权限键值',
-
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 主导航栏
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    'navigation_failure_tip1'                           =>   '请输入分类名称',
-    'navigation_failure_delete'                         =>   '请先删除子类',
-    'website_navigation_create_cache'                   =>   '生成主导航栏缓存',
-
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 文章分类
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    'classify_failure_tip1'                           =>   '请输入分类名称',
-    'classify_failure_delete'                         =>   '请先删除子类',
-    'website_classify_create_cache'                   =>   '生成文章分类缓存',
-
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 文章资讯
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    'website_article_select'                          =>   '请选择文章分类',
-    'article_failure_tip1'                            =>   '请填写标题',
     
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 产品分类
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    'classifyproduct_failure_tip1'                        =>   '请输入分类名称',
-    'classifyproduct_failure_delete'                      =>   '请先删除子类',
-    'website_classifyproduct_create_cache'                =>   '生成产品分类缓存',
-
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 产品内容
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    'website_product_select'                          =>   '请选择产品分类',
-    'product_failure_tip1'                            =>   '请填写标题',
-
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 广告图片
@@ -444,21 +384,7 @@ return [
     'website_model_picture2'                          =>   '公共展示图',
     'website_model_picture3'                          =>   '微站展示图',
     'website_model_picture4'                          =>   '漂浮展示图',
-    'picture_failure_tip1'                            =>   '请填写标题',
-    'website_picture_create_cache'                    =>   '生成图片缓存',
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 链接分类
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    'classifylink_failure_tip1'                        =>   '请输入分类名称',
-    'classifylink_failure_delete'                      =>   '请先删除子类',
-    'website_classifylink_create_cache'                =>   '生成链接分类缓存',
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -468,26 +394,10 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_link_select'                             =>   '请选择链接分类',
+
     'website_model_link1'                             =>   '文字链接',
     'website_model_link2'                             =>   '图片链接',
-    'link_failure_tip1'                               =>   '请填写标题',
-    'website_link_create_cache'                       =>   '生成链接缓存',
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 题目分类
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-
-    'classifyquestion_failure_tip1'                        =>   '请输入分类名称',
-    'classifyquestion_failure_delete'                      =>   '请先删除子类',
-    'website_classifyquestion_create_cache'                =>   '生成题目分类缓存',
-
+    
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 题目题库
@@ -496,12 +406,12 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_question_select'                             =>   '请选择题目分类',
+
     'website_type_question1'                              =>   '单选题目',
     'website_type_question2'                              =>   '多选题目',
     'website_type_question3'                              =>   '判断题目',
     
-    'question_failure_tip1'                               =>   '请填写标题',
+
 
 
     /*
@@ -514,8 +424,6 @@ return [
     */
     
     'website_questionoption_tip'                            =>   '题目名称',
-    'questionoption_failure_tip1'                           =>   '请填写标题',
-
 
     /*
     |--------------------------------------------------------------------------
@@ -534,11 +442,7 @@ return [
     'website_letter_trash'                              =>   '垃圾箱',
     'website_letter_add_tip'                            =>   '撰写新信件',
 
-    'website_letter_action_star_success'                =>   '星标记成功',
-    'website_letter_action_star_success2'               =>   '取消星标成功',
-    'website_letter_action_trash_success'               =>   '仍入垃圾箱成功',
-    'website_letter_action_trash_success2'              =>   '捡回信件成功',
-    'website_letter_action_del_trash_success'           =>   '删除垃圾成功',
+   
 
     
     'letter_failure_tip1'                               =>   '收信人不能为自己',
@@ -609,15 +513,6 @@ return [
     'wechat_text_failure_tip2'                          =>   '请填写文本内容',
     'website_wechat_model_base_imagetext'               =>   '图文回复',
     'website_wechat_model_base_imagetext_tip'           =>   '关键词触发回复图文信息',
-    'website_wechat_model_base_imagetext_keyword'       =>   '关键词',
-    'website_wechat_model_base_imagetext_title'         =>   '标题',
-    'website_wechat_model_base_imagetext_introduction'  =>   '导读',
-    'website_wechat_model_base_imagetext_attachment'    =>   '封面',
-    'website_wechat_model_base_imagetext_content'       =>   '内容',
-    'website_wechat_model_base_imagetext_linkurl'       =>   '外链接',
-    'website_wechat_model_base_imagetext_status'        =>   '状态',
-    'wechat_imagetext_failure_tip1'                     =>   '请填写关键词',
-    'wechat_imagetext_failure_tip2'                     =>   '请填写标题',
     'website_wechat_model_base_messagetpl'              =>   '模版消息',
     'website_wechat_model_base_messagetpl_tip'          =>   '微信模版消息 消息接收主体',
     'website_wechat_model_base_menu'                    =>   '微信自定义菜单',
@@ -631,33 +526,9 @@ return [
     'website_menu_type8'                                =>   '弹出地理位置选择器',
     'website_wechat_model_base_menu_tip'                =>   '微信底部导航栏',
     'website_wechat_model_base_user'                    =>   '微信会员',
-    'website_wechat_model_base_user_nickname'           =>   '昵称',
-    'website_wechat_model_base_user_sex'                =>   '性别',
-    'website_wechat_model_base_user_province'           =>   '省份',
-    'website_wechat_model_base_user_city'               =>   '城市',
-    'website_wechat_model_base_user_country'            =>   '国籍',
-    'website_wechat_model_base_user_headimhurl'         =>   '头像',  
-    'website_wechat_model_base_user_subscribe'          =>   '关注',
-    'website_wechat_model_base_user_score'              =>   '积分',
-    'website_wechat_model_base_user_money'              =>   '钱包',   
     'website_wechat_model_base_user_tip'                =>   '微信获取粉丝信息数据',
     'website_wechat_model_active'                       =>   '微信活动功能模块',
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 微信菜单分类
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-
-    
-    'classifywechat_failure_tip1'                        =>   '请输入分类名称',
-    'classifywechat_failure_tip2'                        =>   '请输入关键词',
-    'classifywechat_failure_delete'                      =>   '请先删除子类',
-    'website_classifywechat_create_cache'                =>   '生成菜单数据',
 
 
 ];

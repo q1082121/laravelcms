@@ -15,7 +15,7 @@
             </a>
 
             <button type="button" @click="create_menu()" class="btn btn-danger pull-left " style="margin:0 0 0 10px;">
-              <i class="fa fa-add"></i> {{trans('admin.website_classifywechat_create_cache')}} 
+              <i class="fa fa-add"></i> {{trans('admin.website_action_create_menu')}} 
             </button>
             
             <button @click="back_action()" type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">

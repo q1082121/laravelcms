@@ -69,6 +69,7 @@ Route::group(['middleware' => ['cors']], function() {
 *******************************************/
 Route::group(['namespace' => 'Wechat','prefix' => 'wechat'], function() {  
 	Route::any('api/{id?}', 'ApiController@index')->name('wechat.api');
+	Route::post('api/create_menu/{id?}', 'ApiController@create_menu')->name('post.wechat.api.create_menu');
 });
 
 
@@ -297,7 +298,6 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('classifywechat/api_add', 'ClassifywechatController@api_add')->name('post.admin.classifywechat.api_add');
 	Route::post('classifywechat/api_info', 'ClassifywechatController@api_info')->name('post.admin.classifywechat.api_info');
 	Route::post('classifywechat/api_edit', 'ClassifywechatController@api_edit')->name('post.admin.classifywechat.api_edit');
-
 });
 
 

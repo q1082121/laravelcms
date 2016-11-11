@@ -93,19 +93,6 @@ class WechatController extends PublicController
 		$website['info']=$info;
 		$website['id']=$id;
 
-		/*
-		$condition_mp['id']=1;
-		$condition_mp['status']=1;
-		$mp=object_array(DB::table('wechats')->where($condition_mp)->first());
-		$data=search_keyword('网',$mp);
-		dump($data);
-		*/
-		$condition_mp['grade']=1;
-		$condition_mp['status']=1;
-		$data=Wechat::find(1)->hasManyClassifywechats()->where($condition_mp)->orderBy('orderid','asc')->get()->toArray();
-		dump($data);
-
-
 		return view('admin/wechat/manage')->with('website',$website);
 	}
     /******************************************

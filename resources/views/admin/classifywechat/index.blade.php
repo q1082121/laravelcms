@@ -113,7 +113,7 @@ new Vue({
              apiurl_list          :'{{$website["apiurl_list"]}}',
              apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
              apiurl_delete        :'{{$website["apiurl_delete"]}}',
-             apiurl_cache         :'{{$website["apiurl_cache"]}}',
+             apiurl_menu          :'{{$website["apiurl_menu"]}}',
              linkurl_edit         :'{{$website["link_edit"]}}', 
              linkurl_back         :'{{$website["link_back"]}}',
              totals               : 0,
@@ -137,6 +137,10 @@ new Vue({
                     id             :'',
                     fields         :'',
                     modelname      :'{{$website["modelname"]}}',
+             },
+             menudata:
+             {
+                    id             :'{{$website["wechat_id"]}}',
              }
           },
     ready: function (){ 
@@ -353,9 +357,9 @@ new Vue({
               }
             },
             //生成缓存
-            create_cache:function()
+            create_menu:function()
             {
-              this.$http.post(this.apiurl_cache,this.paramsdata,{
+              this.$http.post(this.apiurl_menu,this.menudata,{
                 before:function(request)
                 {
                   loadi=layer.load("...");

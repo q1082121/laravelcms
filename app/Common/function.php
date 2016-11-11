@@ -106,7 +106,17 @@ function object_array($array)
    }
    return $array;
 }
-
+/***********************************
+ * 方法名：PHP stdClass array转Object
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function arrayToObject($arr){
+    if(is_array($arr)){
+        return (object) array_map(__FUNCTION__, $arr);
+    }else{
+        return $arr;
+    }
+}
 /***********************************
  * 方法名： 获取当前控制器名  
  * 作者： Tommy（rubbish.boy@163.com）
@@ -233,6 +243,19 @@ function filter_suffixes($str)
 	$str= str_replace(".js", "", $str);
 	$str= str_replace(".css", "", $str);
 	return $str;
+}
+/***********************************
+ * 方法名：unicode转utf8
+ * 作者： Tommy（rubbish.boy@163.com）
+ * 时间：2015年6月17日
+ ***********************************/ 
+function unicode2utf8_2($str) {
+		$str=strtolower($str);
+		$str = "\u".$str;
+        $str = '{"result_str":"' . $str . '"}'; 
+        $strarray = json_decode ( $str, true ); 
+		$returnstr=$strarray['result_str'];
+        return $returnstr;
 }
 /***********************************
  * 方法名：微信关键词检索

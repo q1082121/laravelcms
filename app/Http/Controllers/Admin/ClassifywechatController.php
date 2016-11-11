@@ -29,7 +29,7 @@ class ClassifywechatController extends PublicController
 		$website['apiurl_list']=URL::action('Admin\ClassifywechatController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
+		$website['apiurl_menu']=URL::action('Wechat\ApiController@create_menu')."/".$id;
 		$website['link_add']=URL::action('Admin\ClassifywechatController@add')."/".$id;
 		$website['link_edit']=route('get.admin.classifywechat.edit').'/';
 		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;

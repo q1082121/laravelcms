@@ -174,6 +174,9 @@ class ApiController extends PublicController
 							# 菜单 - 点击菜单跳转链接
 							break;
 						case 'CLICK':
+							$keyword=$message->EventKey;
+							$result=search_keyword($keyword,$this->mp);
+							return $this->result_message($result);
 							# 菜单 - 点击菜单拉取消息
 							break;
 						case 'scancode_push':
@@ -342,14 +345,124 @@ class ApiController extends PublicController
 	{
 		if($this->mp)
 		{
-			$condition_mp['grade']=1;
-			$condition_mp['status']=1;
-			$menu_top=Wechat::find($this->mp['id'])->hasManyClassifywechats()->where($condition_mp)->orderBy('orderid','asc')->get()->toArray();
+			$condition_menu['grade']=1;
+			$condition_menu['status']=1;
+			$toplist=Wechat::find($this->mp['id'])->hasManyClassifywechats()->where($condition_menu)->orderBy('orderid','asc')->get()->toArray();
 			
+			$tmp_wxmenu_array='';
+			foreach($toplist as  $key => $val)
+			{
+				if($val['ico'])
+				{
+					$emoji_arry= unicode2utf8_2($val['ico']);
+				}
+				else
+				{
+					$emoji_arry="";
+				}
+				$tmp_wxmenu_array[$key]["name"] = $emoji_arry.$val['name'];
 
+				$sub_condition_menu['topid']=$val['id'];
+				$sub_condition_menu['status']=1;
+				$sub_list=object_array(DB::table('classifywechats')->where($sub_condition_menu)->orderBy('orderid','asc')->get());
+				$sub_wxmenu_array='';
+
+				if(@$sub_list)
+				{
+					foreach($sub_list as $subkey=>$subval)
+					{
+						if($subval['ico'])
+						{
+							$emoji_arry= unicode2utf8_2($subval['ico']);
+						}
+						else
+						{
+							$emoji_arry="";
+						}
+						$sub_wxmenu_array[$subkey]["name"] = $emoji_arry.$subval['name'];
+						switch($subval['type'])
+						{
+							case 'click':
+											$sub_wxmenu_array[$subkey]["type"] = $subval['type'];
+											$sub_wxmenu_array[$subkey]["key"]=$subval['keyword'];
+											break;
+							case 'view':	
+											$sub_wxmenu_array[$subkey]["type"] = $subval['type'];
+											$sub_wxmenu_array[$subkey]["url"]=$subval['linkurl'];
+											break;
+							case 'scancode_push':	
+											$sub_wxmenu_array[$subkey]["type"] = $subval['type'];
+											$sub_wxmenu_array[$subkey]["key"]='rselfmenu_0_0';
+											break;	
+							case 'scancode_waitmsg':	
+											$sub_wxmenu_array[$subkey]["type"] = $subval['type'];
+											$sub_wxmenu_array[$subkey]["key"]='rselfmenu_0_1';
+											break;
+							case 'pic_sysphoto':	
+											$sub_wxmenu_array[$subkey]["type"] = $subval['type'];
+											$sub_wxmenu_array[$subkey]["key"]='rselfmenu_1_0';
+											break;		
+							case 'pic_photo_or_album':	
+											$sub_wxmenu_array[$subkey]["type"] = $subval['type'];
+											$sub_wxmenu_array[$subkey]["key"]='rselfmenu_1_1';
+											break;	
+							case 'pic_weixin':	
+											$sub_wxmenu_array[$subkey]["type"] = $subval['type'];
+											$sub_wxmenu_array[$subkey]["key"]='rselfmenu_1_2';
+											break;
+							case 'location_select':	
+											$sub_wxmenu_array[$subkey]["type"] = $subval['type'];
+											$sub_wxmenu_array[$subkey]["key"]='rselfmenu_2_0';
+											break;						
+						}
+					}
+					$tmp_wxmenu_array[$key]["sub_button"] =$sub_wxmenu_array;
+				}
+				else
+				{
+					switch($val['type'])
+					{
+						case 'click':
+								$tmp_wxmenu_array[$key]["type"] = $val['type'];
+								$tmp_wxmenu_array[$key]["key"]=$val['keyword'];
+								break;
+						case 'view':	
+								$tmp_wxmenu_array[$key]["type"] = $val['type'];
+								$tmp_wxmenu_array[$key]["url"]=$val['url'];
+								break;
+						case 'scancode_push':	
+								$tmp_wxmenu_array[$key]["type"] = $val['type'];
+								$tmp_wxmenu_array[$key]["key"]='rselfmenu_0_0';
+								break;	
+						case 'scancode_waitmsg':	
+								$tmp_wxmenu_array[$key]["type"] = $val['type'];
+								$tmp_wxmenu_array[$key]["key"]='rselfmenu_0_1';
+								break;
+						case 'pic_sysphoto':	
+								$tmp_wxmenu_array[$key]["type"] =$val['type'];
+								$tmp_wxmenu_array[$key]["key"]='rselfmenu_1_0';
+								break;		
+						case 'pic_photo_or_album':	
+								$tmp_wxmenu_array[$key]["type"] = $val['type'];
+								$tmp_wxmenu_array[$key]["key"]='rselfmenu_1_1';
+								break;	
+						case 'pic_weixin':	
+								$tmp_wxmenu_array[$key]["type"] = $val['type'];
+								$tmp_wxmenu_array[$key]["key"]='rselfmenu_1_2';
+								break;
+						case 'location_select':	
+								$tmp_wxmenu_array[$key]["type"] =$val['type'];
+								$tmp_wxmenu_array[$key]["key"]='rselfmenu_2_0';
+								break;						
+					}
+				}
+
+			}
+			$buttons=$tmp_wxmenu_array;
 			$app = new Application($this->options);
 			$menu = $app->menu;
-			//$menu->add($buttons);
+			$menu->add($buttons);
+
 
 			$info=trans('admin.website_create_success');
 			$msg_array['status']='1';
@@ -363,7 +476,7 @@ class ApiController extends PublicController
 			$msg_array['status']='2';
 			$msg_array['info']=$info;
 			$msg_array['is_reload']=0;
-			$msg_array['resource']=$id;
+			$msg_array['resource']=$this->mp;
 		}
 		return response()->json($msg_array);
 	}

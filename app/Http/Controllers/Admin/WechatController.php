@@ -87,7 +87,7 @@ class WechatController extends PublicController
 		$website['link_wechatreplytext']=route('get.admin.wechatreplytext.index').'/'.$id;
 		$website['link_wechatreplyimagetext']=route('get.admin.wechatreplyimagetext.index').'/'.$id;
 		$website['link_menu']=route('get.admin.classifywechat.index').'/'.$id;
-		$website['link_user']=route('get.admin.wechat.user').'/'.$id;
+		$website['link_wechatuser']=route('get.admin.wechatuser.index').'/'.$id;
 		
 		$info = object_array(DB::table('wechats')->whereId($id)->first());
 		$website['info']=$info;

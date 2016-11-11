@@ -133,7 +133,7 @@
               </div>
             </a>
 
-            <a href="{{$website['link_user']}}" class="c_black">
+            <a href="{{$website['link_wechatuser']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-users"></i></span>

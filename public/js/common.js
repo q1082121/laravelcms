@@ -497,6 +497,6 @@ function open_box_image(dir)
       closeBtn: 0,
       skin: 'layui-layer-nobg', //没有背景色
       shadeClose: true,
-      content: '<img src="'+dir+'">'
+      content: '<img src="'+dir+'" width="320px">'
     });
 }

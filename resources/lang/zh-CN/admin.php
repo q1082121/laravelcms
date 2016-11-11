@@ -131,6 +131,8 @@ return [
     'website_list'                                 =>   '列表',
     'website_status_on'                            =>   '启用',
     'website_status_off'                           =>   '禁用',
+    'website_status_subscribe'                     =>   '已关注',
+    'website_status_no_subscribe'                  =>   '未关注',
     'website_select_default'                       =>   '请选择',
 
     /*
@@ -697,6 +699,15 @@ return [
     'website_menu_type8'                                =>   '弹出地理位置选择器',
     'website_wechat_model_base_menu_tip'                =>   '微信底部导航栏',
     'website_wechat_model_base_user'                    =>   '微信会员',
+    'website_wechat_model_base_user_nickname'           =>   '昵称',
+    'website_wechat_model_base_user_sex'                =>   '性别',
+    'website_wechat_model_base_user_province'           =>   '省份',
+    'website_wechat_model_base_user_city'               =>   '城市',
+    'website_wechat_model_base_user_country'            =>   '国籍',
+    'website_wechat_model_base_user_headimhurl'         =>   '头像',  
+    'website_wechat_model_base_user_subscribe'          =>   '关注',
+    'website_wechat_model_base_user_score'              =>   '积分',
+    'website_wechat_model_base_user_money'              =>   '钱包',   
     'website_wechat_model_base_user_tip'                =>   '微信获取粉丝信息数据',
     'website_wechat_model_active'                       =>   '微信活动功能模块',
 

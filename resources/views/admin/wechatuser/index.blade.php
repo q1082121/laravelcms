@@ -8,11 +8,6 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">
-            <a href="{{$website['link_add']}}" >
-            <button type="button" class="btn btn-success pull-left ">
-              <i class="fa fa-add"></i>{{trans('admin.website_action_add')}} 
-            </button>
-            </a>
             <button @click="back_action()" type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
             <i class="fa fa-add"></i> {{trans('admin.website_goback')}} 【{{trans('admin.website_wechat_name')}}： {{$website['info']['name']}}】
             </button>
@@ -43,9 +38,15 @@
             <thead>
             <tr>
               <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_imagetext_keyword')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_imagetext_title')}}</th>
-              <th>{{trans('admin.website_wechat_model_base_imagetext_attachment')}}</th>
+              <th>{{trans('admin.website_wechat_model_base_user_headimhurl')}}</th>
+              <th>{{trans('admin.website_wechat_model_base_user_nickname')}}</th>
+              <th>{{trans('admin.website_wechat_model_base_user_sex')}}</th>
+              <th>{{trans('admin.website_wechat_model_base_user_province')}}</th>
+              <th>{{trans('admin.website_wechat_model_base_user_city')}}</th>
+              <th>{{trans('admin.website_wechat_model_base_user_country')}}</th>
+              <th>{{trans('admin.website_wechat_model_base_user_score')}}</th>
+              <th>{{trans('admin.website_wechat_model_base_user_money')}}</th>
+              <th>{{trans('admin.website_wechat_model_base_user_subscribe')}}</th>
               <th>{{trans('admin.website_item_status')}}</th>
               <th>{{trans('admin.website_item_option')}}</th>
             </tr>
@@ -53,23 +54,23 @@
             <tbody>
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
-                <td>@{{ item.keyword }}</td>
-                <td>@{{ item.title }}</td>
-                <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
+                <td><i v-if="item.headimgurl" onclick="open_box_image('@{{item.headimgurl}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
+                <td>@{{ item.nickname }}</td>
+                <td>@{{ item.sex }}</td>
+                <td>@{{ item.province }}</td>
+                <td>@{{ item.city }}</td>
+                <td>@{{ item.country }}</td>
+                <td>@{{ item.score }}</td>
+                <td>@{{ item.money }}</td>
+                <td><i v-if="item.subscribe == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_no_subscribe')}} </i> <i v-if="item.subscribe == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_subscribe')}} </i></td>
                 <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>
-                  <div class="tools">
-                    @ability('admin', 'edit')
-                    <button type="button" @click="edit_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
-                    @endability
+                 <div class="tools">
                     @ability('admin', 'set_status')
                     <button v-if="item.status == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_status')}}</button>
                     <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_status')}}</button>
                     @endability
-                    @ability('admin', 'delete')
-                    <button type="button" @click="delete_action(item.id)" class="btn btn-danger" > <i class="fa fa-trash"></i> {{trans('admin.website_action_delete')}}</button>
-                    @endability
-                  </div>
+                  </div> 
                 </td>
               </tr>
             </tbody>
@@ -103,8 +104,6 @@ new Vue({
     data: {
              apiurl_list          :'{{$website["apiurl_list"]}}',
              apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
-             apiurl_delete        :'{{$website["apiurl_delete"]}}',
-             linkurl_edit         :'{{$website["link_edit"]}}', 
              linkurl_back         :'{{$website["link_back"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  

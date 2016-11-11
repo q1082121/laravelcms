@@ -32,5 +32,13 @@ class Wechat extends Model
     {
         return $this->hasMany('App\Http\Model\Wechatreplyimagetext', 'wechat_id', 'id');
     }
+	/******************************************
+	****@AuThor : rubbish@163.com
+	****@Title  : 在 Wechatuser 模型中增加一对多关系的函数
+	*******************************************/
+    public function hasManyWechatusers()
+    {
+        return $this->hasMany('App\Http\Model\Wechatuser', 'wechat_id', 'id');
+    }
 
 }

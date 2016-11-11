@@ -165,14 +165,15 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	//微信-图文回复		    
 	Route::get('wechatreplyimagetext/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatreplyimagetextController@index'])->name('get.admin.wechatreplyimagetext.index');
 	Route::get('wechatreplyimagetext/add/{id?}', ['middleware' => ['ability:admin,add'], 'uses' => 'WechatreplyimagetextController@add'])->name('get.admin.wechatreplyimagetext.add');
-	Route::get('wechatreplyimagetext/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'WechatreplyimagetextController@edit'])->name('get.admin.wechatreplyimagetext.edit');		    
-	Route::get('wechat/menu/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatController@menu'])->name('get.admin.wechat.menu');
-	Route::get('wechat/user/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatController@user'])->name('get.admin.wechat.user');		    		    		    			    
+	Route::get('wechatreplyimagetext/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'WechatreplyimagetextController@edit'])->name('get.admin.wechatreplyimagetext.edit');		    		    		    		    			    
 	//微信菜单分类			
 	Route::get('classifywechat/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'ClassifywechatController@index'])->name('get.admin.classifywechat.index');
 	Route::get('classifywechat/add/{id?}', ['middleware' => ['ability:admin,add'], 'uses' => 'ClassifywechatController@add'])->name('get.admin.classifywechat.add');
 	Route::get('classifywechat/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ClassifywechatController@edit'])->name('get.admin.classifywechat.edit');	
-	
+	//微信（会员)粉丝信息列表
+	Route::get('wechatuser/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatuserController@index'])->name('get.admin.wechatuser.index');
+
+
 
 	/*
 	 ***********************************************************************
@@ -298,6 +299,12 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('classifywechat/api_add', 'ClassifywechatController@api_add')->name('post.admin.classifywechat.api_add');
 	Route::post('classifywechat/api_info', 'ClassifywechatController@api_info')->name('post.admin.classifywechat.api_info');
 	Route::post('classifywechat/api_edit', 'ClassifywechatController@api_edit')->name('post.admin.classifywechat.api_edit');
+
+	//微信-（会员)粉丝信息
+	Route::post('wechatuser/api_list', 'WechatuserController@api_list')->name('post.admin.wechatuser.api_list');
+	Route::post('wechatuser/api_info', 'WechatuserController@api_info')->name('post.admin.wechatuser.api_info');
+	
+
 });
 
 

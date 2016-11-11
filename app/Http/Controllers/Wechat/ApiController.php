@@ -121,7 +121,7 @@ class ApiController extends PublicController
 				$user = $userService->get($this->openid);
 				$condition_wechatuser['wechat_id']=$this->mp['id'];
 				$condition_wechatuser['openid']=$this->openid;
-				$result=object_array(Wechatuser::where($condition_wechatuser)->first());
+				$result=object_array(DB::table('wechatusers')->where($condition_wechatuser)->first());
 				if(empty($result))
 				{
 					$params = new Wechatuser;
@@ -138,7 +138,6 @@ class ApiController extends PublicController
 					$params->subscribe  = $user->subscribe;
 					$params->status 	= 1;
 					$params->save();
-					
 				}
 				else
 				{

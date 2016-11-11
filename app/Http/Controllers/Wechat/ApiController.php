@@ -489,7 +489,7 @@ class ApiController extends PublicController
 			$menu->add($buttons);
 
 
-			$info=trans('admin.website_create_success');
+			$info=trans('admin.message_create_success');
 			$msg_array['status']='1';
 			$msg_array['info']=$info;
 			$msg_array['is_reload']=0;
@@ -497,7 +497,7 @@ class ApiController extends PublicController
 		}
 		else
 		{
-			$info=trans('admin.website_create_failure');
+			$info=trans('admin.message_create_failure');
 			$msg_array['status']='2';
 			$msg_array['info']=$info;
 			$msg_array['is_reload']=0;

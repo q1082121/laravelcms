@@ -69,7 +69,7 @@
           <!-- /.box-body -->
           <div class="box-footer">
             <button type="button" @click="check_action(apiurl_edit)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
-            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_getback')}}</button>
+            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_action_getback')}}</button>
           </div>
 
       </div>
@@ -132,7 +132,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -164,7 +164,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {

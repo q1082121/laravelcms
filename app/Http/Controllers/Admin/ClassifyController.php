@@ -31,7 +31,7 @@ class ClassifyController extends PublicController
 		$website['link_add']=URL::action('Admin\ClassifyController@add');
 		$website['link_edit']=route('get.admin.classify.edit').'/';
 		$website['way']='name';
-		$wayoption[]=array('text'=>trans('admin.website_classify_item_name'),'value'=>'name');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
 
 		return view('admin/classify/index')->with('website',$website);
@@ -126,7 +126,7 @@ class ClassifyController extends PublicController
 			$list['cates']=$classoptlist;
 
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
@@ -136,7 +136,7 @@ class ClassifyController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -209,7 +209,7 @@ class ClassifyController extends PublicController
 			$params->save();
 
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_add_success');
+			$msg_array['info']=trans('admin.message_add_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('Admin\ClassifyController@index');
 			$msg_array['resource']='';
@@ -219,7 +219,7 @@ class ClassifyController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_add_failure');
+			$msg_array['info']=trans('admin.message_add_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -243,7 +243,7 @@ class ClassifyController extends PublicController
 		if($info)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
@@ -253,7 +253,7 @@ class ClassifyController extends PublicController
 		else
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -318,7 +318,7 @@ class ClassifyController extends PublicController
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_save_success');
+			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('Admin\ClassifyController@index');
 			$msg_array['resource']='';
@@ -328,7 +328,7 @@ class ClassifyController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_save_failure');
+			$msg_array['info']=trans('admin.message_save_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";

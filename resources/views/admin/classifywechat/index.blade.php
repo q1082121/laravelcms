@@ -19,7 +19,7 @@
             </button>
             
             <button @click="back_action()" type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
-            <i class="fa fa-add"></i> {{trans('admin.website_goback')}} 【{{trans('admin.website_wechat_name')}}： {{$website['info']['name']}}】
+            <i class="fa fa-add"></i> {{trans('admin.website_action_goback')}} 【{{trans('admin.website_wechat_name')}}： {{$website['info']['name']}}】
             </button>
           </h3>
 
@@ -47,14 +47,14 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_classifywechat_item_name')}}</th>
-              <th>{{trans('admin.website_classifywechat_item_keyword')}}</th>
-              <th>{{trans('admin.website_classifywechat_item_ico')}}</th>
-              <th>{{trans('admin.website_classifywechat_item_linkurl')}}</th>
-              <th>{{trans('admin.website_classifywechat_item_orderid')}}</th>
-              <th>{{trans('admin.website_item_status')}}</th>
-              <th>{{trans('admin.website_item_option')}}</th>
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_name')}}</th>
+              <th>{{trans('admin.fieldname_item_keyword')}}</th>
+              <th>{{trans('admin.fieldname_item_ico')}}</th>
+              <th>{{trans('admin.fieldname_item_linkurl')}}</th>
+              <th>{{trans('admin.fieldname_item_orderid')}}</th>
+              <th>{{trans('admin.fieldname_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -165,7 +165,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -280,7 +280,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -309,7 +309,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -373,7 +373,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {

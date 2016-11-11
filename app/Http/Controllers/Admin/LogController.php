@@ -27,7 +27,7 @@ class LogController extends PublicController
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
 		$website['apiurl_clear']=URL::action('Admin\DeleteapiController@api_clear');
 		$website['way']='name';
-		$wayoption[]=array('text'=>trans('admin.website_log_item_name'),'value'=>'name');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
         $website['modellist']=$this->link_modellist;
         
@@ -56,7 +56,7 @@ class LogController extends PublicController
 		if($list)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
@@ -66,7 +66,7 @@ class LogController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";

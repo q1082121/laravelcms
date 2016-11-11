@@ -29,10 +29,10 @@ class UserController extends PublicController
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['link_set']=route('get.admin.user.set').'/';
 		$website['way']='username';
-		$wayoption[]=array('text'=>trans('admin.website_user_item_username'),'value'=>'username');
-		$wayoption[]=array('text'=>trans('admin.website_user_item_email'),'value'=>'email');
-		$wayoption[]=array('text'=>trans('admin.website_user_item_mobile'),'value'=>'mobile');
-		$wayoption[]=array('text'=>trans('admin.website_user_item_nick'),'value'=>'nick');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_username'),'value'=>'username');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_email'),'value'=>'email');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_mobile'),'value'=>'mobile');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_nick'),'value'=>'nick');
 		$website['wayoption']=json_encode($wayoption);
 		$website['modelname']=getCurrentControllerName();
 
@@ -61,7 +61,7 @@ class UserController extends PublicController
 		if($list)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
@@ -71,7 +71,7 @@ class UserController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -92,7 +92,7 @@ class UserController extends PublicController
 		if($info)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
@@ -102,7 +102,7 @@ class UserController extends PublicController
 		else
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -150,7 +150,7 @@ class UserController extends PublicController
 			Cache::store('file')->put($cache_userinfo, $userinfo, $minutes);
 
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_save_success');
+			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('Admin\UserController@index');
 			$msg_array['resource']='';
@@ -160,7 +160,7 @@ class UserController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_save_exit');
+			$msg_array['info']=trans('admin.message_save_exit');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -215,7 +215,7 @@ class UserController extends PublicController
 				if ($result) 
 				{
 					$msg_array['status']='1';
-					$msg_array['info']=trans('admin.website_edit_success');
+					$msg_array['info']=trans('admin.message_edit_success');
 					$msg_array['is_reload']=0;
 					$msg_array['curl']=URL::action('User\LoginController@logout');
 					$msg_array['resource']='';
@@ -225,7 +225,7 @@ class UserController extends PublicController
 				else 
 				{
 					$msg_array['status']='0';
-					$msg_array['info']=trans('admin.website_edit_failure');
+					$msg_array['info']=trans('admin.message_edit_failure');
 					$msg_array['is_reload']=0;
 					$msg_array['curl']='';
 					$msg_array['resource']="";
@@ -260,9 +260,9 @@ class UserController extends PublicController
 		$website['apiurl_get']=URL::action('Admin\UserroleController@api_get_role');
 		$website['apiurl_cancel']=URL::action('Admin\UserroleController@api_cancel_role');
 		$website['way']='name';
-		$wayoption[]=array('text'=>trans('admin.website_userrole_item_name'),'value'=>'name');
-		$wayoption[]=array('text'=>trans('admin.website_userrole_item_display_name'),'value'=>'display_name');
-		$wayoption[]=array('text'=>trans('admin.website_userrole_item_description'),'value'=>'description');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyval'),'value'=>'name');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'display_name');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_description'),'value'=>'description');
 		$website['wayoption']=json_encode($wayoption);
 		$website['id']=$id;
 		$condition['user_id']=$id;

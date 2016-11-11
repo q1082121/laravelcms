@@ -24,7 +24,7 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_article_item_classid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_classid')}}</span>
                 <select class="form-control"  v-model="params_data.classid" >
                   <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
@@ -32,25 +32,25 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_article_item_title')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_title')}}</span>
                 <input  type="text" class="form-control" v-model="params_data.title"   >
               </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_article_item_introduction')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_introduction')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.introduction" > </textarea>
                 </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_article_item_sources')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_sources')}}</span>
                 <input  type="text" class="form-control" v-model="params_data.sources"   >
               </div>
             </div>
             <!--图片上传控件 start-->
             <div class="form-group">
-              <label >{{trans('admin.website_classify_item_attachment')}}</label><br>
+              <label >{{trans('admin.fieldname_item_attachment')}}</label><br>
               <link rel="stylesheet" href="{{asset('/module/jQueryIpputCss')}}/css/style.css">
               <div class="uploader white" v-if="params_data.isattach == 0">
               <input type="text" class="filename" readonly/>
@@ -90,7 +90,7 @@
             @if($website['root']['syseditor']=='Ueditor')
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_article_item_content')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_content')}}</span>
                   <div class="editor">
                     <textarea id='myEditor'  rows="3" debounce="500" >
                       @{{params_data.content}}
@@ -103,7 +103,7 @@
             @if($website['root']['syseditor']=='Markdown') 
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_article_item_content')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_content')}}</span>
                   <div class="editor">
                     <textarea id='myEditor'  v-model="params_data.content"  class="form-control"  rows="3"  >
                     </textarea>
@@ -114,18 +114,18 @@
 
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_classify_item_orderid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_orderid')}}</span>
                 <input   type="text" class="form-control" v-model="params_data.orderid"   >
               </div>  
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_classify_item_linkurl')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_linkurl')}}</span>
                 <input  type="text" class="form-control" v-model="params_data.linkurl"   >
               </div>
             </div>
             <div class="form-group">
-                <label >{{trans('admin.website_classify_item_status')}}</label>
+                <label >{{trans('admin.fieldname_item_status')}}</label>
                 <div style="padding-left:10px;"><input  type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
                 <div style="padding-left:10px;"><input  type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
             </div>
@@ -134,7 +134,7 @@
           <div class="box-footer">
             <button v-if="params_data.id == 0" type="button" @click="check_action(apiurl_add)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
             <button v-else type="button" @click="check_action(apiurl_edit)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
-            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_getback')}}</button>
+            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_action_getback')}}</button>
           </div>
 
       </div>
@@ -230,7 +230,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -286,7 +286,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -392,7 +392,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {

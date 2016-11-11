@@ -254,7 +254,7 @@
                 </div>
             </div>
             <div class="box-footer">
-              <center><button @click="saveaction" type="button" class="btn btn-primary">{{trans('admin.website_save')}}</button> <button @click="getbackaction" type="button" class="btn btn-primary">{{trans('admin.website_getback')}}</button></center>
+              <center><button @click="saveaction" type="button" class="btn btn-primary">{{trans('admin.website_action_save')}}</button> <button @click="getbackaction" type="button" class="btn btn-primary">{{trans('admin.website_action_getback')}}</button></center>
             </div>
         
         
@@ -328,7 +328,7 @@
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -384,7 +384,7 @@
                   {
                     //响应错误
                     layer.close(loadi);
-                    var msg="{{trans('admin.website_outtime')}}";
+                    var msg="{{trans('admin.message_outtime')}}";
                     layermsg_error(msg);
                   })
                   

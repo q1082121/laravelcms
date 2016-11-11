@@ -14,12 +14,12 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_questionoption_item_title')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_title')}}</span>
                 <input type="text" class="form-control" v-model="params_data.title"   >
               </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_questionoption_item_attachment')}}</label><br>
+              <label >{{trans('admin.fieldname_item_attachment')}}</label><br>
               <!--
               <input type="file" @change="onFileChange" id="fileuploads" class="file"  accept="image/*">
               
@@ -64,12 +64,12 @@
               </script> 
             </div>
             <div class="form-group">
-                <label >{{trans('admin.website_questionoption_item_is_answer')}}</label>
+                <label >{{trans('admin.fieldname_item_is_answer')}}</label>
                 <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.is_answer" style="margin-right:10px;"> {{trans('admin.website_yes')}}</div>
                 <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.is_answer" style="margin-right:10px;"> {{trans('admin.website_no')}}</div>
             </div>
             <div class="form-group">
-                <label >{{trans('admin.website_questionoption_item_status')}}</label>
+                <label >{{trans('admin.fieldname_item_status')}}</label>
                 <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
                 <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
             </div>
@@ -78,7 +78,7 @@
           <div class="box-footer">
             <button v-if="params_data.id == 0" type="button" @click="check_action(apiurl_add)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
             <button v-else type="button" @click="check_action(apiurl_edit)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
-            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_getback')}}</button>
+            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_action_getback')}}</button>
           </div>
 
       </div>
@@ -109,8 +109,8 @@ new Vue({
              },
              image                  :'',
              cur_title              :'',
-             cur_title_add          :'{{trans("admin.website_questionoption_action_add")}}',
-             cur_title_edit         :'{{trans("admin.website_questionoption_action_edit")}}',
+             cur_title_add          :'{{trans("admin.website_action_add")}}',
+             cur_title_edit         :'{{trans("admin.website_action_edit")}}',
              del_data:
              {
                 id                  :'{{$website["id"]}}',
@@ -167,7 +167,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -208,7 +208,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -305,7 +305,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {

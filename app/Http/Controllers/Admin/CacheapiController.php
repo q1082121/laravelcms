@@ -28,7 +28,7 @@ class CacheapiController extends PublicController
             case 'Setting':
                             $getdata=$request->all();
 		                    Cache::store('file')->forever('root', $getdata);
-                            $info=trans('admin.website_save_success');
+                            $info=trans('admin.message_save_success');
             break;
             case 'Classify':
                             $getdata="";
@@ -41,7 +41,7 @@ class CacheapiController extends PublicController
                                 }
                             }
 		                    Cache::store('file')->forever('class', $getdata);
-                            $info=trans('admin.website_create_success');
+                            $info=trans('admin.message_create_success');
             break;                
             case 'Navigation':
                             $getdata="";
@@ -54,7 +54,7 @@ class CacheapiController extends PublicController
                                 }
                             }
 		                    Cache::store('file')->forever('navigation', $getdata);
-                            $info=trans('admin.website_create_success'); 
+                            $info=trans('admin.message_create_success'); 
             break;                               
             case 'Classifylink':
                             $getdata="";
@@ -67,7 +67,7 @@ class CacheapiController extends PublicController
                                 }
                             }
 		                    Cache::store('file')->forever('classlink', $getdata);
-                            $info=trans('admin.website_create_success');                
+                            $info=trans('admin.message_create_success');                
             break;
             case 'Classifyproduct':
                             $getdata="";
@@ -80,7 +80,7 @@ class CacheapiController extends PublicController
                                 }
                             }
 		                    Cache::store('file')->forever('classproduct', $getdata);
-                            $info=trans('admin.website_create_success');                
+                            $info=trans('admin.message_create_success');                
             break;
             case 'Classifyquestion':
                             $getdata="";
@@ -93,7 +93,7 @@ class CacheapiController extends PublicController
                                 }
                             }
 		                    Cache::store('file')->forever('classquestion', $getdata);
-                            $info=trans('admin.website_create_success');                
+                            $info=trans('admin.message_create_success');                
             break;
             case 'Picture':
                             $getdata="";
@@ -106,7 +106,7 @@ class CacheapiController extends PublicController
                                 }
                             }
 		                    Cache::store('file')->forever('picture', $getdata);
-                            $info=trans('admin.website_create_success');
+                            $info=trans('admin.message_create_success');
             break;
             case 'Link':
                             $getdata="";
@@ -119,7 +119,7 @@ class CacheapiController extends PublicController
                                 }
                             }
 		                    Cache::store('file')->forever('link', $getdata);
-                            $info=trans('admin.website_create_success');
+                            $info=trans('admin.message_create_success');
             break;
         }
 		

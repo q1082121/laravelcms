@@ -14,7 +14,7 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_navigation_item_topclass')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_topclass')}}</span>
                 <select class="form-control" v-model="params_data.topid" >
                   <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
                 </select>
@@ -22,18 +22,18 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_navigation_item_name')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_name')}}</span>
                 <input type="text" class="form-control" v-model="params_data.name"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_navigation_item_ico')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_ico')}}</span>
                 <input type="text" class="form-control" v-model="params_data.ico"   >
               </div>
             </div>
             <div class="form-group">
-              <label >{{trans('admin.website_navigation_item_attachment')}}</label><br>
+              <label >{{trans('admin.fieldname_item_attachment')}}</label><br>
               <!--
               <input type="file" @change="onFileChange" id="fileuploads" class="file"  accept="image/*">
               
@@ -79,23 +79,23 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_navigation_item_orderid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_orderid')}}</span>
                 <input type="text" class="form-control" v-model="params_data.orderid"   >
               </div>  
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_navigation_item_linkurl')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_linkurl')}}</span>
                 <input type="text" class="form-control" v-model="params_data.linkurl"   >
               </div>
             </div>
             <div class="form-group">
-                <label >{{trans('admin.website_navigation_item_navflag')}}</label>
+                <label >{{trans('admin.fieldname_item_navflag')}}</label>
                 <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.navflag" style="margin-right:10px;"> {{trans('admin.website_yes')}}</div>
                 <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.navflag" style="margin-right:10px;"> {{trans('admin.website_no')}}</div>
             </div>
             <div class="form-group">
-                <label >{{trans('admin.website_navigation_item_status')}}</label>
+                <label >{{trans('admin.fieldname_item_status')}}</label>
                 <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
                 <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
             </div>
@@ -104,7 +104,7 @@
           <div class="box-footer">
             <button v-if="params_data.id == 0" type="button" @click="check_action(apiurl_add)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
             <button v-else type="button" @click="check_action(apiurl_edit)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
-            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_getback')}}</button>
+            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_action_getback')}}</button>
           </div>
 
       </div>
@@ -198,7 +198,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -238,7 +238,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -335,7 +335,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {

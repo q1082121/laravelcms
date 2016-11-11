@@ -39,17 +39,17 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_question_item_classid')}}</th>
-              <th>{{trans('admin.website_question_item_type')}}</th>
-              <th>{{trans('admin.website_question_item_title')}}</th>
-              <th>{{trans('admin.website_question_item_attachment')}}</th>
-              <th>{{trans('admin.website_question_item_score')}}</th>
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_classid')}}</th>
+              <th>{{trans('admin.fieldname_item_type')}}</th>
+              <th>{{trans('admin.fieldname_item_title')}}</th>
+              <th>{{trans('admin.fieldname_item_attachment')}}</th>
+              <th>{{trans('admin.fieldname_item_fraction')}}</th>
               @if ($website['type'] == 3)
-              <th>{{trans('admin.website_question_item_is_answer')}}</th>
+              <th>{{trans('admin.fieldname_item_is_answer')}}</th>
               @endif
-              <th>{{trans('admin.website_question_item_status')}}</th>
-              <th>{{trans('admin.website_item_option')}}</th>
+              <th>{{trans('admin.fieldname_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -164,7 +164,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -279,7 +279,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -308,7 +308,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {

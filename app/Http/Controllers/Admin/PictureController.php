@@ -31,7 +31,7 @@ class PictureController extends PublicController
 		$website['link_add']=URL::action('Admin\PictureController@add');
 		$website['link_edit']=route('get.admin.picture.edit').'/';
 		$website['way']='title';
-		$wayoption[]=array('text'=>trans('admin.website_picture_item_title'),'value'=>'title');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
 		$website['modellist']=$this->picture_modellist;
 		
@@ -96,7 +96,7 @@ class PictureController extends PublicController
 		if($list)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
@@ -106,7 +106,7 @@ class PictureController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -144,7 +144,7 @@ class PictureController extends PublicController
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_add_success');
+			$msg_array['info']=trans('admin.message_add_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('Admin\PictureController@index');
 			$msg_array['resource']='';
@@ -154,7 +154,7 @@ class PictureController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_add_failure');
+			$msg_array['info']=trans('admin.message_add_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -177,7 +177,7 @@ class PictureController extends PublicController
 		if($info)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
@@ -187,7 +187,7 @@ class PictureController extends PublicController
 		else
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -225,7 +225,7 @@ class PictureController extends PublicController
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_save_success');
+			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('Admin\PictureController@index');
 			$msg_array['resource']='';
@@ -235,7 +235,7 @@ class PictureController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_save_failure');
+			$msg_array['info']=trans('admin.message_save_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";

@@ -116,7 +116,7 @@ class WechatController extends PublicController
 		if($list)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
@@ -126,7 +126,7 @@ class WechatController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -181,7 +181,7 @@ class WechatController extends PublicController
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_add_success');
+			$msg_array['info']=trans('admin.message_add_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('Admin\WechatController@index');
 			$msg_array['resource']='';
@@ -191,7 +191,7 @@ class WechatController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_add_failure');
+			$msg_array['info']=trans('admin.message_add_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -214,7 +214,7 @@ class WechatController extends PublicController
 		if($info)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
@@ -224,7 +224,7 @@ class WechatController extends PublicController
 		else
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -304,7 +304,7 @@ class WechatController extends PublicController
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_save_success');
+			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=$linkurl;
 			$msg_array['resource']='';
@@ -314,7 +314,7 @@ class WechatController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_save_failure');
+			$msg_array['info']=trans('admin.message_save_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";

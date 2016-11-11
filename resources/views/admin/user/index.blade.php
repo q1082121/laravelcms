@@ -33,16 +33,16 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_user_item_username')}}</th>
-              <th>{{trans('admin.website_user_item_email')}}</th>
-              <th>{{trans('admin.website_user_item_mobile')}}</th>
-              <th>{{trans('admin.website_user_item_group')}}</th>
-              <th>{{trans('admin.website_user_item_nick')}}</th>
-              <th>{{trans('admin.website_user_item_money')}}</th>
-              <th>{{trans('admin.website_user_item_score')}}</th>
-              <th>{{trans('admin.website_user_item_lock')}}</th>
-              <th>{{trans('admin.website_item_option')}}</th>
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_username')}}</th>
+              <th>{{trans('admin.fieldname_item_email')}}</th>
+              <th>{{trans('admin.fieldname_item_mobile')}}</th>
+              <th>{{trans('admin.fieldname_item_group')}}</th>
+              <th>{{trans('admin.fieldname_item_nick')}}</th>
+              <th>{{trans('admin.fieldname_item_money')}}</th>
+              <th>{{trans('admin.fieldname_item_score')}}</th>
+              <th>{{trans('admin.fieldname_item_lock')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -144,7 +144,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -262,7 +262,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {

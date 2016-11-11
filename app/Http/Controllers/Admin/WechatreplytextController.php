@@ -101,7 +101,7 @@ class WechatreplytextController extends PublicController
 		if($list)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
@@ -111,7 +111,7 @@ class WechatreplytextController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -147,7 +147,7 @@ class WechatreplytextController extends PublicController
 				if ($sub_action) 
 				{
 					$msg_array['status']='1';
-					$msg_array['info']=trans('admin.website_add_success');
+					$msg_array['info']=trans('admin.message_add_success');
 					$msg_array['is_reload']=0;
 					$msg_array['curl']=URL::action('Admin\WechatreplytextController@index').'/'.$params->wechat_id;
 					$msg_array['resource']='';
@@ -158,7 +158,7 @@ class WechatreplytextController extends PublicController
 				else
 				{
 					$msg_array['status']='0';
-					$msg_array['info']=trans('admin.website_add_failure');
+					$msg_array['info']=trans('admin.message_add_failure');
 					$msg_array['is_reload']=0;
 					$msg_array['curl']='';
 					$msg_array['resource']="";
@@ -172,7 +172,7 @@ class WechatreplytextController extends PublicController
 			{
 				
 				$msg_array['status']='0';
-				$msg_array['info']=trans('admin.website_add_failure');
+				$msg_array['info']=trans('admin.message_add_failure');
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
@@ -185,7 +185,7 @@ class WechatreplytextController extends PublicController
 		{ 
 			//接收异常处理并回滚
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_add_failure');
+			$msg_array['info']=trans('admin.message_add_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -209,7 +209,7 @@ class WechatreplytextController extends PublicController
 		if($info)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
@@ -219,7 +219,7 @@ class WechatreplytextController extends PublicController
 		else
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -260,7 +260,7 @@ class WechatreplytextController extends PublicController
 				if ($subparams->save()) 
 				{
 					$msg_array['status']='1';
-					$msg_array['info']=trans('admin.website_save_success');
+					$msg_array['info']=trans('admin.message_save_success');
 					$msg_array['is_reload']=0;
 					$msg_array['curl']=URL::action('Admin\WechatreplytextController@index').'/'.$params->wechat_id;
 					$msg_array['resource']='';
@@ -271,7 +271,7 @@ class WechatreplytextController extends PublicController
 				else
 				{
 					$msg_array['status']='0';
-					$msg_array['info']=trans('admin.website_save_failure');
+					$msg_array['info']=trans('admin.message_save_failure');
 					$msg_array['is_reload']=0;
 					$msg_array['curl']='';
 					$msg_array['resource']="";
@@ -284,7 +284,7 @@ class WechatreplytextController extends PublicController
 			else 
 			{
 				$msg_array['status']='0';
-				$msg_array['info']=trans('admin.website_save_failure');
+				$msg_array['info']=trans('admin.message_save_failure');
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
@@ -297,7 +297,7 @@ class WechatreplytextController extends PublicController
 		{ 
 			//接收异常处理并回滚
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_save_failure');
+			$msg_array['info']=trans('admin.message_save_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";

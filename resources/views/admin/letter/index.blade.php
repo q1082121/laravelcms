@@ -5,7 +5,7 @@
 <section class="content">
   <div class="row" id="app-content">
     <div class="col-md-3">
-    <a href="{{$website['link_add']}}" class="btn btn-primary btn-block margin-bottom">{{trans('admin.website_letter_action_add')}}</a>
+    <a href="{{$website['link_add']}}" class="btn btn-primary btn-block margin-bottom">{{trans('admin.website_action_add')}}</a>
     @include('admin.letter.nav')
     </div>
     <!-- /.col -->
@@ -39,12 +39,12 @@
             <table class="table table-hover table-striped">
               <thead>
               <tr>
-                <th>{{trans('admin.website_item_id')}}</th>
-                <th>{{trans('admin.website_letter_item_isstar')}}</th>
-                <th>{{trans('admin.website_letter_item_title')}}</th>
-                <th>{{trans('admin.website_letter_item_to_user')}}</th>
-                <th>{{trans('admin.website_letter_item_time')}}</th>
-                <th>{{trans('admin.website_item_option')}}</th>
+                <th>{{trans('admin.fieldname_item_id')}}</th>
+                <th>{{trans('admin.fieldname_item_isstar')}}</th>
+                <th>{{trans('admin.fieldname_item_title')}}</th>
+                <th>{{trans('admin.fieldname_item_to_user')}}</th>
+                <th>{{trans('admin.fieldname_item_created_at')}}</th>
+                <th>{{trans('admin.fieldname_item_option')}}</th>
               </tr>
               </thead>
               <tbody>
@@ -60,30 +60,30 @@
                 @if($website['actionname']=='index')
                 <td>
                   <div class="tools">
-                    <button v-if="actionname =='index' && item.istrash_to == 0 && item.isdel_to == 0 "  type="button" @click="get_one_action(item.id,'istrash_to')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_trash')}}</button>
+                    <button v-if="actionname =='index' && item.istrash_to == 0 && item.isdel_to == 0 "  type="button" @click="get_one_action(item.id,'istrash_to')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_trash')}}</button>
                   </div>
                 </td>
                 @endif
                 @if($website['actionname']=='send')
                 <td>
                   <div class="tools">
-                    <button v-if="actionname =='send' && item.istrash_from == 0 && item.isdel_from == 0 "  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_letter_action_trash')}}</button>
+                    <button v-if="actionname =='send' && item.istrash_from == 0 && item.isdel_from == 0 "  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_trash')}}</button>
                   </div>
                 </td>
                 @endif
                 @if($website['actionname']=='star')
                 <td>
                   <div class="tools">
-                    <button v-if="actionname =='star' && item.istrash_from == 0  && item.isdel_from == 0 && item.email_from == email"  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_trash')}}</button>
-                    <button v-if="actionname =='star' && item.istrash_to == 0 && item.isdel_to == 0 && item.email_to == email"  type="button" @click="get_one_action(item.id,'istrash_to')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_trash')}}</button>
+                    <button v-if="actionname =='star' && item.istrash_from == 0  && item.isdel_from == 0 && item.email_from == email"  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_trash')}}</button>
+                    <button v-if="actionname =='star' && item.istrash_to == 0 && item.isdel_to == 0 && item.email_to == email"  type="button" @click="get_one_action(item.id,'istrash_to')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_trash')}}</button>
                   </div>
                 </td>
                 @endif
                 @if($website['actionname']=='trash')
                 <td>
                   <div class="tools">
-                    <button v-if="actionname =='trash' && item.istrash_from == 1  && item.isdel_from == 0 && item.email_from == email"  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_back')}}</button>
-                    <button v-if="actionname =='trash' && item.istrash_to == 1 && item.isdel_to == 0 && item.email_to == email"  type="button" @click="get_one_action(item.id,'istrash_to')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_letter_action_back')}}</button>
+                    <button v-if="actionname =='trash' && item.istrash_from == 1  && item.isdel_from == 0 && item.email_from == email"  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_back')}}</button>
+                    <button v-if="actionname =='trash' && item.istrash_to == 1 && item.isdel_to == 0 && item.email_to == email"  type="button" @click="get_one_action(item.id,'istrash_to')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_back')}}</button>
                     @ability('admin', 'delete')
                     <button v-if="actionname =='trash' && item.istrash_from == 1 && item.isdel_from == 0 " type="button" @click="get_one_action(item.id,'isdel_from')" class="btn btn-danger" > <i class="fa fa-trash"></i> {{trans('admin.website_action_delete')}}</button>
                     <button v-if="actionname =='trash' && item.istrash_to == 1 && item.isdel_to == 0 " type="button" @click="get_one_action(item.id,'isdel_to')" class="btn btn-danger" > <i class="fa fa-trash"></i> {{trans('admin.website_action_delete')}}</button>
@@ -191,7 +191,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -219,7 +219,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -325,7 +325,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -354,7 +354,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {

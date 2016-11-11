@@ -34,8 +34,8 @@ class ClassifywechatController extends PublicController
 		$website['link_edit']=route('get.admin.classifywechat.edit').'/';
 		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;
 		$website['way']='name';
-		$wayoption[]=array('text'=>trans('admin.website_classifywechat_item_name'),'value'=>'name');
-		$wayoption[]=array('text'=>trans('admin.website_classifywechat_item_keyword'),'value'=>'keyword');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyword'),'value'=>'keyword');
 		$website['wayoption']=json_encode($wayoption);
 		$website['modellist']=$this->wechat_menutype;
 		$info = object_array(DB::table('wechats')->whereId($id)->first());
@@ -140,7 +140,7 @@ class ClassifywechatController extends PublicController
 			$list['cates']=$classoptlist;
 
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
@@ -150,7 +150,7 @@ class ClassifywechatController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -223,7 +223,7 @@ class ClassifywechatController extends PublicController
 			$params->save();
 
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_add_success');
+			$msg_array['info']=trans('admin.message_add_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('Admin\ClassifywechatController@index').'/'.$params->wechat_id;
 			$msg_array['resource']='';
@@ -233,7 +233,7 @@ class ClassifywechatController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_add_failure');
+			$msg_array['info']=trans('admin.message_add_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -257,7 +257,7 @@ class ClassifywechatController extends PublicController
 		if($info)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
@@ -267,7 +267,7 @@ class ClassifywechatController extends PublicController
 		else
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -332,7 +332,7 @@ class ClassifywechatController extends PublicController
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_save_success');
+			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('Admin\ClassifywechatController@index').'/'.$params->wechat_id;
 			$msg_array['resource']='';
@@ -342,7 +342,7 @@ class ClassifywechatController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_save_failure');
+			$msg_array['info']=trans('admin.message_save_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";

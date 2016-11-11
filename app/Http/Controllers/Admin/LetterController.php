@@ -32,7 +32,7 @@ class LetterController extends PublicController
 		$website['link_add']=URL::action('Admin\LetterController@add');
 		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
-		$wayoption[]=array('text'=>trans('admin.website_letter_item_title'),'value'=>'title');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
         
 		return view('admin/letter/index')->with('website',$website);
@@ -54,7 +54,7 @@ class LetterController extends PublicController
 		$website['link_add']=URL::action('Admin\LetterController@add');
 		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
-		$wayoption[]=array('text'=>trans('admin.website_letter_item_title'),'value'=>'title');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
 
 		return view('admin/letter/index')->with('website',$website);
@@ -76,7 +76,7 @@ class LetterController extends PublicController
 		$website['link_add']=URL::action('Admin\LetterController@add');
 		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
-		$wayoption[]=array('text'=>trans('admin.website_letter_item_title'),'value'=>'title');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
 
 		return view('admin/letter/index')->with('website',$website);
@@ -98,7 +98,7 @@ class LetterController extends PublicController
 		$website['link_add']=URL::action('Admin\LetterController@add');
 		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
-		$wayoption[]=array('text'=>trans('admin.website_letter_item_title'),'value'=>'title');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
 
 		return view('admin/letter/index')->with('website',$website);
@@ -214,7 +214,7 @@ class LetterController extends PublicController
 		if($list)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
@@ -224,7 +224,7 @@ class LetterController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -250,7 +250,7 @@ class LetterController extends PublicController
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_send_success');
+			$msg_array['info']=trans('admin.message_send_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('Admin\LetterController@send');
 			$msg_array['resource']='';
@@ -260,7 +260,7 @@ class LetterController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_send_failure');
+			$msg_array['info']=trans('admin.message_send_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -317,7 +317,7 @@ class LetterController extends PublicController
 		if($count)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$count;
@@ -325,7 +325,7 @@ class LetterController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";

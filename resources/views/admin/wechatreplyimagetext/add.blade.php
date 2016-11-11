@@ -117,7 +117,7 @@
               </div>
             </div>
             <div class="form-group">
-                <label >{{trans('admin.website_item_status')}}</label>
+                <label >{{trans('admin.fieldname_item_status')}}</label>
                 <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
                 <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
             </div>
@@ -126,7 +126,7 @@
           <div class="box-footer">
             <button v-if="params_data.id == 0" type="button" @click="check_action(apiurl_add)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
             <button v-else type="button" @click="check_action(apiurl_edit)" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
-            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_getback')}}</button>
+            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_action_getback')}}</button>
           </div>
 
       </div>
@@ -220,7 +220,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -275,7 +275,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -383,7 +383,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {

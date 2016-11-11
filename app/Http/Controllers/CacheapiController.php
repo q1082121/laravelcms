@@ -30,7 +30,7 @@ class CacheapiController extends PublicController
                             //$cache['classproduct']=@$this->cache_classproduct;
                             //$cache['picture']=@$this->cache_picture;
                             //$cache['link']=@$this->cache_link;
-                            $info=trans('admin.website_save_success');
+                            $info=trans('admin.message_save_success');
             break;
             
         }

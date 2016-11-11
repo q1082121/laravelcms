@@ -32,19 +32,19 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_name')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_fullname')}}</span>
                 <input type="text" id="name" class="form-control" v-model="params_data.name" >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_nick')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_nick')}}</span>
                 <input type="text" class="form-control" v-model="params_data.nick"   >
               </div>
             </div>
             <!--图片上传控件 start-->
             <div class="form-group">
-              <label >{{trans('admin.website_userinfo_attachment')}}</label><br>
+              <label >{{trans('admin.fieldname_item_headimage')}}</label><br>
               <link rel="stylesheet" href="{{asset('/module/jQueryIpputCss')}}/css/style.css">
               <div class="uploader white" v-if="params_data.isattach == 0">
               <input type="text" class="filename" readonly/>
@@ -82,38 +82,38 @@
             </div>
             <!--图片上传控件 end-->
             <div class="form-group">
-              <label >{{trans('admin.website_userinfo_sex')}}</label>
+              <label >{{trans('admin.fieldname_item_sex')}}</label>
               <br>
               <input type="radio"  value="1" v-model="params_data.sex"> 男 
               <input type="radio"  value="2" v-model="params_data.sex"> 女 
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_birthday')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_birthday')}}</span>
                 <input type="text" class="form-control" v-model="params_data.birthday"  data-field="date" data-format="yyyy-MM-dd" readonly >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_qq')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_qq')}}</span>
                 <input type="text" class="form-control" v-model="params_data.qq"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_area_pid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_area_pid')}}</span>
                 <select @change="get_area_action(params_data.area_pid,2)" v-model="params_data.area_pid" class="form-control" >
                   <option v-for="item in area_data_p" value="@{{ item.id }}">@{{ item.alias }}</option>
                 </select>
               </div>
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_area_cid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_area_cid')}}</span>
                 <select @change="get_area_action(params_data.area_cid,3)" v-model="params_data.area_cid" class="form-control" >
                   <option v-for="item in area_data_c" value="@{{ item.id }}">@{{ item.alias }}</option>
                 </select>
               </div>
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_userinfo_area_xid')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_area_xid')}}</span>
                 <select  v-model="params_data.area_xid" class="form-control" >
                   <option v-for="item in area_data_x" value="@{{ item.id }}">@{{ item.alias }}</option>
                 </select>
@@ -124,7 +124,7 @@
           <!-- /.box-body -->
           <div class="box-footer">
             <button v-else type="button" @click="post_edit_action()" class="btn btn-primary" > <i class="fa fa-hand-peace-o"></i> {{trans('admin.website_action_save')}}</button>
-            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_getback')}}</button>
+            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_action_getback')}}</button>
           </div>
 
       </div>
@@ -214,7 +214,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -241,7 +241,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {
@@ -375,7 +375,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) 
@@ -413,7 +413,7 @@ new Vue({
         {
           //响应错误
           layer.close(loadi);
-          var msg="{{trans('admin.website_outtime')}}";
+          var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
         .catch(function(response) {

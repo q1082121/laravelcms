@@ -34,13 +34,26 @@ return [
     'website_user_online'                          =>   '在线',
     'website_search_tip'                           =>   '搜索...',
     'website_site'                                 =>   '当前路径',
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 导航归类
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
     'website_main_navigation'                      =>   '主导航',
     'website_main_navigation_one'                  =>   '系统相关',
     'website_main_navigation_two'                  =>   '用户相关',
     'website_main_navigation_three'                =>   '内容相关',
     'website_main_navigation_four'                 =>   '微信相关',
     'website_main_navigation_fiver'                =>   '消息相关',
-
+     /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 导航名称
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
     'website_navigation_homenav'                   =>   '导航指南',
     'website_navigation_one'                       =>   '后台首页',
     'website_navigation_one_home'                  =>   '网站首页',
@@ -73,58 +86,21 @@ return [
     'website_navigation_classify'                  =>   '文章分类',
     'website_navigation_classifylink'              =>   '链接分类',
     'website_navigation_classifyquestion'          =>   '题目分类',
-
-    'website_save'                                 =>   '保存信息',
-    'website_getback'                              =>   '返回页面',
-    'website_goback'                               =>   '返回',
-    'website_save_success'                         =>   '保存成功',
-    'website_save_failure'                         =>   '保存失败',
-    'website_save_exit'                            =>   '无变更信息',
-    'website_edit_success'                         =>   '修改成功',
-    'website_edit_failure'                         =>   '修改失败',
-    'website_add_success'                          =>   '添加成功',
-    'website_add_failure'                          =>   '添加失败',
-    'website_send_success'                         =>   '发送成功',
-    'website_send_failure'                         =>   '发送失败',
-    'website_del_success'                          =>   '删除成功',
-    'website_del_failure'                          =>   '删除失败',
-    'website_clear_success'                        =>   '清理成功',
-    'website_clear_failure'                        =>   '清理失败',
-    'website_add_exit'                             =>   '信息已存在',
-    'website_cancel_success'                       =>   '取消成功',
-    'website_cancel_error'                         =>   '取消失败',
-    'website_outtime'                              =>   '响应超时',
-    'website_outtime_error'                        =>   '响应异常',
-    'website_create_success'                       =>   '生成成功',
-    'website_create_failure'                       =>   '生成失败',
-    'website_get_success'                          =>   '获取成功',
-    'website_get_failure'                          =>   '获取失败',
-    'website_get_empty'                            =>   '数据为空',
+    'website_navigation_serverinfo'                =>   '服务器信息',
+     /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 常用项名称 
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
     'website_page_total'                           =>   '总记录数 0 条',
     'website_page_total_tip'                       =>   ' 条数据',
     'website_first_page_title'                     =>   '首页',
     'website_last_page_title'                      =>   '尾页',
     'website_prev_page_title'                      =>   '上一页',
     'website_next_page_title'                      =>   '下一页',
-    'website_action_edit'                          =>   '编辑',
-    'website_action_add'                           =>   '添加',
-    'website_action_save'                          =>   '保存',
-    'website_action_lock'                          =>   '锁开关',
-    'website_action_status'                        =>   '状态开关',
-    'website_action_is_answer'                     =>   '答案开关',
-    'website_action_delete'                        =>   '删除',
-    'website_action_set_permission'                =>   '设置权限',
-    'website_action_get_permission'                =>   '获取权限',
-    'website_action_cancel_permission'             =>   '取消权限',
-    'website_action_set_role'                      =>   '设置角色',
-    'website_action_get_role'                      =>   '获取角色',
-    'website_action_cancel_role'                   =>   '取消角色',
-    'website_action_set_success'                   =>   '设置成功',
-    'website_action_set_failure'                   =>   '设置失败',
-    'website_action_clear_data'                    =>   '清空数据',
     'website_demo_tip'                             =>   '示例',
-    'website_user_role_failure'                    =>   '当前角色尚未授权',
-    'website_user_role_login'                      =>   '用户尚未登录',
     'website_yes'                                  =>   '是',
     'website_no'                                   =>   '否',
     'website_perpage'                              =>   '单页',
@@ -137,13 +113,145 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | 默认消息 - 常用项名称 动作
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+    'website_action_edit'                          =>   '编辑',
+    'website_action_add'                           =>   '添加',
+    'website_action_save'                          =>   '保存',
+    'website_action_getback'                       =>   '返回页面',
+    'website_action_goback'                        =>   '返回',
+    'website_action_lock'                          =>   '锁开关',
+    'website_action_status'                        =>   '状态开关',
+    'website_action_is_answer'                     =>   '答案开关',
+    'website_action_delete'                        =>   '删除',
+    'website_action_set_permission'                =>   '设置权限',
+    'website_action_get_permission'                =>   '获取权限',
+    'website_action_cancel_permission'             =>   '取消权限',
+    'website_action_set_role'                      =>   '设置角色',
+    'website_action_get_role'                      =>   '获取角色',
+    'website_action_cancel_role'                   =>   '取消角色',
+    'website_action_clear_data'                    =>   '清空数据',
+    'website_action_back_question'                 =>   '返回题目',
+    'website_action_send'                          =>   '发送',
+    'website_action_discard'                       =>   '丢弃',
+    'website_action_star'                          =>   '星标',
+    'website_action_cancelstar'                    =>   '取消星标',
+    'website_action_trash'                         =>   '扔垃圾箱',
+    'website_action_back'                          =>   '捡回',
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 常用项名称 消息提示
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
+    'message_save_success'                         =>   '保存成功',
+    'message_save_failure'                         =>   '保存失败',
+    'message_save_exit'                            =>   '无变更信息',
+    'message_edit_success'                         =>   '修改成功',
+    'message_edit_failure'                         =>   '修改失败',
+    'message_add_success'                          =>   '添加成功',
+    'message_add_failure'                          =>   '添加失败',
+    'message_send_success'                         =>   '发送成功',
+    'message_send_failure'                         =>   '发送失败',
+    'message_del_success'                          =>   '删除成功',
+    'message_del_failure'                          =>   '删除失败',
+    'message_clear_success'                        =>   '清理成功',
+    'message_clear_failure'                        =>   '清理失败',
+    'message_add_exit'                             =>   '信息已存在',
+    'message_cancel_success'                       =>   '取消成功',
+    'message_cancel_error'                         =>   '取消失败',
+    'message_outtime'                              =>   '响应超时',
+    'message_outtime_error'                        =>   '响应异常',
+    'message_create_success'                       =>   '生成成功',
+    'message_create_failure'                       =>   '生成失败',
+    'message_get_success'                          =>   '获取成功',
+    'message_get_failure'                          =>   '获取失败',
+    'message_get_empty'                            =>   '数据为空',
+    'message_set_success'                          =>   '设置成功',
+    'message_set_failure'                          =>   '设置失败',
+
+    //
+    'message_userrole_failure'                     =>   '当前角色尚未授权',
+    'message_userrole_login'                       =>   '用户尚未登录',
+    'website_model_log1'                           =>   '登录操作',
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 常用项名称-字段
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+    'fieldname_item_created_at'                     =>   '时间',
+    'fieldname_item_option'                         =>   '操作项',
+    'fieldname_item_status'                         =>   '状态', 
+    'fieldname_item_id'                             =>   'ID',
+    'fieldname_item_ip'                             =>   'IP',
+    'fieldname_item_type'                           =>   '类型',
+    'fieldname_item_name'                           =>   '名称',
+    'fieldname_item_fullname'                       =>   '姓名',
+    'fieldname_item_info'                           =>   '信息',
+    'fieldname_item_username'                       =>   '用户名',
+    'fieldname_item_email'                          =>   '邮箱',
+    'fieldname_item_mobile'                         =>   '手机',
+    'fieldname_item_group'                          =>   '组',
+    'fieldname_item_nick'                           =>   '昵称',
+    'fieldname_item_money'                          =>   '钱包',
+    'fieldname_item_score'                          =>   '积分',
+    'fieldname_item_lock'                           =>   '状态锁',
+    'fieldname_item_headimage'                      =>   '头像',
+    'fieldname_item_sex'                            =>   '性别',
+    'fieldname_item_birthday'                       =>   '出生日期',
+    'fieldname_item_qq'                             =>   'QQ',
+    'fieldname_item_area'                           =>   '地区',
+    'fieldname_item_area_pid'                       =>   '省份',
+    'fieldname_item_area_cid'                       =>   '城市',
+    'fieldname_item_area_xid'                       =>   '县区',
+    'fieldname_item_keyval'                         =>   '键值',
+    'fieldname_item_description'                    =>   '描述',
+    'fieldname_item_topclass'                       =>   '分类父类',
+    'fieldname_item_ico'                            =>   'ico图标',
+    'fieldname_item_attachment'                     =>   '图片',
+    'fieldname_item_bcid'                           =>   '大类',
+    'fieldname_item_scid'                           =>   '小类',
+    'fieldname_item_topid'                          =>   '父类',
+    'fieldname_item_grade'                          =>   '级别',
+    'fieldname_item_navflag'                        =>   '主导航',
+    'fieldname_item_orderid'                        =>   '排序',
+    'fieldname_item_linkurl'                        =>   '链接',
+    'fieldname_item_perpage'                        =>   '单页/列表',
+    'fieldname_item_classid'                        =>   '分类',
+    'fieldname_item_title'                          =>   '标题',
+    'fieldname_item_introduction'                   =>   '导读',
+    'fieldname_item_author'                         =>   '作者',
+    'fieldname_item_sources'                        =>   '来源',
+    'fieldname_item_content'                        =>   '内容',
+    'fieldname_item_clicks'                         =>   '浏览',
+    'fieldname_item_introduction'                   =>   '导读',
+    'fieldname_item_modelid'                        =>   '分类类型',
+    'fieldname_item_amount'                         =>   '数量',
+    'fieldname_item_fraction'                       =>   '分数',
+    'fieldname_item_is_answer'                      =>   '是否答案',
+    'fieldname_item_to_user'                        =>   '收信人',
+    'fieldname_item_isstar'                         =>   '星标',
+    'fieldname_item_isoverhead'                     =>   '顶置',
+    'fieldname_item_ico_code'                       =>   '图标代码',
+    'fieldname_item_keyword'                        =>   '关键词',
+
+    /*
+    |--------------------------------------------------------------------------
     | 默认消息 - 服务器信息
     |--------------------------------------------------------------------------
     |
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_navigation_serverinfo'               =>   '服务器信息',
+    
     'website_serverinfo_phpver'                   =>   'PHP版本号',
     'website_serverinfo_phpos'                    =>   'PHP操作系统',
     'website_serverinfo_phpsafe'                  =>   'PHP安全模式',
@@ -210,21 +318,8 @@ return [
     'website_setting_user_thumb_height'            =>   '用户头像缩略图高度' ,
     'website_setting_wechat_thumb_width'           =>   '微信缩略图宽度' ,
     'website_setting_wechat_thumb_height'          =>   '微信缩略图高度' ,
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 日志管理
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-
-    'website_model_log1'                            =>   '登录操作',
-    'website_log_item_type'                         =>   '类型',
-    'website_log_item_name'                         =>   '用户名',
-    'website_log_item_info'                         =>   '信息',
-    'website_log_item_ip'                           =>   'IP',
-    'website_log_item_created_at'                   =>   '时间',
+    'website_setting_wechatreplyimagetext_thumb_width'  =>'微信图文缩略图宽度' ,
+    'website_setting_wechatreplyimagetext_thumb_height' =>'微信图文缩略图高度' ,
 
     /*
     |--------------------------------------------------------------------------
@@ -234,42 +329,12 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_item_option'                           =>   '操作项',
-    'website_item_status'                           =>   '状态', 
-    'website_item_id'                               =>   'ID',
     'website_user_module_list'                      =>   '用户列表',
     'website_user_module_add'                       =>   '用户添加',
     'website_user_module_edit'                      =>   '用户编辑',
-    'website_user_item_username'                    =>   '用户名',
-    'website_user_item_email'                       =>   '邮箱',
-    'website_user_item_mobile'                      =>   '手机',
-    'website_user_item_group'                       =>   '用户组',
-    'website_user_item_nick'                        =>   '昵称',
-    'website_user_item_money'                       =>   '账户',
-    'website_user_item_score'                       =>   '积分',
-    'website_user_item_lock'                        =>   '状态锁',
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 用户资料
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-
-    'website_userinfo_name'                          =>   '姓名',
-    'website_userinfo_nick'                          =>   '昵称',
-    'website_userinfo_attachment'                    =>   '头像',
-    'website_userinfo_sex'                           =>   '性别',
-    'website_userinfo_birthday'                      =>   '出生日期',
-    'website_userinfo_qq'                            =>   'QQ',
-    'website_userinfo_area'                          =>   '地区',
-    'website_userinfo_area_pid'                      =>   '省份',
-    'website_userinfo_area_cid'                      =>   '城市',
-    'website_userinfo_area_xid'                      =>   '县区',
-    'website_select_p'                               =>   '请选择省份',
-    'website_select_c'                               =>   '请选择城市',
-    'website_select_x'                               =>   '请选择乡县',
+    'website_select_p'                              =>   '请选择省份',
+    'website_select_c'                              =>   '请选择城市',
+    'website_select_x'                              =>   '请选择乡县',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 修改密码
@@ -287,7 +352,6 @@ return [
     'editpwd_failure_tip4'                           =>   '新密码长度不能少于6位',
     'editpwd_failure_tip5'                           =>   '请输入确认密码',
     'editpwd_failure_tip6'                           =>   '确认密码与新密码不相同',
-
     'website_editpwd_failure'                        =>   '当前密码不正确',
     'website_editpwd_surefailure'                    =>   '新密码和确认密码不相同',
     'website_editpwd_failurelength'                  =>   '新密码长度至少6位',
@@ -299,11 +363,7 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_userrole_item_name'                    =>   '用户角色键值',
-    'website_userrole_item_display_name'            =>   '用户角色名称',
-    'website_userrole_item_description'             =>   '用户角色描述',
     'userrole_failure_tip1'                         =>   '请输入用户角色键值',
-
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 角色权限
@@ -312,9 +372,6 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_userpermission_item_name'               =>   '角色权限键值',
-    'website_userpermission_item_display_name'       =>   '角色权限名称',
-    'website_userpermission_item_description'        =>   '角色权限描述',
     'userpermission_failure_tip1'                    =>   '请输入角色权限键值',
 
     /*
@@ -325,19 +382,6 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-
-    'website_navigation_item_topclass'                  =>   '分类父类',
-    'website_navigation_item_name'                      =>   '分类名称',
-    'website_navigation_item_ico'                       =>   'ico图标',
-    'website_navigation_item_attachment'                =>   '图标',
-    'website_navigation_item_bcid'                      =>   '大类',
-    'website_navigation_item_scid'                      =>   '小类',
-    'website_navigation_item_topid'                     =>   '父类',
-    'website_navigation_item_grade'                     =>   '级别',
-    'website_navigation_item_navflag'                   =>   '主导航',
-    'website_navigation_item_orderid'                   =>   '排序',
-    'website_navigation_item_linkurl'                   =>   '链接',
-    'website_navigation_item_status'                    =>   '状态',
     'navigation_failure_tip1'                           =>   '请输入分类名称',
     'navigation_failure_delete'                         =>   '请先删除子类',
     'website_navigation_create_cache'                   =>   '生成主导航栏缓存',
@@ -350,20 +394,6 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-
-    'website_classify_item_topclass'                  =>   '分类父类',
-    'website_classify_item_name'                      =>   '分类名称',
-    'website_classify_item_ico'                       =>   'ico图标',
-    'website_classify_item_attachment'                =>   '图标',
-    'website_classify_item_bcid'                      =>   '大类',
-    'website_classify_item_scid'                      =>   '小类',
-    'website_classify_item_topid'                     =>   '父类',
-    'website_classify_item_grade'                     =>   '级别',
-    'website_classify_item_navflag'                   =>   '主导航',
-    'website_classify_item_perpage'                   =>   '单页/列表',
-    'website_classify_item_orderid'                   =>   '排序',
-    'website_classify_item_linkurl'                   =>   '链接',
-    'website_classify_item_status'                    =>   '状态',
     'classify_failure_tip1'                           =>   '请输入分类名称',
     'classify_failure_delete'                         =>   '请先删除子类',
     'website_classify_create_cache'                   =>   '生成文章分类缓存',
@@ -377,17 +407,6 @@ return [
     |
     */
     'website_article_select'                          =>   '请选择文章分类',
-    'website_article_item_classid'                    =>   '分类',
-    'website_article_item_title'                      =>   '标题',
-    'website_article_item_introduction'               =>   '导读',
-    'website_article_item_author'                     =>   '作者',
-    'website_article_item_sources'                    =>   '来源',
-    'website_article_item_attachment'                 =>   '封面',
-    'website_article_item_content'                    =>   '内容',
-    'website_article_item_clicks'                     =>   '浏览',
-    'website_article_item_orderid'                    =>   '排序',
-    'website_article_item_linkurl'                    =>   '外链接',
-    'website_article_item_status'                     =>   '状态',
     'article_failure_tip1'                            =>   '请填写标题',
     
     /*
@@ -398,19 +417,6 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-
-    'website_classifyproduct_item_topclass'               =>   '分类父类',
-    'website_classifyproduct_item_name'                   =>   '分类名称',
-    'website_classifyproduct_item_ico'                    =>   'ico图标',
-    'website_classifyproduct_item_attachment'             =>   '图标',
-    'website_classifyproduct_item_bcid'                   =>   '大类',
-    'website_classifyproduct_item_scid'                   =>   '小类',
-    'website_classifyproduct_item_topid'                  =>   '父类',
-    'website_classifyproduct_item_grade'                  =>   '级别',
-    'website_classifyproduct_item_navflag'                =>   '主导航',
-    'website_classifyproduct_item_orderid'                =>   '排序',
-    'website_classifyproduct_item_linkurl'                =>   '链接',
-    'website_classifyproduct_item_status'                 =>   '状态',
     'classifyproduct_failure_tip1'                        =>   '请输入分类名称',
     'classifyproduct_failure_delete'                      =>   '请先删除子类',
     'website_classifyproduct_create_cache'                =>   '生成产品分类缓存',
@@ -424,17 +430,6 @@ return [
     |
     */
     'website_product_select'                          =>   '请选择产品分类',
-    'website_product_item_classid'                    =>   '分类',
-    'website_product_item_title'                      =>   '标题',
-    'website_product_item_introduction'               =>   '导读',
-    'website_product_item_author'                     =>   '作者',
-    'website_product_item_sources'                    =>   '来源',
-    'website_product_item_attachment'                 =>   '封面',
-    'website_product_item_content'                    =>   '内容',
-    'website_product_item_clicks'                     =>   '浏览',
-    'website_product_item_orderid'                    =>   '排序',
-    'website_product_item_linkurl'                    =>   '外链接',
-    'website_product_item_status'                     =>   '状态',
     'product_failure_tip1'                            =>   '请填写标题',
 
     /*
@@ -449,12 +444,6 @@ return [
     'website_model_picture2'                          =>   '公共展示图',
     'website_model_picture3'                          =>   '微站展示图',
     'website_model_picture4'                          =>   '漂浮展示图',
-    'website_picture_item_modelid'                    =>   '图片分类',
-    'website_picture_item_title'                      =>   '标题',
-    'website_picture_item_attachment'                 =>   '图片',
-    'website_picture_item_linkurl'                    =>   '链接',
-    'website_picture_item_orderid'                    =>   '排序',
-    'website_picture_item_status'                     =>   '状态',
     'picture_failure_tip1'                            =>   '请填写标题',
     'website_picture_create_cache'                    =>   '生成图片缓存',
 
@@ -467,19 +456,6 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-
-    'website_classifylink_item_topclass'               =>   '分类父类',
-    'website_classifylink_item_name'                   =>   '分类名称',
-    'website_classifylink_item_ico'                    =>   'ico图标',
-    'website_classifylink_item_attachment'             =>   '图标',
-    'website_classifylink_item_bcid'                   =>   '大类',
-    'website_classifylink_item_scid'                   =>   '小类',
-    'website_classifylink_item_topid'                  =>   '父类',
-    'website_classifylink_item_grade'                  =>   '级别',
-    'website_classifylink_item_navflag'                =>   '主导航',
-    'website_classifylink_item_orderid'                =>   '排序',
-    'website_classifylink_item_linkurl'                =>   '链接',
-    'website_classifylink_item_status'                 =>   '状态',
     'classifylink_failure_tip1'                        =>   '请输入分类名称',
     'classifylink_failure_delete'                      =>   '请先删除子类',
     'website_classifylink_create_cache'                =>   '生成链接分类缓存',
@@ -495,13 +471,6 @@ return [
     'website_link_select'                             =>   '请选择链接分类',
     'website_model_link1'                             =>   '文字链接',
     'website_model_link2'                             =>   '图片链接',
-    'website_link_item_modelid'                       =>   '类型',
-    'website_link_item_classid'                       =>   '分类',
-    'website_link_item_title'                         =>   '标题',
-    'website_link_item_attachment'                    =>   '图片',
-    'website_link_item_linkurl'                       =>   '链接',
-    'website_link_item_orderid'                       =>   '排序',
-    'website_link_item_status'                        =>   '状态',
     'link_failure_tip1'                               =>   '请填写标题',
     'website_link_create_cache'                       =>   '生成链接缓存',
 
@@ -515,17 +484,6 @@ return [
     |
     */
 
-    'website_classifyquestion_item_topclass'               =>   '分类父类',
-    'website_classifyquestion_item_name'                   =>   '分类名称',
-    'website_classifyquestion_item_ico'                    =>   'ico图标',
-    'website_classifyquestion_item_attachment'             =>   '图标',
-    'website_classifyquestion_item_bcid'                   =>   '大类',
-    'website_classifyquestion_item_scid'                   =>   '小类',
-    'website_classifyquestion_item_topid'                  =>   '父类',
-    'website_classifyquestion_item_grade'                  =>   '级别',
-    'website_classifyquestion_item_amount'                 =>   '抽题数量',
-    'website_classifyquestion_item_orderid'                =>   '排序',
-    'website_classifyquestion_item_status'                 =>   '状态',
     'classifyquestion_failure_tip1'                        =>   '请输入分类名称',
     'classifyquestion_failure_delete'                      =>   '请先删除子类',
     'website_classifyquestion_create_cache'                =>   '生成题目分类缓存',
@@ -542,13 +500,7 @@ return [
     'website_type_question1'                              =>   '单选题目',
     'website_type_question2'                              =>   '多选题目',
     'website_type_question3'                              =>   '判断题目',
-    'website_question_item_type'                          =>   '类型',
-    'website_question_item_classid'                       =>   '分类',
-    'website_question_item_title'                         =>   '标题',
-    'website_question_item_attachment'                    =>   '图片',
-    'website_question_item_score'                         =>   '分数',
-    'website_question_item_is_answer'                     =>   '是否答案',
-    'website_question_item_status'                        =>   '状态',
+    
     'question_failure_tip1'                               =>   '请填写标题',
 
 
@@ -560,14 +512,8 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_questionoption_action_back'                    =>   '返回题目',
-    'website_questionoption_action_add'                     =>   '添加选项',
-    'website_questionoption_action_edit'                    =>   '编辑选项',
+    
     'website_questionoption_tip'                            =>   '题目名称',
-    'website_questionoption_item_title'                     =>   '标题',
-    'website_questionoption_item_attachment'                =>   '图片',
-    'website_questionoption_item_is_answer'                 =>   '是否答案',
-    'website_questionoption_item_status'                    =>   '状态',
     'questionoption_failure_tip1'                           =>   '请填写标题',
 
 
@@ -580,13 +526,7 @@ return [
     |
     */
 
-    'website_letter_action_add'                         =>   '新增',
-    'website_letter_action_send'                        =>   '发送',
-    'website_letter_action_discard'                     =>   '丢弃',
-    'website_letter_action_star'                        =>   '星标',
-    'website_letter_action_cancelstar'                  =>   '取消星标',
-    'website_letter_action_trash'                       =>   '扔垃圾箱',
-    'website_letter_action_back'                        =>   '捡回',
+    
     'website_letter_folders'                            =>   '文件夹',
     'website_letter_received'                           =>   '收信箱',
     'website_letter_send'                               =>   '已发送',
@@ -600,15 +540,7 @@ return [
     'website_letter_action_trash_success2'              =>   '捡回信件成功',
     'website_letter_action_del_trash_success'           =>   '删除垃圾成功',
 
-    'website_letter_item_title'                         =>   '标题',
-    'website_letter_item_attachment'                    =>   '图片',
-    'website_letter_item_to_user'                       =>   '收信人',
-    'website_letter_item_content'                       =>   '内容',
-    'website_letter_item_attachment'                    =>   '附件',
-    'website_letter_item_isstar'                        =>   '星标',
-    'website_letter_item_isoverhead'                    =>   '顶置',
-    'website_letter_item_status'                        =>   '状态',
-    'website_letter_item_time'                          =>   '时间',
+    
     'letter_failure_tip1'                               =>   '收信人不能为自己',
     'letter_failure_tip2'                               =>   '请填写标题',
 
@@ -721,15 +653,7 @@ return [
     |
     */
 
-    'website_classifywechat_item_topclass'               =>   '分类父类',
-    'website_classifywechat_item_type'                   =>   '分类类型',
-    'website_classifywechat_item_name'                   =>   '分类名称',
-    'website_classifywechat_item_ico'                    =>   '图标代码',
-    'website_classifywechat_item_keyword'                =>   '关键词',
-    'website_classifywechat_item_linkurl'                =>   '外链接',
-    'website_classifywechat_item_linkurl'                =>   '外链接',
-    'website_classifywechat_item_orderid'                =>   '排序',
-    'website_classifywechat_item_status'                 =>   '状态',
+    
     'classifywechat_failure_tip1'                        =>   '请输入分类名称',
     'classifywechat_failure_tip2'                        =>   '请输入关键词',
     'classifywechat_failure_delete'                      =>   '请先删除子类',

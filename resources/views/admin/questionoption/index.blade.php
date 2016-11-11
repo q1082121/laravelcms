@@ -10,11 +10,11 @@
           <h3 class="box-title">
             <a href="{{$website['link_add']}}" >
             <button type="button" class="btn btn-success pull-left ">
-              <i class="fa fa-add"></i>{{trans('admin.website_questionoption_action_add')}} 【{{trans('admin.website_questionoption_tip')}}： {{$website['info']['title']}}】  
+              <i class="fa fa-add"></i>{{trans('admin.website_action_add')}} 【{{trans('admin.website_questionoption_tip')}}： {{$website['info']['title']}}】  
             </button>
             </a>
             <button @click="back_action()" type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
-            <i class="fa fa-add"></i> {{trans('admin.website_questionoption_action_back')}}
+            <i class="fa fa-add"></i> {{trans('admin.website_action_back_question')}}
             </button>
           </h3>
 
@@ -42,12 +42,12 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_questionoption_item_title')}}</th>
-              <th>{{trans('admin.website_questionoption_item_attachment')}}</th>
-              <th>{{trans('admin.website_questionoption_item_is_answer')}}</th>
-              <th>{{trans('admin.website_questionoption_item_status')}}</th>
-              <th>{{trans('admin.website_item_option')}}</th>
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_title')}}</th>
+              <th>{{trans('admin.fieldname_item_attachment')}}</th>
+              <th>{{trans('admin.fieldname_item_is_answer')}}</th>
+              <th>{{trans('admin.fieldname_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -154,7 +154,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -269,7 +269,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {
@@ -298,7 +298,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {

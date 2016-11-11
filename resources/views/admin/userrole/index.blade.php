@@ -35,11 +35,11 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              <th>{{trans('admin.website_item_id')}}</th>
-              <th>{{trans('admin.website_userrole_item_name')}}</th>
-              <th>{{trans('admin.website_userrole_item_display_name')}}</th>
-              <th>{{trans('admin.website_userrole_item_description')}}</th>
-              <th>{{trans('admin.website_item_option')}}</th>
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_keyval')}}</th>
+              <th>{{trans('admin.fieldname_item_name')}}</th>
+              <th>{{trans('admin.fieldname_item_description')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -129,7 +129,7 @@ new Vue({
               {
                 //响应错误
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime')}}";
+                var msg="{{trans('admin.message_outtime')}}";
                 layermsg_error(msg);
               })
               .catch(function(response) {

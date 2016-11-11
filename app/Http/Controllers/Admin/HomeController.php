@@ -135,7 +135,7 @@ class HomeController extends PublicController
 		
 		Cache::store('file')->forever('setting', $getdata);
 		$msg_array['status']='1';
-		$msg_array['info']=trans('admin.website_action_set_success');
+		$msg_array['info']=trans('admin.message_set_success');
 		$msg_array['is_reload']=1;
 		$msg_array['resource']=$getdata;
 		

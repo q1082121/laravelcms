@@ -30,9 +30,9 @@ class UserpermissionController extends PublicController
 		$website['link_add']=URL::action('Admin\UserpermissionController@add');
 		$website['link_edit']=route('get.admin.userpermission.edit').'/';
 		$website['way']='name';
-		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_name'),'value'=>'name');
-		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_display_name'),'value'=>'display_name');
-		$wayoption[]=array('text'=>trans('admin.website_userpermission_item_description'),'value'=>'description');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyval'),'value'=>'name');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'display_name');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_description'),'value'=>'description');
 		$website['wayoption']=json_encode($wayoption);
 
 		return view('admin/userpermission/index')->with('website',$website);
@@ -87,7 +87,7 @@ class UserpermissionController extends PublicController
 		if($list)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
@@ -97,7 +97,7 @@ class UserpermissionController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -117,7 +117,7 @@ class UserpermissionController extends PublicController
 		if($info_count)
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_add_exit');
+			$msg_array['info']=trans('admin.message_add_exit');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -134,7 +134,7 @@ class UserpermissionController extends PublicController
 			if ($params->save()) 
 			{
 				$msg_array['status']='1';
-				$msg_array['info']=trans('admin.website_add_success');
+				$msg_array['info']=trans('admin.message_add_success');
 				$msg_array['is_reload']=0;
 				$msg_array['curl']=URL::action('Admin\UserpermissionController@index');
 				$msg_array['resource']='';
@@ -144,7 +144,7 @@ class UserpermissionController extends PublicController
 			else 
 			{
 				$msg_array['status']='0';
-				$msg_array['info']=trans('admin.website_add_failure');
+				$msg_array['info']=trans('admin.message_add_failure');
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
@@ -168,7 +168,7 @@ class UserpermissionController extends PublicController
 		if($info)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
@@ -178,7 +178,7 @@ class UserpermissionController extends PublicController
 		else
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -202,7 +202,7 @@ class UserpermissionController extends PublicController
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_save_success');
+			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('Admin\UserpermissionController@index');
 			$msg_array['resource']='';
@@ -212,7 +212,7 @@ class UserpermissionController extends PublicController
 		else 
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_save_failure');
+			$msg_array['info']=trans('admin.message_save_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -249,7 +249,7 @@ class UserpermissionController extends PublicController
 		if($list)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_success');
+			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
@@ -259,7 +259,7 @@ class UserpermissionController extends PublicController
 		else
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_get_empty');
+			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -280,7 +280,7 @@ class UserpermissionController extends PublicController
 		if($info_count)
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_add_exit');
+			$msg_array['info']=trans('admin.message_add_exit');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
@@ -293,7 +293,7 @@ class UserpermissionController extends PublicController
 			if($info)//true
 			{
 				$msg_array['status']='1';
-				$msg_array['info']=trans('admin.website_action_set_success');
+				$msg_array['info']=trans('admin.message_set_success');
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']='';
@@ -303,7 +303,7 @@ class UserpermissionController extends PublicController
 			else
 			{
 				$msg_array['status']='0';
-				$msg_array['info']=trans('admin.website_action_set_failure');
+				$msg_array['info']=trans('admin.message_set_failure');
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
@@ -327,7 +327,7 @@ class UserpermissionController extends PublicController
 		if($info)
 		{
 			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.website_cancel_success');
+			$msg_array['info']=trans('admin.message_cancel_success');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']='';
@@ -338,7 +338,7 @@ class UserpermissionController extends PublicController
 		{
 			
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.website_cancel_error');
+			$msg_array['info']=trans('admin.message_cancel_error');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']='';

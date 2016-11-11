@@ -58,8 +58,8 @@
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
                 <td>@{{ item.classname }}</td>
-                <td v-if="item.modelid == 1"> <i class="fa fa-leaf"></i> {{trans('admin.website_model_link1')}}</td>
-                <td v-if="item.modelid == 2"> <i class="fa fa-leaf"></i> {{trans('admin.website_model_link2')}}</td>
+                <td v-if="item.modelid == 1"> <i class="fa fa-leaf"></i> {{trans('admin.define_model_link1')}}</td>
+                <td v-if="item.modelid == 2"> <i class="fa fa-leaf"></i> {{trans('admin.define_model_link2')}}</td>
                 <td>@{{ item.title }}</td>
                 <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
                 <td>@{{ item.orderid }}</td>

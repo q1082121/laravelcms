@@ -7,7 +7,7 @@
     <div class="col-xs-12">
       <div class="box" id="app-content">
         <div class="box-header">
-          <h3 class="box-title"> 【 @{{cur_title}} 】 【{{trans('admin.website_questionoption_tip')}}： {{$website['info']['title']}}】</h3>
+          <h3 class="box-title"> 【 @{{cur_title}} 】 【{{trans('admin.define_model_questionoption_tip')}}： {{$website['info']['title']}}】</h3>
         </div>
         <!-- /.box-header -->
           

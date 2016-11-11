@@ -107,12 +107,12 @@ new Vue({
           }
           else if (this.params_data.email==this.email)
           {
-              var msg="{{trans('admin.letter_failure_tip1')}}";
+              var msg="{{trans('admin.option_letter_failure_tip1')}}";
               layermsg_error(msg);
           }
           else if (this.params_data.title=='')
           {
-              var msg="{{trans('admin.letter_failure_tip2')}}";
+              var msg="{{trans('admin.option_failure_istitle')}}";
               layermsg_error(msg);
           }
           else

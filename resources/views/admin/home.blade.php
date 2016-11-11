@@ -205,7 +205,7 @@
           <div class="small-box bg-purple">
             <div class="inner">
               <h3>{{$website['count_letter_to']}}</h3>
-              <p>{{trans('admin.website_letter_received')}}</p>
+              <p>{{trans('admin.define_model_letter_received')}}</p>
             </div>
             <div class="icon">
               <i class="fa fa-envelope-o"></i>
@@ -219,7 +219,7 @@
           <div class="small-box bg-purple">
             <div class="inner">
               <h3>{{$website['count_letter_from']}}</h3>
-              <p>{{trans('admin.website_letter_send')}}</p>
+              <p>{{trans('admin.define_model_letter_send')}}</p>
             </div>
             <div class="icon">
               <i class="fa fa-envelope-o"></i>

@@ -99,15 +99,15 @@ class PublicController extends Controller
 		$this->thumb_width=$thumb_width=env('APP_THUMB_WIDTH', 200);				//缩略图宽度
 		$this->thumb_height=$thumb_height=env('APP_THUMB_HEIGHT', 200);				//缩略图高度
 		//默认广告图片模块
-		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture1'),'value'=>1);
-		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture2'),'value'=>2);
-		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture3'),'value'=>3);
-		$this->picture_modellist[]=array('text'=>trans('admin.website_model_picture4'),'value'=>4);
+		$this->picture_modellist[]=array('text'=>trans('admin.define_model_picture1'),'value'=>1);
+		$this->picture_modellist[]=array('text'=>trans('admin.define_model_picture2'),'value'=>2);
+		$this->picture_modellist[]=array('text'=>trans('admin.define_model_picture3'),'value'=>3);
+		$this->picture_modellist[]=array('text'=>trans('admin.define_model_picture4'),'value'=>4);
 		//默认友情链接模块
-		$this->link_modellist[]=array('text'=>trans('admin.website_model_link1'),'value'=>1);
-		$this->link_modellist[]=array('text'=>trans('admin.website_model_link2'),'value'=>2);
+		$this->link_modellist[]=array('text'=>trans('admin.define_model_link1'),'value'=>1);
+		$this->link_modellist[]=array('text'=>trans('admin.define_model_link2'),'value'=>2);
 		//默认日志管理模块
-		$this->log_modellist[]=array('text'=>trans('admin.website_model_log1'),'value'=>1);
+		$this->log_modellist[]=array('text'=>trans('admin.define_model_log1'),'value'=>1);
 		//默认微信公众号类型
 		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat1'),'value'=>1);
 		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat2'),'value'=>2);

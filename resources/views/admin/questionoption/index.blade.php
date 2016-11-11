@@ -10,7 +10,7 @@
           <h3 class="box-title">
             <a href="{{$website['link_add']}}" >
             <button type="button" class="btn btn-success pull-left ">
-              <i class="fa fa-add"></i>{{trans('admin.website_action_add')}} 【{{trans('admin.website_questionoption_tip')}}： {{$website['info']['title']}}】  
+              <i class="fa fa-add"></i>{{trans('admin.website_action_add')}} 【{{trans('admin.define_model_questionoption_tip')}}： {{$website['info']['title']}}】  
             </button>
             </a>
             <button @click="back_action()" type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">

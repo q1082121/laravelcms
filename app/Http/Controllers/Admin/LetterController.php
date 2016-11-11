@@ -24,7 +24,7 @@ class LetterController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_letter_received');
+		$website['cursitename']=trans('admin.define_model_letter_received');
 		$website['apiurl_list']=URL::action('Admin\LetterController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
@@ -46,7 +46,7 @@ class LetterController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_letter_send');
+		$website['cursitename']=trans('admin.define_model_letter_send');
 		$website['apiurl_list']=URL::action('Admin\LetterController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
@@ -68,7 +68,7 @@ class LetterController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_letter_star');
+		$website['cursitename']=trans('admin.define_model_letter_star');
 		$website['apiurl_list']=URL::action('Admin\LetterController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
@@ -90,7 +90,7 @@ class LetterController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_letter_trash');
+		$website['cursitename']=trans('admin.define_model_letter_trash');
 		$website['apiurl_list']=URL::action('Admin\LetterController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');

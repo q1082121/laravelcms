@@ -14,9 +14,9 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon" v-if="params_data.type == 1" >{{trans('admin.website_type_question1')}}</span>
-                <span class="input-group-addon" v-if="params_data.type == 2" >{{trans('admin.website_type_question2')}}</span>
-                <span class="input-group-addon" v-if="params_data.type == 3" >{{trans('admin.website_type_question3')}}</span>
+                <span class="input-group-addon" v-if="params_data.type == 1" >{{trans('admin.define_model_question1')}}</span>
+                <span class="input-group-addon" v-if="params_data.type == 2" >{{trans('admin.define_model_question2')}}</span>
+                <span class="input-group-addon" v-if="params_data.type == 3" >{{trans('admin.define_model_question3')}}</span>
               </div>
             </div>
             <div class="form-group">

@@ -13,7 +13,7 @@ return [
     'website_name'                                 =>   'LaravelCMS',
     'website_sname'                                =>   'LCMS',
     'website_version_name'                         =>   '版本',
-    'website_version'                              =>   '1.2.0',
+    'website_version'                              =>   '1.5.0',
     'website_version_tip'                          =>   '版权所有',
     'website_type'                                 =>   '内容管理系统',
     'website_center_tip'                           =>   '中心界面',

@@ -26,7 +26,7 @@ class WechatreplyimagetextController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_imagetext');
+		$website['cursitename']=trans('admin.website_navigation_imagetext_reply');
 		$website['apiurl_list']=URL::action('Admin\WechatreplyimagetextController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
@@ -50,7 +50,7 @@ class WechatreplyimagetextController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_imagetext');
+		$website['cursitename']=trans('admin.website_navigation_imagetext_reply');
 		$website['apiurl_add']=URL::action('Admin\WechatreplyimagetextController@api_add');
 		$website['apiurl_info']=URL::action('Admin\WechatreplyimagetextController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\WechatreplyimagetextController@api_edit');
@@ -67,7 +67,7 @@ class WechatreplyimagetextController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_imagetext');
+		$website['cursitename']=trans('admin.website_navigation_imagetext_reply');
 		$website['apiurl_add']=URL::action('Admin\WechatreplyimagetextController@api_add');
 		$website['apiurl_info']=URL::action('Admin\WechatreplyimagetextController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\WechatreplyimagetextController@api_edit');

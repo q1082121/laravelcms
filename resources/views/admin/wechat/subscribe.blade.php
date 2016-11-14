@@ -13,13 +13,13 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_subscribe_reply_keyword')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.define_model_wechat_subscribe_reply_keyword')}}</span>
                 <input type="text" class="form-control" v-model="params_data.subscribe_keyword"   >
               </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_subscribe_reply_text')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.define_model_wechat_subscribe_reply_text')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.subscribe_text" > </textarea>
                 </div>
             </div>
@@ -52,7 +52,7 @@ new Vue({
              },
              image                  :'',
              cur_title              :'',
-             cur_title_edit         :'{{trans("admin.website_wechat_model_base_subscribe_reply")}}',
+             cur_title_edit         :'{{trans("admin.website_navigation_subscribe_reply")}}',
              del_data:
              {
                 id                  :'{{$website["id"]}}',

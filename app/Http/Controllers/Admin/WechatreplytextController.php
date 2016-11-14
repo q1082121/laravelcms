@@ -25,7 +25,7 @@ class WechatreplytextController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_text');
+		$website['cursitename']=trans('admin.website_navigation_text_reply');
 		$website['apiurl_list']=URL::action('Admin\WechatreplytextController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
@@ -33,8 +33,8 @@ class WechatreplytextController extends PublicController
 		$website['link_edit']=route('get.admin.wechatreplytext.edit').'/';
 		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;
 		$website['way']='keyword';
-		$wayoption[]=array('text'=>trans('admin.website_wechat_model_base_text_keyword'),'value'=>'keyword');
-		$wayoption[]=array('text'=>trans('admin.website_wechat_model_base_text_content'),'value'=>'content');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyword'),'value'=>'keyword');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_content'),'value'=>'content');
 		$website['wayoption']=json_encode($wayoption);
 		$info = object_array(DB::table('wechats')->whereId($id)->first());
 		$website['info']=$info;
@@ -49,7 +49,7 @@ class WechatreplytextController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_text');
+		$website['cursitename']=trans('admin.website_navigation_text_reply');
 		$website['apiurl_add']=URL::action('Admin\WechatreplytextController@api_add');
 		$website['apiurl_info']=URL::action('Admin\WechatreplytextController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\WechatreplytextController@api_edit');
@@ -66,7 +66,7 @@ class WechatreplytextController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_text');
+		$website['cursitename']=trans('admin.website_navigation_text_reply');
 		$website['apiurl_add']=URL::action('Admin\WechatreplytextController@api_add');
 		$website['apiurl_info']=URL::action('Admin\WechatreplytextController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\WechatreplytextController@api_edit');

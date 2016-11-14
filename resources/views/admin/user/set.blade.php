@@ -8,7 +8,7 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">
-            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_navigation_five')}}</button>
+            <button type="button" @click="back_action()" class="btn btn-primary" > <i class="fa fa-reply"></i> {{trans('admin.website_navigation_user')}}</button>
             <button type="button" class="btn btn-primary" > <i class="fa fa-bookmark"></i> {{$website['info']['nick']}} </button>
           </h3>
           @ability('admin', 'search')

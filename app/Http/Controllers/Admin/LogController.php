@@ -22,7 +22,7 @@ class LogController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_three');
+		$website['cursitename']=trans('admin.website_navigation_log');
 		$website['apiurl_list']=URL::action('Admin\LogController@api_list');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
 		$website['apiurl_clear']=URL::action('Admin\DeleteapiController@api_clear');

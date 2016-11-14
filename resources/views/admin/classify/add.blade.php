@@ -95,9 +95,9 @@
                 <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.navflag" style="margin-right:10px;"> {{trans('admin.website_no')}}</div>
             </div>
             <div class="form-group">
-                <label >{{trans('admin.fieldname_item_perpage')}}</label>
-                <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.website_perpage')}}</div>
-                <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.website_list')}}</div>
+                <label >{{trans('admin.fieldname_item_perpageorlist')}}</label>
+                <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.fieldname_item_perpage')}}</div>
+                <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.perpage" style="margin-right:10px;"> {{trans('admin.fieldname_item_list')}}</div>
             </div>
             <div class="form-group">
                 <label >{{trans('admin.fieldname_item_status')}}</label>

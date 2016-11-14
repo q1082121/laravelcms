@@ -23,7 +23,7 @@ class PictureController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_seven');
+		$website['cursitename']=trans('admin.website_navigation_advertising');
 		$website['apiurl_list']=URL::action('Admin\PictureController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
@@ -46,7 +46,7 @@ class PictureController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_seven');
+		$website['cursitename']=trans('admin.website_navigation_advertising');
 		$website['apiurl_add']=URL::action('Admin\PictureController@api_add');
 		$website['apiurl_info']=URL::action('Admin\PictureController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\PictureController@api_edit');
@@ -65,7 +65,7 @@ class PictureController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_seven');
+		$website['cursitename']=trans('admin.website_navigation_advertising');
 		$website['apiurl_add']=URL::action('Admin\PictureController@api_add');
 		$website['apiurl_info']=URL::action('Admin\PictureController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\PictureController@api_edit');

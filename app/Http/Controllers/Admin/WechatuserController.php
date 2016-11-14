@@ -25,7 +25,7 @@ class WechatuserController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_user');
+		$website['cursitename']=trans('admin.website_navigation_wechat_user');
 		$website['apiurl_list']=URL::action('Admin\WechatuserController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;

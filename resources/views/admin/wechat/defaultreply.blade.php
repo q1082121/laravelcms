@@ -13,49 +13,49 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_default_reply_keyword')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_default_reply_keyword')}}</span>
                 <input type="text" class="form-control" v-model="params_data.default_keyword"   >
               </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_default_reply_text')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_default_reply_text')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.default_text" > </textarea>
                 </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_default_reply_image_keyword')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_default_reply_image_keyword')}}</span>
                 <input type="text" class="form-control" v-model="params_data.image_default_keyword"   >
               </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_default_reply_image_text')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_default_reply_image_text')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.image_default_text " > </textarea>
                 </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_default_reply_voice_keyword')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_default_reply_voice_keyword')}}</span>
                 <input type="text" class="form-control" v-model="params_data.voice_default_keyword"   >
               </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_default_reply_voice_text')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_default_reply_voice_text')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.voice_default_text" > </textarea>
                 </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_default_reply_video_keyword')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_default_reply_video_keyword')}}</span>
                 <input type="text" class="form-control" v-model="params_data.video_default_keyword"   >
               </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_default_reply_video_text')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_default_reply_video_text')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.video_default_text" > </textarea>
                 </div>
             </div>
@@ -94,7 +94,7 @@ new Vue({
              },
              image                  :'',
              cur_title              :'',
-             cur_title_edit         :'{{trans("admin.website_wechat_model_base_default_reply")}}',
+             cur_title_edit         :'{{trans("admin.website_navigation_default_reply")}}',
              del_data:
              {
                 id                  :'{{$website["id"]}}',

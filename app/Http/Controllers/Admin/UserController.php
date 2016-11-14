@@ -24,7 +24,7 @@ class UserController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['cursitename']=trans('admin.website_navigation_five');
+		$website['cursitename']=trans('admin.website_navigation_user');
 		$website['apiurl_list']=URL::action('Admin\UserController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['link_set']=route('get.admin.user.set').'/';
@@ -301,7 +301,7 @@ class UserController extends PublicController
 	public function edit_pwd()  
 	{
 		$website=$this->website;
-		$website['cursitename']=trans('admin.website_user_editpwd');
+		$website['cursitename']=trans('admin.define_model_user_editpwd');
 		$website['apiurl_edit_pwd']=URL::action('Admin\UserController@api_edit_pwd');
 		$website['id']=$this->user['id'];
 		

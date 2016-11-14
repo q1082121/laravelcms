@@ -50,7 +50,7 @@
               <th>{{trans('admin.fieldname_item_bcid')}}</th>
               <th>{{trans('admin.fieldname_item_scid')}}</th>
               <th>{{trans('admin.fieldname_item_navflag')}}</th>
-              <th>{{trans('admin.fieldname_item_perpage')}}</th>
+              <th>{{trans('admin.fieldname_item_perpageorlist')}}</th>
               <th>{{trans('admin.fieldname_item_orderid')}}</th>
               <th>{{trans('admin.fieldname_item_status')}}</th>
               <th>{{trans('admin.fieldname_item_option')}}</th>

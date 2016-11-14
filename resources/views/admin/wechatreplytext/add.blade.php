@@ -14,13 +14,13 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_text_keyword')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_keyword')}}</span>
                 <input type="text" class="form-control" v-model="params_data.keyword"   >
               </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_model_base_text_content')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_content')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.content" > </textarea>
                 </div>
             </div>
@@ -116,12 +116,12 @@ new Vue({
 
           if (this.params_data.keyword=='')
           {
-              var msg="{{trans('admin.wechat_text_failure_tip1')}}";
+              var msg="{{trans('admin.option_failure_iskeyword')}}";
               layermsg_error(msg);
           }
           else if (this.params_data.content=='')
           {
-              var msg="{{trans('admin.wechat_text_failure_tip2')}}";
+              var msg="{{trans('admin.option_failure_iscontent')}}";
               layermsg_error(msg);
           }
           else

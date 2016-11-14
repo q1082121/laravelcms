@@ -13,55 +13,55 @@
           <div class="box-body">
             <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_openid_items')}}</span>
+                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_openid_items')}}</span>
                   <textarea  class="form-control" rows="3" v-model="params_data.openid_items" > </textarea>
                 </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_name1')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_temp_name1')}}</span>
                 <input type="text" class="form-control" v-model="params_data.temp_name1"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_id1')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_temp_id1')}}</span>
                 <input type="text" class="form-control" v-model="params_data.temp_id1"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_name2')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_temp_name2')}}</span>
                 <input type="text" class="form-control" v-model="params_data.temp_name2"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_id2')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_temp_id2')}}</span>
                 <input type="text" class="form-control" v-model="params_data.temp_id2"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_name3')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_temp_name3')}}</span>
                 <input type="text" class="form-control" v-model="params_data.temp_name3"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_id3')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_temp_id3')}}</span>
                 <input type="text" class="form-control" v-model="params_data.temp_id3"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_name4')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_temp_name4')}}</span>
                 <input type="text" class="form-control" v-model="params_data.temp_name4"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.website_wechat_item_temp_id4')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_temp_id4')}}</span>
                 <input type="text" class="form-control" v-model="params_data.temp_id4"   >
               </div>
             </div>
@@ -101,7 +101,7 @@ new Vue({
              },
              image                  :'',
              cur_title              :'',
-             cur_title_edit         :'{{trans("admin.website_wechat_model_base_messagetpl")}}',
+             cur_title_edit         :'{{trans("admin.website_navigation_messagetpl_reply")}}',
              del_data:
              {
                 id                  :'{{$website["id"]}}',

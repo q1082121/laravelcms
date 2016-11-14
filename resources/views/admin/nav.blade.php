@@ -17,14 +17,14 @@
   <li class="header">{{trans('admin.website_main_navigation_three')}}</li>
   <li class="treeview" >
     <a href="javascript:void(0);">
-      <i class="fa fa-newspaper-o"></i> <span>{{trans('admin.website_navigation_article')}}</span>
+      <i class="fa fa-newspaper-o"></i> <span>{{trans('admin.website_navigation_article_management')}}</span>
       <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
       </span>
     </a>
     <ul class="treeview-menu">
       <li><a href="{{ route('get.admin.classify') }}"><i class="fa fa-reorder"></i> {{trans('admin.website_navigation_classify')}}</a></li>
-      <li><a href="{{ route('get.admin.article') }}"><i class="fa fa-newspaper-o"></i> {{trans('admin.website_navigation_six')}}</a></li>
+      <li><a href="{{ route('get.admin.article') }}"><i class="fa fa-newspaper-o"></i> {{trans('admin.website_navigation_article')}}</a></li>
     </ul>
   </li>
   <li class="treeview" >
@@ -41,19 +41,19 @@
   </li>
   <li>
     <a href="{{ route('get.admin.picture') }}">
-      <i class="fa fa-photo"></i> <span>{{trans('admin.website_navigation_seven')}}</span>
+      <i class="fa fa-photo"></i> <span>{{trans('admin.website_navigation_advertising')}}</span>
     </a>
   </li>
   <li class="treeview">
     <a href="javascript:void(0);">
-      <i class="fa fa-external-link"></i> <span>{{trans('admin.website_navigation_link')}}</span>
+      <i class="fa fa-external-link"></i> <span>{{trans('admin.website_navigation_link_management')}}</span>
       <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
       </span>
     </a>
     <ul class="treeview-menu">
       <li><a href="{{ route('get.admin.classifylink') }}"><i class="fa fa-reorder"></i> {{trans('admin.website_navigation_classifylink')}}</a></li>
-      <li><a href="{{ route('get.admin.link') }}"><i class="fa fa-external-link"></i> {{trans('admin.website_navigation_eight')}}</a></li>
+      <li><a href="{{ route('get.admin.link') }}"><i class="fa fa-external-link"></i> {{trans('admin.website_navigation_link')}}</a></li>
     </ul>
   </li>
   <li class="treeview">
@@ -88,7 +88,7 @@
       </span>
     </a>
     <ul class="treeview-menu">
-      <li><a href="{{ route('get.admin.user') }}"><i class="fa fa-users"></i> {{trans('admin.website_navigation_five')}}</a></li>
+      <li><a href="{{ route('get.admin.user') }}"><i class="fa fa-users"></i> {{trans('admin.website_navigation_user')}}</a></li>
       <li><a href="{{ route('get.admin.userrole') }}"><i class="fa fa-gavel"></i> {{trans('admin.website_navigation_role')}}</a></li>
       <li><a href="{{ route('get.admin.userpermission') }}"><i class="fa fa-eye"></i> {{trans('admin.website_navigation_permission')}}</a></li>
     </ul>
@@ -96,29 +96,29 @@
   <li class="header">{{trans('admin.website_main_navigation_four')}}</li>
   <li>
     <a href="{{ route('get.admin.wechat') }}">
-      <i class="fa fa-wechat"></i> <span>{{trans('admin.website_navigation_nine')}}</span>
+      <i class="fa fa-wechat"></i> <span>{{trans('admin.website_navigation_wechat')}}</span>
     </a>
   </li>
   <li class="header">{{trans('admin.website_main_navigation_one')}}</li>
   <li>
     <a href="{{ route('get.admin.setting') }}">
-      <i class="fa fa-cogs"></i> <span>{{trans('admin.website_navigation_two')}}</span>
+      <i class="fa fa-cogs"></i> <span>{{trans('admin.website_navigation_setting')}}</span>
     </a>
   </li>
   <li class="header">{{trans('admin.website_main_navigation_fiver')}}</li>
   <li>
     <a href="{{ route('get.admin.log') }}">
-      <i class="fa fa-bookmark-o"></i> <span>{{trans('admin.website_navigation_three')}}</span>
+      <i class="fa fa-bookmark-o"></i> <span>{{trans('admin.website_navigation_log')}}</span>
     </a>
   </li>
   <li>
     <a href="{{ route('get.admin.letter') }}">
-      <i class="fa fa-envelope-o"></i> <span>{{trans('admin.website_navigation_ten')}}</span>
+      <i class="fa fa-envelope-o"></i> <span>{{trans('admin.website_navigation_letter')}}</span>
     </a>
   </li>
   <li>
     <a href="javascript:void(0);">
-      <i class="fa fa-bell-o"></i> <span>{{trans('admin.website_navigation_four')}}</span>
+      <i class="fa fa-bell-o"></i> <span>{{trans('admin.website_navigation_message')}}</span>
     </a>
   </li>
 </ul>

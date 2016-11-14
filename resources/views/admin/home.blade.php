@@ -51,7 +51,7 @@
           <div class="small-box bg-aqua">
             <div class="inner">
               <h3>{{$website['count_user']}}</h3>
-              <p>{{trans('admin.website_navigation_five')}}</p>
+              <p>{{trans('admin.website_navigation_user')}}</p>
             </div>
             <div class="icon">
               <i class="ion ion-person"></i>
@@ -107,7 +107,7 @@
           <div class="small-box bg-yellow">
             <div class="inner">
               <h3>{{$website['count_article']}}</h3>
-              <p>{{trans('admin.website_navigation_six')}}</p>
+              <p>{{trans('admin.website_navigation_article')}}</p>
             </div>
             <div class="icon">
               <i class="ion ion-newspaper-o"></i>
@@ -163,7 +163,7 @@
           <div class="small-box bg-red">
             <div class="inner">
               <h3>{{$website['count_link']}}</h3>
-              <p>{{trans('admin.website_navigation_eight')}}</p>
+              <p>{{trans('admin.website_navigation_link')}}</p>
             </div>
             <div class="icon">
               <i class="ion ion-leaf"></i>
@@ -177,7 +177,7 @@
           <div class="small-box bg-red">
             <div class="inner">
               <h3>{{$website['count_picture']}}</h3>
-              <p>{{trans('admin.website_navigation_seven')}}</p>
+              <p>{{trans('admin.website_navigation_advertising')}}</p>
             </div>
             <div class="icon">
               <i class="ion ion-image"></i>
@@ -191,7 +191,7 @@
           <div class="small-box bg-red">
             <div class="inner">
               <h3>{{$website['count_log']}}</h3>
-              <p>{{trans('admin.website_navigation_three')}}</p>
+              <p>{{trans('admin.website_navigation_log')}}</p>
             </div>
             <div class="icon">
               <i class="ion ion-calendar"></i>
@@ -261,7 +261,7 @@
           <div class="small-box bg-green">
             <div class="inner">
               <h3>{{$website['count_wechat']}}</h3>
-              <p>{{trans('admin.website_navigation_nine')}}</p>
+              <p>{{trans('admin.website_navigation_wechat')}}</p>
             </div>
             <div class="icon">
               <i class="ion ion-wechat"></i>
@@ -286,7 +286,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_systime')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_systime')}}</span>
                     <span class="info-box-number" id="show">
                     
                     </span>
@@ -300,7 +300,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_server_host')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_server_host')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['server_host']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -312,7 +312,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_server_port')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_server_port')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['server_port']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -324,7 +324,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_server_serverip')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_server_serverip')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['serverip']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -336,7 +336,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_client_ip')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_client_ip')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['client_ip']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -348,7 +348,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_phpver')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_phpver')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['phpver']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -360,7 +360,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_phpos')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_phpos')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['phpos']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -372,7 +372,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-aqua"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_phpsafe')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_phpsafe')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['phpsafe']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -384,7 +384,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-yellow"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_xcachesp')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_xcachesp')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['xcachesp']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -396,7 +396,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-yellow"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_cookiesp')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_cookiesp')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['cookiesp']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -408,7 +408,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-yellow"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_sessionsp')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_sessionsp')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['sessionsp']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -420,7 +420,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-yellow"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_curlsp')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_curlsp')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['curlsp']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -432,7 +432,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-yellow"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_gdsp')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_gdsp')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['gdsp']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -444,7 +444,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-red"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_maxpostsize')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_maxpostsize')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['maxpostsize']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -456,7 +456,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-red"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_maxupsize')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_maxupsize')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['maxupsize']}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -468,7 +468,7 @@
                 <div class="info-box">
                   <span class="info-box-icon bg-red"><i class="fa fa-tag"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">{{trans('admin.website_serverinfo_maxexectime')}}</span>
+                    <span class="info-box-text">{{trans('admin.define_model_serverinfo_maxexectime')}}</span>
                     <span class="info-box-number">{{$website['serverinfo']['maxexectime']}}</span>
                   </div>
                   <!-- /.info-box-content -->

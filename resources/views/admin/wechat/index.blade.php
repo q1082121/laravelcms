@@ -40,23 +40,23 @@
             <thead>
             <tr>
               <th>{{trans('admin.fieldname_item_id')}}</th>
-              <th>{{trans('admin.website_wechat_item_type')}}</th>
-              <th>{{trans('admin.website_wechat_item_token')}}</th>
-              <th>{{trans('admin.website_wechat_item_name')}}</th>
-              <th>{{trans('admin.website_wechat_item_attachment')}}</th>
-              <th>{{trans('admin.website_wechat_item_gid')}}</th>
-              <th>{{trans('admin.website_wechat_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_type')}}</th>
+              <th>{{trans('admin.fieldname_item_token')}}</th>
+              <th>{{trans('admin.fieldname_item_name')}}</th>
+              <th>{{trans('admin.fieldname_item_logo')}}</th>
+              <th>{{trans('admin.fieldname_item_gid')}}</th>
+              <th>{{trans('admin.fieldname_item_status')}}</th>
               <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
-                <td v-if="item.type == 1"> <i class="fa fa-wechat"></i> {{trans('admin.website_model_wechat1')}}</td>
-                <td v-if="item.type == 2"> <i class="fa fa-wechat"></i> {{trans('admin.website_model_wechat2')}}</td>
-                <td v-if="item.type == 3"> <i class="fa fa-wechat"></i> {{trans('admin.website_model_wechat3')}}</td>
-                <td v-if="item.type == 4"> <i class="fa fa-wechat"></i> {{trans('admin.website_model_wechat4')}}</td>
-                <td v-if="item.type == 5"> <i class="fa fa-wechat"></i> {{trans('admin.website_model_wechat5')}}</td>
+                <td v-if="item.type == 1"> <i class="fa fa-wechat"></i> {{trans('admin.define_model_wechat1')}}</td>
+                <td v-if="item.type == 2"> <i class="fa fa-wechat"></i> {{trans('admin.define_model_wechat2')}}</td>
+                <td v-if="item.type == 3"> <i class="fa fa-wechat"></i> {{trans('admin.define_model_wechat3')}}</td>
+                <td v-if="item.type == 4"> <i class="fa fa-wechat"></i> {{trans('admin.define_model_wechat4')}}</td>
+                <td v-if="item.type == 5"> <i class="fa fa-wechat"></i> {{trans('admin.define_model_wechat5')}}</td>
                 <td>@{{ item.token }}</td>
                 <td>@{{ item.name }}</td>
                 <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
@@ -71,7 +71,7 @@
                     <button v-if="item.status == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_status')}}</button>
                     <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_status')}}</button>
                     @endability
-                    <button type="button" @click="link_manage_action(item.id)"  class="btn btn-danger" > <i class="fa fa-certificate"></i> {{trans('admin.website_wechat_action_manage')}}</button>
+                    <button type="button" @click="link_manage_action(item.id)"  class="btn btn-danger" > <i class="fa fa-certificate"></i> {{trans('admin.website_navigation_management_center')}}</button>
                   </div>
                 </td>
               </tr>

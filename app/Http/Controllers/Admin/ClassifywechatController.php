@@ -25,7 +25,7 @@ class ClassifywechatController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_menu');
+		$website['cursitename']=trans('admin.website_navigation_wechat_menu');
 		$website['apiurl_list']=URL::action('Admin\ClassifywechatController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
@@ -52,7 +52,7 @@ class ClassifywechatController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_menu');
+		$website['cursitename']=trans('admin.website_navigation_wechat_menu');
 		$website['apiurl_add']=URL::action('Admin\ClassifywechatController@api_add');
 		$website['apiurl_info']=URL::action('Admin\ClassifywechatController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\ClassifywechatController@api_edit');
@@ -86,7 +86,7 @@ class ClassifywechatController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_menu');
+		$website['cursitename']=trans('admin.website_navigation_wechat_menu');
 		$website['apiurl_add']=URL::action('Admin\ClassifywechatController@api_add');
 		$website['apiurl_info']=URL::action('Admin\ClassifywechatController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\ClassifywechatController@api_edit');

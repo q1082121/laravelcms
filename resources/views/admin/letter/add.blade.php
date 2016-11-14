@@ -15,7 +15,7 @@
 <section class="content">
   <div class="row" id="app-content">
     <div class="col-md-3">
-      <a href="/admin/letter" class="btn btn-primary btn-block margin-bottom">{{trans('admin.website_action_goback')}} {{trans('admin.website_navigation_ten')}}</a>
+      <a href="/admin/letter" class="btn btn-primary btn-block margin-bottom">{{trans('admin.website_action_goback')}} {{trans('admin.website_navigation_letter')}}</a>
       @include('admin.letter.nav')
       <!-- /.box -->
     </div>
@@ -23,7 +23,7 @@
     <div class="col-md-9">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">{{trans('admin.website_letter_add_tip')}}</h3>
+          <h3 class="box-title">{{trans('admin.website_action_add_letter')}}</h3>
         </div>
         <!-- /.box-header -->
         <form>

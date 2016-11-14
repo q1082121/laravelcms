@@ -112,7 +112,7 @@ class LetterController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_ten');
+		$website['cursitename']=trans('admin.website_navigation_letter');
 		$website['apiurl_add']=URL::action('Admin\LetterController@api_add');
 		$website['id']=0;
 

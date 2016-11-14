@@ -20,23 +20,24 @@ return [
     'website_rightinfo'                            =>   '版权所有',
     'website_Toggle_navigation'                    =>   '切换导航', 
     'website_menu_main'                            =>   '后台首页',
-    'website_letter_newtip'                        =>   '你有新的信件',
-    'website_allletter_tip'                        =>   '查看全部信件',
-    'website_msg_tip'                              =>   '您有新的消息',
-    'website_task_tip'                             =>   '您有新的任务',
-    'website_user_regdate'                         =>   '用户注册日期',
-    'website_user_followers'                       =>   '关注',
-    'website_user_fans'                            =>   '粉丝',
-    'website_user_friends'                         =>   '好友',
-	'website_user_profile'                         =>   '用户档案',
-    'website_user_signout'                         =>   '退出登录',
-    'website_user_editpwd'                         =>   '修改密码',
-    'website_user_online'                          =>   '在线',
-    'website_search_tip'                           =>   '搜索...',
     'website_site'                                 =>   '当前路径',
+    'website_page_total'                           =>   '总记录数 0 条',
+    'website_page_total_tip'                       =>   ' 条数据',
+    'website_first_page_title'                     =>   '首页',
+    'website_last_page_title'                      =>   '尾页',
+    'website_prev_page_title'                      =>   '上一页',
+    'website_next_page_title'                      =>   '下一页',
+    'website_demo_tip'                             =>   '示例',
+    'website_yes'                                  =>   '是',
+    'website_no'                                   =>   '否',
+    'website_status_on'                            =>   '启用',
+    'website_status_off'                           =>   '禁用',
+    'website_status_subscribe'                     =>   '已关注',
+    'website_status_no_subscribe'                  =>   '未关注',
+    'website_select_default'                       =>   '请选择',
     /*
     |--------------------------------------------------------------------------
-    | 默认消息 - 导航归类
+    | 默认消息 - 导航名称
     |--------------------------------------------------------------------------
     |
     |
@@ -47,36 +48,29 @@ return [
     'website_main_navigation_three'                =>   '内容相关',
     'website_main_navigation_four'                 =>   '微信相关',
     'website_main_navigation_fiver'                =>   '消息相关',
-     /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 导航名称
-    |--------------------------------------------------------------------------
-    |
-    |
-    */
     'website_navigation_homenav'                   =>   '导航指南',
     'website_navigation_one'                       =>   '后台首页',
     'website_navigation_one_home'                  =>   '网站首页',
     'website_navigation_one_wechat'                =>   '微站首页',
     'website_navigation_navigation'                =>   '主导航栏',
-    'website_navigation_two'                       =>   '系统设置',
-    'website_navigation_three'                     =>   '日志管理',
-    'website_navigation_four'                      =>   '消息管理',
+    'website_navigation_setting'                   =>   '系统设置',
+    'website_navigation_log'                       =>   '日志管理',
+    'website_navigation_message'                   =>   '消息管理',
     'website_navigation_role'                      =>   '用户角色',
     'website_navigation_permission'                =>   '角色权限',
-    'website_navigation_five'                      =>   '用户列表',
+    'website_navigation_user'                      =>   '用户列表',
     'website_navigation_usergroup'                 =>   '用户管理',
     'website_navigation_userinfo'                  =>   '用户资料',
-    'website_navigation_article'                   =>   '文章管理',
-    'website_navigation_six'                       =>   '文章资讯',
+    'website_navigation_article_management'        =>   '文章管理',
+    'website_navigation_article'                   =>   '文章资讯',
     'website_navigation_product_management'        =>   '产品管理',
     'website_navigation_classifyproduct'           =>   '产品分类',
     'website_navigation_product'                   =>   '产品内容',
-    'website_navigation_seven'                     =>   '广告图片',
-    'website_navigation_link'                      =>   '链接管理',
-    'website_navigation_eight'                     =>   '友情链接',
-    'website_navigation_nine'                      =>   '微信管理',
-    'website_navigation_ten'                       =>   '信件管理',
+    'website_navigation_advertising'               =>   '广告图片',
+    'website_navigation_link_management'           =>   '链接管理',
+    'website_navigation_link'                      =>   '友情链接',
+    'website_navigation_wechat'                    =>   '微信管理',
+    'website_navigation_letter'                    =>   '信件管理',
     'website_navigation_question_management'       =>   '题目管理',
     'website_navigation_question_type'             =>   '题目类型',
     'website_navigation_question_radio'            =>   '单选题目',
@@ -87,30 +81,14 @@ return [
     'website_navigation_classifylink'              =>   '链接分类',
     'website_navigation_classifyquestion'          =>   '题目分类',
     'website_navigation_serverinfo'                =>   '服务器信息',
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 常用项名称 
-    |--------------------------------------------------------------------------
-    |
-    |
-    */
-    'website_page_total'                           =>   '总记录数 0 条',
-    'website_page_total_tip'                       =>   ' 条数据',
-    'website_first_page_title'                     =>   '首页',
-    'website_last_page_title'                      =>   '尾页',
-    'website_prev_page_title'                      =>   '上一页',
-    'website_next_page_title'                      =>   '下一页',
-    'website_demo_tip'                             =>   '示例',
-    'website_yes'                                  =>   '是',
-    'website_no'                                   =>   '否',
-    'website_perpage'                              =>   '单页',
-    'website_list'                                 =>   '列表',
-    'website_status_on'                            =>   '启用',
-    'website_status_off'                           =>   '禁用',
-    'website_status_subscribe'                     =>   '已关注',
-    'website_status_no_subscribe'                  =>   '未关注',
-    'website_select_default'                       =>   '请选择',
-
+    'website_navigation_management_center'         =>   '管理中心',
+    'website_navigation_subscribe_reply'           =>   '关注回复',
+    'website_navigation_default_reply'             =>   '默认回复',
+    'website_navigation_text_reply'                =>   '文本回复',
+    'website_navigation_imagetext_reply'           =>   '图文回复',
+    'website_navigation_messagetpl_reply'          =>   '模版消息',
+    'website_navigation_wechat_menu'               =>   '微信自定义菜单',
+    'website_navigation_wechat_user'               =>   '微信会员',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称 动作
@@ -143,6 +121,7 @@ return [
     'website_action_back'                          =>   '捡回',
     'website_action_create_cache'                  =>   '生成缓存数据',
     'website_action_create_menu'                   =>   '生成菜单数据',
+    'website_action_add_letter'                    =>   '撰写新信件',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称 消息提示
@@ -192,7 +171,35 @@ return [
     |
     |
     */
-    
+    'define_model_serverinfo_phpver'              =>   'PHP版本号',
+    'define_model_serverinfo_phpos'               =>   'PHP操作系统',
+    'define_model_serverinfo_phpsafe'             =>   'PHP安全模式',
+    'define_model_serverinfo_client_ip'           =>   '客户端IP',
+    'define_model_serverinfo_server_host'         =>   '主机地址',
+    'define_model_serverinfo_server_port'         =>   '主机端口',
+    'define_model_serverinfo_server_serverip'     =>   '服务器Ip',
+    'define_model_serverinfo_xcachesp'            =>   'xcache支持',
+    'define_model_serverinfo_cookiesp'            =>   'cookie支持',
+    'define_model_serverinfo_sessionsp'           =>   'session支持',
+    'define_model_serverinfo_maxpostsize'         =>   'POST数据限制',
+    'define_model_serverinfo_maxupsize'           =>   '上传文件限制',
+    'define_model_serverinfo_maxexectime'         =>   '超时限制',
+    'define_model_serverinfo_curlsp'              =>   'CURL支持',
+    'define_model_serverinfo_gdsp'                =>   'GD支持',
+    'define_model_serverinfo_systime'             =>   '系统时间',
+    'define_model_letter_newtip'                  =>   '你有新的信件',
+    'define_model_allletter_tip'                  =>   '查看全部信件',
+    'define_model_msg_tip'                        =>   '您有新的消息',
+    'define_model_task_tip'                       =>   '您有新的任务',
+    'define_model_user_regdate'                   =>   '用户注册日期',
+    'define_model_user_followers'                 =>   '关注',
+    'define_model_user_fans'                      =>   '粉丝',
+    'define_model_user_friends'                   =>   '好友',
+	'define_model_user_profile'                   =>   '用户档案',
+    'define_model_user_signout'                   =>   '退出登录',
+    'define_model_user_editpwd'                   =>   '修改密码',
+    'define_model_user_online'                    =>   '在线',
+    'define_model_search_tip'                     =>   '搜索...',
     'define_model_log1'                           =>   '登录操作',
     'define_model_picture1'                       =>   '首页展示图',
     'define_model_picture2'                       =>   '公共展示图',
@@ -212,7 +219,34 @@ return [
     'define_model_letter_send'                    =>   '已发送',
     'define_model_letter_star'                    =>   '星标记',
     'define_model_letter_trash'                   =>   '垃圾箱',
-
+    'define_model_wechat1'                        =>   '订阅号',
+    'define_model_wechat2'                        =>   '认证订阅号',
+    'define_model_wechat3'                        =>   '服务号',
+    'define_model_wechat4'                        =>   '认证服务号',
+    'define_model_wechat5'                        =>   '企业号',
+    'define_model_menu_type1'                     =>   '关键词按钮',
+    'define_model_menu_type2'                     =>   '外链接按钮',
+    'define_model_menu_type3'                     =>   '扫描推事件【跳URL】',
+    'define_model_menu_type4'                     =>   '扫描推事件【不跳URL】',
+    'define_model_menu_type5'                     =>   '系统拍照发图',
+    'define_model_menu_type6'                     =>   '弹出拍照或者相册发图',
+    'define_model_menu_type7'                     =>   '弹出微信相册发图器',
+    'define_model_menu_type8'                     =>   '弹出地理位置选择器',
+    'define_model_wechat_tip_pay'                 =>   '【微信支付配置】',
+    'define_model_wechat_tip_msg'                 =>   '【微信消息模版配置】',
+    'define_model_wechat_setting_api'             =>   '微信配置接参数',
+    'define_model_wechat_mp'                      =>   '公众号名称',
+    'define_model_wechat_base'                    =>   '微信基本功能模块',
+    'define_model_wechat_subscribe_reply_text'    =>   '关注回复文本',
+    'define_model_wechat_subscribe_reply_keyword' =>   '关注回复关键词',
+    'define_model_wechat_subscribe_tip'           =>   '文本 关键词',
+    'define_model_wechat_default_tip'             =>   '文本 关键词 图片 音频 视频',
+    'define_model_wechat_text_tip'                =>   '关键词触发回复文本信息',
+    'define_model_wechat_imagetext_tip'           =>   '关键词触发回复图文信息',
+    'define_model_wechat_messagetpl_tip'          =>   '微信模版消息 消息接收主体',
+    'define_model_wechat_menu_tip'                =>   '微信底部导航栏',
+    'define_model_wechat_user_tip'                =>   '微信获取粉丝信息数据',
+    'define_model_wechat_active'                  =>   '微信活动功能模块',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称-字段
@@ -261,7 +295,9 @@ return [
     'fieldname_item_navflag'                        =>   '主导航',
     'fieldname_item_orderid'                        =>   '排序',
     'fieldname_item_linkurl'                        =>   '链接',
-    'fieldname_item_perpage'                        =>   '单页/列表',
+    'fieldname_item_perpageorlist'                  =>   '单页/列表',
+    'fieldname_item_perpage'                        =>   '单页',
+    'fieldname_item_list'                           =>   '列表',
     'fieldname_item_classid'                        =>   '分类',
     'fieldname_item_title'                          =>   '标题',
     'fieldname_item_introduction'                   =>   '导读',
@@ -283,6 +319,34 @@ return [
     'fieldname_item_city'                           =>   '城市',
     'fieldname_item_country'                        =>   '国籍',
     'fieldname_item_subscribe'                      =>   '关注',
+    'fieldname_item_token'                          =>   'Token',
+    'fieldname_item_wechataccount'                  =>   '微信号',
+    'fieldname_item_gid'                            =>   '原始ID',
+    'fieldname_item_type'                           =>   '公众号类型',
+    'fieldname_item_appid'                          =>   '应用ID',
+    'fieldname_item_appsecret'                      =>   '应用密钥',
+    'fieldname_item_encodingaeskey'                 =>   '消息加解密密钥',
+    'fieldname_item_logo'                           =>   'LOGO',
+    'fieldname_item_mchid'                          =>   '商户ID',
+    'fieldname_item_paykey'                         =>   '支付密钥',
+    'fieldname_item_openid_items'                   =>   '消息接受主体',
+    'fieldname_item_temp_name1'                     =>   '消息模版名称一',
+    'fieldname_item_temp_id1'                       =>   '消息模版编号一',
+    'fieldname_item_temp_name2'                     =>   '消息模版名称二',
+    'fieldname_item_temp_id2'                       =>   '消息模版编号二',
+    'fieldname_item_temp_name3'                     =>   '消息模版名称三',
+    'fieldname_item_temp_id3'                       =>   '消息模版编号三',
+    'fieldname_item_temp_name4'                     =>   '消息模版名称四',
+    'fieldname_item_temp_id4'                       =>   '消息模版编号四',
+    'fieldname_item_default_reply_text'             =>   '默认回复文本',
+    'fieldname_item_default_reply_keyword'          =>   '默认回复关键词',
+    'fieldname_item_default_reply_image_text'       =>   '图片触发默认回复信息',
+    'fieldname_item_default_reply_image_keyword'    =>   '图片触发默认回复关键词',
+    'fieldname_item_default_reply_voice_text'       =>   '音频触发默认回复信息',
+    'fieldname_item_default_reply_voice_keyword'    =>   '音频触发默认回复关键词',
+    'fieldname_item_default_reply_video_text'       =>   '视频触发默认回复信息',
+    'fieldname_item_default_reply_video_keyword'    =>   '视频触发默认回复关键词',
+
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称-操作提示
@@ -291,6 +355,7 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
+
     'option_select_p'                              =>   '请选择省份',
     'option_select_c'                              =>   '请选择城市',
     'option_select_x'                              =>   '请选择乡县',
@@ -309,32 +374,11 @@ return [
     'option_failure_istitle'                       =>   '请填写标题',
     'option_failure_iskeyword'                     =>   '请输入关键词',
     'option_letter_failure_tip1'                   =>   '收信人不能为自己',
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 服务器信息
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    
-    'website_serverinfo_phpver'                   =>   'PHP版本号',
-    'website_serverinfo_phpos'                    =>   'PHP操作系统',
-    'website_serverinfo_phpsafe'                  =>   'PHP安全模式',
-    'website_serverinfo_client_ip'                =>   '客户端IP',
-    'website_serverinfo_server_host'              =>   '主机地址',
-    'website_serverinfo_server_port'              =>   '主机端口',
-    'website_serverinfo_server_serverip'          =>   '服务器Ip',
-    'website_serverinfo_xcachesp'                 =>   'xcache支持',
-    'website_serverinfo_cookiesp'                 =>   'cookie支持',
-    'website_serverinfo_sessionsp'                =>   'session支持',
-    'website_serverinfo_maxpostsize'              =>   'POST数据限制',
-    'website_serverinfo_maxupsize'                =>   '上传文件限制',
-    'website_serverinfo_maxexectime'              =>   '超时限制',
-    'website_serverinfo_curlsp'                   =>   'CURL支持',
-    'website_serverinfo_gdsp'                     =>   'GD支持',
-    'website_serverinfo_systime'                  =>   '系统时间',
-    
+    'option_wechat_failure_token'                  =>   '请填写Token',
+    'option_wechat_failure_name'                   =>   '请填写公众号名称',
+    'option_wechat_failure_gid'                    =>   '请填写原始ID',
+    'option_failure_iscontent'                     =>   '请填写文本内容',
+
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置
@@ -386,93 +430,6 @@ return [
     'website_setting_wechat_thumb_height'          =>   '微信缩略图高度' ,
     'website_setting_wechatreplyimagetext_thumb_width'  =>'微信图文缩略图宽度' ,
     'website_setting_wechatreplyimagetext_thumb_height' =>'微信图文缩略图高度' ,
-
-
-
-    'website_letter_add_tip'                            =>   '撰写新信件',
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | 默认消息 - 微信管理
-    |--------------------------------------------------------------------------
-    |
-    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
-    |
-    */
-    'website_wechat_action_manage'                      =>   '管理中心',
-    'website_model_wechat1'                             =>   '订阅号',
-    'website_model_wechat2'                             =>   '认证订阅号',
-    'website_model_wechat3'                             =>   '服务号',
-    'website_model_wechat4'                             =>   '认证服务号',
-    'website_model_wechat5'                             =>   '企业号',
-    'website_wechat_item_token'                         =>   'Token',
-    'website_wechat_item_name'                          =>   '公众号名称',
-    'website_wechat_item_wechataccount'                 =>   '微信号',
-    'website_wechat_item_gid'                           =>   '原始ID',
-    'website_wechat_item_type'                          =>   '公众号类型',
-    'website_wechat_item_appid'                         =>   '应用ID',
-    'website_wechat_item_appsecret'                     =>   '应用密钥',
-    'website_wechat_item_encodingaeskey'                =>   '消息加解密密钥',
-    'website_wechat_item_attachment'                    =>   'LOGO',
-    'website_wechat_item_mchid'                         =>   '商户ID',
-    'website_wechat_item_paykey'                        =>   '支付密钥',
-    'website_wechat_item_openid_items'                  =>   '消息接受主体',
-    'website_wechat_item_temp_name1'                    =>   '消息模版名称一',
-    'website_wechat_item_temp_id1'                      =>   '消息模版编号一',
-    'website_wechat_item_temp_name2'                    =>   '消息模版名称二',
-    'website_wechat_item_temp_id2'                      =>   '消息模版编号二',
-    'website_wechat_item_temp_name3'                    =>   '消息模版名称三',
-    'website_wechat_item_temp_id3'                      =>   '消息模版编号三',
-    'website_wechat_item_temp_name4'                    =>   '消息模版名称四',
-    'website_wechat_item_temp_id4'                      =>   '消息模版编号四',
-    'website_wechat_item_status'                        =>   '状态',
-    'wechat_failure_tip1'                               =>   '请填写Token',
-    'wechat_failure_tip2'                               =>   '请填写公众号名称',
-    'wechat_failure_tip3'                               =>   '请填写原始ID',
-    'website_wechat_tip_pay'                            =>   '【微信支付配置】',
-    'website_wechat_tip_msg'                            =>   '【微信消息模版配置】',
-    'website_wechat_setting_api'                        =>   '微信配置接参数',
-    'website_wechat_name'                               =>   '公众号名称',
-    'website_wechat_model_base'                         =>   '微信基本功能模块',
-    'website_wechat_model_base_subscribe_reply'         =>   '关注回复信息',
-    'website_wechat_model_base_subscribe_reply_text'    =>   '关注回复文本',
-    'website_wechat_model_base_subscribe_reply_keyword' =>   '关注回复关键词',
-    'website_wechat_model_base_subscribe_tip'           =>   '文本 关键词',
-    'website_wechat_model_base_default_reply'           =>   '默认回复信息',
-    'website_wechat_model_base_default_reply_text'      =>   '默认回复文本',
-    'website_wechat_model_base_default_reply_keyword'   =>   '默认回复关键词',
-    'website_wechat_model_base_default_reply_image_text'      =>   '图片触发默认回复信息',
-    'website_wechat_model_base_default_reply_image_keyword'   =>   '图片触发默认回复关键词',
-    'website_wechat_model_base_default_reply_voice_text'      =>   '音频触发默认回复信息',
-    'website_wechat_model_base_default_reply_voice_keyword'   =>   '音频触发默认回复关键词',
-    'website_wechat_model_base_default_reply_video_text'      =>   '视频触发默认回复信息',
-    'website_wechat_model_base_default_reply_video_keyword'   =>   '视频触发默认回复关键词',
-    'website_wechat_model_base_default_tip'             =>   '文本 关键词 图片 音频 视频',
-    'website_wechat_model_base_text'                    =>   '文本回复',
-    'website_wechat_model_base_text_keyword'            =>   '文本关键词',
-    'website_wechat_model_base_text_content'            =>   '文本内容',
-    'website_wechat_model_base_text_tip'                =>   '关键词触发回复文本信息',
-    'wechat_text_failure_tip1'                          =>   '请填写关键词',
-    'wechat_text_failure_tip2'                          =>   '请填写文本内容',
-    'website_wechat_model_base_imagetext'               =>   '图文回复',
-    'website_wechat_model_base_imagetext_tip'           =>   '关键词触发回复图文信息',
-    'website_wechat_model_base_messagetpl'              =>   '模版消息',
-    'website_wechat_model_base_messagetpl_tip'          =>   '微信模版消息 消息接收主体',
-    'website_wechat_model_base_menu'                    =>   '微信自定义菜单',
-    'website_menu_type1'                                =>   '关键词按钮',
-    'website_menu_type2'                                =>   '外链接按钮',
-    'website_menu_type3'                                =>   '扫描推事件【跳URL】',
-    'website_menu_type4'                                =>   '扫描推事件【不跳URL】',
-    'website_menu_type5'                                =>   '系统拍照发图',
-    'website_menu_type6'                                =>   '弹出拍照或者相册发图',
-    'website_menu_type7'                                =>   '弹出微信相册发图器',
-    'website_menu_type8'                                =>   '弹出地理位置选择器',
-    'website_wechat_model_base_menu_tip'                =>   '微信底部导航栏',
-    'website_wechat_model_base_user'                    =>   '微信会员',
-    'website_wechat_model_base_user_tip'                =>   '微信获取粉丝信息数据',
-    'website_wechat_model_active'                       =>   '微信活动功能模块',
-
 
 
 ];

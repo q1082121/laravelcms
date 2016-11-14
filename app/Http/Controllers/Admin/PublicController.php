@@ -109,20 +109,20 @@ class PublicController extends Controller
 		//默认日志管理模块
 		$this->log_modellist[]=array('text'=>trans('admin.define_model_log1'),'value'=>1);
 		//默认微信公众号类型
-		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat1'),'value'=>1);
-		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat2'),'value'=>2);
-		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat3'),'value'=>3);
-		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat4'),'value'=>4);
-		$this->wechat_modellist[]=array('text'=>trans('admin.website_model_wechat5'),'value'=>5);
+		$this->wechat_modellist[]=array('text'=>trans('admin.define_model_wechat1'),'value'=>1);
+		$this->wechat_modellist[]=array('text'=>trans('admin.define_model_wechat2'),'value'=>2);
+		$this->wechat_modellist[]=array('text'=>trans('admin.define_model_wechat3'),'value'=>3);
+		$this->wechat_modellist[]=array('text'=>trans('admin.define_model_wechat4'),'value'=>4);
+		$this->wechat_modellist[]=array('text'=>trans('admin.define_model_wechat5'),'value'=>5);
 		//默认微信菜单栏目类型
-		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type1'),'value'=>'click');
-		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type2'),'value'=>'view');
-		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type3'),'value'=>'scancode_push');
-		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type4'),'value'=>'scancode_waitmsg');
-		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type5'),'value'=>'pic_sysphoto');
-		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type6'),'value'=>'pic_photo_or_album');
-		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type7'),'value'=>'pic_weixin');
-		$this->wechat_menutype[]=array('text'=>trans('admin.website_menu_type8'),'value'=>'location_select');
+		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type1'),'value'=>'click');
+		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type2'),'value'=>'view');
+		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type3'),'value'=>'scancode_push');
+		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type4'),'value'=>'scancode_waitmsg');
+		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type5'),'value'=>'pic_sysphoto');
+		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type6'),'value'=>'pic_photo_or_album');
+		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type7'),'value'=>'pic_weixin');
+		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type8'),'value'=>'location_select');
 
 		/*
 	    |--------------------------------------------------------------------------

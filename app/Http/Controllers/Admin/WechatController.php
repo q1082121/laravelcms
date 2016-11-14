@@ -22,14 +22,14 @@ class WechatController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_nine');
+		$website['cursitename']=trans('admin.website_navigation_wechat');
 		$website['apiurl_list']=URL::action('Admin\WechatController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['link_add']=URL::action('Admin\WechatController@add');
 		$website['link_edit']=route('get.admin.wechat.edit').'/';
 		$website['link_manage']=route('get.admin.wechat.manage').'/';
 		$website['way']='name';
-		$wayoption[]=array('text'=>trans('admin.website_wechat_item_name'),'value'=>'name');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
 		
 		return view('admin/wechat/index')->with('website',$website);
@@ -42,7 +42,7 @@ class WechatController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_nine');
+		$website['cursitename']=trans('admin.website_navigation_wechat');
 		$website['apiurl_add']=URL::action('Admin\WechatController@api_add');
 		$website['apiurl_info']=URL::action('Admin\WechatController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\WechatController@api_edit');
@@ -61,7 +61,7 @@ class WechatController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_nine');
+		$website['cursitename']=trans('admin.website_navigation_wechat');
 		$website['apiurl_add']=URL::action('Admin\WechatController@api_add');
 		$website['apiurl_info']=URL::action('Admin\WechatController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\WechatController@api_edit');
@@ -80,7 +80,7 @@ class WechatController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_nine');
+		$website['cursitename']=trans('admin.website_navigation_wechat');
 		$website['link_subscribe']=route('get.admin.wechat.subscribe').'/'.$id;
 		$website['link_defaultreply']=route('get.admin.wechat.defaultreply').'/'.$id;
 		$website['link_messagetpl']=route('get.admin.wechat.messagetpl').'/'.$id;
@@ -331,7 +331,7 @@ class WechatController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_subscribe_reply');
+		$website['cursitename']=trans('admin.website_navigation_subscribe_reply');
 		$website['apiurl_info']=URL::action('Admin\WechatController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\WechatController@api_edit');
 		$website['waytype']=2;
@@ -347,7 +347,7 @@ class WechatController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_default_reply');
+		$website['cursitename']=trans('admin.website_navigation_default_reply');
 		$website['apiurl_info']=URL::action('Admin\WechatController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\WechatController@api_edit');
 		$website['waytype']=3;
@@ -363,7 +363,7 @@ class WechatController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_wechat_model_base_messagetpl');
+		$website['cursitename']=trans('admin.website_navigation_messagetpl_reply');
 		$website['apiurl_info']=URL::action('Admin\WechatController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\WechatController@api_edit');
 		$website['waytype']=4;

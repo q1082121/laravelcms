@@ -9,7 +9,7 @@
         <div class="box-header">
           <h3 class="box-title">
             <button @click="back_action()" type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
-            <i class="fa fa-add"></i> {{trans('admin.website_action_goback')}} 【{{trans('admin.website_wechat_name')}}： {{$website['info']['name']}}】
+            <i class="fa fa-add"></i> {{trans('admin.website_action_goback')}} 【{{trans('admin.define_model_wechat_mp')}}： {{$website['info']['name']}}】
             </button>
           </h3>
 

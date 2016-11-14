@@ -89,7 +89,7 @@
               <span class="label label-success">{{$website['letters_count']}}</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">{{trans('admin.website_letter_newtip')}}</li>
+              <li class="header">{{trans('admin.define_model_letter_newtip')}}</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -109,7 +109,7 @@
                   <!-- end message -->
                 </ul>
               </li>
-              <li class="footer"><a href="{{ route('get.admin.letter') }}">{{trans('admin.website_allletter_tip')}}</a></li>
+              <li class="footer"><a href="{{ route('get.admin.letter') }}">{{trans('admin.define_model_allletter_tip')}}</a></li>
             </ul>
           </li>
           <!-- Notifications: style can be found in dropdown.less-->
@@ -119,7 +119,7 @@
               <span class="label label-warning">10</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">{{trans('admin.website_msg_tip')}}</li>
+              <li class="header">{{trans('admin.define_model_msg_tip')}}</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -167,20 +167,20 @@
 
                 <p>
                   {{$website['website_user']['username']}} - {{$website['website_userinfo']['nick']}}
-                  <small>{{trans('admin.website_user_regdate')}} : {{$website['website_user']['created_at']->format('Y-m-d')}}</small>
+                  <small>{{trans('admin.define_model_user_regdate')}} : {{$website['website_user']['created_at']->format('Y-m-d')}}</small>
                 </p>
               </li>
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">{{trans('admin.website_user_followers')}}</a>
+                    <a href="#">{{trans('admin.define_model_user_followers')}}</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">{{trans('admin.website_user_fans')}}</a>
+                    <a href="#">{{trans('admin.define_model_user_fans')}}</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">{{trans('admin.website_user_friends')}}</a>
+                    <a href="#">{{trans('admin.define_model_user_friends')}}</a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -188,13 +188,13 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{ route('get.admin.userinfo') }}" class="btn btn-default btn-flat">{{trans('admin.website_user_profile')}}</a>
+                  <a href="{{ route('get.admin.userinfo') }}" class="btn btn-default btn-flat">{{trans('admin.define_model_user_profile')}}</a>
                 </div>
                 <div class="pull-right" >
-                  <a href="{{ route('get.user.logout') }}" class="btn btn-default btn-flat">{{trans('admin.website_user_signout')}}</a>
+                  <a href="{{ route('get.user.logout') }}" class="btn btn-default btn-flat">{{trans('admin.define_model_user_signout')}}</a>
                 </div>
                 <div class="pull-right" style="margin-right:6px">
-                  <a href="{{ route('get.admin.edit_pwd') }}" class="btn btn-default btn-flat">{{trans('admin.website_user_editpwd')}}</a>
+                  <a href="{{ route('get.admin.edit_pwd') }}" class="btn btn-default btn-flat">{{trans('admin.define_model_user_editpwd')}}</a>
                 </div>
               </li>
             </ul>
@@ -218,7 +218,7 @@
         </div>
         <div class="pull-left info">
           <p>{{$website['website_user']['username']}}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i>{{trans('admin.website_user_online')}}</a>
+          <a href="#"><i class="fa fa-circle text-success"></i>{{trans('admin.define_model_user_online')}}</a>
         </div>
       </div>
       <!-- search form 左侧搜索框-->
@@ -226,7 +226,7 @@
         <!--
         <div class="input-group" >
           
-          <input type="text" name="q" class="form-control" placeholder="{{trans('admin.website_search_tip')}}">
+          <input type="text" name="q" class="form-control" placeholder="{{trans('admin.define_model_search_tip')}}">
           <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>

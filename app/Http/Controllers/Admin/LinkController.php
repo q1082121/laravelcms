@@ -24,7 +24,7 @@ class LinkController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_eight');
+		$website['cursitename']=trans('admin.website_navigation_link');
 		$website['apiurl_list']=URL::action('Admin\LinkController@api_list');
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
@@ -47,7 +47,7 @@ class LinkController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_eight');
+		$website['cursitename']=trans('admin.website_navigation_link');
 		$website['apiurl_add']=URL::action('Admin\LinkController@api_add');
 		$website['apiurl_info']=URL::action('Admin\LinkController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\LinkController@api_edit');
@@ -82,7 +82,7 @@ class LinkController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_eight');
+		$website['cursitename']=trans('admin.website_navigation_link');
 		$website['apiurl_add']=URL::action('Admin\LinkController@api_add');
 		$website['apiurl_info']=URL::action('Admin\LinkController@api_info');
 		$website['apiurl_edit']=URL::action('Admin\LinkController@api_edit');

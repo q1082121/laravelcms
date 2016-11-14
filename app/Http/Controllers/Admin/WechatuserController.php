@@ -30,7 +30,7 @@ class WechatuserController extends PublicController
 		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
 		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;
 		$website['way']='nickname';
-		$wayoption[]=array('text'=>trans('admin.fieldname_item_nickname'),'value'=>'nickname');
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_nick'),'value'=>'nickname');
 		$website['wayoption']=json_encode($wayoption);
 		$info = object_array(DB::table('wechats')->whereId($id)->first());
 		$website['info']=$info;

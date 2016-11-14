@@ -39,7 +39,7 @@
             <tr>
               <th>{{trans('admin.fieldname_item_id')}}</th>
               <th>{{trans('admin.fieldname_item_headimage')}}</th>
-              <th>{{trans('admin.fieldname_item_nickname')}}</th>
+              <th>{{trans('admin.fieldname_item_nick')}}</th>
               <th>{{trans('admin.fieldname_item_sex')}}</th>
               <th>{{trans('admin.fieldname_item_province')}}</th>
               <th>{{trans('admin.fieldname_item_city')}}</th>

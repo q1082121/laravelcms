@@ -65,7 +65,7 @@ class LoginController extends Controller
                     if(empty($user))
                     {
                         $rule=11;
-                        $errory_msg=trans('login.failure_11');
+                        $errory_msg=trans('login.failure_existed_email');
                     }
                     break;
                 case 2:
@@ -73,7 +73,7 @@ class LoginController extends Controller
                     if(empty($user))
                     {
                         $rule=12;
-                        $errory_msg=trans('login.failure_12');
+                        $errory_msg=trans('login.failure_existed_username');
                     }
                     break;
                 case 3:
@@ -81,7 +81,7 @@ class LoginController extends Controller
                     if(empty($user))
                     {
                         $rule=13;
-                        $errory_msg=trans('login.failure_13');
+                        $errory_msg=trans('login.failure_existed_mobile');
                     }
                     break; 
                 case 4:

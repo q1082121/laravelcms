@@ -31,6 +31,43 @@ function isfun($funName)
 	return (false !== function_exists($funName))?'YES':'NO';
 }
 /***********************************
+ * 方法名：查找字符串中是否存在某字符
+ * 作者： Tommy（rubbish.boy@163.com）
+ * 时间：2015年6月11日
+ ***********************************/
+function check_string_sub($string,$sub,$type=1)
+{
+	$rule=0;
+	$returntext="";
+	if(!empty($sub))
+	{
+		$strarray=explode(',',$string);
+		if(is_array($strarray))
+		{
+			foreach($strarray as $key=>$val)
+			{
+				if($val==$sub)
+				{
+					$rule=1;
+				}
+			}
+		} 
+		if($rule==1)
+		{
+			switch($type)
+			{
+				case 1:
+						$returntext="checked";
+						break;	
+				case 2:
+						$returntext=true;
+						break;			
+			}
+		}
+	}	
+	return $returntext;
+}
+/***********************************
  * 方法名：layer 封装提示跳转
  * 作者： Tommy（rubbish.boy@163.com）
  ***********************************/

@@ -23,19 +23,17 @@ return [
     |
     |
     */
-
-    'failure' 		=> 	'注册失败',
-    'failure_11' 	=> 	'注册邮箱已存在',
-    'failure_12' 	=> 	'注册用户名已存在',
-    'failure_13' 	=> 	'注册手机号码已存在',
-	'failure_code'	=>	'您输入验证码错误',
-    'failure_username' 	=> 	'该用户名已被注册屏蔽！',
-    'failure_email' 	=> 	'该注册邮箱已被注册屏蔽！',
-    'failure_mobile' 	=> 	'该手机号码已被注册屏蔽！',
-
-    'failure_username_2' => 	'收信人用户名不存在',
-    'failure_email_2' 	 => 	'收信人邮箱不存在',
-    'failure_mobile_2' 	 => 	'收信人手机号码不存在',
+    'failure' 		                        => 	'注册失败',
+    'failure_existed_email' 	            => 	'注册邮箱已存在',
+    'failure_existed_username' 	            => 	'注册用户名已存在',
+    'failure_existed_mobile' 	            => 	'注册手机号码已存在',
+	'failure_code'	                        =>	'您输入验证码错误',
+    'failure_username' 	                    => 	'该用户名已被注册屏蔽！',
+    'failure_email' 	                    => 	'该注册邮箱已被注册屏蔽！',
+    'failure_mobile' 	                    => 	'该手机号码已被注册屏蔽！',
+    'failure_notexisted_username'           => 	'收信人用户名不存在',
+    'failure_notexisted_email' 	            => 	'收信人邮箱不存在',
+    'failure_notexisted_mobile' 	        => 	'收信人手机号码不存在',
     
     /*
     |--------------------------------------------------------------------------
@@ -44,17 +42,17 @@ return [
     |
     |
     */
-    'failure_tip1'      =>  '请输入有效的注册邮箱',
-    'failure_tip2'      =>  '请输入用户名',
-    'failure_tip3'      =>  '用户名需4位长度以上',
-    'failure_tip4'      =>  '请输入有效的手机号码',
-    'failure_tip5'      =>  '请输入用户昵称',
-    'failure_tip6'      =>  '用户昵称超出限制长度',
-    'failure_tip7'      =>  '请您填写注册密码',
-    'failure_tip8'      =>  '密码长度需6位以上',
-    'failure_tip9'      =>  '请您填写确认密码',
-    'failure_tip10'     =>  '您填写注册密码与确认密码不一致',
-    'failure_tip11'     =>  '请您填写验证码',
+    'failure_tip1'                          =>  '请输入有效的注册邮箱',
+    'failure_tip2'                          =>  '请输入用户名',
+    'failure_tip3'                          =>  '用户名需4位长度以上',
+    'failure_tip4'                          =>  '请输入有效的手机号码',
+    'failure_tip5'                          =>  '请输入用户昵称',
+    'failure_tip6'                          =>  '用户昵称超出限制长度',
+    'failure_tip7'                          =>  '请您填写注册密码',
+    'failure_tip8'                          =>  '密码长度需6位以上',
+    'failure_tip9'                          =>  '请您填写确认密码',
+    'failure_tip10'                         =>  '您填写注册密码与确认密码不一致',
+    'failure_tip11'                         =>  '请您填写验证码',
 
 
 

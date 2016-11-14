@@ -24,9 +24,9 @@ return [
     */
 
     'failure' 		=> 	'登录失败',
-    'failure_11' 	=> 	'登录邮箱不存在',
-    'failure_12' 	=> 	'登录用户名不存在',
-    'failure_13' 	=> 	'登录手机号码不存在',
+    'failure_existed_email' 	=> 	'登录邮箱不存在',
+    'failure_existed_username' 	=> 	'登录用户名不存在',
+    'failure_existed_mobile' 	=> 	'登录手机号码不存在',
 	'failure_code'	=>	'您输入验证码错误',
 	
 	/*

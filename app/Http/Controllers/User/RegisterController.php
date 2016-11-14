@@ -119,6 +119,9 @@ class RegisterController extends Controller
                         if($userinfo->save())
                         {
                             $rule=1;
+                            //分配普通用户角色
+                            $user->attachRole(4);
+
                             DB::commit();
                         }
                         else
@@ -176,8 +179,8 @@ class RegisterController extends Controller
         $type=$request->get('type');
         /*******************************************/
         //屏蔽数据
-        $clear_username="admin,superadmin,demo,111111";
-        $clear_email="admin@163.com,rubbish.boy@163.com";
+        $clear_username="admin,superadmin";
+        $clear_email="admin@163.com";
         $clear_mobile="15067636212";
 		switch($fieldname)
 		{
@@ -194,12 +197,12 @@ class RegisterController extends Controller
                                     if($username)
                                     {
                                         $msg_array['data']=1;
-                                        $msg_array['message']=trans('register.failure12');
+                                        $msg_array['message']=trans('register.failure_existed_username');
                                     }
                                     else
                                     {
                                         $msg_array['data']=0;
-                                        $msg_array['message']=$type==1?trans('register.success_username'):trans('register.failure_username_2');
+                                        $msg_array['message']=$type==1?trans('register.success_username'):trans('register.failure_notexisted_username');
                                     }		
                                 }
                                 $json_message=json_message(1,$msg_array['data'],$msg_array['message']);
@@ -217,12 +220,12 @@ class RegisterController extends Controller
                                     if($user_email)
                                     {
                                         $msg_array['data']=1;
-                                        $msg_array['message']=trans('register.failure11');
+                                        $msg_array['message']=trans('register.failure_existed_email');
                                     }
                                     else
                                     {
                                         $msg_array['data']=0;
-                                        $msg_array['message']=$type==1?trans('register.success_email'):trans('register.failure_email_2');
+                                        $msg_array['message']=$type==1?trans('register.success_email'):trans('register.failure_notexisted_email');
                                     }		
                                 }
                                 $json_message=json_message(1,$msg_array['data'],$msg_array['message']);
@@ -240,12 +243,12 @@ class RegisterController extends Controller
                                     if($user_mobile)
                                     {
                                         $msg_array['data']=1;
-                                        $msg_array['message']=trans('register.failure13');
+                                        $msg_array['message']=trans('register.failure_existed_mobile');
                                     }
                                     else
                                     {
                                         $msg_array['data']=0;
-                                        $msg_array['message']=$type==1?trans('register.success_mobile'):trans('register.failure_mobile_2');
+                                        $msg_array['message']=$type==1?trans('register.success_mobile'):trans('register.failure_notexisted_mobile');
                                     }		
                                 }
                                 $json_message=json_message(1,$msg_array['data'],$msg_array['message']);

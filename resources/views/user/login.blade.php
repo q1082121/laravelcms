@@ -16,6 +16,14 @@ function placeFocus() { document.forms[0].elements[0].focus();
 				<label class="lbl-1"> </label>
 				<label class="lbl-2"> </label>
 				<label class="lbl-3"> </label>
+				<style>
+				.register_div{width:120px;height:35px;font-size:20px;line-height:35px;text-align:center;color:#fff;background:#555;margin:5px 0 0 10px;border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;-o-border-radius: 5px;}
+				</style>
+				<a href="{{ route('get.user.register') }}">
+				<div class="register_div">
+					注册帐号
+				</div>
+				</a>
 			</div>
 			<div class="clear"> </div>
 			<div class="avtar">

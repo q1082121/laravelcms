@@ -83,7 +83,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	 *	   get 路由
 	 ***********************************************************************
 	 */	
-    	Route::get('/', 'HomeController@index')->name('get.admin');
+    Route::get('/', 'HomeController@index')->name('get.admin');
 	Route::get('setting', ['middleware' => ['ability:admin,model_setting'], 'uses' => 'SettingController@index'])->name('get.admin.setting');
 	Route::get('user', ['middleware' => ['ability:admin,model_user'], 'uses' => 'UserController@index'])->name('get.admin.user');
 	Route::get('userinfo', ['middleware' => ['ability:admin,set_userinfo'], 'uses' => 'UserController@userinfo'])->name('get.admin.userinfo');
@@ -180,27 +180,31 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	 *	   post 路由
 	 ***********************************************************************
 	 */	
+	//系统配置
 	Route::post('home/api_setting', 'HomeController@api_setting')->name('post.admin.home.api_setting');
+	//系统设置
 	Route::post('setting/api_info', 'SettingController@api_info')->name('post.admin.setting.api_info');
-
+	//一键缓存
 	Route::post('cacheapi/api_cache', 'CacheapiController@api_cache')->name('post.admin.cacheapi.api_cache');
+	//地区数据
 	Route::post('district/api_area', 'DistrictController@api_area')->name('post.admin.district.api_area');
-
+	//删除操作
 	Route::post('deleteapi/api_delete', 'DeleteapiController@api_delete')->name('post.admin.deleteapi.api_delete');
 	Route::post('deleteapi/api_clear', 'DeleteapiController@api_clear')->name('post.admin.deleteapi.api_clear');
 	Route::post('deleteapi/api_del_image', 'DeleteapiController@api_del_image')->name('post.admin.deleteapi.api_del_image');
-
+	//markdownup请求
 	Route::post('markdownupload', 'MarkdownapiController@upload')->name('post.admin.markdownupload');
+	//一键操作
 	Route::post('oneactionapi/api_one_action', 'OneactionapiController@api_one_action')->name('post.admin.oneactionapi.api_one_action');
-
+	//日志列表
 	Route::post('log/api_list', 'LogController@api_list')->name('post.admin.log.api_list');
-
+	//用户列表
 	Route::post('user/api_list', 'UserController@api_list')->name('post.admin.user.api_list');
 	Route::post('user/api_get_one', 'UserController@api_get_one')->name('post.admin.user.api_get_one');
 	Route::post('user/api_edit_pwd', 'UserController@api_edit_pwd')->name('post.admin.user.api_edit_pwd');
 	Route::post('userinfo/api_info', 'UserController@api_info')->name('post.admin.user.api_info');
 	Route::post('userinfo/api_edit', 'UserController@api_edit')->name('post.admin.user.api_edit');
-
+	//用户角色
 	Route::post('userrole/api_list', 'UserroleController@api_list')->name('post.admin.userrole.api_list');
 	Route::post('userrole/api_get_role', 'UserroleController@api_get_role')->name('post.admin.userrole.api_get_role');
 	Route::post('userrole/api_cancel_role', 'UserroleController@api_cancel_role')->name('post.admin.userrole.api_cancel_role');
@@ -208,7 +212,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('userrole/api_add', 'UserroleController@api_add')->name('post.admin.userrole.api_add');
 	Route::post('userrole/api_info', 'UserroleController@api_info')->name('post.admin.userrole.api_info');
 	Route::post('userrole/api_edit', 'UserroleController@api_edit')->name('post.admin.userrole.api_edit');
-
+	//用户权限
 	Route::post('userpermission/api_list', 'UserpermissionController@api_list')->name('post.admin.userpermission.api_list');
 	Route::post('userpermission/api_get_permission', 'UserpermissionController@api_get_permission')->name('post.admin.userpermission.api_get_permission');
 	Route::post('userpermission/api_cancel_permission', 'UserpermissionController@api_cancel_permission')->name('post.admin.userpermission.api_cancel_permission');
@@ -216,67 +220,67 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('userpermission/api_add', 'UserpermissionController@api_add')->name('post.admin.userpermission.api_add');
 	Route::post('userpermission/api_info', 'UserpermissionController@api_info')->name('post.admin.userpermission.api_info');
 	Route::post('userpermission/api_edit', 'UserpermissionController@api_edit')->name('post.admin.userpermission.api_edit');
-
+	//主导航
 	Route::post('navigation/api_list', 'NavigationController@api_list')->name('post.admin.navigation.api_list');
 	Route::post('navigation/api_add', 'NavigationController@api_add')->name('post.admin.navigation.api_add');
 	Route::post('navigation/api_info', 'NavigationController@api_info')->name('post.admin.navigation.api_info');
 	Route::post('navigation/api_edit', 'NavigationController@api_edit')->name('post.admin.navigation.api_edit');
-
+	//文章分类
 	Route::post('classify/api_list', 'ClassifyController@api_list')->name('post.admin.classify.api_list');
 	Route::post('classify/api_add', 'ClassifyController@api_add')->name('post.admin.classify.api_add');
 	Route::post('classify/api_info', 'ClassifyController@api_info')->name('post.admin.classify.api_info');
 	Route::post('classify/api_edit', 'ClassifyController@api_edit')->name('post.admin.classify.api_edit');
-
+	//文章
 	Route::post('article/api_list', 'ArticleController@api_list')->name('post.admin.article.api_list');
 	Route::post('article/api_add', 'ArticleController@api_add')->name('post.admin.article.api_add');
 	Route::post('article/api_info', 'ArticleController@api_info')->name('post.admin.article.api_info');
 	Route::post('article/api_edit', 'ArticleController@api_edit')->name('post.admin.article.api_edit');
-
+	//产品分类
 	Route::post('classifyproduct/api_list', 'ClassifyproductController@api_list')->name('post.admin.classifyproduct.api_list');
 	Route::post('classifyproduct/api_add', 'ClassifyproductController@api_add')->name('post.admin.classifyproduct.api_add');
 	Route::post('classifyproduct/api_info', 'ClassifyproductController@api_info')->name('post.admin.classifyproduct.api_info');
 	Route::post('classifyproduct/api_edit', 'ClassifyproductController@api_edit')->name('post.admin.classifyproduct.api_edit');
-
+	//产品
 	Route::post('product/api_list', 'ProductController@api_list')->name('post.admin.product.api_list');
 	Route::post('product/api_add', 'ProductController@api_add')->name('post.admin.product.api_add');
 	Route::post('product/api_info', 'ProductController@api_info')->name('post.admin.product.api_info');
 	Route::post('product/api_edit', 'ProductController@api_edit')->name('post.admin.product.api_edit');
-
+	//广告图片
 	Route::post('picture/api_list', 'PictureController@api_list')->name('post.admin.picture.api_list');
 	Route::post('picture/api_add', 'PictureController@api_add')->name('post.admin.picture.api_add');
 	Route::post('picture/api_info', 'PictureController@api_info')->name('post.admin.picture.api_info');
 	Route::post('picture/api_edit', 'PictureController@api_edit')->name('post.admin.picture.api_edit');
-
+	//链接分类
 	Route::post('classifylink/api_list', 'ClassifylinkController@api_list')->name('post.admin.classifylink.api_list');
 	Route::post('classifylink/api_add', 'ClassifylinkController@api_add')->name('post.admin.classifylink.api_add');
 	Route::post('classifylink/api_info', 'ClassifylinkController@api_info')->name('post.admin.classifylink.api_info');
 	Route::post('classifylink/api_edit', 'ClassifylinkController@api_edit')->name('post.admin.classifylink.api_edit');
-
+	//链接
 	Route::post('link/api_list', 'LinkController@api_list')->name('post.admin.link.api_list');
 	Route::post('link/api_add', 'LinkController@api_add')->name('post.admin.link.api_add');
 	Route::post('link/api_info', 'LinkController@api_info')->name('post.admin.link.api_info');
 	Route::post('link/api_edit', 'LinkController@api_edit')->name('post.admin.link.api_edit');
-
+	//题目分类
 	Route::post('classifyquestion/api_list', 'ClassifyquestionController@api_list')->name('post.admin.classifyquestion.api_list');
 	Route::post('classifyquestion/api_add', 'ClassifyquestionController@api_add')->name('post.admin.classifyquestion.api_add');
 	Route::post('classifyquestion/api_info', 'ClassifyquestionController@api_info')->name('post.admin.classifyquestion.api_info');
 	Route::post('classifyquestion/api_edit', 'ClassifyquestionController@api_edit')->name('post.admin.classifyquestion.api_edit');
-
+	//题目
 	Route::post('question/api_list', 'QuestionController@api_list')->name('post.admin.question.api_list');
 	Route::post('question/api_add', 'QuestionController@api_add')->name('post.admin.question.api_add');
 	Route::post('question/api_info', 'QuestionController@api_info')->name('post.admin.question.api_info');
 	Route::post('question/api_edit', 'QuestionController@api_edit')->name('post.admin.question.api_edit');
-
+	//题目选项
 	Route::post('questionoption/api_list', 'QuestionoptionController@api_list')->name('post.admin.questionoption.api_list');
 	Route::post('questionoption/api_add', 'QuestionoptionController@api_add')->name('post.admin.questionoption.api_add');
 	Route::post('questionoption/api_info', 'QuestionoptionController@api_info')->name('post.admin.questionoption.api_info');
 	Route::post('questionoption/api_edit', 'QuestionoptionController@api_edit')->name('post.admin.questionoption.api_edit');
-
+	//信件
 	Route::post('letter/api_list', 'LetterController@api_list')->name('post.admin.letter.api_list');
 	Route::post('letter/api_add', 'LetterController@api_add')->name('post.admin.letter.api_add');
 	Route::post('letter/api_info', 'LetterController@api_info')->name('post.admin.letter.api_info');
 	Route::post('letter/api_count', 'LetterController@api_count')->name('post.admin.letter.api_edit');
-
+	//微信-公众号
 	Route::post('wechat/api_list', 'WechatController@api_list')->name('post.admin.wechat.api_list');
 	Route::post('wechat/api_add', 'WechatController@api_add')->name('post.admin.wechat.api_add');
 	Route::post('wechat/api_info', 'WechatController@api_info')->name('post.admin.wechat.api_info');

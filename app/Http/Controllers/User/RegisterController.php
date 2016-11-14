@@ -36,7 +36,12 @@ class RegisterController extends Controller
         $website['website_center_tip']=trans('admin.website_center_tip');
         $website['copyrights']=trans('admin.website_name').trans('admin.website_rightinfo');
         $website['type']=$request->route('type')?$request->route('type'):2;
-        $website['info']=Cache::store('file')->get('root');
+        $root=Cache::store('file')->get('root');
+		$root['syseditor']=@$root['syseditor']?@$root['syseditor']:"Markdown";
+		$root['systitle']=@$root['systitle']?@$root['systitle']:"LaravelCms";
+		$root['syskeywords']=@$root['syskeywords']?@$root['syskeywords']:"";
+		$root['sysdescription']=@$root['sysdescription']?@$root['sysdescription']:"";
+        $website['root']=$root;
         return view('user/register')->with('website',$website);
     }
     /******************************************

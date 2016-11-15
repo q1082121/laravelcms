@@ -33,6 +33,8 @@ QQ	:471416739
 	DateTimePicker 时间日期控件 兼容移动端
 	moment 时间处理控件
 	socket.io-client-1.3.7 web通信
+	amazeui	v2.7.2
+	amazeui_admin 
 	
 	public/js/common.js 公共函数
 
@@ -106,6 +108,9 @@ QQ	:471416739
 	消息管理 	下一个版本内容
 	第三方登录  下一个版本内容
 	单点登录    下一个版本内容
+	
+	前端会员中心 开发中
+	
 	
 
 #	注意事项

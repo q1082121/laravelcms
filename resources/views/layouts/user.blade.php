@@ -14,9 +14,7 @@
     <meta name="apple-mobile-web-app-title" content="{{ $website['title'] }}" />
 	<script src="{{asset('/module/jquery')}}/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="{{asset('/module/amazeui_admin')}}/assets/css/amazeui.min.css" />
-    <link rel="stylesheet" href="{{asset('/module/amazeui_admin')}}/assets/css/admin.css">
     <link rel="stylesheet" href="{{asset('/module/amazeui_admin')}}/assets/css/app.css">
-    <script src="{{asset('/module/amazeui_admin')}}/assets/js/echarts.min.js"></script>
 	<!--layer-->
 	<script src="{{asset('/module/layer')}}/layer.js"></script>
 	<!--vue-->
@@ -26,25 +24,33 @@
 </head>
 
 <body>
-	@include('user.header')
-	<div class="tpl-page-container tpl-page-header-fixed">
-        <div class="tpl-left-nav tpl-left-nav-hover">
-            <div class="tpl-left-nav-title">
-                {{trans('user.user_navigation_center')}}
+    <div class="am-g tpl-g">
+        <script src="{{asset('/module/amazeui_admin')}}/assets/js/theme.js"></script>
+        @include('user.header')
+        <!-- 风格切换 -->
+        <div class="tpl-skiner">
+            <div class="tpl-skiner-toggle am-icon-cog">
             </div>
-			@include('user.nav')
+            <div class="tpl-skiner-content">
+                <div class="tpl-skiner-content-title">
+                    选择主题
+                </div>
+                <div class="tpl-skiner-content-bar">
+                    <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                    <span class="skiner-color skiner-black" data-color="theme-black"></span>
+                </div>
+            </div>
         </div>
-
+        @include('user.nav')
+        <!-- 内容区域 -->
         <div class="tpl-content-wrapper">
             @include('user.site')
             <!--模板主内容区 -->
                 @yield('content')
-            <!--/.模板主内容区 --> 
+            <!--/.模板主内容区 -->
         </div>
     </div>
-
 	<script src="{{asset('/module/amazeui_admin')}}/assets/js/amazeui.min.js"></script>
-    <script src="{{asset('/module/amazeui_admin')}}/assets/js/iscroll.js"></script>
     <script src="{{asset('/module/amazeui_admin')}}/assets/js/app.js"></script>
 </body>
 </html>

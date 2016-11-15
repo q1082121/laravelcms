@@ -1,86 +1,100 @@
-<div class="tpl-left-nav-list">
-    <ul class="tpl-left-nav-menu">
-        <li class="tpl-left-nav-item">
-            <a href="index.html" class="nav-link active">
-                <i class="am-icon-home"></i>
-                <span>首页</span>
-            </a>
-        </li>
-        <li class="tpl-left-nav-item">
-            <a href="chart.html" class="nav-link tpl-left-nav-link-list">
-                <i class="am-icon-bar-chart"></i>
-                <span>数据表</span>
-                <i class="tpl-left-nav-content tpl-badge-danger">
-    12
-    </i>
-            </a>
-        </li>
+<!-- 侧边导航栏 -->
+<div class="left-sidebar">
+    <!-- 用户信息 -->
+    <div class="tpl-sidebar-user-panel">
+        <div class="tpl-user-panel-slide-toggleable">
+            <div class="tpl-user-panel-profile-picture">
+            <img src="{{$website['website_userinfo']['avatar']}}" alt="">
+            </div>
+            <span class="user-panel-logged-in-text">
+                <i class="am-icon-at am-text-success tpl-user-panel-status-icon"></i>
+                {{$website['website_user']['email']}}
+            </span>
+        </div>
+    </div>
 
-        <li class="tpl-left-nav-item">
-            <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
-                <i class="am-icon-table"></i>
-                <span>表格</span>
-                <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+    <!-- 菜单 -->
+    <ul class="sidebar-nav">
+        <li class="sidebar-nav-link">
+            <a href="/" class="active">
+                <i class="am-icon-home sidebar-nav-link-logo"></i> 网站首页
             </a>
-            <ul class="tpl-left-nav-sub-menu">
-                <li>
-                    <a href="table-font-list.html">
-                        <i class="am-icon-angle-right"></i>
-                        <span>文字表格</span>
-                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+        </li>
+        <li class="sidebar-nav-heading">Base<span class="sidebar-nav-heading-info"> 基本信息</span></li>
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);">
+                <i class="am-icon-hourglass sidebar-nav-link-logo"></i> 成长等级
+            </a>
+        </li>
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);">
+                <i class="am-icon-leaf sidebar-nav-link-logo"></i> 会员积分
+            </a>
+        </li>
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);">
+                <i class="am-icon-credit-card sidebar-nav-link-logo"></i> 会员钱包
+            </a>
+        </li>
+        <li class="sidebar-nav-heading">Like<span class="sidebar-nav-heading-info"> 个性化</span></li>
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);">
+                <i class="am-icon-heart sidebar-nav-link-logo"></i> 我的收藏
+            </a>
+        </li>
+        <li class="sidebar-nav-heading">Msg<span class="sidebar-nav-heading-info"> 消息中心</span></li>
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);">
+                <i class="am-icon-envelope sidebar-nav-link-logo"></i> 信件管理
+            </a>
+        </li>
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);">
+                <i class="am-icon-comment sidebar-nav-link-logo"></i> 消息通知
+            </a>
+        </li>
+        <li class="sidebar-nav-heading">Safe<span class="sidebar-nav-heading-info"> 安全中心</span></li>
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);">
+                <i class="am-icon-pencil sidebar-nav-link-logo"></i> 会员信息
+            </a>
+        </li>
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);">
+                <i class="am-icon-automobile sidebar-nav-link-logo"></i> 收货地址
+            </a>
+        </li>
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);">
+                <i class="am-icon-envelope-square sidebar-nav-link-logo"></i> 邮箱认证
+            </a>
+        </li>
+        <li class="sidebar-nav-link">
+            <a href="javascript:;" class="sidebar-nav-sub-title">
+                <i class="am-icon-table sidebar-nav-link-logo"></i> 第三方帐号
+                <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+            </a>
+            <ul class="sidebar-nav sidebar-nav-sub">
+                <li class="sidebar-nav-link">
+                    <a href="table-list.html">
+                        <span class="am-icon-qq sidebar-nav-link-logo"></span> QQ
                     </a>
-
-                    <a href="table-images-list.html">
-                        <i class="am-icon-angle-right"></i>
-                        <span>图片表格</span>
-                        <i class="tpl-left-nav-content tpl-badge-success">
-    18
-    </i>
-
-                        <a href="form-news.html">
-                            <i class="am-icon-angle-right"></i>
-                            <span>消息列表</span>
-                            <i class="tpl-left-nav-content tpl-badge-primary">
-    5
-    </i>
-
-
-                            <a href="form-news-list.html">
-                                <i class="am-icon-angle-right"></i>
-                                <span>文字列表</span>
-
-                            </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="table-list-img.html">
+                        <span class="am-icon-weibo sidebar-nav-link-logo"></span> 新浪微博
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="table-list-img.html">
+                        <span class="am-icon-weixin sidebar-nav-link-logo"></span> 微信
+                    </a>
                 </li>
             </ul>
         </li>
-
-        <li class="tpl-left-nav-item">
-            <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
-                <i class="am-icon-wpforms"></i>
-                <span>表单</span>
-                <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
-            </a>
-            <ul class="tpl-left-nav-sub-menu" style="display: block;">
-                <li>
-                    <a href="form-amazeui.html">
-                        <i class="am-icon-angle-right"></i>
-                        <span>Amaze UI 表单</span>
-                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                    </a>
-
-                    <a href="form-line.html">
-                        <i class="am-icon-angle-right"></i>
-                        <span>线条表单</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="tpl-left-nav-item">
-            <a href="login.html" class="nav-link tpl-left-nav-link-list">
-                <i class="am-icon-key"></i>
-                <span>登录</span>
-
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);">
+                <i class="am-icon-floppy-o sidebar-nav-link-logo"></i> 登录日志
             </a>
         </li>
     </ul>

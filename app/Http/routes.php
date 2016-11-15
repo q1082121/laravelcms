@@ -29,7 +29,7 @@ Route::get('/login/{tmp?}', 'CaptchaController@login')->name('get.captcha.login'
 
 /******************************************
 ****@AuThor:rubbish.boy@163.com
-****@Title :会员中心
+****@Title :会员中心访问控制
 *******************************************/
 Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user'], function() {  
     /******************************************
@@ -50,6 +50,13 @@ Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user
 	****@Title :退出登录
 	*******************************************/
 	Route::get('logout','LoginController@logout')->name('get.user.logout');
+
+	/******************************************
+	****@AuThor:rubbish.boy@163.com
+	****@Title :会员中心
+	*******************************************/
+	Route::get('/','UserController@index')->name('get.user.index');
+	
 });
 
 

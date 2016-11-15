@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<title>{{ $website['title'] }}</title>
+<title>{{ $website['title'] }}-{{trans('admin.website_name')}}-{{trans('admin.website_type')}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <meta name="keywords" content="{{$website['root']['syskeywords']}}" >

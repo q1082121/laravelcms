@@ -31,13 +31,12 @@ class RegisterController extends Controller
     *******************************************/
      public function register(Request $request)
     {
-    	$website['title']=trans('register.name').'-'.trans('admin.website_type');
+    	$website['title']=trans('register.name');
         $website['register_name']=trans('register.name');
         $website['website_center_tip']=trans('admin.website_center_tip');
         $website['copyrights']=trans('admin.website_name').trans('admin.website_rightinfo');
         $website['type']=$request->route('type')?$request->route('type'):2;
         $root=Cache::store('file')->get('root');
-		$root['syseditor']=@$root['syseditor']?@$root['syseditor']:"Markdown";
 		$root['systitle']=@$root['systitle']?@$root['systitle']:"LaravelCms";
 		$root['syskeywords']=@$root['syskeywords']?@$root['syskeywords']:"";
 		$root['sysdescription']=@$root['sysdescription']?@$root['sysdescription']:"";

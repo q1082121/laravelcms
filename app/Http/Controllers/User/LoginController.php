@@ -29,13 +29,12 @@ class LoginController extends Controller
     *******************************************/
      public function login(Request $request)
     {
-    	$website['title']=trans('login.name').'-'.trans('admin.website_type');
+    	$website['title']=trans('login.name');
         $website['login_name']=trans('login.name');
         $website['website_center_tip']=trans('admin.website_center_tip');
     	$website['copyrights']=trans('admin.website_name').trans('admin.website_rightinfo');
         $website['type']=$request->route('type')?$request->route('type'):4;
         $root=Cache::store('file')->get('root');
-		$root['syseditor']=@$root['syseditor']?@$root['syseditor']:"Markdown";
 		$root['systitle']=@$root['systitle']?@$root['systitle']:"LaravelCms";
 		$root['syskeywords']=@$root['syskeywords']?@$root['syskeywords']:"";
 		$root['sysdescription']=@$root['sysdescription']?@$root['sysdescription']:"";
@@ -157,10 +156,11 @@ class LoginController extends Controller
             if($rule == 1)
             {
                 $user =Auth::guard($guard)->user();
+                $roleinfo=object_array(DB::table('role_user')->where('user_id',$user->id)->first());
                 /*******************
                  +记录日志 【      
                 ********************/
-                $log_data['type']=1;
+                $log_data['type']=@$roleinfo['role_id']?@$roleinfo['role_id']:1;
                 $log_data['user_id']=$user->id;
                 $log_data['name']=$user->username;
                 $log_data['info']=trans('login.action');
@@ -169,7 +169,6 @@ class LoginController extends Controller
                 /*******************
                  +          】      
                 ********************/
-                $roleinfo=object_array(DB::table('role_user')->where('user_id',$user->id)->first());
                 switch(@$roleinfo['role_id'])
                 {
                     case 1:
@@ -179,14 +178,14 @@ class LoginController extends Controller
                             $linkurl=route('get.admin');
                     break;
                     case 3:
-                            $linkurl='/';
+                            $linkurl='/user/';
                     break;
                     case 4:
-                            $linkurl='/';
+                            $linkurl='/user/';
                     break;
                     
                     default:
-                            $linkurl='/';
+                            $linkurl='/user/';
                     break;
                 }
 

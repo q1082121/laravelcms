@@ -1,50 +1,31 @@
 $(function() {
-
-        var $fullText = $('.admin-fullText');
-        $('#admin-fullscreen').on('click', function() {
-            $.AMUI.fullscreen.toggle();
-        });
-
-        $(document).on($.AMUI.fullscreen.raw.fullscreenchange, function() {
-            $fullText.text($.AMUI.fullscreen.isFullscreen ? '退出全屏' : '开启全屏');
-        });
-
-
-        var dataType = $('body').attr('data-type');
-        for (key in pageData) {
-            if (key == dataType) {
-                pageData[key]();
-            }
+    // 读取body data-type 判断是哪个页面然后执行相应页面方法，方法在下面。
+    var dataType = $('body').attr('data-type');
+    console.log(dataType);
+    for (key in pageData) {
+        if (key == dataType) {
+            pageData[key]();
         }
+    }
+    //     // 判断用户是否已有自己选择的模板风格
+    //    if(storageLoad('SelcetColor')){
+    //      $('body').attr('class',storageLoad('SelcetColor').Color)
+    //    }else{
+    //        storageSave(saveSelectColor);
+    //        $('body').attr('class','theme-black')
+    //    }
 
-        $('.tpl-switch').find('.tpl-switch-btn-view').on('click', function() {
-            $(this).prev('.tpl-switch-btn').prop("checked", function() {
-                    if ($(this).is(':checked')) {
-                        return false
-                    } else {
-                        return true
-                    }
-                })
-                // console.log('123123123')
+    autoLeftNav();
+    $(window).resize(function() {
+        autoLeftNav();
+        console.log($(window).width())
+    });
 
-        })
-    })
-    // ==========================
-    // 侧边导航下拉列表
-    // ==========================
+    //    if(storageLoad('SelcetColor')){
 
-$('.tpl-left-nav-link-list').on('click', function() {
-        $(this).siblings('.tpl-left-nav-sub-menu').slideToggle(80)
-            .end()
-            .find('.tpl-left-nav-more-ico').toggleClass('tpl-left-nav-more-ico-rotate');
-    })
-    // ==========================
-    // 头部导航隐藏菜单
-    // ==========================
-
-$('.tpl-header-nav-hover-ico').on('click', function() {
-    $('.tpl-left-nav').toggle();
-    $('.tpl-content-wrapper').toggleClass('tpl-content-wrapper-hover');
+    //     }else{
+    //       storageSave(saveSelectColor);
+    //     }
 })
 
 
@@ -54,53 +35,24 @@ var pageData = {
     // 首页
     // ===============================================
     'index': function indexData() {
+        $('#example-r').DataTable({
 
-
-        var myScroll = new IScroll('#wrapper', {
-            scrollbars: true,
-            mouseWheel: true,
-            interactiveScrollbars: true,
-            shrinkScrollbars: 'scale',
-            preventDefault: false,
-            fadeScrollbars: true
+            bInfo: false, //页脚信息
+            dom: 'ti'
         });
 
-        var myScrollA = new IScroll('#wrapperA', {
-            scrollbars: true,
-            mouseWheel: true,
-            interactiveScrollbars: true,
-            shrinkScrollbars: 'scale',
-            preventDefault: false,
-            fadeScrollbars: true
-        });
-
-        var myScrollB = new IScroll('#wrapperB', {
-            scrollbars: true,
-            mouseWheel: true,
-            interactiveScrollbars: true,
-            shrinkScrollbars: 'scale',
-            preventDefault: false,
-            fadeScrollbars: true
-        });
-
-
-
-        // document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
 
         // ==========================
         // 百度图表A http://echarts.baidu.com/
         // ==========================
 
-        var echartsA = echarts.init(document.getElementById('tpl-echarts-A'));
+        var echartsA = echarts.init(document.getElementById('tpl-echarts'));
         option = {
-
             tooltip: {
-                trigger: 'axis',
-            },
-            legend: {
-                data: ['邮件', '媒体', '资源']
+                trigger: 'axis'
             },
             grid: {
+                top: '3%',
                 left: '3%',
                 right: '4%',
                 bottom: '3%',
@@ -108,54 +60,36 @@ var pageData = {
             },
             xAxis: [{
                 type: 'category',
-                boundaryGap: true,
+                boundaryGap: false,
                 data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
             }],
-
             yAxis: [{
                 type: 'value'
             }],
+            textStyle: {
+                color: '#838FA1'
+            },
             series: [{
-                    name: '邮件',
-                    type: 'line',
-                    stack: '总量',
-                    areaStyle: { normal: {} },
-                    data: [120, 132, 101, 134, 90, 230, 210],
-                    itemStyle: {
-                        normal: {
-                            color: '#59aea2'
-                        },
-                        emphasis: {
+                name: '邮件营销',
+                type: 'line',
+                stack: '总量',
+                areaStyle: { normal: {} },
+                data: [120, 132, 101, 134, 90],
+                itemStyle: {
+                    normal: {
+                        color: '#1cabdb',
+                        borderColor: '#1cabdb',
+                        borderWidth: '2',
+                        borderType: 'solid',
+                        opacity: '1'
+                    },
+                    emphasis: {
 
-                        }
-                    }
-                },
-                {
-                    name: '媒体',
-                    type: 'line',
-                    stack: '总量',
-                    areaStyle: { normal: {} },
-                    data: [220, 182, 191, 234, 290, 330, 310],
-                    itemStyle: {
-                        normal: {
-                            color: '#e7505a'
-                        }
-                    }
-                },
-                {
-                    name: '资源',
-                    type: 'line',
-                    stack: '总量',
-                    areaStyle: { normal: {} },
-                    data: [150, 232, 201, 154, 190, 330, 410],
-                    itemStyle: {
-                        normal: {
-                            color: '#32c5d2'
-                        }
                     }
                 }
-            ]
+            }]
         };
+
         echartsA.setOption(option);
     },
     // ===============================================
@@ -173,15 +107,7 @@ var pageData = {
             tooltip: {
                 trigger: 'axis'
             },
-            toolbox: {
-                top: '0',
-                feature: {
-                    dataView: { show: true, readOnly: false },
-                    magicType: { show: true, type: ['line', 'bar'] },
-                    restore: { show: true },
-                    saveAsImage: { show: true }
-                }
-            },
+
             legend: {
                 data: ['蒸发量', '降水量', '平均温度']
             },
@@ -382,3 +308,58 @@ var pageData = {
         echartsA.setOption(option);
     }
 }
+
+
+// 风格切换
+
+$('.tpl-skiner-toggle').on('click', function() {
+    $('.tpl-skiner').toggleClass('active');
+})
+
+$('.tpl-skiner-content-bar').find('span').on('click', function() {
+    $('body').attr('class', $(this).attr('data-color'))
+    saveSelectColor.Color = $(this).attr('data-color');
+    // 保存选择项
+    storageSave(saveSelectColor);
+
+})
+
+
+
+
+// 侧边菜单开关
+
+
+function autoLeftNav() {
+
+
+
+    $('.tpl-header-switch-button').on('click', function() {
+        if ($('.left-sidebar').is('.active')) {
+            if ($(window).width() > 1024) {
+                $('.tpl-content-wrapper').removeClass('active');
+            }
+            $('.left-sidebar').removeClass('active');
+        } else {
+
+            $('.left-sidebar').addClass('active');
+            if ($(window).width() > 1024) {
+                $('.tpl-content-wrapper').addClass('active');
+            }
+        }
+    })
+
+    if ($(window).width() < 1024) {
+        $('.left-sidebar').addClass('active');
+    } else {
+        $('.left-sidebar').removeClass('active');
+    }
+}
+
+
+// 侧边菜单
+$('.sidebar-nav-sub-title').on('click', function() {
+    $(this).siblings('.sidebar-nav-sub').slideToggle(80)
+        .end()
+        .find('.sidebar-nav-sub-ico').toggleClass('sidebar-nav-sub-ico-rotate');
+})

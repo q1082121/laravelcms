@@ -181,7 +181,7 @@ class PublicController extends Controller
 			*/
 			if(Entrust::hasRole(['admin', 'subadmin']) == false )
 			{
-				alert('/user/logout',trans('admin.message_userrole_failure'));
+				alert('/',trans('admin.message_userrole_failure'));
 			}
 			else
 			{

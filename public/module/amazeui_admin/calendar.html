@@ -13,15 +13,15 @@
     <link rel="icon" type="image/png" href="assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <script src="assets/js/echarts.min.js"></script>
     <link rel="stylesheet" href="assets/css/amazeui.min.css" />
-    <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.print.css" media='print' />
     <link rel="stylesheet" href="assets/css/app.css">
     <script src="assets/js/jquery.min.js"></script>
 
 </head>
 
-<body data-type="chart">
+<body data-type="widgets">
     <script src="assets/js/theme.js"></script>
     <div class="am-g tpl-g">
         <!-- 头部 -->
@@ -199,6 +199,7 @@
                 </div>
             </div>
 
+
             <!-- 菜单 -->
             <ul class="sidebar-nav">
                 <li class="sidebar-nav-heading">Components <span class="sidebar-nav-heading-info"> 附加组件</span></li>
@@ -213,7 +214,7 @@
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
-                    <a href="calendar.html">
+                    <a href="calendar.html" class="active">
                         <i class="am-icon-calendar sidebar-nav-link-logo"></i> 日历
                     </a>
                 </li>
@@ -224,7 +225,7 @@
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
-                    <a href="chart.html" class="active">
+                    <a href="chart.html">
                         <i class="am-icon-bar-chart sidebar-nav-link-logo"></i> 图表
 
                     </a>
@@ -270,76 +271,195 @@
             </ul>
         </div>
 
+
+
         <!-- 内容区域 -->
         <div class="tpl-content-wrapper">
 
-            <div class="container-fluid am-cf">
-                <div class="row">
-                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
-                        <div class="page-header-heading"><span class="am-icon-home page-header-heading-icon"></span> 图表 <small>Amaze UI</small></div>
-                        <p class="page-header-description">图表组件使用的是 <a href="http://echarts.baidu.com">百度图表echarts</a>。</p>
-                    </div>
-                    <div class="am-u-lg-3 tpl-index-settings-button">
-                        <button type="button" class="page-header-button"><span class="am-icon-paint-brush"></span> 设置</button>
-                    </div>
-                </div>
 
-            </div>
 
             <div class="row-content am-cf">
-                <div class="widget am-cf">
-                    <div class="widget-head am-cf">
-                        <div class="widget-title am-fl">折线</div>
-                        <div class="widget-function am-fr">
-                            <a href="javascript:;" class="am-icon-cog"></a>
-                        </div>
-                    </div>
-                    <div class="widget-body am-fr">
-                        <div style="height: 400px" class="" id="tpl-echarts-A">
-
-                        </div>
-                    </div>
+                <div class="tpl-calendar-box">
+                    <div id="calendar"></div>
                 </div>
 
 
-                <div class="widget am-cf">
-                    <div class="widget-head am-cf">
-                        <div class="widget-title am-fl">雷达</div>
-                        <div class="widget-function am-fr">
-                            <a href="javascript:;" class="am-icon-cog"></a>
-                        </div>
-                    </div>
-                    <div class="widget-body am-fr">
-                        <div style="height: 400px" id="tpl-echarts-B">
-
-                        </div>
-                    </div>
-                </div>
 
 
-                <div class="widget am-cf">
-                    <div class="widget-head am-cf">
-                        <div class="widget-title am-fl">折线柱图</div>
-                        <div class="widget-function am-fr">
-                            <a href="javascript:;" class="am-icon-cog"></a>
-                        </div>
-                    </div>
-                    <div class="widget-body am-fr">
-                        <div style="height: 400px" id="tpl-echarts-C">
 
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>
     </div>
     </div>
-    <script src="assets/js/amazeui.min.js"></script>
-    <script src="assets/js/amazeui.datatables.min.js"></script>
-    <script src="assets/js/dataTables.responsive.min.js"></script>
-    <script src="assets/js/app.js"></script>
 
+
+    <!-- 弹出层 -->
+
+    <div class="am-modal am-modal-no-btn" id="calendar-edit-box">
+        <div class="am-modal-dialog tpl-model-dialog">
+            <div class="am-modal-hd">
+                <a href="javascript: void(0)" class="am-close edit-box-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd tpl-am-model-bd am-cf">
+
+                <form class="am-form tpl-form-border-form">
+                    <div class="am-form-group am-u-sm-12">
+                        <label for="user-name" class="am-u-sm-12 am-form-label am-text-left">标题 <span class="tpl-form-line-small-title">Title</span></label>
+                        <div class="am-u-sm-12">
+                            <input type="text" class="tpl-form-input am-margin-top-xs calendar-edit-box-title" id="user-name" placeholder="" disabled>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/moment.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="assets/js/fullcalendar.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            var editBox = $('#calendar-edit-box');
+
+            $('.edit-box-close').on('click', function() {
+                $('#calendar').fullCalendar('unselect');
+            })
+            $('#calendar').fullCalendar({
+
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+
+                monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                monthNamesShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                dayNames: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+                dayNamesShort: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+                today: ["今天"],
+                firstDay: 1,
+                buttonText: {
+                    today: '本月',
+                    month: '月',
+                    week: '周',
+                    day: '日',
+                    prev: '上一月',
+                    next: '下一月'
+                },
+                defaultDate: '2016-09-12',
+                lang: 'zh-cn',
+                navLinks: true, // can click day/week names to navigate views
+                selectable: true,
+                selectHelper: true,
+                select: function(start, end) {
+                    var title = prompt('填写你的记录的:');
+                    var eventData;
+                    if (title) {
+                        eventData = {
+                            title: title,
+                            start: start,
+                            end: end
+                        };
+                        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                    }
+                    $('#calendar').fullCalendar('unselect');
+
+
+
+                },
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+                eventClick: function(event, jsEvent, view) {
+
+                    // event.source.events[0].title = '222223333'
+                    // 修改数据
+                    // 标题
+                    $('.calendar-edit-box-title').val(event.title)
+
+
+
+                    //  弹出框
+                    editBox.modal();
+
+
+
+
+
+                },
+                events: [{
+                    id: 1,
+                    title: '给她抱抱 叫她包包 喂她吃饱 给她买包',
+                    start: '2016-09-01',
+                    end: '2016-09-10'
+                }, {
+                    id: 2,
+                    title: '给她抱抱',
+                    start: '2016-09-07',
+                    end: '2016-09-10'
+                }, {
+                    id: 3,
+                    title: '叫她包包',
+                    start: '2016-09-09',
+                    end: '2016-09-10'
+                }, {
+                    id: 4,
+                    title: '喂她吃饱',
+                    start: '2016-09-16',
+                    end: '2016-09-10'
+                }, {
+                    id: 5,
+                    title: '喂她吃饱',
+                    start: '2016-09-11',
+                    end: '2016-09-13'
+                }, {
+                    id: 6,
+                    title: '喂她吃饱',
+                    start: '2016-09-12',
+                    end: '2016-09-12'
+                }, {
+                    id: 7,
+                    title: '喂她吃饱',
+                    start: '2016-09-12',
+                    end: '2016-09-12'
+                }, {
+                    id: 8,
+                    title: '喂她吃饱',
+                    start: '2016-09-12',
+                    end: '2016-09-12'
+                }, {
+                    id: 9,
+                    title: '喂她吃饱',
+                    start: '2016-09-12',
+                    end: '2016-09-12'
+                }, {
+                    id: 10,
+                    title: '喂她吃饱',
+                    start: '2016-09-12',
+                    end: '2016-09-12'
+                }, {
+                    id: 11,
+                    title: 'Birthday Party',
+                    start: '2016-09-13',
+                    end: '2016-09-12'
+                }, {
+                    id: 12,
+                    title: 'Click for Google',
+                    start: '2016-09-28',
+                    end: '2016-09-12'
+                }]
+            });
+
+        });
+    </script>
 </body>
 
 </html>

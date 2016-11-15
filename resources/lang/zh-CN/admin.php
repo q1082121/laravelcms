@@ -89,6 +89,7 @@ return [
     'website_navigation_messagetpl_reply'          =>   '模版消息',
     'website_navigation_wechat_menu'               =>   '微信自定义菜单',
     'website_navigation_wechat_user'               =>   '微信会员',
+    
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称 动作

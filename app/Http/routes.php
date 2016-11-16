@@ -56,10 +56,14 @@ Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user
 	****@Title :会员中心
 	*******************************************/
 	Route::get('/','UserController@index')->name('get.user.index');
-	Route::get('/userinfo','UserController@userinfo')->name('get.user.userinfo');
+	Route::get('userinfo','UserController@userinfo')->name('get.user.userinfo');
+	Route::get('edit_pwd','UserController@edit_pwd')->name('get.user.edit_pwd');
+	//日志管理		
+	Route::get('log', 'LogController@index')->name('get.user.log');
 
 
-
+	//日志列表
+	Route::post('log/api_list', 'LogController@api_list')->name('post.user.log.api_list');
 	//删除图片
 	Route::post('deleteapi/api_del_image', 'DeleteapiController@api_del_image')->name('post.user.deleteapi.api_del_image');
 	//用户信息

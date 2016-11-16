@@ -160,10 +160,15 @@ class LoginController extends Controller
                 /*******************
                  +记录日志 【      
                 ********************/
-                $log_data['type']=@$roleinfo['role_id']?@$roleinfo['role_id']:1;
+                // 含有带花括号占位符的记录信息。
+                $messagetpl = trans('login.login_action');
+                // 带有替换信息的上下文数组，键名为占位符名称，键值为替换值。
+                $context = interpolate($messagetpl, array('username' => $user->username));
+
+                $log_data['type']=1;
                 $log_data['user_id']=$user->id;
                 $log_data['name']=$user->username;
-                $log_data['info']=trans('login.action');
+                $log_data['info']=$context;
                 $log_data['ip']=$request->getClientIp();
                 in_log($log_data);
                 /*******************

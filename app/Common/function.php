@@ -205,7 +205,21 @@ function get_client_ip()
 {
 	$ip=$_SERVER['REMOTE_ADDR'];
 	return $ip;
+}
+/***********************************
+ * 方法名： 用上下文信息替换记录信息中的占位符
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function interpolate($message, array $context = array()){
+    // 构建一个花括号包含的键名的替换数组
+    $replace = array();
+    foreach ($context as $key => $val) {
+        $replace['{' . $key . '}'] = $val;
+    }
+    // 替换记录信息中的占位符，最后返回修改后的记录信息。
+    return strtr($message, $replace);
 } 
+
 /****************************************************************************************************
 ****AuThor:rubbish.boy@163.com
 ****Title :业务逻辑

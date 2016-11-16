@@ -11,5 +11,6 @@ return [
     |
     */
     'user_navigation_center'               =>   '会员中心',
+    'user_navigation_log'                  =>   '日志中心',
     
 ];

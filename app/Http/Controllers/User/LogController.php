@@ -3,7 +3,7 @@
 ****AuThor:rubbish.boy@163.com
 ****Title :日志管理
 *******************************************/
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -22,16 +22,17 @@ class LogController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
-		$website['cursitename']=trans('admin.website_navigation_log');
-		$website['apiurl_list']=route('post.admin.log.api_list');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
-		$website['apiurl_clear']=route('post.admin.deleteapi.api_clear');
+		$website['modelname']=getCurrentControllerName('User');
+		$website['cursitename']=trans('user.user_navigation_log');
+		$website['title']=$website['cursitename'];
+		$website['apiurl_list']=route('post.user.log.api_list');
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
+		$wayoption[]=array('text'=>'信息','value'=>'info');
 		$website['wayoption']=json_encode($wayoption);
         
-		return view('admin/log/index')->with('website',$website);
+
+		return view('user/log/index')->with('website',$website);
 	}
 
     /******************************************
@@ -41,16 +42,17 @@ class LogController extends PublicController
 	public function api_list(Request $request)  
 	{
 		$search_field=$request->get('way')?$request->get('way'):'title';
+		$condition['user_id']=$this->user['id'];
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Log::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Log::where($condition)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Log::paginate($this->pagesize);
+			$list=Log::where($condition)->paginate($this->pagesize);
 		}
 		if($list)
 		{

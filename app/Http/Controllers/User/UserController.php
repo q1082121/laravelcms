@@ -14,6 +14,7 @@ use Cache;
 use App\Http\Model\User;
 use App\Http\Model\Userinfo;
 use URL;
+use Hash;
 
 class UserController extends PublicController
 {
@@ -65,6 +66,7 @@ class UserController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('admin.define_model_user_editpwd');
+		$website['title']=$website['cursitename'];
 		$website['apiurl_edit_pwd']=route('post.user.userinfo.api_edit_pwd');
 		$website['id']=$this->user['id'];
 		

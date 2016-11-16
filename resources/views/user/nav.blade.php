@@ -60,7 +60,7 @@
         </li>
         <li class="sidebar-nav-heading">Safe<span class="sidebar-nav-heading-info"> 安全中心</span></li>
         <li class="sidebar-nav-link">
-            <a href="javascript:void(0);">
+            <a href="{{ route('get.user.edit_pwd') }}">
                 <i class="am-icon-pencil sidebar-nav-link-logo"></i> 修改密码
             </a>
         </li>
@@ -98,7 +98,7 @@
             </ul>
         </li>
         <li class="sidebar-nav-link">
-            <a href="javascript:void(0);">
+            <a href="{{ route('get.user.log') }}">
                 <i class="am-icon-floppy-o sidebar-nav-link-logo"></i> 登录日志
             </a>
         </li>

@@ -27,6 +27,9 @@
 	<script src="{{asset('/module/layer')}}/layer.js"></script>
 	<!--common-->
 	<script src="{{asset('/js')}}/common.js"></script>
+    <style>
+    .common_select_search{width:180px;height:34px;}
+    </style>
 </head>
 
 <body>

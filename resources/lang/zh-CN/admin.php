@@ -323,7 +323,6 @@ return [
     'fieldname_item_token'                          =>   'Token',
     'fieldname_item_wechataccount'                  =>   '微信号',
     'fieldname_item_gid'                            =>   '原始ID',
-    'fieldname_item_type'                           =>   '公众号类型',
     'fieldname_item_appid'                          =>   '应用ID',
     'fieldname_item_appsecret'                      =>   '应用密钥',
     'fieldname_item_encodingaeskey'                 =>   '消息加解密密钥',

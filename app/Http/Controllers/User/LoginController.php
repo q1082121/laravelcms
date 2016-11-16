@@ -156,7 +156,12 @@ class LoginController extends Controller
             if($rule == 1)
             {
                 $user =Auth::guard($guard)->user();
-                $roleinfo=object_array(DB::table('role_user')->where('user_id',$user->id)->first());
+               // $roleinfo=object_array(DB::table('role_user')->where('user_id',$user->id)->first());
+                $roleids=object_array(DB::table('role_user')->where('user_id',$user->id)->pluck('role_id'));
+                if(@$roleids)
+                {
+                    $roleinfo=object_array(DB::table('roles')->whereIn('id',@$roleids)->orderBy('type', 'asc')->orderBy('level', 'desc')->first());
+                }
                 /*******************
                  +记录日志 【      
                 ********************/
@@ -174,7 +179,7 @@ class LoginController extends Controller
                 /*******************
                  +          】      
                 ********************/
-                switch(@$roleinfo['role_id'])
+                switch(@$roleinfo['type'])
                 {
                     case 1:
                             $linkurl=route('get.admin');
@@ -183,7 +188,7 @@ class LoginController extends Controller
                             $linkurl=route('get.admin');
                     break;
                     case 3:
-                            $linkurl='/user/';
+                            $linkurl=route('get.admin');
                     break;
                     case 4:
                             $linkurl='/user/';

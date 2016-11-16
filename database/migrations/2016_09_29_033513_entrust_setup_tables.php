@@ -17,6 +17,10 @@ class EntrustSetupTables extends Migration
             $table->string('name')->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
+            $table->tinyInteger('type')->default(0);            //类型
+            $table->tinyInteger('level')->default(0);           //级别    
+            $table->string('score')->default(0);                //积分制
+            $table->string('experience')->default(0);           //经验值要求
             $table->timestamps();
         });
 
@@ -24,12 +28,10 @@ class EntrustSetupTables extends Migration
         Schema::create('role_user', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
-
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('role_id')->references('id')->on('roles')
                 ->onUpdate('cascade')->onDelete('cascade');
-
             $table->primary(['user_id', 'role_id']);
         });
 

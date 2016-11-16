@@ -36,18 +36,29 @@
             <thead>
             <tr>
               <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_type')}}</th>
               <th>{{trans('admin.fieldname_item_keyval')}}</th>
               <th>{{trans('admin.fieldname_item_name')}}</th>
               <th>{{trans('admin.fieldname_item_description')}}</th>
+              <th>{{trans('admin.fieldname_item_level')}}</th>
+              <th>{{trans('admin.fieldname_item_check_in_score')}}</th>
+              <th>{{trans('admin.fieldname_item_experience')}}</th>
               <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
+                <td v-if="item.type == 1">{{trans('admin.define_model_userrole_type_1')}}</td>
+                <td v-if="item.type == 2">{{trans('admin.define_model_userrole_type_2')}}</td>
+                <td v-if="item.type == 3">{{trans('admin.define_model_userrole_type_3')}}</td>
+                <td v-if="item.type == 4">{{trans('admin.define_model_userrole_type_4')}}</td>
                 <td>@{{ item.name }}</td>
                 <td>@{{ item.display_name }}</td>
                 <td>@{{ item.description }}</td>
+                <td>@{{ item.level }}</td>
+                <td>@{{ item.score }}</td>
+                <td>@{{ item.experience }}</td>
                 <td>
                   <div class="tools">
                     @ability('admin', 'edit')

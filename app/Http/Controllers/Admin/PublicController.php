@@ -179,7 +179,7 @@ class PublicController extends Controller
 			|--------------------------------------------------------------------------
 			|
 			*/
-			if(Entrust::hasRole(['admin', 'subadmin']) == false )
+			if(Entrust::hasRole(['admin', 'areaadmin', 'subareaadmin']) == false )
 			{
 				alert('/',trans('admin.message_userrole_failure'));
 			}

@@ -171,7 +171,11 @@ return [
     |--------------------------------------------------------------------------
     |
     |
-    */
+    */  
+    'define_model_userrole_type_1'                =>   '总管理员组', 
+    'define_model_userrole_type_2'                =>   '区域管理员组',  
+    'define_model_userrole_type_3'                =>   '子区域管理员组',
+    'define_model_userrole_type_4'                =>   '会员组',  
     'define_model_serverinfo_phpver'              =>   'PHP版本号',
     'define_model_serverinfo_phpos'               =>   'PHP操作系统',
     'define_model_serverinfo_phpsafe'             =>   'PHP安全模式',
@@ -275,6 +279,9 @@ return [
     'fieldname_item_nick'                           =>   '昵称',
     'fieldname_item_money'                          =>   '钱包',
     'fieldname_item_score'                          =>   '积分',
+    'fieldname_item_level'                          =>   '等级',
+    'fieldname_item_check_in_score'                 =>   '签到积分',
+    'fieldname_item_experience'                     =>   '经验值',
     'fieldname_item_lock'                           =>   '状态锁',
     'fieldname_item_headimage'                      =>   '头像',
     'fieldname_item_sex'                            =>   '性别',

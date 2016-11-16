@@ -51,15 +51,15 @@ QQ	:471416739
     php artisan migrate
 	
 6. 填充网站初始数据(由于地区数据比较多，生成比较慢，预计时间5-10分钟内)	
-		1 php artisan db:seed
+		1 php artisan db:seed 也可以用下面分步骤执行
 		
-		2 php artisan db:seed --class=UserSeeder		 账号默认密码:111111
+			1 php artisan db:seed --class=UserSeeder		 账号默认密码:111111
 		
-		3 php artisan db:seed --class=RoleSeeder
+			2 php artisan db:seed --class=RoleSeeder
 		
-		4 php artisan db:seed --class=PermissionSeeder
+			3 php artisan db:seed --class=PermissionSeeder
 		
-		5 php artisan db:seed --class=DistrictSeeder	 数据较大
+			4 php artisan db:seed --class=DistrictSeeder	 数据较大
 		
 7. 开始体验
 	[DEMO](http://demo.dc918.com)

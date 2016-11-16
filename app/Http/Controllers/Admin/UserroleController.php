@@ -157,6 +157,10 @@ class UserroleController extends PublicController
 			$params->name = $request->get('name');
 			$params->display_name	= $request->get('display_name');
 			$params->description	= $request->get('description');
+			$params->type	= 4;
+			$params->level	= $request->get('level');
+			$params->score	= $request->get('score');
+			$params->experience	= $request->get('experience');
 
 			if ($params->save()) 
 			{
@@ -225,6 +229,9 @@ class UserroleController extends PublicController
 		$params = Role::find($request->get('id'));
 		$params->display_name = $request->get('display_name');
 		$params->description = $request->get('description');
+		$params->level	= $request->get('level');
+		$params->score	= $request->get('score');
+		$params->experience	= $request->get('experience');
 		
 		if ($params->save()) 
 		{

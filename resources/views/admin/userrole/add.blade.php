@@ -30,6 +30,24 @@
                 <input type="text" class="form-control" v-model="params_data.description"  placeholder="{{trans('admin.website_demo_tip')}}：管理员会员组拥有全部权限" >
               </div>
             </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_level')}}</span>
+                <input type="text" class="form-control" v-model="params_data.level"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_check_in_score')}}</span>
+                <input type="text" class="form-control" v-model="params_data.score"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_experience')}}</span>
+                <input type="text" class="form-control" v-model="params_data.experience"   >
+              </div>
+            </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
@@ -58,6 +76,9 @@ new Vue({
                 name                :'',
                 display_name        :'',
                 description         :'',
+                level               :'',
+                score               :'',
+                experience          :'',
                 id                  :'{{$website["id"]}}',
              },
              cur_title              :'',

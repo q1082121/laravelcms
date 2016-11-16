@@ -4,15 +4,16 @@
 ****Title :题目题库
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Http\Model\Question;
 use DB;
 use URL;
 use Cache;
 use App\Common\lib\Cates; 
+
 class QuestionController extends PublicController
 {
     //
@@ -37,11 +38,11 @@ class QuestionController extends PublicController
 			break;
 		}
 		$website['type']=$type;
-		$website['apiurl_list']=URL::action('Admin\QuestionController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
-		$website['link_add']=URL::action('Admin\QuestionController@add').'/'.$type;
+		$website['apiurl_list']=route('post.admin.question.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
+		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
+		$website['apiurl_cache']=route('post.admin.cacheapi.api_cache');
+		$website['link_add']=route('get.admin.question.add').'/'.$type;
 		$website['link_edit']=route('get.admin.question.edit').'/';
 		$website['link_option']=route('get.admin.questionoption').'/';
 		$website['way']='title';
@@ -72,10 +73,10 @@ class QuestionController extends PublicController
 			break;
 		}
 		$website['type']=$type;
-		$website['apiurl_add']=URL::action('Admin\QuestionController@api_add');
-		$website['apiurl_info']=URL::action('Admin\QuestionController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\QuestionController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_add']=route('post.admin.question.api_add');
+		$website['apiurl_info']=route('post.admin.question.api_info');
+		$website['apiurl_edit']=route('post.admin.question.api_edit');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=0;
 		
 		
@@ -106,10 +107,10 @@ class QuestionController extends PublicController
 	{
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
-		$website['apiurl_add']=URL::action('Admin\QuestionController@api_add');
-		$website['apiurl_info']=URL::action('Admin\QuestionController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\QuestionController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_add']=route('post.admin.question.api_add');
+		$website['apiurl_info']=route('post.admin.question.api_info');
+		$website['apiurl_edit']=route('post.admin.question.api_edit');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=$id;
 		$info = object_array(DB::table('questions')->whereId($id)->first());
 		switch($info['type'])
@@ -226,7 +227,7 @@ class QuestionController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_add_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\QuestionController@index').'/'.$params->type;
+			$msg_array['curl']=route('get.admin.question').'/'.$params->type;
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -307,7 +308,7 @@ class QuestionController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\QuestionController@index').'/'.$params->type;
+			$msg_array['curl']=route('get.admin.question').'/'.$params->type;
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';

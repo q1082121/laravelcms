@@ -4,17 +4,16 @@
 ****Title :用户
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-//使用User模型
 use App\Http\Model\User;
 use DB;
 use Cache;
-//使用URL生成地址
 use URL;
 use Hash;
+
 class UserController extends PublicController
 {
 	/******************************************
@@ -25,8 +24,8 @@ class UserController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_user');
-		$website['apiurl_list']=URL::action('Admin\UserController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
+		$website['apiurl_list']=route('post.admin.user.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
 		$website['link_set']=route('get.admin.user.set').'/';
 		$website['way']='username';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_username'),'value'=>'username');
@@ -152,7 +151,7 @@ class UserController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\UserController@index');
+			$msg_array['curl']=route('get.admin.user');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -217,7 +216,7 @@ class UserController extends PublicController
 					$msg_array['status']='1';
 					$msg_array['info']=trans('admin.message_edit_success');
 					$msg_array['is_reload']=0;
-					$msg_array['curl']=URL::action('User\LoginController@logout');
+					$msg_array['curl']=route('get.user.logout');
 					$msg_array['resource']='';
 					$msg_array['param_way']='';
 					$msg_array['param_keyword']='';
@@ -256,9 +255,9 @@ class UserController extends PublicController
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_action_set_role');
 
-		$website['apiurl_list']=URL::action('Admin\UserroleController@api_list_related');
-		$website['apiurl_get']=URL::action('Admin\UserroleController@api_get_role');
-		$website['apiurl_cancel']=URL::action('Admin\UserroleController@api_cancel_role');
+		$website['apiurl_list']=route('post.admin.userrole.api_list_related');
+		$website['apiurl_get']=route('post.admin.userrole.api_get_role');
+		$website['apiurl_cancel']=route('post.admin.userrole.api_cancel_role');
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyval'),'value'=>'name');
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'display_name');
@@ -279,10 +278,10 @@ class UserController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_userinfo');
-		$website['apiurl_info']=URL::action('Admin\UserController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\UserController@api_edit');
-		$website['apiurl_area']=URL::action('Admin\DistrictController@api_area');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_info']=route('post.admin.user.api_info');
+		$website['apiurl_edit']=route('post.admin.user.api_edit');
+		$website['apiurl_area']=route('post.admin.district.api_area');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$area_data_p[]=array('id'=>0,'name'=>trans('admin.option_select_p'),'alias'=>trans('admin.option_select_p'));
 		$area_data_c[]=array('id'=>0,'name'=>trans('admin.option_select_c'),'alias'=>trans('admin.option_select_c'));
 		$area_data_x[]=array('id'=>0,'name'=>trans('admin.option_select_x'),'alias'=>trans('admin.option_select_x'));
@@ -302,7 +301,7 @@ class UserController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.define_model_user_editpwd');
-		$website['apiurl_edit_pwd']=URL::action('Admin\UserController@api_edit_pwd');
+		$website['apiurl_edit_pwd']=route('post.admin.user.api_edit_pwd');
 		$website['id']=$this->user['id'];
 		
 		return view('admin/user/edit_pwd')->with('website',$website);

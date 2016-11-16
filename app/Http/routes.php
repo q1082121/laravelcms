@@ -298,7 +298,7 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('letter/api_list', 'LetterController@api_list')->name('post.admin.letter.api_list');
 	Route::post('letter/api_add', 'LetterController@api_add')->name('post.admin.letter.api_add');
 	Route::post('letter/api_info', 'LetterController@api_info')->name('post.admin.letter.api_info');
-	Route::post('letter/api_count', 'LetterController@api_count')->name('post.admin.letter.api_edit');
+	Route::post('letter/api_count', 'LetterController@api_count')->name('post.admin.letter.api_count');
 	//微信-公众号
 	Route::post('wechat/api_list', 'WechatController@api_list')->name('post.admin.wechat.api_list');
 	Route::post('wechat/api_add', 'WechatController@api_add')->name('post.admin.wechat.api_add');

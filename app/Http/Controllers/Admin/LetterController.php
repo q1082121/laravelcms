@@ -4,10 +4,10 @@
 ****Title :信件管理
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Http\Model\Letter;
 use DB;
 use Cache;
@@ -25,11 +25,11 @@ class LetterController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.define_model_letter_received');
-		$website['apiurl_list']=URL::action('Admin\LetterController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_count']=URL::action('Admin\LetterController@api_count');
-		$website['link_add']=URL::action('Admin\LetterController@add');
+		$website['apiurl_list']=route('post.admin.letter.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
+		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
+		$website['apiurl_count']=route('post.admin.letter.api_count');
+		$website['link_add']=route('get.admin.letter.add');
 		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
@@ -47,11 +47,11 @@ class LetterController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.define_model_letter_send');
-		$website['apiurl_list']=URL::action('Admin\LetterController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_count']=URL::action('Admin\LetterController@api_count');
-		$website['link_add']=URL::action('Admin\LetterController@add');
+		$website['apiurl_list']=route('post.admin.letter.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
+		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
+		$website['apiurl_count']=route('post.admin.letter.api_count');
+		$website['link_add']=route('get.admin.letter.add');
 		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
@@ -69,11 +69,11 @@ class LetterController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.define_model_letter_star');
-		$website['apiurl_list']=URL::action('Admin\LetterController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_count']=URL::action('Admin\LetterController@api_count');
-		$website['link_add']=URL::action('Admin\LetterController@add');
+		$website['apiurl_list']=route('post.admin.letter.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
+		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
+		$website['apiurl_count']=route('post.admin.letter.api_count');
+		$website['link_add']=route('get.admin.letter.add');
 		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
@@ -91,11 +91,11 @@ class LetterController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.define_model_letter_trash');
-		$website['apiurl_list']=URL::action('Admin\LetterController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_count']=URL::action('Admin\LetterController@api_count');
-		$website['link_add']=URL::action('Admin\LetterController@add');
+		$website['apiurl_list']=route('post.admin.letter.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
+		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
+		$website['apiurl_count']=route('post.admin.letter.api_count');
+		$website['link_add']=route('get.admin.letter.add');
 		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
@@ -113,7 +113,7 @@ class LetterController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_letter');
-		$website['apiurl_add']=URL::action('Admin\LetterController@api_add');
+		$website['apiurl_add']=route('post.admin.letter.api_add');
 		$website['id']=0;
 
 		return view('admin/letter/add')->with('website',$website);
@@ -252,7 +252,7 @@ class LetterController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_send_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\LetterController@send');
+			$msg_array['curl']=route('get.admin.letter.send');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';

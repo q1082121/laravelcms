@@ -4,16 +4,17 @@
 ****Title :文本回复
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Http\Model\Wechat;
 use App\Http\Model\Wechatreplytext;
 use App\Http\Model\Wechatkeyword;
 use DB;
 use URL;
 use Cache;
+
 class WechatreplytextController extends PublicController
 {
     //
@@ -26,10 +27,10 @@ class WechatreplytextController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_text_reply');
-		$website['apiurl_list']=URL::action('Admin\WechatreplytextController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['link_add']=URL::action('Admin\WechatreplytextController@add').'/'.$id;
+		$website['apiurl_list']=route('post.admin.wechatreplytext.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
+		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
+		$website['link_add']=route('get.admin.wechatreplytext.add').'/'.$id;
 		$website['link_edit']=route('get.admin.wechatreplytext.edit').'/';
 		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;
 		$website['way']='keyword';
@@ -50,10 +51,10 @@ class WechatreplytextController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_text_reply');
-		$website['apiurl_add']=URL::action('Admin\WechatreplytextController@api_add');
-		$website['apiurl_info']=URL::action('Admin\WechatreplytextController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\WechatreplytextController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_add']=route('post.admin.wechatreplytext.api_add');
+		$website['apiurl_info']=route('post.admin.wechatreplytext.api_info');
+		$website['apiurl_edit']=route('post.admin.wechatreplytext.api_edit');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=0;
 		$website['wechat_id']=$id;
 		return view('admin/wechatreplytext/add')->with('website',$website);
@@ -67,10 +68,10 @@ class WechatreplytextController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_text_reply');
-		$website['apiurl_add']=URL::action('Admin\WechatreplytextController@api_add');
-		$website['apiurl_info']=URL::action('Admin\WechatreplytextController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\WechatreplytextController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_add']=route('post.admin.wechatreplytext.api_add');
+		$website['apiurl_info']=route('post.admin.wechatreplytext.api_info');
+		$website['apiurl_edit']=route('post.admin.wechatreplytext.api_edit');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=$id;
 		$info = object_array(DB::table('wechatreplytexts')->whereId($id)->first());
 		$website['wechat_id']=$info['wechat_id'];
@@ -149,7 +150,7 @@ class WechatreplytextController extends PublicController
 					$msg_array['status']='1';
 					$msg_array['info']=trans('admin.message_add_success');
 					$msg_array['is_reload']=0;
-					$msg_array['curl']=URL::action('Admin\WechatreplytextController@index').'/'.$params->wechat_id;
+					$msg_array['curl']=route('get.admin.wechatreplytext').'/'.$params->wechat_id;
 					$msg_array['resource']='';
 					$msg_array['param_way']='';
 					$msg_array['param_keyword']='';
@@ -262,7 +263,7 @@ class WechatreplytextController extends PublicController
 					$msg_array['status']='1';
 					$msg_array['info']=trans('admin.message_save_success');
 					$msg_array['is_reload']=0;
-					$msg_array['curl']=URL::action('Admin\WechatreplytextController@index').'/'.$params->wechat_id;
+					$msg_array['curl']=route('get.admin.wechatreplytext').'/'.$params->wechat_id;
 					$msg_array['resource']='';
 					$msg_array['param_way']='';
 					$msg_array['param_keyword']='';

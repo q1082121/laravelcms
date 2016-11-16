@@ -4,16 +4,16 @@
 ****Title :微信(会员粉丝)
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Http\Model\Wechat;
 use App\Http\Model\Wechatuser;
-
 use DB;
 use URL;
 use Cache;
+
 class WechatuserController extends PublicController
 {
     //
@@ -26,8 +26,8 @@ class WechatuserController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_wechat_user');
-		$website['apiurl_list']=URL::action('Admin\WechatuserController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
+		$website['apiurl_list']=route('post.admin.wechatuser.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
 		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;
 		$website['way']='nickname';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_nick'),'value'=>'nickname');

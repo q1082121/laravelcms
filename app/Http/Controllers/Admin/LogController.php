@@ -4,13 +4,14 @@
 ****Title :日志管理
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Http\Model\Log;
 use DB;
 use URL;
+
 class LogController extends PublicController
 {
     //
@@ -23,9 +24,9 @@ class LogController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_log');
-		$website['apiurl_list']=URL::action('Admin\LogController@api_list');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_clear']=URL::action('Admin\DeleteapiController@api_clear');
+		$website['apiurl_list']=route('post.admin.log.api_list');
+		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
+		$website['apiurl_clear']=route('post.admin.deleteapi.api_clear');
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);

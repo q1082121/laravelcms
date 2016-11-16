@@ -4,16 +4,17 @@
 ****Title :题目选项
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Http\Model\Question;
 use App\Http\Model\Questionoption;
 use DB;
 use URL;
 use Cache;
 use App\Common\lib\Cates; 
+
 class QuestionoptionController extends PublicController
 {
     //
@@ -26,11 +27,11 @@ class QuestionoptionController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_question_option');
-		$website['apiurl_list']=URL::action('Admin\QuestionoptionController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
-		$website['link_add']=URL::action('Admin\QuestionoptionController@add').'/'.$id;
+		$website['apiurl_list']=route('post.admin.questionoption.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
+		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
+		$website['apiurl_cache']=route('post.admin.cacheapi.api_cache');
+		$website['link_add']=route('get.admin.questionoption.add').'/'.$id;
 		$website['link_edit']=route('get.admin.questionoption.edit').'/';
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
@@ -50,10 +51,10 @@ class QuestionoptionController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_question_option');
-		$website['apiurl_add']=URL::action('Admin\QuestionoptionController@api_add');
-		$website['apiurl_info']=URL::action('Admin\QuestionoptionController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\QuestionoptionController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_add']=route('post.admin.questionoption.api_add');
+		$website['apiurl_info']=route('post.admin.questionoption.api_info');
+		$website['apiurl_edit']=route('post.admin.questionoption.api_edit');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=0;
 		$info = object_array(DB::table('questions')->whereId($id)->first());
 		$website['info']=$info;
@@ -69,10 +70,10 @@ class QuestionoptionController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_question_option');
-		$website['apiurl_add']=URL::action('Admin\QuestionoptionController@api_add');
-		$website['apiurl_info']=URL::action('Admin\QuestionoptionController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\QuestionoptionController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_add']=route('post.admin.questionoption.api_add');
+		$website['apiurl_info']=route('post.admin.questionoption.api_info');
+		$website['apiurl_edit']=route('post.admin.questionoption.api_edit');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=$id;
 		$info = object_array(DB::table('questionoptions')->whereId($id)->first());
 		$website['qid']=$info['qid'];
@@ -153,7 +154,7 @@ class QuestionoptionController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_add_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\QuestionoptionController@index').'/'.$params->qid;
+			$msg_array['curl']=route('get.admin.questionoption').'/'.$params->qid;
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -232,7 +233,7 @@ class QuestionoptionController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\QuestionoptionController@index').'/'.$params->qid;
+			$msg_array['curl']=route('get.admin.questionoption').'/'.$params->qid;
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';

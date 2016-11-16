@@ -26,8 +26,8 @@ class UserpermissionController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_permission');
-		$website['apiurl_list']=URL::action('Admin\UserpermissionController@api_list');
-		$website['link_add']=URL::action('Admin\UserpermissionController@add');
+		$website['apiurl_list']=route('post.admin.userpermission.api_list');
+		$website['link_add']=route('get.admin.userpermission.add');
 		$website['link_edit']=route('get.admin.userpermission.edit').'/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyval'),'value'=>'name');
@@ -45,9 +45,9 @@ class UserpermissionController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_permission');
-		$website['apiurl_add']=URL::action('Admin\UserpermissionController@api_add');
-		$website['apiurl_info']=URL::action('Admin\UserpermissionController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\UserpermissionController@api_edit');
+		$website['apiurl_add']=route('post.admin.userpermission.api_add');
+		$website['apiurl_info']=route('post.admin.userpermission.api_info');
+		$website['apiurl_edit']=route('post.admin.userpermission.api_edit');
 		$website['id']=0;
 		return view('admin/userpermission/add')->with('website',$website);
 	}
@@ -59,9 +59,9 @@ class UserpermissionController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_permission');
-		$website['apiurl_add']=URL::action('Admin\UserpermissionController@api_add');
-		$website['apiurl_info']=URL::action('Admin\UserpermissionController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\UserpermissionController@api_edit');
+		$website['apiurl_add']=route('post.admin.userpermission.api_add');
+		$website['apiurl_info']=route('post.admin.userpermission.api_info');
+		$website['apiurl_edit']=route('post.admin.userpermission.api_edit');
 		$website['id']=$id;
 		return view('admin/userpermission/add')->with('website',$website);
 	}
@@ -136,7 +136,7 @@ class UserpermissionController extends PublicController
 				$msg_array['status']='1';
 				$msg_array['info']=trans('admin.message_add_success');
 				$msg_array['is_reload']=0;
-				$msg_array['curl']=URL::action('Admin\UserpermissionController@index');
+				$msg_array['curl']=route('get.admin.userpermission');
 				$msg_array['resource']='';
 				$msg_array['param_way']='';
 				$msg_array['param_keyword']='';
@@ -204,7 +204,7 @@ class UserpermissionController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\UserpermissionController@index');
+			$msg_array['curl']=route('get.admin.userpermission');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';

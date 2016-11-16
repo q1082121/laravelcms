@@ -4,10 +4,10 @@
 ****Title :题目分类
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Http\Model\Classifyquestion;
 use DB;
 use URL;
@@ -25,11 +25,11 @@ class ClassifyquestionController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_classifyquestion');
-		$website['apiurl_list']=URL::action('Admin\ClassifyquestionController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
-		$website['link_add']=URL::action('Admin\ClassifyquestionController@add');
+		$website['apiurl_list']=route('post.admin.classifyquestion.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
+		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
+		$website['apiurl_cache']=route('post.admin.cacheapi.api_cache');
+		$website['link_add']=route('get.admin.classifyquestion.add');
 		$website['link_edit']=route('get.admin.classifyquestion.edit').'/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
@@ -46,10 +46,10 @@ class ClassifyquestionController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_classifyquestion');
-		$website['apiurl_add']=URL::action('Admin\ClassifyquestionController@api_add');
-		$website['apiurl_info']=URL::action('Admin\ClassifyquestionController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\ClassifyquestionController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_add']=route('post.admin.classifyquestion.api_add');
+		$website['apiurl_info']=route('post.admin.classifyquestion.api_info');
+		$website['apiurl_edit']=route('post.admin.classifyquestion.api_edit');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=0;
 		
 		$list=object_array(DB::table('classifyquestions')->where('status','=','1')->orderBy('id', 'desc')->get());
@@ -78,10 +78,10 @@ class ClassifyquestionController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_classifyquestion');
-		$website['apiurl_add']=URL::action('Admin\ClassifyquestionController@api_add');
-		$website['apiurl_info']=URL::action('Admin\ClassifyquestionController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\ClassifyquestionController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_add']=route('post.admin.classifyquestion.api_add');
+		$website['apiurl_info']=route('post.admin.classifyquestion.api_info');
+		$website['apiurl_edit']=route('post.admin.classifyquestion.api_edit');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=$id;
 
 		$list=object_array(DB::table('classifyquestions')->where('status','=','1')->orderBy('id', 'desc')->get());
@@ -210,7 +210,7 @@ class ClassifyquestionController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_add_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\ClassifyquestionController@index');
+			$msg_array['curl']=route('get.admin.classifyquestion');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -317,7 +317,7 @@ class ClassifyquestionController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\ClassifyquestionController@index');
+			$msg_array['curl']=route('get.admin.classifyquestion');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';

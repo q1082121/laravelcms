@@ -4,10 +4,10 @@
 ****Title :广告图片
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Http\Model\Picture;
 use DB;
 use URL;
@@ -24,11 +24,11 @@ class PictureController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_advertising');
-		$website['apiurl_list']=URL::action('Admin\PictureController@api_list');
-		$website['apiurl_one_action']=URL::action('Admin\OneactionapiController@api_one_action');
-		$website['apiurl_delete']=URL::action('Admin\DeleteapiController@api_delete');
-		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
-		$website['link_add']=URL::action('Admin\PictureController@add');
+		$website['apiurl_list']=route('post.admin.picture.api_list');
+		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
+		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
+		$website['apiurl_cache']=route('post.admin.cacheapi.api_cache');
+		$website['link_add']=route('get.admin.picture.add');
 		$website['link_edit']=route('get.admin.picture.edit').'/';
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
@@ -47,10 +47,10 @@ class PictureController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_advertising');
-		$website['apiurl_add']=URL::action('Admin\PictureController@api_add');
-		$website['apiurl_info']=URL::action('Admin\PictureController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\PictureController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_add']=route('post.admin.picture.api_add');
+		$website['apiurl_info']=route('post.admin.picture.api_info');
+		$website['apiurl_edit']=route('post.admin.picture.api_edit');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=0;
 		$website['modellist']=json_encode($this->picture_modellist);
 		
@@ -66,10 +66,10 @@ class PictureController extends PublicController
 		$website=$this->website;
         $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_advertising');
-		$website['apiurl_add']=URL::action('Admin\PictureController@api_add');
-		$website['apiurl_info']=URL::action('Admin\PictureController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\PictureController@api_edit');
-		$website['apiurl_del_image']=URL::action('Admin\DeleteapiController@api_del_image');
+		$website['apiurl_add']=route('post.admin.picture.api_add');
+		$website['apiurl_info']=route('post.admin.picture.api_info');
+		$website['apiurl_edit']=route('post.admin.picture.api_edit');
+		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=$id;
 		$website['modellist']=json_encode($this->picture_modellist);
 
@@ -146,7 +146,7 @@ class PictureController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_add_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\PictureController@index');
+			$msg_array['curl']=route('get.admin.picture');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';
@@ -227,7 +227,7 @@ class PictureController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\PictureController@index');
+			$msg_array['curl']=route('get.admin.picture');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';

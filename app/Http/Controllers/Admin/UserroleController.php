@@ -29,8 +29,8 @@ class UserroleController extends PublicController
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_role');
 
-		$website['apiurl_list']=URL::action('Admin\UserroleController@api_list');
-		$website['link_add']=URL::action('Admin\UserroleController@add');
+		$website['apiurl_list']=route('post.admin.userrole.api_list');
+		$website['link_add']=route('get.admin.userrole.add');
 		$website['link_edit']=route('get.admin.userrole.edit').'/';
 		$website['link_set']=route('get.admin.userrole.set').'/';
 		$website['way']='name';
@@ -49,9 +49,9 @@ class UserroleController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_role');
-		$website['apiurl_add']=URL::action('Admin\UserroleController@api_add');
-		$website['apiurl_info']=URL::action('Admin\UserroleController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\UserroleController@api_edit');
+		$website['apiurl_add']=route('post.admin.userrole.api_add');
+		$website['apiurl_info']=route('post.admin.userrole.api_info');
+		$website['apiurl_edit']=route('post.admin.userrole.api_edit');
 		$website['id']=0;
 		return view('admin/userrole/add')->with('website',$website);
 	}
@@ -63,9 +63,9 @@ class UserroleController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_role');
-		$website['apiurl_add']=URL::action('Admin\UserroleController@api_add');
-		$website['apiurl_info']=URL::action('Admin\UserroleController@api_info');
-		$website['apiurl_edit']=URL::action('Admin\UserroleController@api_edit');
+		$website['apiurl_add']=route('post.admin.userrole.api_add');
+		$website['apiurl_info']=route('post.admin.userrole.api_info');
+		$website['apiurl_edit']=route('post.admin.userrole.api_edit');
 		$website['id']=$id;
 		return view('admin/userrole/add')->with('website',$website);
 	}
@@ -78,9 +78,9 @@ class UserroleController extends PublicController
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_action_set_permission');
 
-		$website['apiurl_list']=URL::action('Admin\UserpermissionController@api_list_related');
-		$website['apiurl_get']=URL::action('Admin\UserpermissionController@api_get_permission');
-		$website['apiurl_cancel']=URL::action('Admin\UserpermissionController@api_cancel_permission');
+		$website['apiurl_list']=route('post.admin.userpermission.api_list_related');
+		$website['apiurl_get']=route('post.admin.userpermission.api_get_permission');
+		$website['apiurl_cancel']=route('post.admin.userpermission.api_cancel_permission');
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyval'),'value'=>'name');
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'display_name');
@@ -163,7 +163,7 @@ class UserroleController extends PublicController
 				$msg_array['status']='1';
 				$msg_array['info']=trans('admin.message_add_success');
 				$msg_array['is_reload']=0;
-				$msg_array['curl']=URL::action('Admin\UserroleController@index');
+				$msg_array['curl']=route('get.admin.userrole');
 				$msg_array['resource']='';
 				$msg_array['param_way']='';
 				$msg_array['param_keyword']='';
@@ -231,7 +231,7 @@ class UserroleController extends PublicController
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=URL::action('Admin\UserroleController@index');
+			$msg_array['curl']=route('get.admin.userrole');
 			$msg_array['resource']='';
 			$msg_array['param_way']='';
 			$msg_array['param_keyword']='';

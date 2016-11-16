@@ -23,7 +23,7 @@ class SettingController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['apiurl_cache']=URL::action('Admin\CacheapiController@api_cache');
+		$website['apiurl_cache']=route('post.admin.cacheapi.api_cache');
 		$website['apiurl_info']=URL::action('Admin\SettingController@api_info');
 		$website['cursitename']=trans('admin.website_navigation_setting');
 		$website['info']=$this->root;

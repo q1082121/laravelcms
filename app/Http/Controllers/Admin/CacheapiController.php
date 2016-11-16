@@ -4,14 +4,13 @@
 ****Title :生成缓存文件接口 
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
-//使用URL生成地址
 use URL;
 use Cache;
-//使用内存缓存
 use Redis;
 
 class CacheapiController extends PublicController

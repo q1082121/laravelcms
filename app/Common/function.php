@@ -167,6 +167,10 @@ function getCurrentControllerName($group='Admin')
 			$string = substr($fullname, 27);
 			$string = str_replace("Controller", "", $string);
 			break;
+		case 'User':
+			$string = substr($fullname, 26);
+			$string = str_replace("Controller", "", $string);
+			break;	
 		case 'Home':
 			$string = substr($fullname, 21);
 			$string = str_replace("Controller", "", $string);

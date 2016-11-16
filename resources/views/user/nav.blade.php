@@ -22,6 +22,11 @@
         </li>
         <li class="sidebar-nav-heading">Base<span class="sidebar-nav-heading-info"> 基本信息</span></li>
         <li class="sidebar-nav-link">
+            <a href="{{ route('get.user.userinfo') }}">
+                <i class="am-icon-user sidebar-nav-link-logo"></i> 会员信息
+            </a>
+        </li>
+        <li class="sidebar-nav-link">
             <a href="javascript:void(0);">
                 <i class="am-icon-hourglass sidebar-nav-link-logo"></i> 成长等级
             </a>
@@ -56,7 +61,7 @@
         <li class="sidebar-nav-heading">Safe<span class="sidebar-nav-heading-info"> 安全中心</span></li>
         <li class="sidebar-nav-link">
             <a href="javascript:void(0);">
-                <i class="am-icon-pencil sidebar-nav-link-logo"></i> 会员信息
+                <i class="am-icon-pencil sidebar-nav-link-logo"></i> 修改密码
             </a>
         </li>
         <li class="sidebar-nav-link">
@@ -71,7 +76,7 @@
         </li>
         <li class="sidebar-nav-link">
             <a href="javascript:;" class="sidebar-nav-sub-title">
-                <i class="am-icon-table sidebar-nav-link-logo"></i> 第三方帐号
+                <i class="am-icon-share-alt sidebar-nav-link-logo"></i> 第三方帐号
                 <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
             </a>
             <ul class="sidebar-nav sidebar-nav-sub">

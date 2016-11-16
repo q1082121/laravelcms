@@ -3,15 +3,15 @@
 ****AuThor:rubbish.boy@163.com
 ****Title :省市区地区
 *******************************************/
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-//使用Class模型
 use App\Http\Model\District;
 use DB;
-//使用URL生成地址
 use URL;
+
 class DistrictController extends PublicController
 {
     //

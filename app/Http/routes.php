@@ -56,7 +56,19 @@ Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user
 	****@Title :会员中心
 	*******************************************/
 	Route::get('/','UserController@index')->name('get.user.index');
-	
+	Route::get('/userinfo','UserController@userinfo')->name('get.user.userinfo');
+
+
+
+	//删除图片
+	Route::post('deleteapi/api_del_image', 'DeleteapiController@api_del_image')->name('post.user.deleteapi.api_del_image');
+	//用户信息
+	Route::post('userinfo/api_edit_pwd', 'UserController@api_edit_pwd')->name('post.user.userinfo.api_edit_pwd');
+	Route::post('userinfo/api_info', 'UserController@api_info')->name('post.user.userinfo.api_info');
+	Route::post('userinfo/api_edit', 'UserController@api_edit')->name('post.user.userinfo.api_edit');
+	//地区数据
+	Route::post('district/api_area', 'DistrictController@api_area')->name('post.user.district.api_area');
+
 });
 
 

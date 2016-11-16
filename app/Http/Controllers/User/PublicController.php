@@ -178,8 +178,8 @@ class PublicController extends Controller
 								$thumb_height=@$this->root['user_thumb_height']?@$this->root['user_thumb_height']:$this->thumb_height;	
 				break;
 				default:
-								$thumb_width=$thumb_width?$thumb_width:$this->thumb_width;
-								$thumb_height=$thumb_height?$thumb_height:$this->thumb_height;
+								$thumb_width=@$thumb_width?@$thumb_width:$this->thumb_width;
+								$thumb_height=@$thumb_height?@$thumb_height:$this->thumb_height;
 				break;
 			}
 			if(!is_dir($uploads_dir.'/'.$classname.'/thumb/')) 
@@ -230,6 +230,10 @@ class PublicController extends Controller
 		if (file_exists($filename)) 
 		{
 		    $result=unlink ($filename);
+		}
+		else
+		{
+			$result=0;
 		}
 
 		return $result;

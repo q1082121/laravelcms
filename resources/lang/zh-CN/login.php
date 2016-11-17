@@ -38,8 +38,9 @@ return [
     |
     */
 	
-	'login_action'		    =>	'用户 {username} 登录操作',
-	
+	'login_action_info'		    =>	'用户 {username} 登录操作',
+	'experience_action_info'	=>	'用户 {username} 登录获得 {experience} 经验值',
+
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 登录类 - 前端提示

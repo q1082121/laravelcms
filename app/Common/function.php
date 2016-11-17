@@ -256,7 +256,7 @@ function json_message($act=0,$data=null,$info=null)
 /***********************************
  * 方法名：日志记录
  * 作者： Tommy（rubbish.boy@163.com）
- + type 1 => 登录日志
+ + type 1 => 登录
  ***********************************/ 
 function in_log($data)
 {
@@ -267,7 +267,23 @@ function in_log($data)
     $log->name = $data['name'];
     $log->info = $data['info'];
     $log->ip = $data['ip'];
-    $log->save();
+    return $log->save();
+}
+/***********************************
+ * 方法名：经验值记录
+ * 作者： Tommy（rubbish.boy@163.com）
+ + type 1 => 登录
+ ***********************************/ 
+function in_experience($data)
+{
+
+    $experience = new App\Http\Model\Experience;
+    $experience->type = $data['type'];
+    $experience->user_id = $data['user_id'];
+    $experience->val = $data['val'];
+    $experience->info = $data['info'];
+    return $experience->save();
+	
 }
 /***********************************
  * 方法名：微信关键词记录

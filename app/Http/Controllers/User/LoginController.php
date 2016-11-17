@@ -156,7 +156,6 @@ class LoginController extends Controller
             if($rule == 1)
             {
                 $user =Auth::guard($guard)->user();
-               // $roleinfo=object_array(DB::table('role_user')->where('user_id',$user->id)->first());
                 $roleids=object_array(DB::table('role_user')->where('user_id',$user->id)->pluck('role_id'));
                 if(@$roleids)
                 {
@@ -166,7 +165,7 @@ class LoginController extends Controller
                  +记录日志 【      
                 ********************/
                 // 含有带花括号占位符的记录信息。
-                $messagetpl = trans('login.login_action');
+                $messagetpl = trans('login.login_action_info');
                 // 带有替换信息的上下文数组，键名为占位符名称，键值为替换值。
                 $context = interpolate($messagetpl, array('username' => $user->username));
 
@@ -179,6 +178,53 @@ class LoginController extends Controller
                 /*******************
                  +          】      
                 ********************/
+
+                /*******************
+                +每日登录获取经验值 【      
+                ********************/
+                $login_condition['type']=1;
+                $login_condition['user_id']=$user->id;
+                $startTime = date('Y-m-d'.' 00:00:00',time());
+                $endTime   = date('Y-m-d'.' 23:59:59',time());
+                $is_get_today_experience=object_array(DB::table('experiences')->where($login_condition)->whereBetween('created_at', [$startTime, $endTime])->count());
+                if($is_get_today_experience==0)
+                {
+                    $experience=2;
+                    $experiencetpl = trans('login.experience_action_info');
+                    // 带有替换信息的上下文数组，键名为占位符名称，键值为替换值。
+                    $experience_context = interpolate($experiencetpl, array('username' => $user->username,'experience'=>$experience));
+
+                    $params_experience['type']=1;
+                    $params_experience['val']=$experience;
+                    $params_experience['info']=$experience_context;
+                    $params_experience['user_id']=$user->id;
+                   
+                    DB::beginTransaction();
+                    try
+                    { 
+                         $result_experience=in_experience($params_experience);
+                         if($result_experience)
+                         {
+                             $userinfos_condition['user_id']=$user->id;
+                             DB::table('userinfos')->where($userinfos_condition)->increment('experience', $experience);
+                             DB::commit();
+                         }
+                         else
+                         {
+                             DB::rollBack();
+                         }
+
+                    }
+                    catch (\Exception $e) 
+                    { 
+                        DB::rollBack(); 
+                    }
+                }
+                /*******************
+                    +          】      
+                ********************/
+                
+
                 switch(@$roleinfo['type'])
                 {
                     case 1:

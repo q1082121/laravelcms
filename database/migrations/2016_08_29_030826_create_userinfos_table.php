@@ -24,6 +24,7 @@ class CreateUserinfosTable extends Migration
 			$table->integer('area_pid')->default(0);	//省级
 			$table->integer('area_cid')->default(0);	//市级
 			$table->integer('area_xid')->default(0);	//县级
+            $table->integer('experience')->default(0);  //经验值
 			$table->integer('score')->default(0);		//积分
 			$table->DECIMAL('money',8,2);				//钱包	
 			$table->string('user_id')->unique();

@@ -29,20 +29,6 @@ class HomeController extends PublicController
         $website['title']=@$this->root['systitle'];
         $website['apiurl_cache']=URL::action('CacheapiController@api_cache');
 
-        /*******************
-        +每日登录获取经验值 【      
-        ********************/
-        $login_condition['type']=1;
-        $login_condition['user_id']=1;
-        $startTime = date('Y-m-d'.' 00:00:00',time());
-        $endTime   = date('Y-m-d'.' 23:59:59',time());
-        $is_get_today_experience=object_array(DB::table('experiences')->where($login_condition)->whereBetween('created_at', [$startTime, $endTime])->count());
-        /*******************
-            +          】      
-        ********************/
-
-        dump($is_get_today_experience);
-
         return view('home')->with('website',$website);
     }
 }

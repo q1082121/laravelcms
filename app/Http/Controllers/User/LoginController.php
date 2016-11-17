@@ -205,8 +205,9 @@ class LoginController extends Controller
                          $result_experience=in_experience($params_experience);
                          if($result_experience)
                          {
-                             $userinfos_condition['user_id']=$user->id;
+                             $userinfos_condition['user_id']=$params_experience['user_id'];
                              DB::table('userinfos')->where($userinfos_condition)->increment('experience', $experience);
+
                              DB::commit();
                          }
                          else

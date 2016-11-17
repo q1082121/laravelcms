@@ -238,4 +238,34 @@ class PublicController extends Controller
 
 		return $result;
 	}
+	/******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :获取经验值操作
+	*******************************************/
+	public function FunctionName($params_experience)
+	{
+		DB::beginTransaction();
+		try
+		{ 
+				$result_experience=in_experience($params_experience);
+				if($result_experience)
+				{
+					$userinfos_condition['user_id']=$params_experience['user_id'];
+					DB::table('userinfos')->where($userinfos_condition)->increment('experience', $experience);
+					
+					DB::commit();
+				}
+				else
+				{
+					DB::rollBack();
+				}
+
+		}
+		catch (\Exception $e) 
+		{ 
+			DB::rollBack(); 
+		}
+
+	}
+
 }

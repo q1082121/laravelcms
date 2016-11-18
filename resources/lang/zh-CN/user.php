@@ -11,7 +11,26 @@ return [
     |
     */
     'user_navigation_center'               =>   '会员中心',
-    'user_navigation_log'                  =>   '日志中心',
+    'user_navigation_home'                 =>   '网站首页',
+    'user_navigation_base'                 =>   '基本信息',
+    'user_navigation_userinfo'             =>   '会员信息',
+    'user_navigation_growth_level'         =>   '成才等级',
+    'user_navigation_score'                =>   '会员积分',
+    'user_navigation_money'                =>   '会员钱包',
+    'user_navigation_personalise'          =>   '个性化',
+    'user_navigation_collection'           =>   '我的收藏',
+    'user_navigation_message_center'       =>   '消息中心',
+    'user_navigation_letter'               =>   '信件管理',
+    'user_navigation_message'              =>   '消息通知',
+    'user_navigation_safe_center'          =>   '安全中心',
+    'user_navigation_edit_pwd'             =>   '修改密码',
+    'user_navigation_shipping_address'     =>   '收货地址',
+    'user_navigation_email'                =>   '邮箱认证',
+    'user_navigation_other'                =>   '第三方帐号',
+    'user_navigation_qq'                   =>   'QQ',
+    'user_navigation_weibo'                =>   '新浪微博',
+    'user_navigation_weixin'               =>   '微信',
+    'user_navigation_log'                  =>   '登录日志',
 
 
     /*

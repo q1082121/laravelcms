@@ -154,7 +154,6 @@ class PublicController extends Controller
 			else
 			{
 				//获取未读信件
-				//index
 				$condition_index['email_to']=$this->user['email'];
 				$condition_index['istrash_to']=0;
 				$condition_index['isdel_to']=0;
@@ -174,7 +173,8 @@ class PublicController extends Controller
         }
 		else
 		{	
-				alert('/user/login',trans('admin.message_userrole_login'));
+				//alert('/user/login',trans('admin.message_userrole_login'));
+				Redirect::to('/user/login')->send();
 		}
         
 		

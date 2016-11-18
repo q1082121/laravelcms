@@ -97,8 +97,10 @@ class PublicController extends Controller
         }
 		else
 		{	
-				alert('/user/login',trans('admin.message_userrole_login'));
+				//alert('/user/login',trans('admin.message_userrole_login'));
+				Redirect::to('/user/login')->send();
 		}
+		
 	}
 
 

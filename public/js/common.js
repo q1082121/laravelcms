@@ -233,7 +233,7 @@ function layermsg_s(infos,linkurl)
 	layer.msg(infos, {
 	    icon: 6,	//1
 	    shade: [0.8, '#393D49'],
-	    time: 2000     //2秒关闭 2000（如果不配置，默认是3秒）
+	    time: 1000     //2秒关闭 2000（如果不配置，默认是3秒）
 	}, function(){
 	    location.href=linkurl;
 	});  
@@ -248,7 +248,7 @@ function layermsg_success_reload(infos)
     layer.msg(infos, {
         icon: 6,    //1
         shade: [0.8, '#393D49'],
-        time: 2000     //2秒关闭 2000（如果不配置，默认是3秒）
+        time: 1000     //2秒关闭 2000（如果不配置，默认是3秒）
     }, 
     function()
     {
@@ -266,7 +266,7 @@ function layermsg_e(infos)
 	{
 	    icon: 5,	//1
 	    shade: [0.8, '#393D49'],
-	    time: 2000     //2秒关闭 2000（如果不配置，默认是3秒）
+	    time: 1000     //2秒关闭 2000（如果不配置，默认是3秒）
 	}, 
 	function()
 	{
@@ -283,7 +283,7 @@ function layermsg_success(infos)
 	layer.msg(infos, {
 	    icon: 6,	//1
 	    shade: [0.8, '#393D49'],
-	    time: 2000     //2秒关闭 2000（如果不配置，默认是3秒）
+	    time: 1000     //2秒关闭 2000（如果不配置，默认是3秒）
 	});  
 }
 /***********************************
@@ -297,7 +297,7 @@ function layermsg_error(infos)
 	{
 	    icon: 5,	//1
 	    shade: [0.8, '#393D49'],
-	    time: 2000     //2秒关闭 2000（如果不配置，默认是3秒）
+	    time: 1000     //2秒关闭 2000（如果不配置，默认是3秒）
 	});  
 }
 /***********************************

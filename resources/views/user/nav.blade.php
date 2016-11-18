@@ -26,89 +26,89 @@
     <ul class="sidebar-nav">
         <li class="sidebar-nav-link">
             <a href="/" class="active">
-                <i class="am-icon-home sidebar-nav-link-logo"></i> 网站首页
+                <i class="am-icon-home sidebar-nav-link-logo"></i> {{trans('user.user_navigation_home')}}
             </a>
         </li>
-        <li class="sidebar-nav-heading">Base<span class="sidebar-nav-heading-info"> 基本信息</span></li>
+        <li class="sidebar-nav-heading">Base<span class="sidebar-nav-heading-info"> {{trans('user.user_navigation_base')}}</span></li>
         <li class="sidebar-nav-link">
             <a href="{{ route('get.user.userinfo') }}">
-                <i class="am-icon-user sidebar-nav-link-logo"></i> 会员信息
+                <i class="am-icon-user sidebar-nav-link-logo"></i> {{trans('user.user_navigation_userinfo')}}
             </a>
         </li>
         <li class="sidebar-nav-link">
             <a href="javascript:void(0);">
-                <i class="am-icon-hourglass sidebar-nav-link-logo"></i> 成长等级
+                <i class="am-icon-hourglass sidebar-nav-link-logo"></i> {{trans('user.user_navigation_growth_level')}}
             </a>
         </li>
         <li class="sidebar-nav-link">
             <a href="javascript:void(0);">
-                <i class="am-icon-leaf sidebar-nav-link-logo"></i> 会员积分
+                <i class="am-icon-leaf sidebar-nav-link-logo"></i> {{trans('user.user_navigation_score')}}
             </a>
         </li>
         <li class="sidebar-nav-link">
             <a href="javascript:void(0);">
-                <i class="am-icon-credit-card sidebar-nav-link-logo"></i> 会员钱包
+                <i class="am-icon-credit-card sidebar-nav-link-logo"></i> {{trans('user.user_navigation_money')}}
             </a>
         </li>
-        <li class="sidebar-nav-heading">Like<span class="sidebar-nav-heading-info"> 个性化</span></li>
+        <li class="sidebar-nav-heading">Like<span class="sidebar-nav-heading-info"> {{trans('user.user_navigation_personalise')}}</span></li>
         <li class="sidebar-nav-link">
             <a href="javascript:void(0);">
-                <i class="am-icon-heart sidebar-nav-link-logo"></i> 我的收藏
+                <i class="am-icon-heart sidebar-nav-link-logo"></i> {{trans('user.user_navigation_collection')}}
             </a>
         </li>
-        <li class="sidebar-nav-heading">Msg<span class="sidebar-nav-heading-info"> 消息中心</span></li>
+        <li class="sidebar-nav-heading">Msg<span class="sidebar-nav-heading-info"> {{trans('user.user_navigation_message_center')}}</span></li>
         <li class="sidebar-nav-link">
             <a href="javascript:void(0);">
-                <i class="am-icon-envelope sidebar-nav-link-logo"></i> 信件管理
+                <i class="am-icon-envelope sidebar-nav-link-logo"></i> {{trans('user.user_navigation_letter')}}
             </a>
         </li>
         <li class="sidebar-nav-link">
             <a href="javascript:void(0);">
-                <i class="am-icon-comment sidebar-nav-link-logo"></i> 消息通知
+                <i class="am-icon-comment sidebar-nav-link-logo"></i> {{trans('user.user_navigation_message')}}
             </a>
         </li>
-        <li class="sidebar-nav-heading">Safe<span class="sidebar-nav-heading-info"> 安全中心</span></li>
+        <li class="sidebar-nav-heading">Safe<span class="sidebar-nav-heading-info"> {{trans('user.user_navigation_safe_center')}}</span></li>
         <li class="sidebar-nav-link">
             <a href="{{ route('get.user.edit_pwd') }}">
-                <i class="am-icon-pencil sidebar-nav-link-logo"></i> 修改密码
+                <i class="am-icon-pencil sidebar-nav-link-logo"></i> {{trans('user.user_navigation_edit_pwd')}}
             </a>
         </li>
         <li class="sidebar-nav-link">
             <a href="javascript:void(0);">
-                <i class="am-icon-automobile sidebar-nav-link-logo"></i> 收货地址
+                <i class="am-icon-automobile sidebar-nav-link-logo"></i> {{trans('user.user_navigation_shipping_address')}}
             </a>
         </li>
         <li class="sidebar-nav-link">
             <a href="javascript:void(0);">
-                <i class="am-icon-envelope-square sidebar-nav-link-logo"></i> 邮箱认证
+                <i class="am-icon-envelope-square sidebar-nav-link-logo"></i> {{trans('user.user_navigation_email')}}
             </a>
         </li>
         <li class="sidebar-nav-link">
             <a href="javascript:;" class="sidebar-nav-sub-title">
-                <i class="am-icon-share-alt sidebar-nav-link-logo"></i> 第三方帐号
+                <i class="am-icon-share-alt sidebar-nav-link-logo"></i> {{trans('user.user_navigation_other')}}
                 <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
             </a>
             <ul class="sidebar-nav sidebar-nav-sub">
                 <li class="sidebar-nav-link">
                     <a href="table-list.html">
-                        <span class="am-icon-qq sidebar-nav-link-logo"></span> QQ
+                        <span class="am-icon-qq sidebar-nav-link-logo"></span> Q{{trans('user.user_navigation_qq')}}
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
                     <a href="table-list-img.html">
-                        <span class="am-icon-weibo sidebar-nav-link-logo"></span> 新浪微博
+                        <span class="am-icon-weibo sidebar-nav-link-logo"></span> {{trans('user.user_navigation_weibo')}}
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
                     <a href="table-list-img.html">
-                        <span class="am-icon-weixin sidebar-nav-link-logo"></span> 微信
+                        <span class="am-icon-weixin sidebar-nav-link-logo"></span> {{trans('user.user_navigation_weixin')}}
                     </a>
                 </li>
             </ul>
         </li>
         <li class="sidebar-nav-link">
             <a href="{{ route('get.user.log') }}">
-                <i class="am-icon-floppy-o sidebar-nav-link-logo"></i> 登录日志
+                <i class="am-icon-floppy-o sidebar-nav-link-logo"></i> {{trans('user.user_navigation_log')}}
             </a>
         </li>
     </ul>

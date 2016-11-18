@@ -36,7 +36,7 @@
             </a>
         </li>
         <li class="sidebar-nav-link">
-            <a href="javascript:void(0);">
+            <a href="{{ route('get.user.experience') }}">
                 <i class="am-icon-hourglass sidebar-nav-link-logo"></i> {{trans('user.user_navigation_growth_level')}}
             </a>
         </li>

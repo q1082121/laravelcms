@@ -60,10 +60,14 @@ Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user
 	Route::get('edit_pwd','UserController@edit_pwd')->name('get.user.edit_pwd');
 	//日志管理		
 	Route::get('log', 'LogController@index')->name('get.user.log');
+	//成长等级
+	Route::get('experience', 'ExperienceController@index')->name('get.user.experience');
 
 
 	//日志列表
 	Route::post('log/api_list', 'LogController@api_list')->name('post.user.log.api_list');
+	//成长等级
+	Route::post('experience/api_list', 'ExperienceController@api_list')->name('post.user.experience.api_list');
 	//删除图片
 	Route::post('deleteapi/api_del_image', 'DeleteapiController@api_del_image')->name('post.user.deleteapi.api_del_image');
 	//用户信息

@@ -1,18 +1,18 @@
 <?php
 /******************************************
 ****AuThor:rubbish.boy@163.com
-****Title :日志管理
+****Title :成才等级-经验值
 *******************************************/
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Model\Log;
+use App\Http\Model\Experience;
 use DB;
 use URL;
 
-class LogController extends PublicController
+class ExperienceController extends PublicController
 {
     //
     /******************************************
@@ -23,16 +23,20 @@ class LogController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName('User');
-		$website['cursitename']=trans('user.user_navigation_log');
+		$website['cursitename']=trans('user.user_navigation_growth_level');
 		$website['title']=$website['cursitename'];
-		$website['apiurl_list']=route('post.user.log.api_list');
-		$website['way']='name';
-		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
+		$website['apiurl_list']=route('post.user.experience.api_list');
+		$website['way']='info';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_info'),'value'=>'info');
 		$website['wayoption']=json_encode($wayoption);
-        
 
-		return view('user/log/index')->with('website',$website);
+        
+		//获取用户组数据
+		$role_condition['type']=4;
+		$rolelist=object_array(DB::table('roles')->where($role_condition)->orderBy('level', 'asc')->get());
+		$website['rolelist']=json_encode($rolelist);
+
+		return view('user/experience/index')->with('website',$website);
 	}
 
     /******************************************
@@ -46,13 +50,13 @@ class LogController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Log::where($condition)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Experience::where($condition)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Log::where($condition)->paginate($this->pagesize);
+			$list=Experience::where($condition)->paginate($this->pagesize);
 		}
 		if($list)
 		{

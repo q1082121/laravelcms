@@ -44,5 +44,5 @@ return [
     'define_name_role'                     =>   '用户组',
     'define_name_score'                    =>   '积分',
     'define_name_experience'               =>   '经验值',
-    
+    'define_name_experience_level'         =>   '经验等级',
 ];

@@ -165,7 +165,7 @@ class LoginController extends Controller
                  +记录日志 【      
                 ********************/
                 // 含有带花括号占位符的记录信息。
-                $messagetpl = trans('login.login_action_info');
+                $messagetpl = trans('user.login_action_info');
                 // 带有替换信息的上下文数组，键名为占位符名称，键值为替换值。
                 $context = interpolate($messagetpl, array('username' => $user->username));
 
@@ -190,7 +190,7 @@ class LoginController extends Controller
                 if($is_get_today_experience==0)
                 {
                     $experience=@$roleinfo['login_get_experience']?@$roleinfo['login_get_experience']:2;
-                    $experiencetpl = trans('login.experience_action_info');
+                    $experiencetpl = trans('user.experience_action_info');
                     // 带有替换信息的上下文数组，键名为占位符名称，键值为替换值。
                     $experience_context = interpolate($experiencetpl, array('username' => $user->username,'experience'=>$experience));
 

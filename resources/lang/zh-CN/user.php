@@ -45,4 +45,17 @@ return [
     'define_name_score'                    =>   '积分',
     'define_name_experience'               =>   '经验值',
     'define_name_experience_level'         =>   '经验等级',
+
+    /*
+    |--------------------------------------------------------------------------
+    | 默认消息 - 注册类 - 操作名称
+    |--------------------------------------------------------------------------
+    |
+    | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
+    |
+    */
+	
+	'login_action_info'		    =>	'用户 {username} 登录操作',
+	'experience_action_info'	=>	'用户 {username} 登录获得 {experience} 经验值',
+    'score_action_info'	        =>	'用户 {username} 签到获得 {score} 积分',
 ];

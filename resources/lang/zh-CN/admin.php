@@ -153,6 +153,9 @@ return [
     'message_create_failure'                       =>   '生成失败',
     'message_get_success'                          =>   '获取成功',
     'message_get_failure'                          =>   '获取失败',
+    'message_check_in_success'                     =>   '签到成功',
+    'message_check_in_failure'                     =>   '签到失败',
+    'message_check_in_exit'                        =>   '今日已签',
     'message_get_empty'                            =>   '数据为空',
     'message_set_success'                          =>   '设置成功',
     'message_set_failure'                          =>   '设置失败',
@@ -164,7 +167,7 @@ return [
     'message_trash_success'                        =>   '仍入垃圾箱成功',
     'message_trash_success2'                       =>   '捡回信件成功',
     'message_del_trash_success'                    =>   '删除垃圾成功',
-
+    
     /*
     |--------------------------------------------------------------------------
     | 默认消息 -常规参数属性定义 

@@ -72,6 +72,7 @@ Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user
 	Route::post('experience/api_list', 'ExperienceController@api_list')->name('post.user.experience.api_list');
 	//会员积分
 	Route::post('score/api_list', 'ScoreController@api_list')->name('post.user.score.api_list');
+	Route::post('score/api_check_in', 'ScoreController@api_check_in')->name('post.user.score.api_check_in');
 	//删除图片
 	Route::post('deleteapi/api_del_image', 'DeleteapiController@api_del_image')->name('post.user.deleteapi.api_del_image');
 	//用户信息

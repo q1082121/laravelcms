@@ -26,6 +26,7 @@ class ExperienceController extends PublicController
 		$website['cursitename']=trans('user.user_navigation_growth_level');
 		$website['title']=$website['cursitename'];
 		$website['apiurl_list']=route('post.user.experience.api_list');
+		$website['apiurl_check_in']=route('post.user.score.api_check_in');
 		$website['way']='info';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_info'),'value'=>'info');
 		$website['wayoption']=json_encode($wayoption);

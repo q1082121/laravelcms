@@ -1,32 +1,8 @@
 @extends('layouts.user')
 @section('content')
 <!-- 内容区域 -->
-<div class="row-content am-cf" id="app-content-top">
-    <div class="row">
-        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-            <div class="widget am-cf">
-              <div class="page-header-heading"><span class="am-icon-level-up page-header-heading-icon"></span> {{trans('user.define_name_experience_level')}} </div>
-              <table width="100%" class="am-table am-table-compact am-text-nowrap tpl-table-black " id="example-r">
-                    <thead>
-                        <tr>
-                            <th>用户组</th>
-                            <th>等级</th>
-                            <th>升级经验值</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="gradeX" v-for="item in rolelist" >
-                            <td>@{{item.display_name}} <span class="am-icon-diamond" v-if="level == item.level" ></span> </td>
-                            <td>@{{item.level}}</td>
-                            <td>@{{item.level_up_experience}}</td>
-                        </tr>
-                        <!-- more data -->
-                    </tbody>
-                </table>
-            </div> 
-        </div>
-    </div>
-</div>
+
+@include('user.panel')
 
 <div class="row-content am-cf" id="app-content">
     <div class="row">
@@ -104,13 +80,6 @@
 </div>
 
 <script type="text/javascript">
-new Vue({
-    el: '#app-content-top',
-    data: {
-             rolelist             :eval(htmlspecialchars_decode('{{$website["rolelist"]}}')),
-             level                :'{{$website["website_roleinfo"]["level"]}}',
-          }              
-})
 new Vue({
     el: '#app-content',
     data: {

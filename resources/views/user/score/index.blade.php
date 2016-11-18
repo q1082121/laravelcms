@@ -1,17 +1,7 @@
 @extends('layouts.user')
 @section('content')
 <!-- 内容区域 -->
-<div class="row-content am-cf" id="app-content-top">
-    <div class="row">
-        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-            <div class="widget am-cf">
-              <div class="page-header-heading"><span class="am-icon-level-up page-header-heading-icon"></span> {{trans('user.define_name_experience_level')}} </div>
-              
-            </div> 
-        </div>
-    </div>
-</div>
-
+@include('user.panel')
 <div class="row-content am-cf" id="app-content">
     <div class="row">
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
@@ -88,12 +78,6 @@
 </div>
 
 <script type="text/javascript">
-new Vue({
-    el: '#app-content-top',
-    data: {
-             level                :'{{$website["website_roleinfo"]["level"]}}',
-          }              
-})
 new Vue({
     el: '#app-content',
     data: {

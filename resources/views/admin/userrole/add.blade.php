@@ -39,13 +39,19 @@
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_check_in_score')}}</span>
-                <input type="text" class="form-control" v-model="params_data.score"   >
+                <input type="text" class="form-control" v-model="params_data.check_in_score"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_experience')}}</span>
-                <input type="text" class="form-control" v-model="params_data.experience"   >
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_login_get_experience')}}</span>
+                <input type="text" class="form-control" v-model="params_data.login_get_experience"   >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_level_up_experience')}}</span>
+                <input type="text" class="form-control" v-model="params_data.level_up_experience"   >
               </div>
             </div>
           </div>
@@ -77,8 +83,9 @@ new Vue({
                 display_name        :'',
                 description         :'',
                 level               :'',
-                score               :'',
-                experience          :'',
+                check_in_score      :'',
+                login_get_experience:'',
+                level_up_experience :'',
                 id                  :'{{$website["id"]}}',
              },
              cur_title              :'',

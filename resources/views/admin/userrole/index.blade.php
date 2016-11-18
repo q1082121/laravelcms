@@ -42,7 +42,8 @@
               <th>{{trans('admin.fieldname_item_description')}}</th>
               <th>{{trans('admin.fieldname_item_level')}}</th>
               <th>{{trans('admin.fieldname_item_check_in_score')}}</th>
-              <th>{{trans('admin.fieldname_item_experience')}}</th>
+              <th>{{trans('admin.fieldname_item_login_get_experience')}}</th>
+              <th>{{trans('admin.fieldname_item_level_up_experience')}}</th>
               <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
@@ -57,8 +58,9 @@
                 <td>@{{ item.display_name }}</td>
                 <td>@{{ item.description }}</td>
                 <td>@{{ item.level }}</td>
-                <td>@{{ item.score }}</td>
-                <td>@{{ item.experience }}</td>
+                <td>@{{ item.check_in_score }}</td>
+                <td>@{{ item.login_get_experience }}</td>
+                <td>@{{ item.level_up_experience }}</td>
                 <td>
                   <div class="tools">
                     @ability('admin', 'edit')

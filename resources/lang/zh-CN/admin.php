@@ -281,6 +281,8 @@ return [
     'fieldname_item_score'                          =>   '积分',
     'fieldname_item_level'                          =>   '等级',
     'fieldname_item_check_in_score'                 =>   '签到积分',
+    'fieldname_item_login_get_experience'           =>   '登录获取经验值',
+    'fieldname_item_level_up_experience'            =>   '升级经验值',
     'fieldname_item_experience'                     =>   '经验值',
     'fieldname_item_lock'                           =>   '状态锁',
     'fieldname_item_headimage'                      =>   '头像',

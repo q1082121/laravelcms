@@ -19,8 +19,9 @@ class EntrustSetupTables extends Migration
             $table->string('description')->nullable();
             $table->tinyInteger('type')->default(0);            //类型
             $table->tinyInteger('level')->default(0);           //级别    
-            $table->string('score')->default(0);                //积分制
-            $table->string('experience')->default(0);           //经验值要求
+            $table->string('check_in_score')->default(0);       //签到积分
+            $table->string('login_get_experience')->default(0); //每天登录获取经验值
+            $table->string('level_up_experience')->default(0);  //升级经验值
             $table->timestamps();
         });
 

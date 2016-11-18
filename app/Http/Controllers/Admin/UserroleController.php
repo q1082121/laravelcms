@@ -159,8 +159,9 @@ class UserroleController extends PublicController
 			$params->description	= $request->get('description');
 			$params->type	= 4;
 			$params->level	= $request->get('level');
-			$params->score	= $request->get('score');
-			$params->experience	= $request->get('experience');
+			$params->check_in_score	= $request->get('check_in_score');
+			$params->login_get_experience	= $request->get('login_get_experience');
+			$params->level_up_experience	= $request->get('level_up_experience');
 
 			if ($params->save()) 
 			{
@@ -230,8 +231,9 @@ class UserroleController extends PublicController
 		$params->display_name = $request->get('display_name');
 		$params->description = $request->get('description');
 		$params->level	= $request->get('level');
-		$params->score	= $request->get('score');
-		$params->experience	= $request->get('experience');
+		$params->check_in_score	= $request->get('check_in_score');
+		$params->login_get_experience	= $request->get('login_get_experience');
+		$params->level_up_experience	= $request->get('level_up_experience');
 		
 		if ($params->save()) 
 		{

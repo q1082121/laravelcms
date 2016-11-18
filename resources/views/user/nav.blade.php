@@ -41,7 +41,7 @@
             </a>
         </li>
         <li class="sidebar-nav-link">
-            <a href="javascript:void(0);">
+            <a href="{{ route('get.user.score') }}">
                 <i class="am-icon-leaf sidebar-nav-link-logo"></i> {{trans('user.user_navigation_score')}}
             </a>
         </li>

@@ -437,6 +437,8 @@ function action_experience($params_experience,$roleinfo)
 		$experience->user_id = $params_experience['user_id'];
 		$experience->val = $params_experience['val'];
 		$experience->info = $params_experience['info'];
+		$experience->tablename = $params_experience['tablename'];
+		$experience->keyid = $params_experience['keyid'];
 		$result_experience=$experience->save();
 		if($result_experience)
 		{

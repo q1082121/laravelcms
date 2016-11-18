@@ -198,6 +198,8 @@ class LoginController extends Controller
                     $params_experience['val']=$experience;
                     $params_experience['info']=$experience_context;
                     $params_experience['user_id']=$user->id;
+                    $params_experience['tablename']="";
+		            $params_experience['keyid']=0;
                    
                     action_experience($params_experience,$roleinfo);
 

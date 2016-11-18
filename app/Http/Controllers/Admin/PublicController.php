@@ -134,41 +134,9 @@ class PublicController extends Controller
 	    if (Auth::guard($guard)->check()) 
         {
         	//获取用户信息
-            $user=Auth::guard($guard)->user();
+            $this->user=$user=Auth::guard($guard)->user();
             $cache_userinfo='userinfo_'.$user['id'];
-
-			$default_session_cache_type=env('SESSION_DRIVER', "file");
-			switch($default_session_cache_type)
-			{
-				case 'file':
-							//file 版缓存
-							if (Cache::store('file')->has($cache_userinfo)) 
-							{
-								
-							}
-							else
-							{
-								$userinfo=User::find($user['id'])->hasOneUserinfo;
-								$minutes=3600;
-								Cache::store('file')->put($cache_userinfo, $userinfo, $minutes);
-							}
-							$this->userinfo=Cache::store('file')->get($cache_userinfo);
-							break;
-				case 'redis':
-							//Redis 版缓存
-							if (Redis::get($cache_userinfo)) 
-							{
-							
-							}
-							else
-							{
-								$userinfo=User::find($user['id'])->hasOneUserinfo;
-								Redis::set($cache_userinfo,$userinfo);
-							}
-							$this->userinfo=json_decode(Redis::get($cache_userinfo),true);
-							break;
-			}
-			$this->user=$user;
+			$this->userinfo=$userinfo=action_cache($user['id'],'userinfo');
 			$this->userinfo['avatar']=$this->userinfo['isattach']==1?"/uploads/User/".$this->userinfo['attachment']:"/images/avatar/200.png";
 			$this->website['website_userinfo']=$this->userinfo;
 			$this->website['website_user']=$this->user;
@@ -195,6 +163,11 @@ class PublicController extends Controller
 				$letters_list=DB::table('letters')->where($condition_index)->take(5)->get();
 				$this->website['letters_count']=$letters_count?$letters_count:0;
 				$this->website['letters_list']=json_encode(object_array($letters_list));
+
+				//获取用户组信息
+				$cache_userrole='userrole_'.$user['id'];
+				$this->roleinfo=$roleinfo=action_cache($user['id'],'userrole');
+				$this->website['website_roleinfo']=$this->roleinfo;
 			}
 
 
@@ -206,191 +179,6 @@ class PublicController extends Controller
         
 		
 	}
+	
 
-	/******************************************
-	****AuThor:rubbish.boy@163.com
-	****Title :图片上传
-	*******************************************/
-	public function uploads_action($classname,$data_image)
-	{
-		// 引入 composer autoload
-		$suffix='.png';
-		require base_path('vendor').'/autoload.php';
-		//上传文件夹路径
-		$uploads_dir=public_path('uploads');
-		//上传日期时间
-		$datetime=date('YmdHis');
-		//水印图片路径
-		$watermark_dir=public_path('watermark').'/logo.png';
-		$datetimename=$datetime.$suffix;
-		//保存文件名
-		$filename=$uploads_dir.'/'.$classname.'/'.$datetimename;
-		$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$datetimename;
-		$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$datetimename;
-
-		switch($classname)
-		{
-			case "Navigation":
-
-			break;
-			case "Classify":
-
-			break;
-			case "Classifylink":
-
-			break;
-			case "Classifyproduct":
-
-			break;
-			case "Classifyquestion":
-
-			break;
-			case "Link":
-
-			break;
-			case "Question":
-
-			break;
-			case "Questionoption":
-
-			break;
-			case "User":
-
-			break;
-			case "Wechat":
-
-			break;
-			case "Wechatreplyimagetext":
-
-			break;
-			default:
-					if($this->is_watermark==1)
-					{	
-						if(!is_dir($uploads_dir.'/'.$classname.'/watermark/')) 
-						{
-							mkdir($uploads_dir.'/'.$classname.'/watermark/', 0777, true);
-						}
-						// 合成水印
-						$img = Image::make($data_image)->insert($watermark_dir, 'bottom-right', 15, 10)->save($watermark_filename);
-					}
-			break;
-		}
-		
-		if($this->is_thumb==1)
-		{
-			switch($classname)
-			{
-				case 'Navigation':
-								$thumb_width=@$this->root['navigation_thumb_width']?@$this->root['navigation_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['navigation_thumb_height']?@$this->root['navigation_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Classify':
-								$thumb_width=@$this->root['classify_thumb_width']?@$this->root['classify_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['classify_thumb_height']?@$this->root['classify_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Classifylink':
-								$thumb_width=@$this->root['classifylink_thumb_width']?@$this->root['classifylink_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['classifylink_thumb_height']?@$this->root['classifylink_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Classifyproduct':
-								$thumb_width=@$this->root['classifyproduct_thumb_width']?@$this->root['classifyproduct_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['classifyproduct_thumb_height']?@$this->root['classifyproduct_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Classifyquestion':
-								$thumb_width=@$this->root['classifyquestion_thumb_width']?@$this->root['classifyquestion_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['classifyquestion_thumb_height']?@$this->root['classifyquestion_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Article':
-								$thumb_width=@$this->root['article_thumb_width']?@$this->root['article_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['article_thumb_height']?@$this->root['article_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Product':
-								$thumb_width=@$this->root['product_thumb_width']?@$this->root['product_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['product_thumb_height']?@$this->root['product_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Picture':
-								$thumb_width=@$this->root['picture_thumb_width']?@$this->root['picture_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['picture_thumb_height']?@$this->root['picture_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Link':
-								$thumb_width=@$this->root['link_thumb_width']?@$this->root['link_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['link_thumb_height']?@$this->root['link_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Questionoption':
-								$thumb_width=@$this->root['question_thumb_width']?@$this->root['question_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['question_thumb_height']?@$this->root['question_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Questionoption':
-								$thumb_width=@$this->root['questionoption_thumb_width']?@$this->root['questionoption_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['questionoption_thumb_height']?@$this->root['questionoption_thumb_height']:$this->thumb_height;	
-				break;
-				case 'User':
-								$thumb_width=@$this->root['user_thumb_width']?@$this->root['user_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['user_thumb_height']?@$this->root['user_thumb_height']:$this->thumb_height;	
-				break;
-				case 'Wechat':
-								$thumb_width=@$this->root['wechat_thumb_width']?@$this->root['wechat_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['wechat_thumb_height']?@$this->root['wechat_thumb_height']:$this->thumb_height;
-				break;
-				case 'Wechatreplyimagetext':
-								$thumb_width=@$this->root['wechatreplyimagetext_thumb_width']?@$this->root['wechatreplyimagetext_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['wechatreplyimagetext_thumb_height']?@$this->root['wechatreplyimagetext_thumb_height']:$this->thumb_height;
-				break;
-				default:
-								$thumb_width=@$thumb_width?@$thumb_width:$this->thumb_width;
-								$thumb_height=@$thumb_height?@$thumb_height:$this->thumb_height;
-				break;
-			}
-			if(!is_dir($uploads_dir.'/'.$classname.'/thumb/')) 
-			{
-				mkdir($uploads_dir.'/'.$classname.'/thumb/', 0777, true);
-			}
-			// 生成缩略图
-			$img = Image::make($data_image)->resize($thumb_width,$thumb_height)->save($thumb_filename);
-			
-		}
-
-		if(!is_dir($uploads_dir.'/'.$classname.'/')) 
-		{
-			mkdir($uploads_dir.'/'.$classname.'/', 0777, true);
-		}
-
-		// 将处理后的图片重新保存到其他路径
-		Image::make($data_image)->save($filename);
-
-		return $datetimename;
-
-	}
-
-	/******************************************
-	****@AuThor : rubbish.boy@163.com
-	****@Title  : 删除图片
-	****@return : Response
-	*******************************************/
-	public function del_image_action($classname,$attachment)
-	{
-		
-		//上传文件夹路径
-		$uploads_dir=public_path('uploads');
-		//保存文件名
-		$filename=$uploads_dir.'/'.$classname.'/'.$attachment;
-		$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$attachment;
-		$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$attachment;
-
-		
-		if (file_exists($watermark_filename)) 
-		{
-		    unlink ($watermark_filename);
-		}
-		if (file_exists($thumb_filename)) 
-		{
-		    unlink ($thumb_filename);
-		}
-		if (file_exists($filename)) 
-		{
-		    $result=unlink ($filename);
-		}
-
-		return $result;
-	}
 }

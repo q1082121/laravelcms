@@ -34,7 +34,7 @@ class DeleteapiController extends PublicController
 		
 		if($params['isattach']==1)
 		{
-			$result=$this->del_image_action($classname,$params['attachment']);
+			$result=del_image_action($classname,$params['attachment']);
 		}
 		else
 		{

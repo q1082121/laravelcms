@@ -7,6 +7,15 @@
             <img src="{{$website['website_userinfo']['avatar']}}" alt="">
             </div>
             <span class="user-panel-logged-in-text">
+                {{trans('user.define_name_role')}} : {{$website['website_roleinfo']['display_name']}}
+            </span>
+            <span class="user-panel-logged-in-text">
+                {{trans('user.define_name_score')}} : {{$website['website_userinfo']['score']}}
+            </span>
+            <span class="user-panel-logged-in-text">
+                {{trans('user.define_name_experience')}} : {{$website['website_userinfo']['experience']}}
+            </span>
+            <span class="user-panel-logged-in-text">
                 <i class="am-icon-at am-text-success tpl-user-panel-status-icon"></i>
                 {{$website['website_user']['email']}}
             </span>

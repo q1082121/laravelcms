@@ -29,6 +29,7 @@ class PublicController extends Controller
 {
 	protected $userinfo;
 	protected $website;
+	protected $roleinfo;
 	/******************************************
 	****AuThor:rubbish.boy@163.com
 	****Title :后台首页
@@ -70,41 +71,9 @@ class PublicController extends Controller
 	    if (Auth::guard($guard)->check()) 
         {
         	//获取用户信息
-            $user=Auth::guard($guard)->user();
+            $this->user=$user=Auth::guard($guard)->user();
             $cache_userinfo='userinfo_'.$user['id'];
-
-			$default_session_cache_type=env('SESSION_DRIVER', "file");
-			switch($default_session_cache_type)
-			{
-				case 'file':
-							//file 版缓存
-							if (Cache::store('file')->has($cache_userinfo)) 
-							{
-								
-							}
-							else
-							{
-								$userinfo=User::find($user['id'])->hasOneUserinfo;
-								$minutes=3600;
-								Cache::store('file')->put($cache_userinfo, $userinfo, $minutes);
-							}
-							$this->userinfo=Cache::store('file')->get($cache_userinfo);
-							break;
-				case 'redis':
-							//Redis 版缓存
-							if (Redis::get($cache_userinfo)) 
-							{
-							
-							}
-							else
-							{
-								$userinfo=User::find($user['id'])->hasOneUserinfo;
-								Redis::set($cache_userinfo,$userinfo);
-							}
-							$this->userinfo=json_decode(Redis::get($cache_userinfo),true);
-							break;
-			}
-			$this->user=$user;
+			$this->userinfo=$userinfo=action_cache($user['id'],'userinfo');
 			$this->userinfo['avatar']=$this->userinfo['isattach']==1?"/uploads/User/".$this->userinfo['attachment']:"/images/avatar/200.png";
 			$this->website['website_userinfo']=$this->userinfo;
 			$this->website['website_user']=$this->user;
@@ -121,7 +90,9 @@ class PublicController extends Controller
 			}
 			else
 			{
-				
+				$cache_userrole='userrole_'.$user['id'];
+				$this->roleinfo=$roleinfo=action_cache($user['id'],'userrole');
+				$this->website['website_roleinfo']=$this->roleinfo;
 			}
         }
 		else
@@ -130,142 +101,5 @@ class PublicController extends Controller
 		}
 	}
 
-	/******************************************
-	****AuThor:rubbish.boy@163.com
-	****Title :图片上传
-	*******************************************/
-	public function uploads_action($classname,$data_image)
-	{
-		// 引入 composer autoload
-		$suffix='.png';
-		require base_path('vendor').'/autoload.php';
-		//上传文件夹路径
-		$uploads_dir=public_path('uploads');
-		//上传日期时间
-		$datetime=date('YmdHis');
-		//水印图片路径
-		$watermark_dir=public_path('watermark').'/logo.png';
-		$datetimename=$datetime.$suffix;
-		//保存文件名
-		$filename=$uploads_dir.'/'.$classname.'/'.$datetimename;
-		$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$datetimename;
-		$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$datetimename;
-
-		switch($classname)
-		{
-			case "User":
-
-			break;
-			default:
-					if($this->is_watermark==1)
-					{	
-						if(!is_dir($uploads_dir.'/'.$classname.'/watermark/')) 
-						{
-							mkdir($uploads_dir.'/'.$classname.'/watermark/', 0777, true);
-						}
-						// 合成水印
-						$img = Image::make($data_image)->insert($watermark_dir, 'bottom-right', 15, 10)->save($watermark_filename);
-					}
-			break;
-		}
-		
-		if($this->is_thumb==1)
-		{
-			switch($classname)
-			{
-				case 'User':
-								$thumb_width=@$this->root['user_thumb_width']?@$this->root['user_thumb_width']:$this->thumb_width;
-								$thumb_height=@$this->root['user_thumb_height']?@$this->root['user_thumb_height']:$this->thumb_height;	
-				break;
-				default:
-								$thumb_width=@$thumb_width?@$thumb_width:$this->thumb_width;
-								$thumb_height=@$thumb_height?@$thumb_height:$this->thumb_height;
-				break;
-			}
-			if(!is_dir($uploads_dir.'/'.$classname.'/thumb/')) 
-			{
-				mkdir($uploads_dir.'/'.$classname.'/thumb/', 0777, true);
-			}
-			// 生成缩略图
-			$img = Image::make($data_image)->resize($thumb_width,$thumb_height)->save($thumb_filename);
-			
-		}
-
-		if(!is_dir($uploads_dir.'/'.$classname.'/')) 
-		{
-			mkdir($uploads_dir.'/'.$classname.'/', 0777, true);
-		}
-
-		// 将处理后的图片重新保存到其他路径
-		Image::make($data_image)->save($filename);
-
-		return $datetimename;
-
-	}
-
-	/******************************************
-	****@AuThor : rubbish.boy@163.com
-	****@Title  : 删除图片
-	****@return : Response
-	*******************************************/
-	public function del_image_action($classname,$attachment)
-	{
-		
-		//上传文件夹路径
-		$uploads_dir=public_path('uploads');
-		//保存文件名
-		$filename=$uploads_dir.'/'.$classname.'/'.$attachment;
-		$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$attachment;
-		$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$attachment;
-
-		
-		if (file_exists($watermark_filename)) 
-		{
-		    unlink ($watermark_filename);
-		}
-		if (file_exists($thumb_filename)) 
-		{
-		    unlink ($thumb_filename);
-		}
-		if (file_exists($filename)) 
-		{
-		    $result=unlink ($filename);
-		}
-		else
-		{
-			$result=0;
-		}
-
-		return $result;
-	}
-	/******************************************
-	****AuThor:rubbish.boy@163.com
-	****Title :获取经验值操作
-	*******************************************/
-	public function FunctionName($params_experience)
-	{
-		DB::beginTransaction();
-		try
-		{ 
-				$result_experience=in_experience($params_experience);
-				if($result_experience)
-				{
-					$userinfos_condition['user_id']=$params_experience['user_id'];
-					DB::table('userinfos')->where($userinfos_condition)->increment('experience', $experience);
-					
-					DB::commit();
-				}
-				else
-				{
-					DB::rollBack();
-				}
-
-		}
-		catch (\Exception $e) 
-		{ 
-			DB::rollBack(); 
-		}
-
-	}
 
 }

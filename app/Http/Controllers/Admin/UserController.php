@@ -135,7 +135,7 @@ class UserController extends PublicController
 		{
 			//上传文件归类：获取控制器名称
 			$classname=getCurrentControllerName();
-			$params['attachment']=$this->uploads_action($classname,$data_image);
+			$params['attachment']=uploads_action($classname,$data_image,$this->thumb_width,$this->thumb_height,$this->is_thumb,$this->is_watermark,$this->root);
 			$params['isattach']=1;
 		}
 
@@ -143,10 +143,7 @@ class UserController extends PublicController
 		$info=DB::table('userinfos')->where($condition)->update($params);
 		if ($info) 
 		{
-			$cache_userinfo='userinfo_'.$this->user['id'];
-			$userinfo=User::find($this->user['id'])->hasOneUserinfo;
-			$minutes=3600;
-			Cache::store('file')->put($cache_userinfo, $userinfo, $minutes);
+			action_cache($condition['user_id'],'userinfo','update');
 
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_save_success');

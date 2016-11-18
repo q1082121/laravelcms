@@ -270,22 +270,6 @@ function in_log($data)
     return $log->save();
 }
 /***********************************
- * 方法名：经验值记录
- * 作者： Tommy（rubbish.boy@163.com）
- + type 1 => 登录
- ***********************************/ 
-function in_experience($data)
-{
-
-    $experience = new App\Http\Model\Experience;
-    $experience->type = $data['type'];
-    $experience->user_id = $data['user_id'];
-    $experience->val = $data['val'];
-    $experience->info = $data['info'];
-    return $experience->save();
-	
-}
-/***********************************
  * 方法名：微信关键词记录
  * 作者： Tommy（rubbish.boy@163.com）
  ***********************************/ 
@@ -299,6 +283,394 @@ function in_wechat_keyword($data)
 	$subparams->field_keyword 		= $data['field_keyword'];
 	$subparams->wechat_id 			= $data['wechat_id'];
     return $subparams->save();
+}
+/***********************************
+ * 方法名：操作缓存数据
+ * 作者： Tommy（rubbish.boy@163.com）
+ + way get => 获取
+ + way update => 更新
+ ***********************************/ 
+function action_cache($user_id,$cache_prefix,$way="get")
+{
+	$minutes=3600;
+	$cache_name=$cache_prefix.'_'.$user_id;
+	$default_session_cache_type=env('SESSION_DRIVER', "file");
+	switch($cache_prefix)
+	{
+		case 'userinfo':
+							$modelname = new App\Http\Model\User;
+							switch($default_session_cache_type)
+							{
+								case 'file':
+											switch($way)
+											{
+												case 'get':
+															//file 版缓存
+															if (Illuminate\Support\Facades\Cache::store('file')->has($cache_name)) 
+															{
+																
+															}
+															else
+															{
+																$info= $modelname->find($user_id)->hasOneUserinfo;
+																Illuminate\Support\Facades\Cache::store('file')->put($cache_name, $info, $minutes);
+															}
+												break;
+												case 'update':
+															$info= $modelname->find($user_id)->hasOneUserinfo;
+															Illuminate\Support\Facades\Cache::store('file')->put($cache_name, $info, $minutes);
+												break;
+											}
+											
+											$cache_data= Illuminate\Support\Facades\Cache::store('file')->get($cache_name);
+											break;
+								case 'redis':
+											switch($way)
+											{
+												case 'get':
+															//Redis 版缓存
+															if ( Illuminate\Support\Facades\Redis::get($cache_name)) 
+															{
+															
+															}
+															else
+															{
+																$info= $modelname->find($user_id)->hasOneUserinfo;
+																Illuminate\Support\Facades\Redis::set($cache_name,$info);
+															}
+												break;
+												case 'update':
+															$info= $user->find($user_id)->hasOneUserinfo;
+															Illuminate\Support\Facades\Redis::set($cache_name,$info);
+												break;
+											}
+											$cache_data=json_decode(Illuminate\Support\Facades\Redis::get($cache_name),true);
+											break;
+							}	
+		break;
+		case 'userrole':
+							
+							switch($default_session_cache_type)
+							{
+								case 'file':
+											switch($way)
+											{
+												case 'get':
+															//file 版缓存
+															if (Illuminate\Support\Facades\Cache::store('file')->has($cache_name)) 
+															{
+																
+															}
+															else
+															{
+																//获取用户组信息
+																$roleids=object_array(Illuminate\Support\Facades\DB::table('role_user')->where('user_id',$user_id)->pluck('role_id'));
+																if($roleids)
+																{
+																	$info=object_array(Illuminate\Support\Facades\DB::table('roles')->whereIn('id',$roleids)->orderBy('type', 'asc')->orderBy('level', 'desc')->first());
+																}
+																Illuminate\Support\Facades\Cache::store('file')->put($cache_name, @$info, $minutes);
+															}
+												break;
+												case 'update':
+															//获取用户组信息
+															$roleids=object_array(Illuminate\Support\Facades\DB::table('role_user')->where('user_id',$user_id)->pluck('role_id'));
+															if($roleids)
+															{
+																$info=object_array(Illuminate\Support\Facades\DB::table('roles')->whereIn('id',$roleids)->orderBy('type', 'asc')->orderBy('level', 'desc')->first());
+															}
+
+															Illuminate\Support\Facades\Cache::store('file')->put($cache_name, $info, $minutes);
+												break;
+											}
+											
+											$cache_data= Illuminate\Support\Facades\Cache::store('file')->get($cache_name);
+											break;
+								case 'redis':
+											switch($way)
+											{
+												case 'get':
+															//Redis 版缓存
+															if ( Illuminate\Support\Facades\Redis::get($cache_name)) 
+															{
+															
+															}
+															else
+															{
+																//获取用户组信息
+																$roleids=object_array(Illuminate\Support\Facades\DB::table('role_user')->where('user_id',$user_id)->pluck('role_id'));
+																if($roleids)
+																{
+																	$info=object_array(Illuminate\Support\Facades\DB::table('roles')->whereIn('id',$roleids)->orderBy('type', 'asc')->orderBy('level', 'desc')->first());
+																}
+																Illuminate\Support\Facades\Redis::set($cache_name,$info);
+															}
+												break;
+												case 'update':
+															//获取用户组信息
+															$roleids=object_array(Illuminate\Support\Facades\DB::table('role_user')->where('user_id',$user_id)->pluck('role_id'));
+															if($roleids)
+															{
+																$info=object_array(Illuminate\Support\Facades\DB::table('roles')->whereIn('id',$roleids)->orderBy('type', 'asc')->orderBy('level', 'desc')->first());
+															}
+															Illuminate\Support\Facades\Redis::set($cache_name,$info);
+												break;
+											}
+											$cache_data=json_decode(Illuminate\Support\Facades\Redis::get($cache_name),true);
+											break;
+							}	
+		break;
+	}
+	return $cache_data;	
+}
+/***********************************
+ * 方法名：经验值操作
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function action_experience($params_experience,$roleinfo)
+{
+	Illuminate\Support\Facades\DB::beginTransaction();
+	try
+	{ 		
+		$experience = new App\Http\Model\Experience;
+		$experience->type = $params_experience['type'];
+		$experience->user_id = $params_experience['user_id'];
+		$experience->val = $params_experience['val'];
+		$experience->info = $params_experience['info'];
+		$result_experience=$experience->save();
+		if($result_experience)
+		{
+			//获得经验值   
+			$userinfos_condition['user_id']=$params_experience['user_id'];
+			Illuminate\Support\Facades\DB::table('userinfos')->where($userinfos_condition)->increment('experience', $experience->val);
+			//判断经验值是否升级角色组
+			$userinfos=object_array(Illuminate\Support\Facades\DB::table('userinfos')->where($userinfos_condition)->first());
+			if($roleinfo['type']==4 && $userinfos['experience']>=$roleinfo['level_up_experience'])
+			{
+			$level_up=$roleinfo['level']+1;
+			$level_up_info=object_array(Illuminate\Support\Facades\DB::table('roles')->where('level',$level_up)->orderBy('type', 'asc')->orderBy('level', 'desc')->first());
+			if($level_up_info)
+			{
+				$level_up_params['user_id']=$params_experience['user_id'];
+				$level_up_params['role_id']=$level_up_info['id'];
+				$level_up_result=Illuminate\Support\Facades\DB::table('role_user')->insert($level_up_params);
+				if($level_up_result)
+				{
+					action_cache($params_experience['user_id'],'userinfo','update');
+					action_cache($params_experience['user_id'],'userrole','update');
+					Illuminate\Support\Facades\DB::commit();
+				}
+				else
+				{
+					Illuminate\Support\Facades\DB::rollBack();
+				}
+			}
+			else
+			{
+				Illuminate\Support\Facades\DB::commit();
+			}
+			}
+			else
+			{
+				Illuminate\Support\Facades\DB::commit();
+			}
+		}
+		else
+		{
+			Illuminate\Support\Facades\DB::rollBack();
+		}
+	}
+	catch (\Exception $e) 
+	{ 
+		Illuminate\Support\Facades\DB::rollBack(); 
+	}
+}
+/******************************************
+****AuThor:rubbish.boy@163.com
+****Title :图片上传
+*******************************************/
+function uploads_action($classname,$data_image,$thumb_width=200,$thumb_height=200,$is_thumb=1,$is_watermark=1,$root)
+{
+	// 引入 composer autoload
+	$suffix='.png';
+	require base_path('vendor').'/autoload.php';
+	//上传文件夹路径
+	$uploads_dir=public_path('uploads');
+	//上传日期时间
+	$datetime=date('YmdHis');
+	//水印图片路径
+	$watermark_dir=public_path('watermark').'/logo.png';
+	$datetimename=$datetime.$suffix;
+	//保存文件名
+	$filename=$uploads_dir.'/'.$classname.'/'.$datetimename;
+	$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$datetimename;
+	$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$datetimename;
+
+	switch($classname)
+	{
+		case "Navigation":
+
+		break;
+		case "Classify":
+
+		break;
+		case "Classifylink":
+
+		break;
+		case "Classifyproduct":
+
+		break;
+		case "Classifyquestion":
+
+		break;
+		case "Link":
+
+		break;
+		case "Question":
+
+		break;
+		case "Questionoption":
+
+		break;
+		case "User":
+
+		break;
+		case "Wechat":
+
+		break;
+		case "Wechatreplyimagetext":
+
+		break;
+		default:
+				if($is_watermark==1)
+				{	
+					if(!is_dir($uploads_dir.'/'.$classname.'/watermark/')) 
+					{
+						mkdir($uploads_dir.'/'.$classname.'/watermark/', 0777, true);
+					}
+					// 合成水印
+					$img = Intervention\Image\Facades\Image::make($data_image)->insert($watermark_dir, 'bottom-right', 15, 10)->save($watermark_filename);
+				}
+		break;
+	}
+	
+	if($is_thumb==1)
+	{
+		switch($classname)
+		{
+			case 'Navigation':
+							$thumb_width=@$root['navigation_thumb_width']?@$root['navigation_thumb_width']:$thumb_width;
+							$thumb_height=@$root['navigation_thumb_height']?@$root['navigation_thumb_height']:$thumb_height;	
+			break;
+			case 'Classify':
+							$thumb_width=@$root['classify_thumb_width']?@$root['classify_thumb_width']:$thumb_width;
+							$thumb_height=@$root['classify_thumb_height']?@$root['classify_thumb_height']:$thumb_height;	
+			break;
+			case 'Classifylink':
+							$thumb_width=@$root['classifylink_thumb_width']?@$root['classifylink_thumb_width']:$thumb_width;
+							$thumb_height=@$root['classifylink_thumb_height']?@$root['classifylink_thumb_height']:$thumb_height;	
+			break;
+			case 'Classifyproduct':
+							$thumb_width=@$root['classifyproduct_thumb_width']?@$root['classifyproduct_thumb_width']:$thumb_width;
+							$thumb_height=@$root['classifyproduct_thumb_height']?@$root['classifyproduct_thumb_height']:$thumb_height;	
+			break;
+			case 'Classifyquestion':
+							$thumb_width=@$root['classifyquestion_thumb_width']?@$root['classifyquestion_thumb_width']:$thumb_width;
+							$thumb_height=@$root['classifyquestion_thumb_height']?@$root['classifyquestion_thumb_height']:$thumb_height;	
+			break;
+			case 'Article':
+							$thumb_width=@$root['article_thumb_width']?@$root['article_thumb_width']:$thumb_width;
+							$thumb_height=@$root['article_thumb_height']?@$root['article_thumb_height']:$thumb_height;	
+			break;
+			case 'Product':
+							$thumb_width=@$root['product_thumb_width']?@$root['product_thumb_width']:$thumb_width;
+							$thumb_height=@$root['product_thumb_height']?@$root['product_thumb_height']:$thumb_height;	
+			break;
+			case 'Picture':
+							$thumb_width=@$root['picture_thumb_width']?@$root['picture_thumb_width']:$thumb_width;
+							$thumb_height=@$root['picture_thumb_height']?@$root['picture_thumb_height']:$thumb_height;	
+			break;
+			case 'Link':
+							$thumb_width=@$root['link_thumb_width']?@$root['link_thumb_width']:$thumb_width;
+							$thumb_height=@$root['link_thumb_height']?@$root['link_thumb_height']:$thumb_height;	
+			break;
+			case 'Questionoption':
+							$thumb_width=@$root['question_thumb_width']?@$root['question_thumb_width']:$thumb_width;
+							$thumb_height=@$root['question_thumb_height']?@$root['question_thumb_height']:$thumb_height;	
+			break;
+			case 'Questionoption':
+							$thumb_width=@$root['questionoption_thumb_width']?@$root['questionoption_thumb_width']:$thumb_width;
+							$thumb_height=@$root['questionoption_thumb_height']?@$root['questionoption_thumb_height']:$thumb_height;	
+			break;
+			case 'User':
+							$thumb_width=@$root['user_thumb_width']?@$root['user_thumb_width']:$thumb_width;
+							$thumb_height=@$root['user_thumb_height']?@$root['user_thumb_height']:$thumb_height;	
+			break;
+			case 'Wechat':
+							$thumb_width=@$root['wechat_thumb_width']?@$root['wechat_thumb_width']:$thumb_width;
+							$thumb_height=@$root['wechat_thumb_height']?@$root['wechat_thumb_height']:$thumb_height;
+			break;
+			case 'Wechatreplyimagetext':
+							$thumb_width=@$root['wechatreplyimagetext_thumb_width']?@$root['wechatreplyimagetext_thumb_width']:$thumb_width;
+							$thumb_height=@$root['wechatreplyimagetext_thumb_height']?@$root['wechatreplyimagetext_thumb_height']:$thumb_height;
+			break;
+			default:
+							
+			break;
+		}
+		if(!is_dir($uploads_dir.'/'.$classname.'/thumb/')) 
+		{
+			mkdir($uploads_dir.'/'.$classname.'/thumb/', 0777, true);
+		}
+		// 生成缩略图
+		$img = Intervention\Image\Facades\Image::make($data_image)->resize($thumb_width,$thumb_height)->save($thumb_filename);
+		
+	}
+
+	if(!is_dir($uploads_dir.'/'.$classname.'/')) 
+	{
+		mkdir($uploads_dir.'/'.$classname.'/', 0777, true);
+	}
+
+	// 将处理后的图片重新保存到其他路径
+	Intervention\Image\Facades\Image::make($data_image)->save($filename);
+
+	return $datetimename;
+
+}
+/******************************************
+****@AuThor : rubbish.boy@163.com
+****@Title  : 删除图片
+****@return : Response
+*******************************************/
+function del_image_action($classname,$attachment)
+{
+	//上传文件夹路径
+	$uploads_dir=public_path('uploads');
+	//保存文件名
+	$filename=$uploads_dir.'/'.$classname.'/'.$attachment;
+	$watermark_filename=$uploads_dir.'/'.$classname.'/watermark/'.$attachment;
+	$thumb_filename=$uploads_dir.'/'.$classname.'/thumb/'.$attachment;
+
+	
+	if (file_exists($watermark_filename)) 
+	{
+		unlink ($watermark_filename);
+	}
+	if (file_exists($thumb_filename)) 
+	{
+		unlink ($thumb_filename);
+	}
+	if (file_exists($filename)) 
+	{
+		$result=unlink ($filename);
+	}
+	else
+	{
+		$result=0;
+	}
+
+	return $result;
 }
 /***********************************
  * 方法名：过滤文件后缀

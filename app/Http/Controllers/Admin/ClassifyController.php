@@ -180,7 +180,7 @@ class ClassifyController extends PublicController
 		{
 			//上传文件归类：获取控制器名称
 			$classname=getCurrentControllerName();
-			$params->attachment=$this->uploads_action($classname,$data_image);
+			$params->attachment=uploads_action($classname,$data_image,$this->thumb_width,$this->thumb_height,$this->is_thumb,$this->is_watermark,$this->root);
 			$params->isattach=1;
 		}
 
@@ -311,7 +311,7 @@ class ClassifyController extends PublicController
 		{
 			//上传文件归类：获取控制器名称
 			$classname=getCurrentControllerName();
-			$params->attachment=$this->uploads_action($classname,$data_image);
+			$params->attachment=uploads_action($classname,$data_image,$this->thumb_width,$this->thumb_height,$this->is_thumb,$this->is_watermark,$this->root);
 			$params->isattach=1;
 		}
 

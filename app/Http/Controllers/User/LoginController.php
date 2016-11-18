@@ -189,7 +189,7 @@ class LoginController extends Controller
                 $is_get_today_experience=object_array(DB::table('experiences')->where($login_condition)->whereBetween('created_at', [$startTime, $endTime])->count());
                 if($is_get_today_experience==0)
                 {
-                    $experience=2;
+                    $experience=@$roleinfo['login_get_experience']?@$roleinfo['login_get_experience']:2;
                     $experiencetpl = trans('login.experience_action_info');
                     // 带有替换信息的上下文数组，键名为占位符名称，键值为替换值。
                     $experience_context = interpolate($experiencetpl, array('username' => $user->username,'experience'=>$experience));
@@ -199,27 +199,8 @@ class LoginController extends Controller
                     $params_experience['info']=$experience_context;
                     $params_experience['user_id']=$user->id;
                    
-                    DB::beginTransaction();
-                    try
-                    { 
-                         $result_experience=in_experience($params_experience);
-                         if($result_experience)
-                         {
-                             $userinfos_condition['user_id']=$params_experience['user_id'];
-                             DB::table('userinfos')->where($userinfos_condition)->increment('experience', $experience);
+                    action_experience($params_experience,$roleinfo);
 
-                             DB::commit();
-                         }
-                         else
-                         {
-                             DB::rollBack();
-                         }
-
-                    }
-                    catch (\Exception $e) 
-                    { 
-                        DB::rollBack(); 
-                    }
                 }
                 /*******************
                     +          】      

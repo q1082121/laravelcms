@@ -10,7 +10,6 @@ use Illuminate\Http\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
-use Cache;
 use App\Http\Model\User;
 use App\Http\Model\Userinfo;
 use URL;
@@ -29,7 +28,6 @@ class UserController extends PublicController
 		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('user.user_navigation_center');
 		$website['title']=$website['cursitename'];
-
 		return view('user/home')->with('website',$website);
 	}
 	/******************************************
@@ -128,17 +126,14 @@ class UserController extends PublicController
 		{
 			//上传文件归类：获取控制器名称
 			$classname=getCurrentControllerName('User');
-			$params['attachment']=$this->uploads_action($classname,$data_image);
+			$params['attachment']=uploads_action($classname,$data_image,$this->thumb_width,$this->thumb_height,$this->is_thumb,$this->is_watermark,$this->root);
 			$params['isattach']=1;
 		}
 
 		$info=DB::table('userinfos')->where($condition)->update($params);
 		if ($info) 
 		{
-			$cache_userinfo='userinfo_'.$this->user['id'];
-			$userinfo=User::find($this->user['id'])->hasOneUserinfo;
-			$minutes=3600;
-			Cache::store('file')->put($cache_userinfo, $userinfo, $minutes);
+			action_cache($condition['user_id'],'userinfo','update');
 
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_save_success');

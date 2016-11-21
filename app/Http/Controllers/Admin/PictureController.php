@@ -22,14 +22,7 @@ class PictureController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_advertising');
-		$website['apiurl_list']=route('post.admin.picture.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
-		$website['apiurl_cache']=route('post.admin.cacheapi.api_cache');
-		$website['link_add']=route('get.admin.picture.add');
-		$website['link_edit']=route('get.admin.picture.edit').'/';
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -45,12 +38,7 @@ class PictureController extends PublicController
 	public function add()
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_advertising');
-		$website['apiurl_add']=route('post.admin.picture.api_add');
-		$website['apiurl_info']=route('post.admin.picture.api_info');
-		$website['apiurl_edit']=route('post.admin.picture.api_edit');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=0;
 		$website['modellist']=json_encode($this->picture_modellist);
 		
@@ -64,12 +52,7 @@ class PictureController extends PublicController
 	public function edit($id)  
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_advertising');
-		$website['apiurl_add']=route('post.admin.picture.api_add');
-		$website['apiurl_info']=route('post.admin.picture.api_info');
-		$website['apiurl_edit']=route('post.admin.picture.api_edit');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=$id;
 		$website['modellist']=json_encode($this->picture_modellist);
 

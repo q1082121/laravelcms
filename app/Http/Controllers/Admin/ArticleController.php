@@ -26,11 +26,6 @@ class ArticleController extends PublicController
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_article');
-		$website['apiurl_list']=route('post.admin.article.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
-		$website['link_add']=route('get.admin.article.add');
-		$website['link_edit']=route('get.admin.article.edit').'/';
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -45,12 +40,7 @@ class ArticleController extends PublicController
 	public function add()
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_article');
-		$website['apiurl_add']=route('post.admin.article.api_add');
-		$website['apiurl_info']=route('post.admin.article.api_info');
-		$website['apiurl_edit']=route('post.admin.article.api_edit');
-        $website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=0;
 
         $condition_class['status']=1;
@@ -79,12 +69,7 @@ class ArticleController extends PublicController
 	public function edit($id)  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_article');
-		$website['apiurl_add']=route('post.admin.article.api_add');
-		$website['apiurl_info']=route('post.admin.article.api_info');
-		$website['apiurl_edit']=route('post.admin.article.api_edit');
-        $website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=$id;
 
         $condition_class['status']=1;

@@ -24,7 +24,6 @@ class QuestionController extends PublicController
 	public function index($type)  
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		switch($type)
 		{
 			case 1:
@@ -38,13 +37,7 @@ class QuestionController extends PublicController
 			break;
 		}
 		$website['type']=$type;
-		$website['apiurl_list']=route('post.admin.question.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
-		$website['apiurl_cache']=route('post.admin.cacheapi.api_cache');
 		$website['link_add']=route('get.admin.question.add').'/'.$type;
-		$website['link_edit']=route('get.admin.question.edit').'/';
-		$website['link_option']=route('get.admin.questionoption').'/';
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -59,7 +52,6 @@ class QuestionController extends PublicController
 	public function add($type)
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		switch($type)
 		{
 			case 1:
@@ -73,12 +65,7 @@ class QuestionController extends PublicController
 			break;
 		}
 		$website['type']=$type;
-		$website['apiurl_add']=route('post.admin.question.api_add');
-		$website['apiurl_info']=route('post.admin.question.api_info');
-		$website['apiurl_edit']=route('post.admin.question.api_edit');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=0;
-		
 		
 		$condition_class['status']=1;
         $list=object_array(DB::table('classifyquestions')->where($condition_class)->orderBy('id', 'desc')->get());
@@ -106,11 +93,6 @@ class QuestionController extends PublicController
 	public function edit($id)  
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
-		$website['apiurl_add']=route('post.admin.question.api_add');
-		$website['apiurl_info']=route('post.admin.question.api_info');
-		$website['apiurl_edit']=route('post.admin.question.api_edit');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=$id;
 		$info = object_array(DB::table('questions')->whereId($id)->first());
 		switch($info['type'])

@@ -23,14 +23,7 @@ class LetterController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.define_model_letter_received');
-		$website['apiurl_list']=route('post.admin.letter.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
-		$website['apiurl_count']=route('post.admin.letter.api_count');
-		$website['link_add']=route('get.admin.letter.add');
-		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -45,14 +38,7 @@ class LetterController extends PublicController
 	public function send()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.define_model_letter_send');
-		$website['apiurl_list']=route('post.admin.letter.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
-		$website['apiurl_count']=route('post.admin.letter.api_count');
-		$website['link_add']=route('get.admin.letter.add');
-		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -67,14 +53,7 @@ class LetterController extends PublicController
 	public function star()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.define_model_letter_star');
-		$website['apiurl_list']=route('post.admin.letter.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
-		$website['apiurl_count']=route('post.admin.letter.api_count');
-		$website['link_add']=route('get.admin.letter.add');
-		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -89,14 +68,7 @@ class LetterController extends PublicController
 	public function trash()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.define_model_letter_trash');
-		$website['apiurl_list']=route('post.admin.letter.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
-		$website['apiurl_count']=route('post.admin.letter.api_count');
-		$website['link_add']=route('get.admin.letter.add');
-		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -111,9 +83,7 @@ class LetterController extends PublicController
 	public function add()
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_letter');
-		$website['apiurl_add']=route('post.admin.letter.api_add');
 		$website['id']=0;
 
 		return view('admin/letter/add')->with('website',$website);

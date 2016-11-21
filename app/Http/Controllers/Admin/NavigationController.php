@@ -22,14 +22,7 @@ class NavigationController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_navigation');
-		$website['apiurl_list']=route('post.admin.navigation.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
-		$website['apiurl_cache']=route('post.admin.cacheapi.api_cache');
-		$website['link_add']=route('get.admin.navigation.add');
-		$website['link_edit']=route('get.admin.navigation.edit').'/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
@@ -43,12 +36,7 @@ class NavigationController extends PublicController
 	public function add()
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_navigation');
-		$website['apiurl_add']=route('post.admin.navigation.api_add');
-		$website['apiurl_info']=route('post.admin.navigation.api_info');
-		$website['apiurl_edit']=route('post.admin.navigation.api_edit');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=0;
 		
 		$list=object_array(DB::table('navigations')->where('status','=','1')->orderBy('id', 'desc')->get());
@@ -75,12 +63,7 @@ class NavigationController extends PublicController
 	public function edit($id)  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_navigation');
-		$website['apiurl_add']=route('post.admin.navigation.api_add');
-		$website['apiurl_info']=route('post.admin.navigation.api_info');
-		$website['apiurl_edit']=route('post.admin.navigation.api_edit');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=$id;
 
 		$list=object_array(DB::table('navigations')->where('status','=','1')->orderBy('id', 'desc')->get());

@@ -26,9 +26,6 @@ class UserpermissionController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_permission');
-		$website['apiurl_list']=route('post.admin.userpermission.api_list');
-		$website['link_add']=route('get.admin.userpermission.add');
-		$website['link_edit']=route('get.admin.userpermission.edit').'/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyval'),'value'=>'name');
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'display_name');

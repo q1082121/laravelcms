@@ -22,11 +22,7 @@ class LogController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_log');
-		$website['apiurl_list']=route('post.admin.log.api_list');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
-		$website['apiurl_clear']=route('post.admin.deleteapi.api_clear');
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);

@@ -24,9 +24,6 @@ class UserController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_user');
-		$website['apiurl_list']=route('post.admin.user.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['link_set']=route('get.admin.user.set').'/';
 		$website['way']='username';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_username'),'value'=>'username');
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_email'),'value'=>'email');

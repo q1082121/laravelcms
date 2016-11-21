@@ -117,8 +117,7 @@ new Vue({
              apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
              apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
              linkurl_edit         :'{{ route("get.admin.question.edit") }}/',
-             apiurl_list          :'{{ route("post.admin.cacheapi.api_cache") }}',
-             linkurl_option       :'{{ route("get.admin.question.questionoption") }}/', 
+             linkurl_option       :'{{ route("get.admin.questionoption") }}/', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页

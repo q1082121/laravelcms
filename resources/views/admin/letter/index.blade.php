@@ -57,21 +57,21 @@
                 <td class="mailbox-subject"><b>@{{ item.title }}</b></td>
                 <td class="mailbox-attachment">@{{ item.email_to }}</td>
                 <td class="mailbox-date">@{{ item.created_at }}</td>
-                @if($website['actionname']=='index')
+                @if(getCurrentMethodName()=='index')
                 <td>
                   <div class="tools">
                     <button v-if="actionname =='index' && item.istrash_to == 0 && item.isdel_to == 0 "  type="button" @click="get_one_action(item.id,'istrash_to')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_trash')}}</button>
                   </div>
                 </td>
                 @endif
-                @if($website['actionname']=='send')
+                @if(getCurrentMethodName()=='send')
                 <td>
                   <div class="tools">
                     <button v-if="actionname =='send' && item.istrash_from == 0 && item.isdel_from == 0 "  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_trash')}}</button>
                   </div>
                 </td>
                 @endif
-                @if($website['actionname']=='star')
+                @if(getCurrentMethodName()=='star')
                 <td>
                   <div class="tools">
                     <button v-if="actionname =='star' && item.istrash_from == 0  && item.isdel_from == 0 && item.email_from == email"  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-primary" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_trash')}}</button>
@@ -79,7 +79,7 @@
                   </div>
                 </td>
                 @endif
-                @if($website['actionname']=='trash')
+                @if(getCurrentMethodName()=='trash')
                 <td>
                   <div class="tools">
                     <button v-if="actionname =='trash' && item.istrash_from == 1  && item.isdel_from == 0 && item.email_from == email"  type="button" @click="get_one_action(item.id,'istrash_from')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_back')}}</button>

@@ -97,9 +97,8 @@
 new Vue({
     el: '#app-content',
     data: {
-
+             apiurl_list          :'{{ route("post.admin.user.api_list") }}', 
              apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
-             linkurl_edit         :'{{ route("get.admin.user.edit") }}/',
              linkurl_set          :'{{ route("get.admin.user.set") }}/',  
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  

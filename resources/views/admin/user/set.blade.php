@@ -85,7 +85,7 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_info:         '{{ route("post.admin.userrole.api_list_related") }}', 
+             apiurl_list:         '{{ route("post.admin.userrole.api_list_related") }}', 
              apiurl_get:          '{{ route("post.admin.userrole.api_get_role") }}',
              apiurl_cancel:       '{{ route("post.admin.userrole.api_cancel_role") }}',
              totals               : 0,

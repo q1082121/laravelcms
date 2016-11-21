@@ -26,16 +26,10 @@ class ScoreController extends PublicController
 		$website['cursitename']=trans('user.user_navigation_score');
 		$website['title']=$website['cursitename'];
 		$website['apiurl_list']=route('post.user.score.api_list');
-		$website['apiurl_check_in']=route('post.user.score.api_check_in');
 		$website['way']='info';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_info'),'value'=>'info');
 		$website['wayoption']=json_encode($wayoption);
 
-		//获取用户组数据
-		$role_condition['type']=4;
-		$rolelist=object_array(DB::table('roles')->where($role_condition)->orderBy('level', 'asc')->get());
-		$website['rolelist']=json_encode($rolelist);
-		
 		return view('user/score/index')->with('website',$website);
 	}
 
@@ -82,6 +76,39 @@ class ScoreController extends PublicController
 	}
 	/******************************************
 	****AuThor:rubbish.boy@163.com
+	****Title :获取每天是否签到
+	*******************************************/
+	public function api_is_check_in(Request $request)
+	{
+		$user_id=$this->user['id'];
+		$condition['type']=1;
+		$condition['user_id']=$user_id;
+		$startTime = date('Y-m-d'.' 00:00:00',time());
+    	$endTime   = date('Y-m-d'.' 23:59:59',time());
+		$is_get_today_check_in=object_array(DB::table('scores')->where($condition)->whereBetween('created_at', [$startTime, $endTime])->count());
+		if($is_get_today_check_in==1)
+		{
+			
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.message_check_in_exit');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']=1;
+			
+		}
+		else
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.message_check_in_not');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']=0;
+		}
+		
+        return response()->json($msg_array);
+	}
+	/******************************************
+	****AuThor:rubbish.boy@163.com
 	****Title :签到
 	*******************************************/
 	public function api_check_in(Request $request)  
@@ -97,7 +124,7 @@ class ScoreController extends PublicController
 			$score=$this->roleinfo['check_in_score']?$this->roleinfo['check_in_score']:1;
 			$scoretpl = trans('user.score_action_info');
 			// 带有替换信息的上下文数组，键名为占位符名称，键值为替换值。
-			$score_context = interpolate($scoretpl, array('username' => $user->username,'score'=>$score));
+			$score_context = interpolate($scoretpl, array('username' => $this->user['username'],'score'=>$score));
 
 			$params_score['type']=1;
 			$params_score['val']=$score;
@@ -106,15 +133,24 @@ class ScoreController extends PublicController
 			$params_score['tablename']="";
 			$params_score['keyid']=0;
 
+			$result_score=action_score_check_in($params_score);
 			
-
-			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.message_get_success');
-			$msg_array['is_reload']=0;
-			$msg_array['curl']='';
-			$msg_array['resource']=$list;
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			if($result_score==1)
+			{
+				$msg_array['status']='1';
+				$msg_array['info']=trans('admin.message_check_in_success');
+				$msg_array['is_reload']=1;
+				$msg_array['curl']='';
+				
+			}
+			else
+			{
+				$msg_array['status']='0';
+				$msg_array['info']=trans('admin.message_check_in_failure');
+				$msg_array['is_reload']=0;
+				$msg_array['curl']='';
+			}
+			
 		}
 		else
 		{
@@ -122,9 +158,6 @@ class ScoreController extends PublicController
 			$msg_array['info']=trans('admin.message_check_in_exit');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
-			$msg_array['resource']="";
-			$msg_array['param_way']="";
-			$msg_array['param_keyword']="";
 		}
 		
         return response()->json($msg_array);

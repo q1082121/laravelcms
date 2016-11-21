@@ -64,6 +64,13 @@ Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user
 	Route::get('experience', 'ExperienceController@index')->name('get.user.experience');
 	//会员积分
 	Route::get('score', 'ScoreController@index')->name('get.user.score');
+	//信件管理
+	Route::get('letter','LetterController@index')->name('get.user.letter');
+	Route::get('letter/send', 'LetterController@send')->name('get.user.letter.send');
+	Route::get('letter/star','LetterController@star')->name('get.user.letter.star');	
+	Route::get('letter/trash', 'LetterController@trash')->name('get.user.letter.trash');										
+	Route::get('letter/add', 'LetterController@add')->name('get.user.letter.add');
+
 
 
 	//日志列表
@@ -73,7 +80,14 @@ Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user
 	//会员积分
 	Route::post('score/api_list', 'ScoreController@api_list')->name('post.user.score.api_list');
 	Route::post('score/api_check_in', 'ScoreController@api_check_in')->name('post.user.score.api_check_in');
-	//删除图片
+	Route::post('score/api_is_check_in', 'ScoreController@api_is_check_in')->name('post.user.score.api_is_check_in');
+	//信件管理
+	Route::post('letter/api_list', 'LetterController@api_list')->name('post.user.letter.api_list');
+	Route::post('letter/api_add', 'LetterController@api_add')->name('post.user.letter.api_add');
+	Route::post('letter/api_info', 'LetterController@api_info')->name('post.user.letter.api_info');
+	Route::post('letter/api_count', 'LetterController@api_count')->name('post.user.letter.api_count');
+	//删除操作
+	Route::post('deleteapi/api_delete', 'DeleteapiController@api_delete')->name('post.user.deleteapi.api_delete');
 	Route::post('deleteapi/api_del_image', 'DeleteapiController@api_del_image')->name('post.user.deleteapi.api_del_image');
 	//用户信息
 	Route::post('userinfo/api_edit_pwd', 'UserController@api_edit_pwd')->name('post.user.userinfo.api_edit_pwd');
@@ -81,6 +95,8 @@ Route::group(['namespace' => 'User', 'middleware' => ['cors'], 'prefix' => 'user
 	Route::post('userinfo/api_edit', 'UserController@api_edit')->name('post.user.userinfo.api_edit');
 	//地区数据
 	Route::post('district/api_area', 'DistrictController@api_area')->name('post.user.district.api_area');
+	//一键操作
+	Route::post('oneactionapi/api_one_action', 'OneactionapiController@api_one_action')->name('post.user.oneactionapi.api_one_action');
 
 });
 

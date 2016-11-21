@@ -2,7 +2,7 @@
 <header>
     <!-- logo -->
     <div class="am-fl tpl-header-logo" style="font-weight:700">
-        <a href="/user/">{{trans('user.user_navigation_center')}}</a>
+        <a href="/">{{trans('user.user_navigation_home')}}</a>
     </div>
     <!-- 右侧内容 -->
     <div class="tpl-header-fluid">
@@ -32,52 +32,30 @@
                     </span> </a>
                 </li>
                 <!-- 新邮件 -->
-                <li class="am-dropdown tpl-dropdown" data-am-dropdown>
+                <li class="am-dropdown tpl-dropdown" data-am-dropdown id="message-content" >
                     <a href="javascript:;" class="am-dropdown-toggle tpl-dropdown-toggle" data-am-dropdown-toggle>
                         <i class="am-icon-envelope"></i>
-                        <span class="am-badge am-badge-success am-round item-feed-badge">4</span>
+                        <span class="am-badge am-badge-success am-round item-feed-badge">{{$website['letters_count']}}</span>
                     </a>
                     <!-- 弹出列表 -->
                     <ul class="am-dropdown-content tpl-dropdown-content">
-                        <li class="tpl-dropdown-menu-messages">
+                        <li class="tpl-dropdown-menu-messages" v-for="item in letters_list" >
                             <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
                                 <div class="menu-messages-ico">
                                     <img src="{{$website['website_userinfo']['avatar']}}" alt="">
-                                </div>
-                                <div class="menu-messages-time">
-                                    3小时前
                                 </div>
                                 <div class="menu-messages-content">
                                     <div class="menu-messages-content-title">
                                         <i class="am-icon-circle-o am-text-success"></i>
-                                        <span>夕风色</span>
+                                        <span>@{{item.email_from}}</span>
                                     </div>
-                                    <div class="am-text-truncate"> Amaze UI 的诞生，依托于 GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </div>
-                                    <div class="menu-messages-content-time">2016-09-21 下午 16:40</div>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="tpl-dropdown-menu-messages">
-                            <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
-                                <div class="menu-messages-ico">
-                                    <img src="{{$website['website_userinfo']['avatar']}}" alt="">
-                                </div>
-                                <div class="menu-messages-time">
-                                    5天前
-                                </div>
-                                <div class="menu-messages-content">
-                                    <div class="menu-messages-content-title">
-                                        <i class="am-icon-circle-o am-text-warning"></i>
-                                        <span>禁言小张</span>
-                                    </div>
-                                    <div class="am-text-truncate"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </div>
-                                    <div class="menu-messages-content-time">2016-09-16 上午 09:23</div>
+                                    <div class="am-text-truncate">@{{item.title}}</div>
+                                    <div class="menu-messages-content-time">@{{item.created_at}}</div>
                                 </div>
                             </a>
                         </li>
                         <li class="tpl-dropdown-menu-messages">
-                            <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
+                            <a href="{{ route('get.user.letter') }}" class="tpl-dropdown-menu-messages-item am-cf">
                                 <i class="am-icon-circle-o"></i> 进入列表…
                             </a>
                         </li>
@@ -145,5 +123,13 @@
             </ul>
         </div>
     </div>
-
+    <script type="text/javascript">
+    new Vue({
+        el: '#message-content',
+        data: {
+                letters_list         :eval(htmlspecialchars_decode('{{$website["letters_list"]}}')), 
+                },
+                
+    });
+    </script>
 </header>

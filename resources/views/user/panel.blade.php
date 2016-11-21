@@ -15,7 +15,8 @@
                             {{$website['website_user']['email']}}
                         </div>
                         <div class="achievement-subheading">
-                            <button type="button" class="am-btn am-btn-default am-radius">每日签到</button>
+                            <button @click="check_in_action();" v-if="is_check_in == 0" type="button" class="am-btn am-btn-danger am-radius">每日签到</button>
+                            <button  v-else type="button" class="am-btn am-btn-default am-radius">今日已签</button>
                         </div>
                 </div>
             </div> 
@@ -48,15 +49,21 @@
 new Vue({
     el: '#app-content-top',
     data: {
-             apiurl_check_in      :'{{$website["apiurl_check_in"]}}',  
+             apiurl_check_in      :'{{route("post.user.score.api_check_in")}}', 
+             apiurl_is_check_in   :'{{route("post.user.score.api_is_check_in")}}', 
              rolelist             :eval(htmlspecialchars_decode('{{$website["rolelist"]}}')),
              level                :'{{$website["website_roleinfo"]["level"]}}',
+             is_check_in          :0,  
              paramsdata:
              {
                 user_id           :'{{$website["website_user"]["id"]}}',
                 modelname         :'{{$website["modelname"]}}',
              }
           },
+    ready: function (){ 
+            //这里是vue初始化完成后执行的函数 
+            this.get_is_check_in_action();
+            },      
     methods: {
             //返回信息处理
             return_info_action:function(response)
@@ -67,7 +74,7 @@ new Vue({
                 {
                     if(statusinfo.is_reload==1)
                     {
-                    layermsg_success_reload(statusinfo.info);
+                        layermsg_success_reload(statusinfo.info);
                     }
                     else
                     {
@@ -94,6 +101,34 @@ new Vue({
                     }
                 }
             },
+            //判断是否签到
+            get_is_check_in_action:function()
+            {
+              this.$http.post(this.apiurl_is_check_in,this.paramsdata,{
+              before:function(request)
+                {
+                  loadi=layer.load("...");
+                },
+              })
+              .then((response) => 
+              {
+                layer.close(loadi);
+                var statusinfo=response.data;
+                this.is_check_in=statusinfo.resource;
+              },(response) => 
+              {
+                //响应错误
+                layer.close(loadi);
+                var msg="{{trans('admin.message_outtime')}}";
+                layermsg_error(msg);
+              })
+              .catch(function(response) {
+                //异常抛出
+                layer.close(loadi);
+                var msg="{{trans('admin.message_error')}}";
+                layermsg_error(msg);
+              })
+            },
             //每日签到
             check_in_action:function()
             {
@@ -117,7 +152,7 @@ new Vue({
               .catch(function(response) {
                 //异常抛出
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime_error')}}";
+                var msg="{{trans('admin.message_error')}}";
                 layermsg_error(msg);
               })
             }

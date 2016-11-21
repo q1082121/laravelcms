@@ -43,6 +43,7 @@ class PublicController extends Controller
 	    |
 	    */
 		$root=Cache::store('file')->get('root');
+		$root['syseditor']=@$root['syseditor']?@$root['syseditor']:"Markdown";
 		$root['systitle']=@$root['systitle']?@$root['systitle']:"LaravelCms";
 		$root['syskeywords']=@$root['syskeywords']?@$root['syskeywords']:"";
 		$root['sysdescription']=@$root['sysdescription']?@$root['sysdescription']:"";
@@ -90,6 +91,17 @@ class PublicController extends Controller
 			}
 			else
 			{
+				//获取未读信件
+				$condition_index['email_to']=$this->user['email'];
+				$condition_index['istrash_to']=0;
+				$condition_index['isdel_to']=0;
+				$condition_index['status']=0;
+				$letters_count=DB::table('letters')->where($condition_index)->count();
+				$letters_list=DB::table('letters')->where($condition_index)->take(5)->get();
+				$this->website['letters_count']=$letters_count?$letters_count:0;
+				$this->website['letters_list']=json_encode(object_array($letters_list));
+				
+				//用户组信息
 				$cache_userrole='userrole_'.$user['id'];
 				$this->roleinfo=$roleinfo=action_cache($user['id'],'userrole');
 				$this->website['website_roleinfo']=$this->roleinfo;

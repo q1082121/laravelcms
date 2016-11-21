@@ -1,7 +1,7 @@
 <?php
 /******************************************
 ****AuThor:rubbish.boy@163.com
-****Title :成才等级-经验值
+****Title :成才经验
 *******************************************/
 namespace App\Http\Controllers\User;
 
@@ -23,19 +23,12 @@ class ExperienceController extends PublicController
 	{
 		$website=$this->website;
 		$website['modelname']=getCurrentControllerName('User');
-		$website['cursitename']=trans('user.user_navigation_growth_level');
+		$website['cursitename']=trans('user.user_navigation_experience');
 		$website['title']=$website['cursitename'];
 		$website['apiurl_list']=route('post.user.experience.api_list');
-		$website['apiurl_check_in']=route('post.user.score.api_check_in');
 		$website['way']='info';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_info'),'value'=>'info');
 		$website['wayoption']=json_encode($wayoption);
-
-        
-		//获取用户组数据
-		$role_condition['type']=4;
-		$rolelist=object_array(DB::table('roles')->where($role_condition)->orderBy('level', 'asc')->get());
-		$website['rolelist']=json_encode($rolelist);
 
 		return view('user/experience/index')->with('website',$website);
 	}

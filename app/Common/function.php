@@ -487,6 +487,47 @@ function action_experience($params_experience,$roleinfo)
 		Illuminate\Support\Facades\DB::rollBack(); 
 	}
 }
+/***********************************
+ * 方法名：每日积分签到
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/ 
+function action_score_check_in($params_score)
+{
+	$rule=0;
+	Illuminate\Support\Facades\DB::beginTransaction();
+	try
+	{ 		
+		$score = new App\Http\Model\Score;
+		$score->type = $params_score['type'];
+		$score->user_id = $params_score['user_id'];
+		$score->val = $params_score['val'];
+		$score->info = $params_score['info'];
+		$score->tablename = $params_score['tablename'];
+		$score->keyid = $params_score['keyid'];
+		$result_score=$score->save();
+		if($result_score)
+		{
+			$rule=1;
+			//获得积分   
+			$userinfos_condition['user_id']=$params_score['user_id'];
+			Illuminate\Support\Facades\DB::table('userinfos')->where($userinfos_condition)->increment('score', $score->val);
+			action_cache($params_score['user_id'],'userinfo','update');
+			
+			Illuminate\Support\Facades\DB::commit();
+		}
+		else
+		{
+			Illuminate\Support\Facades\DB::rollBack();
+		}
+	}
+	catch (\Exception $e) 
+	{ 
+		Illuminate\Support\Facades\DB::rollBack(); 
+	}
+	return $rule;
+}
+
+
 /******************************************
 ****AuThor:rubbish.boy@163.com
 ****Title :图片上传

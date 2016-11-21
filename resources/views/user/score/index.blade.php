@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
 <!-- 内容区域 -->
-@include('user.panel')
+
 <div class="row-content am-cf" id="app-content">
     <div class="row">
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
@@ -132,7 +132,7 @@ new Vue({
               .catch(function(response) {
                 //异常抛出
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime_error')}}";
+                var msg="{{trans('admin.message_error')}}";
                 layermsg_error(msg);
               })
 
@@ -238,7 +238,7 @@ new Vue({
               .catch(function(response) {
                 //异常抛出
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime_error')}}";
+                var msg="{{trans('admin.message_error')}}";
                 layermsg_error(msg);
               })
             },
@@ -302,7 +302,7 @@ new Vue({
               .catch(function(response) {
                 //异常抛出
                 layer.close(loadi);
-                var msg="{{trans('admin.website_outtime_error')}}";
+                var msg="{{trans('admin.message_error')}}";
                 layermsg_error(msg);
               })
             }

@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
-//使用URL生成地址
 use URL;
-
 use App\Http\Model\Article;
 use App\Http\Model\Navigation;
 use App\Http\Model\Classify;
@@ -26,6 +24,7 @@ use App\Http\Model\Log;
 use App\Http\Model\Wechat;
 use App\Http\Model\Wechatreplytext;
 use App\Http\Model\Wechatreplyimagetext;
+
 class DeleteapiController extends PublicController
 {
     /******************************************

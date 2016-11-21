@@ -28,6 +28,12 @@ class UserController extends PublicController
 		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('user.user_navigation_center');
 		$website['title']=$website['cursitename'];
+
+		//获取用户组数据
+		$role_condition['type']=4;
+		$rolelist=object_array(DB::table('roles')->where($role_condition)->orderBy('level', 'asc')->get());
+		$website['rolelist']=json_encode($rolelist);
+		
 		return view('user/home')->with('website',$website);
 	}
 	/******************************************

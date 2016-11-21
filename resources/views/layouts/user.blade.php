@@ -29,6 +29,7 @@
 	<script src="{{asset('/js')}}/common.js"></script>
     <style>
     .common_select_search{width:180px;height:34px;}
+    .a_color{color:#838FA1;}
     </style>
 </head>
 

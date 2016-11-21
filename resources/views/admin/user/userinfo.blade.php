@@ -139,10 +139,11 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_info:           '{{$website["apiurl_info"]}}', 
-             apiurl_edit:           '{{$website["apiurl_edit"]}}',
-             apiurl_area:           '{{$website["apiurl_area"]}}', 
-             apiurl_del_image:      '{{$website["apiurl_del_image"]}}',
+
+             apiurl_info:           '{{ route("post.admin.user.api_info") }}', 
+             apiurl_edit:           '{{ route("post.admin.user.api_edit") }}',
+             apiurl_area:           '{{ route("post.admin.district.api_area") }}',
+             apiurl_del_image:      '{{ route("post.admin.deleteapi.api_del_image") }}',
              params_data:
              {
                 name                :'',
@@ -168,7 +169,7 @@ new Vue({
              del_data:
              {
                 id                  :'{{$website["website_userinfo"]["id"]}}',
-                modelname           :'{{$website["modelname"]}}',
+                modelname           :'{{getCurrentControllerName()}}',
              }
           },
     ready: function ()

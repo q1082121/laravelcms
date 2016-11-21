@@ -80,7 +80,7 @@ new Vue({
     data: { 
              email:                 '{{$website["website_user"]["email"]}}' ,
              syseditor:             '{{$website["root"]["syseditor"]}}', 
-             apiurl_add:            '{{$website["apiurl_add"]}}', 
+             apiurl_add:            '{{ route("post.admin.letter.api_add") }}', 
              params_data:
              {
                 syseditor           :'',

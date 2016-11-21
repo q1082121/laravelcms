@@ -74,9 +74,9 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_add:            '{{$website["apiurl_add"]}}', 
-             apiurl_info:           '{{$website["apiurl_info"]}}', 
-             apiurl_edit:           '{{$website["apiurl_edit"]}}', 
+             apiurl_add:            '{{ route("post.admin.userrole.api_add") }}', 
+             apiurl_info:           '{{ route("post.admin.userrole.api_info") }}', 
+             apiurl_edit:           '{{ route("post.admin.userrole.api_edit") }}',
              params_data:
              {
                 name                :'',

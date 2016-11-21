@@ -97,9 +97,10 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_list          :'{{$website["apiurl_list"]}}',
-             apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
-             linkurl_set          :'{{$website["link_set"]}}',  
+
+             apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
+             linkurl_edit         :'{{ route("get.admin.user.edit") }}/',
+             linkurl_set          :'{{ route("get.admin.user.set") }}/',  
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -119,7 +120,7 @@ new Vue({
              {
                     id             :'',
                     fields         :'',
-                    modelname      :'{{$website["modelname"]}}',
+                    modelname      :'{{getCurrentControllerName()}}',
              }
           },
     ready: function (){ 

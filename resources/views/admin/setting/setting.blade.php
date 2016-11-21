@@ -265,11 +265,11 @@
       new Vue({
           el: '#app-content',
           data: {
-              apiurl_info:        '{{$website["apiurl_info"]}}',
-              apiurl_cache:       '{{$website["apiurl_cache"]}}',
+              apiurl_info:        '{{ route("post.admin.setting.api_info") }}',
+              apiurl_cache:       '{{ route("post.admin.cacheapi.api_cache") }}',
               editoroption        :eval(htmlspecialchars_decode('{{$website["editoroption"]}}')),
               info: {
-                modelname:        '{{$website["modelname"]}}' ,
+                modelname:        '{{getCurrentControllerName()}}' ,
                 systitle:         '' ,
                 syskeywords:      '' ,
                 sysdescription :  '' ,

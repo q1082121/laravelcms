@@ -48,7 +48,7 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_edit_pwd:           '{{$website["apiurl_edit_pwd"]}}', 
+             apiurl_edit_pwd:           '{{ route("post.admin.user.api_edit_pwd") }}', 
              params_data:
              {
                 oldpwd                :'',

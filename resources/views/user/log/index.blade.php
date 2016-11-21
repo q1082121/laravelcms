@@ -63,14 +63,14 @@
                     <div class="am-u-lg-12 am-cf">
                         <div class="am-fr">
                             <ul class="am-pagination tpl-pagination">
-                                <li><a href="javascript:void(0);">@{{ totals_title }}</a></li>
-                                <li><a href="javascript:void(0);" @click="btnClick(first_page)" >{{trans('admin.website_first_page_title')}}</a></li>
-                                <li><a href="javascript:void(0);" @click="btnClick(prev_page)" >{{trans('admin.website_prev_page_title')}}</a></li>
+                                <li><a class="a_color" href="javascript:void(0);">@{{ totals_title }}</a></li>
+                                <li><a class="a_color" href="javascript:void(0);" @click="btnClick(first_page)" >{{trans('admin.website_first_page_title')}}</a></li>
+                                <li><a class="a_color" href="javascript:void(0);" @click="btnClick(prev_page)" >{{trans('admin.website_prev_page_title')}}</a></li>
                                 <li v-for="index in totals"  v-bind:class="{ 'am-active': current_page == index+1}">
-                                    <a href="javascript:void(0);" @click="btnClick(index+1)" >@{{ index+1 }} </a>
+                                    <a class="a_color" href="javascript:void(0);" @click="btnClick(index+1)" >@{{ index+1 }} </a>
                                 </li>
-                                <li><a href="javascript:void(0);" @click="btnClick(next_page)" >{{trans('admin.website_next_page_title')}}</a></li>
-                                <li><a href="javascript:void(0);" @click="btnClick(last_page)" >{{trans('admin.website_last_page_title')}}</a></li>
+                                <li><a class="a_color" href="javascript:void(0);" @click="btnClick(next_page)" >{{trans('admin.website_next_page_title')}}</a></li>
+                                <li><a class="a_color" href="javascript:void(0);" @click="btnClick(last_page)" >{{trans('admin.website_last_page_title')}}</a></li>
                             </ul>
                         </div>
                     </div>

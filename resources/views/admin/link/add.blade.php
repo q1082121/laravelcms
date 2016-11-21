@@ -116,10 +116,10 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_add:            '{{$website["apiurl_add"]}}', 
-             apiurl_info:           '{{$website["apiurl_info"]}}', 
-             apiurl_edit:           '{{$website["apiurl_edit"]}}',
-             apiurl_del_image:      '{{$website["apiurl_del_image"]}}',
+             apiurl_add:            '{{ route("post.admin.link.api_add") }}', 
+             apiurl_info:           '{{ route("post.admin.link.api_info") }}', 
+             apiurl_edit:           '{{ route("post.admin.link.api_edit") }}',
+             apiurl_del_image:      '{{ route("post.admin.deleteapi.api_del_image") }}',
              modellist:             eval(htmlspecialchars_decode('{{$website["modellist"]}}')), 
              classlist:             eval(htmlspecialchars_decode('{{$website["classlist"]}}')), 
              params_data:
@@ -141,7 +141,7 @@ new Vue({
              del_data:
              {
                 id                  :'{{$website["id"]}}',
-                modelname           :'{{$website["modelname"]}}',
+                modelname           :'{{getCurrentControllerName()}}',
              }
           },
     ready: function (){ 

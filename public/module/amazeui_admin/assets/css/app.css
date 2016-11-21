@@ -737,7 +737,7 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
 }
 .theme-white .tpl-pagination .am-disabled a,
 .theme-white .tpl-pagination li a {
-  color: #23abf0;
+  /*color: #23abf0;*/
   border-radius: 3px;
   padding: 6px 12px;
 }

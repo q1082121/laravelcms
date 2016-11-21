@@ -60,7 +60,7 @@
                 <td v-if="item.type == 2"> <i class="fa fa-leaf"></i> {{trans('admin.define_model_question2')}}</td>
                 <td v-if="item.type == 3"> <i class="fa fa-leaf"></i> {{trans('admin.define_model_question3')}}</td>
                 <td>@{{ item.title }}</td>
-                <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
+                <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{getCurrentControllerName()}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
                 <td>@{{ item.score }}</td>
                 @if ($website['type'] == 3)
                 <td><i v-if="item.is_answer == 0"  class="fa fa-remove"></i> <i v-if="item.is_answer == 1"  class="fa fa-check"></i></td>
@@ -113,12 +113,12 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_list          :'{{$website["apiurl_list"]}}',
-             apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
-             apiurl_delete        :'{{$website["apiurl_delete"]}}',
-             apiurl_cache         :'{{$website["apiurl_cache"]}}',
-             linkurl_edit         :'{{$website["link_edit"]}}', 
-             linkurl_option       :'{{$website["link_option"]}}', 
+             apiurl_list          :'{{ route("post.admin.question.api_list") }}',
+             apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
+             apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
+             linkurl_edit         :'{{ route("get.admin.question.edit") }}/',
+             apiurl_list          :'{{ route("post.admin.cacheapi.api_cache") }}',
+             linkurl_option       :'{{ route("get.admin.question.questionoption") }}/', 
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -139,7 +139,7 @@ new Vue({
              {
                     id             :'',
                     fields         :'',
-                    modelname      :'{{$website["modelname"]}}',
+                    modelname      :'{{getCurrentControllerName()}}',
              }
           },
     ready: function (){ 
@@ -264,8 +264,8 @@ new Vue({
              //点击删除
             delete_action:function(data)
             {
-              var deletedata={'id':data,'modelname':'{{ $website["modelname"]}}'};
-              this.$http.post(this.apiurl_delete,deletedata,{
+              this.paramsdata.id=data;
+              this.$http.post(this.apiurl_delete,this.paramsdata,{
                 before:function(request)
                 {
                   loadi=layer.load("...");

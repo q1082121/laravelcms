@@ -150,10 +150,10 @@ new Vue({
     el: '#app-content',
     data: { 
              syseditor:             '{{$website["root"]["syseditor"]}}', 
-             apiurl_add:            '{{$website["apiurl_add"]}}', 
-             apiurl_info:           '{{$website["apiurl_info"]}}', 
-             apiurl_edit:           '{{$website["apiurl_edit"]}}',
-             apiurl_del_image:      '{{$website["apiurl_del_image"]}}',
+             apiurl_add:            '{{ route("post.admin.article.api_add") }}', 
+             apiurl_info:           '{{ route("post.admin.article.api_info") }}', 
+             apiurl_edit:           '{{ route("post.admin.article.api_edit") }}',
+             apiurl_del_image:      '{{ route("post.admin.deleteapi.api_del_image") }}',
              classlist:             eval(htmlspecialchars_decode('{{$website["classlist"]}}')), 
              params_data:
              {
@@ -177,7 +177,7 @@ new Vue({
              del_data:
              {
                 id                  :'{{$website["id"]}}',
-                modelname           :'{{$website["modelname"]}}',
+                modelname           :'{{getCurrentControllerName()}}',
              }
           },
     ready: function (){ 

@@ -42,9 +42,6 @@ class UserpermissionController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_permission');
-		$website['apiurl_add']=route('post.admin.userpermission.api_add');
-		$website['apiurl_info']=route('post.admin.userpermission.api_info');
-		$website['apiurl_edit']=route('post.admin.userpermission.api_edit');
 		$website['id']=0;
 		return view('admin/userpermission/add')->with('website',$website);
 	}
@@ -56,9 +53,6 @@ class UserpermissionController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_permission');
-		$website['apiurl_add']=route('post.admin.userpermission.api_add');
-		$website['apiurl_info']=route('post.admin.userpermission.api_info');
-		$website['apiurl_edit']=route('post.admin.userpermission.api_edit');
 		$website['id']=$id;
 		return view('admin/userpermission/add')->with('website',$website);
 	}

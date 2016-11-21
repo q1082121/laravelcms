@@ -8,7 +8,7 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">
-            <a href="{{$website['link_add']}}" >
+            <a href="{{ route('get.admin.link.add') }}" >
             <button type="button" class="btn btn-success pull-left ">
               <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
             </button>
@@ -61,7 +61,7 @@
                 <td v-if="item.modelid == 1"> <i class="fa fa-leaf"></i> {{trans('admin.define_model_link1')}}</td>
                 <td v-if="item.modelid == 2"> <i class="fa fa-leaf"></i> {{trans('admin.define_model_link2')}}</td>
                 <td>@{{ item.title }}</td>
-                <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
+                <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{getCurrentControllerName()}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
                 <td>@{{ item.orderid }}</td>
                 <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>
@@ -108,11 +108,11 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_list          :'{{$website["apiurl_list"]}}',
-             apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
-             apiurl_delete        :'{{$website["apiurl_delete"]}}',
-             apiurl_cache         :'{{$website["apiurl_cache"]}}',
-             linkurl_edit         :'{{$website["link_edit"]}}', 
+             apiurl_list          :'{{ route("post.admin.link.api_list") }}',
+             apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
+             apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
+             apiurl_cache         :'{{ route("post.admin.cacheapi.api_cache") }}',
+             linkurl_edit         :'{{ route("get.admin.link.edit") }}/',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -132,7 +132,7 @@ new Vue({
              {
                     id             :'',
                     fields         :'',
-                    modelname      :'{{$website["modelname"]}}',
+                    modelname      :'{{getCurrentControllerName()}}',
              }
           },
     ready: function (){ 
@@ -253,8 +253,8 @@ new Vue({
              //点击删除
             delete_action:function(data)
             {
-              var deletedata={'id':data,'modelname':'{{ $website["modelname"]}}'};
-              this.$http.post(this.apiurl_delete,deletedata,{
+              this.paramsdata.id=data;
+              this.$http.post(this.apiurl_delete,this.paramsdata,{
                 before:function(request)
                 {
                   loadi=layer.load("...");

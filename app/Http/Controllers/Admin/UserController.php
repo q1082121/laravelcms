@@ -248,10 +248,6 @@ class UserController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_action_set_role');
-
-		$website['apiurl_list']=route('post.admin.userrole.api_list_related');
-		$website['apiurl_get']=route('post.admin.userrole.api_get_role');
-		$website['apiurl_cancel']=route('post.admin.userrole.api_cancel_role');
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyval'),'value'=>'name');
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'display_name');
@@ -270,12 +266,7 @@ class UserController extends PublicController
 	public function userinfo()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_userinfo');
-		$website['apiurl_info']=route('post.admin.user.api_info');
-		$website['apiurl_edit']=route('post.admin.user.api_edit');
-		$website['apiurl_area']=route('post.admin.district.api_area');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$area_data_p[]=array('id'=>0,'name'=>trans('admin.option_select_p'),'alias'=>trans('admin.option_select_p'));
 		$area_data_c[]=array('id'=>0,'name'=>trans('admin.option_select_c'),'alias'=>trans('admin.option_select_c'));
 		$area_data_x[]=array('id'=>0,'name'=>trans('admin.option_select_x'),'alias'=>trans('admin.option_select_x'));
@@ -295,7 +286,6 @@ class UserController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.define_model_user_editpwd');
-		$website['apiurl_edit_pwd']=route('post.admin.user.api_edit_pwd');
 		$website['id']=$this->user['id'];
 		
 		return view('admin/user/edit_pwd')->with('website',$website);

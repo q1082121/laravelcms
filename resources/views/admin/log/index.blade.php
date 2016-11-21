@@ -91,9 +91,9 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_list          :'{{$website["apiurl_list"]}}',
-             apiurl_clear         :'{{$website["apiurl_clear"]}}',
-             apiurl_delete        :'{{$website["apiurl_delete"]}}',
+             apiurl_list          :'{{ route("post.admin.log.api_list") }}',
+             apiurl_clear         :'{{ route("post.admin.deleteapi.api_clear") }}',
+             apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -113,7 +113,7 @@ new Vue({
              {
                     id             :'',
                     fields         :'',
-                    modelname      :'{{$website["modelname"]}}',
+                    modelname      :'{{getCurrentControllerName()}}',
              }
           },
     ready: function (){ 
@@ -229,8 +229,8 @@ new Vue({
              //点击删除
             delete_action:function(data)
             {
-              var deletedata={'id':data,'modelname':'{{ $website["modelname"]}}'};
-              this.$http.post(this.apiurl_delete,deletedata,{
+              this.paramsdata.id=data;
+              this.$http.post(this.apiurl_delete,this.paramsdata,{
                 before:function(request)
                 {
                   loadi=layer.load("...");

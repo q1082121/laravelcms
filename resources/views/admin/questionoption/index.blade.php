@@ -54,7 +54,7 @@
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
                 <td>@{{ item.title }}</td>
-                <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{$website['modelname']}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
+                <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{getCurrentControllerName()}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
                 <td><i v-if="item.is_answer == 0"  class="fa fa-remove"></i> <i v-if="item.is_answer == 1"  class="fa fa-check"></i></td>
                 <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>
@@ -103,11 +103,11 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_list          :'{{$website["apiurl_list"]}}',
-             apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
-             apiurl_delete        :'{{$website["apiurl_delete"]}}',
-             apiurl_cache         :'{{$website["apiurl_cache"]}}',
-             linkurl_edit         :'{{$website["link_edit"]}}', 
+             apiurl_list          :'{{ route("post.admin.questionoption.api_list") }}',
+             apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
+             apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
+             linkurl_edit         :'{{ route("get.admin.questionoption.edit") }}/',
+             apiurl_list          :'{{ route("post.admin.cacheapi.api_cache") }}',
              linkurl_back         :'{{$website["link_back"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
@@ -129,7 +129,7 @@ new Vue({
              {
                     id             :'',
                     fields         :'',
-                    modelname      :'{{$website["modelname"]}}',
+                    modelname      :'{{getCurrentControllerName()}}',
              }
           },
     ready: function (){ 
@@ -254,8 +254,8 @@ new Vue({
              //点击删除
             delete_action:function(data)
             {
-              var deletedata={'id':data,'modelname':'{{ $website["modelname"]}}'};
-              this.$http.post(this.apiurl_delete,deletedata,{
+              this.paramsdata.id=data;
+              this.$http.post(this.apiurl_delete,this.paramsdata,{
                 before:function(request)
                 {
                   loadi=layer.load("...");

@@ -28,11 +28,6 @@ class UserroleController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_role');
-
-		$website['apiurl_list']=route('post.admin.userrole.api_list');
-		$website['link_add']=route('get.admin.userrole.add');
-		$website['link_edit']=route('get.admin.userrole.edit').'/';
-		$website['link_set']=route('get.admin.userrole.set').'/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyval'),'value'=>'name');
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'display_name');
@@ -49,9 +44,6 @@ class UserroleController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_role');
-		$website['apiurl_add']=route('post.admin.userrole.api_add');
-		$website['apiurl_info']=route('post.admin.userrole.api_info');
-		$website['apiurl_edit']=route('post.admin.userrole.api_edit');
 		$website['id']=0;
 		return view('admin/userrole/add')->with('website',$website);
 	}
@@ -63,9 +55,6 @@ class UserroleController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_role');
-		$website['apiurl_add']=route('post.admin.userrole.api_add');
-		$website['apiurl_info']=route('post.admin.userrole.api_info');
-		$website['apiurl_edit']=route('post.admin.userrole.api_edit');
 		$website['id']=$id;
 		return view('admin/userrole/add')->with('website',$website);
 	}
@@ -77,10 +66,6 @@ class UserroleController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_action_set_permission');
-
-		$website['apiurl_list']=route('post.admin.userpermission.api_list_related');
-		$website['apiurl_get']=route('post.admin.userpermission.api_get_permission');
-		$website['apiurl_cancel']=route('post.admin.userpermission.api_cancel_permission');
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyval'),'value'=>'name');
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'display_name');

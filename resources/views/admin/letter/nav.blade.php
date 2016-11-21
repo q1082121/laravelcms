@@ -9,25 +9,25 @@
   <div class="box-body no-padding">
     <ul class="nav nav-pills nav-stacked">
       <li :class="actionname=='index'? 'active':''" >
-        <a href="/admin/letter">
+        <a href="{{ route('get.admin.letter') }}">
           <i class="fa fa-inbox"></i> {{trans('admin.define_model_letter_received')}}
           <span class="label label-primary pull-right" >@{{countdata.count_index}}</span>
         </a>
       </li>
       <li :class="actionname=='send'? 'active':''">
-        <a href="/admin/letter/send">
+        <a href="{{ route('get.admin.letter.send') }}">
           <i class="fa fa-envelope-o"></i> {{trans('admin.define_model_letter_send')}}
           <span class="label label-primary pull-right" >@{{countdata.count_send}}</span>
         </a>
       </li>
       <li >
-        <a href="/admin/letter/star">
+        <a href="{{ route('get.admin.letter.star') }}">
           <i class="fa fa-star"></i> {{trans('admin.define_model_letter_star')}}
           <span class="label label-primary pull-right" >@{{countdata.count_star}}</span>
         </a>
       </li>
       <li>
-        <a href="/admin/letter/trash">
+        <a href="{{ route('get.admin.letter.trash') }}">
           <i class="fa fa-trash-o"></i> {{trans('admin.define_model_letter_trash')}}
           <span class="label label-primary pull-right" >@{{countdata.count_trash}}</span>
         </a>

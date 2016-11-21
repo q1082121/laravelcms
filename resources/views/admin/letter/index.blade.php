@@ -5,7 +5,7 @@
 <section class="content">
   <div class="row" id="app-content">
     <div class="col-md-3">
-    <a href="{{$website['link_add']}}" class="btn btn-primary btn-block margin-bottom">{{trans('admin.website_action_add')}}</a>
+    <a href="{{ route('get.admin.letter.add') }}" class="btn btn-primary btn-block margin-bottom">{{trans('admin.website_action_add')}}</a>
     @include('admin.letter.nav')
     </div>
     <!-- /.col -->
@@ -125,12 +125,12 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_list          :'{{$website["apiurl_list"]}}',
-             apiurl_one_action    :'{{$website["apiurl_one_action"]}}',
-             apiurl_delete        :'{{$website["apiurl_delete"]}}',
-             apiurl_count         :'{{$website["apiurl_count"]}}',
+             apiurl_list          :'{{ route("post.admin.letter.api_list") }}',
+             apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
+             apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
+             apiurl_count         :'{{ route("post.admin.letter.api_count") }}',
              email                :'{{$website["website_user"]["email"]}}' ,
-             actionname           :'{{$website["actionname"]}}',
+             actionname           :'{{getCurrentMethodName()}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -151,7 +151,7 @@ new Vue({
              {
                     id             :'',
                     fields         :'',
-                    modelname      :'{{$website["modelname"]}}',
+                    modelname      :'{{getCurrentControllerName()}}',
              },
              countdata:
              {
@@ -306,34 +306,6 @@ new Vue({
                    this.pageparams.page=data;
                    this.get_list_action();
                 }
-            },
-             //点击删除
-            delete_action:function(data)
-            {
-              var deletedata={'id':data,'modelname':'{{ $website["modelname"]}}'};
-              this.$http.post(this.apiurl_delete,deletedata,{
-                before:function(request)
-                {
-                  loadi=layer.load("...");
-                },
-              })
-              .then((response) => 
-              {
-                this.return_info_action(response);
-
-              },(response) => 
-              {
-                //响应错误
-                layer.close(loadi);
-                var msg="{{trans('admin.message_outtime')}}";
-                layermsg_error(msg);
-              })
-              .catch(function(response) {
-                //异常抛出
-                layer.close(loadi);
-                var msg="{{trans('admin.message_error')}}";
-                layermsg_error(msg);
-              })
             },
             //点击获取一键操作
             get_one_action:function(data,fields)

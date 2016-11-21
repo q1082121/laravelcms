@@ -8,7 +8,7 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">
-            <a href="{{$website['link_add']}}" >
+            <a href="{{ route('get.admin.userpermission.add') }}" >
             <button type="button" class="btn btn-success pull-left">
               <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
             </button>
@@ -85,8 +85,8 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_list          :'{{$website["apiurl_list"]}}',
-             linkurl_edit         :'{{$website["link_edit"]}}', 
+             apiurl_list          :'{{ route("post.admin.userpermission.api_list") }}',
+             linkurl_edit         :'{{ route("get.admin.userpermission.edit") }}/',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页

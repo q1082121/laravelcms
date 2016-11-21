@@ -85,9 +85,9 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_list          :'{{$website["apiurl_list"]}}',
-             apiurl_get           :'{{$website["apiurl_get"]}}',
-             apiurl_cancel        :'{{$website["apiurl_cancel"]}}',
+             apiurl_list:            '{{ route("post.admin.userpermission.api_list_related") }}', 
+             apiurl_get:           '{{ route("post.admin.userpermission.api_get_permission") }}', 
+             apiurl_cancel:           '{{ route("post.admin.userpermission.api_cancel_permission") }}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页

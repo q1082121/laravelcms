@@ -25,13 +25,8 @@ class WechatreplyimagetextController extends PublicController
 	public function index($id)  
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_imagetext_reply');
-		$website['apiurl_list']=route('post.admin.wechatreplyimagetext.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['apiurl_delete']=route('post.admin.deleteapi.api_delete');
 		$website['link_add']=route('get.admin.wechatreplyimagetext.add').'/'.$id;
-		$website['link_edit']=route('get.admin.wechatreplyimagetext.edit').'/';
 		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;
 		$website['way']='keyword';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyword'),'value'=>'keyword');
@@ -49,12 +44,7 @@ class WechatreplyimagetextController extends PublicController
 	public function add($id)
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_imagetext_reply');
-		$website['apiurl_add']=route('post.admin.wechatreplyimagetext.api_add');
-		$website['apiurl_info']=route('post.admin.wechatreplyimagetext.api_info');
-		$website['apiurl_edit']=route('post.admin.wechatreplyimagetext.api_edit');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=0;
 		$website['wechat_id']=$id;
 		return view('admin/wechatreplyimagetext/add')->with('website',$website);
@@ -66,12 +56,7 @@ class WechatreplyimagetextController extends PublicController
 	public function edit($id)  
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_imagetext_reply');
-		$website['apiurl_add']=route('post.admin.wechatreplyimagetext.api_add');
-		$website['apiurl_info']=route('post.admin.wechatreplyimagetext.api_info');
-		$website['apiurl_edit']=route('post.admin.wechatreplyimagetext.api_edit');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['id']=$id;
 		$info = object_array(DB::table('wechatreplyimagetexts')->whereId($id)->first());
 		$website['wechat_id']=$info['wechat_id'];

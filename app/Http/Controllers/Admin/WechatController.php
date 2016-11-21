@@ -22,13 +22,7 @@ class WechatController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_wechat');
-		$website['apiurl_list']=route('post.admin.wechat.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
-		$website['link_add']=route('get.admin.wechat.add');
-		$website['link_edit']=route('get.admin.wechat.edit').'/';
-		$website['link_manage']=route('get.admin.wechat.manage').'/';
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
@@ -42,12 +36,7 @@ class WechatController extends PublicController
 	public function add()
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_wechat');
-		$website['apiurl_add']=route('post.admin.wechat.api_add');
-		$website['apiurl_info']=route('post.admin.wechat.api_info');
-		$website['apiurl_edit']=route('post.admin.wechat.api_edit');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['waytype']=0;
 		$website['id']=0;
         $website['modellist']=json_encode($this->wechat_modellist);
@@ -61,12 +50,7 @@ class WechatController extends PublicController
 	public function edit($id)  
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_wechat');
-		$website['apiurl_add']=route('post.admin.wechat.api_add');
-		$website['apiurl_info']=route('post.admin.wechat.api_info');
-		$website['apiurl_edit']=route('post.admin.wechat.api_edit');
-		$website['apiurl_del_image']=route('post.admin.deleteapi.api_del_image');
 		$website['waytype']=1;
 		$website['id']=$id;
 		$website['modellist']=json_encode($this->wechat_modellist);

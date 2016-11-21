@@ -24,10 +24,7 @@ class WechatuserController extends PublicController
 	public function index($id)  
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_wechat_user');
-		$website['apiurl_list']=route('post.admin.wechatuser.api_list');
-		$website['apiurl_one_action']=route('post.admin.oneactionapi.api_one_action');
 		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;
 		$website['way']='nickname';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_nick'),'value'=>'nickname');

@@ -49,7 +49,7 @@
                             <tbody>
                                 <tr v-for="item in datalist">
                                   <td>@{{ item.id }}</td>
-                                  <td v-if="item.type == 1"> <i class="fa fa-leanpub"></i> {{trans('admin.define_model_log1')}}</td>
+                                  <td v-if="item.type == 1"> <i class="fa fa-leanpub"></i> {{trans('admin.define_model_score1')}}</td>
                                   <td>@{{ item.info }}</td>
                                   <td>@{{ item.created_at }}</td>
                                 </tr>

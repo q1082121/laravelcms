@@ -426,6 +426,7 @@ function action_cache($user_id,$cache_prefix,$way="get")
 /***********************************
  * 方法名：经验值操作
  * 作者： Tommy（rubbish.boy@163.com）
+  + type 1 => 登录
  ***********************************/ 
 function action_experience($params_experience,$roleinfo)
 {
@@ -488,8 +489,9 @@ function action_experience($params_experience,$roleinfo)
 	}
 }
 /***********************************
- * 方法名：每日积分签到
+ * 方法名：积分获取
  * 作者： Tommy（rubbish.boy@163.com）
+  + type 1 => 每日签到
  ***********************************/ 
 function action_score_check_in($params_score)
 {

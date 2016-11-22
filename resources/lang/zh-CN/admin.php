@@ -210,6 +210,7 @@ return [
     'define_model_user_online'                    =>   '在线',
     'define_model_search_tip'                     =>   '搜索...',
     'define_model_log1'                           =>   '登录操作',
+    'define_model_score1'                         =>   '每日签到',
     'define_model_picture1'                       =>   '首页展示图',
     'define_model_picture2'                       =>   '公共展示图',
     'define_model_picture3'                       =>   '微站展示图',

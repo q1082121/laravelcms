@@ -8,7 +8,7 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">
-            <a href="{{$website['link_add']}}" >
+            <a href="{{route('get.admin.questionoption.add')}}/{{$website['qid']}}" >
             <button type="button" class="btn btn-success pull-left ">
               <i class="fa fa-add"></i>{{trans('admin.website_action_add')}} 【{{trans('admin.define_model_questionoption_tip')}}： {{$website['info']['title']}}】  
             </button>
@@ -107,8 +107,7 @@ new Vue({
              apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
              apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
              linkurl_edit         :'{{ route("get.admin.questionoption.edit") }}/',
-             apiurl_list          :'{{ route("post.admin.cacheapi.api_cache") }}',
-             linkurl_back         :'{{$website["link_back"]}}',
+             linkurl_back         :'{{route("get.admin.question")}}/{{$website["info"]["type"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页

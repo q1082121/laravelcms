@@ -26,8 +26,6 @@ class WechatreplyimagetextController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_imagetext_reply');
-		$website['link_add']=route('get.admin.wechatreplyimagetext.add').'/'.$id;
-		$website['link_back']=route('get.admin.wechat.manage').'/'.$id;
 		$website['way']='keyword';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_keyword'),'value'=>'keyword');
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');

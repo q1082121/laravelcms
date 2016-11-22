@@ -105,6 +105,7 @@ new Vue({
              apiurl_list          :'{{ route("post.admin.wechatuser.api_list") }}',
              apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
              apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
+             linkurl_back         :'{{ route("get.admin.wechat.manage") }}/{{$website["wechat_id"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -237,11 +238,6 @@ new Vue({
                    this.pageparams.page=data;
                    this.get_list_action();
                 }
-            },
-             //点击编辑跳转
-            edit_action:function(data)
-            {
-                window.location.href=this.linkurl_edit+data;
             },
             back_action:function()
             {

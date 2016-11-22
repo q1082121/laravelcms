@@ -64,16 +64,7 @@ class WechatController extends PublicController
 	public function manage($id)  
 	{
 		$website=$this->website;
-        $website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_wechat');
-		$website['link_subscribe']=route('get.admin.wechat.subscribe').'/'.$id;
-		$website['link_defaultreply']=route('get.admin.wechat.defaultreply').'/'.$id;
-		$website['link_messagetpl']=route('get.admin.wechat.messagetpl').'/'.$id;
-		$website['link_wechatreplytext']=route('get.admin.wechatreplytext.index').'/'.$id;
-		$website['link_wechatreplyimagetext']=route('get.admin.wechatreplyimagetext.index').'/'.$id;
-		$website['link_menu']=route('get.admin.classifywechat.index').'/'.$id;
-		$website['link_wechatuser']=route('get.admin.wechatuser.index').'/'.$id;
-		
 		$info = object_array(DB::table('wechats')->whereId($id)->first());
 		$website['info']=$info;
 		$website['id']=$id;
@@ -315,10 +306,7 @@ class WechatController extends PublicController
 	public function subscribe($id)  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_subscribe_reply');
-		$website['apiurl_info']=route('post.admin.wechat.api_info');
-		$website['apiurl_edit']=route('post.admin.wechat.api_edit');
 		$website['waytype']=2;
 		$website['id']=$id;
 
@@ -331,10 +319,7 @@ class WechatController extends PublicController
 	public function defaultreply($id)  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_default_reply');
-		$website['apiurl_info']=route('post.admin.wechat.api_info');
-		$website['apiurl_edit']=route('post.admin.wechat.api_edit');
 		$website['waytype']=3;
 		$website['id']=$id;
 
@@ -347,10 +332,7 @@ class WechatController extends PublicController
 	public function messagetpl($id)  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName();
 		$website['cursitename']=trans('admin.website_navigation_messagetpl_reply');
-		$website['apiurl_info']=route('post.admin.wechat.api_info');
-		$website['apiurl_edit']=route('post.admin.wechat.api_edit');
 		$website['waytype']=4;
 		$website['id']=$id;
 		return view('admin/wechat/messagetpl')->with('website',$website);

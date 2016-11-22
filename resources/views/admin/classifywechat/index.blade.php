@@ -8,7 +8,7 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">
-            <a href="{{$website['link_add']}}" >
+            <a href="{{route('get.admin.classifywechat.add')}}/{{$website['wechat_id']}}" >
             <button type="button" class="btn btn-success pull-left ">
               <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
             </button>
@@ -113,9 +113,9 @@ new Vue({
              apiurl_list          :'{{ route("post.admin.classifywechat.api_list") }}',
              apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
              apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
-             apiurl_menu          :'{{$website["apiurl_menu"]}}',
-             linkurl_edit         :'{{$website["link_edit"]}}', 
-             linkurl_back         :'{{$website["link_back"]}}',
+             apiurl_menu          :'{{ route("post.wechat.api.create_menu") }}/{{$website["wechat_id"]}}',
+             linkurl_edit         :'{{ route("get.admin.classifywechat.edit") }}/', 
+             linkurl_back         :'{{ route("get.admin.wechat.manage") }}/{{$website["wechat_id"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页

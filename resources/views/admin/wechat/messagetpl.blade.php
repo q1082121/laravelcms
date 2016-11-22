@@ -84,8 +84,8 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_info:           '{{$website["apiurl_info"]}}', 
-             apiurl_edit:           '{{$website["apiurl_edit"]}}',
+             apiurl_info:           '{{ route("post.admin.wechat.api_info") }}', 
+             apiurl_edit:           '{{ route("post.admin.wechat.api_edit") }}',
              params_data:
              {
                 openid_items        :'',
@@ -105,7 +105,7 @@ new Vue({
              del_data:
              {
                 id                  :'{{$website["id"]}}',
-                modelname           :'{{$website["modelname"]}}',
+                modelname           :'{{getCurrentControllerName()}}',
              }
           },
     ready: function (){ 

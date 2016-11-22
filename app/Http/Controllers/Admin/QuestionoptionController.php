@@ -26,12 +26,11 @@ class QuestionoptionController extends PublicController
 	{
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_question_option');
-		$website['link_add']=route('get.admin.questionoption.add').'/'.$id;
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
+
 		$info = object_array(DB::table('questions')->whereId($id)->first());
-		$website['link_back']=route('get.admin.question').'/'.$info['type'];
 		$website['info']=$info;
 		$website['qid']=$id;
 		return view('admin/questionoption/index')->with('website',$website);

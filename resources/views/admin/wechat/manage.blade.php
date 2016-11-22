@@ -49,7 +49,7 @@
           </div>
           <div class="box box-solid">
 
-            <a href="{{$website['link_subscribe']}}" class="c_black">
+            <a href="{{route('get.admin.wechat.subscribe')}}/{{$website['id']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-tag"></i></span>
@@ -63,7 +63,7 @@
               </div>
             </a>
 
-            <a href="{{$website['link_defaultreply']}}" class="c_black">
+            <a href="{{route('get.admin.wechat.defaultreply')}}/{{$website['id']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-delicious"></i></span>
@@ -77,7 +77,7 @@
               </div>
             </a>
 
-            <a href="{{$website['link_messagetpl']}}" class="c_black">
+            <a href="{{route('get.admin.wechat.messagetpl')}}/{{$website['id']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-commenting"></i></span>
@@ -91,7 +91,7 @@
               </div>
             </a>
 
-            <a href="{{$website['link_wechatreplytext']}}" class="c_black">
+            <a href="{{route('get.admin.wechatreplytext.index')}}/{{$website['id']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-instagram"></i></span>
@@ -105,7 +105,7 @@
               </div>
             </a>
 
-            <a href="{{$website['link_wechatreplyimagetext']}}" class="c_black">
+            <a href="{{route('get.admin.wechatreplyimagetext.index')}}/{{$website['id']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-file-image-o"></i></span>
@@ -119,7 +119,7 @@
               </div>
             </a>
 
-            <a href="{{$website['link_menu']}}" class="c_black">
+            <a href="{{route('get.admin.classifywechat.index')}}/{{$website['id']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-list"></i></span>
@@ -133,7 +133,7 @@
               </div>
             </a>
 
-            <a href="{{$website['link_wechatuser']}}" class="c_black">
+            <a href="{{route('get.admin.wechatuser.index')}}/{{$website['id']}}" class="c_black">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="fa fa-users"></i></span>

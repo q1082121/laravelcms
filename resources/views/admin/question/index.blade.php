@@ -8,7 +8,7 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">
-            <a href="{{$website['link_add']}}" >
+            <a href="{{route('get.admin.question.add')}}/{{$website['type']}}" >
             <button type="button" class="btn btn-success pull-left ">
               <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
             </button>

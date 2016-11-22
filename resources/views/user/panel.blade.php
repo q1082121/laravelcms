@@ -57,7 +57,7 @@ new Vue({
              paramsdata:
              {
                 user_id           :'{{$website["website_user"]["id"]}}',
-                modelname         :'{{$website["modelname"]}}',
+                modelname         :'{{getCurrentControllerName("User")}}',
              }
           },
     ready: function (){ 

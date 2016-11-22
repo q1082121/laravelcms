@@ -133,7 +133,7 @@ new Vue({
     data: {
              apiurl_info:           '{{route("post.user.userinfo.api_info")}}', 
              apiurl_edit:           '{{route("post.user.userinfo.api_edit")}}',
-             apiurl_area:           '{{route("post.user.userinfo.api_area")}}', 
+             apiurl_area:           '{{route("post.user.district.api_area")}}', 
              apiurl_del_image:      '{{route("post.user.deleteapi.api_del_image")}}',
              params_data:
              {

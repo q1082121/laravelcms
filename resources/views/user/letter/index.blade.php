@@ -58,21 +58,21 @@
                                 <td class="mailbox-subject"><b>@{{ item.title }}</b></td>
                                 <td class="mailbox-attachment">@{{ item.email_to }}</td>
                                 <td class="mailbox-date">@{{ item.created_at }}</td>
-                                @if($website['actionname']=='index')
+                                @if(getCurrentMethodName()=='index')
                                 <td>
                                   <div class="tools">
                                     <button v-if="actionname =='index' && item.istrash_to == 0 && item.isdel_to == 0 "  type="button" @click="get_one_action(item.id,'istrash_to')"  class="am-btn  am-btn-secondary am-btn-xs" > <i class="am-icon-toggle-on"></i> {{trans('admin.website_action_trash')}}</button>
                                   </div>
                                 </td>
                                 @endif
-                                @if($website['actionname']=='send')
+                                @if(getCurrentMethodName()=='send')
                                 <td>
                                   <div class="tools">
                                     <button v-if="actionname =='send' && item.istrash_from == 0 && item.isdel_from == 0 "  type="button" @click="get_one_action(item.id,'istrash_from')"  class="am-btn  am-btn-secondary am-btn-xs " > <i class="am-icon-toggle-off"></i> {{trans('admin.website_action_trash')}}</button>
                                   </div>
                                 </td>
                                 @endif
-                                @if($website['actionname']=='star')
+                                @if(getCurrentMethodName()=='star')
                                 <td>
                                   <div class="tools">
                                     <button v-if="actionname =='star' && item.istrash_from == 0  && item.isdel_from == 0 && item.email_from == email"  type="button" @click="get_one_action(item.id,'istrash_from')"  class="am-btn  am-btn-secondary am-btn-xs" > <i class="am-icon-toggle-on"></i> {{trans('admin.website_action_trash')}}</button>
@@ -80,7 +80,7 @@
                                   </div>
                                 </td>
                                 @endif
-                                @if($website['actionname']=='trash')
+                                @if(getCurrentMethodName()=='trash')
                                 <td>
                                   <div class="tools">
                                     <button v-if="actionname =='trash' && item.istrash_from == 1  && item.isdel_from == 0 && item.email_from == email"  type="button" @click="get_one_action(item.id,'istrash_from')"  class="am-btn am-btn-danger am-btn-xs" > <i class="am-icon-toggle-on"></i> {{trans('admin.website_action_back')}}</button>
@@ -301,34 +301,6 @@ new Vue({
                    this.pageparams.page=data;
                    this.get_list_action();
                 }
-            },
-             //点击删除
-            delete_action:function(data)
-            {
-              var deletedata={'id':data,'modelname':'{{ $website["modelname"]}}'};
-              this.$http.post(this.apiurl_delete,deletedata,{
-                before:function(request)
-                {
-                  loadi=layer.load("...");
-                },
-              })
-              .then((response) => 
-              {
-                this.return_info_action(response);
-
-              },(response) => 
-              {
-                //响应错误
-                layer.close(loadi);
-                var msg="{{trans('admin.message_outtime')}}";
-                layermsg_error(msg);
-              })
-              .catch(function(response) {
-                //异常抛出
-                layer.close(loadi);
-                var msg="{{trans('admin.message_error')}}";
-                layermsg_error(msg);
-              })
             },
             //点击获取一键操作
             get_one_action:function(data,fields)

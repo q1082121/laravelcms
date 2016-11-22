@@ -60,7 +60,7 @@
       <li v-for="item in cache.navigation" :class="item.id == curnav ? 'active' : '' " >
         <a href="#"><i class="@{{ item.ico }}"></i>@{{ item.name }}</a>
       </li>
-      <li><a href="#"><i class="am-icon-user"></i>美食猎人</a></li>
+      <li><a href="/user"><i class="am-icon-user"></i>美食猎人</a></li>
     </ul>
   </div>
 </div>

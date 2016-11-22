@@ -22,10 +22,8 @@ class LogController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('user.user_navigation_log');
 		$website['title']=$website['cursitename'];
-		$website['apiurl_list']=route('post.user.log.api_list');
 		$website['way']='name';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_info'),'value'=>'info');

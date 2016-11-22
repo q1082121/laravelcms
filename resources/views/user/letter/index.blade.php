@@ -146,7 +146,7 @@ new Vue({
              {
                     id             :'',
                     fields         :'',
-                    modelname      :'{{$website["modelname"]}}',
+                    modelname      :'{{getCurrentControllerName("User")}}',
              },
              countdata:
              {

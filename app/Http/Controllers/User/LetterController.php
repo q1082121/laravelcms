@@ -23,10 +23,8 @@ class LetterController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('admin.define_model_letter_received');
 		$website['title']=$website['cursitename'];
-		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -41,10 +39,8 @@ class LetterController extends PublicController
 	public function send()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('admin.define_model_letter_send');
 		$website['title']=$website['cursitename'];
-		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -59,10 +55,8 @@ class LetterController extends PublicController
 	public function star()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('admin.define_model_letter_star');
 		$website['title']=$website['cursitename'];
-		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -77,10 +71,8 @@ class LetterController extends PublicController
 	public function trash()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('admin.define_model_letter_trash');
 		$website['title']=$website['cursitename'];
-		$website['actionname']=getCurrentMethodName();
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
@@ -95,7 +87,6 @@ class LetterController extends PublicController
 	public function add()
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('admin.website_navigation_letter');
 		$website['title']=$website['cursitename'];
 		$website['apiurl_add']=route('post.user.letter.api_add');

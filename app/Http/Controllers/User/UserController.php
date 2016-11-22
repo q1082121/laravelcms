@@ -23,12 +23,9 @@ class UserController extends PublicController
 	*******************************************/
 	public function index()  
 	{
-		
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('user.user_navigation_center');
 		$website['title']=$website['cursitename'];
-
 		//获取用户组数据
 		$role_condition['type']=4;
 		$rolelist=object_array(DB::table('roles')->where($role_condition)->orderBy('level', 'asc')->get());
@@ -43,13 +40,8 @@ class UserController extends PublicController
 	public function userinfo()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('admin.website_navigation_userinfo');
 		$website['title']=$website['cursitename'];
-		$website['apiurl_info']=route('post.user.userinfo.api_info');
-		$website['apiurl_edit']=route('post.user.userinfo.api_edit');
-		$website['apiurl_area']=route('post.user.district.api_area');
-		$website['apiurl_del_image']=route('post.user.deleteapi.api_del_image');
 		$area_data_p[]=array('id'=>0,'name'=>trans('admin.option_select_p'),'alias'=>trans('admin.option_select_p'));
 		$area_data_c[]=array('id'=>0,'name'=>trans('admin.option_select_c'),'alias'=>trans('admin.option_select_c'));
 		$area_data_x[]=array('id'=>0,'name'=>trans('admin.option_select_x'),'alias'=>trans('admin.option_select_x'));
@@ -68,10 +60,8 @@ class UserController extends PublicController
 	public function edit_pwd()  
 	{
 		$website=$this->website;
-		$website['modelname']=getCurrentControllerName('User');
 		$website['cursitename']=trans('admin.define_model_user_editpwd');
 		$website['title']=$website['cursitename'];
-		$website['apiurl_edit_pwd']=route('post.user.userinfo.api_edit_pwd');
 		$website['id']=$this->user['id'];
 		
 		return view('user/userinfo/edit_pwd')->with('website',$website);

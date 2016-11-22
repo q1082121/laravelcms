@@ -48,13 +48,13 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_edit_pwd:           '{{$website["apiurl_edit_pwd"]}}', 
+             apiurl_edit_pwd:         '{{route("post.user.userinfo.api_edit_pwd")}}', 
              params_data:
              {
                 oldpwd                :'',
                 newpwd                :'',
                 surepwd               :'',
-                id                  :'{{$website["id"]}}',
+                id                    :'{{$website["id"]}}',
              },
           },
     methods: 

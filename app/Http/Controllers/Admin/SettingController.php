@@ -28,7 +28,6 @@ class SettingController extends PublicController
 		$editoroption[]=array('text'=>trans('admin.website_setting_editor_item1'),'value'=>'Markdown');
 		$editoroption[]=array('text'=>trans('admin.website_setting_editor_item2'),'value'=>'Ueditor');
 		$website['editoroption']=json_encode($editoroption);
-		$website['modelname']=getCurrentControllerName();
 
 		return view('admin/setting/setting')->with('website',$website);
 	}
@@ -43,19 +42,32 @@ class SettingController extends PublicController
 		if($modelname=='Setting')
 		{
 			$root=Cache::store('file')->get('root');
-
-			$msg_array['status']='1';
-			$msg_array['info']=trans('admin.message_get_success');
-			$msg_array['is_reload']=0;
-			$msg_array['curl']='';
-			$msg_array['resource']=$root;
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
+			if($root)
+			{
+				$msg_array['status']='1';
+				$msg_array['info']=trans('admin.message_get_success');
+				$msg_array['is_reload']=0;
+				$msg_array['curl']='';
+				$msg_array['resource']=$root;
+				$msg_array['param_way']='';
+				$msg_array['param_keyword']='';
+			}
+			else
+			{
+				$msg_array['status']='0';
+				$msg_array['info']=trans('admin.message_get_empty');
+				$msg_array['is_reload']=0;
+				$msg_array['curl']='';
+				$msg_array['resource']="";
+				$msg_array['param_way']='';
+				$msg_array['param_keyword']='';
+			}
+			
 		}
 		else
 		{
 			$msg_array['status']='0';
-			$msg_array['info']=trans('admin.message_get_empty');
+			$msg_array['info']=trans('admin.message_get_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";

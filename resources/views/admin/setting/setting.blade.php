@@ -9,7 +9,7 @@
           </div>
           <!-- /.box-header -->
           <!-- form start -->
-          <div class="box-body">
+          <div class="box-body">	
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon minwidth">{{trans('admin.website_setting_systitle')}}</span>
@@ -269,7 +269,6 @@
               apiurl_cache:       '{{ route("post.admin.cacheapi.api_cache") }}',
               editoroption        :eval(htmlspecialchars_decode('{{$website["editoroption"]}}')),
               info: {
-                modelname:        '{{getCurrentControllerName()}}' ,
                 systitle:         '' ,
                 syskeywords:      '' ,
                 sysdescription :  '' ,
@@ -303,6 +302,7 @@
                 wechat_thumb_height:          '' ,
                 wechatreplyimagetext_thumb_width:'',
                 wechatreplyimagetext_thumb_height:'',
+                modelname:        '{{getCurrentControllerName()}}' ,
               }
           },
           ready: function (){ 
@@ -314,6 +314,7 @@
             //获取数据详情
             get_info_action:function()
             {
+
               this.$http.post(this.apiurl_info,{'modelname':this.info.modelname},
               {
                 before:function(request)

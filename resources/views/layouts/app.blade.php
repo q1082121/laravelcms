@@ -77,12 +77,14 @@
         <?php $i=1; $counts=count($website['cache_picture']);?>
         @if ($counts >0 )
           @foreach ($website['cache_picture'] as $key=>$items)
-          @if ($i == $counts)
-          '/uploads/Picture/{{$items["attachment"]}}'
-          @else
-          '/uploads/Picture/{{$items["attachment"]}}',
-          @endif
-          <?php $i++; ?>
+			@if ($items['modelid'] == 2)
+			  @if ($i == $counts)
+			  '/uploads/Picture/{{$items["attachment"]}}'
+			  @else
+			  '/uploads/Picture/{{$items["attachment"]}}',
+			  @endif
+			@endif  
+			  <?php $i++; ?>
         @endforeach
         @endif
       )

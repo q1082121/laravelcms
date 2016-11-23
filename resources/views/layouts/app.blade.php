@@ -106,13 +106,13 @@ new Vue({
             curnav              :{{$website['curnav']}},
             apiurl_cache:       '{{$website["apiurl_cache"]}}', 
             cache: {
-              modelname         :'{{$website["modelname"]}}',
               navigation        :[],
               class             :[],
               classlink         :[],
               classproduct      :[],
               picture           :[],
               link              :[],
+			  modelname         :'{{getCurrentControllerName("Home")}}',
             }
     },
     ready: function (){ 

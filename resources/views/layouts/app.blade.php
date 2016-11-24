@@ -100,6 +100,7 @@
 </footer>
 
 <script type="text/javascript">
+var common_cache;
 new Vue({
     el: '#nav-content',
     data: {
@@ -117,7 +118,17 @@ new Vue({
     },
     ready: function (){ 
             //这里是vue初始化完成后执行的函数 
-            this.get_cache_action();
+            common_cache=cache_storageLoad('common_cache',1);
+            console.log(common_cache);
+            if(common_cache)
+            {
+              this.cache=common_cache;
+            }
+            else
+            {
+              this.get_cache_action();
+            }
+            
     },
     methods: 
     {
@@ -155,9 +166,10 @@ new Vue({
         var statusinfo=response.data;
         if(statusinfo.status==1)
         {
+            cache_storageSave('common_cache',statusinfo.resource,1);
             this.cache=statusinfo.resource;
             imagesList=this.cache.picture;
-            console.dir(imagesList);
+            //console.dir(imagesList);
         }
         else
         {

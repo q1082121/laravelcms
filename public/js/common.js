@@ -5,7 +5,6 @@
 /***********************************
  * 方法名：判断邮箱地址有效性
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年10月20日
  ***********************************/
 function isEmail(s) {
 	if (s.length > 100)	return false;
@@ -27,7 +26,6 @@ function isEmail(s) {
 /***********************************
  * 方法名：判断手机号码有效性
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年10月20日
  ***********************************/
 function validatemobile(mobile)
 {
@@ -52,7 +50,6 @@ function validatemobile(mobile)
 /***********************************
  * 方法名：用户注册验证是否存在
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
  ***********************************/
 function onBlur_check(fieldname,type)
 {
@@ -177,7 +174,6 @@ function onBlur_check(fieldname,type)
 /***********************************
  * 方法名：js链接地址跳转函数
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月8日
  ***********************************/
 function localcul($url)
 {
@@ -186,7 +182,6 @@ function localcul($url)
 /***********************************
  * 方法名：js链接地址跳转函数（main框架）
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月8日
  ***********************************/
 function main_localcul($url)
 {
@@ -195,7 +190,6 @@ function main_localcul($url)
 /***********************************
  * 方法名：js返回上一页函数
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月8日
  ***********************************/
 function goback()
 {
@@ -204,7 +198,6 @@ function goback()
 /***********************************
  * 方法名：调用layer询问框
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年6月8日
  ***********************************/
 function make_confirm(info,link)
 {
@@ -226,7 +219,6 @@ function make_confirm(info,link)
 /***********************************
  * 方法名：layer 成功提示
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
  ***********************************/
 function layermsg_s(infos,linkurl)
 {
@@ -241,7 +233,6 @@ function layermsg_s(infos,linkurl)
 /***********************************
  * 方法名：layer 成功提示【刷新页面】
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
  ***********************************/
 function layermsg_success_reload(infos)
 {
@@ -258,7 +249,6 @@ function layermsg_success_reload(infos)
 /***********************************
  * 方法名：layer 错误提示
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
  ***********************************/
 function layermsg_e(infos)
 {
@@ -276,7 +266,6 @@ function layermsg_e(infos)
 /***********************************
  * 方法名：layer 成功提示【不在跳转】
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
  ***********************************/
 function layermsg_success(infos)
 {
@@ -289,7 +278,6 @@ function layermsg_success(infos)
 /***********************************
  * 方法名：layer 错误提示【不在跳转】
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
  ***********************************/
 function layermsg_error(infos)
 {
@@ -301,51 +289,8 @@ function layermsg_error(infos)
 	});  
 }
 /***********************************
- * 方法名：获取地区三级联动
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
- ***********************************/
-function dynamic_Select(id,areadname,level)
-{
-    /*
-    if (areadname === undefined) areadname = "area_xid";
-    if (level === undefined) areadname = 4;
-    */
-    areadname=areadname || "area_aid";
-    level=level || 4;
-        $.ajax({
-        type: "GET",
-        url: "/User/Comapi/area_ajax/",
-        data: "aid=" + id+"&level=" + level,
-        dataType: "html",
-        success: 
-        function(html){
-            if(level==2)
-            {
-                $("#area_cid").empty();
-                $("<option></option>").val("").text("请选择市级").appendTo($("#area_cid"));
-                $("#area_xid").empty();
-                $("<option></option>").val("").text("请选择县级").appendTo($("#area_xid"));
-                $("#"+areadname).html(html); 
-            }
-            else if(level==3)
-            {
-                $("<option></option>").val("").text("请选择县级").appendTo($("#area_xid"));
-                $("#"+areadname).html(html);
-            }
-            else
-            {
-                $("#"+areadname).html(html);
-            }
-
-              
-        }
-});
-}
-/***********************************
  * 方法名：iframe自适应高度(兼容多种浏览器)
  * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2015年12月31日
  ***********************************/
 function iFrameHeight(idname) {
 	var ifm= document.getElementById(idname);
@@ -396,85 +341,8 @@ function showResponse(responseText, statusText)
   }
 }
 /***********************************
- * 方法名：触发登录窗口
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2016年3月19日
- ***********************************/
-function box_open(divid)
-{
-    layer.open({
-        type: 1,
-        shade: [0.8, '#333'],
-        skin: 'layui-layer-rim',
-        area: ['520px', '300px'], 
-        title: false, //不显示标题
-        content: $('#'+divid), //捕获的元素
-        cancel: function(index)
-        {
-            layer.close(index);
-        }
-    });
-}
-/***********************************
- * 方法名：触发弹出框
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2016年3月19日
- ***********************************/
-function open_box(divid,isclose,width,height)
-{
-    layer.open({
-        type: 1,
-        shade: [0.8, '#333'],
-        closeBtn: isclose,
-        skin: 'layui-layer-rim',
-        area: [width, height], 
-        title: false, //不显示标题
-        shadeClose: false,
-        content: $('#'+divid), //捕获的元素
-        cancel: function(index)
-        {
-            if(isclose==1)
-            {
-                layer.close(index);
-            }
-            else
-            {
-                location.reload();
-            }
-        }
-    });
-}
-/***********************************
- * 方法名：触发框架弹出框
- * 作者： Tommy（rubbish.boy@163.com）
- * 时间：2016年3月19日
- ***********************************/
-function open_iframe_box(url,isclose,width,height)
-{
-    layer.open({
-        type: 2,
-        shade: [0.8, '#333'],
-        area: [width, height], 
-        title: "信息窗口", //不显示标题
-        maxmin: true, //开启最大化最小化按钮
-        content: url, //捕获的元素
-        cancel: function(index)
-        {
-            if(isclose==1)
-            {
-                layer.close(index);
-            }
-            else
-            {
-                location.reload();
-            }
-        }
-    });
-}
-/***********************************
 * 方法名：js HTML实体 转换为 html字符串 htmlspecialchars_decode
 * 作者： Tommy（rubbish.boy@163.com）
-* 时间：2016年6月6日
 ***********************************/
 function htmlspecialchars_decode(str){           
   str = str.replace(/&amp;/g, '&'); 
@@ -487,7 +355,6 @@ function htmlspecialchars_decode(str){
 /***********************************
 * 方法名：layer 弹窗
 * 作者： Tommy（rubbish.boy@163.com）
-* 时间：2016年6月6日
 ***********************************/
 function open_box_image(dir)
 {
@@ -500,3 +367,45 @@ function open_box_image(dir)
       content: '<img src="'+dir+'" width="320px">'
     });
 }
+/***********************************
+* 方法名：保存到本地缓存
+* 作者： Tommy（rubbish.boy@163.com）
+***********************************/
+// 
+function cache_storageSave(objectName,objectData,isjson) 
+{
+	if(isjson==1)
+	{
+		localStorage.setItem(objectName, JSON.stringify(objectData));
+	}
+	else
+	{
+		localStorage.setItem(objectName, objectData);
+	}
+    
+}
+/***********************************
+* 方法名：获取本地缓存
+* 作者： Tommy（rubbish.boy@163.com）
+***********************************/
+function cache_storageLoad(objectName,isjson) 
+{
+    if (localStorage.getItem(objectName)) 
+	{
+		if(isjson==1)
+		{
+			return JSON.parse(localStorage.getItem(objectName))
+		}
+		else
+		{
+			return localStorage.getItem(objectName)
+		}
+        
+    } 
+	else 
+	{
+        return false
+    }
+}
+
+

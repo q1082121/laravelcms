@@ -1,5 +1,5 @@
 
-# laravelcms V1.5.0
+# laravelPCMS V1.5.0
 基于 laravel5.2 的PHP内容管理系统  后台基于AdminLTE主题  前端组件Vue.js 集成基础的微信相关功能。是一个可以快速上手，项目开发的首选工具。
 
 作者:rubbish.boy@163.com
@@ -18,7 +18,7 @@ QQ	:471416739
 10. overtrue/wechat: ~3.1	微信扩展包
 11. dingo/api: 1.0.x@dev	api开发扩展包
 
-#	laravel使用了哪些前端组件？ bower.json
+#	laravelPCMS 使用了哪些前端组件？ bower.json
 
 	前端组件默认安装存放目录：Public/module
 	"AdminLTE": "admin-lte#^2.3.6"
@@ -27,7 +27,7 @@ QQ	:471416739
     "jquery-form": "good-form#*"
     "vue-resource": "^1.0.2"
 
-#	laravel使用了哪些前端组件？ 非包管理
+#	laravelPCMS 使用了哪些前端组件？ 非包管理
 	layer-v2.4 弹层组件
 	error 错误页面模板
 	login 用户登录,用户注册模板

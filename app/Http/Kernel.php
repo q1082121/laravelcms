@@ -74,5 +74,13 @@ class Kernel extends HttpKernel
          +++++++++++++++++++++++++++++++++++++++++++
         */
 		'sso' => \App\Http\Middleware\SsoMiddleware::class,
+        /*
+         +++++++++++++++++++++++++++++++++++++++++++
+         +jwt 验证中间件
+         +++++++++++++++++++++++++++++++++++++++++++
+        */
+        'jwt.auth' => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+        'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class,
+        'jwt.api.auth' => \App\Http\Middleware\GetUserFromToken::class, //新增注册的中间件
     ];
 }

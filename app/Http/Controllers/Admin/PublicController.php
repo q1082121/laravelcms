@@ -4,6 +4,7 @@
 ****Title :公共控制器
 *******************************************/
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,23 +12,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 //使用数据库操作DB
 use DB;
-
 //引用对应的命名空间 debug 插件
 use Validator;
 use Gregwar\Captcha\CaptchaBuilder;
 use Session;
-
 //使用内存缓存
 use Redis;
 use Cache;
 use Carbon;
-
 //使用User模型
 use App\Http\Model\User;
 use Redirect;
-
 use Entrust;
-
 //使用URL生成地址
 use URL;
 // 导入 Intervention Image Manager Class

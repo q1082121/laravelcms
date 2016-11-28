@@ -38,7 +38,25 @@ QQ	:471416739
 	amazeui_admin 
 	
 	public/js/common.js 公共函数
+	
+#	便捷的API接口开发 API 版本控制 支持 https
 
+	路由方法：
+	$api = app('Dingo\Api\Routing\Router');
+	$api->version('v1', function ($api) {
+		$api->group(['namespace' => 'App\Http\Controllers\Api\V1','domain' => env('API_DOMAIN', '')], function ($api) {
+			$api->get('users', ['as' => 'api.users.list', 'uses' => 'UserController@api_list']);
+		});
+	});
+	
+	响应方法：
+	
+	App\Http\Controllers\Api\V1\UserController
+	
+	[示例](http://api.tzsuteng.com/api/users)
+	[Https示例](https://api.tzsuteng.com/api/users)
+	
+	
 #	使用手册
 1. 如果需要设置 SESSION_DRIVER=redis 那么需要启动 redis-server.exe  默认为file
 
@@ -63,7 +81,7 @@ QQ	:471416739
 			4 php artisan db:seed --class=DistrictSeeder	 数据较大
 		
 7. 开始体验
-	[DEMO](http://demo.dc918.com)
+	[DEMO](http://api.tzsuteng.com)
 	
 #	开发进展
 

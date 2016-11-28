@@ -169,7 +169,9 @@ return [
 		//edit by rubbish.boy@163.com 2016-10-18
 		Stevenyangecho\UEditor\UEditorServiceProvider::class,
 		//edit by rubbish.boy@163.com 2016-11-28
-		Dingo\Api\Provider\LaravelServiceProvider::class
+		Dingo\Api\Provider\LaravelServiceProvider::class,
+        //edit by rubbish.boy@163.com 2016-11-28
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
 		
     ],
 
@@ -226,7 +228,10 @@ return [
         'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,
 		//edit by rubbish.boy@163.com 2016-11-28
         'DingoAPI' => Dingo\Api\Facade\API::class,
-		'DingoRoute' => Dingo\Api\Facade\Route::class
+		'DingoRoute' => Dingo\Api\Facade\Route::class,
+        //edit by rubbish.boy@163.com 2016-11-28
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
     ],
 
 ];

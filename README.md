@@ -17,6 +17,7 @@ QQ	:471416739
 9. workerman/phpsocket.io,workerman/workerman  目前开发用的是win版本, 压缩包是linux版本
 10. overtrue/wechat: ~3.1	微信扩展包
 11. dingo/api: 1.0.x@dev	api开发扩展包
+12. tymon/jwt-auth: 0.5.*   用户api验证扩展包
 
 #	laravelPCMS 使用了哪些前端组件？ bower.json
 

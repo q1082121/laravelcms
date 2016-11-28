@@ -328,20 +328,21 @@ function action_cache($user_id,$cache_prefix,$way="get")
 											switch($way)
 											{
 												case 'get':
+															
 															//Redis 版缓存
 															if ( Illuminate\Support\Facades\Redis::get($cache_name)) 
 															{
-															
+																
 															}
 															else
 															{
 																$info= $modelname->find($user_id)->hasOneUserinfo;
-																Illuminate\Support\Facades\Redis::set($cache_name,$info);
+																Illuminate\Support\Facades\Redis::set($cache_name,json_encode($info));
 															}
 												break;
 												case 'update':
 															$info= $user->find($user_id)->hasOneUserinfo;
-															Illuminate\Support\Facades\Redis::set($cache_name,$info);
+															Illuminate\Support\Facades\Redis::set($cache_name,json_encode($info));
 												break;
 											}
 											$cache_data=json_decode(Illuminate\Support\Facades\Redis::get($cache_name),true);
@@ -403,7 +404,7 @@ function action_cache($user_id,$cache_prefix,$way="get")
 																{
 																	$info=object_array(Illuminate\Support\Facades\DB::table('roles')->whereIn('id',$roleids)->orderBy('type', 'asc')->orderBy('level', 'desc')->first());
 																}
-																Illuminate\Support\Facades\Redis::set($cache_name,$info);
+																Illuminate\Support\Facades\Redis::set($cache_name,json_encode($info));
 															}
 												break;
 												case 'update':
@@ -413,7 +414,7 @@ function action_cache($user_id,$cache_prefix,$way="get")
 															{
 																$info=object_array(Illuminate\Support\Facades\DB::table('roles')->whereIn('id',$roleids)->orderBy('type', 'asc')->orderBy('level', 'desc')->first());
 															}
-															Illuminate\Support\Facades\Redis::set($cache_name,$info);
+															Illuminate\Support\Facades\Redis::set($cache_name,json_encode($info));
 												break;
 											}
 											$cache_data=json_decode(Illuminate\Support\Facades\Redis::get($cache_name),true);

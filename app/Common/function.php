@@ -193,7 +193,16 @@ function getCurrentMethodName()
  ***********************************/ 
 function getCurrentAction()  
 {  
-    $action = \Route::current()->getActionName();  
+	if(\Route::getCurrentRoute())
+	{
+		$action = \Route::getCurrentRoute()->getActionName();
+	}
+	else
+	{
+		$data=\Request::route()->getAction();
+		$action = $data['controller'];
+	}
+      
     list($class, $method) = explode('@', $action);  
     return ['controller' => $class, 'method' => $method];  
 } 
@@ -292,7 +301,7 @@ function in_wechat_keyword($data)
  ***********************************/ 
 function action_cache($user_id,$cache_prefix,$way="get")
 {
-	$minutes=3600;
+	$minutes=14400;
 	$cache_name=$cache_prefix.'_'.$user_id;
 	$default_session_cache_type=env('SESSION_DRIVER', "file");
 	switch($cache_prefix)

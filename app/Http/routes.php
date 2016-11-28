@@ -110,6 +110,17 @@ Route::group(['middleware' => ['cors']], function() {
 	Route::post('/api_cache', 'CacheapiController@api_cache')->name('post.cacheapi.api_cache');
 });
 
+/******************************************
+****@AuThor:rubbish.boy@163.com
+****@Title :Api接口相关业务逻辑
+*******************************************/
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function ($api) {
+	$api->group(['namespace' => 'App\Http\Controllers\Api\V1','domain' => env('API_DOMAIN', '')], function ($api) {
+        $api->get('users', ['as' => 'api.users.list', 'uses' => 'UserController@api_list']);
+    });
+});
+
 
 /******************************************
 ****@AuThor:rubbish.boy@163.com

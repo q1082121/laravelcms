@@ -16,7 +16,8 @@
 		"yuanchao/laravel-5-markdown-editor": "dev-master",
 		"stevenyangecho/laravel-u-editor": "~1.3",
         "workerman/phpsocket.io": "^1.0",
-        "overtrue/wechat": "~3.1"
+        "overtrue/wechat": "~3.1",
+        "dingo/api": "1.0.x@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

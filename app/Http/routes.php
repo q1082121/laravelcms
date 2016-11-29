@@ -118,6 +118,7 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
 	$api->group(['namespace' => 'App\Http\Controllers\Api\V1','domain' => env('API_DOMAIN', '')], function ($api) {
         $api->get('users', ['as' => 'api.users.list', 'uses' => 'UserController@api_list']);
+		$api->any('xcx/login', ['as' => 'api.xcx.api_login', 'uses' => 'XcxController@api_login']);
     });
 });
 

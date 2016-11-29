@@ -5013,5 +5013,196 @@
             "laravel",
             "tymon"
         ]
+    },
+    {
+        "name": "hashids/hashids",
+        "version": "2.0.0",
+        "version_normalized": "2.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ivanakimov/hashids.php.git",
+            "reference": "57cf3bbfbb939868a37a201aa858071e6c1b4764"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/ivanakimov/hashids.php/57cf3bbfbb939868a37a201aa858071e6c1b4764.zip",
+            "reference": "57cf3bbfbb939868a37a201aa858071e6c1b4764",
+            "shasum": ""
+        },
+        "require": {
+            "ext-bcmath": "*",
+            "php": "^5.6.4 || ^7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^5.6"
+        },
+        "time": "2016-11-15 18:59:27",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Hashids\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ivan Akimov",
+                "email": "ivan@barreleye.com",
+                "homepage": "https://twitter.com/IvanAkimov"
+            },
+            {
+                "name": "Vincent Klaiber",
+                "email": "hello@vinkla.com",
+                "homepage": "https://vinkla.com"
+            }
+        ],
+        "description": "Generate short, unique, non-sequential ids (like YouTube and Bitly) from numbers",
+        "homepage": "http://hashids.org/php",
+        "keywords": [
+            "bitly",
+            "decode",
+            "encode",
+            "hash",
+            "hashid",
+            "hashids",
+            "ids",
+            "obfuscate",
+            "youtube"
+        ]
+    },
+    {
+        "name": "graham-campbell/manager",
+        "version": "v2.4.0",
+        "version_normalized": "2.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/GrahamCampbell/Laravel-Manager.git",
+            "reference": "fd9052082e2c69c9a67d3e8d7dfa94cb33f8ab0b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/GrahamCampbell/Laravel-Manager/fd9052082e2c69c9a67d3e8d7dfa94cb33f8ab0b.zip",
+            "reference": "fd9052082e2c69c9a67d3e8d7dfa94cb33f8ab0b",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/contracts": "5.1.*|5.2.*|5.3.*",
+            "illuminate/support": "5.1.*|5.2.*|5.3.*",
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "graham-campbell/testbench-core": "^1.1",
+            "mockery/mockery": "^0.9.4",
+            "phpunit/phpunit": "^4.8|^5.0"
+        },
+        "time": "2016-04-26 14:27:59",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "GrahamCampbell\\Manager\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Graham Campbell",
+                "email": "graham@alt-three.com"
+            }
+        ],
+        "description": "Manager Provides Some Manager Functionality For Laravel 5",
+        "keywords": [
+            "Graham Campbell",
+            "GrahamCampbell",
+            "Laravel Manager",
+            "Laravel-Manager",
+            "connector",
+            "framework",
+            "interface",
+            "laravel",
+            "manager"
+        ]
+    },
+    {
+        "name": "vinkla/hashids",
+        "version": "3.0.0",
+        "version_normalized": "3.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/vinkla/laravel-hashids.git",
+            "reference": "4fc2f13677001580768be6c6d9a6b51d28e6c72e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/vinkla/laravel-hashids/4fc2f13677001580768be6c6d9a6b51d28e6c72e.zip",
+            "reference": "4fc2f13677001580768be6c6d9a6b51d28e6c72e",
+            "shasum": ""
+        },
+        "require": {
+            "graham-campbell/manager": "^2.4",
+            "hashids/hashids": "^2.0",
+            "illuminate/contracts": "5.2.* || 5.3.*",
+            "illuminate/support": "5.2.* || 5.3.*",
+            "php": "^5.6.4 || ^7.0"
+        },
+        "require-dev": {
+            "graham-campbell/testbench": "^3.2",
+            "mockery/mockery": "^0.9.5",
+            "phpunit/phpunit": "^5.6"
+        },
+        "time": "2016-11-15 19:19:18",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Vinkla\\Hashids\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Vincent Klaiber",
+                "email": "hello@vinkla.com",
+                "homepage": "https://vinkla.com"
+            }
+        ],
+        "description": "A Hashids bridge for Laravel",
+        "keywords": [
+            "bitly",
+            "decrypt",
+            "encrypt",
+            "hash",
+            "hashid",
+            "hashids",
+            "ids",
+            "laravel",
+            "obfuscate",
+            "youtube"
+        ]
     }
 ]

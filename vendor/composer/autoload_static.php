@@ -49,6 +49,10 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
             'Workerman\\' => 10,
             'Webmozart\\Assert\\' => 17,
         ),
+        'V' => 
+        array (
+            'Vinkla\\Hashids\\' => 15,
+        ),
         'T' => 
         array (
             'Tymon\\JWTAuth\\' => 14,
@@ -106,12 +110,17 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
             'Intervention\\Image\\' => 19,
             'Illuminate\\' => 11,
         ),
+        'H' => 
+        array (
+            'Hashids\\' => 8,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
             'Gregwar\\Captcha\\' => 16,
+            'GrahamCampbell\\Manager\\' => 23,
         ),
         'F' => 
         array (
@@ -172,6 +181,10 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Vinkla\\Hashids\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vinkla/hashids/src',
         ),
         'Tymon\\JWTAuth\\' => 
         array (
@@ -305,6 +318,10 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Hashids\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hashids/hashids/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -320,6 +337,10 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'Gregwar\\Captcha\\' => 
         array (
             0 => __DIR__ . '/..' . '/gregwar/captcha',
+        ),
+        'GrahamCampbell\\Manager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/graham-campbell/manager/src',
         ),
         'Faker\\' => 
         array (
@@ -504,6 +525,7 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'App\\Http\\Controllers\\Admin\\WechatuserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/WechatuserController.php',
         'App\\Http\\Controllers\\Api\\V1\\PublicController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/PublicController.php',
         'App\\Http\\Controllers\\Api\\V1\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/UserController.php',
+        'App\\Http\\Controllers\\Api\\V1\\XcxController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/XcxController.php',
         'App\\Http\\Controllers\\CacheapiController' => __DIR__ . '/../..' . '/app/Http/Controllers/CacheapiController.php',
         'App\\Http\\Controllers\\CaptchaController' => __DIR__ . '/../..' . '/app/Http/Controllers/CaptchaController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
@@ -527,6 +549,7 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CorsMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/CorsMiddleware.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
+        'App\\Http\\Middleware\\GetUserJWTAuthToken' => __DIR__ . '/../..' . '/app/Http/Middleware/GetUserJWTAuthToken.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\SsoMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/SsoMiddleware.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
@@ -556,6 +579,7 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'App\\Http\\Model\\Wechatreplyimagetext' => __DIR__ . '/../..' . '/app/Http/Model/Wechatreplyimagetext.php',
         'App\\Http\\Model\\Wechatreplytext' => __DIR__ . '/../..' . '/app/Http/Model/Wechatreplytext.php',
         'App\\Http\\Model\\Wechatuser' => __DIR__ . '/../..' . '/app/Http/Model/Wechatuser.php',
+        'App\\Http\\Model\\Xcxbusinesscard' => __DIR__ . '/../..' . '/app/Http/Model/Xcxbusinesscard.php',
         'App\\Http\\Requests\\Request' => __DIR__ . '/../..' . '/app/Http/Requests/Request.php',
         'App\\Jobs\\Job' => __DIR__ . '/../..' . '/app/Jobs/Job.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -638,6 +662,8 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'CreateWechatreplytextsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_09_030827_create_wechatreplytexts_table.php',
         'CreateWechatsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_22_093035_create_wechats_table.php',
         'CreateWechatusersTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_08_030826_create_wechatusers_table.php',
+        'CreateXcxbusniesscardsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_28_020703_create_xcxbusniesscards_table.php',
+        'CreateXcxusersTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_29_030826_create_xcxusers_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/DayOfMonthField.php',
@@ -1348,6 +1374,9 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
         'File_X509' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/File/X509.php',
+        'GrahamCampbell\\Manager\\AbstractManager' => __DIR__ . '/..' . '/graham-campbell/manager/src/AbstractManager.php',
+        'GrahamCampbell\\Manager\\ConnectorInterface' => __DIR__ . '/..' . '/graham-campbell/manager/src/ConnectorInterface.php',
+        'GrahamCampbell\\Manager\\ManagerInterface' => __DIR__ . '/..' . '/graham-campbell/manager/src/ManagerInterface.php',
         'Gregwar\\Captcha\\CaptchaBuilder' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilder.php',
         'Gregwar\\Captcha\\CaptchaBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilderInterface.php',
         'Gregwar\\Captcha\\ImageFileHandler' => __DIR__ . '/..' . '/gregwar/captcha/ImageFileHandler.php',
@@ -1485,6 +1514,10 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Hashids\\Hashids' => __DIR__ . '/..' . '/hashids/hashids/src/Hashids.php',
+        'Hashids\\HashidsException' => __DIR__ . '/..' . '/hashids/hashids/src/HashidsException.php',
+        'Hashids\\HashidsInterface' => __DIR__ . '/..' . '/hashids/hashids/src/HashidsInterface.php',
+        'Hashids\\Math' => __DIR__ . '/..' . '/hashids/hashids/src/Math.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
@@ -4183,6 +4216,10 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'Tymon\\JWTAuth\\Validators\\TokenValidator' => __DIR__ . '/..' . '/tymon/jwt-auth/src/Validators/TokenValidator.php',
         'Tymon\\JWTAuth\\Validators\\ValidatorInterface' => __DIR__ . '/..' . '/tymon/jwt-auth/src/Validators/ValidatorInterface.php',
         'UserSeeder' => __DIR__ . '/../..' . '/database/seeds/UserSeeder.php',
+        'Vinkla\\Hashids\\Facades\\Hashids' => __DIR__ . '/..' . '/vinkla/hashids/src/Facades/Hashids.php',
+        'Vinkla\\Hashids\\HashidsFactory' => __DIR__ . '/..' . '/vinkla/hashids/src/HashidsFactory.php',
+        'Vinkla\\Hashids\\HashidsManager' => __DIR__ . '/..' . '/vinkla/hashids/src/HashidsManager.php',
+        'Vinkla\\Hashids\\HashidsServiceProvider' => __DIR__ . '/..' . '/vinkla/hashids/src/HashidsServiceProvider.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Workerman\\Autoloader' => __DIR__ . '/..' . '/workerman/workerman/Autoloader.php',
         'Workerman\\Connection\\AsyncTcpConnection' => __DIR__ . '/..' . '/workerman/workerman/Connection/AsyncTcpConnection.php',

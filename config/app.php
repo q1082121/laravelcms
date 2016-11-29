@@ -171,8 +171,9 @@ return [
 		//edit by rubbish.boy@163.com 2016-11-28
 		Dingo\Api\Provider\LaravelServiceProvider::class,
         //edit by rubbish.boy@163.com 2016-11-28
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
-		
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        //edit by rubbish.boy@163.com 2016-11-29
+		Vinkla\Hashids\HashidsServiceProvider::class
     ],
 
     /*
@@ -231,7 +232,9 @@ return [
 		'DingoRoute' => Dingo\Api\Facade\Route::class,
         //edit by rubbish.boy@163.com 2016-11-28
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        //edit by rubbish.boy@163.com 2016-11-29
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class
     ],
 
 ];

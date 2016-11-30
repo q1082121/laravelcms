@@ -31,7 +31,9 @@
     "autoload": {
         "classmap": [
             "database",
-			"app/Common/lib/Cates.php" 
+			"app/Common/lib/Cates.php",
+			"app/Common/lib/",
+			"app/Common/lib/aes"
         ],
         "psr-4": {
             "App\\": "app/"

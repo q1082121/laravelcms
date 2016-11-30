@@ -15,8 +15,10 @@ use Redis;
 use Cache;
 use Carbon;
 use Redirect;
-// 导入 Intervention Image Manager Class
 use Intervention\Image\ImageManagerStatic as Image;
+use App\Common\lib\aes\WXBizDataCrypt;
+use App\Common\lib\aes\PKCS7Encoder;
+use App\Common\lib\aes\ErrorCode;
 
 class PublicController extends Controller
 {
@@ -54,7 +56,30 @@ class PublicController extends Controller
 		$this->thumb_width=$thumb_width=env('APP_THUMB_WIDTH', 200);				//缩略图宽度
 		$this->thumb_height=$thumb_height=env('APP_THUMB_HEIGHT', 200);				//缩略图高度
 		
-	}
+		$this->appid=$appid="wx5175b09bb5916400";
+		$this->appsecret=$appsecret="efab8a9384616559ab3702cf97552850";
 
+	}
+	/******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :数据解密
+	*******************************************/
+	public function decode_encryptedData($appid,$sessionKey,$encryptedData,$iv)
+	{
+		$wxCrypt = new WXBizDataCrypt();
+		$wxCrypt->WXBizDataCrypt($appid,$sessionKey);
+		$errCode = $wxCrypt->decryptData($encryptedData, $iv, $data );
+		if ($errCode == 0) 
+		{
+			$res['status']=1;
+			$res['data']=json_decode($data,true);
+		}
+		else
+		{
+			$res['status']=0;
+			$res['data']=$errCode;
+		}
+		return $res;
+	}
 
 }

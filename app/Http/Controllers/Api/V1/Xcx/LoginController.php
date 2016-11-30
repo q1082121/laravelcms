@@ -49,7 +49,7 @@ class LoginController extends PublicController
 				//服务器存储newsession_id
 				$str=$sessionKey.$result['openid'];
 				$newsession_id=Hashids::encode(date('Ymd').rand(10000000,99999999));
-				Cache::store('redis')->put($newsession_id, $str, 14400);//29天有效2505600
+				Cache::store('redis')->put($newsession_id, $str, 86400);//29天有效2505600
 				
 				$res=$this->decode_encryptedData($appid,$sessionKey,$encryptedData, $iv);
 				if($res['status']==1)

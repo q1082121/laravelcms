@@ -120,8 +120,8 @@ $api->version('v1', function ($api) {
         $api->get('users', ['as' => 'api.users.list', 'uses' => 'UserController@api_list']);
     });
 	$api->group(['namespace' => 'App\Http\Controllers\Api\V1\Xcx','domain' => env('API_DOMAIN', '')], function ($api) {
-		$api->any('xcx/login', ['as' => 'api.xcx.login.api_login', 'uses' => 'LoginController@api_login']);
-		$api->any('xcx/userinfo', ['as' => 'api.xcx.user.api_userinfo', 'uses' => 'UserController@api_userinfo']);
+		$api->post('xcx/login', ['as' => 'api.xcx.login.api_login', 'uses' => 'LoginController@api_login']);
+		$api->post('xcx/userinfo', ['as' => 'api.xcx.user.api_userinfo', 'uses' => 'UserController@api_userinfo']);
     });
 });
 

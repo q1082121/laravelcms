@@ -5204,5 +5204,99 @@
             "obfuscate",
             "youtube"
         ]
+    },
+    {
+        "name": "overtrue/pinyin",
+        "version": "3.0.4",
+        "version_normalized": "3.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/overtrue/pinyin.git",
+            "reference": "7af85b01b16f558ef58c3e9863f0fd44e4c064d9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/overtrue/pinyin/7af85b01b16f558ef58c3e9863f0fd44e4c064d9.zip",
+            "reference": "7af85b01b16f558ef58c3e9863f0fd44e4c064d9",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8"
+        },
+        "time": "2016-08-17 12:05:07",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Overtrue\\Pinyin\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Carlos",
+                "homepage": "http://github.com/overtrue"
+            }
+        ],
+        "description": "Chinese to pinyin translator.",
+        "homepage": "https://github.com/overtrue/pinyin",
+        "keywords": [
+            "Chinese",
+            "Pinyin",
+            "cn2pinyin"
+        ]
+    },
+    {
+        "name": "overtrue/laravel-pinyin",
+        "version": "3.0.2",
+        "version_normalized": "3.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/overtrue/laravel-pinyin.git",
+            "reference": "08895b65b12ab21136004c76571719c6bf21df34"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/overtrue/laravel-pinyin/08895b65b12ab21136004c76571719c6bf21df34.zip",
+            "reference": "08895b65b12ab21136004c76571719c6bf21df34",
+            "shasum": ""
+        },
+        "require": {
+            "overtrue/pinyin": "~3.0"
+        },
+        "time": "2016-06-12 03:13:01",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Overtrue\\LaravelPinyin\\": "src/"
+            },
+            "files": [
+                "src/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "overtrue",
+                "email": "anzhengchao@gmail.com"
+            }
+        ],
+        "description": "Chinese to Pinyin translator.",
+        "keywords": [
+            "Chinese",
+            "Pinyin",
+            "laravel",
+            "overtrue"
+        ]
     }
 ]

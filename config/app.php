@@ -173,7 +173,9 @@ return [
         //edit by rubbish.boy@163.com 2016-11-28
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         //edit by rubbish.boy@163.com 2016-11-29
-		Vinkla\Hashids\HashidsServiceProvider::class
+		Vinkla\Hashids\HashidsServiceProvider::class,
+        //edit by rubbish.boy@163.com 2016-12-01
+        Overtrue\LaravelPinyin\ServiceProvider::class
     ],
 
     /*
@@ -234,7 +236,9 @@ return [
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         //edit by rubbish.boy@163.com 2016-11-29
-        'Hashids' => Vinkla\Hashids\Facades\Hashids::class
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+        //edit by rubbish.boy@163.com 2016-120-01
+        'Pinyin' => Overtrue\LaravelPinyin\Facades\Pinyin::class
     ],
 
 ];

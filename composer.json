@@ -19,7 +19,8 @@
         "overtrue/wechat": "~3.1",
         "dingo/api": "1.0.x@dev",
         "tymon/jwt-auth": "0.5.*",
-        "vinkla/hashids": "^3.0"
+        "vinkla/hashids": "^3.0",
+        "overtrue/laravel-pinyin": "~3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -16,8 +16,9 @@ QQ	:471416739
 8. stevenyangecho/laravel-u-editor 百度富文本编辑器
 9. workerman/phpsocket.io,workerman/workerman  目前开发用的是win版本, 压缩包是linux版本
 10. overtrue/wechat: ~3.1	微信扩展包
-11. dingo/api: 1.0.x@dev	api开发扩展包
-12. tymon/jwt-auth: 0.5.*   用户api验证扩展包
+11. dingo/api	api开发扩展包
+12. tymon/jwt-auth  用户api验证扩展包
+13. overtrue/laravel-pinyin 中文转拼音
 
 #	laravelPCMS 使用了哪些前端组件？ bower.json
 
@@ -128,9 +129,11 @@ QQ	:471416739
 	消息管理 	下一个版本内容
 	第三方登录  下一个版本内容
 	单点登录    下一个版本内容
-	
 	前端会员中心 开发中
 	微信小程序
+	微信小程序登录态维护
+	微信小程序用户接口
+	微信小程序名片接口
 	
 
 #	注意事项

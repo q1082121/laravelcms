@@ -17,6 +17,8 @@ class CreateXcxbusinesscardsTable extends Migration
         {
 			$table->increments('id');
 			$table->string('name',20)->nullable();		//姓名
+            $table->string('initials',10)->nullable();	//首字母
+            $table->string('pinyin',100)->nullable();   //拼音
             $table->string('mobile',13)->nullable(); 	//手机号码
 			$table->string('company',100)->nullable(); 	//公司
 			$table->string('address',150)->nullable(); 	//联系地址

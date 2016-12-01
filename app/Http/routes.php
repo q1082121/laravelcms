@@ -122,6 +122,7 @@ $api->version('v1', function ($api) {
 	$api->group(['namespace' => 'App\Http\Controllers\Api\V1\Xcx','domain' => env('API_DOMAIN', '')], function ($api) {
 		$api->post('xcx/login', ['as' => 'api.xcx.login.api_login', 'uses' => 'LoginController@api_login']);
 		$api->post('xcx/userinfo', ['as' => 'api.xcx.user.api_userinfo', 'uses' => 'UserController@api_userinfo']);
+		$api->post('xcx/businesscard/add', ['as' => 'api.xcx.businesscard.api_add', 'uses' => 'BusinesscardController@api_add']);
     });
 });
 

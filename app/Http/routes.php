@@ -235,7 +235,10 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::get('classifywechat/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ClassifywechatController@edit'])->name('get.admin.classifywechat.edit');	
 	//微信（会员)粉丝信息列表
 	Route::get('wechatuser/{id?}', ['middleware' => ['ability:admin,model_wechat'], 'uses' => 'WechatuserController@index'])->name('get.admin.wechatuser.index');
-
+	//小程序管理		
+	Route::get('xcxmp', ['middleware' => ['ability:admin,model_xcxmp'], 'uses' => 'XcxmpController@index'])->name('get.admin.xcxmp');
+	Route::get('xcxmp/add', ['middleware' => ['ability:admin,add'], 'uses' => 'XcxmpController@add'])->name('get.admin.xcxmp.add');
+	Route::get('xcxmp/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'XcxmpController@edit'])->name('get.admin.xcxmp.edit');
 
 
 	/*
@@ -371,6 +374,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('wechatuser/api_list', 'WechatuserController@api_list')->name('post.admin.wechatuser.api_list');
 	Route::post('wechatuser/api_info', 'WechatuserController@api_info')->name('post.admin.wechatuser.api_info');
 	
+	//微信小程序
+	Route::post('xcxmp/api_list', 'XcxmpController@api_list')->name('post.admin.xcxmp.api_list');
+	Route::post('xcxmp/api_add', 'XcxmpController@api_add')->name('post.admin.xcxmp.api_add');
+	Route::post('xcxmp/api_info', 'XcxmpController@api_info')->name('post.admin.xcxmp.api_info');
+	Route::post('xcxmp/api_edit', 'XcxmpController@api_edit')->name('post.admin.xcxmp.api_edit');
 
 });
 

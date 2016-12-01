@@ -24,7 +24,7 @@ use App\Http\Model\Log;
 use App\Http\Model\Wechat;
 use App\Http\Model\Wechatreplytext;
 use App\Http\Model\Wechatreplyimagetext;
-
+use App\Http\Model\Xcxmp;
 class DeleteapiController extends PublicController
 {
     /******************************************
@@ -528,6 +528,31 @@ class DeleteapiController extends PublicController
 
 								$subinfo=DB::table('wechatkeywords')->where($subcondition)->delete();
 
+								$msg_array['status']='1';
+								$msg_array['info']=trans('admin.message_del_success');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';
+							}
+							else
+							{
+								
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.message_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+								$msg_array['param_way']='';
+								$msg_array['param_keyword']='';	
+								
+							}
+			break;
+			case 'Xcxmp':
+							$info=$this->delete_action('xcxmps',$request->get('id'));
+							if($info)
+							{
 								$msg_array['status']='1';
 								$msg_array['info']=trans('admin.message_del_success');
 								$msg_array['is_reload']=0;

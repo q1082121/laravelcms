@@ -99,6 +99,11 @@
       <i class="fa fa-wechat"></i> <span>{{trans('admin.website_navigation_wechat')}}</span>
     </a>
   </li>
+  <li>
+    <a href="{{ route('get.admin.xcxmp') }}">
+      <i class="fa fa-magnet"></i> <span>{{trans('admin.website_navigation_xcxmp')}}</span>
+    </a>
+  </li>
   <li class="header">{{trans('admin.website_main_navigation_one')}}</li>
   <li>
     <a href="{{ route('get.admin.setting') }}">

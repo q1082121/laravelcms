@@ -70,6 +70,7 @@ return [
     'website_navigation_link_management'           =>   '链接管理',
     'website_navigation_link'                      =>   '友情链接',
     'website_navigation_wechat'                    =>   '微信管理',
+    'website_navigation_xcxmp'                     =>   '小程序管理',
     'website_navigation_letter'                    =>   '信件管理',
     'website_navigation_question_management'       =>   '题目管理',
     'website_navigation_question_type'             =>   '题目类型',
@@ -392,7 +393,9 @@ return [
     'option_wechat_failure_name'                   =>   '请填写公众号名称',
     'option_wechat_failure_gid'                    =>   '请填写原始ID',
     'option_failure_iscontent'                     =>   '请填写文本内容',
-
+    'option_xcxmp_failure_name'                    =>   '请填写小程序名称',
+    'option_failure_appid'                         =>   '请填写Appid',
+    'option_failure_appsecret'                     =>   '请填写Appsecret',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 系统设置

@@ -127,15 +127,15 @@ class BusinesscardController extends PublicController
 					if($xcxuser)
 					{
 						$initials_list_condition['xcxuser_id']=$xcxuser['id'];
-						$initials_list=object_array(DB::table('xcxbusinesscards')->where($initials_list_condition)->orderBy('initials')->pluck('initials'));
+						$initials_list=object_array(DB::table('xcxbusinesscards')->where($initials_list_condition)->orderBy('initials')->distinct()->pluck('initials'));
 						if($initials_list)
 						{
 							$list="";
-							$initials_list=array_unique($initials_list);
+							//$initials_list=array_unique($initials_list);
 							foreach($initials_list as $key=>$val)
 							{
 								$initials_list_condition['initials']=$val;
-								$list[$val]=object_array(DB::table('xcxbusinesscards')->where($initials_list_condition)->orderBy('name')->get());
+								$list[$val]=Xcxbusinesscard::where($initials_list_condition)->orderBy('name')->get()->toArray();
 							}
 							$msg_array['status']='1';
 							$msg_array['info']=trans('api.message_get_success');
@@ -210,7 +210,7 @@ class BusinesscardController extends PublicController
 					{
 						$info_condition['xcxuser_id']=$xcxuser['id'];
 						$info_condition['id']=@$param['id'];
-						$info=object_array(DB::table('xcxbusinesscards')->where($info_condition)->first());
+						$info=Xcxbusinesscard::where($info_condition)->first()->toArray();
 						if($info)
 						{
 							$msg_array['status']='1';

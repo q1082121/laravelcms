@@ -43,5 +43,6 @@ return [
     'message_token_empty'                          =>   'token不存在',
     'message_token_failure'                        =>   '无效的token',
     'message_request_success'                      =>   '有效的数据请求',
+    'message_request_failure'                      =>   '无效的数据请求',
     'message_sessionid_failure'                    =>   '无效登录状态',
 ];

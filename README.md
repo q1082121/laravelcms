@@ -129,7 +129,7 @@ QQ	:471416739
 	消息管理 	下一个版本内容
 	第三方登录  下一个版本内容
 	单点登录    下一个版本内容
-	前端会员中心 开发中
+	前端会员中心 【目前开发了一些基础功能】
 	微信小程序
 	微信小程序登录态维护
 	微信小程序用户接口
@@ -145,9 +145,6 @@ QQ	:471416739
 
 #	示例图片
 ![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/1.png)
+![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/8.png)
 ![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/2.png)
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/3.png)
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/4.png)
 ![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/5.png)
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/6.png)
-![image](https://github.com/q1082121/laravelcms/blob/master/public/images/home/demo/7.png)

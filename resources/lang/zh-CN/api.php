@@ -13,6 +13,8 @@ return [
     'message_save_exit'                            =>   '无变更信息',
     'message_edit_success'                         =>   '修改成功',
     'message_edit_failure'                         =>   '修改失败',
+    'message_update_success'                       =>   '更新成功',
+    'message_update_failure'                       =>   '更新失败',
     'message_add_success'                          =>   '添加成功',
     'message_add_failure'                          =>   '添加失败',
     'message_send_success'                         =>   '发送成功',

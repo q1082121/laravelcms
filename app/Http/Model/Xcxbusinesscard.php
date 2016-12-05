@@ -6,7 +6,7 @@
 namespace App\Http\Model;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Xcxbusinesscard extends Model
 {
     //
@@ -16,4 +16,30 @@ class Xcxbusinesscard extends Model
      * @var array
      */
     protected $hidden = ['xcxuser_id'];
+    
+	public function getCreatedAtAttribute($date)
+    {
+
+        if (Carbon::now() < Carbon::parse($date)->addDays(8)) 
+        {
+            return Carbon::parse($date)->diffForHumans();
+        }
+        else
+        {
+            return Carbon::parse($date)->format('m-d');
+        }   
+    }
+    
+    public function getUpdatedAtAttribute($date)
+    {
+
+        if (Carbon::now() < Carbon::parse($date)->addDays(8)) 
+        {
+            return Carbon::parse($date)->diffForHumans();
+        }
+        else
+        {
+            return Carbon::parse($date)->format('m-d');
+        }   
+    }
 }

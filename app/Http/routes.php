@@ -125,6 +125,7 @@ $api->version('v1', function ($api) {
 		$api->post('xcx/deleteapi', ['as' => 'api.xcx.deleteapi.api_delete', 'uses' => 'DeleteapiController@api_delete']);
 		$api->post('xcx/businesscard/add', ['as' => 'api.xcx.businesscard.api_add', 'uses' => 'BusinesscardController@api_add']);
 		$api->post('xcx/businesscard/info', ['as' => 'api.xcx.businesscard.api_info', 'uses' => 'BusinesscardController@api_info']);
+		$api->post('xcx/businesscard/edit', ['as' => 'api.xcx.businesscard.api_edit', 'uses' => 'BusinesscardController@api_edit']);
 		$api->post('xcx/businesscard', ['as' => 'api.xcx.businesscard.api_list', 'uses' => 'BusinesscardController@api_list']);
     });
 });

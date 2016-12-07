@@ -125,29 +125,64 @@ class BusinesscardController extends PublicController
 					$condition['openid']=$openid;
 					$xcxuser=object_array(DB::table('xcxusers')->where($condition)->first());
 					if($xcxuser)
-					{
-						$initials_list_condition['xcxuser_id']=$xcxuser['id'];
-						$initials_list=object_array(DB::table('xcxbusinesscards')->where($initials_list_condition)->orderBy('initials')->distinct()->pluck('initials'));
-						if($initials_list)
+					{	
+						$keyword=@$param['search_keyword'];
+						if($keyword)
 						{
-							$list="";
-							//$initials_list=array_unique($initials_list);
-							foreach($initials_list as $key=>$val)
+							$initials_list_condition['xcxuser_id']=$xcxuser['id'];
+							$initials_list=object_array(DB::table('xcxbusinesscards')->where($initials_list_condition)->where('name','like',"%".$keyword.'%')->orderBy('initials','asc')->distinct()->pluck('initials'));
+							if($initials_list)
 							{
-								$initials_list_condition['initials']=$val;
-								$list[$val]=Xcxbusinesscard::where($initials_list_condition)->orderBy('name')->get()->toArray();
+								$list="";
+								sort($initials_list);
+								//$initials_list=array_unique($initials_list);
+								foreach($initials_list as $key=>$val)
+								{
+									$initials_list_condition['initials']=$val;
+									$list[$val]=Xcxbusinesscard::where($initials_list_condition)->where('name','like',"%".$keyword.'%')->orderBy('name')->get()->toArray();
+								}
+								ksort($list);
+								$msg_array['status']='1';
+								$msg_array['info']=trans('api.message_get_success');
+								$msg_array['curl']='';
+								$msg_array['resource']=$list;
 							}
-							$msg_array['status']='1';
-							$msg_array['info']=trans('api.message_get_success');
-							$msg_array['curl']='';
-							$msg_array['resource']=$list;
+							else
+							{
+								$msg_array['status']='1';
+								$msg_array['info']=trans('api.message_get_empty');
+								$msg_array['curl']='';
+								$msg_array['resource']="";
+							}
 						}
 						else
 						{
-							$msg_array['status']='1';
-							$msg_array['info']=trans('api.message_get_empty');
-							$msg_array['curl']='';
-							$msg_array['resource']="";
+							$initials_list_condition['xcxuser_id']=$xcxuser['id'];
+							$initials_list=object_array(DB::table('xcxbusinesscards')->where($initials_list_condition)->orderBy('initials','asc')->distinct()->pluck('initials'));
+							if($initials_list)
+							{
+								$list="";
+								sort($initials_list);
+								//$initials_list=array_unique($initials_list);
+								foreach($initials_list as $key=>$val)
+								{
+									$initials_list_condition['initials']=$val;
+									$list[$val]=Xcxbusinesscard::where($initials_list_condition)->orderBy('name')->get()->toArray();
+								}
+								ksort($list);
+								$msg_array['status']='1';
+								$msg_array['info']=trans('api.message_get_success');
+								$msg_array['curl']='';
+								$msg_array['resource']=$list;
+								
+							}
+							else
+							{
+								$msg_array['status']='1';
+								$msg_array['info']=trans('api.message_get_empty');
+								$msg_array['curl']='';
+								$msg_array['resource']="";
+							}
 						}
 					}
 					else

@@ -127,6 +127,7 @@ $api->version('v1', function ($api) {
 		$api->post('xcx/businesscard/info', ['as' => 'api.xcx.businesscard.api_info', 'uses' => 'BusinesscardController@api_info']);
 		$api->post('xcx/businesscard/edit', ['as' => 'api.xcx.businesscard.api_edit', 'uses' => 'BusinesscardController@api_edit']);
 		$api->post('xcx/businesscard', ['as' => 'api.xcx.businesscard.api_list', 'uses' => 'BusinesscardController@api_list']);
+		$api->post('xcx/proxy', ['as' => 'api.xcx.proxyinterface.api_back', 'uses' => 'ProxyinterfaceController@api_back']);
     });
 });
 

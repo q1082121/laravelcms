@@ -164,12 +164,15 @@ class BusinesscardController extends PublicController
 								$list="";
 								sort($initials_list);
 								//$initials_list=array_unique($initials_list);
+	
 								foreach($initials_list as $key=>$val)
 								{
 									$initials_list_condition['initials']=$val;
-									$list[$val]=Xcxbusinesscard::where($initials_list_condition)->orderBy('name')->get()->toArray();
+									$list[$key]['key']=$val;
+									$list[$key]['data']=Xcxbusinesscard::where($initials_list_condition)->orderBy('name')->get()->toArray();
 								}
 								ksort($list);
+
 								$msg_array['status']='1';
 								$msg_array['info']=trans('api.message_get_success');
 								$msg_array['curl']='';

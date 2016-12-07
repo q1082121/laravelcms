@@ -139,7 +139,8 @@ class BusinesscardController extends PublicController
 								foreach($initials_list as $key=>$val)
 								{
 									$initials_list_condition['initials']=$val;
-									$list[$val]=Xcxbusinesscard::where($initials_list_condition)->where('name','like',"%".$keyword.'%')->orderBy('name')->get()->toArray();
+									$list[$key]['key']=$val;
+									$list[$key]['data']=Xcxbusinesscard::where($initials_list_condition)->where('name','like',"%".$keyword.'%')->orderBy('name')->get()->toArray();
 								}
 								ksort($list);
 								$msg_array['status']='1';
@@ -164,7 +165,6 @@ class BusinesscardController extends PublicController
 								$list="";
 								sort($initials_list);
 								//$initials_list=array_unique($initials_list);
-	
 								foreach($initials_list as $key=>$val)
 								{
 									$initials_list_condition['initials']=$val;

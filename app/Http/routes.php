@@ -119,15 +119,17 @@ $api->version('v1', function ($api) {
 	$api->group(['namespace' => 'App\Http\Controllers\Api\V1','domain' => env('API_DOMAIN', '')], function ($api) {
         $api->get('users', ['as' => 'api.users.list', 'uses' => 'UserController@api_list']);
     });
-	$api->group(['namespace' => 'App\Http\Controllers\Api\V1\Xcx','domain' => env('API_DOMAIN', '')], function ($api) {
-		$api->post('xcx/login', ['as' => 'api.xcx.login.api_login', 'uses' => 'LoginController@api_login']);
-		$api->post('xcx/userinfo', ['as' => 'api.xcx.user.api_userinfo', 'uses' => 'UserController@api_userinfo']);
-		$api->post('xcx/deleteapi', ['as' => 'api.xcx.deleteapi.api_delete', 'uses' => 'DeleteapiController@api_delete']);
-		$api->post('xcx/businesscard/add', ['as' => 'api.xcx.businesscard.api_add', 'uses' => 'BusinesscardController@api_add']);
-		$api->post('xcx/businesscard/info', ['as' => 'api.xcx.businesscard.api_info', 'uses' => 'BusinesscardController@api_info']);
-		$api->post('xcx/businesscard/edit', ['as' => 'api.xcx.businesscard.api_edit', 'uses' => 'BusinesscardController@api_edit']);
-		$api->post('xcx/businesscard', ['as' => 'api.xcx.businesscard.api_list', 'uses' => 'BusinesscardController@api_list']);
-		$api->post('xcx/proxy', ['as' => 'api.xcx.proxyinterface.api_back', 'uses' => 'ProxyinterfaceController@api_back']);
+	$api->group(['namespace' => 'App\Http\Controllers\Api\V1\Xcx','domain' => env('API_DOMAIN', ''),'prefix' => 'xcx'], function ($api) {
+		$api->post('login', ['as' => 'api.xcx.login.api_login', 'uses' => 'LoginController@api_login']);
+		$api->post('userinfo', ['as' => 'api.xcx.user.api_userinfo', 'uses' => 'UserController@api_userinfo']);
+		$api->post('deleteapi', ['as' => 'api.xcx.deleteapi.api_delete', 'uses' => 'DeleteapiController@api_delete']);
+		$api->post('businesscard/add', ['as' => 'api.xcx.businesscard.api_add', 'uses' => 'BusinesscardController@api_add']);
+		$api->post('businesscard/info', ['as' => 'api.xcx.businesscard.api_info', 'uses' => 'BusinesscardController@api_info']);
+		$api->post('businesscard/edit', ['as' => 'api.xcx.businesscard.api_edit', 'uses' => 'BusinesscardController@api_edit']);
+		$api->post('businesscard', ['as' => 'api.xcx.businesscard.api_list', 'uses' => 'BusinesscardController@api_list']);
+		$api->post('proxy', ['as' => 'api.xcx.proxyinterface.api_back', 'uses' => 'ProxyinterfaceController@api_back']);
+		$api->post('is_check_in', ['as' => 'api.xcx.score.api_is_check_in', 'uses' => 'ScoreController@api_is_check_in']);
+		$api->post('check_in', ['as' => 'api.xcx.score.api_check_in', 'uses' => 'ScoreController@api_check_in']);
     });
 });
 

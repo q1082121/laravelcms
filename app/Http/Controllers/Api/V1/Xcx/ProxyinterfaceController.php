@@ -15,7 +15,7 @@ class ProxyinterfaceController extends PublicController
 {
 	/******************************************
 	****AuThor:rubbish.boy@163.com
-	****Title :添加接口
+	****Title :抓取转发接口
 	*******************************************/
 	public function api_back(Request $request)  
 	{

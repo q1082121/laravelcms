@@ -86,13 +86,11 @@ class ScoreController extends PublicController
 		$is_get_today_check_in=object_array(DB::table('scores')->where($condition)->whereBetween('created_at', [$startTime, $endTime])->count());
 		if($is_get_today_check_in==1)
 		{
-			
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_check_in_exit');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=1;
-			
 		}
 		else
 		{
@@ -132,7 +130,7 @@ class ScoreController extends PublicController
 			$params_score['keyid']=0;
 
 			$result_score=action_score_check_in($params_score);
-			
+
 			if($result_score==1)
 			{
 				$msg_array['status']='1';

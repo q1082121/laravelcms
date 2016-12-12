@@ -38,17 +38,8 @@ class UserController extends PublicController
 					$xcxuser=object_array(DB::table('xcxusers')->where($condition)->first());
 					if($xcxuser)
 					{
+						$xcxuser_array=action_xcxuser_info($xcxuser);
 						
-						$xcxuser_array['nickName']=$xcxuser['nickname'];
-						$xcxuser_array['nickname_encode']=$xcxuser['nickname_encode'];
-						$xcxuser_array['gender']=$xcxuser['gender'];
-						$xcxuser_array['city']=$xcxuser['city'];
-						$xcxuser_array['province']=$xcxuser['province'];
-						$xcxuser_array['country']=$xcxuser['country'];
-						$xcxuser_array['avatarUrl']=$xcxuser['avatarurl'];
-						$xcxuser_array['score']=$xcxuser['score'];
-						$xcxuser_array['money']=$xcxuser['money'];
-
 						$msg_array['status']='1';
 						$msg_array['info']=trans('api.message_get_success');
 						$msg_array['curl']='';

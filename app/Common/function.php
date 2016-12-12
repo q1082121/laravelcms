@@ -865,6 +865,61 @@ function search_keyword($keyword,$mp,$limit=9)
 	
 	return $result;
 }
-
-
+/***********************************
+ * 方法名：小程序获取用户信息
+ * 作者： Tommy（rubbish.boy@163.com）
+  + type 1 => 每日签到
+ ***********************************/ 
+function action_xcxuser_info($xcxuser)
+{
+	$xcxuser_array['nickName']=$xcxuser['nickname'];
+	$xcxuser_array['nickname_encode']=$xcxuser['nickname_encode'];
+	$xcxuser_array['gender']=$xcxuser['gender'];
+	$xcxuser_array['city']=$xcxuser['city'];
+	$xcxuser_array['province']=$xcxuser['province'];
+	$xcxuser_array['country']=$xcxuser['country'];
+	$xcxuser_array['avatarUrl']=$xcxuser['avatarurl'];
+	$xcxuser_array['score']=$xcxuser['score'];
+	$xcxuser_array['money']=$xcxuser['money'];
+	return $xcxuser_array;
+}
+/***********************************
+ * 方法名：小程序积分获取
+ * 作者： Tommy（rubbish.boy@163.com）
+  + type 1 => 每日签到
+ ***********************************/ 
+function action_xcxscore_check_in($params_score)
+{
+	$rule=0;
+	Illuminate\Support\Facades\DB::beginTransaction();
+	try
+	{ 		
+		$score = new App\Http\Model\Xcxscore;
+		$score->type = $params_score['type'];
+		$score->xcxuser_id = $params_score['xcxuser_id'];
+		$score->val = $params_score['val'];
+		$score->info = $params_score['info'];
+		$score->tablename = $params_score['tablename'];
+		$score->keyid = $params_score['keyid'];
+		$result_score=$score->save();
+		if($result_score)
+		{
+			
+			//获得积分   
+			$userinfos_condition['id']=$params_score['xcxuser_id'];
+			Illuminate\Support\Facades\DB::table('xcxusers')->where($userinfos_condition)->increment('score', $score->val);
+			$rule=1;
+			Illuminate\Support\Facades\DB::commit();
+		}
+		else
+		{
+			Illuminate\Support\Facades\DB::rollBack();
+		}
+	}
+	catch (\Exception $e) 
+	{ 
+		Illuminate\Support\Facades\DB::rollBack(); 
+	}
+	return $rule;
+}
 ?>

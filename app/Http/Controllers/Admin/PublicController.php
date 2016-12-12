@@ -39,7 +39,7 @@ class PublicController extends Controller
 	    |
 	    */
 		$root=Cache::store('file')->get('root');
-		$root['syseditor']=@$root['syseditor']?@$root['syseditor']:"Markdown";
+		$root['syseditor']=@$root['syseditor']?@$root['syseditor']:"Ueditor";
 		$root['systitle']=@$root['systitle']?@$root['systitle']:"LaravelCms";
 		$root['syskeywords']=@$root['syskeywords']?@$root['syskeywords']:"";
 		$root['sysdescription']=@$root['sysdescription']?@$root['sysdescription']:"";

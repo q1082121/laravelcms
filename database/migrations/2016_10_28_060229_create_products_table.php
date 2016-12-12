@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
 			$table->string('title',100);				        //标题
 			$table->string('introduction',150)->nullable();		//导读
 			$table->string('sources',30)->nullable();		    //来源
+            $table->string('price',20)->nullable();		        //价格
             $table->string('attachment',100)->nullable();		//封面
 			$table->tinyInteger('isattach')->default(0);        //是否有封面
             $table->text('content')->nullable();		        //内容

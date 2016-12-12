@@ -138,13 +138,13 @@ class QuestionController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Question::where($condiiton)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Question::where($condiiton)->where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field,'type'=>$type])->links();
 		}
 		else
 		{
-			$list=Question::where($condiiton)->paginate($this->pagesize);
+			$list=Question::where($condiiton)->orderBy('updated_at','desc')->paginate($this->pagesize);
 			$list->appends(['type'=>$type])->links();
 		}
 

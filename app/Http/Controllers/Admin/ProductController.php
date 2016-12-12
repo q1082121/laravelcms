@@ -100,13 +100,13 @@ class ProductController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Product::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Product::where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Product::paginate($this->pagesize);
+			$list=Product::orderBy('updated_at','desc')->paginate($this->pagesize);
 		}
 		if($list)
 		{
@@ -148,6 +148,7 @@ class ProductController extends PublicController
 		$params->title 		= $request->get('title');
 		$params->introduction = $request->get('introduction');
         $params->sources	= $request->get('sources');
+		$params->price		= $request->get('price');
         $params->content	= $request->get('content');
 		$params->syseditor	= $request->get('syseditor');
 		$params->orderid	= $request->get('orderid');
@@ -234,6 +235,7 @@ class ProductController extends PublicController
 		$params->title 		= $request->get('title');
 		$params->introduction = $request->get('introduction');
         $params->sources	= $request->get('sources');
+		$params->price		= $request->get('price');
         $params->content	= $request->get('content');
 		$params->syseditor	= $request->get('syseditor');
 		$params->orderid	= $request->get('orderid');

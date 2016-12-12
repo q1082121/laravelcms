@@ -40,13 +40,13 @@ class LogController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Log::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Log::where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Log::paginate($this->pagesize);
+			$list=Log::orderBy('updated_at','desc')->paginate($this->pagesize);
 		}
 		if($list)
 		{

@@ -103,13 +103,13 @@ class LinkController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Link::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Link::where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Link::paginate($this->pagesize);
+			$list=Link::orderBy('updated_at','desc')->paginate($this->pagesize);
 		}
 		if($list)
 		{

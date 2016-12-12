@@ -48,6 +48,12 @@
                 <input  type="text" class="form-control" v-model="params_data.sources"   >
               </div>
             </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_price')}}</span>
+                <input  type="text" class="form-control" v-model="params_data.price"   >
+              </div>
+            </div>
             <!--图片上传控件 start-->
             <div class="form-group">
               <label >{{trans('admin.fieldname_item_attachment')}}</label><br>
@@ -162,6 +168,7 @@ new Vue({
                 title               :'',
                 introduction        :'',
                 sources             :'',
+                price               :'',
                 attachment          :'',
                 isattach            :0,
                 content             :'',

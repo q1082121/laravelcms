@@ -101,13 +101,13 @@ class ArticleController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Article::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Article::where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Article::paginate($this->pagesize);
+			$list=Article::orderBy('updated_at','desc')->paginate($this->pagesize);
 		}
 		if($list)
 		{

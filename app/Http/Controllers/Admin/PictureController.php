@@ -68,13 +68,13 @@ class PictureController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Picture::where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Picture::where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Picture::paginate($this->pagesize);
+			$list=Picture::orderBy('updated_at','desc')->paginate($this->pagesize);
 		}
 		if($list)
 		{

@@ -76,13 +76,13 @@ class QuestionoptionController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Question::find($qid)->hasManyQuestionoptions()->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Question::find($qid)->hasManyQuestionoptions()->where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field,'qid'=>$qid])->links();
 		}
 		else
 		{
-			$list=Question::find($qid)->hasManyQuestionoptions()->paginate($this->pagesize);
+			$list=Question::find($qid)->hasManyQuestionoptions()->orderBy('updated_at','desc')->paginate($this->pagesize);
 			$list->appends(['qid'=>$qid])->links();
 		}
 		if($list)

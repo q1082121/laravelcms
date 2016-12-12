@@ -319,6 +319,7 @@ return [
     'fieldname_item_introduction'                   =>   '导读',
     'fieldname_item_author'                         =>   '作者',
     'fieldname_item_sources'                        =>   '来源',
+    'fieldname_item_price'                          =>   '价格',
     'fieldname_item_content'                        =>   '内容',
     'fieldname_item_clicks'                         =>   '浏览',
     'fieldname_item_introduction'                   =>   '导读',

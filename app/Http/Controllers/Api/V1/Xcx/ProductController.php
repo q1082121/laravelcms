@@ -116,5 +116,86 @@ class ProductController extends PublicController
 		
         return $msg_array;
 	}
+	/******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :详情接口
+	*******************************************/
+	public function api_info(Request $request)  
+	{
+		$request_token=$this->request_token;
+		if($request_token['status']==1)
+		{
+			$param=$request_token['request'];
+			$xcxmp=$request_token['data'];
+			$appid=$xcxmp['appid'];
+			$appsecret=$xcxmp['appsecret'];
+			$session_id=@$param['session_id'];
+			if(@$session_id)
+			{
+				$session_openid=Cache::store('redis')->get($session_id);
+				if(@$session_openid)
+				{
+					$openid=substr($session_openid, -28);
+					$condition['openid']=$openid;
+					$xcxuser=object_array(DB::table('xcxusers')->where($condition)->first());
+					if($xcxuser)
+					{
+						$info_condition['status']=1;
+						$info_condition['id']=@$param['id'];
+						$info=Product::where($info_condition)->first()->toArray();
+						if($info)
+						{
+							if($info['syseditor']=="Ueditor")
+							{
+								$info['content']=str_replace("/uploads/", $this->domainName."/uploads/", $info['content']);
+							}
+							
+							$msg_array['status']='1';
+							$msg_array['info']=trans('api.message_get_success');
+							$msg_array['curl']='';
+							$msg_array['resource']=$info;
+						}
+						else
+						{
+							$msg_array['status']='1';
+							$msg_array['info']=trans('api.message_get_empty');
+							$msg_array['curl']='';
+							$msg_array['resource']="";
+						}
+					}
+					else
+					{
+						$msg_array['status']='0';
+						$msg_array['info']=trans('api.message_sessionid_failure');
+						$msg_array['curl']='';
+						$msg_array['resource']="3";	
+					}
+				}
+				else
+				{
+					$msg_array['status']='0';
+					$msg_array['info']=trans('api.message_sessionid_failure');
+					$msg_array['curl']='';
+					$msg_array['resource']="2";	
+				}
+			}
+			else
+			{
+				$msg_array['status']='0';
+				$msg_array['info']=trans('api.message_get_empty');
+				$msg_array['curl']='';
+				$msg_array['resource']="1";
+			}
+		}
+		else
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=$request_token['info'];
+			$msg_array['curl']='';
+			$msg_array['resource']="0";
+		}
+		
+        return $msg_array;
+	}
 	
 }

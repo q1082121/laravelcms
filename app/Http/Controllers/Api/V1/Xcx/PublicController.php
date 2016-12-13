@@ -57,6 +57,7 @@ class PublicController extends Controller
 		$this->thumb_width=$thumb_width=env('APP_THUMB_WIDTH', 200);				//缩略图宽度
 		$this->thumb_height=$thumb_height=env('APP_THUMB_HEIGHT', 200);				//缩略图高度
 		
+		$this->domainName="https://".env('API_DOMAIN', '');
 		$getcontent=$request->getContent();
 		$param=json_decode($getcontent,true);
 		$this->request_token=$this->request_token($param);

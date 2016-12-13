@@ -131,6 +131,7 @@ $api->version('v1', function ($api) {
 		$api->post('is_check_in', ['as' => 'api.xcx.score.api_is_check_in', 'uses' => 'ScoreController@api_is_check_in']);
 		$api->post('check_in', ['as' => 'api.xcx.score.api_check_in', 'uses' => 'ScoreController@api_check_in']);
 		$api->post('product', ['as' => 'api.xcx.product.api_list', 'uses' => 'ProductController@api_list']);
+		$api->post('product/info', ['as' => 'api.xcx.product.api_info', 'uses' => 'ProductController@api_info']);
     });
 });
 

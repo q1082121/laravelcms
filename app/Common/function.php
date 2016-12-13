@@ -271,6 +271,16 @@ function chineseFirst($str)
     }
 
 }
+/***********************************
+ * 方法名：
+ * 作者： 解析html标签
+ * 时间：2015年6月10日
+ ***********************************/
+function htmlcontent($content)
+{
+	$tmp_content=stripslashes(htmlspecialchars_decode(trim($content)));
+	return $tmp_content;	
+}
 /****************************************************************************************************
 ****AuThor:rubbish.boy@163.com
 ****Title :业务逻辑

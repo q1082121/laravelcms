@@ -103,8 +103,8 @@ class UserroleController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
 		else
 		{
@@ -113,8 +113,8 @@ class UserroleController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
         return response()->json($msg_array);
 	}
@@ -133,8 +133,6 @@ class UserroleController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
 		}
 		else
 		{
@@ -155,8 +153,6 @@ class UserroleController extends PublicController
 				$msg_array['is_reload']=0;
 				$msg_array['curl']=route('get.admin.userrole');
 				$msg_array['resource']='';
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';
 			} 
 			else 
 			{
@@ -165,9 +161,6 @@ class UserroleController extends PublicController
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';	
-
 			}	
 		}
         return response()->json($msg_array);
@@ -189,8 +182,6 @@ class UserroleController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
 		else
 		{
@@ -199,8 +190,6 @@ class UserroleController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
         return response()->json($msg_array);
 	}
@@ -227,8 +216,6 @@ class UserroleController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=route('get.admin.userrole');
 			$msg_array['resource']='';
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		} 
 		else 
 		{
@@ -237,8 +224,6 @@ class UserroleController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
 		}
 		return response()->json($msg_array);
 	}
@@ -274,8 +259,8 @@ class UserroleController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
 		else
 		{
@@ -284,8 +269,8 @@ class UserroleController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
         return response()->json($msg_array);
 	}
@@ -306,8 +291,6 @@ class UserroleController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
 		}
 		else
 		{
@@ -323,8 +306,6 @@ class UserroleController extends PublicController
 							$msg_array['is_reload']=0;
 							$msg_array['curl']='';
 							$msg_array['resource']='';
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';
 					break;
 				//自定义方法	
 				case '2':
@@ -336,8 +317,6 @@ class UserroleController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 							else
 							{
@@ -346,8 +325,6 @@ class UserroleController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']="";
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';	
 							}
 					break;	
 				
@@ -377,8 +354,6 @@ class UserroleController extends PublicController
 						$msg_array['is_reload']=0;
 						$msg_array['curl']='';
 						$msg_array['resource']='';
-						$msg_array['param_way']='';
-						$msg_array['param_keyword']='';
 				break;
 			//自定义方法	
 			case '2':
@@ -392,8 +367,6 @@ class UserroleController extends PublicController
 							$msg_array['is_reload']=0;
 							$msg_array['curl']='';
 							$msg_array['resource']='';
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';
 						}
 						else
 						{
@@ -403,9 +376,6 @@ class UserroleController extends PublicController
 							$msg_array['is_reload']=0;
 							$msg_array['curl']='';
 							$msg_array['resource']='';
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';	
-							
 						}
 				break;	
 			

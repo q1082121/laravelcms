@@ -89,8 +89,8 @@ class WechatreplytextController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
 		else
 		{
@@ -99,8 +99,8 @@ class WechatreplytextController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
         return response()->json($msg_array);
 	}
@@ -135,8 +135,6 @@ class WechatreplytextController extends PublicController
 					$msg_array['is_reload']=0;
 					$msg_array['curl']=route('get.admin.wechatreplytext').'/'.$params->wechat_id;
 					$msg_array['resource']='';
-					$msg_array['param_way']='';
-					$msg_array['param_keyword']='';
 					DB::commit();
 				}
 				else
@@ -146,8 +144,6 @@ class WechatreplytextController extends PublicController
 					$msg_array['is_reload']=0;
 					$msg_array['curl']='';
 					$msg_array['resource']="";
-					$msg_array['param_way']='';
-					$msg_array['param_keyword']='';
 					DB::rollBack();
 				}
 
@@ -160,8 +156,6 @@ class WechatreplytextController extends PublicController
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';	
 				DB::rollBack();
 			}
 		}
@@ -173,8 +167,6 @@ class WechatreplytextController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
 
 			DB::rollBack(); 
 		}
@@ -197,8 +189,6 @@ class WechatreplytextController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
 		else
 		{
@@ -207,8 +197,6 @@ class WechatreplytextController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
         return response()->json($msg_array);
 	}
@@ -248,8 +236,6 @@ class WechatreplytextController extends PublicController
 					$msg_array['is_reload']=0;
 					$msg_array['curl']=route('get.admin.wechatreplytext').'/'.$params->wechat_id;
 					$msg_array['resource']='';
-					$msg_array['param_way']='';
-					$msg_array['param_keyword']='';
 					DB::commit();
 				}
 				else
@@ -259,8 +245,6 @@ class WechatreplytextController extends PublicController
 					$msg_array['is_reload']=0;
 					$msg_array['curl']='';
 					$msg_array['resource']="";
-					$msg_array['param_way']='';
-					$msg_array['param_keyword']='';	
 					DB::rollBack();
 				}
 
@@ -272,8 +256,6 @@ class WechatreplytextController extends PublicController
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';	
 				DB::rollBack();
 			}
 		}
@@ -284,9 +266,7 @@ class WechatreplytextController extends PublicController
 			$msg_array['info']=trans('admin.message_save_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
-			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';		
+			$msg_array['resource']="";	
 
 			DB::rollBack(); 
 		}

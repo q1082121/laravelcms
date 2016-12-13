@@ -50,8 +50,6 @@ class DistrictController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
 		else
 		{
@@ -60,8 +58,6 @@ class DistrictController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']="";
-			$msg_array['param_keyword']="";
 		}
         return response()->json($msg_array);
 	}

@@ -42,13 +42,13 @@ class ScoreController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Score::where($condition)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Score::where($condition)->where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Score::where($condition)->paginate($this->pagesize);
+			$list=Score::where($condition)->orderBy('updated_at','desc')->paginate($this->pagesize);
 		}
 		if($list)
 		{
@@ -57,8 +57,8 @@ class ScoreController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
 		else
 		{
@@ -67,8 +67,8 @@ class ScoreController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
         return response()->json($msg_array);
 	}

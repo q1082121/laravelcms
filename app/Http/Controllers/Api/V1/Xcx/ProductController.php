@@ -44,7 +44,7 @@ class ProductController extends PublicController
 						{	
 							$search_condition['status']=1;
 							$list=Product::where($search_condition)->where('title','like',"%".$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
-							$list->appends(['keyword' => $keyword])->links()->toArray();
+							$list->appends(['keyword' => $keyword])->links();
 							if($list)
 							{
 								//分页传参数
@@ -64,7 +64,7 @@ class ProductController extends PublicController
 						else
 						{
 							$search_condition['status']=1;
-							$list=Product::where($search_condition)->orderBy('updated_at','desc')->paginate($this->pagesize)->toArray();
+							$list=Product::where($search_condition)->orderBy('updated_at','desc')->paginate($this->pagesize);
 							if($list)
 							{
 								$msg_array['status']='1';

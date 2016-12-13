@@ -26,13 +26,13 @@ class UserController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=User::join('userinfos', 'userinfos.user_id', '=', 'users.id')->where('users.id', '>', 0)->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=User::join('userinfos', 'userinfos.user_id', '=', 'users.id')->where('users.id', '>', 0)->where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=User::join('userinfos', 'userinfos.user_id', '=', 'users.id')->where('users.id', '>', 0)->paginate($this->pagesize);
+			$list=User::join('userinfos', 'userinfos.user_id', '=', 'users.id')->where('users.id', '>', 0)->orderBy('updated_at','desc')->paginate($this->pagesize);
 			
 		}
 
@@ -43,8 +43,8 @@ class UserController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
 		else
 		{
@@ -53,8 +53,8 @@ class UserController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
         return $msg_array;
 	}
@@ -74,8 +74,6 @@ class UserController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
 		else
 		{
@@ -84,8 +82,6 @@ class UserController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
         return $msg_array;
 	}

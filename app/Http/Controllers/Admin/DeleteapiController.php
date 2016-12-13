@@ -45,8 +45,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 							else
 							{
@@ -56,8 +54,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';	
 								
 							}
 			break;
@@ -71,8 +67,6 @@ class DeleteapiController extends PublicController
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
-									$msg_array['param_way']='';
-									$msg_array['param_keyword']='';	
 								}
 								else
 								{
@@ -84,8 +78,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';
 									}
 									else
 									{
@@ -95,9 +87,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';	
-										
 									}
 								}
 			break;
@@ -111,8 +100,6 @@ class DeleteapiController extends PublicController
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
-									$msg_array['param_way']='';
-									$msg_array['param_keyword']='';	
 								}
 								else
 								{
@@ -124,8 +111,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';
 									}
 									else
 									{
@@ -135,9 +120,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';	
-										
 									}
 								}
 			break;
@@ -151,8 +133,6 @@ class DeleteapiController extends PublicController
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
-									$msg_array['param_way']='';
-									$msg_array['param_keyword']='';	
 								}
 								else
 								{
@@ -164,8 +144,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';
 									}
 									else
 									{
@@ -175,9 +153,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';	
-										
 									}
 								}
 			break;
@@ -191,8 +166,6 @@ class DeleteapiController extends PublicController
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
-									$msg_array['param_way']='';
-									$msg_array['param_keyword']='';	
 								}
 								else
 								{
@@ -204,8 +177,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';
 									}
 									else
 									{
@@ -215,9 +186,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';	
-										
 									}
 								}
 			break;
@@ -231,8 +199,6 @@ class DeleteapiController extends PublicController
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
-									$msg_array['param_way']='';
-									$msg_array['param_keyword']='';	
 								}
 								else
 								{
@@ -244,8 +210,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';
 									}
 									else
 									{
@@ -255,8 +219,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';	
 										
 									}
 								}
@@ -271,8 +233,6 @@ class DeleteapiController extends PublicController
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
-									$msg_array['param_way']='';
-									$msg_array['param_keyword']='';	
 								}
 								else
 								{
@@ -284,8 +244,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';
 									}
 									else
 									{
@@ -295,9 +253,6 @@ class DeleteapiController extends PublicController
 										$msg_array['is_reload']=0;
 										$msg_array['curl']='';
 										$msg_array['resource']='';
-										$msg_array['param_way']='';
-										$msg_array['param_keyword']='';	
-										
 									}
 								}
 			break;
@@ -310,8 +265,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 							else
 							{
@@ -321,9 +274,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';	
-								
 							}
 			break;
 			case 'Product':
@@ -335,8 +285,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 							else
 							{
@@ -346,9 +294,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';	
-								
 							}
 			break;
 			case 'Picture':
@@ -360,8 +305,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 							else
 							{
@@ -370,10 +313,7 @@ class DeleteapiController extends PublicController
 								$msg_array['info']=trans('admin.message_del_failure');
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
-								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';	
-								
+								$msg_array['resource']='';	
 							}
 			break;
 			case 'Link':
@@ -385,8 +325,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 							else
 							{
@@ -396,9 +334,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';	
-								
 							}
 			break;
 			case 'Question':
@@ -434,8 +369,6 @@ class DeleteapiController extends PublicController
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
 									$msg_array['resource']='';
-									$msg_array['param_way']='';
-									$msg_array['param_keyword']='';
 								}
 								else
 								{
@@ -444,10 +377,7 @@ class DeleteapiController extends PublicController
 									$msg_array['info']=trans('admin.message_del_failure');
 									$msg_array['is_reload']=0;
 									$msg_array['curl']='';
-									$msg_array['resource']='';
-									$msg_array['param_way']='';
-									$msg_array['param_keyword']='';	
-									
+									$msg_array['resource']='';	
 								}
 							}
 							else
@@ -457,8 +387,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 
 			break;
@@ -471,8 +399,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 							else
 							{
@@ -482,9 +408,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';	
-								
 							}
 			break;
 			case 'Wechatreplytext':
@@ -502,8 +425,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 							else
 							{
@@ -513,9 +434,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';	
-								
 							}
 			break;
 			case 'Wechatreplyimagetext':
@@ -533,8 +451,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 							else
 							{
@@ -544,9 +460,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';	
-								
 							}
 			break;
 			case 'Xcxmp':
@@ -558,8 +471,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';
 							}
 							else
 							{
@@ -569,9 +480,6 @@ class DeleteapiController extends PublicController
 								$msg_array['is_reload']=0;
 								$msg_array['curl']='';
 								$msg_array['resource']='';
-								$msg_array['param_way']='';
-								$msg_array['param_keyword']='';	
-								
 							}
 			break;
 		}
@@ -619,8 +527,6 @@ class DeleteapiController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
 		else
 		{
@@ -630,8 +536,6 @@ class DeleteapiController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
 			
 		}
 
@@ -728,8 +632,6 @@ class DeleteapiController extends PublicController
 							$msg_array['is_reload']=1;
 							$msg_array['curl']='';
 							$msg_array['resource']='';
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';
 						} 
 						else 
 						{
@@ -738,8 +640,6 @@ class DeleteapiController extends PublicController
 							$msg_array['is_reload']=0;
 							$msg_array['curl']='';
 							$msg_array['resource']="";
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';	
 						}
 				break;
 				case 2:
@@ -753,8 +653,6 @@ class DeleteapiController extends PublicController
 							$msg_array['is_reload']=1;
 							$msg_array['curl']='';
 							$msg_array['resource']='';
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';
 						} 
 						else 
 						{
@@ -763,8 +661,6 @@ class DeleteapiController extends PublicController
 							$msg_array['is_reload']=0;
 							$msg_array['curl']='';
 							$msg_array['resource']="";
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';	
 						}
 				break;
 			}
@@ -777,8 +673,6 @@ class DeleteapiController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
 		
 		return response()->json($msg_array);

@@ -82,8 +82,6 @@ class UserController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
 		else
 		{
@@ -92,8 +90,6 @@ class UserController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
         return response()->json($msg_array);
 	}
@@ -136,8 +132,6 @@ class UserController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=URL::action('User\UserController@index');
 			$msg_array['resource']='';
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		} 
 		else 
 		{
@@ -146,8 +140,6 @@ class UserController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
 		}
 		return response()->json($msg_array);
 	}
@@ -174,8 +166,6 @@ class UserController extends PublicController
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';	
 			}
 			else if (strlen($newpwd)<6) 
 			{
@@ -184,8 +174,6 @@ class UserController extends PublicController
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';
 			}
 			else
 			{
@@ -201,8 +189,6 @@ class UserController extends PublicController
 					$msg_array['is_reload']=0;
 					$msg_array['curl']=URL::action('User\LoginController@logout');
 					$msg_array['resource']='';
-					$msg_array['param_way']='';
-					$msg_array['param_keyword']='';
 				} 
 				else 
 				{
@@ -211,8 +197,6 @@ class UserController extends PublicController
 					$msg_array['is_reload']=0;
 					$msg_array['curl']='';
 					$msg_array['resource']="";
-					$msg_array['param_way']='';
-					$msg_array['param_keyword']='';	
 				}
 			}
 		}
@@ -223,8 +207,6 @@ class UserController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']='';
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
 		}
 
 		return response()->json($msg_array);

@@ -188,8 +188,8 @@ class LetterController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
 		else
 		{
@@ -198,8 +198,8 @@ class LetterController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
         return response()->json($msg_array);
 	}
@@ -224,8 +224,6 @@ class LetterController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=route('get.admin.letter.send');
 			$msg_array['resource']='';
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		} 
 		else 
 		{
@@ -234,9 +232,6 @@ class LetterController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
-
 		}	
 
         return response()->json($msg_array);

@@ -55,8 +55,6 @@ class DeleteapiController extends PublicController
 							$msg_array['is_reload']=1;
 							$msg_array['curl']='';
 							$msg_array['resource']='';
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';
 						} 
 						else 
 						{
@@ -65,8 +63,6 @@ class DeleteapiController extends PublicController
 							$msg_array['is_reload']=0;
 							$msg_array['curl']='';
 							$msg_array['resource']="";
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';	
 						}
 				break;
 				case 2:
@@ -80,8 +76,6 @@ class DeleteapiController extends PublicController
 							$msg_array['is_reload']=1;
 							$msg_array['curl']='';
 							$msg_array['resource']='';
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';
 						} 
 						else 
 						{
@@ -90,8 +84,6 @@ class DeleteapiController extends PublicController
 							$msg_array['is_reload']=0;
 							$msg_array['curl']='';
 							$msg_array['resource']="";
-							$msg_array['param_way']='';
-							$msg_array['param_keyword']='';	
 						}
 				break;
 			}
@@ -104,8 +96,6 @@ class DeleteapiController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
 		
 		return response()->json($msg_array);

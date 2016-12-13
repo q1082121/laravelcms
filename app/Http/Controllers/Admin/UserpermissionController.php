@@ -82,8 +82,8 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
 		else
 		{
@@ -92,8 +92,8 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
         return response()->json($msg_array);
 	}
@@ -112,8 +112,6 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
 		}
 		else
 		{
@@ -129,8 +127,6 @@ class UserpermissionController extends PublicController
 				$msg_array['is_reload']=0;
 				$msg_array['curl']=route('get.admin.userpermission');
 				$msg_array['resource']='';
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';
 			} 
 			else 
 			{
@@ -139,9 +135,6 @@ class UserpermissionController extends PublicController
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']="";
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';	
-
 			}	
 		}
         return response()->json($msg_array);
@@ -163,8 +156,6 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$info;
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
 		else
 		{
@@ -173,8 +164,6 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
         return response()->json($msg_array);
 	}
@@ -197,8 +186,6 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']=route('get.admin.userpermission');
 			$msg_array['resource']='';
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		} 
 		else 
 		{
@@ -206,9 +193,7 @@ class UserpermissionController extends PublicController
 			$msg_array['info']=trans('admin.message_save_failure');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
-			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
+			$msg_array['resource']="";	
 		}
 		return response()->json($msg_array);
 	}
@@ -244,8 +229,8 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']=$list;
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
 		else
 		{
@@ -254,8 +239,8 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']=$search_field;
-			$msg_array['param_keyword']=$keyword;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
 		}
         return response()->json($msg_array);
 	}
@@ -275,8 +260,6 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']="";
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
 		}
 		else
 		{
@@ -288,8 +271,6 @@ class UserpermissionController extends PublicController
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
 				$msg_array['resource']='';
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';
 			}
 			else
 			{
@@ -297,9 +278,7 @@ class UserpermissionController extends PublicController
 				$msg_array['info']=trans('admin.message_set_failure');
 				$msg_array['is_reload']=0;
 				$msg_array['curl']='';
-				$msg_array['resource']="";
-				$msg_array['param_way']='';
-				$msg_array['param_keyword']='';	
+				$msg_array['resource']="";	
 			}
 			
 		}
@@ -322,8 +301,6 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']='';
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';
 		}
 		else
 		{
@@ -333,9 +310,6 @@ class UserpermissionController extends PublicController
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
 			$msg_array['resource']='';
-			$msg_array['param_way']='';
-			$msg_array['param_keyword']='';	
-			
 		}
         return response()->json($msg_array);
 

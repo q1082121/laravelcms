@@ -26,13 +26,13 @@ class UserController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=User::join('userinfos', 'userinfos.user_id', '=', 'users.id')->where('users.id', '>', 0)->where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
+			$list=User::join('userinfos', 'userinfos.user_id', '=', 'users.id')->where('users.id', '>', 0)->where($search_field, 'like', '%'.$keyword.'%')->orderBy('users.updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=User::join('userinfos', 'userinfos.user_id', '=', 'users.id')->where('users.id', '>', 0)->orderBy('updated_at','desc')->paginate($this->pagesize);
+			$list=User::join('userinfos', 'userinfos.user_id', '=', 'users.id')->where('users.id', '>', 0)->orderBy('users.updated_at','desc')->paginate($this->pagesize);
 			
 		}
 

@@ -11,15 +11,6 @@
 <!--处理UEditor end  -->
 @endif
 
-@if($website['root']['syseditor']=='Markdown')
-<!--处理markdown 弹窗锁定层兼容问题 -->
-@include('editor::head')
-<style>
-.modal-backdrop{display:none}
-</style>
-<!--处理markdown 弹窗锁定层兼容问题 -->
-@endif
-
 <!-- Main content -->
 <section class="content">
   <!-- row -->
@@ -430,5 +421,12 @@ new Vue({
 })
 
 </script>
-
+@if($website['root']['syseditor']=='Markdown')
+<!--处理markdown 弹窗锁定层兼容问题 -->
+@include('editor::head')
+<style>
+.modal-backdrop{display:none}
+</style>
+<!--处理markdown 弹窗锁定层兼容问题 -->
+@endif
 @endsection

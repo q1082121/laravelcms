@@ -353,7 +353,10 @@ new Vue({
               this.image="/uploads/"+this.del_data.modelname+"/thumb/"+this.params_data.attachment;
               this.params_data.attachment="";
             }
-
+            if(this.syseditor=="Markdown")
+            {
+              myEditor.setVal(statusinfo.resource.content);
+            }
             if(this.syseditor=="Ueditor")
             {
               var contents=this.params_data.content;

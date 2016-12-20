@@ -190,6 +190,16 @@ new Vue({
             else
             {
                 this.cur_title=this.cur_title_add;
+                if(this.syseditor=="Ueditor")
+                {
+                  var contents=this.params_data.content;
+                  ueditors=UE.getEditor('myEditor');
+                  ueditors.addListener("ready", function () 
+                  {
+                    // editor准备好之后才可以使用
+                    ueditors.setContent("");
+                  });   
+                }
             }
     }, 
     methods: 

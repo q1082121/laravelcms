@@ -393,7 +393,7 @@ function action_cache($user_id,$cache_prefix,$way="get")
 															//Redis 版缓存
 															if ( Illuminate\Support\Facades\Redis::get($cache_name)) 
 															{
-																
+
 															}
 															else
 															{
@@ -402,7 +402,7 @@ function action_cache($user_id,$cache_prefix,$way="get")
 															}
 												break;
 												case 'update':
-															$info= $user->find($user_id)->hasOneUserinfo;
+															$info= $modelname->find($user_id)->hasOneUserinfo;
 															Illuminate\Support\Facades\Redis::set($cache_name,json_encode($info));
 												break;
 											}

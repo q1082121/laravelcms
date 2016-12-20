@@ -124,7 +124,6 @@ class PublicController extends Controller
         {
         	//获取用户信息
             $this->user=$user=Auth::guard($guard)->user();
-            $cache_userinfo='userinfo_'.$user['id'];
 			$this->userinfo=$userinfo=action_cache($user['id'],'userinfo');
 			$this->userinfo['avatar']=$this->userinfo['isattach']==1?"/uploads/User/".$this->userinfo['attachment']:"/images/avatar/200.png";
 			$this->website['website_userinfo']=$this->userinfo;
@@ -153,7 +152,6 @@ class PublicController extends Controller
 				$this->website['letters_list']=json_encode(object_array($letters_list));
 
 				//获取用户组信息
-				$cache_userrole='userrole_'.$user['id'];
 				$this->roleinfo=$roleinfo=action_cache($user['id'],'userrole');
 				$this->website['website_roleinfo']=$this->roleinfo;
 			}

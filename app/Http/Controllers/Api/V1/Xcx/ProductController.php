@@ -145,10 +145,7 @@ class ProductController extends PublicController
 						$info=Product::where($info_condition)->first()->toArray();
 						if($info)
 						{
-							if($info['syseditor']=="Ueditor")
-							{
-								$info['content']=str_replace("/uploads/", $this->domainName."/uploads/", $info['content']);
-							}
+							$info['content']=str_replace("/uploads/", $this->domainName."/uploads/", $info['content']);
 							
 							$msg_array['status']='1';
 							$msg_array['info']=trans('api.message_get_success');

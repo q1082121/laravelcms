@@ -11,6 +11,15 @@
 <!--处理UEditor end  -->
 @endif
 
+@if($website['root']['syseditor']=='Markdown')
+<!--处理markdown 弹窗锁定层兼容问题 -->
+@include('editor::head')
+<style>
+.modal-backdrop{display:none}
+</style>
+<!--处理markdown 弹窗锁定层兼容问题 -->
+@endif
+
 <!-- Main content -->
 <section class="content">
   <!-- row -->
@@ -164,7 +173,7 @@ new Vue({
                 sources             :'',
                 attachment          :'',
                 isattach            :0,
-                content             :'',
+                content             :"",
                 orderid             :0,
                 linkurl             :'',
                 status              :1,
@@ -200,7 +209,9 @@ new Vue({
                     ueditors.setContent("");
                   });   
                 }
+                
             }
+            
     }, 
     methods: 
     {
@@ -356,7 +367,10 @@ new Vue({
               this.image="/uploads/"+this.del_data.modelname+"/thumb/"+this.params_data.attachment;
               this.params_data.attachment="";
             }
-
+            if(this.syseditor=="Markdown")
+            {
+              myEditor.setVal(statusinfo.resource.content);
+            }
             if(this.syseditor=="Ueditor")
             {
               var contents=this.params_data.content;
@@ -416,14 +430,5 @@ new Vue({
 })
 
 </script>
-
-@if($website['root']['syseditor']=='Markdown')
-<!--处理markdown 弹窗锁定层兼容问题 -->
-@include('editor::head')
-<style>
-.modal-backdrop{display:none}
-</style>
-<!--处理markdown 弹窗锁定层兼容问题 -->
-@endif
 
 @endsection

@@ -88,9 +88,6 @@ class ArticleController extends PublicController
 			$classlist[]=array('text'=>trans('admin.option_failure_isselect_class'),'value'=>'0');
 			$website['classlist']=json_encode($classlist);
 		}
-		$contentarr = Article::where('id', $id)->pluck('content')->toArray();
-		$content=@$contentarr[0];
-		$website['content']=$content;
 		return view('admin/article/add')->with('website',$website);
 	}
     /******************************************

@@ -119,7 +119,7 @@ new Vue({
     ready: function (){ 
             //这里是vue初始化完成后执行的函数 
             common_cache=cache_storageLoad('common_cache',1);
-            console.log(common_cache);
+            //console.log(common_cache);
             if(common_cache)
             {
               this.cache=common_cache;

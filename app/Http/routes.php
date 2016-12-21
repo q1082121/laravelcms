@@ -123,15 +123,22 @@ $api->version('v1', function ($api) {
 		$api->post('login', ['as' => 'api.xcx.login.api_login', 'uses' => 'LoginController@api_login']);
 		$api->post('userinfo', ['as' => 'api.xcx.user.api_userinfo', 'uses' => 'UserController@api_userinfo']);
 		$api->post('deleteapi', ['as' => 'api.xcx.deleteapi.api_delete', 'uses' => 'DeleteapiController@api_delete']);
+		$api->post('proxy', ['as' => 'api.xcx.proxyinterface.api_back', 'uses' => 'ProxyinterfaceController@api_back']);
+		//名片盒
 		$api->post('businesscard/add', ['as' => 'api.xcx.businesscard.api_add', 'uses' => 'BusinesscardController@api_add']);
 		$api->post('businesscard/info', ['as' => 'api.xcx.businesscard.api_info', 'uses' => 'BusinesscardController@api_info']);
 		$api->post('businesscard/edit', ['as' => 'api.xcx.businesscard.api_edit', 'uses' => 'BusinesscardController@api_edit']);
 		$api->post('businesscard', ['as' => 'api.xcx.businesscard.api_list', 'uses' => 'BusinesscardController@api_list']);
-		$api->post('proxy', ['as' => 'api.xcx.proxyinterface.api_back', 'uses' => 'ProxyinterfaceController@api_back']);
+		//积分签到
 		$api->post('is_check_in', ['as' => 'api.xcx.score.api_is_check_in', 'uses' => 'ScoreController@api_is_check_in']);
 		$api->post('check_in', ['as' => 'api.xcx.score.api_check_in', 'uses' => 'ScoreController@api_check_in']);
+		//产品
 		$api->post('product', ['as' => 'api.xcx.product.api_list', 'uses' => 'ProductController@api_list']);
 		$api->post('product/info', ['as' => 'api.xcx.product.api_info', 'uses' => 'ProductController@api_info']);
+		//购物车
+		$api->post('shoppingcart/add', ['as' => 'api.xcx.shoppingcart.api_add', 'uses' => 'ShoppingcartController@api_add']);
+		$api->post('shoppingcart', ['as' => 'api.xcx.shoppingcart.api_list', 'uses' => 'ShoppingcartController@api_list']);
+		
     });
 });
 

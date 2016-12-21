@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateXcxcartsTable extends Migration
+class CreateXcxshoppingcartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateXcxcartsTable extends Migration
     public function up()
     {
         //
-        Schema::create('xcxcarts', function(Blueprint $table) {
+        Schema::create('xcxshoppingcarts', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('item_id')->default(0);		//商品项目ID
-			$table->integer('item_table')->default(0);	//商品项目表
 			$table->integer('qty')->default(0);			//数量
 			$table->tinyInteger('status')->default(0);	//状态
 			$table->integer('xcxuser_id');					
 			$table->timestamps();
 		});
     }
-
     /**
      * Reverse the migrations.
      *
@@ -32,6 +30,6 @@ class CreateXcxcartsTable extends Migration
     public function down()
     {
         //
-        Schema::drop('xcxcarts');
+        Schema::drop('xcxshoppingcarts');
     }
 }

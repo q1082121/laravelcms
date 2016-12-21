@@ -5298,5 +5298,53 @@
             "laravel",
             "overtrue"
         ]
+    },
+    {
+        "name": "overtrue/laravel-shopping-cart",
+        "version": "1.0.4",
+        "version_normalized": "1.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/overtrue/laravel-shopping-cart.git",
+            "reference": "ec6a9424444ad72172567de4483ee8261927e818"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/overtrue/laravel-shopping-cart/ec6a9424444ad72172567de4483ee8261927e818.zip",
+            "reference": "ec6a9424444ad72172567de4483ee8261927e818",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5"
+        },
+        "require-dev": {
+            "illuminate/session": "5.0.*",
+            "mockery/mockery": "~0.9",
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2016-11-13 02:39:58",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Overtrue\\LaravelShoppingCart\\": "src/LaravelShoppingCart/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "overtrue",
+                "email": "anzhengchao@gmail.com"
+            }
+        ],
+        "description": "Shopping cart for Laravel Application.",
+        "keywords": [
+            "laravel",
+            "shopping",
+            "shopping cart"
+        ]
     }
 ]

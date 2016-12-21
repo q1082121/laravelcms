@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5208b59f3afec854057ca3f110d76360",
-    "content-hash": "ae9632f7d5d2c2e5b4e4f61a9e04dfe5",
+    "hash": "82152d772abcafab87828e0036b012d3",
+    "content-hash": "a261355102c821e89d7d498f2938c4f0",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1819,6 +1819,52 @@
                 "overtrue"
             ],
             "time": "2016-06-12 03:13:01"
+        },
+        {
+            "name": "overtrue/laravel-shopping-cart",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overtrue/laravel-shopping-cart.git",
+                "reference": "ec6a9424444ad72172567de4483ee8261927e818"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/overtrue/laravel-shopping-cart/ec6a9424444ad72172567de4483ee8261927e818.zip",
+                "reference": "ec6a9424444ad72172567de4483ee8261927e818",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "illuminate/session": "5.0.*",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Overtrue\\LaravelShoppingCart\\": "src/LaravelShoppingCart/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "overtrue",
+                    "email": "anzhengchao@gmail.com"
+                }
+            ],
+            "description": "Shopping cart for Laravel Application.",
+            "keywords": [
+                "laravel",
+                "shopping",
+                "shopping cart"
+            ],
+            "time": "2016-11-13 02:39:58"
         },
         {
             "name": "overtrue/pinyin",

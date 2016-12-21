@@ -175,7 +175,9 @@ return [
         //edit by rubbish.boy@163.com 2016-11-29
 		Vinkla\Hashids\HashidsServiceProvider::class,
         //edit by rubbish.boy@163.com 2016-12-01
-        Overtrue\LaravelPinyin\ServiceProvider::class
+        Overtrue\LaravelPinyin\ServiceProvider::class,
+		//edit by rubbish.boy@163.com 2016-12-21
+		Overtrue\LaravelShoppingCart\ServiceProvider::class
     ],
 
     /*
@@ -237,8 +239,10 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         //edit by rubbish.boy@163.com 2016-11-29
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
-        //edit by rubbish.boy@163.com 2016-120-01
-        'Pinyin' => Overtrue\LaravelPinyin\Facades\Pinyin::class
+        //edit by rubbish.boy@163.com 2016-12-01
+        'Pinyin' => Overtrue\LaravelPinyin\Facades\Pinyin::class,
+		//edit by rubbish.boy@163.com 2016-12-21
+		'Cart'      => Overtrue\LaravelShoppingCart\Facade::class
     ],
 
 ];

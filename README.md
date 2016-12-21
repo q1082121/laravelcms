@@ -1,5 +1,5 @@
 
-# laravelPCMS V1.5.0
+# laravelPCMS V1.5.0 [下载](http://www.tzsuteng.com/Public/uploadfiles/laravelcms-V1.5.0.zip)
 基于 laravel5.2 的PHP内容管理系统  后台基于AdminLTE主题  前端组件Vue.js 集成基础的微信相关功能。是一个可以快速上手，项目开发的首选工具。
 
 作者:rubbish.boy@163.com
@@ -19,6 +19,7 @@ QQ	:471416739
 11. dingo/api	api开发扩展包
 12. tymon/jwt-auth  用户api验证扩展包
 13. overtrue/laravel-pinyin 中文转拼音
+14. overtrue/laravel-shopping-cart 购物车
 
 #	laravelPCMS 使用了哪些前端组件？ bower.json
 

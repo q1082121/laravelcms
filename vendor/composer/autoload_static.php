@@ -96,6 +96,7 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         array (
             'Overtrue\\Socialite\\' => 19,
             'Overtrue\\Pinyin\\' => 16,
+            'Overtrue\\LaravelShoppingCart\\' => 29,
             'Overtrue\\LaravelPinyin\\' => 23,
             'Overtrue\\LaravelLang\\' => 21,
         ),
@@ -300,6 +301,10 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'Overtrue\\Pinyin\\' => 
         array (
             0 => __DIR__ . '/..' . '/overtrue/pinyin/src',
+        ),
+        'Overtrue\\LaravelShoppingCart\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/overtrue/laravel-shopping-cart/src/LaravelShoppingCart',
         ),
         'Overtrue\\LaravelPinyin\\' => 
         array (
@@ -542,8 +547,12 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'App\\Http\\Controllers\\Api\\V1\\PublicController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/PublicController.php',
         'App\\Http\\Controllers\\Api\\V1\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/UserController.php',
         'App\\Http\\Controllers\\Api\\V1\\Xcx\\BusinesscardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/Xcx/BusinesscardController.php',
+        'App\\Http\\Controllers\\Api\\V1\\Xcx\\DeleteapiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/Xcx/DeleteapiController.php',
         'App\\Http\\Controllers\\Api\\V1\\Xcx\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/Xcx/LoginController.php',
+        'App\\Http\\Controllers\\Api\\V1\\Xcx\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/Xcx/ProductController.php',
+        'App\\Http\\Controllers\\Api\\V1\\Xcx\\ProxyinterfaceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/Xcx/ProxyinterfaceController.php',
         'App\\Http\\Controllers\\Api\\V1\\Xcx\\PublicController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/Xcx/PublicController.php',
+        'App\\Http\\Controllers\\Api\\V1\\Xcx\\ScoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/Xcx/ScoreController.php',
         'App\\Http\\Controllers\\Api\\V1\\Xcx\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/Xcx/UserController.php',
         'App\\Http\\Controllers\\CacheapiController' => __DIR__ . '/../..' . '/app/Http/Controllers/CacheapiController.php',
         'App\\Http\\Controllers\\CaptchaController' => __DIR__ . '/../..' . '/app/Http/Controllers/CaptchaController.php',
@@ -600,6 +609,7 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'App\\Http\\Model\\Wechatuser' => __DIR__ . '/../..' . '/app/Http/Model/Wechatuser.php',
         'App\\Http\\Model\\Xcxbusinesscard' => __DIR__ . '/../..' . '/app/Http/Model/Xcxbusinesscard.php',
         'App\\Http\\Model\\Xcxmp' => __DIR__ . '/../..' . '/app/Http/Model/Xcxmp.php',
+        'App\\Http\\Model\\Xcxscore' => __DIR__ . '/../..' . '/app/Http/Model/Xcxscore.php',
         'App\\Http\\Model\\Xcxuser' => __DIR__ . '/../..' . '/app/Http/Model/Xcxuser.php',
         'App\\Http\\Requests\\Request' => __DIR__ . '/../..' . '/app/Http/Requests/Request.php',
         'App\\Jobs\\Job' => __DIR__ . '/../..' . '/app/Jobs/Job.php',
@@ -684,7 +694,8 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'CreateWechatsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_22_093035_create_wechats_table.php',
         'CreateWechatusersTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_08_030826_create_wechatusers_table.php',
         'CreateXcxbusinesscardsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_28_020703_create_xcxbusinesscards_table.php',
-        'CreateXcxmpsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_01_093035_create_xcxmps_table.php',
+        'CreateXcxmpsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_01_093035_create_Xcxmps_table.php',
+        'CreateXcxscoresTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_12_020702_create_xcxscores_table.php',
         'CreateXcxusersTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_29_030826_create_xcxusers_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
@@ -2480,6 +2491,11 @@ class ComposerStaticInit0866a9f2bdcff20790380fc0d8963f60
         'Overtrue\\LaravelLang\\TranslationServiceProvider' => __DIR__ . '/..' . '/overtrue/laravel-lang/src/TranslationServiceProvider.php',
         'Overtrue\\LaravelPinyin\\Facades\\Pinyin' => __DIR__ . '/..' . '/overtrue/laravel-pinyin/src/Facades/Pinyin.php',
         'Overtrue\\LaravelPinyin\\ServiceProvider' => __DIR__ . '/..' . '/overtrue/laravel-pinyin/src/ServiceProvider.php',
+        'Overtrue\\LaravelShoppingCart\\Cart' => __DIR__ . '/..' . '/overtrue/laravel-shopping-cart/src/LaravelShoppingCart/Cart.php',
+        'Overtrue\\LaravelShoppingCart\\Exception' => __DIR__ . '/..' . '/overtrue/laravel-shopping-cart/src/LaravelShoppingCart/Exception.php',
+        'Overtrue\\LaravelShoppingCart\\Facade' => __DIR__ . '/..' . '/overtrue/laravel-shopping-cart/src/LaravelShoppingCart/Facade.php',
+        'Overtrue\\LaravelShoppingCart\\Item' => __DIR__ . '/..' . '/overtrue/laravel-shopping-cart/src/LaravelShoppingCart/Item.php',
+        'Overtrue\\LaravelShoppingCart\\ServiceProvider' => __DIR__ . '/..' . '/overtrue/laravel-shopping-cart/src/LaravelShoppingCart/ServiceProvider.php',
         'Overtrue\\Pinyin\\DictLoaderInterface' => __DIR__ . '/..' . '/overtrue/pinyin/src/DictLoaderInterface.php',
         'Overtrue\\Pinyin\\FileDictLoader' => __DIR__ . '/..' . '/overtrue/pinyin/src/FileDictLoader.php',
         'Overtrue\\Pinyin\\Pinyin' => __DIR__ . '/..' . '/overtrue/pinyin/src/Pinyin.php',

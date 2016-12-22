@@ -137,7 +137,9 @@ $api->version('v1', function ($api) {
 		$api->post('product/info', ['as' => 'api.xcx.product.api_info', 'uses' => 'ProductController@api_info']);
 		//购物车
 		$api->post('shoppingcart/add', ['as' => 'api.xcx.shoppingcart.api_add', 'uses' => 'ShoppingcartController@api_add']);
+		$api->post('shoppingcart/edit', ['as' => 'api.xcx.shoppingcart.api_edit', 'uses' => 'ShoppingcartController@api_edit']);
 		$api->post('shoppingcart', ['as' => 'api.xcx.shoppingcart.api_list', 'uses' => 'ShoppingcartController@api_list']);
+		
 		
     });
 });

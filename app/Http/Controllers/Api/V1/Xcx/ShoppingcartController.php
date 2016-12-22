@@ -158,6 +158,10 @@ class ShoppingcartController extends PublicController
 								{
 									$info_condition['id']=$val['item_id'];
 									$list[$key]['info']=object_array(DB::table('products')->where($info_condition)->first());
+									$list[$key]['editname']="编辑";
+									$list[$key]['buttonplain']=true;
+									$list[$key]['ischoose']=false;
+									$list[$key]['isedit']=false;
 								}
 								$msg_array['status']='1';
 								$msg_array['info']=trans('api.message_get_success');
@@ -183,6 +187,10 @@ class ShoppingcartController extends PublicController
 								{
 									$info_condition['id']=$val['item_id'];
 									$list[$key]['info']=object_array(DB::table('products')->where($info_condition)->first());
+									$list[$key]['editname']="编辑";
+									$list[$key]['buttonplain']=true;
+									$list[$key]['ischoose']=false;
+									$list[$key]['isedit']=false;
 								}
 								$msg_array['status']='1';
 								$msg_array['info']=trans('api.message_get_success');
@@ -196,6 +204,98 @@ class ShoppingcartController extends PublicController
 								$msg_array['curl']='';
 								$msg_array['resource']="";
 							}
+						}
+					}
+					else
+					{
+						$msg_array['status']='0';
+						$msg_array['info']=trans('api.message_sessionid_failure');
+						$msg_array['curl']='';
+						$msg_array['resource']="3";	
+					}
+				}
+				else
+				{
+					$msg_array['status']='0';
+					$msg_array['info']=trans('api.message_sessionid_failure');
+					$msg_array['curl']='';
+					$msg_array['resource']="2";	
+				}
+			}
+			else
+			{
+				$msg_array['status']='0';
+				$msg_array['info']=trans('api.message_get_empty');
+				$msg_array['curl']='';
+				$msg_array['resource']="1";
+			}
+		}
+		else
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=$request_token['info'];
+			$msg_array['curl']='';
+			$msg_array['resource']="0";
+		}
+		
+        return $msg_array;
+	}
+	/******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :编辑接口
+	*******************************************/
+	public function api_edit(Request $request)  
+	{
+		$request_token=$this->request_token;
+		if($request_token['status']==1)
+		{
+			$param=$request_token['request'];
+			$xcxmp=$request_token['data'];
+			$appid=$xcxmp['appid'];
+			$appsecret=$xcxmp['appsecret'];
+			$session_id=@$param['session_id'];
+			if(@$session_id)
+			{
+				$session_openid=Cache::store('redis')->get($session_id);
+				if(@$session_openid)
+				{
+					$openid=substr($session_openid, -28);
+					$condition['openid']=$openid;
+					$xcxuser=object_array(DB::table('xcxusers')->where($condition)->first());
+					if($xcxuser)
+					{
+						$formdataid=@$param['formdataid'];
+						$info_condition['xcxuser_id']=$xcxuser['id'];
+						$info_condition['id']=$formdataid;
+						$info=Xcxshoppingcart::where($info_condition)->first()->toArray();
+						if($info)
+						{
+							$formdata=$param['formdata'];
+							$params['qty'] 					=$formdata['qty'];
+							$params['updated_at'] 			=date('Y-m-d H:i:s');	
+							 	 
+							$updateres=DB::table('xcxshoppingcarts')->where($info_condition)->update($params);
+							if($updateres)
+							{
+								$msg_array['status']='1';
+								$msg_array['info']=trans('api.message_update_success');
+								$msg_array['curl']='';
+								$msg_array['resource']="";
+							}
+							else
+							{
+								$msg_array['status']='0';
+								$msg_array['info']=trans('api.message_update_failure');
+								$msg_array['curl']='';
+								$msg_array['resource']="5";
+							}
+						}
+						else
+						{
+							$msg_array['status']='0';
+							$msg_array['info']=trans('api.message_request_failure');
+							$msg_array['curl']='';
+							$msg_array['resource']="4";
 						}
 					}
 					else

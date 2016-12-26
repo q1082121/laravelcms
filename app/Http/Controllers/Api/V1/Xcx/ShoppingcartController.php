@@ -159,6 +159,7 @@ class ShoppingcartController extends PublicController
 									$info_condition['id']=$val['item_id'];
 									$list[$key]['info']=object_array(DB::table('products')->where($info_condition)->first());
 									$list[$key]['editname']="编辑";
+									$list[$key]['original_qty']=$val['qty'];
 									$list[$key]['buttonplain']=true;
 									$list[$key]['ischoose']=false;
 									$list[$key]['isedit']=false;
@@ -188,6 +189,7 @@ class ShoppingcartController extends PublicController
 									$info_condition['id']=$val['item_id'];
 									$list[$key]['info']=object_array(DB::table('products')->where($info_condition)->first());
 									$list[$key]['editname']="编辑";
+									$list[$key]['original_qty']=$val['qty'];
 									$list[$key]['buttonplain']=true;
 									$list[$key]['ischoose']=false;
 									$list[$key]['isedit']=false;

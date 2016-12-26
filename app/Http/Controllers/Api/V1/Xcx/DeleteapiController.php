@@ -81,6 +81,25 @@ class DeleteapiController extends PublicController
 										
 									}
 							break;
+							case 'address':
+									$info=$this->delete_action('xcxaddresses',$id);
+									if($info)
+									{
+										$msg_array['status']='1';
+										$msg_array['info']=trans('api.message_del_success');
+										$msg_array['curl']='';
+										$msg_array['resource']='';
+									}
+									else
+									{
+										
+										$msg_array['status']='0';
+										$msg_array['info']=trans('api.message_del_failure');
+										$msg_array['curl']='';
+										$msg_array['resource']='5';
+										
+									}
+							break;
 							default :
 									$msg_array['status']='0';
 									$msg_array['info']=trans('api.message_request_failure');

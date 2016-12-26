@@ -140,7 +140,12 @@ $api->version('v1', function ($api) {
 		$api->post('shoppingcart/add', ['as' => 'api.xcx.shoppingcart.api_add', 'uses' => 'ShoppingcartController@api_add']);
 		$api->post('shoppingcart/edit', ['as' => 'api.xcx.shoppingcart.api_edit', 'uses' => 'ShoppingcartController@api_edit']);
 		$api->post('shoppingcart', ['as' => 'api.xcx.shoppingcart.api_list', 'uses' => 'ShoppingcartController@api_list']);
-		
+		//收货地址
+		$api->post('address/add', ['as' => 'api.xcx.address.api_add', 'uses' => 'AddressController@api_add']);
+		$api->post('address/info', ['as' => 'api.xcx.address.api_info', 'uses' => 'AddressController@api_info']);
+		$api->post('address/edit', ['as' => 'api.xcx.address.api_edit', 'uses' => 'AddressController@api_edit']);
+		$api->post('address/set', ['as' => 'api.xcx.address.api_set', 'uses' => 'AddressController@api_set']);
+		$api->post('address', ['as' => 'api.xcx.address.api_list', 'uses' => 'AddressController@api_list']);
 		
     });
 });

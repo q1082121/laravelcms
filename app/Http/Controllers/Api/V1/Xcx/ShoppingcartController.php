@@ -146,67 +146,35 @@ class ShoppingcartController extends PublicController
 					$xcxuser=object_array(DB::table('xcxusers')->where($condition)->first());
 					if($xcxuser)
 					{	
-						$keyword=@$param['search_keyword'];
-						if($keyword)
+
+						$list_condition['xcxuser_id']=$xcxuser['id'];
+						$list_condition['status']=0;
+						$list=Xcxshoppingcart::where($list_condition)->orderBy('updated_at','desc')->get()->toArray();
+						if($list)
 						{
-							$list_condition['xcxuser_id']=$xcxuser['id'];
-							$list_condition['status']=0;
-							$list=Xcxshoppingcart::where($list_condition)->where('name','like',"%".$keyword.'%')->orderBy('updated_at','desc')->get()->toArray();
-							if($list)
+							foreach($list as $key=>$val)
 							{
-								foreach($list as $key=>$val)
-								{
-									$info_condition['id']=$val['item_id'];
-									$list[$key]['info']=object_array(DB::table('products')->where($info_condition)->first());
-									$list[$key]['editname']="编辑";
-									$list[$key]['original_qty']=$val['qty'];
-									$list[$key]['buttonplain']=true;
-									$list[$key]['ischoose']=false;
-									$list[$key]['isedit']=false;
-								}
-								$msg_array['status']='1';
-								$msg_array['info']=trans('api.message_get_success');
-								$msg_array['curl']='';
-								$msg_array['resource']=$list;
+								$info_condition['id']=$val['item_id'];
+								$list[$key]['info']=object_array(DB::table('products')->where($info_condition)->first());
+								$list[$key]['editname']="编辑";
+								$list[$key]['original_qty']=$val['qty'];
+								$list[$key]['buttonplain']=true;
+								$list[$key]['ischoose']=false;
+								$list[$key]['isedit']=false;
 							}
-							else
-							{
-								$msg_array['status']='1';
-								$msg_array['info']=trans('api.message_get_empty');
-								$msg_array['curl']='';
-								$msg_array['resource']="";
-							}
+							$msg_array['status']='1';
+							$msg_array['info']=trans('api.message_get_success');
+							$msg_array['curl']='';
+							$msg_array['resource']=$list;
 						}
 						else
 						{
-							$list_condition['xcxuser_id']=$xcxuser['id'];
-							$list_condition['status']=0;
-							$list=Xcxshoppingcart::where($list_condition)->orderBy('updated_at','desc')->get()->toArray();
-							if($list)
-							{
-								foreach($list as $key=>$val)
-								{
-									$info_condition['id']=$val['item_id'];
-									$list[$key]['info']=object_array(DB::table('products')->where($info_condition)->first());
-									$list[$key]['editname']="编辑";
-									$list[$key]['original_qty']=$val['qty'];
-									$list[$key]['buttonplain']=true;
-									$list[$key]['ischoose']=false;
-									$list[$key]['isedit']=false;
-								}
-								$msg_array['status']='1';
-								$msg_array['info']=trans('api.message_get_success');
-								$msg_array['curl']='';
-								$msg_array['resource']=$list;
-							}
-							else
-							{
-								$msg_array['status']='1';
-								$msg_array['info']=trans('api.message_get_empty');
-								$msg_array['curl']='';
-								$msg_array['resource']="";
-							}
+							$msg_array['status']='1';
+							$msg_array['info']=trans('api.message_get_empty');
+							$msg_array['curl']='';
+							$msg_array['resource']="";
 						}
+
 					}
 					else
 					{

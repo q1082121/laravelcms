@@ -23,20 +23,6 @@ class DistrictController extends PublicController
 	{
 		$condition['parentid']=$request->get('parentid')?$request->get('parentid'):0;
         $condition['level']=$request->get('level')?$request->get('level'):1;
-		/*
-		switch($condition['level'])
-		{
-			case 1:
-					$list[]=array('id'=>0,'name'=>trans('admin.option_select_p'),'alias'=>trans('admin.option_select_p'));
-			break;
-			case 2:
-					$list[]=array('id'=>0,'name'=>trans('admin.option_select_c'),'alias'=>trans('admin.option_select_c'));
-			break;
-			case 3:
-					$list[]=array('id'=>0,'name'=>trans('admin.option_select_x'),'alias'=>trans('admin.option_select_x'));
-			break;
-		}
-		*/
 		$list=object_array(DB::table('districts')->where($condition)->get());
 		if($list)
 		{

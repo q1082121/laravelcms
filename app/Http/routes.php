@@ -203,6 +203,10 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::get('classifyproduct', ['middleware' => ['ability:admin,model_classifyproduct'], 'uses' => 'ClassifyproductController@index'])->name('get.admin.classifyproduct');
 	Route::get('classifyproduct/add', ['middleware' => ['ability:admin,add'], 'uses' => 'ClassifyproductController@add'])->name('get.admin.classifyproduct.add');
 	Route::get('classifyproduct/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ClassifyproductController@edit'])->name('get.admin.classifyproduct.edit');
+	//属性分组			
+	Route::get('attributegroup', ['middleware' => ['ability:admin,model_attributegroup'], 'uses' => 'AttributegroupController@index'])->name('get.admin.attributegroup');
+	Route::get('attributegroup/add', ['middleware' => ['ability:admin,add'], 'uses' => 'AttributegroupController@add'])->name('get.admin.attributegroup.add');
+	Route::get('attributegroup/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'AttributegroupController@edit'])->name('get.admin.attributegroup.edit');
 	//产品内容			
 	Route::get('product', ['middleware' => ['ability:admin,model_product'], 'uses' => 'ProductController@index'])->name('get.admin.product');
 	Route::get('product/add', ['middleware' => ['ability:admin,add'], 'uses' => 'ProductController@add'])->name('get.admin.product.add');
@@ -332,6 +336,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('classifyproduct/api_add', 'ClassifyproductController@api_add')->name('post.admin.classifyproduct.api_add');
 	Route::post('classifyproduct/api_info', 'ClassifyproductController@api_info')->name('post.admin.classifyproduct.api_info');
 	Route::post('classifyproduct/api_edit', 'ClassifyproductController@api_edit')->name('post.admin.classifyproduct.api_edit');
+	//属性分组
+	Route::post('attributegroup/api_list', 'AttributegroupController@api_list')->name('post.admin.attributegroup.api_list');
+	Route::post('attributegroup/api_add', 'AttributegroupController@api_add')->name('post.admin.attributegroup.api_add');
+	Route::post('attributegroup/api_info', 'AttributegroupController@api_info')->name('post.admin.attributegroup.api_info');
+	Route::post('attributegroup/api_edit', 'AttributegroupController@api_edit')->name('post.admin.attributegroup.api_edit');
 	//产品
 	Route::post('product/api_list', 'ProductController@api_list')->name('post.admin.product.api_list');
 	Route::post('product/api_add', 'ProductController@api_add')->name('post.admin.product.api_add');

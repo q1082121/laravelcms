@@ -25,6 +25,8 @@ use App\Http\Model\Wechat;
 use App\Http\Model\Wechatreplytext;
 use App\Http\Model\Wechatreplyimagetext;
 use App\Http\Model\Xcxmp;
+use App\Http\Model\Attributegroup;
+
 class DeleteapiController extends PublicController
 {
     /******************************************
@@ -482,6 +484,27 @@ class DeleteapiController extends PublicController
 								$msg_array['resource']='';
 							}
 			break;
+			case 'Attributegroup':
+							$info=$this->delete_action('attributegroups',$request->get('id'));
+							if($info)
+							{
+								$msg_array['status']='1';
+								$msg_array['info']=trans('admin.message_del_success');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+							}
+							else
+							{
+								
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.message_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+							}
+			break;
+			
 		}
 
         return response()->json($msg_array);

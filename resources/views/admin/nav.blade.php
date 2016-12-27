@@ -36,6 +36,7 @@
     </a>
     <ul class="treeview-menu">
       <li><a href="{{ route('get.admin.classifyproduct') }}"><i class="fa fa-reorder"></i> {{trans('admin.website_navigation_classifyproduct')}}</a></li>
+      <li><a href="{{ route('get.admin.attributegroup') }}"><i class="fa fa-reorder"></i> {{trans('admin.website_navigation_attributegroup')}}</a></li>
       <li><a href="{{ route('get.admin.product') }}"><i class="fa fa-cube"></i> {{trans('admin.website_navigation_product')}}</a></li>
     </ul>
   </li>

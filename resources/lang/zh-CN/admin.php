@@ -65,6 +65,7 @@ return [
     'website_navigation_article'                   =>   '文章资讯',
     'website_navigation_product_management'        =>   '产品管理',
     'website_navigation_classifyproduct'           =>   '产品分类',
+    'website_navigation_attributegroup'            =>   '属性分组',
     'website_navigation_product'                   =>   '产品内容',
     'website_navigation_advertising'               =>   '广告图片',
     'website_navigation_link_management'           =>   '链接管理',
@@ -362,6 +363,10 @@ return [
     'fieldname_item_default_reply_voice_keyword'    =>   '音频触发默认回复关键词',
     'fieldname_item_default_reply_video_text'       =>   '视频触发默认回复信息',
     'fieldname_item_default_reply_video_keyword'    =>   '视频触发默认回复关键词',
+    'fieldname_item_type_text'                      =>   '文本框',
+    'fieldname_item_type_checkbox'                  =>   '多选框',
+    'fieldname_item_type_radio'                     =>   '单选框',
+    'fieldname_item_type_select'                    =>   '下拉选框',
 
     /*
     |--------------------------------------------------------------------------
@@ -388,6 +393,7 @@ return [
     'option_failure_isclassname'                   =>   '请输入分类名称',
     'option_failure_isselect_class'                =>   '请选择分类',
     'option_failure_istitle'                       =>   '请填写标题',
+    'option_failure_isname'                        =>   '请填写名称',
     'option_failure_iskeyword'                     =>   '请输入关键词',
     'option_letter_failure_tip1'                   =>   '收信人不能为自己',
     'option_wechat_failure_token'                  =>   '请填写Token',

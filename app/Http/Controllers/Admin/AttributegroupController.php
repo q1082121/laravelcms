@@ -1,20 +1,19 @@
 <?php
 /******************************************
 ****AuThor:rubbish.boy@163.com
-****Title :友情链接
+****Title :属性分组
 *******************************************/
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Model\Link;
+use App\Http\Model\Attributegroup;
 use DB;
 use URL;
 use Cache;
-use App\Common\lib\Cates; 
 
-class LinkController extends PublicController
+class AttributegroupController extends PublicController
 {
     //
     /******************************************
@@ -24,14 +23,13 @@ class LinkController extends PublicController
 	public function index()  
 	{
 		$website=$this->website;
-		$website['cursitename']=trans('admin.website_navigation_link');
+		$website['cursitename']=trans('admin.website_navigation_attributegroup');
 		$website['way']='title';
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_title'),'value'=>'title');
 		$website['wayoption']=json_encode($wayoption);
-		$website['modellist']=json_encode($this->link_modellist);
-		
+		$website['modellist']=json_encode($this->fieldtype_modellist);
 
-		return view('admin/link/index')->with('website',$website);
+		return view('admin/attributegroup/index')->with('website',$website);
 	}
     /******************************************
 	****AuThor:rubbish.boy@163.com
@@ -40,28 +38,11 @@ class LinkController extends PublicController
 	public function add()
 	{
 		$website=$this->website;
-		$website['cursitename']=trans('admin.website_navigation_link');
+		$website['cursitename']=trans('admin.website_navigation_attributegroup');
 		$website['id']=0;
-		$website['modellist']=json_encode($this->link_modellist);
-		
-		$condition_class['status']=1;
-        $list=object_array(DB::table('classifylinks')->where($condition_class)->orderBy('id', 'desc')->get());
-		if($list)
-		{
-			$cates=new Cates();
-            $cates->type=2;
-			$cates->opt($list);
-			$classopts = $cates->opt;
-			$classoptsdata = $cates->optdata;
-			$website['classlist']=json_encode($classoptsdata);
-		}
-		else
-		{
-			$classlist[]=array('text'=>trans('admin.option_failure_isselect_class'),'value'=>'0');
-			$website['classlist']=json_encode($classlist);
-		}
+		$website['modellist']=json_encode($this->fieldtype_modellist);
 
-		return view('admin/link/add')->with('website',$website);
+		return view('admin/attributegroup/add')->with('website',$website);
 	}
     /******************************************
 	****AuThor : rubbish.boy@163.com
@@ -70,28 +51,10 @@ class LinkController extends PublicController
 	public function edit($id)  
 	{
 		$website=$this->website;
-		$website['cursitename']=trans('admin.website_navigation_link');
+		$website['cursitename']=trans('admin.website_navigation_attributegroup');
 		$website['id']=$id;
-		$website['modellist']=json_encode($this->link_modellist);
-
-		$condition_class['status']=1;
-        $list=object_array(DB::table('classifylinks')->where($condition_class)->orderBy('id', 'desc')->get());
-		if($list)
-		{
-			$cates=new Cates();
-            $cates->type=2;
-			$cates->opt($list);
-			$classopts = $cates->opt;
-			$classoptsdata = $cates->optdata;
-			$website['classlist']=json_encode($classoptsdata);
-		}
-		else
-		{
-			$classlist[]=array('text'=>trans('admin.option_failure_isselect_class'),'value'=>'0');
-			$website['classlist']=json_encode($classlist);
-		}
-
-		return view('admin/link/add')->with('website',$website);
+		$website['modellist']=json_encode($this->fieldtype_modellist);
+		return view('admin/attributegroup/add')->with('website',$website);
 	}
     /******************************************
 	****AuThor:rubbish.boy@163.com
@@ -103,22 +66,16 @@ class LinkController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Link::where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
+			$list=Attributegroup::where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Link::orderBy('updated_at','desc')->paginate($this->pagesize);
+			$list=Attributegroup::orderBy('updated_at','desc')->paginate($this->pagesize);
 		}
 		if($list)
 		{
-			$classlist=Cache::store('file')->get('classlink');
-			foreach($list as $key=>$val)
-			{
-				$list[$key]['classname']=$classlist[$val['classid']]['name'];
-			}
-
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
@@ -146,32 +103,20 @@ class LinkController extends PublicController
 	public function api_add(Request $request)  
 	{
 
-		$params = new Link;
-		$params->modelid 	= $request->get('modelid');
-		$params->classid 	= $request->get('classid');
-		$params->title 		= $request->get('title');
+		$params = new Attributegroup;
+		$params->name 		= $request->get('name');
+		$params->type 		= $request->get('type');
+		$params->groupitems = $request->get('groupitems ');
 		$params->orderid	= $request->get('orderid');
-		$params->linkurl	= $request->get('linkurl');
 		$params->status		= $request->get('status');
 		$params->user_id	= $this->user['id'];
-
-		//图片上传处理接口
-		$attachment='attachment';
-		$data_image=$request->get($attachment);
-		if($data_image)
-		{
-			//上传文件归类：获取控制器名称
-			$classname=getCurrentControllerName();
-			$params->attachment=uploads_action($classname,$data_image,$this->thumb_width,$this->thumb_height,$this->is_thumb,$this->is_watermark,$this->root);
-			$params->isattach=1;
-		}
 
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_add_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=route('get.admin.link');
+			$msg_array['curl']=route('get.admin.attributegroup');
 			$msg_array['resource']='';
 		} 
 		else 
@@ -193,7 +138,7 @@ class LinkController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('links')->where($condition)->first();
+		$info=DB::table('attributegroups')->where($condition)->first();
 		if($info)
 		{
 			$msg_array['status']='1';
@@ -220,31 +165,19 @@ class LinkController extends PublicController
 	public function api_edit(Request $request)
 	{
 
-		$params = Link::find($request->get('id'));
-		$params->modelid 	= $request->get('modelid');
-		$params->classid 	= $request->get('classid');
-		$params->title 		= $request->get('title');
+		$params = Attributegroup::find($request->get('id'));
+		$params->name 		= $request->get('name');
+		$params->type 		= $request->get('type');
+		$params->groupitems = $request->get('groupitems ');
 		$params->orderid	= $request->get('orderid');
-		$params->linkurl	= $request->get('linkurl');
 		$params->status		= $request->get('status');
-
-		//图片上传处理接口
-		$attachment='attachment';
-		$data_image=$request->get($attachment);
-		if($data_image)
-		{
-			//上传文件归类：获取控制器名称
-			$classname=getCurrentControllerName();
-			$params->attachment=uploads_action($classname,$data_image,$this->thumb_width,$this->thumb_height,$this->is_thumb,$this->is_watermark,$this->root);
-			$params->isattach=1;
-		}
 
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_save_success');
 			$msg_array['is_reload']=0;
-			$msg_array['curl']=route('get.admin.link');
+			$msg_array['curl']=route('get.admin.attributegroup');
 			$msg_array['resource']='';
 		} 
 		else 

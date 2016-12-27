@@ -112,7 +112,11 @@ class PublicController extends Controller
 		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type6'),'value'=>'pic_photo_or_album');
 		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type7'),'value'=>'pic_weixin');
 		$this->wechat_menutype[]=array('text'=>trans('admin.define_model_menu_type8'),'value'=>'location_select');
-
+		//默认表单类型
+		$this->fieldtype_modellist[]=array('text'=>trans('admin.fieldname_item_type_text'),'value'=>'text');
+		$this->fieldtype_modellist[]=array('text'=>trans('admin.fieldname_item_type_checkbox'),'value'=>'checkbox');
+		$this->fieldtype_modellist[]=array('text'=>trans('admin.fieldname_item_type_radio'),'value'=>'radio');
+		$this->fieldtype_modellist[]=array('text'=>trans('admin.fieldname_item_type_select'),'value'=>'select');
 		/*
 	    |--------------------------------------------------------------------------
 	    | 默认消息 - 验证信息

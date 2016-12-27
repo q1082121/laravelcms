@@ -145,6 +145,7 @@ $api->version('v1', function ($api) {
 		$api->post('address/info', ['as' => 'api.xcx.address.api_info', 'uses' => 'AddressController@api_info']);
 		$api->post('address/edit', ['as' => 'api.xcx.address.api_edit', 'uses' => 'AddressController@api_edit']);
 		$api->post('address/set', ['as' => 'api.xcx.address.api_set', 'uses' => 'AddressController@api_set']);
+		$api->post('address/default', ['as' => 'api.xcx.address.api_default', 'uses' => 'AddressController@api_default']);
 		$api->post('address', ['as' => 'api.xcx.address.api_list', 'uses' => 'AddressController@api_list']);
 		
     });

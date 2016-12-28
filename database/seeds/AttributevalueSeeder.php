@@ -62,8 +62,8 @@ class AttributevalueSeeder extends Seeder
 			array('attributegroup_id'=>6,'name'=>'麻织物','val'=>'麻织物','orderid'=>0,'status'=>1,'user_id'=>1),
 			array('attributegroup_id'=>6,'name'=>'丝织物','val'=>'丝织物','orderid'=>0,'status'=>1,'user_id'=>1),
 			array('attributegroup_id'=>7,'name'=>'圆领','val'=>'圆领','orderid'=>0,'status'=>1,'user_id'=>1),
-			array('attributegroup_id'=>7,'name'=>'尖领','val'=>'尖领','orderid'=>0,'status'=>1,'user_id'=>),
-			array('attributegroup_id'=>7,'name'=>'方领','val'=>'方领','orderid'=>0,'status'=>1,'user_id'=>),
+			array('attributegroup_id'=>7,'name'=>'尖领','val'=>'尖领','orderid'=>0,'status'=>1,'user_id'=>1),
+			array('attributegroup_id'=>7,'name'=>'方领','val'=>'方领','orderid'=>0,'status'=>1,'user_id'=>1),
 			array('attributegroup_id'=>7,'name'=>'倒挂领','val'=>'倒挂领','orderid'=>0,'status'=>1,'user_id'=>1)
 		  
 		);

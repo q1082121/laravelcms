@@ -16,6 +16,7 @@ use App\Http\Model\Navigation;
 use App\Http\Model\Classify;
 use App\Http\Model\User;
 use App\Http\Model\Classifyproduct;
+use App\Http\Model\Product;
 use App\Http\Model\Picture;
 use App\Http\Model\Classifylink;
 use App\Http\Model\Link;

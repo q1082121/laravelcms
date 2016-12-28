@@ -486,18 +486,51 @@ class DeleteapiController extends PublicController
 							}
 			break;
 			case 'Attributegroup':
-							$info=$this->delete_action('attributegroups',$request->get('id'));
-							if($info)
+							$rule=1;	
+							DB::beginTransaction();
+							try
+							{ 
+								$subinfo=$this->delete_action('attributevalues',$request->get('id'),'attributegroup_id');
+								if($subinfo)
+								{
+									$rule=1;
+									DB::commit();
+								}
+								else
+								{
+									$rule=2;
+									DB::rollBack();
+								}
+							}
+							catch (\Exception $e) 
+							{ 
+								//接收异常处理并回滚
+								$rule=2;
+								DB::rollBack(); 
+							}
+							if($rule==1)
 							{
-								$msg_array['status']='1';
-								$msg_array['info']=trans('admin.message_del_success');
-								$msg_array['is_reload']=0;
-								$msg_array['curl']='';
-								$msg_array['resource']='';
+								$info=$this->delete_action('attributegroups',$request->get('id'));
+								if($info)
+								{
+									$msg_array['status']='1';
+									$msg_array['info']=trans('admin.message_del_success');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';
+								}
+								else
+								{
+									
+									$msg_array['status']='0';
+									$msg_array['info']=trans('admin.message_del_failure');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';	
+								}
 							}
 							else
 							{
-								
 								$msg_array['status']='0';
 								$msg_array['info']=trans('admin.message_del_failure');
 								$msg_array['is_reload']=0;

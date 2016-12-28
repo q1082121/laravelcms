@@ -13,6 +13,11 @@
               <i class="fa fa-plus-square"></i> {{trans('admin.website_action_add')}}
             </button>
             </a>
+            @ability('admin', 'create_cache_class')
+            <button @click="create_cache()" type="button" class="btn btn-danger pull-left " style="margin:0 0 0 10px;">
+            <i class="fa fa-refresh"></i> {{trans('admin.website_action_create_cache')}}
+            </button>
+            @endability
           </h3>
 
           @ability('admin', 'search')

@@ -287,6 +287,7 @@ new Vue({
         })
         .then((response) => 
         {
+          
           this.return_info_action(response);
 
         },(response) => 

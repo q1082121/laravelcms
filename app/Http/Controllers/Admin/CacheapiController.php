@@ -120,6 +120,32 @@ class CacheapiController extends PublicController
 		                    Cache::store('file')->forever('link', $getdata);
                             $info=trans('admin.message_create_success');
             break;
+            case 'Attributegroup':
+                            $getdata="";
+                            $list=object_array(DB::table('attributegroups')->orderBy('id', 'asc')->get());
+                            if(is_array($list))
+                            {
+                                foreach($list as $key=>$val)
+                                {
+                                    $getdata[$val['id']]=$val;
+                                }
+                            }
+		                    Cache::store('file')->forever('attributegroup', $getdata);
+                            $info=trans('admin.message_create_success');
+            break;
+            case 'Attributevalue':
+                            $getdata="";
+                            $list=object_array(DB::table('attributevalues')->orderBy('id', 'asc')->get());
+                            if(is_array($list))
+                            {
+                                foreach($list as $key=>$val)
+                                {
+                                    $getdata[$val['id']]=$val;
+                                }
+                            }
+		                    Cache::store('file')->forever('attributevalue', $getdata);
+                            $info=trans('admin.message_create_success');
+            break;
         }
 		
 		$msg_array['status']='1';

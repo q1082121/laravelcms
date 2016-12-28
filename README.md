@@ -82,6 +82,10 @@ QQ	:471416739
 			3 php artisan db:seed --class=PermissionSeeder
 		
 			4 php artisan db:seed --class=DistrictSeeder	 数据较大
+			
+			5 php artisan db:seed --class=AttributegroupSeeder
+			
+			6 php artisan db:seed --class=AttributevalueSeeder
 		
 7. 开始体验
 	[DEMO](http://api.tzsuteng.com)

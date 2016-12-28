@@ -13,6 +13,11 @@
                 <i class="fa fa-plus-square"></i> {{trans('admin.website_action_add')}} 
               </button>
             </a>
+            @ability('admin', 'create_cache_class')
+            <button @click="create_cache()" type="button" class="btn btn-danger pull-left " style="margin:0 0 0 10px;">
+            <i class="fa fa-refresh"></i> {{trans('admin.website_action_create_cache')}}
+            </button>
+            @endability
             <button type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
               【{{trans('admin.website_navigation_attributegroup')}}： {{$website['info']['name']}}】
             </button>
@@ -103,6 +108,7 @@ new Vue({
              apiurl_list          :'{{ route("post.admin.attributevalue.api_list") }}',
              apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
              apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
+             apiurl_cache         :'{{ route("post.admin.cacheapi.api_cache") }}',
              linkurl_edit         :'{{ route("get.admin.attributevalue.edit") }}/',
              linkurl_back         :'{{ route("get.admin.wechat.manage") }}/{{$website["attributegroup_id"]}}',
              totals               : 0,
@@ -341,7 +347,33 @@ new Vue({
                   }
               }
             },
-           
+           //生成缓存
+            create_cache:function()
+            {
+              this.$http.post(this.apiurl_cache,this.paramsdata,{
+                before:function(request)
+                {
+                  loadi=layer.load("...");
+                },
+              })
+              .then((response) => 
+              {
+                this.return_info_action(response);
+
+              },(response) => 
+              {
+                //响应错误
+                layer.close(loadi);
+                var msg="{{trans('admin.message_outtime')}}";
+                layermsg_error(msg);
+              })
+              .catch(function(response) {
+                //异常抛出
+                layer.close(loadi);
+                var msg="{{trans('admin.message_error')}}";
+                layermsg_error(msg);
+              })
+            }
         }            
 })
 

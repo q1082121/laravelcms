@@ -10,11 +10,11 @@
           <h3 class="box-title">
             <a href="{{route('get.admin.wechatreplytext.add')}}/{{$website['wechat_id']}}" >
             <button type="button" class="btn btn-success pull-left ">
-              <i class="fa fa-add"></i>{{trans('admin.website_action_add')}}   
+              <i class="fa fa-plus-square"></i>{{trans('admin.website_action_add')}}   
             </button>
             </a>
             <button @click="back_action()" type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
-            <i class="fa fa-add"></i> {{trans('admin.website_action_goback')}} 【{{trans('admin.define_model_wechat_mp')}}： {{$website['info']['name']}}】
+             {{trans('admin.website_action_goback')}} 【{{trans('admin.define_model_wechat_mp')}}： {{$website['info']['name']}}】
             </button>
           </h3>
 

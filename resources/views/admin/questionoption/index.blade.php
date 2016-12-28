@@ -10,11 +10,11 @@
           <h3 class="box-title">
             <a href="{{route('get.admin.questionoption.add')}}/{{$website['qid']}}" >
             <button type="button" class="btn btn-success pull-left ">
-              <i class="fa fa-add"></i>{{trans('admin.website_action_add')}} 【{{trans('admin.define_model_questionoption_tip')}}： {{$website['info']['title']}}】  
+              <i class="fa fa-plus-square"></i>{{trans('admin.website_action_add')}} 【{{trans('admin.define_model_questionoption_tip')}}： {{$website['info']['title']}}】  
             </button>
             </a>
             <button @click="back_action()" type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
-            <i class="fa fa-add"></i> {{trans('admin.website_action_back_question')}}
+             {{trans('admin.website_action_back_question')}}
             </button>
           </h3>
 

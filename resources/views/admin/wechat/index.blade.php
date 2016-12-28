@@ -10,7 +10,7 @@
           <h3 class="box-title">
             <a href="{{ route('get.admin.wechat.add') }}" >
             <button type="button" class="btn btn-success pull-left ">
-              <i class="fa fa-add"></i> {{trans('admin.website_action_add')}} 
+              <i class="fa fa-plus-square"></i> {{trans('admin.website_action_add')}} 
             </button>
             </a>
           </h3>

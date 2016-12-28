@@ -10,7 +10,7 @@
           <h3 class="box-title">
             <a href="{{ route('get.admin.attributegroup.add') }}" >
             <button type="button" class="btn btn-success pull-left ">
-              <i class="fa fa-add"></i> {{trans('admin.website_action_add')}}
+              <i class="fa fa-plus-square"></i> {{trans('admin.website_action_add')}}
             </button>
             </a>
           </h3>
@@ -64,6 +64,7 @@
                     @ability('admin', 'edit')
                     <button type="button" @click="edit_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
                     @endability
+                    <button type="button" @click="subval_action(item.id)" class="btn btn-warning" > <i class="fa fa-tags"></i> {{trans('admin.website_action_subval_items')}}</button>
                     @ability('admin', 'set_status')
                     <button v-if="item.status == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_status')}}</button>
                     <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_status')}}</button>
@@ -108,6 +109,7 @@ new Vue({
              apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
              apiurl_cache         :'{{ route("post.admin.cacheapi.api_cache") }}',
              linkurl_edit         :'{{ route("get.admin.attributegroup.edit") }}/',
+             linkurl_subval       :'{{ route("get.admin.attributevalue") }}/',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -244,6 +246,11 @@ new Vue({
             edit_action:function(data)
             {
                 window.location.href=this.linkurl_edit+data;
+            },
+            subval_action:function(data)
+            {
+                var subvalurl=this.linkurl_subval+data;
+                open_iframe_box(subvalurl,1,'80%','40vw');
             },
              //点击删除
             delete_action:function(data)

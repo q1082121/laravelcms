@@ -30,6 +30,7 @@ use App\Http\Model\Classifywechat;
 use App\Http\Model\Wechatuser;
 use App\Http\Model\Xcxmp;
 use App\Http\Model\Attributegroup;
+use App\Http\Model\Attributevalue;
 
 class OneactionapiController extends PublicController
 {
@@ -690,6 +691,33 @@ class OneactionapiController extends PublicController
 								//扩展接口方法
 								case 'status':
 											$params = Attributegroup::find($request->get('id'));
+											$params->status=($params->status==1?0:1);
+											if ($params->save()) 
+											{
+												$msg_array['status']='1';
+												$msg_array['info']=trans('admin.message_set_success');
+												$msg_array['is_reload']=0;
+												$msg_array['curl']='';
+												$msg_array['resource']='';
+											} 
+											else 
+											{
+												$msg_array['status']='0';
+												$msg_array['info']=trans('admin.message_set_failure');
+												$msg_array['is_reload']=0;
+												$msg_array['curl']='';
+												$msg_array['resource']="";
+											}
+
+									break;
+							}
+			break;
+			case 'Attributevalue':
+							switch ($fields) 
+							{
+								//扩展接口方法
+								case 'status':
+											$params = Attributevalue::find($request->get('id'));
 											$params->status=($params->status==1?0:1);
 											if ($params->save()) 
 											{

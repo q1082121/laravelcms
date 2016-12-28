@@ -368,6 +368,33 @@ function open_box_image(dir)
     });
 }
 /***********************************
+ * 方法名：触发框架弹出框
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function open_iframe_box(url,isclose,width,height)
+{
+    layer.open({
+        type: 2,
+        shade: [0.8, '#333'],
+        area: [width, height], 
+        title: "信息窗口", //不显示标题
+        maxmin: true, //开启最大化最小化按钮
+        content: url, //捕获的元素
+        cancel: function(index)
+        {
+            if(isclose==1)
+            {
+                layer.close(index);
+            }
+            else
+            {
+                location.reload();
+            }
+        }
+    });
+}
+
+/***********************************
 * 方法名：保存到本地缓存
 * 作者： Tommy（rubbish.boy@163.com）
 ***********************************/

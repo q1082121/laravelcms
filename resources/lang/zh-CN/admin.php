@@ -66,6 +66,7 @@ return [
     'website_navigation_product_management'        =>   '产品管理',
     'website_navigation_classifyproduct'           =>   '产品分类',
     'website_navigation_attributegroup'            =>   '属性分组',
+    'website_navigation_attributevalue'            =>   '属性值管理',
     'website_navigation_product'                   =>   '产品内容',
     'website_navigation_advertising'               =>   '广告图片',
     'website_navigation_link_management'           =>   '链接管理',
@@ -125,6 +126,7 @@ return [
     'website_action_create_cache'                  =>   '生成缓存数据',
     'website_action_create_menu'                   =>   '生成菜单数据',
     'website_action_add_letter'                    =>   '撰写新信件',
+    'website_action_subval_items'                  =>   '属性值管理',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称 消息提示
@@ -301,6 +303,7 @@ return [
     'fieldname_item_area_cid'                       =>   '城市',
     'fieldname_item_area_xid'                       =>   '县区',
     'fieldname_item_keyval'                         =>   '键值',
+    'fieldname_item_val'                            =>   '属性值',
     'fieldname_item_description'                    =>   '描述',
     'fieldname_item_topclass'                       =>   '分类父类',
     'fieldname_item_ico'                            =>   'ico图标',
@@ -397,6 +400,7 @@ return [
     'option_failure_istitle'                       =>   '请填写标题',
     'option_failure_isname'                        =>   '请填写名称',
     'option_failure_iskeyword'                     =>   '请输入关键词',
+    'option_failure_isval'                         =>   '请输入属性值',
     'option_letter_failure_tip1'                   =>   '收信人不能为自己',
     'option_wechat_failure_token'                  =>   '请填写Token',
     'option_wechat_failure_name'                   =>   '请填写公众号名称',

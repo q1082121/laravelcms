@@ -40,10 +40,26 @@ class ProductattributeController extends PublicController
 	*******************************************/
 	public function add($id)
 	{
+		$cache_classproduct= Cache::store('file')->get('classproduct');
+
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_productattribute');
 		$website['id']=0;
 		$website['product_id']=$id;
+		$topinfo = object_array(DB::table('products')->whereId($id)->first());
+		$bclassid=$cache_classproduct[$topinfo['classid']]['topid']==0?$cache_classproduct[$topinfo['classid']]['id']:$cache_classproduct[$topinfo['classid']]['topid'];
+		$attributegroup_list=object_array(DB::table('attributegroups')->where('groupitems', 'like', '%-'.$bclassid.'-%')->orderby('orderid','asc')->get());
+		
+		if($attributegroup_list)
+		{
+			foreach($attributegroup_list as $key=>$val)
+			{
+				$subcondition['attributegroup_id']=$val['id'];
+				$attributegroup_list[$key]['sublist']=object_array(DB::table('attributevalues')->where($subcondition)->orderby('orderid','asc')->get());
+			}
+		}
+		$website['attributegroup_list']=$attributegroup_list;
+
 		return view('admin/productattribute/add')->with('website',$website);
 	}
     /******************************************

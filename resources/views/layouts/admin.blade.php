@@ -22,7 +22,7 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{asset('/module/AdminLTE')}}/dist/css/skins/_all-skins.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="{{asset('/module/AdminLTE')}}/plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="{{asset('/module/AdminLTE')}}/plugins/iCheck/all.css">
   <!-- Morris chart -->
   <link rel="stylesheet" href="{{asset('/module/AdminLTE')}}/plugins/morris/morris.css">
   <!-- jvectormap -->
@@ -564,7 +564,8 @@
 <script src="{{asset('/module/AdminLTE')}}/dist/js/demo.js"></script>
 <!--jquery-form
 <script src="{{asset('/module/jquery-form')}}/dist/jquery.form.min.js"></script>
--->
+<!-- icheck -->
+<script src="{{asset('/module/AdminLTE')}}/plugins/iCheck/icheck.min.js"></script>
 
 <script type="text/javascript">
   new Vue({

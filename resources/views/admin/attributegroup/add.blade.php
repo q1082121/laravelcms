@@ -27,6 +27,20 @@
                 </select>
               </div>
             </div>
+            @if ($website['classlist'])
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_class')}}</span>
+                  <div class="form-control">
+                    @foreach ($website['classlist'] as $item)
+                      <label>
+                        <input type="checkbox" v-model="params_data.groupitems" value="-{{$item['id']}}-" > {{$item['name']}}
+                      </label>
+                    @endforeach
+                  </div>
+              </div>  
+            </div>
+            @endif
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_orderid')}}</span>
@@ -66,7 +80,7 @@ new Vue({
              {
                 name                :'',
 				        type 				        :'text',
-				        groupitems          :'',
+                groupitems          :[],
                 orderid             :0,
                 status              :1,
                 id                  :'{{$website["id"]}}',
@@ -207,6 +221,14 @@ new Vue({
         if(statusinfo.status==1)
         {
             this.params_data=statusinfo.resource;
+            if(statusinfo.resource.groupitems)
+            {
+              this.params_data.groupitems=statusinfo.resource.groupitems.split(",");
+            }
+            else
+            {
+              this.params_data.groupitems=[];
+            }
         }
         else
         {

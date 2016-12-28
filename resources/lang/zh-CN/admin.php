@@ -367,6 +367,8 @@ return [
     'fieldname_item_type_checkbox'                  =>   '多选框',
     'fieldname_item_type_radio'                     =>   '单选框',
     'fieldname_item_type_select'                    =>   '下拉选框',
+    'fieldname_item_class'                          =>   '所属分类',
+    
 
     /*
     |--------------------------------------------------------------------------

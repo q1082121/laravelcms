@@ -41,7 +41,10 @@ class AttributegroupController extends PublicController
 		$website['cursitename']=trans('admin.website_navigation_attributegroup');
 		$website['id']=0;
 		$website['modellist']=json_encode($this->fieldtype_modellist);
-
+		$class_condition['status']=1;
+		$class_condition['grade']=1;
+		$classlist=object_array(DB::table('classifyproducts')->where($class_condition)->orderBy('id', 'desc')->get());
+		$website['classlist']=$classlist;
 		return view('admin/attributegroup/add')->with('website',$website);
 	}
     /******************************************
@@ -54,6 +57,10 @@ class AttributegroupController extends PublicController
 		$website['cursitename']=trans('admin.website_navigation_attributegroup');
 		$website['id']=$id;
 		$website['modellist']=json_encode($this->fieldtype_modellist);
+		$class_condition['status']=1;
+		$class_condition['grade']=1;
+		$classlist=object_array(DB::table('classifyproducts')->where($class_condition)->orderBy('id', 'desc')->get());
+		$website['classlist']=$classlist;
 		return view('admin/attributegroup/add')->with('website',$website);
 	}
     /******************************************
@@ -76,6 +83,22 @@ class AttributegroupController extends PublicController
 		}
 		if($list)
 		{
+			$cache_classproduct= Cache::store('file')->get('classproduct');
+			foreach($list as $key=>$val)
+			{
+				$list[$key]['groupclass']="";
+				if($val['groupitems'])
+				{
+					$itemarr=explode(',',$val['groupitems']);
+					$list[$key]['groupclass']="";
+					foreach($itemarr as $subkey=>$subval)
+					{
+						$list[$key]['groupclass'].=($subkey==0?"":",").$cache_classproduct[str_replace("-", "", $subval)]['name'];
+					}
+				}
+				
+			}
+
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
@@ -106,7 +129,7 @@ class AttributegroupController extends PublicController
 		$params = new Attributegroup;
 		$params->name 		= $request->get('name');
 		$params->type 		= $request->get('type');
-		$params->groupitems = $request->get('groupitems ');
+		$params->groupitems = $request->get('groupitems')?implode(",", $request->get('groupitems')):'';
 		$params->orderid	= $request->get('orderid');
 		$params->status		= $request->get('status');
 		$params->user_id	= $this->user['id'];
@@ -168,10 +191,9 @@ class AttributegroupController extends PublicController
 		$params = Attributegroup::find($request->get('id'));
 		$params->name 		= $request->get('name');
 		$params->type 		= $request->get('type');
-		$params->groupitems = $request->get('groupitems ');
+		$params->groupitems = $request->get('groupitems')?implode(",", $request->get('groupitems')):'';
 		$params->orderid	= $request->get('orderid');
 		$params->status		= $request->get('status');
-
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';

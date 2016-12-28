@@ -44,6 +44,7 @@ class PermissionSeeder extends Seeder
 		  array('name' => 'model_article','display_name' => '模块-文章资讯','description' => ''),
 		  array('name' => 'model_classifyproduct','display_name' => '模块-产品分类','description' => ''),
 		  array('name' => 'model_attributegroup','display_name' => '模块-属性分组','description' => ''),
+		  array('name' => 'model_attributevalue','display_name' => '模块-属性值管理','description' => ''),
 		  array('name' => 'model_product','display_name' => '模块-产品内容','description' => ''),
 		  array('name' => 'model_picture','display_name' => '模块-广告图片','description' => ''),
 		  array('name' => 'model_classifylink','display_name' => '模块-链接分类','description' => ''),

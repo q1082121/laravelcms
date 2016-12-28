@@ -148,7 +148,6 @@ class ProductController extends PublicController
 		$params->title 		= $request->get('title');
 		$params->introduction = $request->get('introduction');
         $params->sources	= $request->get('sources');
-		$params->price		= $request->get('price');
         $params->content	= $request->get('content');
 		$params->syseditor	= $request->get('syseditor');
 		$params->orderid	= $request->get('orderid');
@@ -226,7 +225,6 @@ class ProductController extends PublicController
 		$params->title 		= $request->get('title');
 		$params->introduction = $request->get('introduction');
         $params->sources	= $request->get('sources');
-		$params->price		= $request->get('price');
         $params->content	= $request->get('content');
 		$params->syseditor	= $request->get('syseditor');
 		$params->orderid	= $request->get('orderid');

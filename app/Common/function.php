@@ -648,6 +648,9 @@ function uploads_action($classname,$data_image,$thumb_width=200,$thumb_height=20
 		case "Wechatreplyimagetext":
 
 		break;
+		case "Productattribute":
+
+		break;
 		default:
 				if($is_watermark==1)
 				{	
@@ -720,6 +723,10 @@ function uploads_action($classname,$data_image,$thumb_width=200,$thumb_height=20
 			case 'Wechatreplyimagetext':
 							$thumb_width=@$root['wechatreplyimagetext_thumb_width']?@$root['wechatreplyimagetext_thumb_width']:$thumb_width;
 							$thumb_height=@$root['wechatreplyimagetext_thumb_height']?@$root['wechatreplyimagetext_thumb_height']:$thumb_height;
+			break;
+			case 'Productattribute':
+							$thumb_width=@$root['productattribute_thumb_width']?@$root['productattribute_thumb_width']:$thumb_width;
+							$thumb_height=@$root['productattribute_thumb_height']?@$root['productattribute_thumb_height']:$thumb_height;
 			break;
 			default:
 							

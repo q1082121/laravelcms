@@ -14,6 +14,7 @@ use App\Http\Model\Navigation;
 use App\Http\Model\Classify;
 use App\Http\Model\Classifyproduct;
 use App\Http\Model\Product;
+use App\Http\Model\Productattribute;
 use App\Http\Model\Picture;
 use App\Http\Model\Classifylink;
 use App\Http\Model\Link;
@@ -280,18 +281,59 @@ class DeleteapiController extends PublicController
 							}
 			break;
 			case 'Product':
-							$info=$this->delete_action('products',$request->get('id'));
-							if($info)
+							$rule=1;	
+							$subcondition['product_id']=$request->get('id');
+							$subcount=DB::table('productattributes')->where($subcondition)->count();
+							if($subcount>0)
 							{
-								$msg_array['status']='1';
-								$msg_array['info']=trans('admin.message_del_success');
-								$msg_array['is_reload']=0;
-								$msg_array['curl']='';
-								$msg_array['resource']='';
+								DB::beginTransaction();
+								try
+								{ 
+									
+										$subinfo=$this->delete_action('productattributes',$request->get('id'),'product_id');
+										if($subinfo)
+										{
+											$rule=1;
+											DB::commit();
+										}
+										else
+										{
+											$rule=2;
+											DB::rollBack();
+										}
+									
+									
+								}
+								catch (\Exception $e) 
+								{ 
+									//接收异常处理并回滚
+									$rule=2;
+									DB::rollBack(); 
+								}
+							}
+							if($rule==1)
+							{
+								$info=$this->delete_action('products',$request->get('id'));
+								if($info)
+								{
+									$msg_array['status']='1';
+									$msg_array['info']=trans('admin.message_del_success');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';
+								}
+								else
+								{
+									
+									$msg_array['status']='0';
+									$msg_array['info']=trans('admin.message_del_failure');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';	
+								}
 							}
 							else
 							{
-								
 								$msg_array['status']='0';
 								$msg_array['info']=trans('admin.message_del_failure');
 								$msg_array['is_reload']=0;
@@ -341,27 +383,33 @@ class DeleteapiController extends PublicController
 			break;
 			case 'Question':
 							$rule=1;	
-							DB::beginTransaction();
-							try
-							{ 
-								$subinfo=$this->delete_action('questionoptions',$request->get('id'),'qid');
-								if($subinfo)
-								{
-									$rule=1;
-									DB::commit();
+							$subcondition['qid']=$request->get('id');
+							$subcount=DB::table('questionoptions')->where($subcondition)->count();
+							if($subcount>0)
+							{
+								DB::beginTransaction();
+								try
+								{ 
+									$subinfo=$this->delete_action('questionoptions',$request->get('id'),'qid');
+									if($subinfo)
+									{
+										$rule=1;
+										DB::commit();
+									}
+									else
+									{
+										$rule=2;
+										DB::rollBack();
+									}
 								}
-								else
-								{
+								catch (\Exception $e) 
+								{ 
+									//接收异常处理并回滚
 									$rule=2;
-									DB::rollBack();
+									DB::rollBack(); 
 								}
 							}
-							catch (\Exception $e) 
-							{ 
-								//接收异常处理并回滚
-								$rule=2;
-								DB::rollBack(); 
-							}
+							
 							if($rule==1)
 							{
 								$info=$this->delete_action('questions',$request->get('id'));
@@ -487,27 +535,33 @@ class DeleteapiController extends PublicController
 			break;
 			case 'Attributegroup':
 							$rule=1;	
-							DB::beginTransaction();
-							try
-							{ 
-								$subinfo=$this->delete_action('attributevalues',$request->get('id'),'attributegroup_id');
-								if($subinfo)
-								{
-									$rule=1;
-									DB::commit();
+							$subcondition['attributegroup_id']=$request->get('id');
+							$subcount=DB::table('attributevalues')->where($subcondition)->count();
+							if($subcount>0)
+							{
+								DB::beginTransaction();
+								try
+								{ 
+									$subinfo=$this->delete_action('attributevalues',$request->get('id'),'attributegroup_id');
+									if($subinfo)
+									{
+										$rule=1;
+										DB::commit();
+									}
+									else
+									{
+										$rule=2;
+										DB::rollBack();
+									}
 								}
-								else
-								{
+								catch (\Exception $e) 
+								{ 
+									//接收异常处理并回滚
 									$rule=2;
-									DB::rollBack();
+									DB::rollBack(); 
 								}
 							}
-							catch (\Exception $e) 
-							{ 
-								//接收异常处理并回滚
-								$rule=2;
-								DB::rollBack(); 
-							}
+							
 							if($rule==1)
 							{
 								$info=$this->delete_action('attributegroups',$request->get('id'));
@@ -558,6 +612,27 @@ class DeleteapiController extends PublicController
 								$msg_array['resource']='';
 							}
 			break;
+			case 'Productattribute':
+							$info=$this->delete_action('productattributes',$request->get('id'));
+							if($info)
+							{
+								$msg_array['status']='1';
+								$msg_array['info']=trans('admin.message_del_success');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+							}
+							else
+							{
+								
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.message_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+							}
+			break;
+			
 			
 		}
 
@@ -678,9 +753,13 @@ class DeleteapiController extends PublicController
 				# code...
 				break;		
 			case 'Link':
-				$params = Picture::find($request->get('id'));
+				$params = Link::find($request->get('id'));
 				# code...
-				break;		
+				break;
+			case 'Productattribute':
+				$params = Productattribute::find($request->get('id'));
+				# code...
+				break;	
 			case 'User':
 				$condition['id']=$request->get('id');
 				$tablename="userinfos";

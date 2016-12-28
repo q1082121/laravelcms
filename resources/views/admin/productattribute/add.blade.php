@@ -1,16 +1,5 @@
-@extends('layouts.admin')
+@extends('layouts.admin_iframe')
 @section('content')
-
-@if($website['root']['syseditor']=='Ueditor')
-<!--处理UEditor start--> 
-@include('UEditor::head');
-<!-- 实例化编辑器 -->
-<script type="text/javascript">
-  var ueditors;
-</script>
-<!--处理UEditor end  -->
-@endif
-
 <!-- Main content -->
 <section class="content">
   <!-- row -->
@@ -18,50 +7,49 @@
     <div class="col-xs-12">
       <div class="box" id="app-content">
         <div class="box-header">
-          <h3 class="box-title"> 【 @{{cur_title}} 】 </h3>
+          <h3 class="box-title"> 【 @{{cur_title}} 】</h3>
         </div>
-        <!-- /.box-header --> 
+        <!-- /.box-header -->
+          
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_classid')}}</span>
-                <select class="form-control"  v-model="params_data.classid" >
-                  <option v-for="item in classlist" value="@{{ item.value }}">@{{ item.text }}</option>
-                </select>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_name')}}</span>
+                <input type="text" class="form-control" v-model="params_data.name"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_title')}}</span>
-                <input  type="text" class="form-control" v-model="params_data.title"   >
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_price')}}</span>
+                <input type="text" class="form-control" v-model="params_data.price"   >
               </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_introduction')}}</span>
-                  <textarea  class="form-control" rows="3" v-model="params_data.introduction" > </textarea>
-                </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_sources')}}</span>
-                <input  type="text" class="form-control" v-model="params_data.sources"   >
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_amount')}}</span>
+                <input type="text" class="form-control" v-model="params_data.amount"   >
               </div>
             </div>
-            <!--图片上传控件 start-->
             <div class="form-group">
               <label >{{trans('admin.fieldname_item_attachment')}}</label><br>
+              <!--
+              <input type="file" @change="onFileChange" id="fileuploads" class="file"  accept="image/*">
+              
+              <p class="help-block">200*200</p>
+              <img  v-if="image" :src="image" width="200" height="200" />
+              -->
+              <!-- file style -->
               <link rel="stylesheet" href="{{asset('/module/jQueryIpputCss')}}/css/style.css">
               <div class="uploader white" v-if="params_data.isattach == 0">
               <input type="text" class="filename" readonly/>
               <input type="button"  name="file" class="button" value="选择图片"/>
               <input type="file" size="30"  @change="onFileChange" />
-              <input type="hidden"  v-model="params_data.attachment" >
+              <input type="hidden" v-model="params_data.attachment" >
               </div>
               @ability('admin', 'delete')
               <button v-else type="button" @click="del_image_action()"  class="btn btn-block btn-danger btn-lg">删除图片</button>
               @endability
-              <p class="help-block">200*200</p>
+              <p class="help-block">缩略图200*200</p>
               <img  v-if="image" :src="image" width="200" height="200" />
               <script>
               document.body.onbeforeunload = function (event)
@@ -83,51 +71,20 @@
                   $("input[type=file]").each(function(){
                   if($(this).val()==""){$(this).parents(".uploader").find(".filename").val("尚未选择图片");}
                   });
+                  
               });
               </script> 
             </div>
-            <!--图片上传控件 end-->
-            @if($website['root']['syseditor']=='Ueditor')
-            <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_content')}}</span>
-                  <div class="editor">
-                    <textarea id='myEditor'  rows="3" debounce="500" >
-                      @{{params_data.content}}
-                    </textarea>
-                  </div>
-                </div>
-            </div>
-            @endif
-
-            @if($website['root']['syseditor']=='Markdown') 
-            <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_content')}}</span>
-                  <div class="editor">
-                    <textarea id='myEditor'  v-model="params_data.content"  class="form-control"  rows="3"  >
-                    </textarea>
-                  </div>
-                </div>
-            </div>
-            @endif
-
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_orderid')}}</span>
-                <input   type="text" class="form-control" v-model="params_data.orderid"   >
-              </div>  
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_linkurl')}}</span>
-                <input  type="text" class="form-control" v-model="params_data.linkurl"   >
+                <input type="text" class="form-control" v-model="params_data.orderid"   >
               </div>
             </div>
             <div class="form-group">
                 <label >{{trans('admin.fieldname_item_status')}}</label>
-                <div style="padding-left:10px;"><input  type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
-                <div style="padding-left:10px;"><input  type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
+                <div style="padding-left:10px;"><input type="radio"  value="1" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_on')}}</div>
+                <div style="padding-left:10px;"><input type="radio"  value="0" v-model="params_data.status" style="margin-right:10px;"> {{trans('admin.website_status_off')}}</div>
             </div>
           </div>
           <!-- /.box-body -->
@@ -148,25 +105,22 @@
 <script type="text/javascript">
 new Vue({
     el: '#app-content',
-    data: { 
+    data: {
              syseditor:             '{{$website["root"]["syseditor"]}}', 
-             apiurl_add:            '{{ route("post.admin.product.api_add") }}', 
-             apiurl_info:           '{{ route("post.admin.product.api_info") }}', 
-             apiurl_edit:           '{{ route("post.admin.product.api_edit") }}',
+             apiurl_add:            '{{ route("post.admin.productattribute.api_add") }}', 
+             apiurl_info:           '{{ route("post.admin.productattribute.api_info") }}', 
+             apiurl_edit:           '{{ route("post.admin.productattribute.api_edit") }}',
              apiurl_del_image:      '{{ route("post.admin.deleteapi.api_del_image") }}',
-             classlist:             eval(htmlspecialchars_decode('{{$website["classlist"]}}')), 
              params_data:
              {
-                syseditor           :'',
-                classid             :0,
-                title               :'',
-                introduction        :'',
-                sources             :'',
+                product_id   :'{{$website["product_id"]}}',
+                name                :'',
+                price               :0,
+                amount              :0,
+                attributeitems      :"",
                 attachment          :'',
                 isattach            :0,
-                content             :'',
                 orderid             :0,
-                linkurl             :'',
                 status              :1,
                 id                  :'{{$website["id"]}}',
              },
@@ -243,35 +197,30 @@ new Vue({
       //点击数据验证
       check_action:function(posturl)
       {
-          if (this.params_data.classid==0)
+
+          if (this.params_data.name=='')
           {
-              var msg="{{trans('admin.option_failure_isselect_class')}}";
+              var msg="{{trans('admin.option_failure_isname')}}";
               layermsg_error(msg);
           }
-          else if (this.params_data.title=='')
+          else if (this.params_data.price==0)
           {
-              var msg="{{trans('admin.option_failure_istitle')}}";
+              var msg="{{trans('admin.option_failure_isprice')}}";
+              layermsg_error(msg);
+          }
+          else if (this.params_data.amount==0)
+          {
+              var msg="{{trans('admin.option_failure_isamount')}}";
               layermsg_error(msg);
           }
           else
           {
-            this.params_data.syseditor=this.syseditor;
-             this.post_action(posturl);
+              this.post_action(posturl);
           }
       },
       //提交数据
       post_action:function(posturl)
       {
-        
-        if(this.syseditor=="Ueditor")
-        {
-          this.params_data.content=ueditors.getContent();
-        }
-        if(this.syseditor=="Markdown")
-        {
-          this.params_data.content=myEditor.codemirror.getValue();
-        } 
-
         this.$http.post(posturl,this.params_data,{
           before:function(request)
           {
@@ -280,7 +229,6 @@ new Vue({
         })
         .then((response) => 
         {
-          
           this.return_info_action(response);
 
         },(response) => 
@@ -347,20 +295,6 @@ new Vue({
               this.image="/uploads/"+this.del_data.modelname+"/thumb/"+this.params_data.attachment;
               this.params_data.attachment="";
             }
-            if(this.syseditor=="Markdown")
-            {
-              myEditor.setVal(statusinfo.resource.content);
-            }
-            if(this.syseditor=="Ueditor")
-            {
-              var contents=this.params_data.content;
-              ueditors=UE.getEditor('myEditor');
-              ueditors.addListener("ready", function () 
-              {
-                // editor准备好之后才可以使用
-                ueditors.setContent(contents);
-              });   
-            }
         }
         else
         {
@@ -373,7 +307,6 @@ new Vue({
               layermsg_error(statusinfo.info);
             }
         }
-
       },
       //点击返回
       back_action:function()
@@ -405,19 +338,10 @@ new Vue({
           var msg="{{trans('admin.message_error')}}";
           layermsg_error(msg);
         })
-      },
+      }
     }               
 })
 
 </script>
-
-@if($website['root']['syseditor']=='Markdown')
-<!--处理markdown 弹窗锁定层兼容问题 -->
-@include('editor::head')
-<style>
-.modal-backdrop{display:none}
-</style>
-<!--处理markdown 弹窗锁定层兼容问题 -->
-@endif
 
 @endsection

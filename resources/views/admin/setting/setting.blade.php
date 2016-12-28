@@ -253,6 +253,18 @@
                   <input type="text" class="form-control"  v-model="info.wechatreplyimagetext_thumb_height"  placeholder="默认200px" >
                 </div>
             </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_productattribute_thumb_width')}}</span>
+                  <input type="text" class="form-control"  v-model="info.productattribute_thumb_width"  placeholder="默认200px" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon minwidth">{{trans('admin.website_setting_productattribute_thumb_height')}}</span>
+                  <input type="text" class="form-control"  v-model="info.productattribute_thumb_height"  placeholder="默认200px" >
+                </div>
+            </div>
             <div class="box-footer">
               <center><button @click="saveaction" type="button" class="btn btn-primary">{{trans('admin.website_action_save')}}</button> <button @click="getbackaction" type="button" class="btn btn-primary">{{trans('admin.website_action_getback')}}</button></center>
             </div>
@@ -302,6 +314,8 @@
                 wechat_thumb_height:          '' ,
                 wechatreplyimagetext_thumb_width:'',
                 wechatreplyimagetext_thumb_height:'',
+                productattribute_thumb_width: '',
+                productattribute_thumb_height:'',
                 modelname:        '{{getCurrentControllerName()}}' ,
               }
           },

@@ -67,6 +67,7 @@ return [
     'website_navigation_classifyproduct'           =>   '产品分类',
     'website_navigation_attributegroup'            =>   '属性分组',
     'website_navigation_attributevalue'            =>   '属性值管理',
+    'website_navigation_productattribute'          =>   '价格属性管理',
     'website_navigation_product'                   =>   '产品内容',
     'website_navigation_advertising'               =>   '广告图片',
     'website_navigation_link_management'           =>   '链接管理',
@@ -127,6 +128,7 @@ return [
     'website_action_create_menu'                   =>   '生成菜单数据',
     'website_action_add_letter'                    =>   '撰写新信件',
     'website_action_subval_items'                  =>   '属性值管理',
+    'website_action_price_attribute'               =>   '价格属性管理',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称 消息提示
@@ -329,6 +331,7 @@ return [
     'fieldname_item_introduction'                   =>   '导读',
     'fieldname_item_modelid'                        =>   '分类类型',
     'fieldname_item_amount'                         =>   '数量',
+    'fieldname_item_selleds'                        =>   '销售量',
     'fieldname_item_fraction'                       =>   '分数',
     'fieldname_item_is_answer'                      =>   '是否答案',
     'fieldname_item_to_user'                        =>   '收信人',
@@ -399,6 +402,8 @@ return [
     'option_failure_isselect_class'                =>   '请选择分类',
     'option_failure_istitle'                       =>   '请填写标题',
     'option_failure_isname'                        =>   '请填写名称',
+    'option_failure_isamount'                      =>   '请填写数量',
+    'option_failure_isprice'                       =>   '请填写价格',
     'option_failure_iskeyword'                     =>   '请输入关键词',
     'option_failure_isval'                         =>   '请输入属性值',
     'option_letter_failure_tip1'                   =>   '收信人不能为自己',
@@ -460,6 +465,8 @@ return [
     'website_setting_wechat_thumb_height'          =>   '微信缩略图高度' ,
     'website_setting_wechatreplyimagetext_thumb_width'  =>'微信图文缩略图宽度' ,
     'website_setting_wechatreplyimagetext_thumb_height' =>'微信图文缩略图高度' ,
+    'website_setting_productattribute_thumb_width'  =>'价格属性缩略图宽度' ,
+    'website_setting_productattribute_thumb_height' =>'价格属性缩略图高度' ,
 
 
 ];

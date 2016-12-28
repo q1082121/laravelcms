@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin_iframe')
 @section('content')
 <!-- Main content -->
 <section class="content">
@@ -8,11 +8,14 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">
-            <a href="{{ route('get.admin.product.add') }}" >
-            <button type="button" class="btn btn-success pull-left">
-              <i class="fa fa-plus-square"></i> {{trans('admin.website_action_add')}} 
-            </button>
+            <a href="{{route('get.admin.productattribute.add')}}/{{$website['product_id']}}" >
+              <button type="button" class="btn btn-success pull-left ">
+                <i class="fa fa-plus-square"></i> {{trans('admin.website_action_add')}} 
+              </button>
             </a>
+            <button type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
+              【{{trans('admin.website_navigation_product_management')}}： {{$website['info']['title']}}】
+            </button>
           </h3>
 
           @ability('admin', 'search')
@@ -21,8 +24,7 @@
             <option v-for="item in pageparams.wayoption" value="@{{ item.value }}">@{{ item.text }}</option>
           </select>
           </div>
-
-          
+    
           <div class="box-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
               <input type="text" autocomplete="off" class="form-control pull-right" placeholder="Search" v-model="pageparams.keyword" value="@{{ pageparams.keyword }}">
@@ -40,10 +42,11 @@
             <thead>
             <tr>
               <th>{{trans('admin.fieldname_item_id')}}</th>
-              <th>{{trans('admin.fieldname_item_classid')}}</th>
-              <th>{{trans('admin.fieldname_item_title')}}</th>
+              <th>{{trans('admin.fieldname_item_name')}}</th>
+              <th>{{trans('admin.fieldname_item_price')}}</th>
+              <th>{{trans('admin.fieldname_item_amount')}}</th>
+              <th>{{trans('admin.fieldname_item_selleds')}}</th>
               <th>{{trans('admin.fieldname_item_attachment')}}</th>
-              <th>{{trans('admin.fieldname_item_clicks')}}</th>
               <th>{{trans('admin.fieldname_item_orderid')}}</th>
               <th>{{trans('admin.fieldname_item_status')}}</th>
               <th>{{trans('admin.fieldname_item_option')}}</th>
@@ -52,10 +55,11 @@
             <tbody>
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
-                <td>@{{ item.classname }}</td>
-                <td>@{{ item.title }}</td>
+                <td>@{{ item.name }}</td>
+                <td>@{{ item.price }}</td>
+                <td>@{{ item.amount }}</td>
+                <td>@{{ item.selleds }}</td>
                 <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{getCurrentControllerName()}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
-                <td>@{{ item.clicks }}</td>
                 <td>@{{ item.orderid }}</td>
                 <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>
@@ -63,7 +67,6 @@
                     @ability('admin', 'edit')
                     <button type="button" @click="edit_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
                     @endability
-                    <button type="button" @click="subval_action(item.id)" class="btn btn-warning" > <i class="fa fa-tags"></i> {{trans('admin.website_action_price_attribute')}}</button>
                     @ability('admin', 'set_status')
                     <button v-if="item.status == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_status')}}</button>
                     <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_status')}}</button>
@@ -103,11 +106,12 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_list          :'{{ route("post.admin.product.api_list") }}',
+             apiurl_list          :'{{ route("post.admin.productattribute.api_list") }}',
              apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
              apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
-             linkurl_edit         :'{{ route("get.admin.product.edit") }}/',
-             linkurl_subval       :'{{ route("get.admin.productattribute") }}/',
+             apiurl_cache         :'{{ route("post.admin.cacheapi.api_cache") }}',
+             linkurl_edit         :'{{ route("get.admin.productattribute.edit") }}/',
+             linkurl_back         :'{{ route("get.admin.wechat.manage") }}/{{$website["product_id"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -119,6 +123,7 @@ new Vue({
              pageparams:           
              {
                     page           :1,
+                    product_id      :'{{$website["product_id"]}}',
                     way            :'{{$website["way"]}}',
                     wayoption      :eval(htmlspecialchars_decode('{{$website["wayoption"]}}')),
                     keyword        :'',
@@ -245,10 +250,9 @@ new Vue({
             {
                 window.location.href=this.linkurl_edit+data;
             },
-            subval_action:function(data)
+            back_action:function()
             {
-                var subvalurl=this.linkurl_subval+data;
-                open_iframe_box(subvalurl,1,'80%','40vw');
+                window.location.href=this.linkurl_back;
             },
              //点击删除
             delete_action:function(data)
@@ -344,7 +348,7 @@ new Vue({
                   }
               }
             },
-
+           
         }            
 })
 

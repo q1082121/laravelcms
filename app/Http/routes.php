@@ -211,11 +211,15 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::get('attributevalue/{id?}', ['middleware' => ['ability:admin,model_attributevalue'], 'uses' => 'AttributevalueController@index'])->name('get.admin.attributevalue');
 	Route::get('attributevalue/add/{id?}', ['middleware' => ['ability:admin,add'], 'uses' => 'AttributevalueController@add'])->name('get.admin.attributevalue.add');
 	Route::get('attributevalue/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'AttributevalueController@edit'])->name('get.admin.attributevalue.edit');	
-
 	//产品内容			
 	Route::get('product', ['middleware' => ['ability:admin,model_product'], 'uses' => 'ProductController@index'])->name('get.admin.product');
 	Route::get('product/add', ['middleware' => ['ability:admin,add'], 'uses' => 'ProductController@add'])->name('get.admin.product.add');
-	Route::get('product/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ProductController@edit'])->name('get.admin.product.edit');		    
+	Route::get('product/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ProductController@edit'])->name('get.admin.product.edit');	
+	//产品价格属性管理
+	Route::get('productattribute/{id?}', ['middleware' => ['ability:admin,model_productattribute'], 'uses' => 'ProductattributeController@index'])->name('get.admin.productattribute');
+	Route::get('productattribute/add/{id?}', ['middleware' => ['ability:admin,add'], 'uses' => 'ProductattributeController@add'])->name('get.admin.productattribute.add');
+	Route::get('productattribute/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ProductattributeController@edit'])->name('get.admin.productattribute.edit');
+
 	//广告图片		
 	Route::get('picture', ['middleware' => ['ability:admin,model_picture'], 'uses' => 'PictureController@index'])->name('get.admin.picture');
 	Route::get('picture/add', ['middleware' => ['ability:admin,add'], 'uses' => 'PictureController@add'])->name('get.admin.picture.add');
@@ -356,6 +360,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('product/api_add', 'ProductController@api_add')->name('post.admin.product.api_add');
 	Route::post('product/api_info', 'ProductController@api_info')->name('post.admin.product.api_info');
 	Route::post('product/api_edit', 'ProductController@api_edit')->name('post.admin.product.api_edit');
+	//产品价格属性管理
+	Route::post('productattribute/api_list', 'ProductattributeController@api_list')->name('post.admin.productattribute.api_list');
+	Route::post('productattribute/api_add', 'ProductattributeController@api_add')->name('post.admin.productattribute.api_add');
+	Route::post('productattribute/api_info', 'ProductattributeController@api_info')->name('post.admin.productattribute.api_info');
+	Route::post('productattribute/api_edit', 'ProductattributeController@api_edit')->name('post.admin.productattribute.api_edit');
 	//广告图片
 	Route::post('picture/api_list', 'PictureController@api_list')->name('post.admin.picture.api_list');
 	Route::post('picture/api_add', 'PictureController@api_add')->name('post.admin.picture.api_add');

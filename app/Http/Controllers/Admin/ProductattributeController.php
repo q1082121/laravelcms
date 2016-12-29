@@ -40,12 +40,14 @@ class ProductattributeController extends PublicController
 	*******************************************/
 	public function add($id)
 	{
-		$cache_classproduct= Cache::store('file')->get('classproduct');
+		
 
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_productattribute');
 		$website['id']=0;
 		$website['product_id']=$id;
+		/**********************************************************/
+		$cache_classproduct= Cache::store('file')->get('classproduct');
 		$topinfo = object_array(DB::table('products')->whereId($id)->first());
 		$bclassid=$cache_classproduct[$topinfo['classid']]['topid']==0?$cache_classproduct[$topinfo['classid']]['id']:$cache_classproduct[$topinfo['classid']]['topid'];
 		$attributegroup_list=object_array(DB::table('attributegroups')->where('groupitems', 'like', '%-'.$bclassid.'-%')->orderby('orderid','asc')->get());
@@ -59,6 +61,7 @@ class ProductattributeController extends PublicController
 			}
 		}
 		$website['attributegroup_list']=$attributegroup_list;
+		/**********************************************************/
 
 		return view('admin/productattribute/add')->with('website',$website);
 	}
@@ -68,11 +71,31 @@ class ProductattributeController extends PublicController
 	*******************************************/
 	public function edit($id)  
 	{
+		
+
 		$website=$this->website;
 		$website['cursitename']=trans('admin.website_navigation_productattribute');
 		$website['id']=$id;
 		$info = object_array(DB::table('productattributes')->whereId($id)->first());
 		$website['product_id']=$info['product_id'];
+
+		/**********************************************************/
+		$cache_classproduct= Cache::store('file')->get('classproduct');
+		$topinfo = object_array(DB::table('products')->whereId($info['product_id'])->first());
+		$bclassid=$cache_classproduct[$topinfo['classid']]['topid']==0?$cache_classproduct[$topinfo['classid']]['id']:$cache_classproduct[$topinfo['classid']]['topid'];
+		$attributegroup_list=object_array(DB::table('attributegroups')->where('groupitems', 'like', '%-'.$bclassid.'-%')->orderby('orderid','asc')->get());
+		
+		if($attributegroup_list)
+		{
+			foreach($attributegroup_list as $key=>$val)
+			{
+				$subcondition['attributegroup_id']=$val['id'];
+				$attributegroup_list[$key]['sublist']=object_array(DB::table('attributevalues')->where($subcondition)->orderby('orderid','asc')->get());
+			}
+		}
+		$website['attributegroup_list']=$attributegroup_list;
+		/**********************************************************/
+
 
 		return view('admin/productattribute/add')->with('website',$website);
 	}
@@ -149,6 +172,25 @@ class ProductattributeController extends PublicController
 
 			if ($params->save()) 
 			{
+				/**********************************************************/
+				$cache_classproduct= Cache::store('file')->get('classproduct');
+				$topinfo = object_array(DB::table('products')->whereId($params->product_id)->first());
+				$bclassid=$cache_classproduct[$topinfo['classid']]['topid']==0?$cache_classproduct[$topinfo['classid']]['id']:$cache_classproduct[$topinfo['classid']]['topid'];
+				$attributegroup_list=object_array(DB::table('attributegroups')->where('groupitems', 'like', '%-'.$bclassid.'-%')->orderby('orderid','asc')->get());
+
+				if($attributegroup_list)
+				{
+					foreach($attributegroup_list as $key=>$val)
+					{
+						$subparam['productattribute_id']=$params->id;
+						$subparam['product_id']=$params->product_id;
+						$subparam['keyname']=$val['name'];
+						$subparam['keyval']=$request->get($val['name']);
+						DB::table('productattributegroupvalues')->insert($subparam);
+					}
+				}
+				/**********************************************************/
+
 				$msg_array['status']='1';
 				$msg_array['info']=trans('admin.message_add_success');
 				$msg_array['is_reload']=0;
@@ -190,9 +232,20 @@ class ProductattributeController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('productattributes')->where($condition)->first();
+		$info=object_array(DB::table('productattributes')->where($condition)->first());
 		if($info)
 		{
+			$subcondition['productattribute_id']=$condition['id'];
+			$subcondition['product_id']=$info['product_id'];
+			$sublist=object_array(DB::table('productattributegroupvalues')->where($subcondition)->get());
+			if($sublist)
+			{
+				foreach($sublist as $key=>$val)
+				{
+					$info[$val['keyname']]=$val['keyval'];
+				}
+			}
+
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;
@@ -216,7 +269,6 @@ class ProductattributeController extends PublicController
 	*******************************************/
 	public function api_edit(Request $request)
 	{
-
 		DB::beginTransaction();
 		try
 		{ 
@@ -241,6 +293,28 @@ class ProductattributeController extends PublicController
 
 			if ($params->save()) 
 			{
+				/**********************************************************/
+				$cache_classproduct= Cache::store('file')->get('classproduct');
+				$topinfo = object_array(DB::table('products')->whereId($params->product_id)->first());
+				$bclassid=$cache_classproduct[$topinfo['classid']]['topid']==0?$cache_classproduct[$topinfo['classid']]['id']:$cache_classproduct[$topinfo['classid']]['topid'];
+				$attributegroup_list=object_array(DB::table('attributegroups')->where('groupitems', 'like', '%-'.$bclassid.'-%')->orderby('orderid','asc')->get());
+
+				if($attributegroup_list)
+				{
+					$subcondition['productattribute_id']=$params->id;
+					$subcondition['product_id']=$params->product_id;
+					DB::table('productattributegroupvalues')->where($subcondition)->delete();
+					foreach($attributegroup_list as $key=>$val)
+					{
+						$subparam['productattribute_id']=$params->id;
+						$subparam['product_id']=$params->product_id;
+						$subparam['keyname']=$val['name'];
+						$subparam['keyval']=$request->get($val['name']);
+						DB::table('productattributegroupvalues')->insert($subparam);
+					}
+					
+				}
+				/**********************************************************/
 
 				$msg_array['status']='1';
 				$msg_array['info']=trans('admin.message_save_success');

@@ -217,7 +217,7 @@ class ClassifyquestionController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('classifyquestions')->where($condition)->first();
+		$info=object_array(DB::table('classifyquestions')->where($condition)->first());
 		if($info)
 		{
 			$msg_array['status']='1';

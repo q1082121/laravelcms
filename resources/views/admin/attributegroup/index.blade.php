@@ -45,6 +45,7 @@
             <thead>
             <tr>
               <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_keyval')}}</th>
               <th>{{trans('admin.fieldname_item_name')}}</th>
               <th>{{trans('admin.fieldname_item_type')}}</th>
               <th>{{trans('admin.fieldname_item_class')}}</th>
@@ -57,6 +58,7 @@
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
                 <td>@{{ item.name }}</td>
+                <td>@{{ item.display_name }}</td>
                 <td v-if="item.type == 'text'"> <i class="fa fa-leaf"></i> {{trans('admin.fieldname_item_type_text')}}</td>
                 <td v-if="item.type == 'checkbox'"> <i class="fa fa-leaf"></i> {{trans('admin.fieldname_item_type_checkbox')}}</td>
                 <td v-if="item.type == 'radio'"> <i class="fa fa-leaf"></i> {{trans('admin.fieldname_item_type_radio')}}</td>

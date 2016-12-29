@@ -74,7 +74,7 @@ class UserController extends PublicController
 	{
 
 		$condition['user_id']=$request->get('id');
-		$info=DB::table('userinfos')->where($condition)->first();
+		$info=object_array(DB::table('userinfos')->where($condition)->first());
 		if($info)
 		{
 			$msg_array['status']='1';

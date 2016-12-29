@@ -218,7 +218,7 @@ class ClassifylinkController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('classifylinks')->where($condition)->first();
+		$info=object_array(DB::table('classifylinks')->where($condition)->first());
 		if($info)
 		{
 			$msg_array['status']='1';

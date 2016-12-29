@@ -148,7 +148,7 @@ class UserpermissionController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('permissions')->where($condition)->first();
+		$info=object_array(DB::table('permissions')->where($condition)->first());
 		if($info)
 		{
 			$msg_array['status']='1';

@@ -159,7 +159,7 @@ class QuestionoptionController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('questionoptions')->where($condition)->first();
+		$info=object_array(DB::table('questionoptions')->where($condition)->first());
 		if($info)
 		{
 			$msg_array['status']='1';

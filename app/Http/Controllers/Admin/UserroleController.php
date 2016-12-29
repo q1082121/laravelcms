@@ -174,7 +174,7 @@ class UserroleController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('roles')->where($condition)->first();
+		$info=object_array(DB::table('roles')->where($condition)->first());
 		if($info)
 		{
 			$msg_array['status']='1';

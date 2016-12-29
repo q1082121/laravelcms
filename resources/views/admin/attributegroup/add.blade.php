@@ -15,8 +15,14 @@
 
             <div class="form-group">
               <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_keyval')}}</span>
+                <input type="text" id="name" class="form-control" v-model="params_data.name"  placeholder="{{trans('admin.website_demo_tip')}}：arr_color "  >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
                 <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_name')}}</span>
-                <input type="text" class="form-control" v-model="params_data.name"   >
+                <input type="text" class="form-control" v-model="params_data.display_name"  placeholder="{{trans('admin.website_demo_tip')}}：颜色" >
               </div>
             </div>
             <div class="form-group">
@@ -79,6 +85,7 @@ new Vue({
              params_data:
              {
                 name                :'',
+                display_name        :'',
 				        type 				        :'text',
                 groupitems          :[],
                 orderid             :0,
@@ -139,7 +146,12 @@ new Vue({
       //点击数据验证
       check_action:function(posturl)
       {
-          if (this.params_data.name==0)
+          if (this.params_data.name=='')
+          {
+              var msg="{{trans('admin.option_failure_iskeyval')}}";
+              layermsg_error(msg);
+          }
+          else if (this.params_data.display_name==0)
           {
               var msg="{{trans('admin.option_failure_isname')}}";
               layermsg_error(msg);

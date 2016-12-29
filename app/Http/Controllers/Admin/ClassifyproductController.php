@@ -218,7 +218,7 @@ class ClassifyproductController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('classifyproducts')->where($condition)->first();
+		$info=object_array(DB::table('classifyproducts')->where($condition)->first());
 		if($info)
 		{
 			$msg_array['status']='1';

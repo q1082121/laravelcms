@@ -230,7 +230,7 @@ class QuestionController extends PublicController
 	{
 		
 		$condition['id']=$request->get('id');
-		$info=DB::table('questions')->where($condition)->first();
+		$info=object_array(DB::table('questions')->where($condition)->first());
 		if($info)
 		{
 			$msg_array['status']='1';

@@ -127,12 +127,13 @@ class AttributegroupController extends PublicController
 	{
 
 		$params = new Attributegroup;
-		$params->name 		= $request->get('name');
-		$params->type 		= $request->get('type');
-		$params->groupitems = $request->get('groupitems')?implode(",", $request->get('groupitems')):'';
-		$params->orderid	= $request->get('orderid');
-		$params->status		= $request->get('status');
-		$params->user_id	= $this->user['id'];
+		$params->name 			= $request->get('name');
+		$params->display_name 	= $request->get('display_name');
+		$params->type 			= $request->get('type');
+		$params->groupitems 	= $request->get('groupitems')?implode(",", $request->get('groupitems')):'';
+		$params->orderid		= $request->get('orderid');
+		$params->status			= $request->get('status');
+		$params->user_id		= $this->user['id'];
 
 		if ($params->save()) 
 		{
@@ -161,7 +162,7 @@ class AttributegroupController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('attributegroups')->where($condition)->first();
+		$info=object_array(DB::table('attributegroups')->where($condition)->first());
 		if($info)
 		{
 			$msg_array['status']='1';
@@ -189,11 +190,12 @@ class AttributegroupController extends PublicController
 	{
 
 		$params = Attributegroup::find($request->get('id'));
-		$params->name 		= $request->get('name');
-		$params->type 		= $request->get('type');
-		$params->groupitems = $request->get('groupitems')?implode(",", $request->get('groupitems')):'';
-		$params->orderid	= $request->get('orderid');
-		$params->status		= $request->get('status');
+		$params->name 			= $request->get('name');
+		$params->display_name 	= $request->get('display_name');
+		$params->type 			= $request->get('type');
+		$params->groupitems 	= $request->get('groupitems')?implode(",", $request->get('groupitems')):'';
+		$params->orderid		= $request->get('orderid');
+		$params->status			= $request->get('status');
 		if ($params->save()) 
 		{
 			$msg_array['status']='1';

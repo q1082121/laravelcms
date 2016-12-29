@@ -14,39 +14,45 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_name')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_name')}} *</span>
                 <input type="text" class="form-control" v-model="params_data.name"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_price')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_price')}} *</span>
                 <input type="text" class="form-control" v-model="params_data.price"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_amount')}}</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_amount')}} *</span>
                 <input type="text" class="form-control" v-model="params_data.amount"   >
               </div>
             </div>
             <style>
-            .color_boxs{display:inline-block;width:16px;height:16px;}
+            .color_boxs{display:inline-block;width:13px;height:13px;border:1px solid #ddd;margin-left:3px;}
             </style>
             @if ($website['attributegroup_list'])
               @foreach ($website['attributegroup_list'] as $item)
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{$item['name']}}</span>
-                  <div class="form-control">
-                        @if ($item['type']=='checkbox') 
-                          @foreach ($item['sublist'] as $subitem)
-                          <label>
-                            <input type="checkbox"  value="-{{$subitem['id']}}-" >@if ($item['id']==1)<div class="color_boxs" style="background:{{$subitem['val']}}"><div>@endif {{$subitem['name']}}
-                          </label>
-                          @endforeach
+                  <span class="input-group-addon minwidth">{{$item['display_name']}}</span>
+                  
+                      <!-- --> 
+                        @if ($item['type']=='radio') 
+                          <div class="form-control">
+                            @foreach ($item['sublist'] as $subitem)
+                            <label>
+                              <input type="radio" v-model="params_data.{{$item['name']}}"   value="-{{$subitem['id']}}-" >@if ($item['name']=='arr_color')<div class="color_boxs" style="background:{{$subitem['val']}}"></div>@endif {{$subitem['name']}}
+                            </label>
+                            @endforeach
+                          </div>
+                        @elseif ($item['type']=='text')
+                          <input type="text" class="form-control" v-model="params_data.{{$item['name']}}"   >
                         @endif
-                  </div>
+                      
+                  
                 </div>
               </div>
               @endforeach
@@ -134,7 +140,7 @@ new Vue({
              apiurl_del_image:      '{{ route("post.admin.deleteapi.api_del_image") }}',
              params_data:
              {
-                product_id   :'{{$website["product_id"]}}',
+                product_id          :'{{$website["product_id"]}}',
                 name                :'',
                 price               :0,
                 amount              :0,
@@ -144,6 +150,19 @@ new Vue({
                 orderid             :0,
                 status              :1,
                 id                  :'{{$website["id"]}}',
+                @if ($website['attributegroup_list'])
+                  @foreach ($website['attributegroup_list'] as $item)
+                    @if ($item['type']=='checkbox') 
+                       {{$item['name']}}:[],
+                    @elseif ($item['type']=='radio')
+                       {{$item['name']}}:'',  
+                    @elseif ($item['type']=='text')
+                       {{$item['name']}}:'',        
+                    @endif
+                  @endforeach
+                @endif
+
+
              },
              image                  :'',
              cur_title              :'',

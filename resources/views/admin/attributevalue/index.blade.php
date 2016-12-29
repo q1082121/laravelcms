@@ -19,7 +19,7 @@
             </button>
             @endability
             <button type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
-              【{{trans('admin.website_navigation_attributegroup')}}： {{$website['info']['name']}}】
+              【{{trans('admin.website_navigation_attributegroup')}}： {{$website['info']['display_name']}}】
             </button>
           </h3>
 

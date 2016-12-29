@@ -193,7 +193,7 @@ class ProductController extends PublicController
 	{
 
 		$condition['id']=$request->get('id');
-		$info=DB::table('products')->where($condition)->first();
+		$info=object_array(DB::table('products')->where($condition)->first());
 		if($info)
 		{
 			$msg_array['status']='1';

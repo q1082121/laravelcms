@@ -67,6 +67,13 @@ class ProductController extends PublicController
 							$list=Product::where($search_condition)->orderBy('updated_at','desc')->paginate($this->pagesize);
 							if($list)
 							{
+								foreach($list as $key=>$val)
+								{
+									$subcondition['product_id']=$val['id'];
+									$price=DB::table('productattributes')->where($subcondition)->min('price');
+									$list[$key]['price']=$price?$price:"暂无定价";
+								}
+
 								$msg_array['status']='1';
 								$msg_array['info']=trans('api.message_get_success');
 								$msg_array['curl']='';

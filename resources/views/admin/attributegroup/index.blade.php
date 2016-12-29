@@ -48,6 +48,7 @@
               <th>{{trans('admin.fieldname_item_keyval')}}</th>
               <th>{{trans('admin.fieldname_item_name')}}</th>
               <th>{{trans('admin.fieldname_item_type')}}</th>
+              <th>{{trans('admin.fieldname_item_displaytype')}}</th>
               <th>{{trans('admin.fieldname_item_class')}}</th>
               <th>{{trans('admin.fieldname_item_orderid')}}</th>
               <th>{{trans('admin.fieldname_item_status')}}</th>
@@ -63,6 +64,8 @@
                 <td v-if="item.type == 'checkbox'"> <i class="fa fa-leaf"></i> {{trans('admin.fieldname_item_type_checkbox')}}</td>
                 <td v-if="item.type == 'radio'"> <i class="fa fa-leaf"></i> {{trans('admin.fieldname_item_type_radio')}}</td>
                 <td v-if="item.type == 'select'"> <i class="fa fa-leaf"></i> {{trans('admin.fieldname_item_type_select')}}</td>
+                <td v-if="item.display_type == 1"> <i class="fa fa-magnet"></i> {{trans('admin.fieldname_item_displaytype1')}}</td>
+                <td v-if="item.display_type == 2"> <i class="fa fa-thumb-tack"></i> {{trans('admin.fieldname_item_displaytype2')}}</td>
                 <td>@{{ item.groupclass }}</td>
                 <td>@{{ item.orderid }}</td>
                 <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>

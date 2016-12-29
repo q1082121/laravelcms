@@ -28,6 +28,7 @@ class AttributegroupController extends PublicController
 		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
 		$website['wayoption']=json_encode($wayoption);
 		$website['modellist']=json_encode($this->fieldtype_modellist);
+		$website['displaytypellist']=json_encode($this->displaytype_modellist);
 
 		return view('admin/attributegroup/index')->with('website',$website);
 	}
@@ -41,6 +42,7 @@ class AttributegroupController extends PublicController
 		$website['cursitename']=trans('admin.website_navigation_attributegroup');
 		$website['id']=0;
 		$website['modellist']=json_encode($this->fieldtype_modellist);
+		$website['displaytypellist']=json_encode($this->displaytype_modellist);
 		$class_condition['status']=1;
 		$class_condition['grade']=1;
 		$classlist=object_array(DB::table('classifyproducts')->where($class_condition)->orderBy('id', 'desc')->get());
@@ -57,6 +59,7 @@ class AttributegroupController extends PublicController
 		$website['cursitename']=trans('admin.website_navigation_attributegroup');
 		$website['id']=$id;
 		$website['modellist']=json_encode($this->fieldtype_modellist);
+		$website['displaytypellist']=json_encode($this->displaytype_modellist);
 		$class_condition['status']=1;
 		$class_condition['grade']=1;
 		$classlist=object_array(DB::table('classifyproducts')->where($class_condition)->orderBy('id', 'desc')->get());
@@ -130,6 +133,7 @@ class AttributegroupController extends PublicController
 		$params->name 			= $request->get('name');
 		$params->display_name 	= $request->get('display_name');
 		$params->type 			= $request->get('type');
+		$params->display_type 	= $request->get('display_type');
 		$params->groupitems 	= $request->get('groupitems')?implode(",", $request->get('groupitems')):'';
 		$params->orderid		= $request->get('orderid');
 		$params->status			= $request->get('status');
@@ -193,6 +197,7 @@ class AttributegroupController extends PublicController
 		$params->name 			= $request->get('name');
 		$params->display_name 	= $request->get('display_name');
 		$params->type 			= $request->get('type');
+		$params->display_type 	= $request->get('display_type');
 		$params->groupitems 	= $request->get('groupitems')?implode(",", $request->get('groupitems')):'';
 		$params->orderid		= $request->get('orderid');
 		$params->status			= $request->get('status');

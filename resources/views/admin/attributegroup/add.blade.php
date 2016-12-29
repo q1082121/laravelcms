@@ -33,6 +33,14 @@
                 </select>
               </div>
             </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_displaytype')}}</span>
+                <select class="form-control" v-model="params_data.display_type">
+                  <option v-for="item in displaytypellist" value="@{{ item.value }}">@{{ item.text }}</option>
+                </select>
+              </div>
+            </div>
             @if ($website['classlist'])
             <div class="form-group">
               <div class="input-group">
@@ -82,11 +90,13 @@ new Vue({
              apiurl_info:           '{{ route("post.admin.attributegroup.api_info") }}', 
              apiurl_edit:           '{{ route("post.admin.attributegroup.api_edit") }}',
              modellist:             eval(htmlspecialchars_decode('{{$website["modellist"]}}')), 
+             displaytypellist:      eval(htmlspecialchars_decode('{{$website["displaytypellist"]}}')), 
              params_data:
              {
                 name                :'',
                 display_name        :'',
 				        type 				        :'text',
+                display_type        :2,
                 groupitems          :[],
                 orderid             :0,
                 status              :1,

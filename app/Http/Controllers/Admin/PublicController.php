@@ -119,6 +119,10 @@ class PublicController extends Controller
 		$this->fieldtype_modellist[]=array('text'=>trans('admin.fieldname_item_type_checkbox'),'value'=>'checkbox');
 		$this->fieldtype_modellist[]=array('text'=>trans('admin.fieldname_item_type_select'),'value'=>'select');
 		*/
+		//默认显示类型
+		$this->displaytype_modellist[]=array('text'=>trans('admin.fieldname_item_displaytype1'),'value'=>1);
+		$this->displaytype_modellist[]=array('text'=>trans('admin.fieldname_item_displaytype2'),'value'=>2);
+
 		/*
 	    |--------------------------------------------------------------------------
 	    | 默认消息 - 验证信息

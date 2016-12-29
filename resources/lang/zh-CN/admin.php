@@ -374,8 +374,9 @@ return [
     'fieldname_item_type_radio'                     =>   '单选框',
     'fieldname_item_type_select'                    =>   '下拉选框',
     'fieldname_item_class'                          =>   '所属分类',
-    
-
+    'fieldname_item_displaytype'                    =>   '显示类型',
+    'fieldname_item_displaytype1'                   =>   '关联条件',   
+    'fieldname_item_displaytype2'                   =>   '独立条件',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称-操作提示

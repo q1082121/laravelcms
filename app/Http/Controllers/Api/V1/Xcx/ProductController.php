@@ -71,7 +71,10 @@ class ProductController extends PublicController
 								{
 									$subcondition['product_id']=$val['id'];
 									$price=DB::table('productattributes')->where($subcondition)->min('price');
+									$maxprice=DB::table('productattributes')->where($subcondition)->max('price');
 									$list[$key]['price']=$price?$price:"暂无定价";
+									$list[$key]['maxprice']=$maxprice==$price?"":$maxprice;
+									$list[$key]['pricegroup']=$price?($maxprice==$price?$price:$price.' - '.$maxprice):"暂无定价";
 								}
 
 								$msg_array['status']='1';
@@ -153,7 +156,17 @@ class ProductController extends PublicController
 						if($info)
 						{
 							$info['content']=str_replace("/uploads/", $this->domainName."/uploads/", $info['content']);
-							
+							$subcondition['product_id']=$info['id'];
+							$price=DB::table('productattributes')->where($subcondition)->min('price');
+							$maxprice=DB::table('productattributes')->where($subcondition)->max('price');
+							$info['price']=$price?$price:"暂无定价";
+							$info['maxprice']=$maxprice==$price?"":$maxprice;
+							$info['pricegroup']=$price?($maxprice==$price?$price:$price.' - '.$maxprice):"暂无定价";
+							$info['amount']=DB::table('productattributes')->where($subcondition)->sum('amount');
+							$info['selleds']=DB::table('productattributes')->where($subcondition)->sum('selleds');
+							$info['total_amount']=$info['amount'] - $info['selleds'];
+							$info['sublist']=$sublist=Product::find($info['id'])->hasManyProductattributes()->get()->toArray();
+
 							$msg_array['status']='1';
 							$msg_array['info']=trans('api.message_get_success');
 							$msg_array['curl']='';

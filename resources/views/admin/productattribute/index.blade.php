@@ -51,7 +51,7 @@
               <th>{{trans('admin.fieldname_item_status')}}</th>
               @if ($website['attributegroup_list'])
                 @foreach ($website['attributegroup_list'] as $item)
-                <th>{{$item['display_name']}}</th>
+                <th>@if ($item['display_type']==1)<i class="fa fa-magnet"></i>@else <i class="fa fa-thumb-tack"></i> @endif {{$item['display_name']}}</th>
                 @endforeach
               @endif
               <th>{{trans('admin.fieldname_item_option')}}</th>

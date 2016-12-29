@@ -31,6 +31,7 @@ class AttributevalueSeeder extends Seeder
 			array('attributegroup_id'=>2,'name'=>'XXS','val'=>'XXS','orderid'=>0,'status'=>1,'user_id'=>1),
 			array('attributegroup_id'=>2,'name'=>'XS','val'=>'XS','orderid'=>0,'status'=>1,'user_id'=>1),
 			array('attributegroup_id'=>2,'name'=>'S','val'=>'S','orderid'=>0,'status'=>1,'user_id'=>1),
+			array('attributegroup_id'=>2,'name'=>'M','val'=>'M','orderid'=>0,'status'=>1,'user_id'=>1),
 			array('attributegroup_id'=>2,'name'=>'L','val'=>'L','orderid'=>0,'status'=>1,'user_id'=>1),
 			array('attributegroup_id'=>2,'name'=>'XL','val'=>'XL','orderid'=>0,'status'=>1,'user_id'=>1),
 			array('attributegroup_id'=>2,'name'=>'XXL','val'=>'XXL','orderid'=>0,'status'=>1,'user_id'=>1),

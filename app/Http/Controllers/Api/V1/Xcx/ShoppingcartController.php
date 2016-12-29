@@ -155,7 +155,9 @@ class ShoppingcartController extends PublicController
 							foreach($list as $key=>$val)
 							{
 								$info_condition['id']=$val['item_id'];
-								$list[$key]['info']=object_array(DB::table('products')->where($info_condition)->first());
+								$list[$key]['info']=$info=object_array(DB::table('productattributes')->where($info_condition)->first());
+								$productinfo_condition['id']=$info['product_id'];
+								$list[$key]['productinfo']=object_array(DB::table('products')->where($productinfo_condition)->first());
 								$list[$key]['editname']="编辑";
 								$list[$key]['original_qty']=$val['qty'];
 								$list[$key]['buttonplain']=true;

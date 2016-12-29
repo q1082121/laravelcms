@@ -37,8 +37,7 @@
               @foreach ($website['attributegroup_list'] as $item)
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon minwidth">{{$item['display_name']}}</span>
-                      
+                  <span class="input-group-addon minwidth"> {{$item['display_name']}} @if ($item['display_type']==1)<i class="fa fa-magnet"></i>@else <i class="fa fa-thumb-tack"></i> @endif</span>
                       <!-- --> 
                         @if ($item['type']=='radio') 
                           <div class="form-control">

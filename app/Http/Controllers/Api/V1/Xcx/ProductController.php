@@ -165,7 +165,7 @@ class ProductController extends PublicController
 							$info['amount']=DB::table('productattributes')->where($subcondition)->sum('amount');
 							$info['selleds']=DB::table('productattributes')->where($subcondition)->sum('selleds');
 							$info['total_amount']=$info['amount'] - $info['selleds'];
-							$info['sublist']=$sublist=Product::find($info['id'])->hasManyProductattributes()->get()->toArray();
+							$info['sublist']=$sublist=Product::find($info['id'])->hasManyProductattributes()->orderby('orderid','asc')->get()->toArray();
 
 							$msg_array['status']='1';
 							$msg_array['info']=trans('api.message_get_success');

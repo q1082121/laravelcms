@@ -119,13 +119,13 @@ class ProductattributeController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Product::find($product_id)->hasManyProductattributes()->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Product::find($product_id)->hasManyProductattributes()->where($search_field, 'like', '%'.$keyword.'%')->orderby('orderid','asc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field,'product_id'=>$product_id])->links();
 		}
 		else
 		{
-			$list=Product::find($product_id)->hasManyProductattributes()->paginate($this->pagesize);
+			$list=Product::find($product_id)->hasManyProductattributes()->orderby('orderid','asc')->paginate($this->pagesize);
 			$list->appends(['product_id'=>$product_id])->links();
 		}
 		if($list)

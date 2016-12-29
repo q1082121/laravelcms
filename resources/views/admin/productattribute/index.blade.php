@@ -49,6 +49,11 @@
               <th>{{trans('admin.fieldname_item_attachment')}}</th>
               <th>{{trans('admin.fieldname_item_orderid')}}</th>
               <th>{{trans('admin.fieldname_item_status')}}</th>
+              @if ($website['attributegroup_list'])
+                @foreach ($website['attributegroup_list'] as $item)
+                <th>{{$item['display_name']}}</th>
+                @endforeach
+              @endif
               <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
@@ -62,6 +67,11 @@
                 <td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{getCurrentControllerName()}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>
                 <td>@{{ item.orderid }}</td>
                 <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
+                @if ($website['attributegroup_list'])
+                  @foreach ($website['attributegroup_list'] as $item)
+                  <td>@{{ item.{!!$item['name']!!} }}</td>
+                  @endforeach
+                @endif
                 <td>
                   <div class="tools">
                     @ability('admin', 'edit')

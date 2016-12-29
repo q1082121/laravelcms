@@ -38,7 +38,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon minwidth">{{$item['display_name']}}</span>
-                  
+                      
                       <!-- --> 
                         @if ($item['type']=='radio') 
                           <div class="form-control">
@@ -51,8 +51,6 @@
                         @elseif ($item['type']=='text')
                           <input type="text" class="form-control" v-model="params_data.{{$item['name']}}"   >
                         @endif
-                      
-                  
                 </div>
               </div>
               @endforeach

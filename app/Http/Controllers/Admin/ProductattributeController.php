@@ -32,6 +32,15 @@ class ProductattributeController extends PublicController
 		$info = object_array(DB::table('products')->whereId($id)->first());
 		$website['info']=$info;
 		$website['product_id']=$id;
+
+		/**********************************************************/
+		$cache_classproduct= Cache::store('file')->get('classproduct');
+		$topinfo = object_array(DB::table('products')->whereId($id)->first());
+		$bclassid=$cache_classproduct[$topinfo['classid']]['topid']==0?$cache_classproduct[$topinfo['classid']]['id']:$cache_classproduct[$topinfo['classid']]['topid'];
+		$attributegroup_list=object_array(DB::table('attributegroups')->where('groupitems', 'like', '%-'.$bclassid.'-%')->orderby('orderid','asc')->get());
+		$website['attributegroup_list']=$attributegroup_list;
+		/**********************************************************/
+		
 		return view('admin/productattribute/index')->with('website',$website);
 	}
     /******************************************
@@ -121,6 +130,34 @@ class ProductattributeController extends PublicController
 		}
 		if($list)
 		{
+
+			foreach($list as $key=>$val)
+			{
+				$subcondition['productattribute_id']=$val['id'];
+				$subcondition['product_id']=$val['product_id'];
+				$sublist=object_array(DB::table('productattributegroupvalues')->where($subcondition)->get());
+				if($sublist)
+				{
+					foreach($sublist as $subkey=>$subval)
+					{	
+						$groupcondition['name']=$subval['keyname'];
+						$grouptype=object_array(DB::table('attributegroups')->where($groupcondition)->first());
+						if($grouptype['type']=="radio")
+						{
+							$valuecondition['id']=str_replace("-",'',$subval['keyval']);
+							$valuename=object_array(DB::table('attributevalues')->where($valuecondition)->first());
+							$keydisplay_name=$valuename['name'];
+						}
+						else if($grouptype['type']=="text")
+						{
+							$keydisplay_name=$subval['keyval'];
+						}
+						
+						$list[$key][$subval['keyname']]=$keydisplay_name;
+					}
+				}
+			}
+
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_get_success');
 			$msg_array['is_reload']=0;

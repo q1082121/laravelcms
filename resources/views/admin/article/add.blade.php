@@ -245,12 +245,14 @@ new Vue({
           var msg="{{trans('admin.message_outtime')}}";
           layermsg_error(msg);
         })
+        /*
         .catch(function(response) {
           //异常抛出
           layer.close(loadi);
           var msg="{{trans('admin.message_error')}}";
           layermsg_error(msg);
         })
+        */
       },
       //点击数据验证
       check_action:function(posturl)

@@ -10,10 +10,10 @@ return [
     | 以下语言包，可以针对不通同语言版本的网站，提供便捷的提示信息展示！
     |
     */
-    'website_name'                                 =>   'LaravelCMS',
-    'website_sname'                                =>   'LCMS',
+    'website_name'                                 =>   'LaravelPCMS',
+    'website_sname'                                =>   'LPCMS',
     'website_version_name'                         =>   '版本',
-    'website_version'                              =>   '1.5.0',
+    'website_version'                              =>   '1.6.0',
     'website_version_tip'                          =>   '版权所有',
     'website_type'                                 =>   '内容管理系统',
     'website_center_tip'                           =>   '中心界面',

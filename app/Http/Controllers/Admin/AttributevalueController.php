@@ -71,13 +71,13 @@ class AttributevalueController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Attributegroup::find($attributegroup_id)->hasManyAttributevalues()->where($search_field, 'like', '%'.$keyword.'%')->paginate($this->pagesize);
+			$list=Attributegroup::find($attributegroup_id)->hasManyAttributevalues()->where($search_field, 'like', '%'.$keyword.'%')->orderBy('orderid','asc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field,'attributegroup_id'=>$attributegroup_id])->links();
 		}
 		else
 		{
-			$list=Attributegroup::find($attributegroup_id)->hasManyAttributevalues()->paginate($this->pagesize);
+			$list=Attributegroup::find($attributegroup_id)->hasManyAttributevalues()->orderBy('orderid','asc')->paginate($this->pagesize);
 			$list->appends(['attributegroup_id'=>$attributegroup_id])->links();
 		}
 		if($list)

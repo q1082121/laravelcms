@@ -166,7 +166,48 @@ class ProductController extends PublicController
 							$info['selleds']=DB::table('productattributes')->where($subcondition)->sum('selleds');
 							$info['total_amount']=$info['amount'] - $info['selleds'];
 							$info['sublist']=$sublist=Product::find($info['id'])->hasManyProductattributes()->orderby('orderid','asc')->get()->toArray();
+							
+							/*
+							$cache_classproduct= Cache::store('file')->get('classproduct');
+							$topinfo = object_array(DB::table('products')->whereId($info['id'])->first());
+							$bclassid=$cache_classproduct[$topinfo['classid']]['topid']==0?$cache_classproduct[$topinfo['classid']]['id']:$cache_classproduct[$topinfo['classid']]['topid'];
+							$attributegroup_list=object_array(DB::table('attributegroups')->where('groupitems', 'like', '%-'.$bclassid.'-%')->orderby('orderid','asc')->get());
+							$info['attributegroup_list']=$attributegroup_list;
+							*/
 
+							if($sublist)
+							{
+								foreach($sublist as $key=>$val)
+								{
+									$subpavcondition['product_id']=$info['id'];
+									$subpavcondition['productattribute_id']=$val['id'];
+									$info['sublist'][$key]['subpavlist']=$subpavlist=object_array(DB::table('productattributegroupvalues')->where($subpavcondition)->get());
+									if($subpavlist)
+									{
+										foreach($subpavlist as $subkey=>$subval)
+										{	
+											$groupcondition['name']=$subval['keyname'];
+											$grouptype=object_array(DB::table('attributegroups')->where($groupcondition)->first());
+											if($grouptype['type']=="radio")
+											{
+												$valuecondition['id']=str_replace("-",'',$subval['keyval']);
+												$valuename=object_array(DB::table('attributevalues')->where($valuecondition)->first());
+												$keydisplay_name=$valuename['name'];
+												$keyval=$valuename['val'];
+											}
+											else if($grouptype['type']=="text")
+											{
+												$keydisplay_name=$subval['keyval'];
+												$keyval="";
+											}
+											$info['sublist'][$key]['subpavlist'][$subkey]['keyname']=$keydisplay_name;
+											$info['sublist'][$key]['subpavlist'][$subkey]['keyval']=$keyval;
+										}
+									}
+									
+								}
+							}
+							
 							$msg_array['status']='1';
 							$msg_array['info']=trans('api.message_get_success');
 							$msg_array['curl']='';

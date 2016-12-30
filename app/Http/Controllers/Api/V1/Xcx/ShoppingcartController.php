@@ -163,6 +163,33 @@ class ShoppingcartController extends PublicController
 								$list[$key]['buttonplain']=true;
 								$list[$key]['ischoose']=false;
 								$list[$key]['isedit']=false;
+
+								$subpavcondition['product_id']=$info['product_id'];
+								$subpavcondition['productattribute_id']=$val['item_id'];
+								$list[$key]['subpavlist']=$subpavlist=object_array(DB::table('productattributegroupvalues')->where($subpavcondition)->get());
+								if($subpavlist)
+								{
+									foreach($subpavlist as $subkey=>$subval)
+									{	
+										$groupcondition['name']=$subval['keyname'];
+										$grouptype=object_array(DB::table('attributegroups')->where($groupcondition)->first());
+										if($grouptype['type']=="radio")
+										{
+											$valuecondition['id']=str_replace("-",'',$subval['keyval']);
+											$valuename=object_array(DB::table('attributevalues')->where($valuecondition)->first());
+											$keydisplay_name=$valuename['name'];
+											$keyval=$valuename['val'];
+										}
+										else if($grouptype['type']=="text")
+										{
+											$keydisplay_name=$subval['keyval'];
+											$keyval="";
+										}
+										$list[$key]['subpavlist'][$subkey]['keyname']=$keydisplay_name;
+										$list[$key]['subpavlist'][$subkey]['keyval']=$keyval;
+									}
+								}
+
 							}
 							$msg_array['status']='1';
 							$msg_array['info']=trans('api.message_get_success');

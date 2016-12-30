@@ -76,13 +76,13 @@ class AttributegroupController extends PublicController
 		$keyword=$request->get('keyword');
 		if($keyword)
 		{
-			$list=Attributegroup::where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
+			$list=Attributegroup::where($search_field, 'like', '%'.$keyword.'%')->orderBy('orderid','asc')->paginate($this->pagesize);
 			//分页传参数
 			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
 		}
 		else
 		{
-			$list=Attributegroup::orderBy('updated_at','desc')->paginate($this->pagesize);
+			$list=Attributegroup::orderBy('orderid','asc')->paginate($this->pagesize);
 		}
 		if($list)
 		{

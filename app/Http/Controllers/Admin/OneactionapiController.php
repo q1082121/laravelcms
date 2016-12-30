@@ -33,6 +33,7 @@ use App\Http\Model\Wechatuser;
 use App\Http\Model\Xcxmp;
 use App\Http\Model\Attributegroup;
 use App\Http\Model\Attributevalue;
+use App\Http\Model\Expresstemplate;
 
 class OneactionapiController extends PublicController
 {
@@ -768,7 +769,57 @@ class OneactionapiController extends PublicController
 									break;
 							}
 			break;
-			
+			case 'Expresstemplate':
+							switch ($fields) 
+							{
+								//扩展接口方法
+								case 'isdefault':
+											$params = Expresstemplate::find($request->get('id'));
+											if($params->isdefault==1)
+											{
+												$params->isdefault=0;
+												if ($params->save()) 
+												{
+													$msg_array['status']='1';
+													$msg_array['info']=trans('admin.message_set_success');
+													$msg_array['is_reload']=0;
+													$msg_array['curl']='';
+													$msg_array['resource']='';
+												} 
+												else 
+												{
+													$msg_array['status']='0';
+													$msg_array['info']=trans('admin.message_set_failure');
+													$msg_array['is_reload']=0;
+													$msg_array['curl']='';
+													$msg_array['resource']="";
+												}
+											}
+											else
+											{
+												$allparams['isdefault']=0;
+												DB::table('expresstemplates')->update($allparams);
+												$params->isdefault=1;
+												if ($params->save()) 
+												{
+													$msg_array['status']='1';
+													$msg_array['info']=trans('admin.message_set_success');
+													$msg_array['is_reload']=0;
+													$msg_array['curl']='';
+													$msg_array['resource']='';
+												} 
+												else 
+												{
+													$msg_array['status']='0';
+													$msg_array['info']=trans('admin.message_set_failure');
+													$msg_array['is_reload']=0;
+													$msg_array['curl']='';
+													$msg_array['resource']="";
+												}
+											}
+									break;
+							}
+			break;
 			
 		}
 

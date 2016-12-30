@@ -1,0 +1,194 @@
+<?php
+/******************************************
+****AuThor:rubbish.boy@163.com
+****Title :运费模板
+*******************************************/
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Http\Model\Expresstemplate;
+use DB;
+use URL;
+use Cache;
+
+class ExpresstemplateController extends PublicController
+{
+    //
+    /******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :列表
+	*******************************************/
+	public function index()  
+	{
+		$website=$this->website;
+		$website['cursitename']=trans('admin.website_navigation_expresstemplate');
+		$website['way']='name';
+		$wayoption[]=array('text'=>trans('admin.fieldname_item_name'),'value'=>'name');
+		$website['wayoption']=json_encode($wayoption);
+
+		return view('admin/expresstemplate/index')->with('website',$website);
+	}
+    /******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :添加
+	*******************************************/
+	public function add()
+	{
+		$website=$this->website;
+		$website['cursitename']=trans('admin.website_navigation_expresstemplate');
+		$website['id']=0;
+		return view('admin/expresstemplate/add')->with('website',$website);
+	}
+    /******************************************
+	****AuThor : rubbish.boy@163.com
+	****Title  : 编辑信息
+	*******************************************/
+	public function edit($id)  
+	{
+		$website=$this->website;
+		$website['cursitename']=trans('admin.website_navigation_expresstemplate');
+		$website['id']=$id;
+		return view('admin/expresstemplate/add')->with('website',$website);
+	}
+    /******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :列表接口
+	*******************************************/
+	public function api_list(Request $request)  
+	{
+		$search_field=$request->get('way')?$request->get('way'):'name';
+		$keyword=$request->get('keyword');
+		if($keyword)
+		{
+			$list=Expresstemplate::where($search_field, 'like', '%'.$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
+			//分页传参数
+			$list->appends(['keyword' => $keyword,'way' =>$search_field])->links();
+		}
+		else
+		{
+			$list=Expresstemplate::orderBy('updated_at','desc')->paginate($this->pagesize);
+		}
+		if($list)
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.message_get_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']=$list;
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
+		}
+		else
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.message_get_empty');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']="";
+			$msg_array['way']=$search_field;
+			$msg_array['keyword']=$keyword;
+		}
+        return response()->json($msg_array);
+	}
+    /******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :添加接口
+	*******************************************/
+	public function api_add(Request $request)  
+	{
+
+		$params = new Expresstemplate;
+		$params->name 			= $request->get('name');
+		//$params->isdefault 		= $request->get('isdefault');
+		$params->ispostage 		= $request->get('ispostage');
+		$params->price_postage 	= $request->get('price_postage');
+		$params->isexpress 		= $request->get('isexpress');
+		$params->price_express	= $request->get('price_express');
+		$params->isems			= $request->get('isems');
+		$params->price_ems		= $request->get('price_ems');
+		$params->user_id		= $this->user['id'];
+
+		if ($params->save()) 
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.message_add_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']=route('get.admin.expresstemplate');
+			$msg_array['resource']='';
+		} 
+		else 
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.message_add_failure');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']="";
+		}	
+
+        return response()->json($msg_array);
+	}
+    /******************************************
+	****AuThor:rubbish.boy@163.com
+	****Title :详情接口
+	*******************************************/
+	public function api_info(Request $request)  
+	{
+
+		$condition['id']=$request->get('id');
+		$info=object_array(DB::table('expresstemplates')->where($condition)->first());
+		if($info)
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.message_get_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']=$info;
+		}
+		else
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.message_get_empty');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']="";
+		}
+        return response()->json($msg_array);
+	}
+    /******************************************
+	****@AuThor : rubbish.boy@163.com
+	****@Title  : 更新数据接口
+	****@return : Response
+	*******************************************/
+	public function api_edit(Request $request)
+	{
+
+		$params = Expresstemplate::find($request->get('id'));
+		$params->name 			= $request->get('name');
+		//$params->isdefault 		= $request->get('isdefault');
+		$params->ispostage 		= $request->get('ispostage');
+		$params->price_postage 	= $request->get('price_postage');
+		$params->isexpress 		= $request->get('isexpress');
+		$params->price_express	= $request->get('price_express');
+		$params->isems			= $request->get('isems');
+		$params->price_ems		= $request->get('price_ems');
+		if ($params->save()) 
+		{
+			$msg_array['status']='1';
+			$msg_array['info']=trans('admin.message_save_success');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']=route('get.admin.expresstemplate');
+			$msg_array['resource']='';
+		} 
+		else 
+		{
+			$msg_array['status']='0';
+			$msg_array['info']=trans('admin.message_save_failure');
+			$msg_array['is_reload']=0;
+			$msg_array['curl']='';
+			$msg_array['resource']="";
+		}
+		return response()->json($msg_array);
+	}
+}

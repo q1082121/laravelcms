@@ -38,6 +38,7 @@
       <li><a href="{{ route('get.admin.classifyproduct') }}"><i class="fa fa-reorder"></i> {{trans('admin.website_navigation_classifyproduct')}}</a></li>
       <li><a href="{{ route('get.admin.attributegroup') }}"><i class="fa fa-puzzle-piece"></i> {{trans('admin.website_navigation_attributegroup')}}</a></li>
       <li><a href="{{ route('get.admin.product') }}"><i class="fa fa-cube"></i> {{trans('admin.website_navigation_product')}}</a></li>
+      <li><a href="{{ route('get.admin.expresstemplate') }}"><i class="fa fa-truck"></i> {{trans('admin.website_navigation_expresstemplate')}}</a></li>
     </ul>
   </li>
   <li>

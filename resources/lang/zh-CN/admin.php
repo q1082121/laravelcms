@@ -69,6 +69,7 @@ return [
     'website_navigation_attributevalue'            =>   '属性值管理',
     'website_navigation_productattribute'          =>   '价格属性管理',
     'website_navigation_product'                   =>   '产品内容',
+    'website_navigation_expresstemplate'           =>   '运费模板',
     'website_navigation_advertising'               =>   '广告图片',
     'website_navigation_link_management'           =>   '链接管理',
     'website_navigation_link'                      =>   '友情链接',
@@ -129,6 +130,9 @@ return [
     'website_action_add_letter'                    =>   '撰写新信件',
     'website_action_subval_items'                  =>   '属性值管理',
     'website_action_price_attribute'               =>   '价格属性管理',
+    'website_action_set_default'                   =>   '设置默认开关',
+    'website_action_price_express'                 =>   '价格模板',
+
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称 消息提示
@@ -377,6 +381,13 @@ return [
     'fieldname_item_displaytype'                    =>   '显示类型',
     'fieldname_item_displaytype1'                   =>   '关联条件',   
     'fieldname_item_displaytype2'                   =>   '独立条件',
+    'fieldname_item_isdefault'                      =>   '是否默认',
+    'fieldname_item_ispostage'                      =>   '是否平邮',
+    'fieldname_item_isexpress'                      =>   '是否快递',
+    'fieldname_item_isems'                          =>   '是否EMS',
+    'fieldname_item_price_postage'                  =>   '默认平邮费用',
+    'fieldname_item_price_express'                  =>   '默认快递费用',
+    'fieldname_item_price_ems'                      =>   '默认EMS费用',
     /*
     |--------------------------------------------------------------------------
     | 默认消息 - 常用项名称-操作提示

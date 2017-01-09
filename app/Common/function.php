@@ -373,12 +373,12 @@ function action_cache($user_id,$cache_prefix,$way="get")
 															}
 															else
 															{
-																$info= $modelname->find($user_id)->hasOneUserinfo;
+																$info= $modelname->find($user_id)->hasOneUserinfo->toArray();
 																Illuminate\Support\Facades\Cache::store('file')->put($cache_name, $info, $minutes);
 															}
 												break;
 												case 'update':
-															$info= $modelname->find($user_id)->hasOneUserinfo;
+															$info= $modelname->find($user_id)->hasOneUserinfo->toArray();
 															Illuminate\Support\Facades\Cache::store('file')->put($cache_name, $info, $minutes);
 												break;
 											}
@@ -389,7 +389,6 @@ function action_cache($user_id,$cache_prefix,$way="get")
 											switch($way)
 											{
 												case 'get':
-															
 															//Redis 版缓存
 															if ( Illuminate\Support\Facades\Redis::get($cache_name)) 
 															{
@@ -397,12 +396,12 @@ function action_cache($user_id,$cache_prefix,$way="get")
 															}
 															else
 															{
-																$info= $modelname->find($user_id)->hasOneUserinfo;
+																$info= $modelname->find($user_id)->hasOneUserinfo->toArray();
 																Illuminate\Support\Facades\Redis::set($cache_name,json_encode($info));
 															}
 												break;
 												case 'update':
-															$info= $modelname->find($user_id)->hasOneUserinfo;
+															$info= $modelname->find($user_id)->hasOneUserinfo->toArray();
 															Illuminate\Support\Facades\Redis::set($cache_name,json_encode($info));
 												break;
 											}

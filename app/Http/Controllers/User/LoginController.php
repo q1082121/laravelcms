@@ -155,12 +155,16 @@ class LoginController extends Controller
 
             if($rule == 1)
             {
+
                 $user =Auth::guard($guard)->user();
                 $roleids=object_array(DB::table('role_user')->where('user_id',$user->id)->pluck('role_id'));
                 if(@$roleids)
                 {
                     $roleinfo=object_array(DB::table('roles')->whereIn('id',@$roleids)->orderBy('type', 'asc')->orderBy('level', 'desc')->first());
                 }
+
+                action_cache($user->id,'userinfo','update');
+
                 /*******************
                  +记录日志 【      
                 ********************/

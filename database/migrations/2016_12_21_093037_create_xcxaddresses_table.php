@@ -23,7 +23,7 @@ class CreateXcxaddressesTable extends Migration
 			$table->string('area_cname',30)->nullable();//市级名称
 			$table->integer('area_xid')->default(0);	//县区
 			$table->string('area_xname',30)->nullable();//县区名称
-            $table->string('name',100)->nullable();		//详情地址
+            $table->string('address',100)->nullable();	//详情地址
             $table->tinyInteger('isdefault')->default(0);//默认
 			$table->tinyInteger('status')->default(0);	//状态
 			$table->integer('xcxuser_id');					

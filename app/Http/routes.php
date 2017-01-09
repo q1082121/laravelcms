@@ -223,6 +223,10 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::get('expresstemplate', ['middleware' => ['ability:admin,model_expresstemplate'], 'uses' => 'ExpresstemplateController@index'])->name('get.admin.expresstemplate');
 	Route::get('expresstemplate/add', ['middleware' => ['ability:admin,add'], 'uses' => 'ExpresstemplateController@add'])->name('get.admin.expresstemplate.add');
 	Route::get('expresstemplate/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ExpresstemplateController@edit'])->name('get.admin.expresstemplate.edit');	
+	//运费管理
+	Route::get('expressvalue/{id?}', ['middleware' => ['ability:admin,expressvalue'], 'uses' => 'ExpressvalueController@index'])->name('get.admin.expressvalue');
+	Route::get('expressvalue/add/{id?}', ['middleware' => ['ability:admin,add'], 'uses' => 'ExpressvalueController@add'])->name('get.admin.expressvalue.add');
+	Route::get('expressvalue/edit/{id?}', ['middleware' => ['ability:admin,edit'], 'uses' => 'ExpressvalueController@edit'])->name('get.admin.expressvalue.edit');
 	//广告图片		
 	Route::get('picture', ['middleware' => ['ability:admin,model_picture'], 'uses' => 'PictureController@index'])->name('get.admin.picture');
 	Route::get('picture/add', ['middleware' => ['ability:admin,add'], 'uses' => 'PictureController@add'])->name('get.admin.picture.add');
@@ -373,6 +377,11 @@ Route::group(['middleware' => 'auth_admin', 'namespace' => 'Admin', 'prefix' => 
 	Route::post('expresstemplate/api_add', 'ExpresstemplateController@api_add')->name('post.admin.expresstemplate.api_add');
 	Route::post('expresstemplate/api_info', 'ExpresstemplateController@api_info')->name('post.admin.expresstemplate.api_info');
 	Route::post('expresstemplate/api_edit', 'ExpresstemplateController@api_edit')->name('post.admin.expresstemplate.api_edit');
+	//运费管理
+	Route::post('expressvalue/api_list', 'ExpressvalueController@api_list')->name('post.admin.expressvalue.api_list');
+	Route::post('expressvalue/api_add', 'ExpressvalueController@api_add')->name('post.admin.expressvalue.api_add');
+	Route::post('expressvalue/api_info', 'ExpressvalueController@api_info')->name('post.admin.expressvalue.api_info');
+	Route::post('expressvalue/api_edit', 'ExpressvalueController@api_edit')->name('post.admin.expressvalue.api_edit');
 	//广告图片
 	Route::post('picture/api_list', 'PictureController@api_list')->name('post.admin.picture.api_list');
 	Route::post('picture/api_add', 'PictureController@api_add')->name('post.admin.picture.api_add');

@@ -34,6 +34,7 @@ use App\Http\Model\Xcxmp;
 use App\Http\Model\Attributegroup;
 use App\Http\Model\Attributevalue;
 use App\Http\Model\Expresstemplate;
+use App\Http\Model\Expressvalue;
 
 class OneactionapiController extends PublicController
 {
@@ -820,6 +821,34 @@ class OneactionapiController extends PublicController
 									break;
 							}
 			break;
+			case 'Expressvalue':
+							switch ($fields) 
+							{
+								//扩展接口方法
+								case 'status':
+											$params = Expressvalue::find($request->get('id'));
+											$params->status=($params->status==1?0:1);
+											if ($params->save()) 
+											{
+												$msg_array['status']='1';
+												$msg_array['info']=trans('admin.message_set_success');
+												$msg_array['is_reload']=0;
+												$msg_array['curl']='';
+												$msg_array['resource']='';
+											} 
+											else 
+											{
+												$msg_array['status']='0';
+												$msg_array['info']=trans('admin.message_set_failure');
+												$msg_array['is_reload']=0;
+												$msg_array['curl']='';
+												$msg_array['resource']="";
+											}
+
+									break;
+							}
+			break;
+			
 			
 		}
 

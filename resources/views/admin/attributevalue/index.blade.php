@@ -110,7 +110,6 @@ new Vue({
              apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
              apiurl_cache         :'{{ route("post.admin.cacheapi.api_cache") }}',
              linkurl_edit         :'{{ route("get.admin.attributevalue.edit") }}/',
-             linkurl_back         :'{{ route("get.admin.wechat.manage") }}/{{$website["attributegroup_id"]}}',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页

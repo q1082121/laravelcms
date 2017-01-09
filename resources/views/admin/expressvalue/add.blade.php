@@ -14,95 +14,26 @@
           <div class="box-body">
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_name')}} *</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_name')}}</span>
                 <input type="text" class="form-control" v-model="params_data.name"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_price')}} *</span>
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_price')}}</span>
                 <input type="text" class="form-control" v-model="params_data.price"   >
               </div>
             </div>
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_amount')}} *</span>
-                <input type="text" class="form-control" v-model="params_data.amount"   >
-              </div>
-            </div>
-            <style>
-            .color_boxs{display:inline-block;width:13px;height:13px;border:1px solid #ddd;margin-left:3px;}
-            </style>
-            @if ($website['attributegroup_list'])
-              @foreach ($website['attributegroup_list'] as $item)
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon minwidth"> {{$item['display_name']}} @if ($item['display_type']==1)<i class="fa fa-magnet"></i>@else <i class="fa fa-thumb-tack"></i> @endif</span>
-                      <!-- --> 
-                        @if ($item['type']=='radio') 
-                          <div class="form-control" style="min-height:120px;">
-                            @foreach ($item['sublist'] as $subitem)
-                            <label>
-                              <input type="radio" v-model="params_data.{{$item['name']}}"   value="-{{$subitem['id']}}-" >@if ($item['name']=='arr_color')<div class="color_boxs" style="background:{{$subitem['val']}}"></div>@endif {{$subitem['name']}}
-                            </label>
-                            @endforeach
-                          </div>
-                        @elseif ($item['type']=='text')
-                          <input type="text" class="form-control" v-model="params_data.{{$item['name']}}"   >
-                        @endif
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_area_items')}}</span>
+                <div class="form-control" style="min-height:120px;">
+                  @foreach ($website['arealist'] as $item)
+                    <label>
+                      <input type="checkbox" @if ($item['ischeck']==1) disabled="true" @endif v-model="params_data.area_items" value="-{{$item['id']}}-" > {{$item['alias']}}
+                    </label>
+                  @endforeach
                 </div>
-              </div>
-              @endforeach
-            @endif
-            <div class="form-group">
-              <label >{{trans('admin.fieldname_item_attachment')}}</label><br>
-              <!--
-              <input type="file" @change="onFileChange" id="fileuploads" class="file"  accept="image/*">
-              
-              <p class="help-block">200*200</p>
-              <img  v-if="image" :src="image" width="200" height="200" />
-              -->
-              <!-- file style -->
-              <link rel="stylesheet" href="{{asset('/module/jQueryIpputCss')}}/css/style.css">
-              <div class="uploader white" v-if="params_data.isattach == 0">
-              <input type="text" class="filename" readonly/>
-              <input type="button"  name="file" class="button" value="选择图片"/>
-              <input type="file" size="30"  @change="onFileChange" />
-              <input type="hidden" v-model="params_data.attachment" >
-              </div>
-              @ability('admin', 'delete')
-              <button v-else type="button" @click="del_image_action()"  class="btn btn-block btn-danger btn-lg">删除图片</button>
-              @endability
-              <p class="help-block">缩略图200*200</p>
-              <img  v-if="image" :src="image" width="200" height="200" />
-              <script>
-              document.body.onbeforeunload = function (event)
-              {
-                  var c = event || window.event;
-                  if (/webkit/.test(navigator.userAgent.toLowerCase())) {
-                      //return "离开页面将导致数据丢失！";
-                     $('.filename').val("尚未选择图片");
-                  }
-                  else
-                  {
-                      //c.returnValue = "离开页面将导致数据丢失！";
-                      $('.filename').val("尚未选择图片");
-                  }
-              }
-              $(function()
-              {
-                  $("input[type=file]").change(function(){$(this).parents(".uploader").find(".filename").val($(this).val());});
-                  $("input[type=file]").each(function(){
-                  if($(this).val()==""){$(this).parents(".uploader").find(".filename").val("尚未选择图片");}
-                  });
-                  
-              });
-              </script> 
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_orderid')}}</span>
-                <input type="text" class="form-control" v-model="params_data.orderid"   >
               </div>
             </div>
             <div class="form-group">
@@ -131,35 +62,18 @@ new Vue({
     el: '#app-content',
     data: {
              syseditor:             '{{$website["root"]["syseditor"]}}', 
-             apiurl_add:            '{{ route("post.admin.productattribute.api_add") }}', 
-             apiurl_info:           '{{ route("post.admin.productattribute.api_info") }}', 
-             apiurl_edit:           '{{ route("post.admin.productattribute.api_edit") }}',
+             apiurl_add:            '{{ route("post.admin.expressvalue.api_add") }}', 
+             apiurl_info:           '{{ route("post.admin.expressvalue.api_info") }}', 
+             apiurl_edit:           '{{ route("post.admin.expressvalue.api_edit") }}',
              apiurl_del_image:      '{{ route("post.admin.deleteapi.api_del_image") }}',
              params_data:
              {
-                product_id          :'{{$website["product_id"]}}',
+                expresstemplate_id  :'{{$website["expresstemplate_id"]}}',
                 name                :'',
                 price               :0,
-                amount              :0,
-                attributeitems      :"",
-                attachment          :'',
-                isattach            :0,
-                orderid             :0,
+                area_items          :[],
                 status              :1,
                 id                  :'{{$website["id"]}}',
-                @if ($website['attributegroup_list'])
-                  @foreach ($website['attributegroup_list'] as $item)
-                    @if ($item['type']=='checkbox') 
-                       {{$item['name']}}:[],
-                    @elseif ($item['type']=='radio')
-                       {{$item['name']}}:'',  
-                    @elseif ($item['type']=='text')
-                       {{$item['name']}}:'',        
-                    @endif
-                  @endforeach
-                @endif
-
-
              },
              image                  :'',
              cur_title              :'',
@@ -185,25 +99,6 @@ new Vue({
     }, 
     methods: 
     {
-      //选择图片
-      onFileChange:function(e) {
-        var files = e.target.files || e.dataTransfer.files;
-        if (!files.length)
-          return;
-        this.createImage(files[0]);
-      },
-      //创建图片
-      createImage:function(file) 
-      {
-        var image = new Image();
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = (e) => {
-          this.params_data.attachment=e.target.result;
-          this.image=e.target.result;
-          //console.log(this.params_data.attachment);
-        };
-      },
       //获取数据详情
       get_info_action:function()
       {
@@ -238,16 +133,6 @@ new Vue({
           if (this.params_data.name=='')
           {
               var msg="{{trans('admin.option_failure_isname')}}";
-              layermsg_error(msg);
-          }
-          else if (this.params_data.price==0)
-          {
-              var msg="{{trans('admin.option_failure_isprice')}}";
-              layermsg_error(msg);
-          }
-          else if (this.params_data.amount==0)
-          {
-              var msg="{{trans('admin.option_failure_isamount')}}";
               layermsg_error(msg);
           }
           else
@@ -327,11 +212,6 @@ new Vue({
         if(statusinfo.status==1)
         {
             this.params_data=statusinfo.resource;
-            if(this.params_data.attachment)
-            {
-              this.image="/uploads/"+this.del_data.modelname+"/thumb/"+this.params_data.attachment;
-              this.params_data.attachment="";
-            }
         }
         else
         {

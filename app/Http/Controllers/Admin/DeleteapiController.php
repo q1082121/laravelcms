@@ -29,6 +29,7 @@ use App\Http\Model\Xcxmp;
 use App\Http\Model\Attributegroup;
 use App\Http\Model\Attributevalue;
 use App\Http\Model\Expresstemplate;
+use App\Http\Model\Expressvalue;
 
 class DeleteapiController extends PublicController
 {
@@ -634,7 +635,66 @@ class DeleteapiController extends PublicController
 							}
 			break;
 			case 'Expresstemplate':
-							$info=$this->delete_action('expresstemplates',$request->get('id'));
+							$rule=1;	
+							$subcondition['expresstemplate_id']=$request->get('id');
+							$subcount=DB::table('expressvalues')->where($subcondition)->count();
+							if($subcount>0)
+							{
+								DB::beginTransaction();
+								try
+								{ 
+									$subinfo=$this->delete_action('expressvalues',$request->get('id'),'expresstemplate_id');
+									if($subinfo)
+									{
+										$rule=1;
+										DB::commit();
+									}
+									else
+									{
+										$rule=2;
+										DB::rollBack();
+									}
+								}
+								catch (\Exception $e) 
+								{ 
+									//接收异常处理并回滚
+									$rule=2;
+									DB::rollBack(); 
+								}
+							}
+							
+							if($rule==1)
+							{
+								$info=$this->delete_action('expresstemplates',$request->get('id'));
+								if($info)
+								{
+									$msg_array['status']='1';
+									$msg_array['info']=trans('admin.message_del_success');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';
+								}
+								else
+								{
+									
+									$msg_array['status']='0';
+									$msg_array['info']=trans('admin.message_del_failure');
+									$msg_array['is_reload']=0;
+									$msg_array['curl']='';
+									$msg_array['resource']='';	
+								}
+							}
+							else
+							{
+								$msg_array['status']='0';
+								$msg_array['info']=trans('admin.message_del_failure');
+								$msg_array['is_reload']=0;
+								$msg_array['curl']='';
+								$msg_array['resource']='';
+							}
+			break;
+			case 'Expressvalue':
+							$info=$this->delete_action('expressvalues',$request->get('id'));
 							if($info)
 							{
 								$msg_array['status']='1';
@@ -653,6 +713,7 @@ class DeleteapiController extends PublicController
 								$msg_array['resource']='';
 							}
 			break;
+			
 			
 		}
 

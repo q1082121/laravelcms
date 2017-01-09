@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin_iframe')
 @section('content')
 <!-- Main content -->
 <section class="content">
@@ -8,11 +8,14 @@
       <div class="box" id="app-content">
         <div class="box-header">
           <h3 class="box-title">
-            <a href="{{ route('get.admin.expresstemplate.add') }}" >
-            <button type="button" class="btn btn-success pull-left ">
-              <i class="fa fa-plus-square"></i> {{trans('admin.website_action_add')}}
-            </button>
+            <a href="{{route('get.admin.expressvalue.add')}}/{{$website['expresstemplate_id']}}" >
+              <button type="button" class="btn btn-success pull-left ">
+                <i class="fa fa-plus-square"></i> {{trans('admin.website_action_add')}} 
+              </button>
             </a>
+            <button type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
+              【{{trans('admin.website_navigation_expresstemplate')}}： {{$website['info']['name']}}】
+            </button>
           </h3>
 
           @ability('admin', 'search')
@@ -21,8 +24,7 @@
             <option v-for="item in pageparams.wayoption" value="@{{ item.value }}">@{{ item.text }}</option>
           </select>
           </div>
-
-          
+    
           <div class="box-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
               <input type="text" autocomplete="off" class="form-control pull-right" placeholder="Search" v-model="pageparams.keyword" value="@{{ pageparams.keyword }}">
@@ -41,13 +43,9 @@
             <tr>
               <th>{{trans('admin.fieldname_item_id')}}</th>
               <th>{{trans('admin.fieldname_item_name')}}</th>
-              <th>{{trans('admin.fieldname_item_isdefault')}}</th>
-              <th>{{trans('admin.fieldname_item_ispostage')}}</th>
-              <th>{{trans('admin.fieldname_item_price_postage')}}</th>
-              <th>{{trans('admin.fieldname_item_isexpress')}}</th>
-              <th>{{trans('admin.fieldname_item_price_express')}}</th>
-              <th>{{trans('admin.fieldname_item_isems')}}</th>
-              <th>{{trans('admin.fieldname_item_price_ems')}}</th>
+              <th>{{trans('admin.fieldname_item_price')}}</th>
+              <th>{{trans('admin.fieldname_item_area_items')}}</th>
+              <th>{{trans('admin.fieldname_item_status')}}</th>
               <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
@@ -55,22 +53,17 @@
               <tr v-for="item in datalist">
                 <td>@{{ item.id }}</td>
                 <td>@{{ item.name }}</td>
-                <td><i v-if="item.isdefault == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.isdefault == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
-                <td><i v-if="item.ispostage == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.ispostage == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
-                <td>@{{ item.price_postage }}</td>
-                <td><i v-if="item.isexpress == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.isexpress == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
-                <td>@{{ item.price_express }}</td>
-                <td><i v-if="item.isems == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.isems == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
-                <td>@{{ item.price_ems }}</td>
+                <td>@{{ item.price }}</td>
+                <td>@{{ item.arealist }}</td>
+                <td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>
                   <div class="tools">
                     @ability('admin', 'edit')
                     <button type="button" @click="edit_action(item.id)" class="btn btn-primary" > <i class="fa fa-edit"></i> {{trans('admin.website_action_edit')}}</button>
                     @endability
-                    <button type="button" @click="subval_action(item.id)" class="btn btn-warning" > <i class="fa fa-tags"></i> {{trans('admin.website_action_subexpress_items')}}</button>
-                    @ability('admin', 'set_default')
-                    <button v-if="item.isdefault == 1"  type="button" @click="get_one_action(item.id,'isdefault')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_set_default')}}</button>
-                    <button v-else  type="button" @click="get_one_action(item.id,'isdefault')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_set_default')}}</button>
+                    @ability('admin', 'set_status')
+                    <button v-if="item.status == 1"  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-primary" > <i class="fa fa-toggle-off"></i> {{trans('admin.website_action_status')}}</button>
+                    <button v-else  type="button" @click="get_one_action(item.id,'status')"  class="btn btn-danger" > <i class="fa fa-toggle-on"></i> {{trans('admin.website_action_status')}}</button>
                     @endability
                     @ability('admin', 'delete')
                     <button type="button" @click="delete_action(item.id)" class="btn btn-danger" > <i class="fa fa-trash"></i> {{trans('admin.website_action_delete')}}</button>
@@ -107,12 +100,10 @@
 new Vue({
     el: '#app-content',
     data: {
-             apiurl_list          :'{{ route("post.admin.expresstemplate.api_list") }}',
+             apiurl_list          :'{{ route("post.admin.expressvalue.api_list") }}',
              apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
              apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
-             apiurl_cache         :'{{ route("post.admin.cacheapi.api_cache") }}',
-             linkurl_edit         :'{{ route("get.admin.expresstemplate.edit") }}/',
-             linkurl_subval       :'{{ route("get.admin.expressvalue") }}/',
+             linkurl_edit         :'{{ route("get.admin.expressvalue.edit") }}/',
              totals               : 0,
              totals_title         :"{{trans('admin.website_page_total')}}",  
              first_page           :1,//首页
@@ -124,6 +115,7 @@ new Vue({
              pageparams:           
              {
                     page           :1,
+                    expresstemplate_id      :'{{$website["expresstemplate_id"]}}',
                     way            :'{{$website["way"]}}',
                     wayoption      :eval(htmlspecialchars_decode('{{$website["wayoption"]}}')),
                     keyword        :'',
@@ -250,10 +242,9 @@ new Vue({
             {
                 window.location.href=this.linkurl_edit+data;
             },
-            subval_action:function(data)
+            back_action:function()
             {
-                var subvalurl=this.linkurl_subval+data;
-                open_iframe_box(subvalurl,1,'80%','40vw');
+                window.location.href=this.linkurl_back;
             },
              //点击删除
             delete_action:function(data)
@@ -349,33 +340,6 @@ new Vue({
                   }
               }
             },
-            //生成缓存
-            create_cache:function()
-            {
-              this.$http.post(this.apiurl_cache,this.paramsdata,{
-                before:function(request)
-                {
-                  loadi=layer.load("...");
-                },
-              })
-              .then((response) => 
-              {
-                this.return_info_action(response);
-
-              },(response) => 
-              {
-                //响应错误
-                layer.close(loadi);
-                var msg="{{trans('admin.message_outtime')}}";
-                layermsg_error(msg);
-              })
-              .catch(function(response) {
-                //异常抛出
-                layer.close(loadi);
-                var msg="{{trans('admin.message_error')}}";
-                layermsg_error(msg);
-              })
-            }
         }            
 })
 

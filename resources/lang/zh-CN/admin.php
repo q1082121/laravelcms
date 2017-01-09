@@ -70,6 +70,7 @@ return [
     'website_navigation_productattribute'          =>   '价格属性管理',
     'website_navigation_product'                   =>   '产品内容',
     'website_navigation_expresstemplate'           =>   '运费模板',
+    'website_navigation_expressvalue'              =>   '运费管理',
     'website_navigation_advertising'               =>   '广告图片',
     'website_navigation_link_management'           =>   '链接管理',
     'website_navigation_link'                      =>   '友情链接',
@@ -132,6 +133,7 @@ return [
     'website_action_price_attribute'               =>   '价格属性管理',
     'website_action_set_default'                   =>   '设置默认开关',
     'website_action_price_express'                 =>   '价格模板',
+    'website_action_subexpress_items'              =>   '运费管理',
 
     /*
     |--------------------------------------------------------------------------
@@ -308,6 +310,7 @@ return [
     'fieldname_item_area_pid'                       =>   '省份',
     'fieldname_item_area_cid'                       =>   '城市',
     'fieldname_item_area_xid'                       =>   '县区',
+    'fieldname_item_area_items'                     =>   '地区项',
     'fieldname_item_keyval'                         =>   '键值',
     'fieldname_item_val'                            =>   '属性值',
     'fieldname_item_description'                    =>   '描述',

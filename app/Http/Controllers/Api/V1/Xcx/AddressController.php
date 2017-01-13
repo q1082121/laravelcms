@@ -500,6 +500,67 @@ class AddressController extends PublicController
 						$info=Xcxaddress::where($info_condition)->first();
 						if($info)
 						{
+							$expresstemplate_condition['isdefault']=1;
+							$expresstemplate_info=object_array(DB::table('expresstemplates')->where($expresstemplate_condition)->first());
+
+							if($expresstemplate_info)
+							{
+								if($expresstemplate_info['ispostage'])
+								{
+									$info['wayname']="平邮";
+								}
+								else if($expresstemplate_info['isexpress'])
+								{
+									$info['wayname']="快递";
+								}
+								else if($expresstemplate_info['isems'])
+								{
+									$info['wayname']="EMS";
+								}
+								else
+								{
+									$info['wayname']="未设置货运方式";
+								}
+
+								$expressvalue_condition['status']=1;
+								$expressvalue_info=object_array(DB::table('expressvalues')->where($expressvalue_condition)->where('area_items','like',"%-".$info['area_pid'].'-%')->first());
+								if($expressvalue_info)
+								{
+									$info['price']=$expressvalue_info['price']."元";
+									$info['title']=$expressvalue_info['name'];
+								}
+								else
+								{
+									if($expresstemplate_info['ispostage'])
+									{
+										$info['price']=$expresstemplate_info['price_postage']."元";
+										$info['title']="默认平邮";
+									}
+									else if($expresstemplate_info['isexpress'])
+									{
+										$info['price']=$expresstemplate_info['price_express']."元";
+										$info['title']="默认快递";
+									}
+									else if($expresstemplate_info['isems'])
+									{
+										$info['price']=$expresstemplate_info['price_ems']."元";
+										$info['title']="默认EMS";
+									}
+									else
+									{
+										$info['price']="未设置运费模板";
+										$info['title']="未设置运费模板1";
+									}
+								}
+
+							}
+							else
+							{
+								$info['price']="未设置运费模板";
+								$info['wayname']="未设置货运方式";
+								$info['title']="未设置运费模板3";
+							}
+
 							$msg_array['status']='1';
 							$msg_array['info']=trans('api.message_get_success');
 							$msg_array['curl']='';

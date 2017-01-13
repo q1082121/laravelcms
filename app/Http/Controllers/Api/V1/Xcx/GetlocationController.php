@@ -61,6 +61,23 @@ class GetlocationController extends PublicController
 
 							if($expresstemplate_info)
 							{
+								if($expresstemplate_info['ispostage'])
+								{
+									$addata['wayname']="平邮";
+								}
+								else if($expresstemplate_info['isexpress'])
+								{
+									$addata['wayname']="快递";
+								}
+								else if($expresstemplate_info['isems'])
+								{
+									$addata['wayname']="EMS";
+								}
+								else
+								{
+									$addata['wayname']="未设置货运方式";
+								}
+
 								if($district_info)
 								{
 									$expressvalue_condition['status']=1;
@@ -68,29 +85,29 @@ class GetlocationController extends PublicController
 									if($expressvalue_info)
 									{
 										$addata['price']=$expressvalue_info['price'];
-										$addata['name']=$expressvalue_info['name'];
+										$addata['title']=$expressvalue_info['name'];
 									}
 									else
 									{
 										if($expresstemplate_info['ispostage'])
 										{
 											$addata['price']=$expresstemplate_info['price_postage'];
-											$addata['name']="默认平邮";
+											$addata['title']="默认平邮";
 										}
 										else if($expresstemplate_info['isexpress'])
 										{
 											$addata['price']=$expresstemplate_info['price_express'];
-											$addata['name']="默认快递";
+											$addata['title']="默认快递";
 										}
 										else if($expresstemplate_info['isems'])
 										{
 											$addata['price']=$expresstemplate_info['price_ems'];
-											$addata['name']="默认快递";
+											$addata['title']="默认EMS";
 										}
 										else
 										{
-											$addata['price']="";
-											$addata['name']="未设置运费模板1";
+											$addata['price']="未设置运费模板";
+											$addata['title']="未设置运费模板1";
 										}
 									}
 								}
@@ -101,37 +118,38 @@ class GetlocationController extends PublicController
 									if($expressvalue_info)
 									{
 										$addata['price']=$expressvalue_info['price'];
-										$addata['name']=$expressvalue_info['name'];
+										$addata['title']=$expressvalue_info['name'];
 									}
 									else
 									{
 										if($expresstemplate_info['ispostage'])
 										{
 											$addata['price']=$expresstemplate_info['price_postage'];
-											$addata['name']="默认平邮";
+											$addata['title']="默认平邮";
 										}
 										else if($expresstemplate_info['isexpress'])
 										{
 											$addata['price']=$expresstemplate_info['price_express'];
-											$addata['name']="默认快递";
+											$addata['title']="默认快递";
 										}
 										else if($expresstemplate_info['isems'])
 										{
 											$addata['price']=$expresstemplate_info['price_ems'];
-											$addata['name']="默认快递";
+											$addata['title']="默认EMS";
 										}
 										else
 										{
-											$addata['price']="";
-											$addata['name']="未设置运费模板2";
+											$addata['price']="未设置运费模板";
+											$addata['title']="未设置运费模板2";
 										}
 									}
 								}
 							}
 							else
 							{
-								$addata['price']="";
-								$addata['name']="未设置运费模板3";
+								$addata['price']="未设置运费模板";
+								$addata['wayname']="未设置货运方式";
+								$addata['title']="未设置运费模板3";
 							}
 
 

@@ -124,6 +124,7 @@ $api->version('v1', function ($api) {
 		$api->post('userinfo', ['as' => 'api.xcx.user.api_userinfo', 'uses' => 'UserController@api_userinfo']);
 		$api->post('deleteapi', ['as' => 'api.xcx.deleteapi.api_delete', 'uses' => 'DeleteapiController@api_delete']);
 		$api->post('proxy', ['as' => 'api.xcx.proxyinterface.api_back', 'uses' => 'ProxyinterfaceController@api_back']);
+		$api->post('getlocation', ['as' => 'api.xcx.getlocation.api_info', 'uses' => 'GetlocationController@api_info']);
 		$api->any('district', ['as' => 'api.xcx.district.api_area', 'uses' => 'DistrictController@api_area']);
 		//名片盒
 		$api->post('businesscard/add', ['as' => 'api.xcx.businesscard.api_add', 'uses' => 'BusinesscardController@api_add']);

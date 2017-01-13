@@ -37,121 +37,142 @@ class GetlocationController extends PublicController
 					$xcxuser=object_array(DB::table('xcxusers')->where($condition)->first());
 					if($xcxuser)
 					{
-						$formdata=$param['formdata'];
-						$mapurl="http://apis.map.qq.com/ws/geocoder/v1/?location=".$formdata['latitude'].",".$formdata['longitude']."&key=".$xcxmp['mapkey']."&coord_type=5";
-						$res=http_curl_request($mapurl);
-						$res_arr=json_decode($res,true);
-						if($res_arr['status']==0)
+						$rule=0;
+						$expresstemplate_condition['isdefault']=1;
+						$expresstemplate_info=object_array(DB::table('expresstemplates')->where($expresstemplate_condition)->first());
+
+						$xaddress_condition['xcxuser_id']=$xcxuser['id'];
+						$xaddress_condition['isdefault']=1;
+						$xaddress_info=object_array(DB::table('xcxaddresses')->where($xaddress_condition)->first());
+						if($xaddress_info)
 						{
-							$province=$res_arr['result']['ad_info']['province'];
-							$city=$res_arr['result']['ad_info']['city'];
-							$district=$res_arr['result']['ad_info']['district'];
-							$alias=mb_substr($province,0,2);
-							$addata['province']=$province;
-							$addata['city']=$city;
-							$addata['district']=$district;
-							$addata['alias']=$alias;
+							$addata['province']=$xaddress_info['area_pname'];
+							$addata['city']=$xaddress_info['area_cname'];
+							$addata['district']=$xaddress_info['area_xname'];
+							$addata['alias']=$xaddress_info['area_pname'];
+							$addata['area_pid']=$xaddress_info['area_pid'];
+							$rule=1;
+						}
+						else
+						{
+							$formdata=$param['formdata'];
+							$mapurl="http://apis.map.qq.com/ws/geocoder/v1/?location=".$formdata['latitude'].",".$formdata['longitude']."&key=".$xcxmp['mapkey']."&coord_type=5";
+							$res=http_curl_request($mapurl);
+							$res_arr=json_decode($res,true);
+							if($res_arr['status']==0)
+							{
+								$province=$res_arr['result']['ad_info']['province'];
+								$city=$res_arr['result']['ad_info']['city'];
+								$district=$res_arr['result']['ad_info']['district'];
+								$alias=mb_substr($province,0,2);
+								$addata['province']=$province;
+								$addata['city']=$city;
+								$addata['district']=$district;
+								$addata['alias']=$alias;
 
-							$district_condition['alias']=$alias;
-							$district_condition['level']=1;
-							$district_info=object_array(DB::table('districts')->where($district_condition)->first());
+								$district_condition['alias']=$alias;
+								$district_condition['level']=1;
+								$district_info=object_array(DB::table('districts')->where($district_condition)->first());
+								$addata['area_pid']=$district_info['id'];
 
-							$expresstemplate_condition['isdefault']=1;
-							$expresstemplate_info=object_array(DB::table('expresstemplates')->where($expresstemplate_condition)->first());
-
+								$rule=1;
+								
+							}
+							
+						}
+						if($rule==1)
+						{
 							if($expresstemplate_info)
-							{
-								if($expresstemplate_info['ispostage'])
 								{
-									$addata['wayname']="平邮";
-								}
-								else if($expresstemplate_info['isexpress'])
-								{
-									$addata['wayname']="快递";
-								}
-								else if($expresstemplate_info['isems'])
-								{
-									$addata['wayname']="EMS";
+									if($expresstemplate_info['ispostage'])
+									{
+										$addata['wayname']="平邮";
+									}
+									else if($expresstemplate_info['isexpress'])
+									{
+										$addata['wayname']="快递";
+									}
+									else if($expresstemplate_info['isems'])
+									{
+										$addata['wayname']="EMS";
+									}
+									else
+									{
+										$addata['wayname']="未设置货运方式";
+									}
+									if($addata['area_pid'])
+									{
+										$expressvalue_condition['status']=1;
+										$expressvalue_info=object_array(DB::table('expressvalues')->where($expressvalue_condition)->where('area_items','like',"%-".$addata['area_pid'].'-%')->first());
+										if($expressvalue_info)
+										{
+											$addata['price']=$expressvalue_info['price'];
+											$addata['title']=$expressvalue_info['name'];
+										}
+										else
+										{
+											if($expresstemplate_info['ispostage'])
+											{
+												$addata['price']=$expresstemplate_info['price_postage'];
+												$addata['title']="默认平邮";
+											}
+											else if($expresstemplate_info['isexpress'])
+											{
+												$addata['price']=$expresstemplate_info['price_express'];
+												$addata['title']="默认快递";
+											}
+											else if($expresstemplate_info['isems'])
+											{
+												$addata['price']=$expresstemplate_info['price_ems'];
+												$addata['title']="默认EMS";
+											}
+											else
+											{
+												$addata['price']="未设置运费模板";
+												$addata['title']="未设置运费模板1";
+											}
+										}
+									}
+									else
+									{
+										$expressvalue_condition['status']=1;
+										$expressvalue_info=object_array(DB::table('expressvalues')->where($expressvalue_condition)->where('area_items','like',"%-36-%")->first());
+										if($expressvalue_info)
+										{
+											$addata['price']=$expressvalue_info['price'];
+											$addata['title']=$expressvalue_info['name'];
+										}
+										else
+										{
+											if($expresstemplate_info['ispostage'])
+											{
+												$addata['price']=$expresstemplate_info['price_postage'];
+												$addata['title']="默认平邮";
+											}
+											else if($expresstemplate_info['isexpress'])
+											{
+												$addata['price']=$expresstemplate_info['price_express'];
+												$addata['title']="默认快递";
+											}
+											else if($expresstemplate_info['isems'])
+											{
+												$addata['price']=$expresstemplate_info['price_ems'];
+												$addata['title']="默认EMS";
+											}
+											else
+											{
+												$addata['price']="未设置运费模板";
+												$addata['title']="未设置运费模板2";
+											}
+										}
+									}
 								}
 								else
 								{
+									$addata['price']="未设置运费模板";
 									$addata['wayname']="未设置货运方式";
+									$addata['title']="未设置运费模板3";
 								}
-
-								if($district_info)
-								{
-									$expressvalue_condition['status']=1;
-									$expressvalue_info=object_array(DB::table('expressvalues')->where($expressvalue_condition)->where('area_items','like',"%-".$district_info['id'].'-%')->first());
-									if($expressvalue_info)
-									{
-										$addata['price']=$expressvalue_info['price'];
-										$addata['title']=$expressvalue_info['name'];
-									}
-									else
-									{
-										if($expresstemplate_info['ispostage'])
-										{
-											$addata['price']=$expresstemplate_info['price_postage'];
-											$addata['title']="默认平邮";
-										}
-										else if($expresstemplate_info['isexpress'])
-										{
-											$addata['price']=$expresstemplate_info['price_express'];
-											$addata['title']="默认快递";
-										}
-										else if($expresstemplate_info['isems'])
-										{
-											$addata['price']=$expresstemplate_info['price_ems'];
-											$addata['title']="默认EMS";
-										}
-										else
-										{
-											$addata['price']="未设置运费模板";
-											$addata['title']="未设置运费模板1";
-										}
-									}
-								}
-								else
-								{
-									$expressvalue_condition['status']=1;
-									$expressvalue_info=object_array(DB::table('expressvalues')->where($expressvalue_condition)->where('area_items','like',"%-36-%")->first());
-									if($expressvalue_info)
-									{
-										$addata['price']=$expressvalue_info['price'];
-										$addata['title']=$expressvalue_info['name'];
-									}
-									else
-									{
-										if($expresstemplate_info['ispostage'])
-										{
-											$addata['price']=$expresstemplate_info['price_postage'];
-											$addata['title']="默认平邮";
-										}
-										else if($expresstemplate_info['isexpress'])
-										{
-											$addata['price']=$expresstemplate_info['price_express'];
-											$addata['title']="默认快递";
-										}
-										else if($expresstemplate_info['isems'])
-										{
-											$addata['price']=$expresstemplate_info['price_ems'];
-											$addata['title']="默认EMS";
-										}
-										else
-										{
-											$addata['price']="未设置运费模板";
-											$addata['title']="未设置运费模板2";
-										}
-									}
-								}
-							}
-							else
-							{
-								$addata['price']="未设置运费模板";
-								$addata['wayname']="未设置货运方式";
-								$addata['title']="未设置运费模板3";
-							}
-
 
 							$msg_array['status']='1';
 							$msg_array['info']=trans('api.message_get_success');

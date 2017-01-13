@@ -29,6 +29,12 @@
                 <input type="text" class="form-control" v-model="params_data.appsecret"   >
               </div>  
             </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon minwidth">{{trans('admin.fieldname_item_mapkey')}}</span>
+                <input type="text" class="form-control" v-model="params_data.mapkey"   >
+              </div>
+            </div>
             <div class="box-header with-border">
               <h3 class="box-title">{{trans('admin.define_model_wechat_tip_pay')}}</h3>
             </div>
@@ -78,6 +84,7 @@ new Vue({
                 name                :'',
                 appid               :'',
                 appsecret           :'',
+                mapkey              :'',
                 mchid               :'',
                 paykey              :'',
                 status              :1,

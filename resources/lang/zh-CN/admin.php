@@ -357,6 +357,7 @@ return [
     'fieldname_item_appsecret'                      =>   'APPSECRET',
     'fieldname_item_encodingaeskey'                 =>   '消息加解密密钥',
     'fieldname_item_logo'                           =>   'LOGO',
+    'fieldname_item_mapkey'                         =>   '腾讯地图KEY',
     'fieldname_item_mchid'                          =>   '商户ID',
     'fieldname_item_paykey'                         =>   '支付密钥',
     'fieldname_item_openid_items'                   =>   '消息接受主体',

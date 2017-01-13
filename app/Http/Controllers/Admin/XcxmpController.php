@@ -108,6 +108,7 @@ class XcxmpController extends PublicController
 		$params->name 	            = $request->get('name');
 		$params->appid		        = $request->get('appid');
         $params->appsecret		    = $request->get('appsecret');
+		$params->mapkey		        = $request->get('mapkey');
         $params->mchid		        = $request->get('mchid');
         $params->paykey		        = $request->get('paykey');
         $params->openid_items		= $request->get('openid_items');
@@ -187,6 +188,7 @@ class XcxmpController extends PublicController
 					$params->name 	            = $request->get('name');
 					$params->appid		        = $request->get('appid');
 					$params->appsecret		    = $request->get('appsecret');
+					$params->mapkey		        = $request->get('mapkey');
 					$params->mchid		        = $request->get('mchid');
 					$params->paykey		        = $request->get('paykey');
 					$params->status		        = $request->get('status');

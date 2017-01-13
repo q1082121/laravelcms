@@ -19,6 +19,7 @@ class CreateXcxmpsTable extends Migration
 			$table->string('name',50);					        //小程序名称
             $table->string('appid',50)->nullable();		        //应用ID
             $table->string('appsecret',50)->nullable();	        //应用密钥
+            $table->string('mapkey',50)->nullable();	        //腾讯地图服务KEY
             $table->string('mchid',20)->nullable();			    //商户ID
             $table->string('paykey',32)->nullable();			//支付密钥
 			$table->text('openid_items')->nullable();	        //消息接受主体

@@ -526,24 +526,24 @@ class AddressController extends PublicController
 								$expressvalue_info=object_array(DB::table('expressvalues')->where($expressvalue_condition)->where('area_items','like',"%-".$info['area_pid'].'-%')->first());
 								if($expressvalue_info)
 								{
-									$info['price']=$expressvalue_info['price']."元";
+									$info['price']=$expressvalue_info['price'];
 									$info['title']=$expressvalue_info['name'];
 								}
 								else
 								{
 									if($expresstemplate_info['ispostage'])
 									{
-										$info['price']=$expresstemplate_info['price_postage']."元";
+										$info['price']=$expresstemplate_info['price_postage'];
 										$info['title']="默认平邮";
 									}
 									else if($expresstemplate_info['isexpress'])
 									{
-										$info['price']=$expresstemplate_info['price_express']."元";
+										$info['price']=$expresstemplate_info['price_express'];
 										$info['title']="默认快递";
 									}
 									else if($expresstemplate_info['isems'])
 									{
-										$info['price']=$expresstemplate_info['price_ems']."元";
+										$info['price']=$expresstemplate_info['price_ems'];
 										$info['title']="默认EMS";
 									}
 									else

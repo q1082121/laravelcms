@@ -195,8 +195,8 @@ new Vue({
                      */
                     if(statusinfo.keyword)
                     {
-                      this.pageparams.way=response.way;
-                      this.pageparams.keyword=response.keyword;
+                      this.pageparams.way=statusinfo.way;
+                      this.pageparams.keyword=statusinfo.keyword;
                     }
                     /*
                      |---------------------------------------------

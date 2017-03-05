@@ -101,7 +101,7 @@ class NavigationController extends PublicController
 			$list=Navigation::paginate($this->pagesize);
 			
 		}
-		if($list)
+		if($list && $list->total()>0)
 		{
 			$cates=new Cates();
 			$cates->opt($list);
@@ -122,7 +122,7 @@ class NavigationController extends PublicController
 			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
-			$msg_array['resource']="";
+			$msg_array['resource']=$list;
 			$msg_array['way']=$search_field;
 			$msg_array['keyword']=$keyword;
 		}

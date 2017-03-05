@@ -108,7 +108,7 @@ class ArticleController extends PublicController
 		{
 			$list=Article::orderBy('updated_at','desc')->paginate($this->pagesize);
 		}
-		if($list)
+		if($list && $list->total()>0)
 		{
 			$classlist=Cache::store('file')->get('class');
 			foreach($list as $key=>$val)
@@ -130,7 +130,7 @@ class ArticleController extends PublicController
 			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
-			$msg_array['resource']="";
+			$msg_array['resource']=$list;
 			$msg_array['way']=$search_field;
 			$msg_array['keyword']=$keyword;
 		}

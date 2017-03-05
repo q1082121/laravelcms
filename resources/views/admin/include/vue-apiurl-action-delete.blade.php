@@ -1,0 +1,1 @@
+apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',

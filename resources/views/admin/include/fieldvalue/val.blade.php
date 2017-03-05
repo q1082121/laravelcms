@@ -1,0 +1,1 @@
+<td>@{{ item.val }}</td>

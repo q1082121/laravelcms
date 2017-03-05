@@ -45,7 +45,7 @@ class ProductController extends PublicController
 							$search_condition['status']=1;
 							$list=Product::where($search_condition)->where('title','like',"%".$keyword.'%')->orderBy('updated_at','desc')->paginate($this->pagesize);
 							$list->appends(['keyword' => $keyword])->links();
-							if($list)
+							if($list && $list->total()>0)
 							{
 								//分页传参数
 								$msg_array['status']='1';
@@ -58,14 +58,14 @@ class ProductController extends PublicController
 								$msg_array['status']='1';
 								$msg_array['info']=trans('api.message_get_empty');
 								$msg_array['curl']='';
-								$msg_array['resource']="";
+								$msg_array['resource']=$list;
 							}
 						}
 						else
 						{
 							$search_condition['status']=1;
 							$list=Product::where($search_condition)->orderBy('updated_at','desc')->paginate($this->pagesize);
-							if($list)
+							if($list && $list->total()>0)
 							{
 								foreach($list as $key=>$val)
 								{
@@ -88,7 +88,7 @@ class ProductController extends PublicController
 								$msg_array['status']='1';
 								$msg_array['info']=trans('api.message_get_empty');
 								$msg_array['curl']='';
-								$msg_array['resource']="";
+								$msg_array['resource']=$list;
 							}
 						}
 					}

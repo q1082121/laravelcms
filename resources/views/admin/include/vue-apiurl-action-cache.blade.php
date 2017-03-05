@@ -1,0 +1,1 @@
+apiurl_cache         :'{{ route("post.admin.cacheapi.api_cache") }}',

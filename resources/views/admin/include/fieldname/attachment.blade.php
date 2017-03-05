@@ -1,0 +1,1 @@
+<th>{{trans('admin.fieldname_item_attachment')}}</th>

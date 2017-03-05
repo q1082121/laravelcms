@@ -1,0 +1,1 @@
+apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',

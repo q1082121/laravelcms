@@ -54,7 +54,7 @@ class UserController extends PublicController
 			
 		}
 
-		if($list)
+		if($list && $list->total()>0)
 		{
 			$msg_array['status']='1';
 			$msg_array['info']=trans('admin.message_get_success');
@@ -70,7 +70,7 @@ class UserController extends PublicController
 			$msg_array['info']=trans('admin.message_get_empty');
 			$msg_array['is_reload']=0;
 			$msg_array['curl']='';
-			$msg_array['resource']="";
+			$msg_array['resource']=$list;
 			$msg_array['way']=$search_field;
 			$msg_array['keyword']=$keyword;
 		}

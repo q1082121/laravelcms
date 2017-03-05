@@ -1,0 +1,1 @@
+<td><i v-if="item.status == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.status == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>

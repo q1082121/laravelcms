@@ -1,0 +1,1 @@
+<td><i v-if="item.isattach == 1" onclick="open_box_image('/uploads/{{getCurrentControllerName()}}/thumb/@{{item.attachment}}')" class="fa fa-file-picture-o"> 查看 </i> <i v-else class="fa fa-file-o" ></i></td>

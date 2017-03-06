@@ -63,11 +63,11 @@ QQ	:471416739
 #	使用手册
 1. 配置说明：如果需要设置 SESSION_DRIVER=redis 那么需要启动 redis-server.exe  默认为file
 
-2. 配置说明：（如需要使用workerman）window环境手动运行项目环境下的start_for_win.bat
+2. 开发环境：PHP5.6以上 Laravel框架硬性要求 一般集成环境也可以搭建【phpstudy】【Wamp】
 
-3. 配置说明：（如需要使用workerman）linux环境随服务器启动自动运行start_io.php（必要）  start_web.php（不可必要）
+3. 本地开发可以映射本地域名至Public目录
 
-4. 获取项目文件：git clone 或者 github 上下载压缩包
+4. 获取项目文件：git clone 或者 github 上下载压缩包 
 
 5. 使用命令行 建立数据库魔法
     php artisan migrate

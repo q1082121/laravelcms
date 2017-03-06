@@ -37,7 +37,7 @@
                 <td>@{{ item.bcid }}</td>
                 <td>@{{ item.scid }}</td>
                 <td> <i v-if="item.navflag == 1" class="fa fa-star"></i> <i v-else class="fa fa-star-o"></i> </td>
-                <td>@{{ item.orderid}}</td>)
+                <td>@{{ item.orderid }}</td>
                 @include('admin.include.fieldvalue.status')
                 <td>
                   <div class="tools">

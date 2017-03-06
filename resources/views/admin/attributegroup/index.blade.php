@@ -41,7 +41,7 @@
                 <td v-if="item.display_type == 1"> <i class="fa fa-magnet"></i> {{trans('admin.fieldname_item_displaytype1')}}</td>
                 <td v-if="item.display_type == 2"> <i class="fa fa-thumb-tack"></i> {{trans('admin.fieldname_item_displaytype2')}}</td>
                 <td>@{{ item.groupclass }}</td>
-                <td>@{{ item.orderid}}</td>)
+                <td>@{{ item.orderid }}</td>
                 @include('admin.include.fieldvalue.status')
                 <td>
                   <div class="tools">

@@ -32,7 +32,7 @@
             <tbody>
               @include('admin.include.fieldvalue.v-for')
                 <td>@{{ item.id }}</td>
-                <td>@{{ item.name}}</td>)
+                <td>@{{ item.name }}</td>
                 <td><i v-if="item.isdefault == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.isdefault == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td><i v-if="item.ispostage == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.ispostage == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>@{{ item.price_postage }}</td>

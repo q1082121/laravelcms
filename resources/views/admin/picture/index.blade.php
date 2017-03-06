@@ -9,7 +9,7 @@
         <div class="box-header">
           <h3 class="box-title">
             @include('admin.include.button-add')
-            @include('admin.include.button-picture')
+            @include('admin.include.button-cache-picture')
           </h3>
           @include('admin.include.search')
         </div>

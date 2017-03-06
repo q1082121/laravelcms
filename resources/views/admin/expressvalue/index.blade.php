@@ -31,7 +31,7 @@
             <tbody>
               @include('admin.include.fieldvalue.v-for')
                 <td>@{{ item.id }}</td>
-                <td>@{{ item.name}}</td>)
+                <td>@{{ item.name }}</td>
                 <td>@{{ item.price }}</td>
                 <td>@{{ item.arealist }}</td>
                 @include('admin.include.fieldvalue.status')

@@ -32,9 +32,9 @@
             <tbody>
               @include('admin.include.fieldvalue.v-for')
                 <td>@{{ item.id }}</td>
-                <td>@{{ item.name}}</td>)
-                <td>@{{ item.val}}</td>)
-                <td>@{{ item.orderid}}</td>)
+                <td>@{{ item.name }}</td>
+                <td>@{{ item.val }}</td>
+                <td>@{{ item.orderid }}</td>
                 @include('admin.include.fieldvalue.status')
                 <td>
                   <div class="tools">

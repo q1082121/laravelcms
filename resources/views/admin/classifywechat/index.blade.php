@@ -35,10 +35,10 @@
               @include('admin.include.fieldvalue.v-for')
                 <td>@{{ item.id }}</td>
                 <td>@{{ item.gtstr }} @{{ item.name }}</td>
-                <td>@{{ item.keyword}}</td>)
+                <td>@{{ item.keyword }}</td>
                 <td>@{{ item.ico}}</td>)
-                <td>@{{ item.linkurl}}</td>)
-                <td>@{{ item.orderid}}</td>)
+                <td>@{{ item.linkurl }}</td>
+                <td>@{{ item.orderid }}</td>
                 @include('admin.include.fieldvalue.status')
                 <td>
                   <div class="tools">

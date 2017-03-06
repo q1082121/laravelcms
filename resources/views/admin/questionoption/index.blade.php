@@ -62,8 +62,6 @@ new Vue({
     @include('admin.include.vue-el')
     data: {
              apiurl_list          :'{{ route("post.admin.questionoption.api_list") }}',
-             apiurl_one_action    :'{{ route("post.admin.oneactionapi.api_one_action") }}',
-             apiurl_delete        :'{{ route("post.admin.deleteapi.api_delete") }}',
              linkurl_add          :'{{ route("get.admin.questionoption.add") }}/{{$website["qid"]}}',
              linkurl_edit         :'{{ route("get.admin.questionoption.edit") }}/',
              linkurl_back         :'{{route("get.admin.question")}}/{{$website["info"]["type"]}}',

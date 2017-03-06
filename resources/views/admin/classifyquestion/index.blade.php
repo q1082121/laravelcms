@@ -37,7 +37,7 @@
                 <td>@{{ item.bcid }}</td>
                 <td>@{{ item.scid }}</td>
                 <td>@{{ item.amount }}</td>
-                <td>@{{ item.orderid}}</td>)
+                <td>@{{ item.orderid }}</td>
                 @include('admin.include.fieldvalue.status')
                 <td>
                   <div class="tools">

@@ -17,27 +17,27 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              @include('admin.include.fieldname.id')
-              @include('admin.include.fieldname.classid')
-              @include('admin.include.fieldname.type')
-              @include('admin.include.fieldname.title')
-              @include('admin.include.fieldname.attachment')
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_classid')}}</th>
+              <th>{{trans('admin.fieldname_item_type')}}</th>
+              <th>{{trans('admin.fieldname_item_title')}}</th>
+              <th>{{trans('admin.fieldname_item_attachment')}}</th>
               <th>{{trans('admin.fieldname_item_fraction')}}</th>
               @if ($website['type'] == 3)
               <th>{{trans('admin.fieldname_item_is_answer')}}</th>
               @endif
-              @include('admin.include.fieldname.status')
-              @include('admin.include.fieldname.option')
+              <th>{{trans('admin.fieldname_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               @include('admin.include.fieldvalue.v-for')
-                @include('admin.include.fieldvalue.id')
-                @include('admin.include.fieldvalue.classid')
+                <td>@{{ item.id }}</td>
+                <td>@{{ item.classname }}</td>
                 <td v-if="item.type == 1"> <i class="fa fa-leaf"></i> {{trans('admin.define_model_question1')}}</td>
                 <td v-if="item.type == 2"> <i class="fa fa-leaf"></i> {{trans('admin.define_model_question2')}}</td>
                 <td v-if="item.type == 3"> <i class="fa fa-leaf"></i> {{trans('admin.define_model_question3')}}</td>
-                @include('admin.include.fieldvalue.title')
+                <td>@{{ item.title}}</td>
                 @include('admin.include.fieldvalue.attachment')
                 <td>@{{ item.score }}</td>
                 @if ($website['type'] == 3)

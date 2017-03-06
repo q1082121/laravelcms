@@ -21,20 +21,20 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              @include('admin.include.fieldname.id')
-              @include('admin.include.fieldname.name')
-              @include('admin.include.fieldname.val')
-              @include('admin.include.fieldname.orderid')
-              @include('admin.include.fieldname.status')
-              @include('admin.include.fieldname.option')
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_name')}}</th>
+              <th>{{trans('admin.fieldname_item_val')}}</th>
+              <th>{{trans('admin.fieldname_item_orderid')}}</th>
+              <th>{{trans('admin.fieldname_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               @include('admin.include.fieldvalue.v-for')
-                @include('admin.include.fieldvalue.id')
-                @include('admin.include.fieldvalue.name')
-                @include('admin.include.fieldvalue.val')
-                @include('admin.include.fieldvalue.orderid')
+                <td>@{{ item.id }}</td>
+                <td>@{{ item.name}}</td>)
+                <td>@{{ item.val}}</td>)
+                <td>@{{ item.orderid}}</td>)
                 @include('admin.include.fieldvalue.status')
                 <td>
                   <div class="tools">

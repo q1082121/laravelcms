@@ -17,8 +17,8 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              @include('admin.include.fieldname.id')
-              @include('admin.include.fieldname.name')
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_name')}}</th>
               <th>{{trans('admin.fieldname_item_isdefault')}}</th>
               <th>{{trans('admin.fieldname_item_ispostage')}}</th>
               <th>{{trans('admin.fieldname_item_price_postage')}}</th>
@@ -26,13 +26,13 @@
               <th>{{trans('admin.fieldname_item_price_express')}}</th>
               <th>{{trans('admin.fieldname_item_isems')}}</th>
               <th>{{trans('admin.fieldname_item_price_ems')}}</th>
-              @include('admin.include.fieldname.option')
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               @include('admin.include.fieldvalue.v-for')
-                @include('admin.include.fieldvalue.id')
-                @include('admin.include.fieldvalue.name')
+                <td>@{{ item.id }}</td>
+                <td>@{{ item.name}}</td>)
                 <td><i v-if="item.isdefault == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.isdefault == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td><i v-if="item.ispostage == 0"  class="fa fa-toggle-off"> {{trans('admin.website_status_off')}} </i> <i v-if="item.ispostage == 1"  class="fa fa-toggle-on"> {{trans('admin.website_status_on')}} </i></td>
                 <td>@{{ item.price_postage }}</td>

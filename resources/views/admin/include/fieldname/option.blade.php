@@ -1,1 +1,0 @@
-<th>{{trans('admin.fieldname_item_option')}}</th>

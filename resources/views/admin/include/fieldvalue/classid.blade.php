@@ -1,1 +1,0 @@
-<td>@{{ item.classname }}</td>

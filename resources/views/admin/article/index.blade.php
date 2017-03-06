@@ -17,26 +17,26 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              @include('admin.include.fieldname.id')
-              @include('admin.include.fieldname.classid')
-              @include('admin.include.fieldname.title')
-              @include('admin.include.fieldname.attachment')
-              @include('admin.include.fieldname.sources')
-              @include('admin.include.fieldname.clicks')
-              @include('admin.include.fieldname.orderid')
-              @include('admin.include.fieldname.status')
-              @include('admin.include.fieldname.option')
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_classid')}}</th>
+              <th>{{trans('admin.fieldname_item_title')}}</th>
+              <th>{{trans('admin.fieldname_item_attachment')}}</th>
+              <th>{{trans('admin.fieldname_item_sources')}}</th>
+              <th>{{trans('admin.fieldname_item_clicks')}}</th>
+              <th>{{trans('admin.fieldname_item_orderid')}}</th>
+              <th>{{trans('admin.fieldname_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               @include('admin.include.fieldvalue.v-for')
-                @include('admin.include.fieldvalue.id')
-                @include('admin.include.fieldvalue.classid')
-                @include('admin.include.fieldvalue.title')
+                <td>@{{ item.id }}</td>
+                <td>@{{ item.classname }}</td>
+                <td>@{{ item.title}}</td>
                 @include('admin.include.fieldvalue.attachment')
-                @include('admin.include.fieldvalue.sources')
-                @include('admin.include.fieldvalue.clicks')
-                @include('admin.include.fieldvalue.orderid')
+                <td>@{{ item.sources }}</td>)
+                <td>@{{ item.clicks}}</td>)
+                <td>@{{ item.orderid}}</td>)
                 @include('admin.include.fieldvalue.status')
                 <td>
                   <div class="tools">

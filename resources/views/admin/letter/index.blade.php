@@ -38,12 +38,12 @@
             <table class="table table-hover table-striped">
               <thead>
               <tr>
-                @include('admin.include.fieldname.id')
+                <th>{{trans('admin.fieldname_item_id')}}</th>
                 <th>{{trans('admin.fieldname_item_isstar')}}</th>
-                @include('admin.include.fieldname.title')
+                <th>{{trans('admin.fieldname_item_title')}}</th>
                 <th>{{trans('admin.fieldname_item_to_user')}}</th>
-                @include('admin.include.fieldname.created_at')
-                @include('admin.include.fieldname.option')
+                <th>{{trans('admin.fieldname_item_created_at')}}</th>
+                <th>{{trans('admin.fieldname_item_option')}}</th>
               </tr>
               </thead>
               <tbody>

@@ -21,24 +21,24 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              @include('admin.include.fieldname.id')
-              @include('admin.include.fieldname.name')
-              @include('admin.include.fieldname.keyword')
-              @include('admin.include.fieldname.ico')
-              @include('admin.include.fieldname.linkurl')
-              @include('admin.include.fieldname.orderid')
-              @include('admin.include.fieldname.status')
-              @include('admin.include.fieldname.option')
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_name')}}</th>
+              <th>{{trans('admin.fieldname_item_keyword')}}</th>
+              <th>{{trans('admin.fieldname_item_ico')}}</th>
+              <th>{{trans('admin.fieldname_item_linkurl')}}</th>
+              <th>{{trans('admin.fieldname_item_orderid')}}</th>
+              <th>{{trans('admin.fieldname_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               @include('admin.include.fieldvalue.v-for')
-                @include('admin.include.fieldvalue.id')
+                <td>@{{ item.id }}</td>
                 <td>@{{ item.gtstr }} @{{ item.name }}</td>
-                @include('admin.include.fieldvalue.keyword')
-                @include('admin.include.fieldvalue.ico')
-                @include('admin.include.fieldvalue.linkurl')
-                @include('admin.include.fieldvalue.orderid')
+                <td>@{{ item.keyword}}</td>)
+                <td>@{{ item.ico}}</td>)
+                <td>@{{ item.linkurl}}</td>)
+                <td>@{{ item.orderid}}</td>)
                 @include('admin.include.fieldvalue.status')
                 <td>
                   <div class="tools">

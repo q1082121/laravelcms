@@ -18,20 +18,20 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              @include('admin.include.fieldname.id')
-              @include('admin.include.fieldname.keyval')
-              @include('admin.include.fieldname.name')
-              @include('admin.include.fieldname.type')
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_keyval')}}</th>
+              <th>{{trans('admin.fieldname_item_name')}}</th>
+              <th>{{trans('admin.fieldname_item_type')}}</th>
               <th>{{trans('admin.fieldname_item_displaytype')}}</th>
               <th>{{trans('admin.fieldname_item_class')}}</th>
-              @include('admin.include.fieldname.orderid')
-              @include('admin.include.fieldname.status')
-              @include('admin.include.fieldname.option')
+              <th>{{trans('admin.fieldname_item_orderid')}}</th>
+              <th>{{trans('admin.fieldname_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               @include('admin.include.fieldvalue.v-for')
-                @include('admin.include.fieldvalue.id')
+                <td>@{{ item.id }}</td>
                 <td>@{{ item.name }}</td>
                 <td>@{{ item.display_name }}</td>
                 <td v-if="item.type == 'text'"> <i class="fa fa-leaf"></i> {{trans('admin.fieldname_item_type_text')}}</td>
@@ -41,7 +41,7 @@
                 <td v-if="item.display_type == 1"> <i class="fa fa-magnet"></i> {{trans('admin.fieldname_item_displaytype1')}}</td>
                 <td v-if="item.display_type == 2"> <i class="fa fa-thumb-tack"></i> {{trans('admin.fieldname_item_displaytype2')}}</td>
                 <td>@{{ item.groupclass }}</td>
-                @include('admin.include.fieldvalue.orderid')
+                <td>@{{ item.orderid}}</td>)
                 @include('admin.include.fieldvalue.status')
                 <td>
                   <div class="tools">

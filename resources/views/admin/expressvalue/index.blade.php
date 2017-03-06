@@ -20,18 +20,18 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              @include('admin.include.fieldname.id')
-              @include('admin.include.fieldname.name')
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_name')}}</th>
               <th>{{trans('admin.fieldname_item_price')}}</th>
               <th>{{trans('admin.fieldname_item_area_items')}}</th>
-              @include('admin.include.fieldname.status')
-              @include('admin.include.fieldname.option')
+              <th>{{trans('admin.fieldname_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               @include('admin.include.fieldvalue.v-for')
-                @include('admin.include.fieldvalue.id')
-                @include('admin.include.fieldvalue.name')
+                <td>@{{ item.id }}</td>
+                <td>@{{ item.name}}</td>)
                 <td>@{{ item.price }}</td>
                 <td>@{{ item.arealist }}</td>
                 @include('admin.include.fieldvalue.status')

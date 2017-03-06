@@ -18,26 +18,26 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              @include('admin.include.fieldname.id')
-              @include('admin.include.fieldname.name')
-              @include('admin.include.fieldname.attachment')
+              <th>{{trans('admin.fieldname_item_id')}}</th>
+              <th>{{trans('admin.fieldname_item_name')}}</th>
+              <th>{{trans('admin.fieldname_item_attachment')}}</th>
               <th>{{trans('admin.fieldname_item_bcid')}}</th>
               <th>{{trans('admin.fieldname_item_scid')}}</th>
               <th>{{trans('admin.fieldname_item_navflag')}}</th>
-              @include('admin.include.fieldname.orderid')
-              @include('admin.include.fieldname.status')
-              @include('admin.include.fieldname.option')
+              <th>{{trans('admin.fieldname_item_orderid')}}</th>
+              <th>{{trans('admin.fieldname_item_status')}}</th>
+              <th>{{trans('admin.fieldname_item_option')}}</th>
             </tr>
             </thead>
             <tbody>
               @include('admin.include.fieldvalue.v-for')
-                @include('admin.include.fieldvalue.id')
+                <td>@{{ item.id }}</td>
                 <td>@{{ item.gtstr }} @{{ item.name }}</td>
                 @include('admin.include.fieldvalue.attachment')
                 <td>@{{ item.bcid }}</td>
                 <td>@{{ item.scid }}</td>
                 <td> <i v-if="item.navflag == 1" class="fa fa-star"></i> <i v-else class="fa fa-star-o"></i> </td>
-                @include('admin.include.fieldvalue.orderid')
+                <td>@{{ item.orderid}}</td>)
                 @include('admin.include.fieldvalue.status')
                 <td>
                   <div class="tools">

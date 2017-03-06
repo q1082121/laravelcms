@@ -9,7 +9,7 @@
         <div class="box-header">
           <h3 class="box-title">
             @include('admin.include.button-add')
-            @include('admin.include.button-menu')
+            @include('admin.include.button-cache-menu')
             <button @click="back_action()" type="button" class="btn btn-default pull-left " style="margin:0 0 0 10px;">
              {{trans('admin.website_action_goback')}} 【{{trans('admin.define_model_wechat_mp')}}： {{$website['info']['name']}}】
             </button>

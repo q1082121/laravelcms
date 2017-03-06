@@ -75,8 +75,8 @@ new Vue({
              @include('admin.include.vue-pages-pageparams')
              @include('admin.include.vue-pages-paramsdata')
           },
-    @include('admin.include.vue-ready')      
-    @include('admin.include.vue-pages-computed')      
+    @include('admin.include.vue-ready')
+    @include('admin.include.vue-pages-computed')   
     methods: {
             @include('admin.include.vue-methods-action_list_get')
             @include('admin.include.vue-methods-action_list_do')

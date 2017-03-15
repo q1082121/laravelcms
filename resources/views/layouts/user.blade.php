@@ -13,20 +13,20 @@
     <link rel="icon"  href="/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="{{ $website['title'] }}" />
     <!--vue-->
-    <script src="{{asset('/module/vue')}}/dist/vue.min.js"></script>
+    <script src="{{asset('/module/vue/dist/vue.min.js')}}"></script>
     <!--vue-resource-->
-    <script src="{{asset('/module/vue-resource')}}/dist/vue-resource.min.js"></script>
+    <script src="{{asset('/module/vue-resource/dist/vue-resource.min.js')}}"></script>
     <script type="text/javascript">
         Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
         Vue.http.options.emulateJSON = true;
     </script>
-	<script src="{{asset('/module/jquery')}}/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="{{asset('/module/amazeui_admin')}}/assets/css/amazeui.min.css" />
-    <link rel="stylesheet" href="{{asset('/module/amazeui_admin')}}/assets/css/app.css">
+	<script src="{{asset('/module/jquery/dist/jquery.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('/module/amazeui_admin/assets/css/amazeui.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/module/amazeui_admin/assets/css/app.css')}}">
 	<!--layer-->
-	<script src="{{asset('/module/layer')}}/layer.js"></script>
+	<script src="{{asset('/module/layer/layer.js')}}"></script>
 	<!--common-->
-	<script src="{{asset('/js')}}/common.js"></script>
+	<script src="{{asset('/js/common.js')}}"></script>
     <style>
     .common_select_search{width:180px;height:34px;}
     .a_color{color:#838FA1;}
@@ -35,7 +35,7 @@
 
 <body>
     <div class="am-g tpl-g">
-        <script src="{{asset('/module/amazeui_admin')}}/assets/js/theme.js"></script>
+        <script src="{{asset('/module/amazeui_admin/assets/js/theme.js')}}"></script>
         @include('user.header')
         <!-- 风格切换 -->
         <div class="tpl-skiner">
@@ -60,7 +60,7 @@
             <!--/.模板主内容区 -->
         </div>
     </div>
-	<script src="{{asset('/module/amazeui_admin')}}/assets/js/amazeui.min.js"></script>
-    <script src="{{asset('/module/amazeui_admin')}}/assets/js/app.js"></script>
+	<script src="{{asset('/module/amazeui_admin/assets/js/amazeui.min.js')}}"></script>
+    <script src="{{asset('/module/amazeui_admin/assets/js/app.js')}}"></script>
 </body>
 </html>

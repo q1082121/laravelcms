@@ -19,33 +19,33 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content=""/>
     <link rel="shortcut icon" href="/favicon.ico" >
-    <link rel="stylesheet" href="{{asset('/module/amazeui')}}/dist/css/amazeui.min.css">
-    <link rel="stylesheet" href="{{asset('/module/amazeui')}}/dist/css/amazeui.flat.min.css">
-    <link rel="stylesheet" href="{{asset('/css/home')}}/style.css">
+    <link rel="stylesheet" href="{{asset('/module/amazeui/dist/css/amazeui.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/module/amazeui/dist/css/amazeui.flat.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/home/style.css')}}">
     <!--[if (gte IE 9)|!(IE)]><!-->
-    <script src="{{asset('/module/jquery')}}/dist/jquery.min.js"></script>
+    <script src="{{asset('/module/jquery/dist/jquery.min.js')}}"></script>
     <!--<![endif]-->
     <!--[if lte IE 8 ]>
     <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-    <script src="{{asset('/module/amazeui')}}/dist/js/amazeui.ie8polyfill.min.js"></script>
+    <script src="{{asset('/module/amazeui/dist/js/amazeui.ie8polyfill.min.js')}}"></script>
     <![endif]-->
-    <script src="{{asset('/module/amazeui')}}/dist/js/amazeui.min.js"></script>
+    <script src="{{asset('/module/amazeui/dist/js/amazeui.min.js')}}"></script>
     <!--在这里编写你的代码-->
     <!--vue-->
-    <script src="{{asset('/module/vue')}}/dist/vue.min.js"></script>
+    <script src="{{asset('/module/vue/dist/vue.min.js')}}"></script>
     <!--vue-resource-->
-    <script src="{{asset('/module/vue-resource')}}/dist/vue-resource.min.js"></script>
+    <script src="{{asset('/module/vue-resource/dist/vue-resource.min.js')}}"></script>
     <script type="text/javascript">
     Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
     Vue.http.options.emulateJSON = true;
     </script>
     <!--layer-->
-    <script src="{{asset('/module/layer')}}/layer.js"></script>
+    <script src="{{asset('/module/layer/layer.js')}}"></script>
     <!--common-->
-    <script src="{{asset('/js')}}/common.js"></script>
-    <script src="{{asset('/js')}}/nav.js"></script>
-    <script src="{{asset('/module/jquery-mkinfinite')}}/src/jquery.mkinfinite.js"></script> 
+    <script src="{{asset('/js/common.js')}}"></script>
+    <script src="{{asset('/js/nav.js')}}"></script>
+    <script src="{{asset('/module/jquery-mkinfinite/src/jquery.mkinfinite.js')}}"></script> 
 </head>
 <body>
 <!--

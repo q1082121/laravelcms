@@ -1,5 +1,8 @@
 var elixir = require('laravel-elixir');
 var gulp = require('gulp');
+
+//默认源地图
+elixir.config.sourcemaps = false;
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -55,13 +58,9 @@ elixir(function (mix) {
         .less(loginSrc + 'login.less', rootLoginCssSrc + 'app.css')
         //css目录里各目录css至public/css下各目录
         .stylesIn(rootAdminCssSrc, publicAdminCssSrc + 'admin.css')
-        .version(cssSrc + adminSrc + "admin.css")
         .stylesIn(rootHomeCssSrc, publicHomeCssSrc + 'home.css')
-        .version(cssSrc + homeSrc + "home.css")
         .stylesIn(rootUserCssSrc, publicUserCssSrc + 'user.css')
-        .version(cssSrc + userSrc + "user.css")
         .stylesIn(rootLoginCssSrc, publicLoginCssSrc + 'login.css')
-        .version(cssSrc + loginSrc + "login.css")
         //合并js目录里各目录js文件至resources/js下
         .scriptsIn(rootAdminJsSrc, rootJsSrc + 'admin.js')
         .scriptsIn(rootHomeJsSrc, rootJsSrc + 'home.js')
@@ -70,11 +69,8 @@ elixir(function (mix) {
         .scriptsIn(rootLoginJsSrc, rootJsSrc + 'login.js')
         //合并js下各文件类型
         .scripts(['base.js', 'admin.js'], publicAdminJsSrc + 'admin.js')
-        .version(jsSrc + adminSrc + "admin.js")
         .scripts(['base.js', 'home.js'], publicHomeJsSrc + 'home.js')
-        .version(jsSrc + homeSrc + "home.js")
         .scripts(['base.js', 'user.js'], publicUserJsSrc + 'user.js')
-        .version(jsSrc + userSrc + "user.js")
         .scripts(['base.js', 'login.js'], publicLoginJsSrc + 'login.js')
-        .version(jsSrc + loginSrc + "login.js")
+    mix.version([cssSrc + adminSrc + 'admin.css', cssSrc + homeSrc + 'home.css', cssSrc + userSrc + 'user.css', cssSrc + loginSrc + 'login.css',jsSrc + adminSrc + 'admin.js', jsSrc + homeSrc + 'home.js', jsSrc + userSrc + 'user.js', jsSrc + loginSrc + 'login.js'])
 });

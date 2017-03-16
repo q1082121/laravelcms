@@ -252,9 +252,3 @@ function iFrameHeight(idname) {
         ifm.height = subWeb.body.scrollHeight;
     }
 }
-//# sourceMappingURL=base.js.map
-
-
-//# sourceMappingURL=home.js.map
-
-//# sourceMappingURL=home.js.map

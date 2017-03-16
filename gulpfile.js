@@ -15,14 +15,16 @@ var homeSrc = "home/";
 var userSrc = "user/";
 var baseSrc = "base/";
 var loginSrc = "login/";
+var cssSrc = "css/";
+var jsSrc = "js/";
 
 var rootSrc = "resources/assets/";
-var rootCssSrc = rootSrc + "css/";
-var rootJsSrc = rootSrc + "js/";
+var rootCssSrc = rootSrc + cssSrc;
+var rootJsSrc = rootSrc + jsSrc;
 
 var publicSrc = "public/";
-var publicCssSrc = "public/css/";
-var publicJsSrc = "public/js/";
+var publicCssSrc = publicSrc + cssSrc;
+var publicJsSrc = publicSrc + jsSrc;
 
 var rootAdminCssSrc = rootCssSrc + adminSrc;
 var rootHomeCssSrc = rootCssSrc + homeSrc;
@@ -53,9 +55,13 @@ elixir(function (mix) {
         .less(loginSrc + 'login.less', rootLoginCssSrc + 'app.css')
         //css目录里各目录css至public/css下各目录
         .stylesIn(rootAdminCssSrc, publicAdminCssSrc + 'admin.css')
+        .version(cssSrc + adminSrc + "admin.css")
         .stylesIn(rootHomeCssSrc, publicHomeCssSrc + 'home.css')
+        .version(cssSrc + homeSrc + "home.css")
         .stylesIn(rootUserCssSrc, publicUserCssSrc + 'user.css')
+        .version(cssSrc + userSrc + "user.css")
         .stylesIn(rootLoginCssSrc, publicLoginCssSrc + 'login.css')
+        .version(cssSrc + loginSrc + "login.css")
         //合并js目录里各目录js文件至resources/js下
         .scriptsIn(rootAdminJsSrc, rootJsSrc + 'admin.js')
         .scriptsIn(rootHomeJsSrc, rootJsSrc + 'home.js')
@@ -64,7 +70,11 @@ elixir(function (mix) {
         .scriptsIn(rootLoginJsSrc, rootJsSrc + 'login.js')
         //合并js下各文件类型
         .scripts(['base.js', 'admin.js'], publicAdminJsSrc + 'admin.js')
+        .version(jsSrc + adminSrc + "admin.js")
         .scripts(['base.js', 'home.js'], publicHomeJsSrc + 'home.js')
+        .version(jsSrc + homeSrc + "home.js")
         .scripts(['base.js', 'user.js'], publicUserJsSrc + 'user.js')
+        .version(jsSrc + userSrc + "user.js")
         .scripts(['base.js', 'login.js'], publicLoginJsSrc + 'login.js')
+        .version(jsSrc + loginSrc + "login.js")
 });

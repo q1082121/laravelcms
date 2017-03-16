@@ -1,5 +1,7 @@
-var elixir = require('laravel-elixir');
 var gulp = require('gulp');
+var elixir = require('laravel-elixir');
+var minifyCss = require('gulp-minify-css'); //- 压缩CSS为一行;
+var uglify = require('gulp-uglify'); //压缩JS
 
 //默认源地图
 elixir.config.sourcemaps = false;
@@ -20,6 +22,7 @@ var baseSrc = "base/";
 var loginSrc = "login/";
 var cssSrc = "css/";
 var jsSrc = "js/";
+var buildSrc = "build/";
 
 var rootSrc = "resources/assets/";
 var rootCssSrc = rootSrc + cssSrc;
@@ -28,6 +31,8 @@ var rootJsSrc = rootSrc + jsSrc;
 var publicSrc = "public/";
 var publicCssSrc = publicSrc + cssSrc;
 var publicJsSrc = publicSrc + jsSrc;
+var publicBuildCssSrc = publicSrc + buildSrc + cssSrc;
+var publicBuildJsSrc = publicSrc + buildSrc + jsSrc;
 
 var rootAdminCssSrc = rootCssSrc + adminSrc;
 var rootHomeCssSrc = rootCssSrc + homeSrc;
@@ -40,16 +45,6 @@ var rootUserJsSrc = rootJsSrc + userSrc;
 var rootBaseJsSrc = rootJsSrc + baseSrc;
 var rootLoginJsSrc = rootJsSrc + loginSrc;
 
-var publicAdminCssSrc = publicCssSrc + adminSrc;
-var publicHomeCssSrc = publicCssSrc + homeSrc;
-var publicUserCssSrc = publicCssSrc + userSrc;
-var publicLoginCssSrc = publicCssSrc + loginSrc;
-
-var publicAdminJsSrc = publicJsSrc + adminSrc;
-var publicHomeJsSrc = publicJsSrc + homeSrc;
-var publicUserJsSrc = publicJsSrc + userSrc;
-var publicLoginJsSrc = publicJsSrc + loginSrc;
-
 elixir(function (mix) {
     //编译less至css目录
     mix.less(adminSrc + 'admin.less', rootAdminCssSrc + 'app.css')
@@ -57,10 +52,10 @@ elixir(function (mix) {
         .less(userSrc + 'user.less', rootUserCssSrc + 'app.css')
         .less(loginSrc + 'login.less', rootLoginCssSrc + 'app.css')
         //css目录里各目录css至public/css下各目录
-        .stylesIn(rootAdminCssSrc, publicAdminCssSrc + 'admin.css')
-        .stylesIn(rootHomeCssSrc, publicHomeCssSrc + 'home.css')
-        .stylesIn(rootUserCssSrc, publicUserCssSrc + 'user.css')
-        .stylesIn(rootLoginCssSrc, publicLoginCssSrc + 'login.css')
+        .stylesIn(rootAdminCssSrc, publicCssSrc + 'admin.css')
+        .stylesIn(rootHomeCssSrc, publicCssSrc + 'home.css')
+        .stylesIn(rootUserCssSrc, publicCssSrc + 'user.css')
+        .stylesIn(rootLoginCssSrc, publicCssSrc + 'login.css')
         //合并js目录里各目录js文件至resources/js下
         .scriptsIn(rootAdminJsSrc, rootJsSrc + 'admin.js')
         .scriptsIn(rootHomeJsSrc, rootJsSrc + 'home.js')
@@ -68,9 +63,23 @@ elixir(function (mix) {
         .scriptsIn(rootBaseJsSrc, rootJsSrc + 'base.js')
         .scriptsIn(rootLoginJsSrc, rootJsSrc + 'login.js')
         //合并js下各文件类型
-        .scripts(['base.js', 'admin.js'], publicAdminJsSrc + 'admin.js')
-        .scripts(['base.js', 'home.js'], publicHomeJsSrc + 'home.js')
-        .scripts(['base.js', 'user.js'], publicUserJsSrc + 'user.js')
-        .scripts(['base.js', 'login.js'], publicLoginJsSrc + 'login.js')
-    mix.version([cssSrc + adminSrc + 'admin.css', cssSrc + homeSrc + 'home.css', cssSrc + userSrc + 'user.css', cssSrc + loginSrc + 'login.css',jsSrc + adminSrc + 'admin.js', jsSrc + homeSrc + 'home.js', jsSrc + userSrc + 'user.js', jsSrc + loginSrc + 'login.js'])
+        .scripts(['base.js', 'admin.js'], publicJsSrc + 'admin.js')
+        .scripts(['base.js', 'home.js'], publicJsSrc + 'home.js')
+        .scripts(['base.js', 'user.js'], publicJsSrc + 'user.js')
+        .scripts(['base.js', 'login.js'], publicJsSrc + 'login.js')
+    //资源版本管理    
+    mix.version([cssSrc + 'admin.css', cssSrc + 'home.css', cssSrc + 'user.css', cssSrc + 'login.css', jsSrc + 'admin.js', jsSrc + 'home.js', jsSrc + 'user.js', jsSrc + 'login.js']);
+    
+});
+//压缩版本资源CSS
+gulp.task('minifycss', function () {
+    gulp.src(publicBuildCssSrc + "**/*.css") //该任务针对的文件
+        .pipe(minifyCss()) //该任务调用的模块
+        .pipe(gulp.dest(publicBuildCssSrc)); //将会在src/css下生成index.css
+});
+//压缩版本资源JS
+gulp.task('minifyjs', function () {
+    gulp.src(publicBuildJsSrc + "**/*.js") //该任务针对的文件
+        .pipe(uglify()) //该任务调用的模块
+        .pipe(gulp.dest(publicBuildJsSrc)); //将会在src/css下生成index.css
 });

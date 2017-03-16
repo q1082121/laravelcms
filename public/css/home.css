@@ -1,5 +1,5 @@
 /*!
- * 页面全局参数初始化设置
+ * LaravelPCMS (471416739)
  * rubbish.boy@163.com
  */
 body {
@@ -45,7 +45,4 @@ img {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-.testbg {
-  background: url("/images/user/logo.jpg") no-repeat left top;
 }

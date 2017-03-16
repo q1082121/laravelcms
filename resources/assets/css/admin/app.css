@@ -46,5 +46,8 @@ img {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+.testbg {
+  background: url("/images/admin/logo.jpg") no-repeat left top;
+}
 
-/*# sourceMappingURL=home.css.map */
+/*# sourceMappingURL=app.css.map */

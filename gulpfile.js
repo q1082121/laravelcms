@@ -25,9 +25,9 @@ var publicHomeCssSrc = publicCssSrc + homeSrc;
 var publicUserCssSrc = publicCssSrc + userSrc;
 elixir(function (mix) {
     //编译less至css目录
-    mix.less(adminSrc + 'admin.less', rootAdminCssSrc + 'admin.css')
-    mix.less(homeSrc + 'home.less', rootHomeCssSrc + 'home.css')
-    mix.less(userSrc + 'user.less', rootUserCssSrc + 'user.css')
+    mix.less(adminSrc + 'admin.less', rootAdminCssSrc + 'app.css')
+    mix.less(homeSrc + 'home.less', rootHomeCssSrc + 'app.css')
+    mix.less(userSrc + 'user.less', rootUserCssSrc + 'app.css')
     //css目录里各目录css至public/css下各目录
     mix.stylesIn(rootAdminCssSrc, publicAdminCssSrc + 'admin.css')
     mix.stylesIn(rootHomeCssSrc, publicHomeCssSrc + 'home.css')

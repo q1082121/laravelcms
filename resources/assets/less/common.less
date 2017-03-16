@@ -1,0 +1,10 @@
+//@height
+.auto_m_h(@min_h:0px;){height: auto !important;height: 100%;min-height: @min_h;height: @min_h;overflow: hidden !important;_overflow: visible;}
+//@background
+.bg_img(@bgname;@model:home;@x_align:left;@y_align:top;@set_repeat:no-repeat;) when (@model = 'admin') {background: url("@{bgurl_admin}@{bgname}") @set_repeat @x_align @y_align;}
+.bg_img(@bgname;@model:home;@x_align:left;@y_align:top;@set_repeat:no-repeat;) when (@model = 'user') {background: url("@{bgurl_user}@{bgname}") @set_repeat @x_align @y_align;}
+.bg_img(@bgname;@model:home;@x_align:left;@y_align:top;@set_repeat:no-repeat;) when (@model = 'home') {background: url("@{bgurl_home}@{bgname}") @set_repeat @x_align @y_align;}
+//@ellipsis
+.a_out{float:left;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
+//@border-radius
+.radius(@radius:5px){border-radius: @radius;-moz-border-radius: @radius;-khtml-border-radius: @radius;-webkit-border-radius: @radius;}

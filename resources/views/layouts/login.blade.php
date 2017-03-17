@@ -10,6 +10,7 @@
 <meta name="description" content="{{$website['root']['sysdescription']}}" >
 <link rel="shortcut icon" href="/favicon.ico" >
 <link href="{{asset('/module/login/css/style.css')}}" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="{{ elixir('css/login.css') }}">
 <!--webfonts
 <link href='http://fonts.useso.com/css?family=PT+Sans:400,700,400italic,700italic|Oswald:400,300,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
@@ -18,10 +19,8 @@
 <script src="{{asset('/module/jquery/dist/jquery.min.js')}}"></script>
 <!--layer-->
 <script src="{{asset('/module/layer/layer.js')}}"></script>
-<!--vue-->
-<script src="{{asset('/module/vue/dist/vue.min.js')}}"></script>
 <!--common-->
-<script src="{{asset('/js/common.js')}}"></script>
+<script src="{{ elixir('js/login.js') }}"></script>
 </head>
 <body>
 	<script>$(document).ready(function(c) {

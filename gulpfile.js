@@ -72,6 +72,14 @@ elixir(function (mix) {
             'module/vue/dist/vue.min.js',
             'module/vue-resource/dist/vue-resource.min.js',
         ], path.root + file.js + model.home + 'main.js', path.public)
+        .scripts([
+            'module/vue/dist/vue.min.js',
+            'module/vue-resource/dist/vue-resource.min.js',
+        ], path.root + file.js + model.user + 'main.js', path.public)
+        .scripts([
+            'module/vue/dist/vue.min.js',
+            'module/vue-resource/dist/vue-resource.min.js',
+        ], path.root + file.js + model.login + 'main.js', path.public)
         //合并js目录里各目录js文件至resources/js下
         .scriptsIn(path.root + file.js + model.admin, path.root + file.js + 'admin.js')
         .scriptsIn(path.root + file.js + model.home, path.root + file.js + 'home.js')

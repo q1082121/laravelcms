@@ -4,11 +4,13 @@
 
 import Promise from './promise';
 
-var debug = false, util = {}, { slice } = [];
+var {hasOwnProperty} = {}, {slice} = [], debug = false, ntick;
 
-export default function (Vue) {
-    util = Vue.util;
-    debug = Vue.config.debug || !Vue.config.silent;
+export const inBrowser = typeof window !== 'undefined';
+
+export default function ({config, nextTick}) {
+    ntick = nextTick;
+    debug = config.debug || !config.silent;
 }
 
 export function warn(msg) {
@@ -24,11 +26,11 @@ export function error(msg) {
 }
 
 export function nextTick(cb, ctx) {
-    return util.nextTick(cb, ctx);
+    return ntick(cb, ctx);
 }
 
 export function trim(str) {
-    return str.replace(/^\s*|\s*$/g, '');
+    return str ? str.replace(/^\s*|\s*$/g, '') : '';
 }
 
 export function toLower(str) {
@@ -95,13 +97,13 @@ export function each(obj, iterator) {
 
     var i, key;
 
-    if (obj && typeof obj.length == 'number') {
+    if (isArray(obj)) {
         for (i = 0; i < obj.length; i++) {
             iterator.call(obj[i], obj[i], i);
         }
     } else if (isObject(obj)) {
         for (key in obj) {
-            if (obj.hasOwnProperty(key)) {
+            if (hasOwnProperty.call(obj, key)) {
                 iterator.call(obj[key], obj[key], key);
             }
         }
@@ -116,7 +118,7 @@ export function merge(target) {
 
     var args = slice.call(arguments, 1);
 
-    args.forEach((source) => {
+    args.forEach(source => {
         _merge(target, source, true);
     });
 
@@ -127,7 +129,7 @@ export function defaults(target) {
 
     var args = slice.call(arguments, 1);
 
-    args.forEach((source) => {
+    args.forEach(source => {
 
         for (var key in source) {
             if (target[key] === undefined) {
@@ -144,7 +146,7 @@ function _assign(target) {
 
     var args = slice.call(arguments, 1);
 
-    args.forEach((source) => {
+    args.forEach(source => {
         _merge(target, source);
     });
 

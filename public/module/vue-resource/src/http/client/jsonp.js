@@ -1,35 +1,45 @@
 /**
- * JSONP client.
+ * JSONP client (Browser).
  */
 
 import Promise from '../../promise';
 
 export default function (request) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
 
-        var name = request.jsonp || 'callback', callback = '_jsonp' + Math.random().toString(36).substr(2), body = null, handler, script;
+        var name = request.jsonp || 'callback', callback = request.jsonpCallback || '_jsonp' + Math.random().toString(36).substr(2), body = null, handler, script;
 
-        handler = (event) => {
+        handler = ({type}) => {
 
             var status = 0;
 
-            if (event.type === 'load' && body !== null) {
+            if (type === 'load' && body !== null) {
                 status = 200;
-            } else if (event.type === 'error') {
-                status = 404;
+            } else if (type === 'error') {
+                status = 500;
+            }
+
+            if (status && window[callback]) {
+                delete window[callback];
+                document.body.removeChild(script);
             }
 
             resolve(request.respondWith(body, {status}));
+        };
 
-            delete window[callback];
-            document.body.removeChild(script);
+        window[callback] = result => {
+            body = JSON.stringify(result);
+        };
+
+        request.abort = () => {
+            handler({type: 'abort'});
         };
 
         request.params[name] = callback;
 
-        window[callback] = (result) => {
-            body = JSON.stringify(result);
-        };
+        if (request.timeout) {
+            setTimeout(request.abort, request.timeout);
+        }
 
         script = document.createElement('script');
         script.src = request.getUrl();

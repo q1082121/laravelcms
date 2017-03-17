@@ -17,9 +17,8 @@
   ],
   "dependencies": {
     "AdminLTE": "admin-lte#^2.3.6",
-    "jquery": "1.11.0",
+    "jquery": "^1.11.0",
     "vue": "^2.2.4",
-    "jquery-form": "good-form#*",
-    "vue-resource": "^1.0.2"
+    "vue-resource": "^1.2.1"
   }
 }

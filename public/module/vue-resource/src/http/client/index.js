@@ -4,7 +4,8 @@
 
 import Promise from '../../promise';
 import xhrClient from './xhr';
-import { warn, when, isObject, isFunction } from '../../util';
+import nodeClient from './node';
+import { warn, when, isObject, isFunction, inBrowser } from '../../util';
 
 export default function (context) {
 
@@ -15,7 +16,7 @@ export default function (context) {
     }
 
     function Client(request) {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
 
             function exec() {
 
@@ -37,8 +38,8 @@ export default function (context) {
 
                 } else if (isObject(response)) {
 
-                    resHandlers.forEach((handler) => {
-                        response = when(response, (response) => {
+                    resHandlers.forEach(handler => {
+                        response = when(response, response => {
                             return handler.call(context, response) || response;
                         });
                     });
@@ -56,7 +57,7 @@ export default function (context) {
         }, context);
     }
 
-    Client.use = (handler) => {
+    Client.use = handler => {
         reqHandlers.push(handler);
     };
 
@@ -65,7 +66,7 @@ export default function (context) {
 
 function sendRequest(request, resolve) {
 
-    var client = request.client || xhrClient;
+    var client = request.client || (inBrowser ? xhrClient : nodeClient);
 
     resolve(client(request));
 }

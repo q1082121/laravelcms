@@ -91,25 +91,23 @@ elixir(function (mix) {
         .scripts(['home.js', 'base.js'], path.public + file.js + 'home.js')
         .scripts(['user.js', 'base.js'], path.public + file.js + 'user.js')
         .scripts(['login.js', 'base.js'], path.public + file.js + 'login.js')
-        .task('minifycss')
-        .task('minifyjs')
+        .task('headercss')
+        .task('headerjs')
         //资源版本管理    
         .version([file.css + 'admin.css', file.css + 'home.css', file.css + 'user.css', file.css + 'login.css', file.js + 'admin.js', file.js + 'home.js', file.js + 'user.js', file.js + 'login.js'])
 });
-//压缩版本资源CSS
-gulp.task('minifycss', function () {
+//头部内容写入
+gulp.task('headercss', function () {
     gulp.src(path.public + file.css + "**/*.css") //该任务针对的文件
-        .pipe(minifyCss()) //该任务调用的模块
         .pipe(header(site.banner, {
             pkg: site.pkg,
             date: site.date
         }))
         .pipe(gulp.dest(path.public + file.css)); //输出生成文件
 });
-//压缩版本资源JS
-gulp.task('minifyjs', function () {
+//头部内容写入
+gulp.task('headerjs', function () {
     gulp.src(path.public + file.js + "**/*.js") //该任务针对的文件
-        .pipe(uglify()) //该任务调用的模块
         .pipe(header(site.banner, {
             pkg: site.pkg,
             date: site.date

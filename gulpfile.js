@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var elixir = require('laravel-elixir');
 var minifyCss = require('gulp-minify-css'); //- 压缩CSS为一行;
 var uglify = require('gulp-uglify'); //压缩JS
+var header = require('gulp-header'); //头部内容写入
 
 //默认源地图
 elixir.config.sourcemaps = false;
@@ -45,6 +46,25 @@ var rootUserJsSrc = rootJsSrc + userSrc;
 var rootBaseJsSrc = rootJsSrc + baseSrc;
 var rootLoginJsSrc = rootJsSrc + loginSrc;
 
+var site = {
+        pkg: require('./package.json'),
+        banner: [
+            '/**',
+            ' * <%= pkg.name %> <%= pkg.version %>',
+            ' * <%= pkg.description %>',
+            ' * <%= pkg.homepage %>',
+            ' * Author <%= pkg.author %>',
+            // ' * Licensed under <%= pkg.license %>',
+            // ' * Released on: <%= date.month %> <%= date.day %>, <%= date.year %>',
+            ' */',
+            ''].join('\n'),
+        date: {
+            year: new Date().getFullYear(),
+            month: ('January February March April May June July August September October November December').split(' ')[new Date().getMonth()],
+            day: new Date().getDate()
+        }
+    };
+
 elixir(function (mix) {
     //编译less至css目录
     mix.less(adminSrc + 'admin.less', rootAdminCssSrc + 'app.css')
@@ -75,11 +95,13 @@ elixir(function (mix) {
 gulp.task('minifycss', function () {
     gulp.src(publicBuildCssSrc + "**/*.css") //该任务针对的文件
         .pipe(minifyCss()) //该任务调用的模块
+        .pipe(header(site.banner, {pkg: site.pkg, date: site.date}))
         .pipe(gulp.dest(publicBuildCssSrc)); //将会在src/css下生成index.css
 });
 //压缩版本资源JS
 gulp.task('minifyjs', function () {
     gulp.src(publicBuildJsSrc + "**/*.js") //该任务针对的文件
         .pipe(uglify()) //该任务调用的模块
+        .pipe(header(site.banner, {pkg: site.pkg, date: site.date}))
         .pipe(gulp.dest(publicBuildJsSrc)); //将会在src/css下生成index.css
 });

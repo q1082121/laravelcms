@@ -41,20 +41,12 @@
   <script src="{{asset('/module/AdminLTE/dist/js/html5shiv/3.7.3/dist/html5shiv.min.js')}}"></script>
   <script src="{{asset('/module/AdminLTE/dist/js/respond/1.4.2/dest/respond.min.js')}}"></script>
   <![endif]-->
-  <!--vue-->
-  <script src="{{asset('/module/vue/dist/vue.min.js')}}"></script>
-  <!--vue-resource-->
-  <script src="{{asset('/module/vue-resource/dist/vue-resource.min.js')}}"></script>
-  <script type="text/javascript">
-    Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
-    Vue.http.options.emulateJSON = true;
-  </script>
   <!-- jQuery 2.2.3 -->
   <script src="{{asset('/module/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
   <!--layer-->
   <script src="{{asset('/module/layer/layer.js')}}"></script>
   <!--common-->
-  <script src="{{asset('/js/common.js')}}"></script>
+  <script src="{{ elixir('js/admin.js') }}"></script>
 
   
 </head>

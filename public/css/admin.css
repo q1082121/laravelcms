@@ -1,51 +1,7 @@
-/*!
- * LaravelPCMS (471416739)
- * rubbish.boy@163.com
+/**
+ * LaravelPCMS 1.6.0
+ * 内容管理系统-支撑微信,微信小程序
+ * http://www.es12.com
+ * Author rubbish.boy@163.com
  */
-body {
-  text-align: left;
-  font-family: "\5fae\8f6f\96c5\9ed1";
-  margin: 0 auto;
-  padding: 0;
-  color: #333;
-}
-html,
-body,
-div,
-dl,
-dt,
-dd,
-ul,
-ol,
-li,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-pre,
-form,
-fieldset,
-input,
-p,
-blockquote,
-th,
-td {
-  margin: 0;
-  padding: 0;
-}
-img {
-  box-sizing: border-box;
-  vertical-align: middle;
-  border: 0;
-}
-.a_out {
-  float: left;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.testbg {
-  background: url("/images/admin/logo.jpg") no-repeat left top;
-}
+body{text-align:left;font-family:\\5fae\8f6f\96c5\9ed1;color:#333}blockquote,body,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,html,input,li,ol,p,pre,td,th,ul{margin:0;padding:0}img{box-sizing:border-box;vertical-align:middle;border:0}.a_out{float:left;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.testbg{background:url(/images/admin/logo.jpg) no-repeat}

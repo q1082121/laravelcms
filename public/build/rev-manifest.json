@@ -1,10 +1,10 @@
 {
-  "css/admin.css": "css/admin-c25697b603.css",
-  "css/home.css": "css/home-27c274569c.css",
-  "css/login.css": "css/login-27c274569c.css",
-  "css/user.css": "css/user-45fdb67d0a.css",
-  "js/admin.js": "js/admin-9f9160dd7b.js",
-  "js/home.js": "js/home-9f9160dd7b.js",
-  "js/login.js": "js/login-9f9160dd7b.js",
-  "js/user.js": "js/user-9f9160dd7b.js"
+  "css/admin.css": "css/admin-c468907bf8.css",
+  "css/home.css": "css/home-ea169388a7.css",
+  "css/login.css": "css/login-7f29ba7dfa.css",
+  "css/user.css": "css/user-db8e0d953b.css",
+  "js/admin.js": "js/admin-0e20a29dde.js",
+  "js/home.js": "js/home-99ccf124ae.js",
+  "js/login.js": "js/login-3a74f90c41.js",
+  "js/user.js": "js/user-3a74f90c41.js"
 }

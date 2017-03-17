@@ -198,7 +198,6 @@
 <!-- -->
 
 <!-- -->
-<link rel="stylesheet" href="{{asset('/css/common')}}/effect/css/style.css">
 <div class="containor margin-40">
     <div class="team-members row">
             <!-- effect-3 html -->
@@ -458,8 +457,7 @@
     </div>
     </div>
 </div>
-<!-- -->
-
+<!-- 
 <script src="{{asset('/module')}}/socket.io-client-1.3.7/socket.io.js"></script>
 <script>
 $(document).ready(function () {
@@ -481,5 +479,5 @@ $(document).ready(function () {
     });
 });
 </script>
-
+-->
 @endsection

@@ -16,92 +16,95 @@ elixir.config.sourcemaps = false;
  | file for our application, as well as publishing vendor resources.
  |
  */
-var adminSrc = "admin/";
-var homeSrc = "home/";
-var userSrc = "user/";
-var baseSrc = "base/";
-var loginSrc = "login/";
-var cssSrc = "css/";
-var jsSrc = "js/";
-var buildSrc = "build/";
-
-var rootSrc = "resources/assets/";
-var rootCssSrc = rootSrc + cssSrc;
-var rootJsSrc = rootSrc + jsSrc;
-
-var publicSrc = "public/";
-var publicCssSrc = publicSrc + cssSrc;
-var publicJsSrc = publicSrc + jsSrc;
-var publicBuildCssSrc = publicSrc + buildSrc + cssSrc;
-var publicBuildJsSrc = publicSrc + buildSrc + jsSrc;
-
-var rootAdminCssSrc = rootCssSrc + adminSrc;
-var rootHomeCssSrc = rootCssSrc + homeSrc;
-var rootUserCssSrc = rootCssSrc + userSrc;
-var rootLoginCssSrc = rootCssSrc + loginSrc;
-
-var rootAdminJsSrc = rootJsSrc + adminSrc;
-var rootHomeJsSrc = rootJsSrc + homeSrc;
-var rootUserJsSrc = rootJsSrc + userSrc;
-var rootBaseJsSrc = rootJsSrc + baseSrc;
-var rootLoginJsSrc = rootJsSrc + loginSrc;
+var path = {
+    public: "public/",
+    root: "resources/assets/"
+}
+var model = {
+    admin: "admin/",
+    home: "home/",
+    user: "user/",
+    base: "base/",
+    login: "login/",
+    build: "build/"
+}
+var file = {
+    css: "css/",
+    js: "js/",
+}
 
 var site = {
-        pkg: require('./package.json'),
-        banner: [
-            '/**',
-            ' * <%= pkg.name %> <%= pkg.version %>',
-            ' * <%= pkg.description %>',
-            ' * <%= pkg.homepage %>',
-            ' * Author <%= pkg.author %>',
-            // ' * Licensed under <%= pkg.license %>',
-            // ' * Released on: <%= date.month %> <%= date.day %>, <%= date.year %>',
-            ' */',
-            ''].join('\n'),
-        date: {
-            year: new Date().getFullYear(),
-            month: ('January February March April May June July August September October November December').split(' ')[new Date().getMonth()],
-            day: new Date().getDate()
-        }
-    };
+    pkg: require('./package.json'),
+    banner: [
+        '/**',
+        ' * <%= pkg.name %> <%= pkg.version %>',
+        ' * <%= pkg.description %>',
+        ' * <%= pkg.homepage %>',
+        ' * Author <%= pkg.author %>',
+        // ' * Licensed under <%= pkg.license %>',
+        // ' * Released on: <%= date.month %> <%= date.day %>, <%= date.year %>',
+        ' */',
+        ''
+    ].join('\n'),
+    date: {
+        year: new Date().getFullYear(),
+        month: ('January February March April May June July August September October November December').split(' ')[new Date().getMonth()],
+        day: new Date().getDate()
+    }
+};
 
 elixir(function (mix) {
     //编译less至css目录
-    mix.less(adminSrc + 'admin.less', rootAdminCssSrc + 'app.css')
-        .less(homeSrc + 'home.less', rootHomeCssSrc + 'app.css')
-        .less(userSrc + 'user.less', rootUserCssSrc + 'app.css')
-        .less(loginSrc + 'login.less', rootLoginCssSrc + 'app.css')
+    mix.less(model.admin + 'admin.less', path.root + file.css + model.admin + 'app.css')
+        .less(model.home + 'home.less', path.root + file.css + model.home + 'app.css')
+        .less(model.user + 'user.less', path.root + file.css + model.user + 'app.css')
+        .less(model.login + 'login.less', path.root + file.css + model.login + 'app.css')
         //css目录里各目录css至public/css下各目录
-        .stylesIn(rootAdminCssSrc, publicCssSrc + 'admin.css')
-        .stylesIn(rootHomeCssSrc, publicCssSrc + 'home.css')
-        .stylesIn(rootUserCssSrc, publicCssSrc + 'user.css')
-        .stylesIn(rootLoginCssSrc, publicCssSrc + 'login.css')
+        .stylesIn(path.root + file.css + model.admin, path.public + file.css + 'admin.css')
+        .stylesIn(path.root + file.css + model.home, path.public + file.css + 'home.css')
+        .stylesIn(path.root + file.css + model.user, path.public + file.css + 'user.css')
+        .stylesIn(path.root + file.css + model.login, path.public + file.css + 'login.css')
+        .scripts([
+            'module/vue/dist/vue.min.js',
+            'module/vue-resource/dist/vue-resource.min.js',
+        ], path.root + file.js + model.admin + 'main.js', path.public)
+        .scripts([
+            'module/vue/dist/vue.min.js',
+            'module/vue-resource/dist/vue-resource.min.js',
+        ], path.root + file.js + model.home + 'main.js', path.public)
         //合并js目录里各目录js文件至resources/js下
-        .scriptsIn(rootAdminJsSrc, rootJsSrc + 'admin.js')
-        .scriptsIn(rootHomeJsSrc, rootJsSrc + 'home.js')
-        .scriptsIn(rootUserJsSrc, rootJsSrc + 'user.js')
-        .scriptsIn(rootBaseJsSrc, rootJsSrc + 'base.js')
-        .scriptsIn(rootLoginJsSrc, rootJsSrc + 'login.js')
+        .scriptsIn(path.root + file.js + model.admin, path.root + file.js + 'admin.js')
+        .scriptsIn(path.root + file.js + model.home, path.root + file.js + 'home.js')
+        .scriptsIn(path.root + file.js + model.user, path.root + file.js + 'user.js')
+        .scriptsIn(path.root + file.js + model.base, path.root + file.js + 'base.js')
+        .scriptsIn(path.root + file.js + model.login, path.root + file.js + 'login.js')
         //合并js下各文件类型
-        .scripts(['base.js', 'admin.js'], publicJsSrc + 'admin.js')
-        .scripts(['base.js', 'home.js'], publicJsSrc + 'home.js')
-        .scripts(['base.js', 'user.js'], publicJsSrc + 'user.js')
-        .scripts(['base.js', 'login.js'], publicJsSrc + 'login.js')
-    //资源版本管理    
-    mix.version([cssSrc + 'admin.css', cssSrc + 'home.css', cssSrc + 'user.css', cssSrc + 'login.css', jsSrc + 'admin.js', jsSrc + 'home.js', jsSrc + 'user.js', jsSrc + 'login.js']);
-    
+        .scripts(['admin.js', 'base.js'], path.public + file.js + 'admin.js')
+        .scripts(['home.js', 'base.js'], path.public + file.js + 'home.js')
+        .scripts(['user.js', 'base.js'], path.public + file.js + 'user.js')
+        .scripts(['login.js', 'base.js'], path.public + file.js + 'login.js')
+        .task('minifycss')
+        .task('minifyjs')
+        //资源版本管理    
+        .version([file.css + 'admin.css', file.css + 'home.css', file.css + 'user.css', file.css + 'login.css', file.js + 'admin.js', file.js + 'home.js', file.js + 'user.js', file.js + 'login.js'])
 });
 //压缩版本资源CSS
 gulp.task('minifycss', function () {
-    gulp.src(publicBuildCssSrc + "**/*.css") //该任务针对的文件
+    gulp.src(path.public + file.css + "**/*.css") //该任务针对的文件
         .pipe(minifyCss()) //该任务调用的模块
-        .pipe(header(site.banner, {pkg: site.pkg, date: site.date}))
-        .pipe(gulp.dest(publicBuildCssSrc)); //将会在src/css下生成index.css
+        .pipe(header(site.banner, {
+            pkg: site.pkg,
+            date: site.date
+        }))
+        .pipe(gulp.dest(path.public + file.css)); //输出生成文件
 });
 //压缩版本资源JS
 gulp.task('minifyjs', function () {
-    gulp.src(publicBuildJsSrc + "**/*.js") //该任务针对的文件
+    gulp.src(path.public + file.js + "**/*.js") //该任务针对的文件
         .pipe(uglify()) //该任务调用的模块
-        .pipe(header(site.banner, {pkg: site.pkg, date: site.date}))
-        .pipe(gulp.dest(publicBuildJsSrc)); //将会在src/css下生成index.css
+        .pipe(header(site.banner, {
+            pkg: site.pkg,
+            date: site.date
+        }))
+        .pipe(gulp.dest(path.public + file.js)); //输出生成文件
 });

@@ -231,7 +231,9 @@
           </ol>
       </section>
       <!--模板主内容区 -->
+      <div id="appContent">
           @yield('content')
+      </div>
       <!--/.模板主内容区 --> 
   </div>
   <!-- /.content-wrapper 脚部版权信息 -->

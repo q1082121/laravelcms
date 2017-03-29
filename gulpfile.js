@@ -1,21 +1,14 @@
 var gulp = require('gulp');
-var elixir = require('laravel-elixir');
+const elixir = require('laravel-elixir');
+require('laravel-elixir-vue');
+require('laravel-elixir-webpack-official');
 var minifyCss = require('gulp-minify-css'); //- 压缩CSS为一行;
 var uglify = require('gulp-uglify'); //压缩JS
 var header = require('gulp-header'); //头部内容写入
 
 //默认源地图
 elixir.config.sourcemaps = false;
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+
 var path = {
     public: "public/",
     root: "resources/assets/"
@@ -54,6 +47,14 @@ var site = {
 };
 
 elixir(function (mix) {
+    //懒加载输出
+    elixir.webpack.mergeConfig({
+        output: {
+            filename: '[name].js',
+            chunkFilename: '../build/js/chunks/[name].chunk.js',
+        }
+    });
+    mix.webpack('vue/main.js');
     //编译less至css目录
     mix.less(model.admin + 'admin.less', path.root + file.css + model.admin + 'app.css')
         .less(model.home + 'home.less', path.root + file.css + model.home + 'app.css')
@@ -69,11 +70,6 @@ elixir(function (mix) {
             'module/vue-resource/dist/vue-resource.min.js',
             'module/vue-router/dist/vue-router.min.js',
         ], path.root + file.js + model.admin + 'main.js', path.public)
-        .scripts([
-            'module/vue/dist/vue.min.js',
-            'module/vue-resource/dist/vue-resource.min.js',
-            'module/vue-router/dist/vue-router.min.js',
-        ], path.root + file.js + model.home + 'main.js', path.public)
         .scripts([
             'module/vue/dist/vue.min.js',
             'module/vue-resource/dist/vue-resource.min.js',
@@ -98,8 +94,9 @@ elixir(function (mix) {
         .task('headercss')
         .task('headerjs')
         //资源版本管理    
-        .version([file.css + 'admin.css', file.css + 'home.css', file.css + 'user.css', file.css + 'login.css', file.js + 'admin.js', file.js + 'home.js', file.js + 'user.js', file.js + 'login.js'])
+        .version([file.css + 'admin.css', file.css + 'home.css', file.css + 'user.css', file.css + 'login.css', file.js + 'admin.js', file.js + 'home.js', file.js + 'user.js', file.js + 'login.js',file.js + 'main.js'])
 });
+
 //头部内容写入
 gulp.task('headercss', function () {
     gulp.src(path.public + file.css + "**/*.css") //该任务针对的文件

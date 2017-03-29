@@ -1,9 +1,3 @@
-/**
- * LaravelPCMS 1.6.0
- * 内容管理系统-支撑微信,微信小程序
- * http://www.es12.com
- * Author rubbish.boy@163.com
- */
 /*!
  * Vue.js v2.2.4
  * (c) 2014-2017 Evan You

@@ -5,6 +5,9 @@ require('laravel-elixir-webpack-official');
 var minifyCss = require('gulp-minify-css'); //- 压缩CSS为一行;
 var uglify = require('gulp-uglify'); //压缩JS
 var header = require('gulp-header'); //头部内容写入
+var pathdir = require('path');
+var ROOT_PATH = pathdir.resolve(__dirname);
+var JS_PATH = pathdir.resolve(__dirname,'./public/js/');
 
 //默认源地图
 elixir.config.sourcemaps = false;
@@ -47,14 +50,6 @@ var site = {
 };
 
 elixir(function (mix) {
-    //懒加载输出
-    elixir.webpack.mergeConfig({
-        output: {
-            filename: '[name].js',
-            chunkFilename: '../build/js/chunks/[name].chunk.js',
-        }
-    });
-    mix.webpack('vue/main.js');
     //编译less至css目录
     mix.less(model.admin + 'admin.less', path.root + file.css + model.admin + 'app.css')
         .less(model.home + 'home.less', path.root + file.css + model.home + 'app.css')
@@ -69,17 +64,7 @@ elixir(function (mix) {
             'module/vue/dist/vue.min.js',
             'module/vue-resource/dist/vue-resource.min.js',
             'module/vue-router/dist/vue-router.min.js',
-        ], path.root + file.js + model.admin + 'main.js', path.public)
-        .scripts([
-            'module/vue/dist/vue.min.js',
-            'module/vue-resource/dist/vue-resource.min.js',
-            'module/vue-router/dist/vue-router.min.js',
         ], path.root + file.js + model.user + 'main.js', path.public)
-        .scripts([
-            'module/vue/dist/vue.min.js',
-            'module/vue-resource/dist/vue-resource.min.js',
-            'module/vue-router/dist/vue-router.min.js',
-        ], path.root + file.js + model.login + 'main.js', path.public)
         //合并js目录里各目录js文件至resources/js下
         .scriptsIn(path.root + file.js + model.admin, path.root + file.js + 'admin.js')
         .scriptsIn(path.root + file.js + model.home, path.root + file.js + 'home.js')
@@ -94,7 +79,17 @@ elixir(function (mix) {
         .task('headercss')
         .task('headerjs')
         //资源版本管理    
-        .version([file.css + 'admin.css', file.css + 'home.css', file.css + 'user.css', file.css + 'login.css', file.js + 'admin.js', file.js + 'home.js', file.js + 'user.js', file.js + 'login.js',file.js + 'main.js'])
+        .version([file.css + 'admin.css', file.css + 'home.css', file.css + 'user.css', file.css + 'login.css', file.js + 'admin.js', file.js + 'home.js', file.js + 'user.js', file.js + 'login.js'])
+        //懒加载输出
+        elixir.webpack.mergeConfig({
+            output: {
+                path: JS_PATH,
+                publicPath:'/js/' ,
+                filename: '[name].js',
+                chunkFilename: './chunks/[name].chunk.js',
+            }
+        });
+        mix.webpack('vue/main.js');
 });
 
 //头部内容写入

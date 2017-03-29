@@ -1,5 +1,3 @@
-Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
-Vue.http.options.emulateJSON = true;
 /***********************************
  * 方法名：用户注册验证是否存在
  * 作者： Tommy（rubbish.boy@163.com）

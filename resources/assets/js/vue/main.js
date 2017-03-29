@@ -13,8 +13,16 @@ const router = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [
-    { path: '/', component: homeHome },
-    { path: '/admin', component: adminHome }
+    { 
+      path: '/',
+      name: 'root',
+      component: homeHome
+    },
+    { 
+      path: '/admin',
+      name: 'admin',
+      component: adminHome
+    }
   ]
 })
 new Vue(Vue.util.extend({ router }, App)).$mount('#appContent')

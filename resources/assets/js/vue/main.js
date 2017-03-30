@@ -5,6 +5,8 @@ import VueRouter from './../../../../node_modules/vue-router/dist/vue-router.min
 import VueResource from './../../../../node_modules/vue-resource/dist/vue-resource.min.js'
 Vue.use(VueRouter)
 Vue.use(VueResource)
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
+Vue.http.options.emulateJSON = true;
 
 const homeHome = resolve => {require(['./module/home/home.vue'], resolve)}
 const adminHome = resolve => {require(['./module/admin/home.vue'], resolve)}

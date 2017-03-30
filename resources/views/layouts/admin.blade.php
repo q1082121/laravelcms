@@ -39,7 +39,7 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
+<div id="appContent">
   <header class="main-header">
     <!-- Logo -->
     <a href="{{ route('get.admin') }}" class="logo">
@@ -231,9 +231,7 @@
           </ol>
       </section>
       <!--模板主内容区 -->
-      <div id="appContent">
-          @yield('content')
-      </div>
+      @yield('content')  
       <!--/.模板主内容区 --> 
   </div>
   <!-- /.content-wrapper 脚部版权信息 -->
@@ -499,6 +497,7 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
+</div>  
 </div>
 <!-- ./wrapper -->
 

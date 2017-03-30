@@ -1,1 +1,416 @@
-function localcul(e){location.href=e}function main_localcul(e){main.location.href=e}function goback(){history.go(-1)}function cache_storageSave(e,t,a){1==a?localStorage.setItem(e,JSON.stringify(t)):localStorage.setItem(e,t)}function cache_storageLoad(e,t){return!!localStorage.getItem(e)&&(1==t?JSON.parse(localStorage.getItem(e)):localStorage.getItem(e))}function getCurrentDateTime(){var e=new Date,t=e.getFullYear(),a=e.getMonth()+1,n=e.getDate(),r=e.getDay(),o=e.getHours(),c=e.getMinutes(),i=e.getSeconds(),l=(e.getMilliseconds(),t);l=a>9?l+"年"+a:l+"年0"+a,l=n>9?l+"月"+n+"日":l+"月0"+n+"日",l=o>9?l+" "+o:l+" 0"+o,l=c>9?l+":"+c:l+":0"+c,l=i>9?l+":"+i:l+":0"+i;var s="";return 0==r?s="星期日":1==r?s="星期一":2==r?s="星期二":3==r?s="星期三":4==r?s="星期四":5==r?s="星期五":6==r&&(s="星期六"),l=l+" "+s}function showCal(){var e=new Date,t=e.getFullYear(),a=e.getMonth()+1,n=e.getDate();e.getDay(),parseInt(e.getTime()/1e3);return t<100&&(t="19"+t),GetLunarDay(t,a,n)}function GetBit(e,t){return e>>t&1}function e2c(){TheDate=3!=arguments.length?new Date:new Date(arguments[0],arguments[1],arguments[2]);var e,t,a,n,r=!1,o=TheDate.getYear();for(o<1900&&(o+=1900),e=365*(o-1921)+Math.floor((o-1921)/4)+madd[TheDate.getMonth()]+TheDate.getDate()-38,TheDate.getYear()%4==0&&TheDate.getMonth()>1&&e++,t=0;;t++){for(n=CalendarData[t]<4095?11:12,a=n;a>=0;a--){if(e<=29+GetBit(CalendarData[t],a)){r=!0;break}e=e-29-GetBit(CalendarData[t],a)}if(r)break}cYear=1921+t,cMonth=n-a+1,cDay=e,12==n&&(cMonth==Math.floor(CalendarData[t]/65536)+1&&(cMonth=1-cMonth),cMonth>Math.floor(CalendarData[t]/65536)+1&&cMonth--)}function GetcDateString(){var e="";return cMonth<1?(e+="(闰)",e+=monString.charAt(-cMonth-1)):e+=monString.charAt(cMonth-1),e+="月",e+=cDay<11?"初":cDay<20?"十":cDay<30?"廿":"三十",cDay%10==0&&10!=cDay||(e+=numString.charAt((cDay-1)%10)),e}function GetLunarDay(e,t,a){return e<1921||e>2020?"":(t=parseInt(t)>0?t-1:11,e2c(e,t,a),GetcDateString())}function isEmail(e){if(e.length>100)return!1;if(e.indexOf("'")!=-1||e.indexOf("/")!=-1||e.indexOf("\\")!=-1||e.indexOf("<")!=-1||e.indexOf(">")!=-1)return!1;e=e.replace("(",""),e=e.replace(")",""),e=e.replace("（",""),e=e.replace("）","");var t="^(([0-9a-zA-Z]+)|([0-9a-zA-Z]+[_.0-9a-zA-Z-]*[_.0-9a-zA-Z]+))@([a-zA-Z0-9-]+[.])+(.+)$",a=new RegExp(t);return e.search(a)!=-1}function validatemobile(e){var t=/^(((13[0-9]{1})|(15[0-9]{1})|(17[6-8]{1})|(18[0-9]{1}))+\d{8})$/;return 0!=e.length&&(11==e.length&&!!t.test(e))}function htmlspecialchars_decode(e){return e=e.replace(/&amp;/g,"&"),e=e.replace(/&lt;/g,"<"),e=e.replace(/&gt;/g,">"),e=e.replace(/&quot;/g,"'"),e=e.replace(/&#039;/g,"'")}function make_confirm(e,t){layer.confirm("您确定要【"+e+"】?",{btn:["确定","取消"],shade:!1},function(){setTimeout("window.location.href='"+t+"'",500)},function(){layer.msg("取消"+e,{shift:6})})}function layermsg_s(e,t){layer.msg(e,{icon:6,shade:[.8,"#393D49"],time:1e3},function(){location.href=t})}function layermsg_success_reload(e){layer.msg(e,{icon:6,shade:[.8,"#393D49"],time:1e3},function(){location.reload()})}function layermsg_e(e){layer.msg(e,{icon:5,shade:[.8,"#393D49"],time:1e3},function(){location.reload()})}function layermsg_success(e){layer.msg(e,{icon:6,shade:[.8,"#393D49"],time:1e3})}function layermsg_error(e){layer.msg(e,{icon:5,shade:[.8,"#393D49"],time:1e3})}function showResponse(e,t){if("success"==t){var a=e.data;1==e.success?a.curl?layermsg_s(e.info,a.curl):1==a.isreload?layermsg_success_reload(e.info):layermsg_success(e.info):1==a.isreload?layermsg_e(e.info):layermsg_error(e.info)}}function open_box_image(e){layer.open({type:1,title:!1,closeBtn:0,skin:"layui-layer-nobg",shadeClose:!0,content:'<img src="'+e+'" width="320px">'})}function open_iframe_box(e,t,a,n){layer.open({type:2,shade:[.8,"#333"],area:[a,n],title:"信息窗口",maxmin:!0,content:e,cancel:function(e){1==t?layer.close(e):location.reload()}})}function iFrameHeight(e){var t=document.getElementById(e),a=document.frames?document.frames[e].document:t.contentDocument;null!=t&&null!=a&&(t.height=a.body.scrollHeight)}var CalendarData=new Array(100),madd=new Array(12),tgString="甲乙丙丁戊己庚辛壬癸",dzString="子丑寅卯辰巳午未申酉戌亥",numString="一二三四五六七八九十",monString="正二三四五六七八九十冬腊",weekString="日一二三四五六",sx="鼠牛虎兔龙蛇马羊猴鸡狗猪",cYear,cMonth,cDay,TheDate;CalendarData=new Array(2635,333387,1701,1748,267701,694,2391,133423,1175,396438,3402,3749,331177,1453,694,201326,2350,465197,3221,3402,400202,2901,1386,267611,605,2349,137515,2709,464533,1738,2901,330421,1242,2651,199255,1323,529706,3733,1706,398762,2741,1206,267438,2647,1318,204070,3477,461653,1386,2413,330077,1197,2637,268877,3365,531109,2900,2922,398042,2395,1179,267415,2635,661067,1701,1748,398772,2742,2391,330031,1175,1611,200010,3749,527717,1452,2742,332397,2350,3222,268949,3402,3493,133973,1386,464219,605,2349,334123,2709,2890,267946,2773,592565,1210,2651,395863,1323,2707,265877),madd[0]=0,madd[1]=31,madd[2]=59,madd[3]=90,madd[4]=120,madd[5]=151,madd[6]=181,madd[7]=212,madd[8]=243,madd[9]=273,madd[10]=304,madd[11]=334,$(function(){var e=getCurrentDateTime();$("#currentDate").text(e)});
+/***********************************
+ * 方法名：js链接地址跳转函数
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function localcul($url) {
+    location.href = $url;
+}
+/***********************************
+ * 方法名：js链接地址跳转函数（main框架）
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function main_localcul($url) {
+    main.location.href = $url;
+}
+/***********************************
+ * 方法名：js返回上一页函数
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function goback() {
+    history.go(-1);
+}
+/***********************************
+ * 方法名：保存到本地缓存
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function cache_storageSave(objectName, objectData, isjson) {
+    if (isjson == 1) {
+        localStorage.setItem(objectName, JSON.stringify(objectData));
+    } else {
+        localStorage.setItem(objectName, objectData);
+    }
+
+}
+/***********************************
+ * 方法名：获取本地缓存
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function cache_storageLoad(objectName, isjson) {
+    if (localStorage.getItem(objectName)) {
+        if (isjson == 1) {
+            return JSON.parse(localStorage.getItem(objectName))
+        } else {
+            return localStorage.getItem(objectName)
+        }
+
+    } else {
+        return false
+    }
+}
+/*获取当前日期*/
+function getCurrentDateTime() {
+    var d = new Date();
+    var year = d.getFullYear();
+    var month = d.getMonth() + 1;
+    var date = d.getDate();
+    var week = d.getDay();
+    /*时分秒*/
+    var hours = d.getHours();
+    var minutes = d.getMinutes();
+    var seconds = d.getSeconds();
+    var ms = d.getMilliseconds();
+    var curDateTime = year;
+    if (month > 9)
+        curDateTime = curDateTime + "年" + month;
+    else
+        curDateTime = curDateTime + "年0" + month;
+    if (date > 9)
+        curDateTime = curDateTime + "月" + date + "日";
+    else
+        curDateTime = curDateTime + "月0" + date + "日";
+    if (hours > 9)
+        curDateTime = curDateTime + " " + hours;
+    else
+        curDateTime = curDateTime + " 0" + hours;
+    if (minutes > 9)
+        curDateTime = curDateTime + ":" + minutes;
+    else
+        curDateTime = curDateTime + ":0" + minutes;
+    if (seconds > 9)
+        curDateTime = curDateTime + ":" + seconds;
+    else
+        curDateTime = curDateTime + ":0" + seconds;
+    var weekday = "";
+    if (week == 0)
+        weekday = "星期日";
+    else if (week == 1)
+        weekday = "星期一";
+    else if (week == 2)
+        weekday = "星期二";
+    else if (week == 3)
+        weekday = "星期三";
+    else if (week == 4)
+        weekday = "星期四";
+    else if (week == 5)
+        weekday = "星期五";
+    else if (week == 6)
+        weekday = "星期六";
+    curDateTime = curDateTime + " " + weekday;
+    return curDateTime;
+}
+/*获取当前农历*/
+function showCal() {
+    var D = new Date();
+    var yy = D.getFullYear();
+    var mm = D.getMonth() + 1;
+    var dd = D.getDate();
+    var ww = D.getDay();
+    var ss = parseInt(D.getTime() / 1000);
+    if (yy < 100) yy = "19" + yy;
+    return GetLunarDay(yy, mm, dd);
+}
+//定义全局变量 
+var CalendarData = new Array(100);
+var madd = new Array(12);
+var tgString = "甲乙丙丁戊己庚辛壬癸";
+var dzString = "子丑寅卯辰巳午未申酉戌亥";
+var numString = "一二三四五六七八九十";
+var monString = "正二三四五六七八九十冬腊";
+var weekString = "日一二三四五六";
+var sx = "鼠牛虎兔龙蛇马羊猴鸡狗猪";
+var cYear, cMonth, cDay, TheDate;
+CalendarData = new Array(0xA4B, 0x5164B, 0x6A5, 0x6D4, 0x415B5, 0x2B6, 0x957, 0x2092F, 0x497, 0x60C96, 0xD4A, 0xEA5, 0x50DA9, 0x5AD, 0x2B6, 0x3126E, 0x92E, 0x7192D, 0xC95, 0xD4A, 0x61B4A, 0xB55, 0x56A, 0x4155B, 0x25D, 0x92D, 0x2192B, 0xA95, 0x71695, 0x6CA, 0xB55, 0x50AB5, 0x4DA, 0xA5B, 0x30A57, 0x52B, 0x8152A, 0xE95, 0x6AA, 0x615AA, 0xAB5, 0x4B6, 0x414AE, 0xA57, 0x526, 0x31D26, 0xD95, 0x70B55, 0x56A, 0x96D, 0x5095D, 0x4AD, 0xA4D, 0x41A4D, 0xD25, 0x81AA5, 0xB54, 0xB6A, 0x612DA, 0x95B, 0x49B, 0x41497, 0xA4B, 0xA164B, 0x6A5, 0x6D4, 0x615B4, 0xAB6, 0x957, 0x5092F, 0x497, 0x64B, 0x30D4A, 0xEA5, 0x80D65, 0x5AC, 0xAB6, 0x5126D, 0x92E, 0xC96, 0x41A95, 0xD4A, 0xDA5, 0x20B55, 0x56A, 0x7155B, 0x25D, 0x92D, 0x5192B, 0xA95, 0xB4A, 0x416AA, 0xAD5, 0x90AB5, 0x4BA, 0xA5B, 0x60A57, 0x52B, 0xA93, 0x40E95);
+madd[0] = 0;
+madd[1] = 31;
+madd[2] = 59;
+madd[3] = 90;
+madd[4] = 120;
+madd[5] = 151;
+madd[6] = 181;
+madd[7] = 212;
+madd[8] = 243;
+madd[9] = 273;
+madd[10] = 304;
+madd[11] = 334;
+function GetBit(m, n) {
+    return (m >> n) & 1;
+}
+//农历转换 
+function e2c() {
+    TheDate = (arguments.length != 3) ? new Date() : new Date(arguments[0], arguments[1], arguments[2]);
+    var total, m, n, k;
+    var isEnd = false;
+    var tmp = TheDate.getYear();
+    if (tmp < 1900) {
+        tmp += 1900;
+    }
+    total = (tmp - 1921) * 365 + Math.floor((tmp - 1921) / 4) + madd[TheDate.getMonth()] + TheDate.getDate() - 38;
+
+    if (TheDate.getYear() % 4 == 0 && TheDate.getMonth() > 1) {
+        total++;
+    }
+    for (m = 0;; m++) {
+        k = (CalendarData[m] < 0xfff) ? 11 : 12;
+        for (n = k; n >= 0; n--) {
+            if (total <= 29 + GetBit(CalendarData[m], n)) {
+                isEnd = true;
+                break;
+            }
+            total = total - 29 - GetBit(CalendarData[m], n);
+        }
+        if (isEnd) break;
+    }
+    cYear = 1921 + m;
+    cMonth = k - n + 1;
+    cDay = total;
+    if (k == 12) {
+        if (cMonth == Math.floor(CalendarData[m] / 0x10000) + 1) {
+            cMonth = 1 - cMonth;
+        }
+        if (cMonth > Math.floor(CalendarData[m] / 0x10000) + 1) {
+            cMonth--;
+        }
+    }
+}
+function GetcDateString() {
+    var tmp = "";
+    /*显示农历年：（ 如：甲午(马)年 ）*/
+    /*tmp+=tgString.charAt((cYear-4)%10); 
+    tmp+=dzString.charAt((cYear-4)%12); 
+    tmp+="("; 
+    tmp+=sx.charAt((cYear-4)%12); 
+    tmp+=")年 ";*/
+    if (cMonth < 1) {
+        tmp += "(闰)";
+        tmp += monString.charAt(-cMonth - 1);
+    } else {
+        tmp += monString.charAt(cMonth - 1);
+    }
+    tmp += "月";
+    tmp += (cDay < 11) ? "初" : ((cDay < 20) ? "十" : ((cDay < 30) ? "廿" : "三十"));
+    if (cDay % 10 != 0 || cDay == 10) {
+        tmp += numString.charAt((cDay - 1) % 10);
+    }
+    return tmp;
+}
+function GetLunarDay(solarYear, solarMonth, solarDay) {
+    //solarYear = solarYear<1900?(1900+solarYear):solarYear; 
+    if (solarYear < 1921 || solarYear > 2020) {
+        return "";
+    } else {
+        solarMonth = (parseInt(solarMonth) > 0) ? (solarMonth - 1) : 11;
+        e2c(solarYear, solarMonth, solarDay);
+        return GetcDateString();
+    }
+}
+$(function () {
+    var date = getCurrentDateTime();
+    //var calendar = showCal(); 
+    //$("#currentDate").text("今天是: " + date + "  农历  " + calendar  ); 
+    $("#currentDate").text(date);
+});
+/***********************************
+ * 方法名：判断邮箱地址有效性
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function isEmail(s) {
+    if (s.length > 100) return false;
+    if (s.indexOf("'") != -1 || s.indexOf("/") != -1 || s.indexOf("\\") != -1 || s.indexOf("<") != -1 || s.indexOf(">") != -1) return false;
+    //edit by liujy 2004-08-04 09:30:01 
+    s = s.replace('(', '');
+    s = s.replace(')', '');
+    s = s.replace('（', '');
+    s = s.replace('）', '');
+
+    var regu = "^(([0-9a-zA-Z]+)|([0-9a-zA-Z]+[_.0-9a-zA-Z-]*[_.0-9a-zA-Z]+))@([a-zA-Z0-9-]+[.])+(.+)$";
+    //{2}|net|NET|com|COM|gov|GOV|mil|MIL|org|ORG|edu|EDU|int|INT|cn|CN|cc|CC
+    var re = new RegExp(regu);
+    if (s.search(re) != -1)
+        return true;
+    else
+        return false;
+}
+/***********************************
+ * 方法名：判断手机号码有效性
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function validatemobile(mobile) {
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[6-8]{1})|(18[0-9]{1}))+\d{8})$/;
+    if (mobile.length == 0) {
+        return false;
+    } else if (mobile.length != 11) {
+        return false;
+    } else if (!myreg.test(mobile)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+/***********************************
+ * 方法名：js HTML实体 转换为 html字符串 htmlspecialchars_decode
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function htmlspecialchars_decode(str) {
+    str = str.replace(/&amp;/g, '&');
+    str = str.replace(/&lt;/g, '<');
+    str = str.replace(/&gt;/g, '>');
+    str = str.replace(/&quot;/g, "'");
+    str = str.replace(/&#039;/g, "'");
+    return str;
+}
+/***********************************
+ * 方法名：调用layer询问框
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function make_confirm(info, link) {
+    layer.confirm('您确定要【' + info + "】?", {
+            btn: ['确定', '取消'], //按钮
+            shade: false //不显示遮罩
+        },
+        function () {
+            setTimeout("window.location.href='" + link + "'", 500);
+        },
+        function () {
+            layer.msg("取消" + info, {
+                shift: 6
+            });
+        });
+}
+
+/***********************************
+ * 方法名：layer 成功提示
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function layermsg_s(infos, linkurl) {
+    layer.msg(infos, {
+        icon: 6, //1
+        shade: [0.8, '#393D49'],
+        time: 1000 //2秒关闭 2000（如果不配置，默认是3秒）
+    }, function () {
+        location.href = linkurl;
+    });
+}
+/***********************************
+ * 方法名：layer 成功提示【刷新页面】
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function layermsg_success_reload(infos) {
+    layer.msg(infos, {
+            icon: 6, //1
+            shade: [0.8, '#393D49'],
+            time: 1000 //2秒关闭 2000（如果不配置，默认是3秒）
+        },
+        function () {
+            location.reload();
+        });
+}
+/***********************************
+ * 方法名：layer 错误提示
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function layermsg_e(infos) {
+    layer.msg(infos, {
+            icon: 5, //1
+            shade: [0.8, '#393D49'],
+            time: 1000 //2秒关闭 2000（如果不配置，默认是3秒）
+        },
+        function () {
+            location.reload();
+        });
+}
+/***********************************
+ * 方法名：layer 成功提示【不在跳转】
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function layermsg_success(infos) {
+    layer.msg(infos, {
+        icon: 6, //1
+        shade: [0.8, '#393D49'],
+        time: 1000 //2秒关闭 2000（如果不配置，默认是3秒）
+    });
+}
+/***********************************
+ * 方法名：layer 错误提示【不在跳转】
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function layermsg_error(infos) {
+    layer.msg(infos, {
+        icon: 5, //1
+        shade: [0.8, '#393D49'],
+        time: 1000 //2秒关闭 2000（如果不配置，默认是3秒）
+    });
+}
+
+/***********************************
+ * 方法名：ajaxform返回处理 
+ * 作者： Tommy（rubbish.boy@163.com）
+ * 时间：2015年12月31日
+ ***********************************/
+function showResponse(responseText, statusText) {
+    if (statusText == 'success') {
+        var darry = responseText.data;
+        if (responseText.success == 1) {
+            if (darry.curl) {
+                layermsg_s(responseText.info, darry.curl);
+            } else {
+                if (darry.isreload == 1) {
+                    layermsg_success_reload(responseText.info);
+                } else {
+                    layermsg_success(responseText.info);
+                }
+            }
+        } else {
+            if (darry.isreload == 1) {
+                layermsg_e(responseText.info);
+            } else {
+                layermsg_error(responseText.info);
+            }
+        }
+    }
+}
+/***********************************
+ * 方法名：layer 弹窗
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function open_box_image(dir) {
+    layer.open({
+        type: 1,
+        title: false,
+        closeBtn: 0,
+        skin: 'layui-layer-nobg', //没有背景色
+        shadeClose: true,
+        content: '<img src="' + dir + '" width="320px">'
+    });
+}
+/***********************************
+ * 方法名：layer 触发框架弹出框
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function open_iframe_box(url, isclose, width, height) {
+    layer.open({
+        type: 2,
+        shade: [0.8, '#333'],
+        area: [width, height],
+        title: "信息窗口", //不显示标题
+        maxmin: true, //开启最大化最小化按钮
+        content: url, //捕获的元素
+        cancel: function (index) {
+            if (isclose == 1) {
+                layer.close(index);
+            } else {
+                location.reload();
+            }
+        }
+    });
+}
+/***********************************
+ * 方法名：iframe自适应高度(兼容多种浏览器)
+ * 作者： Tommy（rubbish.boy@163.com）
+ ***********************************/
+function iFrameHeight(idname) {
+    var ifm = document.getElementById(idname);
+    var subWeb = document.frames ? document.frames[idname].document : ifm.contentDocument;
+    if (ifm != null && subWeb != null) {
+        ifm.height = subWeb.body.scrollHeight;
+    }
+}

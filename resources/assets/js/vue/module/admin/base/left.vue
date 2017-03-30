@@ -14,18 +14,22 @@
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less 左侧导航菜单区域-->
-      
+      <admin-nav></admin-nav>
     </section>
     <!-- /.sidebar -->
   </aside>
 </template>
 
 <script>
+const adminBaseNav = resolve => {require(['./nav.vue'], resolve)}
 export default {
   data () {
     return {
       msg: 'adminBaseLeft'
     }
+  },
+  components:{
+    'admin-nav':adminBaseNav
   }
 }
 </script>

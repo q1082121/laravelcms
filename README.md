@@ -8,8 +8,6 @@
 
 	作者:rubbish.boy@163.com
 
-	QQ	:471416739
-
 
 #	使用了laravel哪些扩展包？ composer.json
 1. zizaco/entrust 权限验证

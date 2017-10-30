@@ -86,7 +86,7 @@ new Vue({
                     count_trash    :0,
              },
           },
-    ready: function ()
+    created: function ()
     { 
            this.get_count_action(); 
     }, 

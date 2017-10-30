@@ -91,7 +91,7 @@ new Vue({
              image                  :'',
              cur_title              :'{{trans("admin.website_action_add")}}',
           },
-    ready: function ()
+    created: function ()
     { 
             
     }, 

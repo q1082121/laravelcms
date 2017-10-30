@@ -580,7 +580,7 @@
                   layout_attributes           :'',
                }
             },
-      ready: function ()
+      created: function ()
       { 
           if(this.params_data.layout_fixed==1)
           {

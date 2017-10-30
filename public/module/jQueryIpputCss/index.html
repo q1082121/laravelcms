@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery文件上传表单</title>
+		<style type="text/css">body{font-family:Arial,Verdana,sans-serif; margin:100px;}</style>
+		<link rel="stylesheet" href="css/style.css">
+	<script id="jquery_172" type="text/javascript" class="library" src="js/jquery-1.7.2.min.js"></script>
+	</head>
+	<body>
+		
+<div class="uploader white">
+<input type="text" class="filename" readonly/>
+<input type="button" name="file" class="button" value="Browse..."/>
+<input type="file" size="30"/>
+</div>
+
+<br/>
+
+<div class="uploader blue">
+<input type="text" class="filename" readonly/>
+<input type="button" name="file" class="button" value="Browse..."/>
+<input type="file" size="30"/>
+</div>
+
+<br/>
+
+<div class="uploader green">
+<input type="text" class="filename" readonly/>
+<input type="button" name="file" class="button" value="Browse..."/>
+<input type="file" size="30"/>
+</div>
+
+<br/>
+
+<div class="uploader red">
+<input type="text" class="filename" readonly/>
+<input type="button" name="file" class="button" value="Browse..."/>
+<input type="file" size="30"/>
+</div>
+
+<br/>
+
+<div class="uploader orange">
+<input type="text" class="filename" readonly/>
+<input type="button" name="file" class="button" value="Browse..."/>
+<input type="file" size="30"/>
+</div>
+
+<br/>
+
+<div class="uploader black">
+<input type="text" class="filename" readonly/>
+<input type="button" name="file" class="button" value="Browse..."/>
+<input type="file" size="30"/>
+</div>
+
+	</body>
+</html>
+
+
+<script>$(function(){
+	$("input[type=file]").change(function(){$(this).parents(".uploader").find(".filename").val($(this).val());});
+	$("input[type=file]").each(function(){
+	if($(this).val()==""){$(this).parents(".uploader").find(".filename").val("No file selected...");}
+	});
+});
+</script>

@@ -92,7 +92,7 @@ new Vue({
              cur_title_add          :'{{trans("admin.website_action_add")}}',
              cur_title_edit         :'{{trans("admin.website_action_edit")}}',
           },
-    ready: function (){ 
+    created: function (){ 
             //这里是vue初始化完成后执行的函数 
             if(this.params_data.id>0)
             {

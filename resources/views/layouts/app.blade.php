@@ -107,7 +107,7 @@ new Vue({
 			  modelname         :'{{getCurrentControllerName("Home")}}',
             }
     },
-    ready: function (){ 
+    created: function (){ 
             //这里是vue初始化完成后执行的函数 
             common_cache=cache_storageLoad('common_cache',1);
             //console.log(common_cache);

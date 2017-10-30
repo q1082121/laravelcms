@@ -86,6 +86,8 @@ QQ	:471416739
 			5 php artisan db:seed --class=AttributegroupSeeder
 			
 			6 php artisan db:seed --class=AttributevalueSeeder
+
+			(遇到Allowed memory size of) 可以手动导入database/seeds/district.sql
 		
 7. 开始体验
 	[DEMO](http://api.tzsuteng.com)

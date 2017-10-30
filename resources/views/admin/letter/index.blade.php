@@ -131,7 +131,7 @@ new Vue({
                     count_trash    :0,
              }
           },
-    ready: function ()
+    created: function ()
             { 
             this.pageparams.actionname=this.actionname;  
             //这里是vue初始化完成后执行的函数 

@@ -2,8 +2,14 @@
 # laravelPCMS V1.6.0 [下载](http://www.tzsuteng.com/Public/uploadfiles/laravelpcms-V1.6.0.zip) 2016-12-29 发布
 基于 laravel5.2 的PHP内容管理系统  后台基于AdminLTE主题  前端组件Vue.js 集成基础的微信相关功能。是一个可以快速上手，项目开发的首选工具。
 
-作者:rubbish.boy@163.com
-QQ	:471416739
+	博客网站：https://www.pocketol.com
+
+	懒人导航：https://www.pocketol.com/#/daoHang
+
+	作者:rubbish.boy@163.com
+
+	QQ	:471416739
+
 
 #	使用了laravel哪些扩展包？ composer.json
 1. zizaco/entrust 权限验证
